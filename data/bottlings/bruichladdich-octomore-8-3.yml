@@ -1,7 +1,7 @@
 # =============================================================================
 # Octomore Edition 8.3 / 309 PPM (the highest-PPM Octomore release)
 # =============================================================================
-# Schema: bottling.template.yml v0.1
+# Schema: bottling.template.yml v0.2
 # Entry confidence: high — this is the most documented Octomore PPM
 # claim, with explicit producer disclosure of the HPLC measurement
 # method. Trade press, producer communications, and independent reviews
@@ -197,7 +197,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
         notes: |
           This source explicitly attributes the 309.1 ppm figure to
           HPLC measurement, with the producer's exact words quoted:
@@ -221,7 +221,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: |
       Used for confirmation of cask program, age, ABV, and 18,000
       bottle outturn.
@@ -234,7 +234,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: |
       Used for context on barley provenance (Octomore farm 2010
       harvest, malted at Bairds), explicit "fully matured (not
@@ -254,7 +254,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: Used for ABV and 18,000 bottle outturn confirmation.
 
 

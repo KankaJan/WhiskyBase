@@ -155,3 +155,27 @@ above as TODO inline.
   this decision until at least one other transparent-batch SKU is
   encountered (e.g. Springbank Local Barley releases, Glenfarclas
   Family Casks).
+
+## Port Charlotte Islay Barley 2014 — label age vs elapsed maturation
+
+The bottling is labelled "Aged 7 Years" but was distilled in 2014 and
+bottled 26 July 2023 — an elapsed period of approximately 9 years. This
+is not an arithmetic error in the data. Bruichladdich (and Scotch
+labelling generally) follows the SWA minimum-age convention: the stated
+age is the age of the youngest cask in the vatting, not the elapsed
+time from vintage. The producer does not publish a youngest/oldest
+breakdown for this release; the component casks were filled in 2014 and
+emptied 26 July 2023.
+
+Resolution in the entry:
+- `age_statement: 7` (producer label).
+- `vintage: 2014` (producer label).
+- `release_date: 2023-07` (producer-stated bottling date).
+- `duration_years: 9` per cask (actual elapsed maturation rather than
+  label age). The maturation block carries an inline comment recording
+  the convention.
+
+Sources verifying the producer's published facts: bruichladdich.com
+product page, Whiskybase #226735, Whisky Exchange, Master of Malt,
+Drinkhacker (2 Jul 2023 review), The Whiskey Wash, Dramface, The Whisky
+Barrel — all align on vintage 2014, age 7, bottled 26 July 2023.

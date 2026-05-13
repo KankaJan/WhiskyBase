@@ -284,7 +284,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
         notes: |
           Bruichladdich's published PPM specifications use HPLC and
           the standard sum of 7 phenolic compounds. Where this source
@@ -308,7 +308,7 @@ sources:
       addition.
 
   - id: 5
-    type: trade_publication
+    type: official_website
     url: https://www.bruichladdich.com/products/bruichladdich-the-classic-laddie
     accessed: 2026-05-02
     notes: Used for water source confirmation and bottling-on-site policy.

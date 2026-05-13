@@ -1,7 +1,7 @@
 # =============================================================================
 # Bruichladdich The Classic Laddie
 # =============================================================================
-# Schema: bottling.template.yml v0.1
+# Schema: bottling.template.yml v0.2
 # Entry confidence: medium — the SKU is well-documented, but its core
 # property is that batches differ. The schema models it as a single
 # bottling entry with batch-variation noted; if individual batches need

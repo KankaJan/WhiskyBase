@@ -144,7 +144,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
         notes: |
           Bruichladdich's published PPM uses HPLC and the standard 7
           phenolic compounds.
@@ -195,7 +195,7 @@ sources:
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.2
+schema_version: 0.2.1
 confidence: high
 last_reviewed: 2026-05-02
 contributors: []

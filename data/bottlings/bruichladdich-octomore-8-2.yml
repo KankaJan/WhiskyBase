@@ -1,7 +1,7 @@
 # =============================================================================
 # Octomore Edition 8.2 (167 ppm)
 # =============================================================================
-# Schema: bottling.template.yml v0.1
+# Schema: bottling.template.yml v0.2
 # Entry confidence: high — release was widely covered with full producer
 # disclosure of cask program. Minor ABV discrepancy (58.4% vs 58.7%)
 # resolved to 58.4% per the producer-aligned majority of sources.
@@ -165,7 +165,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: Used for ABV (116.8 proof = 58.4%) and US retail price.
 
   - id: 2
@@ -176,7 +176,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: |
       Used for bottling date (31 October 2017), Travel Retail
       designation, vintage (2008), 36,000 bottle outturn, and
@@ -190,7 +190,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: |
       Used for full cask program detail (6 years primary + 2 years
       Amarone finish) and producer character notes.
@@ -209,7 +209,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: |
       Used for cask program corroboration and Octomore series
       taxonomy. NOTE: this source states 58.7% ABV, conflicting with

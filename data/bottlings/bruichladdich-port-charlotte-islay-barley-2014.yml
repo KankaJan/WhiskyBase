@@ -1,7 +1,7 @@
 # =============================================================================
 # Port Charlotte Islay Barley 2014
 # =============================================================================
-# Schema: bottling.template.yml v0.1
+# Schema: bottling.template.yml v0.2
 # Entry confidence: high — release was extensively documented at full
 # producer disclosure (cask proportions, farm list, vintage barley year).
 # =============================================================================
@@ -44,26 +44,31 @@ batch_or_cask:
 
 
 # --- Maturation -------------------------------------------------------------
-# Producer-disclosed maturation profile [1][2]:
+# Producer-disclosed maturation profile [1][2]. Distilled 2014, bottled
+# 26 Jul 2023 → elapsed maturation ≈ 9 years. The "Aged 7 Years" label
+# reflects the SWA minimum-age (youngest-cask) labelling convention; the
+# producer does not publish a youngest/oldest split for this vatting.
+# `duration_years` values below record actual elapsed maturation, not
+# label age. See bruichladdich.NOTES.md for the resolution.
 maturation:
   - cask_type: bourbon-barrel
     fill_number: 1
     proportion: 0.84
-    duration_years: 7
+    duration_years: 9
     cooperage: null
     notes: First-fill bourbon barrels.
 
   - cask_type: virgin-oak
     fill_number: 2
     proportion: 0.08
-    duration_years: 7
+    duration_years: 9
     cooperage: null
     notes: Second-fill virgin oak.
 
   - cask_type: bordeaux-wine-cask
     fill_number: 2
     proportion: 0.08
-    duration_years: 7
+    duration_years: 9
     cooperage: null
     notes: Second-fill Bordeaux wine casks.
 

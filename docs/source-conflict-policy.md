@@ -103,10 +103,13 @@ In `bruichladdich.NOTES.md`, the full breakdown above.
 
 ### Harris washback count
 
-Three sources give 5 washbacks; two give 8. The producer's own
-website page on equipment gives 8. Resolved to 8; the discrepancy
-likely reflects an early-life equipment expansion that two sources
-have not picked up.
+Three sources give 5 washbacks; two give 8. Resolved to 5: the
+Scotch Whisky Whiskypedia structured spec sheet and an independent
+visit account both report 5, and the producer-aligned distiller
+interview in Scottish Field is consistent with the 5-washback layout.
+The two secondary sources reporting 8 (Distilando and whisky.com)
+are not adopted; the discrepancy is treated as inherited error rather
+than evidence of a real expansion.
 
 ### Octomore 8.2 ABV
 

@@ -78,7 +78,7 @@ is no separate authentication, no proposal queue, no custom UI — PRs
 
 | Layer | Status |
 |---|---|
-| Entity schemas | Distillery v0.1, production_line v0.2, bottling v0.2, concept v0.1, bottler — not yet drafted |
+| Entity schemas | Distillery v0.1, production_line v0.2.1, bottling v0.2, concept v0.1, bottler v0.1 (stub) |
 | Distilleries populated | 2 (Harris, Bruichladdich) |
 | Production lines | 4 |
 | Bottlings | 10 |

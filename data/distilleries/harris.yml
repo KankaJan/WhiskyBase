@@ -263,7 +263,7 @@ sources:
       Used for capacity (0.23 mlpa) and condenser type confirmation.
 
   - id: 9
-    type: official_website
+    type: trade_publication
     url: https://en.beveragehunters.com/harrisdistillery
     accessed: 2026-05-02
     notes: Used for confirmation of Frilli (Siena) as still manufacturer.

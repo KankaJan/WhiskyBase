@@ -118,8 +118,12 @@ peating:
                                      #     resolved via source-level
                                      #     methodology declaration."
 
-  peat_origin: null                  # local | mainland_scotland | imported |
-                                     # mixed | unknown
+  peat_origin: null                  # none | local | mainland_scotland |
+                                     # imported | mixed | unknown
+                                     # "none" — line uses no peat (unpeated
+                                     # single malt). Use this rather than
+                                     # null when the absence is a positive
+                                     # design choice.
                                      # "local" requires that peat is cut on
                                      # the same island/region as the distillery.
 
@@ -202,7 +206,12 @@ external_ids:
 #       peating_ppm:
 #         method: hplc                 # see methods list above
 #         compounds: standard_7        # see compound sets list above
-#         basis_concept: <slug>        # ref /data/concepts/, see TODO.md
+#         basis_concept: methodology/<slug>
+#                                      # Kind-prefixed concept slug.
+#                                      # File at /data/concepts/methodology/
+#                                      # <slug>.yml. Same `<kind>/<slug>`
+#                                      # form as used in `related_concepts`
+#                                      # on concept entries.
 #         notes: |
 #           Method assumed from producer's published methodology
 #           rather than restated per release.
@@ -213,7 +222,7 @@ sources: []
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.2
+schema_version: 0.2.1
 confidence: stub                     # high | medium | low | stub
 last_reviewed: null
 contributors: []

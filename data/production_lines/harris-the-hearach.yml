@@ -141,7 +141,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: scotch-whisky-published-ppm-methodology
+        basis_concept: methodology/scotch-whisky-published-ppm
         notes: |
           The Scotch Whisky Whiskypedia entries report PPM
           specifications using HPLC and the standard 7 phenolic
@@ -159,7 +159,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: harris-published-ppm-methodology
+        basis_concept: methodology/harris-published-ppm
         notes: |
           Producer disclosure inherited from Bairds of Inverness's
           malt specification, which uses HPLC. Method not explicitly
@@ -177,7 +177,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: harris-published-ppm-methodology
+        basis_concept: methodology/harris-published-ppm
     notes: |
       Used for confirmation of peating spec and reference to the
       separate ~30 ppm experimental line.
@@ -202,7 +202,7 @@ sources:
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.2
+schema_version: 0.2.1
 confidence: medium
 last_reviewed: 2026-05-02
 contributors: []

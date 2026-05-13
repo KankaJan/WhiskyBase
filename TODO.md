@@ -79,6 +79,12 @@ dangling references in existing data:
    compounds.
 4. **`equipment/shell-and-tube-condenser`** — the alternative to
    worm tubs. Referenced from `equipment/worm-tub` as `alternatives:`.
+5. **`glossary/peating-block`** — referenced in the body of
+   `concept/educational/peating-measurement-methods`.
+6. **`glossary/phenol-ppm`** — referenced from `related_concepts`
+   of `concept/methodology/bruichladdich-published-ppm`.
+7. **`educational/copper-conversation`** — referenced from
+   `related_concepts` of `concept/equipment/worm-tub`.
 
 ### Concept pages to queue
 

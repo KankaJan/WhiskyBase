@@ -19,7 +19,9 @@ types — **distillery** (physical production site), **production line**
 specific commercial release) — plus a **concept** layer for reference
 content (methodology, educational, equipment, practice, glossary).
 Independent bottlers are modelled as a fourth top-level entity type
-(**bottler**), planned but not yet drafted. Data lives as YAML in a
+(**bottler**); the schema is drafted as a v0.1 stub at
+`schema/bottler.template.yml` and will be pressure-tested once a real
+IB case is populated. Data lives as YAML in a
 Git repository; cross-references between entities use slugs; the
 build pipeline (not yet implemented) will turn the data into a static
 site.
@@ -175,7 +177,9 @@ Real examples in the existing data:
   are the only set internally consistent across size-vs-charge axes.
   Documented in `bruichladdich.NOTES.md`.
 - Harris washback count: 5 in some sources, 8 in others. Resolved
-  to 8 per producer-aligned majority. Documented in `harris.NOTES.md`.
+  to 5 (Scotch Whisky Whiskypedia plus an independent visit account);
+  the 8-figure remains in two secondary sources but is not adopted.
+  Documented in `harris.NOTES.md`.
 - Octomore 8.2 ABV: 58.4% per producer-aligned sources; 58.7% per one
   outlier (The Whisky Club). Resolved to 58.4% with the outlier
   flagged in the entry's source notes.
@@ -231,9 +235,12 @@ schema does not flag IB vs OB pairs as "comparable" or otherwise; the
 build pipeline (eventually) supports filtering, and readers decide
 what they want to compare.
 
-Bottler entity schema is **not yet drafted** — `/data/bottlers/` is
-present but empty. This is the next priority piece of schema work
-once IB data starts arriving.
+Bottler entity schema is drafted at **v0.1 (stub)** at
+`schema/bottler.template.yml`. `/data/bottlers/` is still empty; the
+schema's series modelling in particular is speculative and will firm
+up once the first real IB release is populated (likely a Cadenhead's
+or Signatory bottling). The next schema-work priority is pressure-
+testing the stub against a real case and promoting to v0.2.
 
 ---
 
@@ -282,16 +289,19 @@ back rather than absorbing it into the data model.
 **Schema:**
 
 - `schema/distillery.template.yml` — v0.1
-- `schema/production_line.template.yml` — v0.2 (peating block,
-  source methodology)
+- `schema/production_line.template.yml` — v0.2.1 (peating block,
+  source methodology, `peat_origin: none`)
 - `schema/bottling.template.yml` — v0.2 (IB discrimination)
 - `schema/concept.template.yml` — v0.1 (kind discriminator, per-kind
   blocks)
-- bottler template — not yet drafted
+- `schema/bottler.template.yml` — v0.1 (stub; series modelling
+  speculative, awaiting first real IB case)
 
 **Next priorities, in order of unblock value:**
 
-1. Draft the bottler schema; this completes the entity model.
+1. Pressure-test the bottler v0.1 stub schema against a real IB case
+   (Cadenhead's Authentic Collection or Signatory Cask Strength is
+   the likely first case) and promote to v0.2.
 2. Cask schema and `/data/casks/` directory; the bottling and
    production_line entries reference cask slugs that have no backing.
 3. More concept pages: `methodology/harris-published-ppm`,

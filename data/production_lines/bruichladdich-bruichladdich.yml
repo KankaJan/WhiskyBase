@@ -56,7 +56,7 @@ peating:
         unpeated malt; this is the defining recipe choice that
         distinguishes it from Port Charlotte and Octomore at the
         same site.
-  peat_origin: null               # No peat used.
+  peat_origin: none               # No peat used. Requires schema v0.2.1+.
   notes: |
     The Bruichladdich line uses unpeated malt as its defining
     characteristic, in contrast to most Islay distilleries.
@@ -122,7 +122,7 @@ description: |
   The line is defined by the absence of peat and by the producer's
   emphasis on barley provenance, with releases distinguishing between
   Scottish-mainland barley, Islay-grown barley, organic barley, and the
-  ancient Bere variety. Filling strength is 68.5% [1], higher than
+  heritage Bere variety. Filling strength is 68.5% [1], higher than
   industry typical, and core releases are bottled at 50% non-chill-filtered
   with natural colour [10]. Each bottle of the Classic Laddie carries a
   batch code that resolves to per-batch cask composition and barley
@@ -147,7 +147,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
         notes: |
           Bruichladdich's published PPM uses HPLC and the standard 7
           phenolic compounds. PPM figures from Bruichladdich and
@@ -224,7 +224,7 @@ sources:
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.2
+schema_version: 0.2.1
 confidence: high
 last_reviewed: 2026-05-02
 contributors: []

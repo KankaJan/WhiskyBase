@@ -1,7 +1,7 @@
 # =============================================================================
 # Octomore Edition 8.1 (167 ppm)
 # =============================================================================
-# Schema: bottling.template.yml v0.1
+# Schema: bottling.template.yml v0.2
 # Entry confidence: high — release was widely covered with full producer
 # disclosure of cask program, peating spec, and barley provenance.
 # =============================================================================
@@ -138,7 +138,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
         notes: |
           PPM figure cited from producer's spec; Bruichladdich
           methodology applies.
@@ -156,7 +156,7 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: |
       Used for cask program detail (named bourbon cooperages) and
       producer character notes.
@@ -169,12 +169,12 @@ sources:
       peating_ppm:
         method: hplc
         compounds: standard_7
-        basis_concept: bruichladdich-published-ppm-methodology
+        basis_concept: methodology/bruichladdich-published-ppm
     notes: |
       Used for confirmation of 8 year age statement and 167 ppm.
 
   - id: 4
-    type: trade_publication
+    type: official_website
     url: https://www.bruichladdich.com/laddie-shop/octomore-archive/octomore-08-2-167ppm/
     accessed: 2026-05-02
     notes: |
