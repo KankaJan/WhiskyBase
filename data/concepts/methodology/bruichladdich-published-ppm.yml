@@ -1,0 +1,152 @@
+# =============================================================================
+# Bruichladdich Published PPM Methodology
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: methodology
+# Function: attestation referenced from production_line.peating
+# measurements where the source is Bruichladdich-derived. The schema-
+# level methodology declaration on the source records the technical
+# choice (HPLC + standard 7); this concept page records who chose it,
+# why, and what it does and doesn't claim.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-published-ppm
+title: Bruichladdich's published PPM methodology
+kind: methodology
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Bruichladdich Distillery reports phenol PPM specifications using
+  high performance liquid chromatography (HPLC) summing the standard
+  set of seven phenolic compounds. This is the methodology behind
+  the producer's stated specifications for the Bruichladdich,
+  Port Charlotte, and Octomore lines.
+
+body: |
+  Bruichladdich states phenol concentrations as a single PPM figure
+  per release. The figure is produced by HPLC measurement on the
+  kilned malt, summing seven phenolic compounds: phenol, the three
+  cresols (m-, p-, o-cresol), guaiacol, 4-methylguaiacol, and
+  4-ethylguaiacol. This is the [standard seven-compound HPLC
+  sum](concept/educational/peating-measurement-methods) used widely
+  in the modern Scotch malt supply chain.
+
+  The producer has been explicit about the method on at least one
+  occasion: when announcing Octomore Edition 8.3 in 2017, the
+  distillery's communication stated, "Using HPLC (high performance
+  liquid chromatography), the readings came back at 309.1 ppm" [1].
+  The same announcement noted that PPM levels "can vary depending
+  on whether a colorimetric reading or one from HPLC is taken,
+  the latter producing higher figures" — an explicit
+  acknowledgement that the method matters and that reported PPM
+  figures are not directly comparable between producers using
+  different methods.
+
+  ## What this methodology measures
+
+  PPM as published by Bruichladdich is the total phenol content
+  of the kilned malt before it is mashed, fermented, or distilled.
+  It is a specification of the malt input, not of the bottled
+  liquid. The phenol concentration in the new make spirit is
+  substantially lower than the malt-stage figure, and the figure
+  in the bottled liquid is lower again, with the trajectory
+  depending on the production line, distillation regime, and
+  cask programme.
+
+  ## What this methodology does not claim
+
+  The published PPM figure is silent on:
+
+  - the concentration of phenols in the bottled liquid
+  - the perceived smokiness of the finished whisky
+  - the specific phenolic profile, since the seven-compound sum
+    discards information about which compounds are present in what
+    proportion
+  - the type of peat used, its origin, or its burning conditions
+
+  These omissions are not errors — they reflect what HPLC at the
+  malt stage can and can't tell us. Readers should treat the
+  PPM figure as one input variable among many, and resist
+  treating it as a quality score.
+
+  ## Adoption and consistency
+
+  The methodology has been used consistently across all
+  Bruichladdich-line PPM disclosures encountered to date. The
+  producer's own published specifications for Bruichladdich
+  (unpeated, 0 ppm), Port Charlotte (40 ppm), and Octomore
+  (variable per edition, 80 ppm and higher) all resolve via this
+  methodology. Independent measurements taken on Bruichladdich-
+  produced malt have not been encountered in our sources to
+  date; if they are, they should be recorded with their own
+  source-level methodology declarations and treated as
+  comparison points rather than corrections to the producer's
+  figures.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/peating-measurement-methods
+  - glossary/phenol-ppm                # TBD — to be populated.
+  - glossary/guaiacol                  # TBD — to be populated.
+
+
+# --- Methodology block ------------------------------------------------------
+methodology:
+  measures:
+    - peating_ppm
+  method: hplc
+  compounds: standard_7
+  used_by:
+    - bruichladdich                    # Slug of the distillery.
+                                       # The line and bottling entries
+                                       # also use this methodology;
+                                       # listing the distillery here is
+                                       # sufficient given the
+                                       # distillery-line-bottling
+                                       # hierarchy.
+  adopted: null                        # Method has been used
+                                       # consistently since at least the
+                                       # Octomore series began in 2008;
+                                       # specific adoption date not
+                                       # disclosed.
+  limitations: |
+    Spec PPM only — measured at the malt stage, not in the new make
+    or bottled liquid. The seven-compound sum discards individual
+    compound information; for finer-grained analysis, GC-MS on the
+    bottled liquid would be required and is not part of the
+    producer's published practice.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Trade press article reporting Octomore 8.3 release. Contains
+      explicit producer attribution of the 309.1 ppm figure to HPLC
+      measurement, and explicit acknowledgement that method choice
+      affects reported PPM. The strongest single piece of evidence
+      for this methodology page.
+
+  - id: 2
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+    accessed: 2026-05-02
+    notes: |
+      Scotch Whisky Whiskypedia entry for Bruichladdich. Reports
+      the PPM specifications across the three production lines
+      using figures consistent with the producer's disclosures
+      and with HPLC + standard_7 methodology.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

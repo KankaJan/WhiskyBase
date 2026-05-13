@@ -1,0 +1,259 @@
+# =============================================================================
+# Octomore (super-heavily peated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2
+# Entry confidence: high — PPM specifications are well-documented and the
+# 309.1 ppm figure for Edition 8.3 has explicit HPLC-method disclosure
+# from the producer, making it the primary stress-test case for the
+# peating measurement schema.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-octomore
+name: Octomore
+distillery: bruichladdich
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 2002-09           # First Octomore distillation took place
+                                  # in September 2002 [4].
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: Bairds                # Per the producer's own disclosure for
+                                  # Edition 8.3 [3].
+  variety:                        # Multiple varieties used across editions;
+                                  # specific variety often disclosed
+                                  # per-bottling rather than at the line
+                                  # level.
+    - Concerto                    # Default modern variety [3].
+    - Optic                       # Used in earlier editions.
+    - Publican
+    - Chalice
+
+
+# --- Recipe: Peating --------------------------------------------------------
+# This is the line for which peating measurement matters most. PPM varies
+# significantly between editions (and is the defining variable of each
+# release); see per-bottling entries for edition-specific values. The
+# line-level entry below records the spec range across the released
+# series, with the highest publicly-claimed figure cited for context.
+peating:
+  measurements:
+    - stage: spec
+      value: [80, 309]            # Range across released editions.
+                                  # First Octomore release (1.1) was
+                                  # 80 ppm spec; Edition 8.3 reached
+                                  # 309.1 ppm spec [3].
+      unit: ppm
+      method: hplc
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        The Octomore line is defined by super-heavy peating, specified
+        per release rather than at a fixed line level. The 80-309 ppm
+        range covers releases through Edition 8.3 (2017). See per-
+        bottling entries for edition-specific values.
+
+    - stage: spec
+      value: 309.1
+      unit: ppm
+      method: hplc
+      compounds: standard_7
+      source_id: 3
+      notes: |
+        The highest publicly-claimed Octomore PPM as of 2026-05.
+        Edition 8.3, distilled 2011 from 2010 Octomore farm Islay
+        barley, malted at Bairds in Inverness. The producer
+        explicitly disclosed the measurement method in trade
+        communications: "Using HPLC (high performance liquid
+        chromatography), the readings came back at 309.1 ppm" [3].
+        This explicit method disclosure is unusually clean and
+        validates the schema's source-level methodology approach.
+
+  peat_origin: mainland_scotland  # Standard supply chain via Bairds. The
+                                  # malting process takes place at Bairds
+                                  # of Inverness — peat species and origin
+                                  # are not consistently disclosed.
+
+  notes: |
+    The PPM spec for Octomore varies substantially between editions, and
+    is itself the defining recipe variable of the line. Reviewers and
+    secondary sources sometimes cite "highest recorded" figures that
+    refer to different historical points (5.1 at 169 ppm, 7.1/7.2 at
+    208 ppm, 6.3 at 258 ppm, 8.3 at 309.1 ppm) — the apparent
+    contradictions reflect a moving record rather than disagreement
+    about a single measurement. As of 2026-05, no published Octomore
+    edition exceeds the 8.3 figure.
+
+    Editions follow a structured naming convention disclosed by the
+    producer:
+      .1 — 100% Scottish barley, matured in American oak
+           (ex-bourbon, sometimes ex-Tennessee whiskey)
+      .2 — same malted barley as .1, with different maturation,
+           predominantly European wine and/or cognac casks
+      .3 — 100% barley grown on Octomore Farm itself (Islay terroir),
+           mix of American and European oak
+      .4 — virgin oak influence (newer in the series)
+    Source: the producer's published series taxonomy [4][9].
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 60
+  hours_max: 105                  # Producer-stated range [10]; consistent
+                                  # with the broader site fermentation
+                                  # regime.
+  hours_typical: null             # Varies by edition and seasonal
+                                  # operating conditions.
+  yeast: null
+  notes: |
+    Same fermentation regime as the Bruichladdich and Port Charlotte
+    lines — shared Oregon pine washbacks, same long-fermentation
+    practice. The defining recipe variable is malt peating, not
+    fermentation.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                  # Same four-still configuration as the
+                                  # Bruichladdich and Port Charlotte lines.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Producer states that "tall stills and narrow cut points yield
+      spirits that are surprisingly refined rather than overwhelming"
+      despite phenol levels exceeding 300 ppm in the heaviest
+      editions [2]. The high phenol content reportedly affects all
+      equipment and connecting pipework, requiring Octomore to be run
+      in dedicated short batches [10].
+  new_make_abv: 68.5              # Inferred from site fill strength;
+                                  # producer does not consistently disclose
+                                  # per-line new-make ABV for Octomore.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: 68.5
+typical_cask_program:
+  - bourbon-barrel                # Dominates the .1 sub-series.
+  - wine-cask                     # Wide variety used in the .2 sub-series
+                                  # (Pauillac, Ventoux, Rhône, Burgundy,
+                                  # Mourvedre, Sauternes, Amarone, etc.).
+  - virgin-oak                    # Used in the .4 sub-series.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - bruichladdich-octomore-8-1
+  - bruichladdich-octomore-8-2
+  - bruichladdich-octomore-8-3
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Super-heavily peated Bruichladdich production line, first distilled in
+  September 2002 [4] and first bottled as a five-year-old in 2008.
+  Released annually as an edition series, with each edition typically
+  comprising a .1, .2, .3 (and sometimes .4) variant sharing the same
+  underlying spirit but differing in cask programme and barley provenance.
+  PPM specifications vary per edition rather than being fixed at the line
+  level — releases through Edition 8.3 (2017) span 80 to 309.1 ppm by
+  HPLC, with Edition 8.3 holding the publicly-claimed record for the
+  highest PPM Scotch single malt as of 2026-05 [3]. Octomore is produced
+  on the same equipment as the Bruichladdich and Port Charlotte lines,
+  with the same fermentation and distillation regime; the distinguishing
+  recipe variable is malt peating. Output reportedly accounts for
+  approximately 10% of the site's annual spirit production [10].
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+        notes: |
+          Bruichladdich's published PPM uses HPLC and the standard 7
+          phenolic compounds.
+    notes: |
+      Primary reference for site-level production specs and 80+ ppm
+      base specification for Octomore.
+
+  - id: 2
+    type: trade_publication
+    url: https://maltspedia.com/distilleries/bruichladdich-distillery/
+    accessed: 2026-05-02
+    notes: |
+      Used for description of stills' effect on heavily-peated spirit
+      and the "three identities under one roof" framing.
+
+  - id: 3
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+        notes: |
+          This source explicitly attributes the 309.1 ppm figure for
+          Octomore 8.3 to HPLC measurement, with the producer's own
+          words quoted: "Using HPLC (high performance liquid
+          chromatography), the readings came back at 309.1 ppm." The
+          source also explicitly notes that "the ppm level can vary
+          depending on whether a colorimetric reading or one from HLPC
+          is taken, the latter producing higher figures" — a direct
+          validation of the schema's measurement-method modeling.
+    notes: |
+      Trade publication article reporting the 309.1 ppm Octomore 8.3
+      figure with explicit method disclosure.
+
+  - id: 4
+    type: trade_publication
+    url: https://distilando.com/octomore
+    accessed: 2026-05-02
+    notes: |
+      Used for first-distillation date (September 2002), first-bottling
+      year (2008), and the .1/.2/.3 series taxonomy.
+
+  - id: 9
+    type: trade_publication
+    url: https://thewhiskyclub.com.au/octomore-8-2
+    accessed: 2026-05-02
+    notes: |
+      Used for series taxonomy confirmation and contextual PPM
+      comparison with other peated Islay malts (35-50 ppm range).
+
+  - id: 10
+    type: trade_publication
+    url: https://distilando.com/octomore
+    accessed: 2026-05-02
+    notes: |
+      Used for fermentation range (60-105 hours), 10% of site output
+      figure, and short-batch operational detail.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

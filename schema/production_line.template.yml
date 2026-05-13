@@ -1,0 +1,219 @@
+# =============================================================================
+# PRODUCTION LINE SCHEMA TEMPLATE — v0.2
+# =============================================================================
+# Changes from v0.1:
+#   - peating_ppm (flat field) replaced with peating (structured block)
+#     supporting multiple measurements at different stages, with method
+#     and compound-set fields. Migration: existing peating_ppm values
+#     map to a single measurement at stage=spec, method=hplc (assumed
+#     for Bruichladdich/Harris/most Scotch sources).
+#   - sources block gains an optional `methodology` field declaring
+#     measurement methods at the source level rather than per-figure.
+# =============================================================================
+# Purpose: a production line is a distinct recipe/spec produced at a
+# distillery. One distillery may run multiple lines from the same equipment
+# (Springbank produces Springbank, Longrow, and Hazelburn; Bruichladdich
+# produces Bruichladdich, Port Charlotte, and Octomore).
+#
+# What this schema describes: recipe-level inputs and process choices,
+# typical character at the line level, references to the parent distillery
+# and downstream bottlings.
+#
+# What this schema does NOT describe (do not add):
+#   - Equipment (lives on distillery — equipment is shared across lines)
+#   - Per-bottle specs (lives on bottling — ABV, age, finish vary per release)
+#   - Tasting notes for a specific bottle (lives on bottling)
+#   - Marketing positioning, "story", "philosophy"
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: example-line                     # REQUIRED. Lowercase slug.
+                                     # Convention: <distillery-slug>-<descriptor>
+                                     # Examples:
+                                     #   harris-the-hearach   (named line)
+                                     #   bruichladdich-bruichladdich
+                                     #   bruichladdich-port-charlotte
+                                     #   bruichladdich-octomore
+                                     #   springbank-longrow
+name: null                           # REQUIRED. Display name.
+distillery: null                     # REQUIRED. Slug of parent distillery.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active                       # active | discontinued | experimental |
+                                     # historical
+first_produced: null                 # YYYY or YYYY-MM. When this line first
+                                     # ran (may differ from distillery
+                                     # founding for new lines added later).
+discontinued: null                   # YYYY if the line was retired.
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: null                       # bought_in | floor_malted_onsite |
+                                     # mixed | unknown
+  maltster: null                     # Named supplier if disclosed.
+  variety: null                      # Barley variety/varieties. Use list
+                                     # if multiple are blended in spec.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+# The PPM problem.
+#
+# "PPM" in whisky writing is shorthand for total phenols, but the figure
+# depends on (a) what stage is measured, (b) what method is used, and
+# (c) which compounds are summed. These differ between sources and are
+# rarely disclosed together.
+#
+# Stages where measurement is possible:
+#   spec           — what was ordered/specified for the malt batch
+#   malt_delivered — what was actually measured in the kilned malt
+#   new_make       — what was in the spirit off the still
+#   in_bottle      — what was measured in the bottled liquid
+#
+# Methods commonly encountered:
+#   hplc                — high performance liquid chromatography. Industry
+#                         standard for modern peated malt specs.
+#   4_aminoantipyrine   — older spectrophotometric method. Returns
+#                         different (often higher) values than HPLC.
+#   gc_ms               — gas chromatography-mass spectrometry. Resolves
+#                         individual compounds.
+#   folin_ciocalteu     — measures total phenolic equivalents, food-science
+#                         context. Different scale.
+#   unspecified         — source did not disclose method.
+#
+# Compound sets:
+#   standard_7   — phenol + 3 cresols (m, p, o) + guaiacol +
+#                  4-methylguaiacol + 4-ethylguaiacol. The de facto
+#                  modern HPLC sum for peated whisky malt.
+#   extended     — broader sum, defined by lab.
+#   individual   — discrete compounds reported separately, not summed.
+#   unspecified  — source did not disclose.
+#
+# Pragmatic rule: if a measurement comes from a source that has a
+# documented standard methodology (e.g. Bruichladdich's published HPLC
+# spec), populate method and compounds with the source's standard, and
+# rely on the source's `methodology` block to record the assumption.
+# If the source genuinely doesn't tell us, mark as `unspecified`.
+
+peating:
+  measurements: []                   # List of measurement records. Use
+                                     # multiple entries when more than one
+                                     # stage/method has been reported.
+                                     # Example shape per entry:
+                                     #
+                                     # - stage: spec
+                                     #   value: 167          # number, OR
+                                     #                       # [min, max] for
+                                     #                       # disclosed range
+                                     #   unit: ppm
+                                     #   method: hplc
+                                     #   compounds: standard_7
+                                     #   source_id: 1
+                                     #   notes: |
+                                     #     Brief note on context, e.g.
+                                     #     "specification disclosed by
+                                     #     producer at release; method
+                                     #     resolved via source-level
+                                     #     methodology declaration."
+
+  peat_origin: null                  # local | mainland_scotland | imported |
+                                     # mixed | unknown
+                                     # "local" requires that peat is cut on
+                                     # the same island/region as the distillery.
+
+  notes: null                        # Free text for unusual context, e.g.
+                                     # "blended from two malt batches at
+                                     # different spec ppm" or "in-bottle
+                                     # measurement contested between
+                                     # sources [3] and [4]".
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null                        # Strain or supplier if disclosed.
+  notes: null                        # Free text only for unusual practices
+                                     # (cloudy wort, mixed-time programmes,
+                                     # cool fermentation, etc.)
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: null                       # double | triple | partial_triple |
+                                     # 2.5x | 2.81x | other
+  spirit_cut:
+    start_abv: null                  # ABV at which middle cut begins.
+    end_abv: null                    # ABV at which middle cut ends.
+    notes: null                      # Free text if cut points are unusual,
+                                     # by-nose only, or qualitatively reported.
+  new_make_abv: null                 # Strength of new make off the spirit still.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null      # Cask filling strength. May be overridden
+                                     # per-bottling.
+typical_cask_program: []             # Slugs from /data/casks/.
+                                     # Cask schema TBD (see TODO.md).
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings: []                        # List of slugs from /data/bottlings/.
+
+
+# --- Description ------------------------------------------------------------
+# Strict reference register. 2–4 sentences.
+# Should answer: what makes this line distinct from other lines at the same
+# distillery, AND from peers using similar techniques?
+#
+# Same disallowed-words list as the distillery description applies.
+# House character description belongs here only if attributed and qualified.
+description: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+# Numbered list. Reference in any prose field via [1], [2], etc.
+#
+# A source may declare a methodology block when it reports measurable
+# quantities under a known protocol. Field-level measurements then
+# resolve method/compounds by referencing source_id, rather than
+# repeating the methodology per-measurement.
+#
+# Source types: official_website | trade_publication | book |
+#               wikipedia | wikidata | company_filing |
+#               independent_review | interview | other
+#
+# Example shape:
+#   - id: 1
+#     type: official_website
+#     url: https://...
+#     accessed: 2026-05-02
+#     methodology:
+#       peating_ppm:
+#         method: hplc                 # see methods list above
+#         compounds: standard_7        # see compound sets list above
+#         basis_concept: <slug>        # ref /data/concepts/, see TODO.md
+#         notes: |
+#           Method assumed from producer's published methodology
+#           rather than restated per release.
+#     notes: |
+#       Producer spec disclosure for this release.
+
+sources: []
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: stub                     # high | medium | low | stub
+last_reviewed: null
+contributors: []

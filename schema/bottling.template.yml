@@ -1,0 +1,187 @@
+# =============================================================================
+# BOTTLING SCHEMA TEMPLATE — v0.2
+# =============================================================================
+# Changes from v0.1:
+#   - `distillery` field renamed to `produced_at_distillery` for clarity
+#     when independent bottlings are introduced.
+#   - New REQUIRED field `bottled_by` references either a distillery slug
+#     (for OB releases) or a bottler slug (for IB releases).
+#   - New REQUIRED field `bottler_type` discriminates: distillery |
+#     independent_bottler. This makes the data filterable without
+#     requiring callers to look up the bottled_by entity to find out
+#     what kind it is.
+#   - New optional field `bottler_series` references a series slug
+#     defined under the bottler entity (e.g. cadenheads/authentic-collection,
+#     gordon-macphail/connoisseurs-choice).
+#
+# Migration: existing v0.1 entries should rename `distillery` to
+# `produced_at_distillery`, set `bottled_by` to the same distillery slug,
+# and set `bottler_type: distillery`. Bottler series is left null.
+# =============================================================================
+# Purpose: a bottling is a specific commercial release. One production
+# line may have many bottlings; one cask program produces both
+# distillery-owned ("OB" / official bottlings) and independent-bottler
+# ("IB") releases, and the schema must distinguish these without
+# treating them as a different kind of entity.
+#
+# What this schema describes: per-release specs (ABV, age, finish),
+# tasting notes, references to the source production line, references
+# to the bottler.
+#
+# What this schema does NOT describe (do not add):
+#   - Equipment or recipe (lives on distillery / line)
+#   - Current secondary-market price (out of scope, deliberately)
+#   - Tour or visitor info
+#   - Marketing copy verbatim
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: example-bottling                 # REQUIRED. Lowercase slug.
+                                     # Convention for OB releases:
+                                     #   <distillery-slug>-<release-name>
+                                     # Convention for IB releases:
+                                     #   <bottler-slug>-<distillery-slug>-<descriptor>
+                                     # Examples:
+                                     #   bruichladdich-octomore-8-3
+                                     #   cadenheads-bruichladdich-2004-20yo
+name: null                           # REQUIRED. Display name.
+
+produced_at_distillery: null         # REQUIRED. Slug of distillery where
+                                     # the spirit was distilled. For
+                                     # IB releases this identifies the
+                                     # source distillery; for OB releases
+                                     # it usually matches `bottled_by`.
+
+production_line: null                # OPTIONAL. Slug of production line.
+                                     # May be null for old IB releases
+                                     # from distilleries pre-dating their
+                                     # current line structure (e.g. pre-2001
+                                     # Bruichladdich casks pre-date the
+                                     # Port Charlotte / Octomore split).
+
+bottled_by: null                     # REQUIRED. Slug. For OB releases,
+                                     # references a distillery slug. For
+                                     # IB releases, references a bottler
+                                     # slug under /data/bottlers/.
+
+bottler_type: distillery             # REQUIRED. distillery |
+                                     # independent_bottler.
+                                     # Used for filtering ("show me all
+                                     # IB Bruichladdich") without
+                                     # requiring the caller to look up
+                                     # the bottled_by entity.
+
+bottler_series: null                 # OPTIONAL. Series slug, namespaced
+                                     # under the bottler. Used for
+                                     # IB ranges (cadenheads/authentic-
+                                     # collection, gordon-macphail/
+                                     # connoisseurs-choice) and for OB
+                                     # series (octomore-masterclass-08,
+                                     # bruichladdich-cask-exploration).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                   # YYYY-MM where known, YYYY otherwise.
+discontinued: false                  # Boolean. true if formally
+                                     # discontinued; false for limited
+                                     # releases that have sold through but
+                                     # not been formally retired.
+availability: null                   # core | limited | travel_retail |
+                                     # single_cask | discontinued | other
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: null                            # As-bottled alcohol by volume.
+age_statement: null                  # Years; null for NAS.
+vintage: null                        # YYYY for vintage-dated releases.
+cask_strength: false                 # Boolean.
+non_chill_filtered: null             # Boolean.
+natural_colour: null                 # Boolean.
+bottle_size_ml: 700                  # Most common; varies for travel
+                                     # retail and miniatures.
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: null                         # batch | small_batch | single_cask |
+                                     # vatting
+  number: null                       # Batch number or cask number.
+  outturn_bottles: null              # Total bottles released, where
+                                     # disclosed.
+  cask_numbers: []                   # List for single-cask or
+                                     # multi-cask releases where each
+                                     # cask is identified.
+
+
+# --- Maturation -------------------------------------------------------------
+# List of maturation stages. The list is in order: first entry is first
+# maturation, subsequent entries are re-cask or transfer phases of
+# substantive duration. Use the separate `finish` field for short
+# terminal cask exposures (typically <12 months).
+maturation: []
+# Shape per entry:
+#
+#   - cask_type: bourbon-barrel        # Slug from /data/casks/.
+#     fill_number: 1                   # 1 = first-fill, 2 = refill, etc.
+#     proportion: 0.84                 # 0-1, where disclosed.
+#     duration_years: 7
+#     cooperage: null                  # Named cooperage where disclosed.
+#     notes: null                      # Free text for unusual context.
+
+finish: null                         # Single object (or null). Use for
+                                     # short terminal cask exposures.
+                                     # Shape:
+                                     #   cask_type: amarone-wine-cask
+                                     #   duration_months: 24
+                                     #   duration_years: 2
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null                     # ISO 4217 code (GBP, USD, EUR).
+  amount: null
+  as_of: null                        # YYYY of the price observation.
+                                     # RRP at release is permanent
+                                     # reference data; secondary-market
+                                     # prices are out of scope.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+# Strict reference register. 2-4 sentences.
+# Same disallowed-words list as distillery and line descriptions.
+description: null
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null                 # Free text. Producer-stated character
+                                     # notes, attributed.
+notes_independent: []                # List of reviewer notes. Shape:
+                                     #
+                                     # - reviewer: <name or publication>
+                                     #   url: <full URL>
+                                     #   date: YYYY-MM
+                                     #   nose: null
+                                     #   palate: null
+                                     #   finish: null
+                                     #   summary: <one or two sentences>
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # Numbered list, same pattern as
+                                     # distillery and production_line
+                                     # entries.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: stub                     # high | medium | low | stub
+last_reviewed: null
+contributors: []

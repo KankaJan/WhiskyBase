@@ -1,0 +1,230 @@
+# =============================================================================
+# Bruichladdich (unpeated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2
+# Entry confidence: high — well-documented by producer and trade press.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-bruichladdich
+name: Bruichladdich
+distillery: bruichladdich
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1881              # The original house style of the
+                                  # distillery, produced from founding [1].
+                                  # Resumed at the 2001 reopening as the
+                                  # primary line.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: Bairds                # Per Scotch Whisky structured spec [1].
+                                  # Bairds of Inverness is the principal
+                                  # supplier; Islay-grown barley used in the
+                                  # Islay Barley series is also malted at
+                                  # Bairds [4].
+  variety:                        # Multiple varieties used across batches
+                                  # of the Classic Laddie and the
+                                  # Exploration releases.
+    - Concerto                    # Documented in Islay Barley 2014 [4][5].
+    - Propino                     # Documented in Islay Barley 2014 [4][5].
+    - Optic                       # Used historically; appears in
+                                  # Micro-Provenance single casks [3].
+    - Bere                        # Used in dedicated Bere Barley releases.
+    - Publican
+    - Chalice
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: 0
+      unit: ppm
+      method: hplc                # Resolved via source-level methodology
+                                  # declaration on source [1].
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Unpeated specification. The Bruichladdich line uses
+        unpeated malt; this is the defining recipe choice that
+        distinguishes it from Port Charlotte and Octomore at the
+        same site.
+  peat_origin: null               # No peat used.
+  notes: |
+    The Bruichladdich line uses unpeated malt as its defining
+    characteristic, in contrast to most Islay distilleries.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 60                   # [2][6]
+  hours_max: 100                  # Some runs extending beyond 100 hours
+                                  # over weekends [2].
+  hours_typical: 80               # ~75-85 hours commonly cited [1][6][7].
+  yeast: null                     # Two strains reported (Mauri and Kerry)
+                                  # by one independent source [8]; not
+                                  # corroborated in primary references.
+                                  # TODO verify.
+  notes: |
+    Long fermentation in wooden washbacks is a defining recipe choice
+    associated by the producer and reviewers with the development of
+    fruity ester character. Reported as roughly twice the duration of
+    typical industry practice [9].
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                  # Standard wash + spirit still pair, using
+                                  # the same four pot stills as Port
+                                  # Charlotte and Octomore.
+  spirit_cut:
+    start_abv: null               # Not publicly disclosed in numeric form.
+    end_abv: null
+    notes: |
+      Cuts taken approximately 70% to 63% per one secondary
+      reference [2]; not consistently disclosed by the producer in
+      numeric form across releases. Trickle distillation through tall
+      narrow-necked stills is the defining process choice.
+  new_make_abv: 68.5              # [1]
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: 68.5   # [1]
+typical_cask_program:
+  - bourbon-barrel                # Predominant. Multiple bourbon
+                                  # cooperages used (Heaven Hill, Buffalo
+                                  # Trace, Four Roses, Jack Daniels,
+                                  # Clermont Springs).
+  - oloroso-sherry-butt
+  - wine-cask                     # Diverse — French, Italian, Spanish wine
+                                  # casks across releases.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - bruichladdich-classic-laddie
+  - bruichladdich-islay-barley-2023
+  - bruichladdich-black-art-11-1
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The original Bruichladdich house style: unpeated single malt distilled
+  from 100% Scottish barley, fermented for 60–100+ hours in Oregon pine
+  washbacks, and trickle-distilled in tall, narrow-necked pot stills [1][2].
+  The line is defined by the absence of peat and by the producer's
+  emphasis on barley provenance, with releases distinguishing between
+  Scottish-mainland barley, Islay-grown barley, organic barley, and the
+  ancient Bere variety. Filling strength is 68.5% [1], higher than
+  industry typical, and core releases are bottled at 50% non-chill-filtered
+  with natural colour [10]. Each bottle of the Classic Laddie carries a
+  batch code that resolves to per-batch cask composition and barley
+  provenance via the producer's website [10] — a transparency mechanism
+  unusual in the industry.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+        notes: |
+          Bruichladdich's published PPM uses HPLC and the standard 7
+          phenolic compounds. PPM figures from Bruichladdich and
+          Bruichladdich-derived sources resolve via this declaration.
+    notes: |
+      Primary reference for malt supplier, fermentation range, fill
+      strength, new-make ABV, malt specification across all three lines.
+
+  - id: 2
+    type: trade_publication
+    url: https://maltspedia.com/distilleries/bruichladdich-distillery/
+    accessed: 2026-05-02
+    notes: |
+      Used for fermentation range corroboration and cut-point indication
+      (70-63%).
+
+  - id: 3
+    type: trade_publication
+    url: https://www.masterofmalt.com/blog/post/new-arrival-of-the-week-bruichladdich-14-year-old-2009-cask-2222-micro-provenance-series-master-of-malt-exclusive.aspx/
+    accessed: 2026-05-02
+    notes: |
+      Used for confirmation of Optic barley use and Micro-Provenance
+      series context.
+
+  - id: 4
+    type: official_website
+    url: https://www.bruichladdich.com/products/bruichladdich-islay-barley-2014
+    accessed: 2026-05-02
+    notes: Used for Islay Barley malt variety details (Concerto, Propino).
+
+  - id: 5
+    type: trade_publication
+    url: https://greatdrams.com/bruichladdich-unveils-latest-vintages-as-part-of-barley-exploration-series/
+    accessed: 2026-05-02
+    notes: Used for Barley Exploration series context and vintage details.
+
+  - id: 6
+    type: trade_publication
+    url: https://www.diffordsguide.com/producers/255/bruichladdich-distillery
+    accessed: 2026-05-02
+    notes: |
+      Used for fermentation time confirmation and washback description.
+
+  - id: 7
+    type: trade_publication
+    url: https://topwhiskies.com/blogs/distilleries/bruichladdich-distillery
+    accessed: 2026-05-02
+    notes: Used for fermentation time corroboration (~85 hours typical).
+
+  - id: 8
+    type: trade_publication
+    url: https://www.finedrams.com/brands/whisky/bruichladdich
+    accessed: 2026-05-02
+    notes: |
+      Reports two yeast strains (Mauri and Kerry); single-source claim,
+      not corroborated. Marked as TODO above.
+
+  - id: 9
+    type: independent_review
+    url: https://cocktailwonk.com/2016/10/stepping-back-in-time-and-into-the-future-at-bruichladdich.html
+    accessed: 2026-05-02
+    notes: |
+      Independent visit account confirming long-fermentation practice
+      ("roughly twice traditional duration").
+
+  - id: 10
+    type: official_website
+    url: https://www.bruichladdich.com/products/bruichladdich-the-classic-laddie
+    accessed: 2026-05-02
+    notes: |
+      Producer page for The Classic Laddie. Used for non-chill-filtered
+      and natural-colour confirmation, and for the bottle-code
+      transparency mechanism.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

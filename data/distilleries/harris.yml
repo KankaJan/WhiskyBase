@@ -1,0 +1,284 @@
+# =============================================================================
+# Isle of Harris Distillery
+# =============================================================================
+# Schema: distillery.template.yml v0.1
+# Entry confidence: medium — well-sourced from multiple independent trade
+# references, but several specs (washback count/material, mash tun grist
+# weight) are reported inconsistently across sources. See per-field notes.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: harris
+name: Isle of Harris Distillery
+also_known_as:
+  - The Hearach Distillery        # Informal, derived from the single malt name.
+wikidata_qid: null                # TODO: confirm. Wikipedia entry exists.
+website: https://harrisdistillery.com
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islands
+sub_region: Outer Hebrides
+locality: Tarbert, Isle of Harris
+coordinates:
+  lat: 57.8993                    # Approximate; from third-party listings.
+  lon: -6.7967                    # TODO: verify against authoritative source.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 2015                     # Distillery opened October 2015 [3].
+first_spirit: 2015-12             # Production commenced 17 December 2015 [3].
+mothballed_periods: []
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Isle of Harris Distillers Ltd
+  parent: null                    # Independently owned [4].
+                                  # UK Companies House registration: 334836 [1].
+  history:
+    - owner: Isle of Harris Distillers Ltd
+      from: 2007                  # Company founded 2007 [4]; distillery
+                                  # construction followed in 2014 [3].
+      to: null
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Abhainn Cnoc a' Charrain
+                                  # Surface stream flowing over Lewisian
+                                  # gneiss; the distillery describes the
+                                  # water as having extremely low minerality
+                                  # due to the hardness of the underlying
+                                  # rock [1]. The geology claim is verifiable;
+                                  # the "softest of any Scottish distillery"
+                                  # claim [1] is producer-stated and not
+                                  # independently verified.
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: semi_lauter               # [2][5]
+  material: stainless_steel       # Clad in pine [5] / American oak [4].
+                                  # Sources differ on cladding wood; both
+                                  # agree the vessel itself is stainless steel.
+  capacity_kg: 1200               # 1.2 tonnes per [2][4][5][6].
+                                  # NOTE: one secondary source [7] reports
+                                  # 1.5 tonnes; the 1.2-tonne figure is
+                                  # consistent across more sources and
+                                  # matches the distillery's own staff
+                                  # account [6].
+
+washbacks:
+  count: 5                        # Per [2][5]. NOTE: two secondary sources
+                                  # [4][7] state 8 washbacks. Discrepancy
+                                  # unresolved; the 5-washback figure is
+                                  # in the structured Scotch Whisky
+                                  # Whiskypedia entry [2] which also
+                                  # matches an independent visit account [5].
+  material: oregon_pine           # Per [2][4][5]. NOTE: [7] states
+                                  # Douglas fir; this is likely an error
+                                  # given the consistency of other sources.
+  capacity_litres: 6000           # Working volume per [2][6].
+
+stills:
+  wash_still:
+    count: 1
+    capacity_litres: 7000         # [2][5][8]
+    charge_litres: 6000           # Typical working charge [2].
+    shape: onion                  # [2]. Other sources use "lantern" [8] or
+                                  # are silent; "onion" appears in the most
+                                  # structured reference and is consistent
+                                  # with photographs of the equipment.
+    height_m: null
+    heating: external_heat_exchanger
+                                  # Steam from external heat exchangers [2].
+    lyne_arm_angle: descending    # [5]
+    condenser: shell_and_tube     # [2]
+  spirit_still:
+    count: 1
+    capacity_litres: 5000         # [2][5][8]
+    charge_litres: 4000           # [2]
+    shape: onion                  # [2]
+    height_m: null
+    heating: external_heat_exchanger
+    lyne_arm_angle: descending    # [5]
+    condenser: shell_and_tube     # [2]
+
+# Both stills manufactured by Frilli, Siena, Italy [9].
+
+warehouse:
+  type: null                      # Type not consistently reported.
+                                  # TODO: confirm dunnage vs racked.
+  location: mixed                 # On-site warehouse in Tarbert; off-site
+                                  # warehouse near Ardhasaig on the shores
+                                  # of Loch a Siar [2][7].
+  climate_notes: |
+    Maritime location with oceanic climate moderated by the Gulf Stream
+    despite the latitude (~57.9 °N). The distillery reports relatively
+    stable seasonal temperatures, which it associates with reductive
+    maturation conditions [1][7].
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 230000       # 0.23 mlpa per [2][8].
+                                  # NOTE: one source [4] states 400,000 lpa
+                                  # capacity with current operation at half
+                                  # of that (~200,000); another older source
+                                  # [10] reports up to 180,000 lpa actual
+                                  # production. The 230,000 figure in the
+                                  # Scotch Whisky entry [2] is the most
+                                  # recent structured reference.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []             # No significant equipment changes
+                                  # documented as of 2026-05; the site has
+                                  # operated with original Frilli stills
+                                  # since 2015.
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - harris-the-hearach
+                                  # NOTE: Harris also distils a small-batch
+                                  # heavily peated spirit at ~30 ppm using
+                                  # locally-cut Harris peat [4][10]. As of
+                                  # 2026-05 this has not been released as a
+                                  # named line; document it as a separate
+                                  # production_line entry once a release is
+                                  # confirmed.
+                                  #
+                                  # Gin (Isle of Harris Gin, "The Botanist
+                                  # of the Sea") is also produced on site
+                                  # but falls outside the Scotch single
+                                  # malt scope of this knowledge base.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []         # No public evidence Harris malt is sold
+                                  # to blenders. The site is small and
+                                  # output is reportedly committed to own
+                                  # bottlings.
+
+
+# --- Distinctive Features ---------------------------------------------------
+distinctive_features: []          # Concept layer not yet defined. Candidate
+                                  # concepts to add later:
+                                  # - community-employer-distillery
+                                  # - very-soft-water-source
+                                  # - locally-cut-peat (for the heavily
+                                  #   peated experimental line)
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Founded in 2015 in Tarbert on the Isle of Harris, Outer Hebrides, by a
+  group led by Anderson Bakewell and structured as a community-employer
+  project; the site is the first legal distillery on Harris [1][3]. The
+  initial £10 million build was supported by a £2.8 million combined
+  grant from the Scottish Government and Highlands and Islands Enterprise
+  [3]. Spirit production began on 17 December 2015 [3]. The site
+  operates one wash still and one spirit still, both made by Frilli of
+  Siena, with descending lyne arms and shell-and-tube condensers [2][9].
+  The distillery is independently owned (Isle of Harris Distillers Ltd)
+  and produces both single malt whisky and gin on the same premises [2].
+  Water is drawn from Abhainn Cnoc a' Charrain, a stream flowing over
+  Lewisian gneiss [1].
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://harrisdistillery.com/pages/the-hearach-single-malt
+    accessed: 2026-05-02
+    notes: |
+      Production overview and water-source claims. Treat producer claims
+      about superlatives ("softest water of any Scottish distillery") as
+      unverified.
+
+  - id: 2
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/4892/isle-of-harris/
+    accessed: 2026-05-02
+    notes: |
+      Scotch Whisky Whiskypedia entry. Most internally-consistent
+      structured-data source; primary reference for equipment specs,
+      capacity, mash tun, condenser type, fermentation range, fill
+      strength, malt supplier.
+
+  - id: 3
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Isle_of_Harris_distillery
+    accessed: 2026-05-02
+    notes: |
+      Used for opening date (October 2015), production start
+      (17 December 2015), and grant funding details. CC-BY-SA.
+
+  - id: 4
+    type: trade_publication
+    url: https://distilando.com/isle-of-harris
+    accessed: 2026-05-02
+    notes: |
+      Used for ownership history, washback count (conflicts with [2]),
+      and reference to heavily peated 30 ppm experimental line.
+
+  - id: 5
+    type: independent_review
+    url: https://www.visitorsguidetoscotland.com/2021/09/isle-of-harris-distillery/
+    accessed: 2026-05-02
+    notes: |
+      Independent visit account. Used to corroborate mash tun, washback
+      material, lyne arm angles. Reports 5 washbacks consistent with [2].
+
+  - id: 6
+    type: trade_publication
+    url: https://www.scottishfield.co.uk/news/life-with-isle-of-harris-distillery-the-hearach-is-special-it-has-done-so-much-for-the-island/
+    accessed: 2026-05-02
+    notes: |
+      Distiller interview (Scottish Field, May 2024). Used for grist
+      weight (1.2 t), mash water volume (4800 L), washback fill volume
+      (6000 L), fill strength (63.5%), and operational detail on
+      hands-on cut points.
+
+  - id: 7
+    type: trade_publication
+    url: https://www.whisky.com/whisky-database/distilleries/details/isle-of-harris.html
+    accessed: 2026-05-02
+    notes: |
+      Used as a corroborating source. Disagrees with majority on
+      mash tun grist weight (states 1.5 t, others state 1.2 t),
+      washback count (states 8, others state 5), and washback
+      material (states Douglas fir, others state Oregon pine). Treated
+      as low-confidence on these specific points.
+
+  - id: 8
+    type: independent_review
+    url: https://twowhiskybros.co.uk/blogs/blog/the-hearach-first-release-batch-1-the-hearach-first-release-batch-5
+    accessed: 2026-05-02
+    notes: |
+      Used for capacity (0.23 mlpa) and condenser type confirmation.
+
+  - id: 9
+    type: official_website
+    url: https://en.beveragehunters.com/harrisdistillery
+    accessed: 2026-05-02
+    notes: Used for confirmation of Frilli (Siena) as still manufacturer.
+
+  - id: 10
+    type: trade_publication
+    url: https://whiskipedia.com/distilleries/isle-of-harris/
+    accessed: 2026-05-02
+    notes: |
+      Used for older capacity figure (180,000 lpa) and confirmation
+      of 30 ppm experimental peated line.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-02
+contributors: []

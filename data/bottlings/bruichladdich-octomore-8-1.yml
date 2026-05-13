@@ -1,0 +1,189 @@
+# =============================================================================
+# Octomore Edition 8.1 (167 ppm)
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — release was widely covered with full producer
+# disclosure of cask program, peating spec, and barley provenance.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-octomore-8-1
+name: Octomore Edition 8.1 / 167 PPM
+production_line: bruichladdich-octomore
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2017                # Released 2017 as part of the Octomore
+                                  # 8 (Masterclass) series [1][2].
+discontinued: true                # Limited annual edition; sold through.
+availability: limited
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 59.3                         # [1][2][3]
+age_statement: 8                  # [1][2][3]. Distilled 2008 from 2007
+                                  # barley harvest [3].
+vintage: null                     # Year-numbered edition rather than a
+                                  # vintage release.
+cask_strength: true               # Bottled at natural cask strength.
+non_chill_filtered: true
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: small_batch
+  number: null                    # The "8.1" identifies the edition and
+                                  # variant within the Octomore series,
+                                  # not a batch number.
+  outturn_bottles: null           # Not located in current source set;
+                                  # comparable Octomore 8 series releases
+                                  # ranged from 12,000 to 36,000 bottles.
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Octomore 8.1 cask program per producer and trade press [1][3]:
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: 1.0
+    duration_years: 8
+    cooperage: null
+    notes: |
+      100% first-fill American oak ex-bourbon. Producer disclosed
+      five named bourbon cooperages combined: Buffalo Trace,
+      Clermont Springs, Four Roses, Heaven Hill, and Jack Daniels [3].
+      The .1 sub-series across editions is consistently bourbon-led
+      [4].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: USD
+  amount: 140.00                  # ~$140 USD at release [1].
+  as_of: 2017
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Backbone of the Octomore Edition 8 series: distilled 2008 from
+  Scottish barley peated to 167 ppm specification, matured for 8 years
+  in first-fill American oak ex-bourbon casks (Buffalo Trace, Clermont
+  Springs, Four Roses, Heaven Hill, Jack Daniels) [1][3]. Bottled at
+  cask strength of 59.3% ABV [1][2][3]. The .1 release in each Octomore
+  edition serves as the bourbon-led reference point against which the
+  .2 (wine-cask) and .3 (Islay-barley) variants in the same edition can
+  be compared — shared spirit, different maturation [4]. Edition 8.1
+  is unusual within the .1 sub-series in being 8 years old rather than
+  the typical 5.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-stated character notes [2]: smoke, tar, peat ash, and a hint
+  of muddiness/wet peat moss; candied orange, pepper, chocolate,
+  macaroon, vanilla fudge, and lemon meringue pie. The producer
+  characterises this release as "a single malt masterclass" with
+  "structural brilliance" and notes that "a little extra age has
+  tempered some of the vitality" relative to the typical 5-year-old
+  Octomore .1.
+
+notes_independent:
+  - reviewer: Drinkhacker (Christopher Null)
+    url: https://www.drinkhacker.com/2018/02/22/review-bruichladdich-octomore-8-1-8-2-and-8-3/
+    date: 2018-02
+    nose: null
+    palate: null
+    finish: |
+      Squeeze of lemon atop a core of intense and lingering peat smoke.
+    summary: |
+      Reviewer score B+. Characterises 8.1 as "relatively light on its
+      feet" compared to the heavier 8.2.
+
+  - reviewer: The Whiskyphiles
+    url: https://thewhiskyphiles.com/2018/02/04/octomore-masterclass_08-1-167ppm-59-3-bruichladdich/
+    date: 2018-02
+    nose: null
+    palate: null
+    finish: null
+    summary: |
+      Independent review noting "Sauternes wine gold" colour, refined
+      character, and good integration of cask, age, and peat compared
+      to earlier .1 releases.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.drinkhacker.com/2018/02/22/review-bruichladdich-octomore-8-1-8-2-and-8-3/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+        notes: |
+          PPM figure cited from producer's spec; Bruichladdich
+          methodology applies.
+    notes: |
+      Used for ABV (118.6 proof = 59.3%), 167 ppm, and US retail price
+      (~$140). Note: the 167 ppm value also appears in producer
+      communications [2][3] and is consistent across sources for this
+      release.
+
+  - id: 2
+    type: trade_publication
+    url: https://thewhiskyphiles.com/2018/02/04/octomore-masterclass_08-1-167ppm-59-3-bruichladdich/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: |
+      Used for cask program detail (named bourbon cooperages) and
+      producer character notes.
+
+  - id: 3
+    type: trade_publication
+    url: https://www.homeofmalts.com/en/17146/octomore-edition-8.1-master-class-8-year-old-167ppm-59.3-vol.-0-7l
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: |
+      Used for confirmation of 8 year age statement and 167 ppm.
+
+  - id: 4
+    type: trade_publication
+    url: https://www.bruichladdich.com/laddie-shop/octomore-archive/octomore-08-2-167ppm/
+    accessed: 2026-05-02
+    notes: |
+      Producer page documenting the .1 / .2 / .3 / .4 series taxonomy
+      where the .1 is the bourbon-led "backbone" expression.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

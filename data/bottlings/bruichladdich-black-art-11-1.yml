@@ -1,0 +1,188 @@
+# =============================================================================
+# Bruichladdich Black Art Edition 11.1 (24 Year Old)
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: medium — release date, ABV, age, and contextual
+# framing are all well-documented; cask composition and barley
+# provenance are deliberately undisclosed by the producer as a defining
+# feature of the series. This entry stress-tests how the schema handles
+# producer-secret data.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-black-art-11-1
+name: Bruichladdich Black Art Edition 11.1
+production_line: bruichladdich-bruichladdich
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2023-11             # Released 1 November 2023 [3].
+discontinued: false               # Limited release; bottle stocks sold
+                                  # through over time, but not formally
+                                  # discontinued by date.
+availability: limited             # Limited annual edition. The "11.1" in
+                                  # the name follows a sub-numbering
+                                  # convention used by the producer for
+                                  # this edition.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 44.2                         # [1][2][3]. Bottled at natural strength
+                                  # of the vatting, not at fixed cask
+                                  # strength.
+age_statement: 24                 # 24 years old [1][2][3]. Spirit drawn
+                                  # exclusively from "pre-renaissance"
+                                  # casks — i.e. distilled at Bruichladdich
+                                  # before the 2001 Reynier-led reopening
+                                  # [1][3]. Pre-2001 stock is from the
+                                  # Whyte and Mackay / Invergordon eras
+                                  # of the distillery.
+vintage: null                     # Multi-vintage vatting from pre-2001
+                                  # stocks; no single vintage stated.
+cask_strength: false              # Natural strength of the vatting at
+                                  # 44.2%, but not what is conventionally
+                                  # meant by "cask strength" (typically
+                                  # >50%).
+non_chill_filtered: true          # [1]
+natural_colour: true              # [1]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null                    # The "11.1" sub-number references the
+                                  # edition; no separate batch number.
+  outturn_bottles: null           # Not publicly disclosed.
+  cask_numbers: []                # Not disclosed.
+
+
+# --- Maturation -------------------------------------------------------------
+# This release deliberately withholds maturation detail. The producer
+# explicitly frames cask-composition secrecy as part of the product:
+# "the recipe only known to him [Adam Hannett]" [1].
+#
+# What IS known: the spirit is drawn entirely from "pre-renaissance"
+# casks, meaning casks distilled before the 2001 reopening. Maturation
+# was on Islay [3]. The barley source is also undisclosed [1][3].
+#
+# What IS NOT known and will not be disclosed: cask types, fill numbers,
+# proportions, finishing (if any), individual cask provenance.
+maturation:
+  - cask_type: undisclosed-cask   # Slug placeholder. The cask schema
+                                  # (TODO) should support an "undisclosed"
+                                  # marker as a first-class concept rather
+                                  # than treating it as a missing value.
+    fill_number: null
+    proportion: null
+    duration_years: 24
+    cooperage: null
+    notes: |
+      Cask type, fill number, and proportions are deliberately
+      undisclosed by the producer as a defining feature of the Black
+      Art series. The recipe is held only by Head Distiller Adam
+      Hannett [1][3]. All spirit is from pre-2001 distillation,
+      matured on Islay [3].
+
+finish: null                      # Finishing, if any, is also undisclosed.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: USD
+  amount: 550.00                  # SRP $550 USD reported by Distiller [3].
+                                  # UK GBP RRP not located in current
+                                  # source set.
+  as_of: 2023-11
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The eleventh edition of the Black Art series, released 1 November 2023
+  [3], and the seventh under Head Distiller Adam Hannett [4]. The series
+  is structured around producer-held secrecy: cask types, barley
+  provenance, and maturation details are deliberately undisclosed, with
+  the recipe known only to the head distiller [1][3]. What is publicly
+  stated is that all spirit is drawn from "pre-renaissance" casks —
+  Bruichladdich-distilled before the 2001 Reynier-led reopening — and
+  that maturation has taken place on Islay [3]. The release is a 24-year-
+  old vatting, bottled at the natural strength of 44.2% ABV, non-chill-
+  filtered with natural colour [1][2]. The release exemplifies a category
+  of producer-secret bottling that the schema must accommodate without
+  fabricating undisclosed values.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer's characterisation [1]: "An enigmatic alchemy which relies on
+  nature, craftsmanship and the quiet passing of time." Stated character
+  notes vary by retail listing and are not consistently published in a
+  single producer document for this edition; available reseller listings
+  cite dried fruits, honeyed caramel, rich oak, and gentle spice [2].
+
+notes_independent:
+  - reviewer: Distiller (editorial)
+    url: https://distiller.com/spirits/bruichladdich-black-art-11-1-edition-24-year-2023-release
+    date: 2023-11
+    nose: null
+    palate: null
+    finish: null
+    summary: |
+      Editorial coverage at release, focused on contextual framing
+      (pre-renaissance casks, undisclosed recipe) rather than
+      detailed sensory notes.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://us.bruichladdich.com/products/bruichladdich-black-art-edition-11
+    accessed: 2026-05-02
+    notes: |
+      Producer page. Used for confirmation of undisclosed-recipe
+      framing, 24-year age statement, and pre-2001 cask provenance.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.blackwellswines.com/products/bruichladdich-black-art
+    accessed: 2026-05-02
+    notes: |
+      Reseller listing. Used for ABV (44.2%) confirmation and reseller-
+      summarised character notes (dried apricot, caramel butterscotch,
+      green apples, nutmeg, marine/iodine).
+
+  - id: 3
+    type: trade_publication
+    url: https://distiller.com/spirits/bruichladdich-black-art-11-1-edition-24-year-2023-release
+    accessed: 2026-05-02
+    notes: |
+      Used for release date (1 November 2023), pre-2001 cask
+      provenance confirmation, on-Islay maturation, and SRP ($550 USD).
+
+  - id: 4
+    type: trade_publication
+    url: https://norfolkwineandspirits.com/shop/bruichladdich-black-art-edition-11-1-24-years-old/
+    accessed: 2026-05-02
+    notes: |
+      Used for confirmation that this is Adam Hannett's seventh Black
+      Art release.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: medium
+last_reviewed: 2026-05-02
+contributors: []

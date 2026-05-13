@@ -1,0 +1,165 @@
+# =============================================================================
+# Port Charlotte 10
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — flagship core SKU with stable specs.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-port-charlotte-10
+name: Port Charlotte 10
+production_line: bruichladdich-port-charlotte
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2018                # Introduced 2018 as the flagship Port
+                                  # Charlotte expression [3].
+discontinued: false
+availability: core                # Permanent core SKU.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 50.0                         # [1][2][3]
+age_statement: 10                 # [1][2]
+vintage: null
+cask_strength: false
+non_chill_filtered: true          # [1]
+natural_colour: true              # [1]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting                   # Continuous vatting from the line, not
+                                  # discrete numbered batches.
+  number: null
+  outturn_bottles: null           # Not publicly disclosed.
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Producer-disclosed cask program for the core Port Charlotte 10 [1][3]:
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: null              # Producer states "predominantly first-fill
+                                  # American whiskey casks" without numeric
+                                  # disclosure for the core SKU.
+    duration_years: 10
+    cooperage: null
+    notes: First-fill American whiskey casks (predominant component).
+
+  - cask_type: bourbon-barrel
+    fill_number: 2
+    proportion: null
+    duration_years: 10
+    cooperage: null
+    notes: Second-fill American whiskey casks.
+
+  - cask_type: wine-cask
+    fill_number: 2
+    proportion: null
+    duration_years: 10
+    cooperage: null
+    notes: |
+      Second-fill French wine casks; specific wine origin not
+      detailed for the core SKU.
+
+finish: null                      # Not finished.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 65.00                   # Approximate UK retail; ~$60-70 USD
+                                  # internationally [2][3].
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Flagship 10-year-old expression of the Port Charlotte line, introduced
+  2018 [3]. Distilled, matured, and bottled exclusively on Islay [1].
+  Made from 100% Scottish barley peated to 40 ppm specification [1][2],
+  bottled at 50% ABV non-chill-filtered with natural colour [1]. The
+  cask programme combines first-fill and second-fill American whiskey
+  casks with second-fill French wine casks; specific proportions are
+  not publicly disclosed for the core SKU [1][2]. The release serves
+  as the line's stable reference expression alongside the vintage-
+  dated Islay Barley series and the Cask Exploration finishes.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-stated character: "barbeque smoke" with "elegance and
+  finesse" [1]. The line is described as "the canonical Islay style"
+  in independent coverage [4].
+
+notes_independent:
+  - reviewer: The Whiskey Wash (Margarett Waterbury)
+    url: https://thewhiskeywash.com/reviews/whisky-review-port-charlotte-10/
+    date: 2025-08
+    nose: |
+      Balanced and harmonious, with bright tangerine, cereal grains,
+      and a madeira-like nuttiness; almond, allspice, and lime;
+      neutral wood-fire smoke rather than antiseptic industrial peat.
+    palate: |
+      Dry, dense, and woodsy, with deep nutty caramelised flavours;
+      dark caramel and chocolate; smouldering incense-like smoke;
+      savoury meatiness.
+    finish: null
+    summary: |
+      Reviewer characterises the release as a "canonical Islay style"
+      smoky maritime malt, well-balanced rather than aggressive.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-10
+    accessed: 2026-05-02
+    notes: |
+      Producer page. Used for ABV, NCF/natural-colour status, on-Islay
+      production policy, and 40 ppm peating specification.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.masterofmalt.com/whiskies/bruichladdich/port-charlotte-10-year-old-whisky/
+    accessed: 2026-05-02
+    notes: |
+      Used for cask programme details (1FF/2FF American whiskey + 2FF
+      French wine) and 40 ppm confirmation.
+
+  - id: 3
+    type: trade_publication
+    url: https://www.thebarreltap.com/products/bruichladdich-port-charlotte-10-scotch-whisky
+    accessed: 2026-05-02
+    notes: |
+      Used for release date (2018) confirmation and US retail context.
+
+  - id: 4
+    type: trade_publication
+    url: https://thewhiskeywash.com/reviews/whisky-review-port-charlotte-10/
+    accessed: 2026-05-02
+    notes: |
+      Used for independent characterisation as canonical Islay style.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

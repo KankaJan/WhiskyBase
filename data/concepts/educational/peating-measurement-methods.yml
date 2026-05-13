@@ -1,0 +1,236 @@
+# =============================================================================
+# Peating Measurement Methods
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Function: explains the analytical methods underlying PPM figures so
+# readers can interpret reported values correctly. Referenced from
+# methodology concept pages and from the methods enum in production_line
+# entries.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: peating-measurement-methods
+title: Peating measurement methods
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  PPM figures for peated whisky come from analytical methods that
+  measure different things and produce different numbers. HPLC of the
+  malt with a fixed seven-compound sum is the modern industry default;
+  older colorimetric methods, gas chromatography on the bottled
+  liquid, and total-phenolic-equivalent assays exist alongside it
+  and produce non-comparable figures.
+
+body: |
+  PPM is shorthand. A single number reported as "phenol parts per
+  million" depends on three choices: what is measured, how it is
+  measured, and which compounds are summed. Different combinations
+  of these choices produce different numbers for the same physical
+  sample. This page describes the four methods commonly encountered
+  in published whisky data and explains why their outputs are not
+  directly comparable.
+
+  ## What PPM is measuring
+
+  Peat smoke deposits volatile phenolic compounds onto the husk of
+  the barley grain during kilning. These compounds — phenol itself,
+  the cresol isomers, guaiacol, the methylguaiacols, eugenol,
+  syringol, and others — partition through mashing, fermentation,
+  and distillation, ending up at much lower concentrations in the
+  bottled liquid than in the kilned malt. The headline PPM figure
+  used in producer marketing is almost always a malt-stage figure,
+  not a bottle-stage figure.
+
+  Whether this is the *right* thing to measure is a separate
+  question. Malt PPM is the input variable a distillery can
+  specify with the maltster; bottle PPM is what the drinker
+  ultimately tastes (mediated through the human nose, which is not
+  a calibrated phenol detector). The industry has settled on malt
+  PPM by convention, but readers should be aware that the figure
+  is several steps upstream of the sensory experience.
+
+  ## High Performance Liquid Chromatography (HPLC)
+
+  HPLC separates phenolic compounds in a liquid extract of the
+  malt by passing them through a chromatographic column with
+  different affinities for different molecules. Each compound
+  elutes at a characteristic retention time and is quantified
+  individually. The reported PPM is then a sum of identified
+  compound concentrations.
+
+  The modern industry default is to sum a fixed set of seven
+  compounds: phenol, the three cresol isomers (m-, p-, o-cresol),
+  guaiacol, 4-methylguaiacol, and 4-ethylguaiacol. This is
+  recorded in this knowledge base as
+  [`compounds: standard_7`](concept/glossary/standard-seven-phenols).
+
+  HPLC is the reference method for current Scotch malt
+  specifications. When a producer states a malt PPM in a marketing
+  context — Bruichladdich's published figures, Ardbeg's, Laphroaig's
+  — and discloses any methodology, it is almost always HPLC with
+  the standard seven-compound sum. The producer of Octomore 8.3
+  was explicit on this point in 2017 [1]: "Using HPLC (high
+  performance liquid chromatography), the readings came back at
+  309.1 ppm... the ppm level can vary depending on whether a
+  colorimetric reading or one from HPLC is taken, the latter
+  producing higher figures."
+
+  ## 4-Aminoantipyrine (4-AAP) colorimetry
+
+  4-AAP is a spectrophotometric method that reacts a sample with
+  4-aminoantipyrine reagent in the presence of an oxidising agent;
+  the resulting coloured complex is measured at 510 nm and
+  quantified against a phenol standard curve. The result is
+  reported as a single "total phenols as phenol" value [2].
+
+  The method has documented limitations that affect its use for
+  whisky malt: it does not detect phenols substituted with an
+  alkyl group in the para position [2], which excludes p-cresol —
+  one of the seven compounds in the modern HPLC sum. Recoveries
+  for other substituted phenols vary substantially, and the
+  method as a "total" assay produces a figure that cannot be
+  resolved into individual compound concentrations [2][3].
+  Reported recoveries across thirty-six representative phenolic
+  compounds varied from 0% to 100% in one early systematic study
+  [3].
+
+  4-AAP is older than HPLC in the malt context and was used by
+  the Scotch industry before HPLC became routine. Older PPM
+  figures in archival sources — particularly from the 1970s and
+  1980s — should be treated with caution; even where method is
+  not stated, 4-AAP is plausible. The relationship between 4-AAP
+  PPM and HPLC PPM for a given sample is not a simple constant
+  and should not be inferred without the original data.
+
+  ## Gas chromatography-mass spectrometry (GC-MS)
+
+  GC-MS volatilises a sample, separates compounds by gas-phase
+  chromatography, and identifies them by mass spectrometry. It
+  resolves individual compounds with high specificity, including
+  compounds outside the standard seven (eugenol, syringol,
+  4-vinylguaiacol, and others), and is the appropriate method
+  for analysing the bottled liquid rather than the malt — phenol
+  concentrations in spirit are an order of magnitude lower and
+  HPLC's sensitivity is less suited to that range.
+
+  GC-MS figures appear in academic literature on whisky
+  composition more than in producer marketing. A GC-MS phenol
+  total for a bottled whisky will not match its malt-stage HPLC
+  spec, and the two are not interchangeable.
+
+  ## Folin-Ciocalteu
+
+  The Folin-Ciocalteu assay measures total phenolic equivalents
+  by reduction of a phosphomolybdic-phosphotungstic complex,
+  with the result expressed as gallic acid equivalents (GAE).
+  It is the standard method in food science and wine
+  research and produces figures on a different scale and unit
+  basis from the methods above.
+
+  Folin-Ciocalteu is uncommon in whisky context but appears
+  occasionally in academic comparisons of fermented and
+  distilled beverages. A Folin-Ciocalteu PPM (or rather, a GAE
+  figure later converted to PPM) is not directly comparable
+  with an HPLC malt PPM and should be treated as a different
+  measurement entirely.
+
+  ## How this knowledge base records method
+
+  Production line and bottling entries record the
+  [`peating.measurements`](concept/glossary/peating-block)
+  field as a list of measurement records. Each record carries
+  `stage` (where in production the measurement was taken),
+  `method` (one of the four above plus `unspecified`),
+  `compounds` (the compound set summed), and a `source_id`.
+  Where a source has a known methodology, the source's own
+  `methodology` block declares the choice once and field-level
+  measurements resolve their method via the source ID rather
+  than restating it per figure.
+
+  The `unspecified` enum value is used where a source genuinely
+  does not disclose method. It is not a default — it is a
+  positive claim that the figure is unknown in this
+  dimension. Many older trade-press citations of "X PPM" will
+  end up classified as `unspecified` when traced back to source.
+
+  ## Why this matters for readers
+
+  Two whiskies with the same stated PPM may have been measured
+  differently and may differ substantially in actual phenol
+  concentration. Two whiskies with different stated PPMs may
+  be effectively identical in phenolic content if one figure
+  is HPLC-malt and the other is GC-MS-bottle. The PPM number
+  is meaningful only against its method; method-stripped
+  comparisons across producers should be regarded as rough
+  ordering at best.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - methodology/bruichladdich-published-ppm
+  - educational/aromatic-compounds-in-whisky    # TBD — to be populated.
+  - glossary/phenol                              # TBD.
+  - glossary/guaiacol                            # TBD.
+  - glossary/cresol                              # TBD.
+  - glossary/standard-seven-phenols              # TBD.
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []                  # No formal prerequisites; the page
+                                     # explains the relevant concepts
+                                     # inline. Glossary terms for
+                                     # phenol/cresol/guaiacol exist
+                                     # for readers who want the
+                                     # definitional minimum first.
+  covers:
+    - glossary/standard-seven-phenols  # The seven-compound sum is
+                                       # explained in this page; the
+                                       # glossary entry exists for
+                                       # quick lookup but routes to
+                                       # the relevant section here.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Trade press article reporting Octomore 8.3 release with
+      explicit producer-attributed disclosure of HPLC method and
+      acknowledgement that method affects PPM figures.
+
+  - id: 2
+    type: other
+    url: https://bvsolutions.freshdesk.com/en/support/solutions/articles/43000513822-what-is-the-difference-between-phenols-by-4aap-vs-gcms-methods-
+    accessed: 2026-05-02
+    notes: |
+      Bureau Veritas technical note on 4-AAP vs GC-MS methods.
+      Used for documentation of 4-AAP's known limitations:
+      non-detection of para-substituted alkyl phenols, variable
+      recovery for substituted phenols, colorimetric interference.
+
+  - id: 3
+    type: other
+    url: https://pubmed.ncbi.nlm.nih.gov/18962987/
+    accessed: 2026-05-02
+    notes: |
+      Peer-reviewed study comparing 4-AAP and UV-ratio
+      spectrophotometric methods across 36 phenolic compounds.
+      Used for the 0-100% recovery range citation. Older paper
+      but the chemistry has not changed; the recovery
+      characteristics of 4-AAP for substituted phenols remain
+      a known limitation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

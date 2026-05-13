@@ -1,0 +1,265 @@
+# =============================================================================
+# Octomore Edition 8.3 / 309 PPM (the highest-PPM Octomore release)
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — this is the most documented Octomore PPM
+# claim, with explicit producer disclosure of the HPLC measurement
+# method. Trade press, producer communications, and independent reviews
+# all align on the 309.1 ppm figure and the cask program. This is the
+# canonical schema stress-test case for peating measurement.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-octomore-8-3
+name: Octomore Edition 8.3 / 309 PPM
+production_line: bruichladdich-octomore
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2017-09             # Released globally September 2017 [1].
+discontinued: true                # Limited annual edition; sold through.
+availability: limited
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 61.2                         # [1][2][3][4][5]
+age_statement: 5                  # 5 years old [1][2][3]. Distilled 2011
+                                  # from 2010 barley harvest [1][2][3].
+                                  # Notable: the .3 sub-series typically
+                                  # bottles at 5 years; 8.3 maintains this
+                                  # despite the rest of the 8 series being
+                                  # 8 years old.
+vintage: null
+cask_strength: true
+non_chill_filtered: true
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: small_batch
+  number: null
+  outturn_bottles: 18000          # Per [1][2][3].
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Octomore 8.3 cask program per producer at release [1][2][3]:
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: 0.56
+    duration_years: 5
+    cooperage: null
+    notes: |
+      First-fill American oak ex-bourbon casks. The producer was
+      explicit that this is fully matured rather than finished — i.e.
+      the spirit spent its full 5-year age in this combination of
+      casks, not a finishing pass [1][3].
+
+  - cask_type: pauillac-wine-cask
+    fill_number: 1
+    proportion: null              # The 44% European-oak share splits
+                                  # across four named appellations: Pauillac,
+                                  # Ventoux, Rhône, and Burgundy. Specific
+                                  # split between the four is not disclosed.
+    duration_years: 5
+    cooperage: null
+    notes: Part of the 44% European oak ex-French-red-wine cask portion.
+
+  - cask_type: ventoux-wine-cask
+    fill_number: 1
+    proportion: null
+    duration_years: 5
+    cooperage: null
+    notes: Part of the 44% European oak ex-French-red-wine cask portion.
+
+  - cask_type: rhone-wine-cask
+    fill_number: 1
+    proportion: null
+    duration_years: 5
+    cooperage: null
+    notes: Part of the 44% European oak ex-French-red-wine cask portion.
+
+  - cask_type: burgundy-wine-cask
+    fill_number: 1
+    proportion: null
+    duration_years: 5
+    cooperage: null
+    notes: Part of the 44% European oak ex-French-red-wine cask portion.
+
+finish: null                      # Producer explicitly states this is
+                                  # fully matured, not finished [3].
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 165.00                  # £165 at release per [1].
+  as_of: 2017-09
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: 99307            # [4]
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Released globally September 2017 [1], this Octomore release holds the
+  publicly-claimed record for the highest PPM Scotch single malt as of
+  2026-05. The malt was specified at 309.1 ppm phenols using HPLC
+  measurement, explicitly disclosed by the producer at release [1].
+  Distilled 2011 from 100% Islay barley grown on Octomore Farm in 2010
+  and malted at Bairds in Inverness [2][3]. Aged 5 years — younger than
+  the rest of the Octomore 8 series — and bottled at cask strength
+  61.2% ABV with an outturn of 18,000 bottles [1][2][3]. The cask
+  programme is 56% first-fill ex-bourbon American oak and 44%
+  European oak from Pauillac, Ventoux, Rhône, and Burgundy
+  appellations [1][2][3]. Within the Octomore series taxonomy this is
+  the .3 (Islay barley terroir) variant of Edition 8; it is also the
+  defining stress-test for any data model attempting to record peating
+  measurement honestly, because the producer's explicit method
+  disclosure makes the figure unambiguously interpretable.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-attributed framing at release [1]: "We believe it to be the
+  peatiest Scotch ever produced, but then we are not some omnipotent,
+  all-knowing Yoda" (Bruichladdich spokesperson). The producer also
+  noted that "the nature and variety of Octomore depends on far more
+  than simply numbers, but these were staggering" [1].
+
+notes_independent:
+  - reviewer: Peated Perfection (blog)
+    url: http://peatedperfection.blogspot.com/2018/05/octomore-83-whisky-review.html
+    date: 2018-05
+    nose: |
+      Sweet, creamy, and herbal; lightly medicinal; smoky salted
+      toffee with subtle dry earthy peat; smoked bacon and freshly
+      opened bandages; sweet vanilla cream, drying seaweed, subtle
+      sweet stone fruits (apricot, plum, cherry jam).
+    palate: |
+      Big explosion of bitter, crumbly, earthy, spicy peat with a
+      lovely creamy and fruity sweetness behind; more sweet vanilla
+      cream, spicy ashy herbal smoke, rock salt, sweet stone fruit
+      jam.
+    finish: |
+      Long; massively peaty, spicy, and creamy initially; peat tapers
+      but lasts for "eons", remaining lightly bitter, earthy, crumbly,
+      and spicy; salty sea breezes, freshly opened bandages, herbal
+      and leathery smoke, lactic dairy notes, farmyard barley, ashy
+      smoke.
+    summary: Score 4.5/5; "Outstanding. Wonderful. Delicious."
+
+  - reviewer: Distilled Sunshine (José Massú Espinel)
+    url: https://distilledsunshine.wordpress.com/2020/09/18/octomore-08-3-309ppm/
+    date: 2020-09
+    nose: |
+      Fresh, perfumed peat; mint; melted chocolate fudge; smoke from
+      a scented candle; naphthalene; nice buttery chocolate.
+    palate: null
+    finish: null
+    summary: |
+      Score 80/100. A dissenting view — reviewer self-identifies as a
+      "hardcore peat head" but characterises the dram as "too young,
+      too simple, and too powerful to be truly enjoyable", and
+      sceptical of the "peatiest whisky ever" framing. Useful as a
+      counterweight to overwhelmingly positive coverage.
+
+  - reviewer: Whiskybase (community aggregate)
+    url: https://www.whiskybase.com/whiskies/whisky/99307/octomore-edition-083-masterclass-309-ppm
+    date: 2017-08
+    nose: null
+    palate: null
+    finish: null
+    summary: |
+      High community engagement (430+ ratings); aggregate score
+      reflects polarised reception typical of extreme-PPM releases.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+        notes: |
+          This source explicitly attributes the 309.1 ppm figure to
+          HPLC measurement, with the producer's exact words quoted:
+          "Using HPLC (high performance liquid chromatography), the
+          readings came back at 309.1 ppm." The article additionally
+          notes that "ppm level can vary depending on whether a
+          colorimetric reading or one from HLPC is taken, the latter
+          producing higher figures" — directly validating the
+          schema's measurement-method modeling.
+    notes: |
+      Primary source: Scotch Whisky news article. Used for explicit
+      method disclosure (HPLC), 309.1 ppm value, ABV (61.2%), 5-year
+      age, cask program (56% ex-bourbon / 44% French wine across the
+      four appellations), 18,000 bottle outturn, and £165 RRP.
+
+  - id: 2
+    type: trade_publication
+    url: https://distiller.com/spirits/octomore-masterclass-08-3-309-islay-barley
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: |
+      Used for confirmation of cask program, age, ABV, and 18,000
+      bottle outturn.
+
+  - id: 3
+    type: independent_review
+    url: http://peatedperfection.blogspot.com/2018/05/octomore-83-whisky-review.html
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: |
+      Used for context on barley provenance (Octomore farm 2010
+      harvest, malted at Bairds), explicit "fully matured (not
+      finished)" status, and detailed independent tasting notes.
+
+  - id: 4
+    type: trade_publication
+    url: https://www.whiskybase.com/whiskies/whisky/99307/octomore-edition-083-masterclass-309-ppm
+    accessed: 2026-05-02
+    notes: Used for Whiskybase ID.
+
+  - id: 5
+    type: trade_publication
+    url: https://www.spiritradar.com/whisky-db/octomore-edition-08.3-masterclass-309-ppm-islay-barley-5yo-61.2-percent-700ml/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: Used for ABV and 18,000 bottle outturn confirmation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

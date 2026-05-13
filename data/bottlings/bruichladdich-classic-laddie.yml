@@ -1,0 +1,195 @@
+# =============================================================================
+# Bruichladdich The Classic Laddie
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: medium — the SKU is well-documented, but its core
+# property is that batches differ. The schema models it as a single
+# bottling entry with batch-variation noted; if individual batches need
+# distinct entries in future, this entry should be retained as a series
+# parent and individual batches added as child entries.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-classic-laddie
+name: Bruichladdich The Classic Laddie
+production_line: bruichladdich-bruichladdich
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2017                # The "Classic Laddie" name dates from
+                                  # ~2017 (renamed from "Scottish Barley
+                                  # / Laddie Classic"). The bottling-code
+                                  # transparency mechanism dates from 2016
+                                  # [3].
+discontinued: false
+availability: core                # Permanent core SKU.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 50.0                         # [1][2]
+age_statement: null               # NAS. Estimated 5-10 years across batches
+                                  # [3]. The 2024 LCBO bottle code release
+                                  # of "23/107" included a stated minimum
+                                  # of 8 years per the producer's website
+                                  # at the time, but minimum age is not a
+                                  # permanent label feature and varies.
+vintage: null
+cask_strength: false
+non_chill_filtered: true          # [1][2]
+natural_colour: true              # [1][2]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null                    # Each physical bottle has a unique batch
+                                  # code (e.g. "23/107", "21/011", "23/145")
+                                  # rather than a single SKU-wide batch
+                                  # number. Code resolves cask composition
+                                  # via the producer's website.
+  outturn_bottles: null           # Not disclosed per batch.
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# The defining characteristic of this bottling is that the cask
+# composition varies meaningfully across batches. Recent batches
+# (2022-2024) have averaged approximately 77-80% ex-bourbon and 20-23%
+# ex-wine cask material, with occasional refill sherry [3][4]. The
+# composition below is illustrative of the typical structure rather
+# than a fixed recipe.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null             # Mixed first- and refill across batches.
+    proportion: 0.78              # Approximate average across recent batches
+                                  # [3]. Specific batches vary.
+    duration_years: null
+    cooperage: null               # Multiple cooperages used across batches.
+    notes: |
+      Predominant cask type. Specific bourbon cooperage varies by batch.
+
+  - cask_type: wine-cask
+    fill_number: 1                # Generally first-fill where used.
+    proportion: 0.20              # Approximate average across recent batches.
+    duration_years: null
+    cooperage: null
+    notes: |
+      Wine cask types vary substantially across batches and have
+      included Madeira, Merlot, Syrah, Bordeaux varieties, Muscat,
+      and sweet wine casks. Each batch's specific composition is
+      resolved via the bottle code on the producer's website.
+
+  - cask_type: oloroso-sherry-butt
+    fill_number: 2                # Typically refill where included.
+    proportion: 0.02              # Small share, occasional rather than
+                                  # constant.
+    duration_years: null
+    cooperage: null
+    notes: |
+      Refill sherry casks appear in some batches but not all.
+
+finish: null                      # Not finished — vatted from the casks
+                                  # listed above per batch.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 55.00                   # Typical UK retail at release [1][5].
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null             # TODO: locate.
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Permanent core single malt bottling of the Bruichladdich (unpeated)
+  line. Made from 100% Scottish barley, bottled at 50% ABV, non-chill-
+  filtered, with no added colour [1][2]. The bottling is deliberately
+  non-uniform across batches: each release uses a different combination
+  of barley provenance and cask types, with the specific composition
+  resolved via a bottle code on the producer's website [3]. This
+  per-batch transparency is a defining feature of the SKU and reflects
+  the producer's stated rejection of "absolute consistency" as a
+  production goal [3]. Recent batches (2022-2024) have averaged
+  approximately 77-80% ex-bourbon and 20-23% ex-wine cask material,
+  with occasional refill sherry [3][4].
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-stated character notes [3]:
+  "Elegantly sweet with honeyed barley, boiled sweets and orange petals;
+  wafts of sea air; red apples and white grapes, with touches of sweet
+  cinnamon and brown sugar; still softly coastal; mineral-rich malt,
+  with toffee and more honey." (Notes will vary by batch — the producer
+  publishes batch-specific notes alongside the cask composition lookup.)
+
+notes_independent: []             # The Classic Laddie is widely reviewed;
+                                  # specific batch reviews vary, and a
+                                  # consensus tasting note is misleading
+                                  # given documented batch variation.
+                                  # Reviewers should be added per-batch
+                                  # if individual batches are split into
+                                  # child entries in future.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bruichladdich.com/products/bruichladdich-the-classic-laddie
+    accessed: 2026-05-02
+    notes: |
+      Producer page. Used for ABV, NCF/natural-colour status, 50% ABV
+      rationale, and bottle-code transparency mechanism.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.masterofmalt.com/whiskies/bruichladdich/bruichladdich-scottish-barley-the-classic-laddie-whisky/
+    accessed: 2026-05-02
+    notes: Used for ABV and presentation confirmation.
+
+  - id: 3
+    type: independent_review
+    url: https://roadtodram.com/bruichladdich-the-classic-laddie-review-and-geeking-out-on-batch-evolution/
+    accessed: 2026-05-02
+    notes: |
+      Detailed analysis of batch-to-batch variation in cask composition
+      across 2021-2023 releases, used for the ~78%/20%/2% rough average
+      figures and the documentation of cask-type variation across
+      batches.
+
+  - id: 4
+    type: trade_publication
+    url: https://thewhiskeywash.com/reviews/whisky-review-bruichladdich-classic-laddie/
+    accessed: 2026-05-02
+    notes: |
+      Used for confirmation of batch-code transparency mechanism and
+      for description of typical recent cask composition (Bordeaux,
+      Muscat, French oak inclusions).
+
+  - id: 5
+    type: trade_publication
+    url: https://www.dramface.com/all-reviews/2022/bruichladdich-classic-laddie
+    accessed: 2026-05-02
+    notes: |
+      Used for typical UK retail price (£55) confirmation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: medium
+last_reviewed: 2026-05-02
+contributors: []

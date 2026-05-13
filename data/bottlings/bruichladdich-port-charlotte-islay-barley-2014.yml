@@ -1,0 +1,175 @@
+# =============================================================================
+# Port Charlotte Islay Barley 2014
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — release was extensively documented at full
+# producer disclosure (cask proportions, farm list, vintage barley year).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-port-charlotte-islay-barley-2014
+name: Port Charlotte Islay Barley 2014
+production_line: bruichladdich-port-charlotte
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2023-07             # Bottled 26 July 2023 [4]; Whiskybase
+                                  # data confirms.
+discontinued: false               # Vintage release; supplies finite.
+availability: limited
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 50.0                         # [1][2][3][4]
+age_statement: 7                  # 7 years old [1][2][3].
+vintage: 2014                     # Distilled 2014 from 2013 Islay barley
+                                  # harvest [1][2].
+cask_strength: false
+non_chill_filtered: true          # [1]
+natural_colour: true              # [1]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Producer-disclosed maturation profile [1][2]:
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: 0.84
+    duration_years: 7
+    cooperage: null
+    notes: First-fill bourbon barrels.
+
+  - cask_type: virgin-oak
+    fill_number: 2
+    proportion: 0.08
+    duration_years: 7
+    cooperage: null
+    notes: Second-fill virgin oak.
+
+  - cask_type: bordeaux-wine-cask
+    fill_number: 2
+    proportion: 0.08
+    duration_years: 7
+    cooperage: null
+    notes: Second-fill Bordeaux wine casks.
+
+finish: null                      # Not finished.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: EUR
+  amount: 80.00                   # Approximate; €57+ at lowest cited
+                                  # online price [4]; UK GBP RRP not in
+                                  # current source set.
+  as_of: 2023
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: 226735           # [4]
+  whiskyhunter_id: null
+  ean: 5055807415965              # [4]
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Vintage release in the Port Charlotte line, distilled 2014 from the
+  2013 Islay barley harvest and bottled at 7 years old [1][2]. Made
+  from 100% Islay-grown Concerto and Propino barley sourced from eight
+  Islay farms (Cruach, Craigens, Island, Dunlossit, Coull, Rockside,
+  Sunderland, Mulindry) [2][3]. Peated to the line's 40 ppm
+  specification, with maturation split 84% first-fill bourbon, 8%
+  second-fill virgin oak, and 8% second-fill Bordeaux wine casks [1][2].
+  Bottled at 50% ABV, non-chill-filtered with natural colour [1]. The
+  release pairs with the unpeated Bruichladdich Islay Barley series in
+  testing the producer's terroir thesis on peated spirit.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-stated character notes [2]: "Malty digestive biscuits and
+  peat embers" on the nose; "an initial citrus tang" with "sweet ripe
+  fruit and gentle peat smoke" on the palate; "subtle marine character"
+  with "sandy minerality" and "toasted oak"; "a medley of apricot,
+  peach and ripe melon delicately wrapped in charred heather and peat
+  embers".
+
+notes_independent:
+  - reviewer: Drinkhacker (Christopher Null)
+    url: https://www.drinkhacker.com/2023/07/02/review-bruichladdich-port-charlotte-islay-barley-2014-heavily-peated-islay-single-malt/
+    date: 2023-07
+    nose: |
+      Lightly smoky rather than heavy; sweet, with honey and stone
+      fruit touched with spices (red pepper, saffron); melon notes
+      emerging with time, almost Midori-like.
+    palate: null
+    finish: null
+    summary: |
+      Reviewer characterises the release as well-rounded despite the
+      "heavily peated" designation; notes lower wine-cask proportion
+      vs. the previous (2012) release.
+
+  - reviewer: Whiskybase (community aggregate)
+    url: https://www.whiskybase.com/whiskies/whisky/226735/port-charlotte-2014
+    date: 2024
+    nose: null
+    palate: null
+    finish: null
+    summary: |
+      Aggregate community rating ~85.87/100 across 141 ratings.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-islay-barley-2014
+    accessed: 2026-05-02
+    notes: |
+      Producer page. Used for ABV, age, cask proportions, ppm, and
+      farm list.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.tyndrumwhisky.com/port-charlotte-2014-islay-barley.html
+    accessed: 2026-05-02
+    notes: |
+      Used for full producer-supplied tasting notes and barley variety
+      details (Concerto and Propino).
+
+  - id: 3
+    type: trade_publication
+    url: https://www.wineandcheeseplace.com/blogs/news/port-charlotte-2014-islay-barley
+    accessed: 2026-05-02
+    notes: Used for confirmation of farm list and vintage barley year.
+
+  - id: 4
+    type: trade_publication
+    url: https://www.whiskybase.com/whiskies/whisky/226735/port-charlotte-2014
+    accessed: 2026-05-02
+    notes: |
+      Used for bottling date (26 July 2023), Whiskybase ID, and
+      barcode (EAN). Aggregate rating used as community signal only,
+      not as an authoritative tasting note.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

@@ -1,0 +1,201 @@
+# =============================================================================
+# Port Charlotte (heavily peated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2
+# Entry confidence: high — well-documented PPM spec, cask program, and
+# release lineage; revival history (Lochindaal connection) is partly
+# romanticised marketing but the historical claim of pre-1929 peated
+# distillation at Lochindaal is independently supported.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-port-charlotte
+name: Port Charlotte
+distillery: bruichladdich
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 2001              # The Port Charlotte line was created
+                                  # following the 2001 reopening as a
+                                  # heavily peated Islay style. The name
+                                  # references the village of Port Charlotte
+                                  # ~3 km south of the Bruichladdich site,
+                                  # home to the lost Lochindaal distillery
+                                  # which produced peated malt until 1929.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: Bairds                # Same supplier as the Bruichladdich line
+                                  # for standard releases [1].
+  variety:
+    - Concerto                    # Documented in Islay Barley 2013 and 2014
+                                  # vintages [3][4].
+    - Propino                     # Documented in Islay Barley 2014 [3].
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: 40
+      unit: ppm
+      method: hplc                # Resolved via source-level methodology
+                                  # declaration on source [1].
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Producer-stated specification of 40 ppm phenols, applied
+        consistently across the Port Charlotte line. Documented for
+        the Port Charlotte 10 [5], Islay Barley 2014 [3], PMC:01 [6],
+        and the broader Cask Exploration series.
+  peat_origin: mainland_scotland  # Standard malted-barley supply chain via
+                                  # Bairds. The Islay Barley sub-series uses
+                                  # locally-grown barley malted on the
+                                  # mainland [4]; an on-island maltings
+                                  # was announced in 2019 [1] but has not
+                                  # publicly come online as of 2026-05.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 60
+  hours_max: 100
+  hours_typical: 80               # Same fermentation regime as the
+                                  # Bruichladdich line — shared washbacks
+                                  # and process [1].
+  yeast: null
+  notes: |
+    Identical fermentation process to the Bruichladdich (unpeated) line —
+    same Oregon pine washbacks, same long-fermentation regime. The
+    distinguishing recipe variable is malt peating, not fermentation.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                  # Same four-still configuration as the
+                                  # Bruichladdich line, sharing equipment
+                                  # at the same site.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Same trickle-distillation approach as the Bruichladdich line in
+      tall narrow-necked stills. Cut points not consistently disclosed
+      in numeric form by the producer.
+  new_make_abv: 68.5              # Same as the Bruichladdich line [1].
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: 68.5
+typical_cask_program:
+  - bourbon-barrel                # First-fill and second-fill American
+                                  # whiskey casks dominate the core
+                                  # programme [5][7].
+  - wine-cask                     # Second-fill French wine casks used in
+                                  # core releases; the Cask Exploration
+                                  # series uses additional wine and
+                                  # fortified wine casks (Pomerol, Pauillac,
+                                  # Sauternes, Marsala, Oloroso, etc.).
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - bruichladdich-port-charlotte-10
+  - bruichladdich-port-charlotte-islay-barley-2014
+  - bruichladdich-port-charlotte-pmc-01
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Heavily peated Bruichladdich production line, specified at 40 ppm
+  phenols [1][5][6], introduced after the distillery's 2001 reopening.
+  The line uses the same equipment, fermentation regime, and trickle-
+  distillation process as the unpeated Bruichladdich line, with the
+  defining recipe variable being malt peating. The name references the
+  nearby village of Port Charlotte and the lost Lochindaal distillery
+  which produced peated malt at that location until 1929 [7]. The cask
+  programme combines first-fill and second-fill American whiskey casks
+  with French wine casks for core releases [5][7]; an associated Cask
+  Exploration series releases finishes from a wider range of wine and
+  fortified-wine casks [6]. As of 2018 the line includes a permanent
+  10-year-old expression [5][7], with vintage-dated and provenance-
+  led releases issued alongside it.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+        notes: |
+          Bruichladdich's published PPM uses HPLC and the standard 7
+          phenolic compounds.
+    notes: |
+      Primary reference for malt supplier and 40 ppm specification
+      across the Port Charlotte line.
+
+  - id: 3
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-islay-barley-2014
+    accessed: 2026-05-02
+    notes: |
+      Producer page for Port Charlotte Islay Barley 2014. Used for
+      barley provenance and 40 ppm confirmation in the Islay Barley
+      sub-series.
+
+  - id: 4
+    type: trade_publication
+    url: https://www.tyndrumwhisky.com/port-charlotte-2014-islay-barley.html
+    accessed: 2026-05-02
+    notes: |
+      Used for Islay Barley 2014 malt variety details (100% Concerto
+      and Propino).
+
+  - id: 5
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-10
+    accessed: 2026-05-02
+    notes: |
+      Producer page for Port Charlotte 10. Used for 40 ppm confirmation
+      and core cask programme.
+
+  - id: 6
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-pmc-01
+    accessed: 2026-05-02
+    notes: |
+      Producer page for Port Charlotte PMC:01. Used for 40 ppm
+      confirmation and Cask Exploration series context.
+
+  - id: 7
+    type: trade_publication
+    url: https://www.nicks.com.au/products/bruichladdich-port-charlotte-pc10-heavily-peated-single-malt-scotch-whisky-700ml
+    accessed: 2026-05-02
+    notes: |
+      Used for historical reference to Lochindaal distillery as the
+      template for the Port Charlotte style.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

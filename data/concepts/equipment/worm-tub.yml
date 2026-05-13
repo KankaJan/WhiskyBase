@@ -1,0 +1,281 @@
+# =============================================================================
+# Worm Tub
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: equipment
+# Function: explains a piece of distillation equipment that cuts across
+# multiple distilleries. Referenced from distillery entries via the
+# stills.condenser field on production_line entries (or directly on
+# distillery equipment for pre-line entities).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: worm-tub
+title: Worm tub
+kind: equipment
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A traditional condenser type that condenses spirit vapour by passing
+  it through a tapered copper coil submerged in a tub of cold water.
+  Worm tubs offer less copper-to-vapour contact than the more
+  common shell-and-tube alternative and produce a heavier,
+  sulphur-rich new make spirit.
+
+body: |
+  A worm tub is a condenser used at the end of the distillation
+  cycle to turn alcoholic vapour back into liquid. It consists of
+  a long, tapered copper pipe — the "worm", named for its
+  appearance — coiled inside a large vessel (the "tub") filled
+  with cold water. Vapour leaves the spirit safe via the
+  [lyne arm](concept/glossary/lyne-arm) and enters the worm at
+  the top; cold water enters the tub at the bottom and overflows
+  at the top, providing counter-current cooling. The condensed
+  spirit emerges from the bottom of the worm and runs to the
+  spirit safe.
+
+  Worm tubs were the standard condenser type in Scotch malt
+  distillation until the mid-twentieth century. Shell-and-tube
+  condensers, invented in 1825 and present in some Scottish
+  distilleries by the 1880s [4], became the industry default
+  in the post-war period as distilleries replaced ageing
+  equipment. The transition happened largely between the early
+  1960s and early 1970s [5]; Macduff distillery is sometimes
+  cited as the first to install shell-and-tubes, around
+  1962-63 [5].
+
+  As of the late 2010s, approximately 16 of Scotland's 118
+  operational malt distilleries used worm tubs [4]. The number
+  is approximate because some distilleries use worm tubs on
+  spirit stills only and shell-and-tube on wash stills (notably
+  Speyburn [3]), and recently-built distilleries have continued
+  to add to the population (Ballindalloch in 2014, Ardnahoe in
+  2019). The list is small enough that a reader interested in
+  worm-tub character has a tractable comparative set rather
+  than an unmanageable one — see `equipment.used_at_distilleries`
+  below for the maintained list.
+
+  ## Why worm tubs produce a different spirit
+
+  The flavour difference between worm-tub and shell-and-tube
+  condensers comes down to how much active copper the spirit
+  vapour interacts with during condensation. Copper removes
+  sulphur compounds from the vapour by binding them as copper
+  sulphide. The longer and more intimate the contact, the more
+  sulphur is removed and the lighter and cleaner the resulting
+  spirit. Shell-and-tube condensers offer roughly 20 times more
+  copper surface area per unit of throughput than worm tubs [6],
+  so they strip sulphur much more aggressively.
+
+  A worm tub leaves more sulphur in the spirit. This shows up
+  sensorily as weight, meatiness, and what some writers call
+  "funk" — a quality variously described as savoury, rustic, or
+  even slightly eggy at the new-make stage [6]. After
+  maturation the sulphur character integrates and is rarely
+  unpleasant; it manifests as the meaty Mortlach character,
+  the structured Cragganmore profile, the weight of Talisker
+  and Old Pulteney. Distilleries that prize this character
+  have kept their worm tubs even when replacing them was
+  operationally easier.
+
+  Two operational variables further modulate the effect.
+  First, the temperature of the water in the tub: warmer water
+  prolongs vapour-to-copper contact and produces a lighter
+  spirit; colder water condenses faster and traps more
+  sulphur [4]. Second, the geometry of the worm itself —
+  diameter, taper, length, joint count — determines surface area
+  and thus the upper bound of copper contact achievable with
+  the system [4].
+
+  ## The Dalwhinnie experiment
+
+  The most cited practical demonstration of the worm tub's
+  contribution to character is at Dalwhinnie. The distillery
+  switched to shell-and-tube condensers in 1986 during a
+  capacity reduction, then reverted to worm tubs in 1995 after
+  the new make character was judged to have lost the
+  Dalwhinnie style [4]. The replacement worm tubs were built
+  without the original construction plans, requiring the
+  distillery to work out empirically how to operate the new
+  system to produce the historical spirit [4]. The episode
+  established two things: that the condenser choice produces
+  effects detectable in the new make and recognisable to
+  experienced blenders, and that those effects depend on
+  operating practice as well as equipment.
+
+  ## Tub material
+
+  The traditional tub is wooden — typically larch, sometimes
+  Douglas fir — but cast iron and stainless steel tubs exist
+  and have been retrofitted at several Diageo sites in recent
+  decades, including Cragganmore (2022) and Craigellachie
+  (2014) [1]. The change is substantial only if it alters
+  cooling-water capacity, flow rate, or insulation; the worm
+  itself remains copper, and the spirit-character effect is
+  driven by the worm rather than the tub. Producers who have
+  retrofitted the tub but kept the original worm characterise
+  the change as cosmetic.
+
+  ## Why distilleries keep worm tubs
+
+  Worm tubs are larger, more expensive to install, and harder
+  to maintain than shell-and-tube condensers. A worm may run
+  100 metres in length, with many joints, and detecting leaks
+  is non-trivial — distillers periodically sample the tub
+  water for traces of alcohol [4]. Shell-and-tube condensers
+  are cheaper, more compact, and more efficient.
+
+  Distilleries keep worm tubs because the spirit character
+  that results matters more to them than the operational
+  cost. This is a deliberate choice rather than an accident
+  of conservatism: Diageo, owner of more worm-tub distilleries
+  than any other operator, has retained worm tubs at a third
+  of its malt distilleries including all the original
+  [Classic Malts](concept/glossary/classic-malts) except
+  Lagavulin [4]. New distilleries that have chosen worm tubs
+  — Ballindalloch, Ardnahoe — have done so explicitly to
+  produce a heavier old-style spirit.
+
+  ## A note on direct comparison
+
+  The list of worm-tub distilleries is short enough that
+  cross-distillery comparison is tempting, but the spirit
+  character of any given distillery results from the
+  combination of equipment, fermentation, distillation
+  regime, and cask programme, not from the condenser alone.
+  Mortlach's character is shaped by its 2.81-times
+  distillation as much as by its worm tubs; Talisker by its
+  partial-triple regime; Springbank by its 2.5-times
+  regime and the fact that worm tubs are used on the wash
+  still only. Worm-tub character is a contributor, not a
+  determinant.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - equipment/shell-and-tube-condenser           # TBD — alternative.
+  - glossary/lyne-arm                            # TBD.
+  - glossary/sulphur-in-new-make                 # TBD.
+  - glossary/classic-malts                       # TBD.
+  - educational/copper-conversation              # TBD — broader educational
+                                                 # page on copper's role.
+
+
+# --- Equipment block --------------------------------------------------------
+equipment:
+  category: condenser
+  used_at_distilleries:
+    # Maintained list. Distilleries known to use worm tubs on at
+    # least some stills as of 2026. Where worm tubs are partial
+    # (e.g. spirit stills only), this is noted in the entry.
+    - ballindalloch                              # New, opened 2014.
+    - balmenach
+    - benrinnes
+    - cragganmore                                # Tubs retrofitted in
+                                                 # stainless steel 2022 [1];
+                                                 # worm itself unchanged.
+    - craigellachie                              # Tubs retrofitted in
+                                                 # stainless steel 2014 [1].
+    - dalwhinnie                                 # Reverted from
+                                                 # shell-and-tube in 1995 [4].
+    - edradour
+    - glen-elgin
+    - glenkinchie
+    - knockdhu                                   # Bottled as anCnoc.
+    - mortlach                                   # Three wash + three
+                                                 # spirit stills, all
+                                                 # worm-tub [1].
+    - oban
+    - old-pulteney
+    - royal-lochnagar                            # Cast-iron tubs [1].
+    - speyburn                                   # Spirit stills only;
+                                                 # wash stills use
+                                                 # shell-and-tube [3].
+    - springbank                                 # Wash still only;
+                                                 # spirit stills use
+                                                 # shell-and-tube.
+    - talisker                                   # Two wash + three
+                                                 # spirit stills, all
+                                                 # worm-tub [1].
+    - ardnahoe                                   # New, opened 2019,
+                                                 # built with worms.
+    - rosebank                                   # Reopened with replica
+                                                 # worm tubs [4].
+    # Closed but historically significant:
+    - brora                                      # Used worm tubs;
+                                                 # closed 1983 (later
+                                                 # reopened in 2021;
+                                                 # equipment status
+                                                 # post-reopening
+                                                 # to verify).
+
+  distinguishing_features: |
+    Tapered copper coil submerged in a water-filled vessel; produces
+    a spirit with markedly less copper-stripping than shell-and-tube
+    condensers, leaving more sulphur compounds in the new make.
+    Larger, more expensive to install, and harder to maintain than
+    shell-and-tube alternatives. The choice to use worm tubs is
+    associated with a heavier, more savoury house style and is
+    typically deliberate at the distillery level rather than an
+    operational default.
+
+  alternatives:
+    - equipment/shell-and-tube-condenser         # TBD.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.edinburghwhiskyacademy.com/blogs/feature/the-scotch-whisky-distilleries-using-worm-tub-whisky-condensers
+    accessed: 2026-05-02
+    notes: |
+      Primary list of worm-tub distilleries with operational details
+      (Cragganmore stainless steel retrofit 2022, Craigellachie 2014,
+      Dalwhinnie 1990s reversion, Mortlach six-still configuration).
+
+  - id: 3
+    type: trade_publication
+    url: https://whiskyadvocate.com/The-Worm-Tub-An-Old-School-Method-but-Not-a-Vanished-Art
+    accessed: 2026-05-02
+    notes: |
+      Used for description of partial worm-tub setups (Speyburn) and
+      Yamazaki dual-condenser comparison.
+
+  - id: 4
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/features/17775/worm-tubs-the-inside-story/
+    accessed: 2026-05-02
+    notes: |
+      Used for the Dalwhinnie 1986/1995 condenser switch story,
+      maintenance challenges (100m worm length, leak detection by
+      tub water sampling), Diageo policy ("third of malt distilleries"),
+      operating variables (water temperature, worm geometry).
+
+  - id: 5
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/ask-the-professor/14920/condensers-how-do-they-affect-flavour/
+    accessed: 2026-05-02
+    notes: |
+      Scotch Whisky Professor column. Used for the 16-of-118
+      figure, history of shell-and-tube adoption (Grimble 1825;
+      in use by 1880s; widespread switch post-WWII), and the
+      copper-conversation framing.
+
+  - id: 6
+    type: trade_publication
+    url: https://thewhiskeywash.com/whiskey-styles/scotch-whiskey/distilleries-worm-tubs-leave-just-right-amount-sulfur/
+    accessed: 2026-05-02
+    notes: |
+      Used for the "20 times more copper contact" figure attributed
+      to Bill Lumsden (Glenmorangie director of distilling), and the
+      sulphur-character framing.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

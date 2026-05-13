@@ -1,0 +1,116 @@
+# =============================================================================
+# BOTTLER SCHEMA TEMPLATE — v0.1 (DRAFT / STUB)
+# =============================================================================
+# Purpose: a bottler is a commercial entity that releases bottlings.
+# This template covers both:
+#   - Distillery-owned bottling operations (the Bruichladdich
+#     bottling hall, for example) — though most OB releases don't
+#     need a separate bottler entry because the distillery itself
+#     stands in.
+#   - Independent bottlers (Cadenhead's, Signatory, Gordon & MacPhail,
+#     etc.) who source cask spirit from multiple distilleries.
+#
+# STATUS: this is a draft. The schema has not yet been used to populate
+# real data. Fields and structure may change once we start populating
+# IB releases. See docs/handover.md section 7 for context.
+#
+# Bottling entries reference bottlers via the `bottled_by` slug field
+# in bottling.template.yml v0.2.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: example-bottler                  # REQUIRED. Lowercase slug.
+                                     # Convention: just the name
+                                     # (cadenheads, gordon-macphail,
+                                     # signatory-vintage).
+name: null                           # REQUIRED. Display name.
+also_known_as: []                    # Alternative names or historical
+                                     # names (Wm. Cadenhead, etc.).
+website: null
+
+
+# --- Type -------------------------------------------------------------------
+type: independent_bottler            # REQUIRED.
+                                     # independent_bottler — sources from
+                                     #   distilleries it does not own.
+                                     # distillery_bottler — bottles releases
+                                     #   from its parent distillery.
+
+
+# --- Location ---------------------------------------------------------------
+country: null
+region: null
+locality: null
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating                    # operating | dormant | closed
+founded: null                        # YYYY
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: null                      # Current owning entity.
+  parent: null                       # Parent company if applicable.
+  history: []                        # List of past owners with from/to
+                                     # years, same pattern as the
+                                     # distillery template.
+
+
+# --- Operations -------------------------------------------------------------
+release_types: []                    # List of typical release formats:
+                                     # single_cask | small_batch | vatting |
+                                     # blended_malt | blended_whisky | other
+                                     # Most IBs do single_cask predominantly;
+                                     # some (Compass Box) do blended_malt.
+
+sources_from: []                     # OPTIONAL. List of distillery slugs
+                                     # the bottler regularly sources from,
+                                     # where this is publicly known. Not
+                                     # always disclosed — some IBs trade
+                                     # casks under "Secret Highland Malt"
+                                     # style framings when the source
+                                     # distillery doesn't permit naming.
+
+
+# --- Series -----------------------------------------------------------------
+series: []                           # List of named release series the
+                                     # bottler runs. Shape per entry:
+                                     #
+                                     # - id: authentic-collection
+                                     #   name: Authentic Collection
+                                     #   description: |
+                                     #     Brief description in reference
+                                     #     register.
+                                     #   first_released: null    # YYYY
+                                     #   active: true            # boolean
+                                     #
+                                     # Bottling entries reference series
+                                     # via `bottler_series: <bottler-slug>/<series-id>`
+                                     # (e.g. cadenheads/authentic-collection).
+
+
+# --- Description ------------------------------------------------------------
+description: null                    # Strict reference register.
+                                     # 2-4 sentences. What the bottler does,
+                                     # who owns it, what distinguishes its
+                                     # release approach. Not marketing.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  wikidata_qid: null
+  whiskybase_id: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # Same numbered-list pattern as
+                                     # elsewhere.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: stub
+last_reviewed: null
+contributors: []

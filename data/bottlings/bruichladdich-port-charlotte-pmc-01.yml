@@ -1,0 +1,177 @@
+# =============================================================================
+# Port Charlotte PMC:01
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — release was extensively documented with full
+# producer disclosure of cask provenance, vintage, and re-casking dates.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-port-charlotte-pmc-01
+name: Port Charlotte PMC:01 2013
+production_line: bruichladdich-port-charlotte
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2023-03             # Bottled 2 March 2023 [4].
+discontinued: false               # Limited release in the Cask Exploration
+                                  # series; supplies finite.
+availability: limited
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 54.5                         # [1][2][3][4]
+age_statement: 9                  # 9 years (4 in bourbon + 5 in Pomerol)
+                                  # [1][2][3][4].
+vintage: 2013                     # Distilled 2013 [1][2].
+cask_strength: true               # Bottled at natural strength of the
+                                  # Pomerol vatting; "cask strength"
+                                  # framing in producer materials [3].
+non_chill_filtered: true
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null                    # The "01" in PMC:01 is the series
+                                  # release number, not a batch number;
+                                  # it indicates this is the first
+                                  # Pomerol-cask release in the line.
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# This is a re-cask (sometimes called "double-matured") release rather
+# than a finish. The schema models this as two consecutive maturation
+# cask types with non-trivial duration in each, rather than as a brief
+# finish. The distinction matters: a 5-year second maturation in
+# Pomerol casks is the dominant flavour driver, not a surface
+# finishing pass.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: 1.0               # 100% of spirit spent the first 4 years
+                                  # in first-fill bourbon barrels [1][2][3].
+    duration_years: 4
+    cooperage: null
+    notes: |
+      Initial maturation (2013-2017). All spirit then re-casked into
+      Pomerol casks for the second maturation phase.
+
+  - cask_type: pomerol-wine-cask
+    fill_number: 1
+    proportion: 1.0
+    duration_years: 5             # 2017-2023, 5 years in Pomerol casks
+                                  # [1][2][3].
+    cooperage: null
+    notes: |
+      Second maturation in Pomerol wine casks from Bordeaux's Right
+      Bank. The producer states this is the first Port Charlotte
+      release matured in Pomerol casks [1][3].
+
+finish: null                      # The Pomerol phase is a substantive
+                                  # maturation (5 years), not a finish in
+                                  # the conventional short-duration sense.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: EUR
+  amount: 102.00                  # €102 lowest online retail per
+                                  # Whiskybase aggregate [4].
+  as_of: 2023
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: 231824           # [4]
+  whiskyhunter_id: null
+  ean: 5055807417310              # [4]
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sixth release in Bruichladdich's Port Charlotte Cask Exploration
+  series and the first in that series to use Pomerol casks [1][3].
+  Distilled 2013 from Scottish Concerto barley peated to the line's
+  40 ppm specification [1][2]. Aged 4 years in first-fill bourbon
+  barrels, then re-casked in 2017 into Pomerol wine casks from
+  Bordeaux's Right Bank for an additional 5 years [1][2][3]. Bottled
+  at 54.5% ABV in March 2023 [4]. The release exemplifies the line's
+  exploration of cask-driven flavour variation while holding the
+  underlying spirit specification constant.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-stated character notes (head distiller Adam Hannett, via
+  release announcement) [3]: warm peat smoke and red fruits opening
+  on the nose, moving to stewed pears, melon, and a subtle marine
+  note; malt sugar and peat smoke on the palate with succulent
+  blackberries, plum, and aged leather; mellow marine tones and
+  citrus lemon rind on the finish, with the line's signature peat
+  smoke lingering.
+
+notes_independent:
+  - reviewer: Whiskybase (community aggregate)
+    url: https://www.whiskybase.com/whiskies/whisky/231824/port-charlotte-2013-pmc-01
+    date: 2024
+    nose: null
+    palate: null
+    finish: null
+    summary: |
+      Aggregate community rating ~87.39/100 across 433 ratings —
+      higher than the Islay Barley 2014 community aggregate, though
+      direct comparison is confounded by reviewer self-selection.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-pmc-01
+    accessed: 2026-05-02
+    notes: |
+      Producer page. Used for cask programme detail, vintage,
+      Cask Exploration series context.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.masterofmalt.com/whiskies/port-charlotte/port-charlotte-pmc01-2013-whisky/
+    accessed: 2026-05-02
+    notes: |
+      Used for cask timeline (4 years bourbon + 5 years Pomerol),
+      40 ppm confirmation, and Concerto barley variety.
+
+  - id: 3
+    type: trade_publication
+    url: https://www.dramface.com/news/port-charlotte-pmc01-bordeaux
+    accessed: 2026-05-02
+    notes: |
+      Used for full release announcement context, Adam Hannett
+      attributed character notes, and series taxonomy (PMC:01 as
+      sixth release; previous releases MRC:01, MC:01, OLC:01,
+      PAC:01, SC:01).
+
+  - id: 4
+    type: trade_publication
+    url: https://www.whiskybase.com/whiskies/whisky/231824/port-charlotte-2013-pmc-01
+    accessed: 2026-05-02
+    notes: |
+      Used for bottling date (2 March 2023), Whiskybase ID, EAN,
+      and lowest online retail (€102).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

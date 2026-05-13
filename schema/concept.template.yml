@@ -1,0 +1,277 @@
+# =============================================================================
+# CONCEPT PAGE SCHEMA TEMPLATE — v0.1
+# =============================================================================
+# Concepts are reference pages that other entries (distilleries,
+# production lines, bottlings, sources) link to. They serve five
+# distinct functions discriminated by the `kind` field; the per-kind
+# block at the bottom of each entry holds kind-specific structured
+# data. The shared envelope (id, title, kind, summary, body, related,
+# sources, metadata) is identical across all concepts so that one
+# rendering pipeline and one cross-reference mechanism handle them
+# all.
+#
+# Per-kind blocks are top-level fields, NOT nested under a generic
+# `details:` object. This is deliberate: if a future split partitions
+# concepts by kind into separate top-level entity types, the per-kind
+# block lifts cleanly into a per-type schema with no field surgery.
+# Each concept type is collocated today, separable by design.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: example-concept                  # REQUIRED. Lowercase slug.
+                                     # By convention, the file lives at
+                                     # /data/concepts/<kind>/<slug>.yml
+                                     # and is referenced from elsewhere as
+                                     # `concept/<kind>/<slug>` to make a
+                                     # future directory split invisible to
+                                     # callers.
+title: null                          # REQUIRED. Display name.
+
+kind: glossary                       # REQUIRED. One of:
+                                     #   methodology  — attestation of how
+                                     #                  a measurement is
+                                     #                  performed by a
+                                     #                  specific source
+                                     #   educational  — explanatory page
+                                     #                  on a topic
+                                     #   equipment    — equipment or
+                                     #                  technique reference
+                                     #   practice     — production policy
+                                     #                  or practice
+                                     #   glossary     — short term
+                                     #                  definition
+                                     # The enum is extensible — adding a
+                                     # new kind is non-breaking. Likely
+                                     # future kinds: cask, region, era.
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: null                        # REQUIRED. 1-2 sentences. This is the
+                                     # tooltip text shown on hover when a
+                                     # link to this concept appears
+                                     # inline elsewhere. For glossary terms,
+                                     # often the entire content of the
+                                     # page lives here and `body` is null.
+                                     # Same strict reference register as
+                                     # distillery descriptions: no
+                                     # celebrated/iconic/renowned/legendary,
+                                     # no rugged/windswept/ancient.
+
+body: null                           # OPTIONAL. Markdown. Long-form page
+                                     # content for educational, equipment,
+                                     # methodology, and practice kinds.
+                                     # Glossary entries usually leave this
+                                     # null.
+                                     #
+                                     # Voice register for educational
+                                     # content: same anti-purple-prose
+                                     # discipline as distillery
+                                     # descriptions, but with permission
+                                     # to teach. Plain instructive
+                                     # sentences are allowed
+                                     # ("Phenols deposit on the husk
+                                     # during kilning, then partition
+                                     # into the wort during mashing").
+                                     # Discipline test: strip every
+                                     # claim that isn't either
+                                     # definitional or sourced. Does
+                                     # what remains still teach?
+                                     #
+                                     # Length follows topic depth,
+                                     # not topic importance. Short
+                                     # where the topic is contained
+                                     # (worm tubs); longer where the
+                                     # topic has comparative or
+                                     # mechanistic depth (still shape
+                                     # effects, peat measurement
+                                     # methods). Resist length-for-
+                                     # its-own-sake. Pre-publication
+                                     # check: "what does this page
+                                     # do that a Wikipedia article
+                                     # doesn't?" If the answer is
+                                     # nothing, the page shouldn't
+                                     # exist yet.
+                                     #
+                                     # Inline references to other
+                                     # concepts use markdown link
+                                     # syntax with the `concept/<kind>/
+                                     # <slug>` URL form, e.g.
+                                     # `[guaiacol](concept/glossary/guaiacol)`.
+                                     # The build pipeline rewrites
+                                     # these to site URLs and renders
+                                     # glossary references as
+                                     # tooltipped hover-cards.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []                 # OPTIONAL. List of concept slugs
+                                     # in `<kind>/<slug>` form, e.g.
+                                     #   - educational/peating-measurement-methods
+                                     #   - glossary/guaiacol
+                                     # Used by the build pipeline to
+                                     # render a "see also" block.
+                                     # Order matters — first entries
+                                     # are surfaced more prominently.
+
+
+# =============================================================================
+# Per-kind blocks. Exactly one of these should be populated, matching
+# the `kind` field above. Build-time validation enforces this.
+# =============================================================================
+
+
+# --- Methodology kind -------------------------------------------------------
+# Used for `kind: methodology`.
+# A methodology concept attests how a specific source measures a
+# specific quantity. Linked from the source-level
+# `methodology.peating_ppm.basis_concept` field on production_line
+# and bottling entries.
+methodology: null
+# Shape when populated:
+#
+#   methodology:
+#     measures:                    # What this methodology measures.
+#       - peating_ppm              # Currently the only quantity
+#                                  # we model, but the field is a
+#                                  # list to allow methodologies that
+#                                  # cover multiple quantities (e.g.
+#                                  # an in-house lab spec covering
+#                                  # ppm, abv, fermentation gravity).
+#     method: hplc                 # See production_line.template.yml
+#                                  # for the methods enum.
+#     compounds: standard_7        # See production_line.template.yml
+#                                  # for the compound-set enum.
+#     used_by:                     # Slugs of distilleries / bottlers
+#                                  # / sources that use this
+#                                  # methodology. Helps readers see
+#                                  # how broadly an attestation
+#                                  # applies.
+#       - bruichladdich
+#     adopted: null                # YYYY or YYYY-MM if the source
+#                                  # has stated when they adopted
+#                                  # this methodology.
+#     limitations: null            # Free text. What this methodology
+#                                  # captures and what it doesn't.
+#                                  # e.g. "spec ppm only — does not
+#                                  # claim anything about the
+#                                  # phenol concentration in the
+#                                  # bottled liquid."
+
+
+# --- Educational kind -------------------------------------------------------
+# Used for `kind: educational`.
+# Educational concepts are explanatory pages for topics that other
+# entries reference. They may be referenced from many entries and
+# stand alone as readable content.
+educational: null
+# Shape when populated:
+#
+#   educational:
+#     prerequisites: []            # Slugs of concepts a reader
+#                                  # would benefit from understanding
+#                                  # first. Build pipeline can render
+#                                  # these as a "before reading"
+#                                  # block. Avoid making this a
+#                                  # full curriculum graph — list
+#                                  # only direct prerequisites.
+#     covers: []                   # Slugs of glossary terms or
+#                                  # narrower concepts whose
+#                                  # explanation lives in this
+#                                  # page's body. Helps the build
+#                                  # pipeline route hover lookups
+#                                  # for those terms to the right
+#                                  # anchor on this page.
+#                                  # e.g. educational/aromatic-compounds
+#                                  # might cover [glossary/guaiacol,
+#                                  # glossary/cresol, glossary/eugenol].
+
+
+# --- Equipment kind ---------------------------------------------------------
+# Used for `kind: equipment`.
+# Equipment concepts describe a piece of equipment or production
+# technique that cuts across multiple distilleries.
+equipment: null
+# Shape when populated:
+#
+#   equipment:
+#     category: still              # mash_tun | washback | still |
+#                                  # condenser | mill | other
+#     used_at_distilleries: []     # Distillery slugs that use this
+#                                  # equipment. Build pipeline
+#                                  # generates a comparison block
+#                                  # from this list.
+#     distinguishing_features: |
+#       Free text. What makes this equipment distinct from
+#       alternatives, and what consequences it has for the
+#       resulting spirit. Not the place for tasting notes;
+#       the place for mechanism.
+#     alternatives: []             # Slugs of related equipment
+#                                  # concepts that solve the same
+#                                  # problem differently. e.g. for
+#                                  # equipment/worm-tub, alternatives
+#                                  # might include
+#                                  # equipment/shell-and-tube-condenser.
+
+
+# --- Practice kind ----------------------------------------------------------
+# Used for `kind: practice`.
+# Practice concepts describe a production policy or choice that
+# distilleries adopt and that has consequences worth explaining once.
+# Examples: on-island maturation, bottle-code transparency,
+# barley-provenance traceability.
+practice: null
+# Shape when populated:
+#
+#   practice:
+#     adopted_by: []               # Distillery / bottler slugs that
+#                                  # follow the practice. Build
+#                                  # pipeline generates an "adopted by"
+#                                  # block.
+#     consequences: |
+#       Free text. What does adopting this practice imply for
+#       the spirit, the data we can record about it, or the
+#       reader's experience of the product?
+#     contrast_with: []            # Slugs of contrasting practices,
+#                                  # if relevant.
+
+
+# --- Glossary kind ----------------------------------------------------------
+# Used for `kind: glossary`.
+# Glossary entries are short term definitions. Most of the page's
+# value is in the `summary` field above; `body` may be null.
+glossary: null
+# Shape when populated:
+#
+#   glossary:
+#     aliases: []                  # Alternative spellings or names
+#                                  # the same term is known by.
+#                                  # Build pipeline matches these in
+#                                  # search and inline-link
+#                                  # auto-resolution.
+#     part_of_speech: noun         # noun | verb | adjective |
+#                                  # phrase. Useful for inline
+#                                  # rendering decisions.
+#     see_also: []                 # Slugs of fuller pages that
+#                                  # treat this term in depth.
+#                                  # The depth-gradient pattern:
+#                                  # hover for definition (this
+#                                  # page), click for context
+#                                  # (educational page), click
+#                                  # again for technical detail
+#                                  # (methodology page).
+
+
+# --- Sources ----------------------------------------------------------------
+# Same numbered-list pattern as elsewhere in the project. Reference
+# in any prose field via [1], [2], etc. The methodology block on
+# sources is reserved for sources that report measurable quantities
+# under a known protocol; concept-page sources rarely use it.
+sources: []
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: stub                     # high | medium | low | stub
+last_reviewed: null
+contributors: []

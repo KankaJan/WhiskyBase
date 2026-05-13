@@ -1,0 +1,208 @@
+# =============================================================================
+# The Hearach (Harris production line)  — MIGRATED to schema v0.2
+# =============================================================================
+# Schema: production_line.template.yml v0.2
+# Migration note: peating_ppm flat field replaced with peating block.
+# Source-level methodology declarations added where applicable.
+# Existing source IDs and content preserved.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: harris-the-hearach
+name: The Hearach
+distillery: harris
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 2015-12
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: Bairds of Inverness
+  variety: Concerto
+
+
+# --- Recipe: Peating --------------------------------------------------------
+# Migrated from v0.1 flat peating_ppm: [12, 14] field.
+peating:
+  measurements:
+    - stage: spec
+      value: [12, 14]             # Disclosed malt specification range.
+      unit: ppm
+      method: hplc                # Resolved via source-level methodology
+                                  # declaration on source [1]. Industry
+                                  # standard for modern Scotch peated
+                                  # malt specs.
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Producer-disclosed malt specification range for the core
+        Hearach line.
+    - stage: malt_delivered
+      value: 12.1
+      unit: ppm
+      method: hplc                # Source [4] does not state method;
+                                  # treated pragmatically as HPLC since
+                                  # the figure aligns with the spec range
+                                  # and the supplier (Bairds) uses HPLC
+                                  # as standard.
+      compounds: unspecified
+      source_id: 4
+      notes: |
+        Independent measurement reported for The Hearach Batch 5 by
+        Two Whisky Bros (~12.1 ppm), consistent with the lower end
+        of the disclosed spec range. Compound set not stated by
+        source.
+
+  peat_origin: mainland_scotland
+  notes: |
+    A separate, small-batch heavily peated spirit (~30 ppm) is also
+    distilled at Harris using locally-cut Harris peat, but is not
+    part of The Hearach core line. To be modeled as a distinct
+    production_line entry once a release is confirmed.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 70
+  hours_max: 120
+  hours_typical: null
+  yeast: null
+  notes: |
+    The Hearach is produced from a deliberate blend of fermentation
+    times: 40% medium (70 hours) and 60% long (120 hours) per the
+    producer [2]. Distillery interviews additionally reference
+    seasonal variation: shorter ferments in warmer months, longer in
+    winter [1].
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Cuts reported as made by nose and sight rather than to fixed
+      ABV trigger points [5]. Spirit run aimed at approximately four
+      hours of heart collection [5]. Heads and tails recycled to the
+      next charge.
+  new_make_abv: 69.0
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: 63.5
+typical_cask_program:
+  - bourbon-barrel
+  - oloroso-sherry-butt
+  - fino-sherry-butt
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - harris-the-hearach-2023-batch-1
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Core single malt produced at the Isle of Harris Distillery from 100%
+  Scottish Concerto barley supplied by Bairds of Inverness, with a malt
+  phenol specification of 12–14 ppm by HPLC [1][2]. The line is
+  produced from a blended-fermentation regime (40% at 70 hours, 60%
+  at 120 hours) [2] and double-distilled with cut points decided by
+  nose rather than fixed ABV [5]. Filling strength is 63.5% abv [5].
+  The cask programme combines first-fill ex-bourbon (Heaven Hill and
+  Buffalo Trace) with first-fill oloroso and fino sherry butts from
+  José Miguel Martín [2]. The distillery's head blender characterises
+  the line as showing gentle peat smoke, toasted malt, orchard fruit,
+  and clotted-cream notes [2]; these are producer-stated descriptors
+  rather than independent consensus.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: https://scotchwhisky.com/whiskypedia/4892/isle-of-harris/
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/4892/isle-of-harris/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: scotch-whisky-published-ppm-methodology
+        notes: |
+          The Scotch Whisky Whiskypedia entries report PPM
+          specifications using HPLC and the standard 7 phenolic
+          compounds, consistent with industry practice for modern
+          Scotch malt specs.
+    notes: |
+      Primary structured reference: malt supplier, peating spec,
+      filling strength, fermentation range, new-make strength.
+
+  - id: 2
+    type: official_website
+    url: https://harrisdistillery.com/pages/the-hearach-core
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: harris-published-ppm-methodology
+        notes: |
+          Producer disclosure inherited from Bairds of Inverness's
+          malt specification, which uses HPLC. Method not explicitly
+          stated by Harris but resolved via the maltster's standard.
+    notes: |
+      Producer page for The Hearach core. Source for fermentation
+      blend, cask programme detail, barley variety, head blender
+      tasting note.
+
+  - id: 3
+    type: trade_publication
+    url: https://distilando.com/isle-of-harris
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: harris-published-ppm-methodology
+    notes: |
+      Used for confirmation of peating spec and reference to the
+      separate ~30 ppm experimental line.
+
+  - id: 4
+    type: independent_review
+    url: https://twowhiskybros.co.uk/blogs/blog/the-hearach-first-release-batch-1-the-hearach-first-release-batch-5
+    accessed: 2026-05-02
+    notes: |
+      Independent measurement reporting ~12.1 ppm in delivered malt
+      for Batch 5. Method not explicitly stated by reviewer; figure's
+      alignment with spec range and maltster's standard practice
+      supports HPLC inference.
+
+  - id: 5
+    type: trade_publication
+    url: https://www.scottishfield.co.uk/news/life-with-isle-of-harris-distillery-the-hearach-is-special-it-has-done-so-much-for-the-island/
+    accessed: 2026-05-02
+    notes: |
+      Distiller interview detailing operational practice: cuts by
+      nose, four-hour spirit run target, fill strength 63.5%.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-02
+contributors: []

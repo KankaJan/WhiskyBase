@@ -1,0 +1,378 @@
+# =============================================================================
+# Bruichladdich Distillery
+# =============================================================================
+# Schema: distillery.template.yml v0.1
+# Entry confidence: high — extensively documented across producer, trade
+# press, Wikipedia, and independent visit accounts. Several still-capacity
+# figures conflict between sources; resolved using the most internally
+# consistent structured spec sheet, with conflicts flagged.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich
+name: Bruichladdich Distillery
+also_known_as:
+  - The Laddie                    # Common informal short form.
+wikidata_qid: null                # TODO: confirm.
+website: https://www.bruichladdich.com
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islay
+sub_region: Rinns of Islay
+locality: Bruichladdich, Isle of Islay
+coordinates:
+  lat: 55.7677
+  lon: -6.3613
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1881                     # Built by the Harvey brothers [1][2].
+first_spirit: 1881
+mothballed_periods:
+  - start: 1929
+    end: 1936                     # Approximate — closures during the
+                                  # 1920s-30s downturn; sources differ on
+                                  # exact dates. TODO verify.
+  - start: 1994
+    end: 2001                     # Closed by Whyte and Mackay 1994 [1].
+                                  # Production resumed under the Reynier
+                                  # ownership group in May 2001 [1][2].
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Bruichladdich Distillery Co. Ltd
+  parent: Rémy Cointreau          # Acquired July 2012 for £58m [3].
+  history:
+    - owner: Harvey family / Bruichladdich Proprietors Ltd
+      from: 1881
+      to: 1936                    # William Harvey ran the distillery until
+                                  # his death in 1936 [1].
+    - owner: Associated Scottish Distilleries Ltd
+      from: 1936
+      to: 1969
+    - owner: Invergordon Distillers Ltd
+      from: 1969
+      to: 1993                    # Approximate; sold on to Whyte and Mackay.
+    - owner: Whyte and Mackay
+      from: 1993
+      to: 2000                    # Mothballed 1994; sold December 2000 [1].
+    - owner: Bruichladdich Distillery Co. Ltd (Reynier-led group)
+      from: 2000
+      to: 2012                    # Acquired 19 December 2000 by Murray
+                                  # McDavid group led by Mark Reynier [1].
+                                  # Jim McEwan hired as master distiller [1].
+    - owner: Rémy Cointreau (Bruichladdich Distillery Co. Ltd)
+      from: 2012
+      to: null
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: |
+  Mash/process water: Bruichladdich reservoir / Bruichladdich loch
+  (described as soft and peaty by the distillery) [4]. Cooling water:
+  Bruichladdich burn [4]. Reduction and bottling water: Octomore farm
+  spring [4][5].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: traditional_rake          # Open-topped cast iron rake-and-plough
+                                  # mash tun dating from 1881 [4][2].
+                                  # Described by the distillery as one of
+                                  # only three surviving rake-and-plough
+                                  # mash tuns operating in Scotland [4].
+  material: cast_iron             # [3][4]
+  capacity_kg: 7000               # 7 tonnes per [3][4]; Wikipedia [2] also
+                                  # gives 7 tonnes. NOTE: one secondary
+                                  # source [11] reports 6.2 tonnes; the
+                                  # 7-tonne figure is consistent across
+                                  # the distillery's own communications
+                                  # and structured trade references.
+                                  # Scotch Whisky's structured page [3]
+                                  # gives 6.63 tonnes grist weight per mash,
+                                  # which represents working charge rather
+                                  # than vessel capacity.
+
+washbacks:
+  count: 6                        # [3][4][2]
+  material: oregon_pine           # [4]. NOTE: Wikipedia [2] notes that
+                                  # Oregon pine and Douglas fir are
+                                  # sometimes used interchangeably for the
+                                  # same species (Pseudotsuga menziesii);
+                                  # this is a naming, not a material,
+                                  # discrepancy.
+  capacity_litres: 35000          # Total washback capacity ~210,000 L
+                                  # across six vessels (~35,000 L each
+                                  # working volume) [4][2]. One secondary
+                                  # source [12] reports 60,000 L vessels
+                                  # filled to ~35,000 L; this is consistent
+                                  # if 60,000 L is total volume and
+                                  # 35,000 L is working fill.
+
+stills:
+  wash_still:
+    count: 2
+    capacity_litres: 17500        # Per Scotch Whisky structured spec [3].
+                                  # NOTE: still capacity figures conflict
+                                  # significantly between sources. See
+                                  # bruichladdich.NOTES.md for full
+                                  # reconciliation. The 17,500 L size with
+                                  # 11,500 L typical charge is the most
+                                  # internally consistent published figure.
+    charge_litres: 11500          # [3][2]
+    shape: plain                  # Plain, wide, with a long neck [3]; "tall
+                                  # and narrow-necked" is the usual
+                                  # descriptor [2][6].
+    height_m: 6.0                 # Spirit stills reported as 6 m tall with
+                                  # 0.9 m wide necks [2]; wash stills are
+                                  # of similar overall height.
+    heating: indirect_steam       # Steam, internal coils [13]; Scotch
+                                  # Whisky [3] gives "Steam" as heat source.
+    lyne_arm_angle: descending
+    condenser: shell_and_tube     # [3]
+  spirit_still:
+    count: 2
+    capacity_litres: 12500        # Per Scotch Whisky [3]. Wikipedia [2]
+                                  # gives 21,000 L total (~10,500 L each).
+                                  # Diffords [4] gives 7,100 L each — likely
+                                  # a charge-vs-capacity confusion. The
+                                  # 12,500 L figure is the most current
+                                  # structured reference.
+    charge_litres: 9000           # [3]
+    shape: plain                  # "Plain, long narrow neck" [3]; sometimes
+                                  # described as "pear-shaped" by the
+                                  # distillery and writers [2][13].
+    height_m: 6.0                 # ~6 m to top of neck, with ~0.9 m neck
+                                  # diameter [2].
+    heating: indirect_steam
+    lyne_arm_angle: descending
+    condenser: shell_and_tube
+
+# Plus one Lomond still ("Ugly Betty"), recovered from the demolished
+# Inverleven distillery in Dumbarton and installed in 2010 [2]. Used
+# exclusively for The Botanist gin from 2011 [2][13]; falls outside
+# the Scotch single malt scope of this knowledge base but noted here
+# for site equipment completeness.
+
+warehouse:
+  type: mixed                     # Dunnage, racking and palletised, on the
+                                  # distillery site and at additional Islay
+                                  # locations including the former Octomore
+                                  # farm [3][13].
+  location: on_site               # All maturation takes place on Islay [10].
+                                  # An explicit policy of the distillery
+                                  # since the 2001 reopening.
+  climate_notes: |
+    Coastal location on Loch Indaal exposed to Atlantic weather [2][13].
+    On-island maturation policy means all stocks are exposed to Islay's
+    maritime climate.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 1500000      # 1.5 million LPA, considered close to
+                                  # current capacity [2][3][8].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 2001
+    change: Distillery dismantled and reassembled
+    notes: |
+      Between January and May 2001 the entire distillery was dismantled
+      and reassembled, with original Victorian décor and equipment
+      retained where possible [2]. Most of the original Harvey-era
+      machinery (mash tun, mill, stills) is still in use.
+    source_id: 2
+  - year: 2010
+    change: Lomond still installed
+    notes: |
+      Last surviving Lomond still recovered from the demolished
+      Inverleven distillery in Dumbarton, modified by Jim McEwan, used
+      from 2011 for The Botanist gin [2]. Installation accompanied
+      replacement of one wash still and creation of a window in the
+      stillhouse wall [4].
+    source_id: 2
+  - year: 2003
+    change: Harvey Bottling Hall opened on site
+    notes: |
+      In-house bottling hall opened 25 May 2003 [11]; one of the few
+      Islay distilleries that bottles on the island.
+    source_id: 11
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - bruichladdich-bruichladdich   # Unpeated, the original house style.
+  - bruichladdich-port-charlotte  # Heavily peated (40 ppm spec).
+  - bruichladdich-octomore        # Super-heavily peated, variable per release.
+
+# Plus The Botanist gin (Lomond still), outside the scope of this knowledge
+# base. The three single-malt lines share the four pot stills, with
+# production scheduled in batches; Octomore reportedly accounts for ~10%
+# of annual spirit output [10].
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []         # The distillery's stated policy is that
+                                  # 100% of single malt output is used for
+                                  # its own bottlings; the spirit is not
+                                  # supplied to blenders [4][3].
+
+
+# --- Distinctive Features ---------------------------------------------------
+distinctive_features: []          # Concept layer not yet defined. Strong
+                                  # candidate concepts to add later:
+                                  # - victorian-rake-and-plough-mash-tun
+                                  # - tall-narrow-neck-stills
+                                  # - on-island-maturation-policy
+                                  # - bottle-code-transparency
+                                  # - barley-provenance-traceability
+                                  # - lomond-still
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Founded in 1881 by the Harvey brothers — William, John, and Robert — on
+  the western shore of Loch Indaal on the Rinns of Islay [1][2]. The
+  distillery operated under several owners through the 20th century before
+  being mothballed by Whyte and Mackay in 1994 [1]. It was acquired in
+  December 2000 by a private investor group led by Mark Reynier of Murray
+  McDavid, with Jim McEwan hired from Bowmore as master distiller, and
+  resumed production in May 2001 [1][2]. Rémy Cointreau acquired the
+  business in July 2012 for £58 million [3]. The site retains substantial
+  Victorian equipment including an open cast-iron rake-and-plough mash tun
+  from 1881, a belt-driven Boby mill, six wooden washbacks, and four tall,
+  narrow-necked pot stills, plus a Lomond still added in 2010 for gin
+  production [2][4]. Maturation takes place exclusively on Islay [10], and
+  the distillery has used 100% Scottish barley since the 2001 reopening,
+  with island-grown barley reaching 30%+ of supply [13][2]. Bruichladdich
+  produces three single malt lines from the same equipment — unpeated
+  Bruichladdich, peated Port Charlotte (40 ppm spec), and super-heavily
+  peated Octomore — distinguishing the site from Islay neighbours that
+  produce a single fixed-style spirit.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+    accessed: 2026-05-02
+    notes: |
+      Scotch Whisky Whiskypedia entry. Used for ownership history,
+      mothballed period, 2012 Rémy Cointreau acquisition price.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Bruichladdich_distillery
+    accessed: 2026-05-02
+    notes: |
+      Used for founding details, equipment dimensions, 2001 dismantling
+      and reassembly, Lomond still installation, on-island bottling
+      from 2003. CC-BY-SA.
+
+  - id: 3
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+        notes: |
+          Bruichladdich's published PPM specifications use HPLC and
+          the standard sum of 7 phenolic compounds. Where this source
+          reports PPM figures for Bruichladdich production lines or
+          bottlings, those values resolve method/compounds via this
+          methodology declaration rather than restating per-figure.
+          See TODO.md — concept page to be created.
+    notes: |
+      Primary structured reference for equipment specs (mash tun, stills,
+      washbacks, capacity, fermentation time, fill strength, malt
+      specification across all three lines).
+
+  - id: 4
+    type: trade_publication
+    url: https://www.diffordsguide.com/producers/255/bruichladdich-distillery
+    accessed: 2026-05-02
+    notes: |
+      Diffords Guide. Used for water sources, mash tun description
+      (rake-and-plough, "biggest of three surviving"), washback
+      capacity total, still configuration including Lomond still
+      addition.
+
+  - id: 5
+    type: trade_publication
+    url: https://www.bruichladdich.com/products/bruichladdich-the-classic-laddie
+    accessed: 2026-05-02
+    notes: Used for water source confirmation and bottling-on-site policy.
+
+  - id: 6
+    type: trade_publication
+    url: https://maltspedia.com/distilleries/bruichladdich-distillery/
+    accessed: 2026-05-02
+    notes: |
+      Used for fermentation time range corroboration (60-100+ hours)
+      and house style description.
+
+  - id: 7
+    type: independent_review
+    url: https://cocktailwonk.com/2016/10/stepping-back-in-time-and-into-the-future-at-bruichladdich.html
+    accessed: 2026-05-02
+    notes: |
+      Independent visit account. Corroborates equipment description
+      and Oregon pine washback construction.
+
+  - id: 8
+    type: trade_publication
+    url: https://distilando.com/octomore
+    accessed: 2026-05-02
+    notes: |
+      Used for capacity confirmation (1.5 mlpa), 10 mashes/week
+      operational figure, Octomore share of total output (~10%).
+
+  - id: 10
+    type: trade_publication
+    url: https://thewhiskeywash.com/reviews/whisky-review-port-charlotte-10/
+    accessed: 2026-05-02
+    notes: |
+      Used for confirmation of on-island maturation policy and
+      employment figures (~80 islanders on payroll).
+
+  - id: 11
+    type: trade_publication
+    url: https://lovescotch.com/collections/bruichladdich-distillery
+    accessed: 2026-05-02
+    notes: |
+      Used for Harvey Bottling Hall opening date (May 2003) and
+      conflicting mash tun figure (6.2 t — superseded by 7 t consensus).
+
+  - id: 12
+    type: trade_publication
+    url: https://maltspedia.com/distilleries/bruichladdich-distillery/
+    accessed: 2026-05-02
+    notes: |
+      Reports 60,000 L washback vessel size with 35,000 L typical fill;
+      reconciled with the 210,000 L total figure as vessel capacity vs.
+      working volume.
+
+  - id: 13
+    type: trade_publication
+    url: https://www.whisky.com/whisky-database/distilleries/details/bruichladdich.html
+    accessed: 2026-05-02
+    notes: |
+      Used for general operational details, Botanist gin information,
+      Octomore farm warehouse reference.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

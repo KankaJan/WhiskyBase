@@ -1,0 +1,185 @@
+# =============================================================================
+# The Hearach — First Release, Batch 1 (2023)
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — first release was widely covered by trade press;
+# specs and cask composition publicly documented by the producer.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: harris-the-hearach-2023-batch-1
+name: The Hearach — First Release Batch 1
+production_line: harris-the-hearach
+produced_at_distillery: harris
+bottled_by: harris                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2023-09             # Released September 2023 [1][2].
+discontinued: true                # Batch 1 is a numbered release; supply
+                                  # exhausted at first sale [3].
+availability: limited             # Numbered batch release, not a permanent
+                                  # core sku in the strict sense; subsequent
+                                  # batches followed.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0                         # [1][2]
+age_statement: null               # NAS. Spirit aged minimum 3 years to meet
+                                  # Scotch single malt definition; reported
+                                  # to include older stock from the
+                                  # 2015–2017 fillings [3].
+vintage: null
+cask_strength: false
+non_chill_filtered: true          # [1][2]
+natural_colour: true              # No artificial colouring [1][2].
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: 1
+  outturn_bottles: null           # Outturn for Batch 1 not publicly
+                                  # disclosed. NOTE: Batch 5 was reported
+                                  # at 12,326 bottles [3], suggesting a
+                                  # similar order of magnitude.
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Batch 1 cask composition disclosed by the producer at release [2]:
+#   - 1st-fill Heaven Hill bourbon barrels
+#   - 1st-fill Buffalo Trace bourbon barrels
+#   - 1st-fill José Miguel Martín oloroso sherry butts
+#   - 1st-fill fino sherry butts
+# Specific proportions for Batch 1 not disclosed in numeric form; for
+# reference, Batch 5 was reported as 85% ex-bourbon (21% Heaven Hill,
+# 64% Buffalo Trace), 11% oloroso, 4% fino [3].
+
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: null              # Specific Batch 1 split not disclosed.
+    duration_years: null
+    cooperage: null
+    notes: Heaven Hill provenance.
+
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: Buffalo Trace provenance.
+
+  - cask_type: oloroso-sherry-butt
+    fill_number: 1
+    proportion: null
+    duration_years: null
+    cooperage: José Miguel Martín
+    notes: null
+
+  - cask_type: fino-sherry-butt
+    fill_number: 1
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: null
+
+finish: null                      # Not finished — vatted from the casks
+                                  # listed above, not subjected to a
+                                  # secondary maturation.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null                    # TODO: confirm RRP at release. Trade
+                                  # press references "sub-£100" [3] but
+                                  # exact figure unconfirmed in current
+                                  # source set.
+  as_of: 2023-09
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null             # TODO: locate Whiskybase ID.
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The first commercial bottling of single malt whisky produced on the
+  Isle of Harris, released September 2023 [1][2]. Vatted from first-fill
+  ex-bourbon (Heaven Hill, Buffalo Trace) and first-fill oloroso and fino
+  sherry butts (José Miguel Martín) [2]. Bottled at 46% abv,
+  non-chill-filtered, natural colour [1][2]. The release is a numbered
+  batch rather than a fixed-recipe core sku; subsequent batches follow
+  the same cask-composition principles with varying proportions.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Head Blender's notes (as published by the distillery) [2]:
+  "Gentle peat smoke on the first sip, reminiscent of island home fires;
+  toasted maltiness; homemade apple sauce; machair flowers, particularly
+  white clover; mixed spices; an old-fashioned sweetness from candied
+  ginger, vanilla, and honeycomb; a long, clotted-cream note mixed with
+  a lasting sense of new leather."
+                                  # Note: the producer's own description
+                                  # is florid by the standards of this
+                                  # knowledge base; it is preserved here
+                                  # as attributed quotation rather than
+                                  # restated as fact.
+
+notes_independent:
+  - reviewer: Two Whisky Bros
+    url: https://twowhiskybros.co.uk/blogs/blog/the-hearach-first-release-batch-1-the-hearach-first-release-batch-5
+    date: 2024
+    nose: null                    # Detailed nose/palate/finish not parsed
+    palate: null                  # individually in source — see summary.
+    finish: null
+    summary: |
+      Sherbet and green apple sweetness; reviewers rated 7/10 and noted
+      the release as "older than a lot of inaugural releases" and well
+      below £100, calling it a strong start while suggesting additional
+      maturation would benefit future batches.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.whisky.com/whisky-database/distilleries/details/isle-of-harris.html
+    accessed: 2026-05-02
+    notes: |
+      Confirms 46% abv, non-chill-filtered, uncoloured status, and
+      September 2023 release date.
+
+  - id: 2
+    type: official_website
+    url: https://harrisdistillery.com/pages/the-hearach-core
+    accessed: 2026-05-02
+    notes: |
+      Producer page for The Hearach: cask composition, Head Blender's
+      tasting notes (preserved verbatim).
+
+  - id: 3
+    type: independent_review
+    url: https://twowhiskybros.co.uk/blogs/blog/the-hearach-first-release-batch-1-the-hearach-first-release-batch-5
+    accessed: 2026-05-02
+    notes: |
+      Independent review covering Batch 1 alongside Batch 5. Source
+      for sub-£100 price point (RRP not stated precisely) and
+      reference Batch 5 cask proportions used as comparator above.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

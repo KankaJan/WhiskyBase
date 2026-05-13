@@ -1,0 +1,223 @@
+# =============================================================================
+# Octomore Edition 8.2 (167 ppm)
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — release was widely covered with full producer
+# disclosure of cask program. Minor ABV discrepancy (58.4% vs 58.7%)
+# resolved to 58.4% per the producer-aligned majority of sources.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-octomore-8-2
+name: Octomore Edition 8.2 / 167 PPM
+production_line: bruichladdich-octomore
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2017-10             # Bottled 31 October 2017 [2].
+discontinued: true                # Limited Travel Retail edition; sold
+                                  # through.
+availability: travel_retail       # Originally a Travel Retail exclusive
+                                  # [1][2][3].
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 58.4                         # [1][2][3]. NOTE: one secondary source
+                                  # ([7] Whisky Club) states 58.7% — minor
+                                  # discrepancy. The 58.4% figure aligns
+                                  # with producer-derived listings and is
+                                  # used here.
+age_statement: 8                  # [1][2][3]. Distilled 2008/2009 from
+                                  # 2008 vintage stock [2].
+vintage: null
+cask_strength: true
+non_chill_filtered: true
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: small_batch
+  number: null
+  outturn_bottles: 36000          # Per [2][3].
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Octomore 8.2 used a complex multi-stage maturation distinctive within
+# the .2 sub-series: 6 years across three different European wine cask
+# types, then 2 years finishing in Amarone [3][7].
+maturation:
+  - cask_type: mourvedre-wine-cask
+    fill_number: 1
+    proportion: null              # Producer doesn't disclose split between
+                                  # the three primary wine-cask types;
+                                  # described as "a combination" [2][3].
+    duration_years: 6
+    cooperage: null
+    notes: French Mourvedre wine cask. Part of the 6-year primary phase.
+
+  - cask_type: sweet-wine-cask
+    fill_number: 1
+    proportion: null
+    duration_years: 6
+    cooperage: null
+    notes: |
+      Austrian sweet wine casks. The producer specifies these as
+      "full-bodied and charming with an ability to challenge
+      convention with innovative techniques" [3].
+
+  - cask_type: sauternes-wine-cask
+    fill_number: 1
+    proportion: null
+    duration_years: 6
+    cooperage: null
+    notes: |
+      French Sauternes casks from the Graves section in Bordeaux [3].
+
+finish:
+  cask_type: amarone-wine-cask
+  duration_months: 24
+  duration_years: 2
+                                  # Italian Amarone casks for the final
+                                  # 2 years [3][7]. Long enough to question
+                                  # whether this is really a "finish"
+                                  # rather than a third maturation stage,
+                                  # but the producer presents it as a
+                                  # finishing phase.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: USD
+  amount: 200.00                  # ~$200 USD at release [1].
+  as_of: 2017
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: 99306            # [4]
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Travel-retail edition in the Octomore 8 series, distilled 2008 from
+  Scottish barley peated to 167 ppm specification (the same malt as
+  Octomore 8.1) [3]. The defining recipe variable versus 8.1 is
+  maturation: 6 years across three European wine cask types
+  (Mourvedre, Austrian sweet wine, Sauternes), followed by 2 years
+  finishing in Amarone casks [3][7]. Bottled at 58.4% ABV [1][2][3]
+  with an outturn of 36,000 bottles [2][3]. Within the Octomore series
+  taxonomy, the .2 sub-series is the European-wine-cask comparator to
+  the bourbon-led .1; this release is a particularly elaborate example
+  of that pattern.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-stated character (per release announcement and product page)
+  [3]: deep fruit and satin-like smoke on the palate; oak that lifts to
+  toasted bread, bubble-gum sweetness, and strawberry jam; rose petal,
+  Turkish delight, praline, and more strawberry jam emerging with
+  water; the smoke holding everything together in the background.
+
+notes_independent:
+  - reviewer: Drinkhacker (Christopher Null)
+    url: https://www.drinkhacker.com/2018/02/22/review-bruichladdich-octomore-8-1-8-2-and-8-3/
+    date: 2018-02
+    nose: |
+      Camphor, sea spray, and dried fruit; aromatic and well-weighted.
+    palate: |
+      Citrus notes, sweet custard, and fruits in syrup (with water).
+    finish: |
+      Less smoky than expected, with a clear citrus thread.
+    summary: |
+      Reviewer score A-. Characterises 8.2 as "intense, but really
+      quite lovely" — substantially weightier than 8.1.
+
+  - reviewer: Whiskybase (community aggregate)
+    url: https://www.whiskybase.com/whiskies/whisky/99306/octomore-edition-082-masterclass-167-ppm
+    date: 2017-08
+    nose: null
+    palate: null
+    finish: null
+    summary: |
+      Aggregate community ratings positive but not standout for the
+      series; reviewers noting the alcohol presence and recommending
+      water.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.drinkhacker.com/2018/02/22/review-bruichladdich-octomore-8-1-8-2-and-8-3/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: Used for ABV (116.8 proof = 58.4%) and US retail price.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.whiskysaga.com/blog/octomore-82
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: |
+      Used for bottling date (31 October 2017), Travel Retail
+      designation, vintage (2008), 36,000 bottle outturn, and
+      cask types.
+
+  - id: 3
+    type: trade_publication
+    url: https://www.spiritradar.com/whisky-db/octomore-edition-08.2-masterclass-167-ppm-ochdamh-mor-167-ppm-8yo-58.4-percent-700ml/
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: |
+      Used for full cask program detail (6 years primary + 2 years
+      Amarone finish) and producer character notes.
+
+  - id: 4
+    type: trade_publication
+    url: https://www.whiskybase.com/whiskies/whisky/99306/octomore-edition-082-masterclass-167-ppm
+    accessed: 2026-05-02
+    notes: Used for Whiskybase ID.
+
+  - id: 7
+    type: trade_publication
+    url: https://thewhiskyclub.com.au/octomore-8-2
+    accessed: 2026-05-02
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: bruichladdich-published-ppm-methodology
+    notes: |
+      Used for cask program corroboration and Octomore series
+      taxonomy. NOTE: this source states 58.7% ABV, conflicting with
+      [1][2][3]; treated as a minor error.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []

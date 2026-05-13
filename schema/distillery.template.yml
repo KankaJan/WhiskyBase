@@ -1,0 +1,238 @@
+# =============================================================================
+# DISTILLERY SCHEMA TEMPLATE — v0.1
+# =============================================================================
+# Purpose: describes the physical site and its equipment. A distillery has
+# zero or more production lines (recipes/specs), each of which has zero or
+# more bottlings (commercial releases).
+#
+# What this schema describes: site, location, equipment, ownership, capacity,
+# brief factual context, references to production lines.
+#
+# What this schema does NOT describe (deliberately, do not add):
+#   - Tasting notes (those live on bottling entries)
+#   - House character per recipe (that lives on production_line entries)
+#   - Awards, medals, competition results (marketing artifacts)
+#   - Tour info, opening hours, visitor centre details (this is reference,
+#     not travel)
+#   - Current secondary-market prices, investment grades, auction history
+#   - "Philosophy", "ethos", "vision", "story", "passion", "journey"
+#   - Free-text "fun facts" or trivia
+#
+# Use null for unknown values. Do not omit fields just because they're empty
+# — explicit null is more useful for tooling than missing keys.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: example-distillery               # REQUIRED. Lowercase slug. Stable forever.
+                                     # Used in URLs, filenames, cross-references.
+                                     # Convention: distillery name lowercased,
+                                     # spaces -> hyphens, "the" prefix dropped.
+                                     # Examples: glenfarclas, harris, glen-grant
+name: Example Distillery             # REQUIRED. Display name as commonly written.
+also_known_as: []                    # Alternative or historical names.
+                                     # e.g. ["Mortlach Dufftown"] or
+                                     # ["The Hearach Distillery"]
+wikidata_qid: null                   # e.g. "Q1423931". Enables interop with
+                                     # open data ecosystems (Wikidata, OSM).
+website: null                        # Official URL.
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland                    # REQUIRED. ISO-style country name.
+region: null                         # REQUIRED. Use SWA-recognised regions:
+                                     #   Highlands, Lowlands, Speyside, Islay,
+                                     #   Campbeltown, Islands.
+                                     # Set to null only for non-Scotch sites
+                                     # added in later phases.
+sub_region: null                     # Finer locality where meaningful.
+                                     # e.g. "Outer Hebrides", "Northern
+                                     # Highlands", "Speyside (Livet area)".
+locality: null                       # Town or address.
+coordinates:                         # WGS84 decimal degrees.
+  lat: null
+  lon: null
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating                    # REQUIRED. One of:
+                                     #   operating, mothballed, silent,
+                                     #   demolished, planned, under_construction
+founded: null                        # REQUIRED. Year first spirit ran. Use
+                                     #   the year of formal founding only if
+                                     #   pre-production. null for unknown
+                                     #   historical cases.
+first_spirit: null                   # YYYY or YYYY-MM. When new make first ran.
+mothballed_periods: []               # List of {start: YYYY, end: YYYY} pairs.
+                                     # e.g. [{start: 1985, end: 1989}]
+                                     # Use end: null for ongoing closure.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: null                      # Current legal owner.
+  parent: null                       # Holding company, e.g. "Diageo".
+                                     # null if independently owned.
+  history: []                        # Chronological list of:
+                                     #   {owner: ..., from: YYYY, to: YYYY}
+                                     # Use to: null for current owner.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: null                   # Named source if disclosed.
+                                     # e.g. "Abhainn Cnoc a' Charrain"
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+# Equipment is site-level: shared across all production lines run here.
+# Recipe-level inputs (malt variety, peating, fermentation time, cuts,
+# cask program) live on production_line entries, NOT here.
+
+mash_tun:
+  type: null                         # traditional_rake | semi_lauter |
+                                     # full_lauter | unknown
+  material: null                     # stainless_steel | cast_iron | copper |
+                                     # wood
+  capacity_kg: null                  # Grist capacity per mash.
+
+washbacks:
+  count: null
+  material: null                     # oregon_pine | larch | stainless_steel |
+                                     # douglas_fir | corten_steel | other
+  capacity_litres: null              # Per washback.
+
+stills:
+  wash_still:
+    count: null
+    capacity_litres: null            # Total volume of the still.
+    charge_litres: null              # Typical working charge (often less
+                                     # than capacity).
+    shape: null                      # onion | lantern | plain | boil_ball |
+                                     # lamp_glass | other
+    height_m: null                   # To top of neck if known.
+    heating: null                    # direct_fire | indirect_steam |
+                                     # internal_coil | external_heat_exchanger
+    lyne_arm_angle: null             # ascending | horizontal | descending
+    condenser: null                  # shell_and_tube | worm_tub
+  spirit_still:
+    count: null
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: null
+
+warehouse:
+  type: null                         # dunnage | racked | palletised | mixed
+  location: null                     # on_site | off_site | mixed
+  climate_notes: null                # Free text on climatic exposure if it
+                                     # materially affects maturation
+                                     # (coastal, hill-top, underground, etc.).
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: null            # Litres of pure alcohol per year.
+                                     # The standard industry comparator.
+                                     # If site produces multiple lines, this
+                                     # is the SITE total across all lines.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+# Significant changes that affect the character of spirit produced before vs.
+# after. Distinguishes a 1990s Mortlach from a 2020s Mortlach.
+equipment_changes: []                # List of:
+                                     # - year: YYYY
+                                     #   change: short description
+                                     #   notes: longer context if needed
+                                     #   source_id: ref to sources block
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+# A production line is a distinct recipe/spec (e.g. Springbank produces
+# Springbank, Longrow, and Hazelburn — three lines, one site).
+production_lines: []                 # List of slugs from /data/production_lines/.
+                                     # e.g. [harris-the-hearach]
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []            # Blends known to incorporate this
+                                     # distillery's malt. Often informal
+                                     # knowledge — flag uncertain entries
+                                     # with source notes.
+                                     # e.g. [johnnie-walker-black, dewars]
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []             # List of slugs from /data/concepts/
+                                     # that apply to this site.
+                                     # e.g. [worm-tub-condenser, direct-fired-still,
+                                     #       floor-malting-onsite]
+                                     # Concept schema TBD — defer until
+                                     # /data/concepts/ exists.
+
+
+# --- Description ------------------------------------------------------------
+# Strict reference register. 3–6 sentences, ~60–120 words.
+#
+# Allowed:
+#   - Founding date and named founder(s)
+#   - Founding context where factual (e.g. "founded as part of the 1820s
+#     Speyside expansion following the 1823 Excise Act")
+#   - Location stated in geographically functional terms where it materially
+#     affects production (proximity to water, altitude, coastal/inland)
+#   - Ownership arc at high level
+#   - Operational facts that distinguish the site (community-employer model,
+#     contract distilling, sole survivor of region) — STATED, not celebrated
+#
+# Disallowed:
+#   - Evaluative adjectives: celebrated, renowned, iconic, legendary,
+#     beloved, prestigious, acclaimed, storied, hallowed, revered, fabled
+#   - Romantic geography: rugged, wild, windswept, remote, untouched,
+#     ancient, mystical, dramatic
+#   - Marketing nouns: philosophy, ethos, vision, journey, passion,
+#     craft (as standalone noun), heritage (as standalone noun)
+#   - Superlatives without sourcing: oldest, smallest, most traditional —
+#     only if verifiable and sourced via [n] reference
+#   - Origin myths and apocrypha unless explicitly flagged as such
+#
+# Discipline test: strip every adjective. If the factual content still
+# stands, the description is doing its job. Surviving adjectives must be
+# functional ("maritime", "independently owned"), not evaluative
+# ("rugged", "proudly independent").
+#
+# Local context is allowed only when it has a production consequence.
+# "On the Isle of Harris" is geography (covered by structured fields).
+# "Uses peat cut on the Isle of Harris, distinct from mainland-sourced
+# peat used by most peated distilleries" is local context with production
+# consequence.
+description: null
+
+
+# --- Sources ----------------------------------------------------------------
+# Numbered list. Reference in any prose field via [1], [2], etc.
+# Distinguish source types so readers know what's primary vs. secondary.
+sources: []
+  # Example shape:
+  # - id: 1
+  #   type: official_website        # official_website | trade_publication |
+  #                                 # book | wikipedia | wikidata |
+  #                                 # company_filing | independent_review |
+  #                                 # interview | other
+  #   url: https://...
+  #   citation: "Author, Title, Publisher, Year"  # for offline sources
+  #   accessed: 2026-05-02           # ISO date for online sources
+  #   notes: "Used for production specs and core range."
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: stub                     # high   — multi-source, vetted, current
+                                     # medium — well-sourced, some gaps
+                                     # low    — single-source or contested
+                                     # stub   — placeholder, minimal data
+last_reviewed: null                  # ISO date a maintainer last vetted
+                                     # the entry against current sources.
+contributors: []                     # GitHub usernames of contributors who
+                                     # have meaningfully edited this entry.

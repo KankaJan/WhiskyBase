@@ -1,0 +1,179 @@
+# =============================================================================
+# Bruichladdich Islay Barley 2014
+# =============================================================================
+# Schema: bottling.template.yml v0.1
+# Entry confidence: high — release was widely covered with full producer
+# disclosure of barley provenance, cask composition, and farm-level
+# detail.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bruichladdich-islay-barley-2023
+name: Bruichladdich Islay Barley 2014
+production_line: bruichladdich-bruichladdich
+produced_at_distillery: bruichladdich
+bottled_by: bruichladdich                # OB release — bottler is the distillery itself.
+bottler_type: distillery
+bottler_series: null              # TODO: populate for series releases (e.g. octomore-masterclass-08).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2023-10             # Released 18 October 2023 as part of the
+                                  # Barley Exploration series, alongside
+                                  # Organic Barley 2012 and Bere Barley 2013
+                                  # [2].
+discontinued: false               # Vintage release; supplies finite but
+                                  # not formally discontinued.
+availability: limited             # Vintage release; not part of the
+                                  # permanent core range.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 50.0                         # [1][2][3]
+age_statement: 8                  # 8 years; distilled 2014 from 2013 Islay
+                                  # harvest, bottled 2022/early 2023 [1].
+vintage: 2014
+cask_strength: false
+non_chill_filtered: true          # [1]
+natural_colour: true              # [1]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null                    # Vintage release rather than numbered
+                                  # batch.
+  outturn_bottles: null           # Not publicly disclosed.
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Producer-disclosed cask composition for the 2014 vintage [1][3].
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 1
+    proportion: 0.80
+    duration_years: 8
+    cooperage: null
+    notes: First-fill ex-bourbon; primary maturation cask.
+
+  - cask_type: oloroso-sherry-butt
+    fill_number: 2
+    proportion: 0.05
+    duration_years: 8
+    cooperage: null
+    notes: Refill sherry butts.
+
+  - cask_type: wine-cask
+    fill_number: 2
+    proportion: 0.15
+    duration_years: 8
+    cooperage: null
+    notes: |
+      Refill ex-wine casks; specific wine origin not detailed in this
+      release's disclosure.
+
+finish: null                      # Not finished.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null                    # Approximately £85-100 at release across
+                                  # markets [3]. Exact UK RRP not in
+                                  # current source set.
+  as_of: 2023-10
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Vintage release in the Barley Exploration series, distilled 2014 from
+  the 2013 Islay barley harvest and bottled at 8 years old [1][2].
+  Distinguished from the Classic Laddie by its single-vintage,
+  single-region barley provenance: 100% Concerto and Propino barley grown
+  on eight Islay farms within an 11-mile radius of the distillery
+  (Cruach, Craigens, Island, Dunlossit, Coull, Rockside, Sunderland, and
+  Mulindry Farms) [1][3]. Maturation profile is 80% first-fill bourbon,
+  5% refill sherry butts, and 15% second-fill wine casks [3]. Bottled at
+  50% ABV, non-chill-filtered with natural colour [1]. The release tests
+  the producer's terroir thesis by holding everything constant except
+  barley origin.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: |
+  Producer-stated character notes [1]: a cereal-forward single malt with
+  notes of apricot and peach, malty digestive biscuit, and a hint of
+  fresh grass; a subtle maritime note also lingers, attributed to all-
+  Islay harvest, distillation, and maturation.
+
+notes_independent:
+  - reviewer: Dramface (Wally MacAulay)
+    url: https://www.dramface.com/all-reviews/bruichladdich-islay-barley-2014
+    date: 2023-10
+    nose: |
+      Very malty; sour milk, fleeting; savoury cereal notes; pepper
+      and herbs (rocket); fresh coast — wood, sandy beach; weeds in
+      summer; bright yellow and white fruit; physalis; sherry note,
+      unripe banana with a hint of earthy farmyard.
+    palate: null
+    finish: null
+    summary: |
+      Reviewer rates the release positively, framing it as "Very Good
+      Indeed" and as essentially "a Classic Laddie in transparent
+      clothing" — i.e. recipe overlap with the core SKU but with
+      explicit farm-level barley provenance disclosure.
+
+  - reviewer: Whisky Art (whiskyart.blog)
+    url: https://whiskyart.blog/en/2024/08/12/bruichladdich-islay-barley-2014-2/
+    date: 2024-08
+    nose: null
+    palate: null
+    finish: null
+    summary: |
+      Score 88/100; reviewer notes the release as "multifaceted" and
+      "agricultural" with the raw material taking centre stage and
+      harmonising with cask influence. Approximate retail €100.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bruichladdich.com/products/bruichladdich-islay-barley-2014
+    accessed: 2026-05-02
+    notes: |
+      Producer page. Used for cask composition, age statement, vintage,
+      farm list, ABV and presentation.
+
+  - id: 2
+    type: trade_publication
+    url: https://greatdrams.com/bruichladdich-unveils-latest-vintages-as-part-of-barley-exploration-series/
+    accessed: 2026-05-02
+    notes: |
+      Used for release date (18 October 2023) and Barley Exploration
+      series context (released alongside Organic 2012 and Bere 2013).
+
+  - id: 3
+    type: independent_review
+    url: https://whiskyart.blog/en/2024/08/12/bruichladdich-islay-barley-2014-2/
+    accessed: 2026-05-02
+    notes: |
+      Used for cask proportions (80% ex-bourbon / 5% ex-sherry / 15%
+      ex-wine) and approximate retail price (€100).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2                                # migrated from 0.1 on 2026-05-13 (IB support).
+confidence: high
+last_reviewed: 2026-05-02
+contributors: []
