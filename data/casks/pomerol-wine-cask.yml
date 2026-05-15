@@ -1,0 +1,93 @@
+# =============================================================================
+# Pomerol wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: pomerol-wine-cask
+name: Pomerol wine cask
+also_known_as: []
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: Bordeaux Right Bank red (Merlot-dominant)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: 225          # Bordeaux barrique standard.
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine
+  specifics: |
+    Pomerol AOC red wine from Bordeaux's Right Bank. Pomerol is a
+    Merlot-dominant blend with Cabernet Franc; the AOC has no formal
+    classification system (no first-growths) and is among the smaller
+    Bordeaux appellations by area.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: Bordeaux (Right Bank)
+  appellation: Pomerol
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  225-litre French oak barrique previously used to age Pomerol AOC
+  red wine from the Right Bank of Bordeaux. Pomerol wine is Merlot-
+  dominant, typically blended with Cabernet Franc, from a small
+  appellation east of the Dordogne river. Used in Port Charlotte
+  PMC:01 as the second-maturation cask (4 years bourbon + 5 years
+  Pomerol), described by the producer as the line's first Pomerol
+  release [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - pauillac-wine-cask
+    - bordeaux-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-pmc-01
+    accessed: 2026-05-02
+    notes: |
+      Producer page for Port Charlotte PMC:01. Used as the worked
+      example of Pomerol-cask maturation in Scotch.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Pomerol_AOC
+    accessed: 2026-05-15
+    notes: |
+      Used for appellation geography and grape composition.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

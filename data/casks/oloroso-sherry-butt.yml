@@ -1,0 +1,120 @@
+# =============================================================================
+# Oloroso sherry butt
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: high — oloroso is one of the most widely-used and
+# widely-documented cask types in Scotch maturation.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: oloroso-sherry-butt
+name: Oloroso sherry butt
+also_known_as:
+  - oloroso butt
+  - sherry butt (oloroso)
+
+
+# --- Classification ---------------------------------------------------------
+category: sherry
+subcategory: oloroso (oxidatively-aged)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: [480, 520]   # The sherry butt is conventionally
+                                    # ~500 L. Sherry butts seasoned for
+                                    # the Scotch industry are sometimes
+                                    # smaller (480-500 L).
+wood_species: european_oak          # Sherry casks are typically made from
+                                    # European oak (most likely Quercus
+                                    # robur or Q. petraea — the trade
+                                    # refers to "Spanish oak" without
+                                    # consistently specifying species).
+                                    # Some modern sherry-seasoned casks
+                                    # are also made from American oak.
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: sherry
+  specifics: |
+    Oloroso sherry — a fortified wine from the Jerez-Xérès-Sherry DO
+    in southern Spain, aged oxidatively (without a flor yeast cap)
+    in a solera system [1]. The cask is "seasoned" with oloroso for
+    a period (typically 18-36 months) specifically to prepare it
+    for Scotch industry sale; modern seasoning practice is distinct
+    from the historical practice of using genuinely spent transport
+    butts.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: Spain
+  region: Andalusia
+  appellation: Jerez-Xérès-Sherry
+  producer: null                    # Multiple cooperages and bodegas
+                                    # supply. Named suppliers cited in
+                                    # Scotch disclosures include
+                                    # Tonelería del Sur, José Miguel
+                                    # Martín, and Vasyma.
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sherry butt previously used to age oloroso sherry, a fortified
+  wine from the Jerez DO in southern Spain. Vessel capacity is
+  conventionally around 500 litres, made from European oak (most
+  likely Quercus robur or Q. petraea — the trade typically refers
+  to "Spanish oak" without specifying species). The cask is seasoned
+  with oloroso for 18-36 months specifically for Scotch industry
+  sale [1]. Oloroso is aged oxidatively — without the flor yeast
+  cap that defines fino styles — producing a darker, nuttier base
+  wine. The Scotch industry distinguishes "first-fill" oloroso
+  butts (their first whisky fill) from "refill" butts (second or
+  later whisky use); first-fill contains more residual sherry and
+  imparts correspondingly more sherry character. European-oak
+  sherry casks contribute different chemical signatures to
+  maturation than American-oak ex-bourbon casks (tannin and
+  ellagitannin profiles differ between the wood sources); specific
+  kinetic claims about colour development or extraction rates vary
+  between trade and academic sources and are not stated here as
+  project voice.
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives:
+    - fino-sherry-butt              # Drier sister style — biologically
+                                    # aged under flor.
+    # Future siblings (not yet in data):
+    # - pedro-ximenez-sherry-butt   # Sweetest sherry style.
+    # - amontillado-sherry-butt     # Between fino and oloroso.
+    # - palo-cortado-sherry-butt    # Idiosyncratic oxidative style.
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Sherry
+    accessed: 2026-05-15
+    notes: |
+      Used for oloroso style description (oxidative ageing, lack of
+      flor) and Jerez DO geography.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

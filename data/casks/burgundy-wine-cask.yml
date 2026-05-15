@@ -1,0 +1,112 @@
+# =============================================================================
+# Burgundy wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: burgundy-wine-cask
+name: Burgundy wine cask
+also_known_as:
+  - Bourgogne cask
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: Burgundy (Pinot Noir or Chardonnay)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: 228          # Bourgogne pièce — the regional
+                                    # standard vessel, slightly larger
+                                    # than the Bordeaux barrique.
+wood_species: french_oak            # Burgundy production specifies
+                                    # French oak; common provenances
+                                    # include the Tronçais, Allier, and
+                                    # Vosges forests.
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine                # Burgundy reds (Pinot Noir) are the
+                                    # more common ex-cask provenance;
+                                    # Chardonnay-fermented casks also
+                                    # appear but less often.
+  specifics: |
+    Burgundy AOC wine from the Côte d'Or in eastern France. The
+    major Burgundy appellations are principally single-variety by
+    AOC rules — Pinot Noir for most reds, Chardonnay for most
+    whites — with limited exceptions: Aligoté has its own
+    appellation (Bourgogne Aligoté), Gamay appears in some regional
+    Bourgogne wines, and older varieties such as César and Sacy
+    persist in a small number of northern Burgundy appellations.
+    The region's classification system distinguishes Bourgogne
+    (regional) from Village, Premier Cru, and Grand Cru
+    designations; the specific quality tier of the prior fill is
+    rarely disclosed in Scotch industry sourcing.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: Burgundy (Bourgogne)
+  appellation: null                 # Generic Burgundy; specific
+                                    # appellations (Pommard, Volnay, etc.)
+                                    # not disclosed in the data set so far.
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  228-litre French oak pièce previously used to age Burgundy AOC
+  wine from the Côte d'Or. The major Burgundy appellations are
+  principally single-variety — Pinot Noir for reds, Chardonnay for
+  whites — with limited exceptions for Aligoté, Gamay, and a few
+  older varieties. The pièce vessel is slightly larger than the
+  Bordeaux barrique (228 L versus 225 L). Used in Octomore 8.3 as
+  one of the four named French-red-wine cask types in the 44%
+  European-oak share (Pauillac, Ventoux, Rhône, Burgundy) [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - rhone-wine-cask
+    - bordeaux-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.3 cask programme detail including the
+      Burgundy share.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Burgundy_wine
+    accessed: 2026-05-15
+    notes: |
+      Used for appellation hierarchy, grape rules, and vessel sizing.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

@@ -1,0 +1,89 @@
+# =============================================================================
+# Virgin oak
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium — description is general industry knowledge;
+# no authoritative published reference is currently cited. Candidates
+# for future enrichment include cooperage technical publications and
+# producer technical notes (e.g. Glenmorangie's Astar release, Maker's
+# Mark stave-experiment publications).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: virgin-oak
+name: Virgin oak
+also_known_as:
+  - new oak
+  - first-use oak
+
+
+# --- Classification ---------------------------------------------------------
+category: virgin
+subcategory: new oak (no prior fill)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null
+wood_species: american_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: none
+  specifics: |
+    The cask has not previously held any spirit, wine, or other liquid.
+    It is constructed and charred (or toasted) specifically for Scotch
+    maturation.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: null
+  region: null
+  appellation: null
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  A cask that has not previously held any spirit, wine, or other
+  liquid. Built and charred (or toasted) specifically for Scotch
+  maturation rather than recovered from a prior use. Most commonly
+  American oak in Scotch industry use, though European-oak virgin
+  casks also appear. The defining contrast is with ex-bourbon
+  barrels (the dominant cask in modern Scotch maturation): both
+  are typically American oak, but the ex-bourbon barrel has already
+  had a single bourbon fill drawing the most immediately-soluble
+  wood compounds into the bourbon, while the virgin oak cask
+  presents the full compound load to the Scotch spirit. Virgin oak
+  is consequently used more sparingly than ex-bourbon — typically
+  as a component in a multi-cask programme rather than as a sole
+  maturation vessel.
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives:
+    - bourbon-barrel
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

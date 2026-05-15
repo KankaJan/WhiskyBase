@@ -1,0 +1,92 @@
+# =============================================================================
+# Ventoux wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: low — appellation is real and documented; usage in
+# Scotch is limited (Octomore 8.3 is the encountered case).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ventoux-wine-cask
+name: Ventoux wine cask
+also_known_as:
+  - Côtes du Ventoux cask
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: southern Rhône red (Grenache / Syrah)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: 225
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine
+  specifics: |
+    Ventoux AOC red wine from the southern Rhône, named for Mont
+    Ventoux which dominates the appellation geographically. Grenache,
+    Syrah, Mourvèdre, and Carignan are the principal grapes;
+    blending rules require minimum percentages of Grenache and Syrah.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: Rhône Valley (southern)
+  appellation: Ventoux
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Wine cask previously used to age Ventoux AOC red wine from the
+  southern Rhône Valley. The appellation surrounds Mont Ventoux in
+  the Vaucluse; the wines are Grenache and Syrah-led blends, generally
+  lighter than Châteauneuf-du-Pape and other better-known southern
+  Rhône AOCs. Used in Octomore 8.3 as one of the four named French-
+  red-wine cask types in the 44% European-oak share [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: rhone-wine-cask
+  alternatives:
+    - rhone-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.3 cask programme detail.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Ventoux_AOC
+    accessed: 2026-05-15
+    notes: |
+      Used for appellation geography and grape rules.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: low
+last_reviewed: 2026-05-15
+contributors: []

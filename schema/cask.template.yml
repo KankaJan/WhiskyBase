@@ -1,0 +1,264 @@
+# =============================================================================
+# CASK SCHEMA TEMPLATE — v0.1
+# =============================================================================
+# A cask entry is a reusable reference for a type of cask. Cask slugs
+# are referenced from:
+#   - production_line.typical_cask_program (list)
+#   - bottling.maturation[*].cask_type   (string)
+#   - bottling.finish.cask_type          (string, when finished)
+#
+# Casks are a top-level entity type, parallel to distillery /
+# production_line / bottling / bottler. They are not modelled as concept
+# pages because they carry structured fields (category, volume, origin,
+# wood species) that benefit from validation, and because referencing
+# them as bare slugs (cask_type: bourbon-barrel) is more direct than
+# routing through concept/cask/<slug>.
+#
+# Cask slugs are bare (no kind prefix), matching the convention for
+# other top-level entity types. Kind-prefixed slugs (`<kind>/<slug>`)
+# are reserved for /data/concepts/ entries.
+#
+# The most load-bearing design choice in this schema is `disclosure_status`:
+# producer-secret information is recorded as information, distinct from
+# unknown-but-discoverable. The Bruichladdich Black Art series is the
+# canonical example. See `undisclosed-cask.yml` for the worked case.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: example-cask                     # REQUIRED. Lowercase slug, hyphenated.
+                                     # Conventions:
+                                     #   <prior-contents>-<vessel>
+                                     #     bourbon-barrel
+                                     #     oloroso-sherry-butt
+                                     #     pomerol-wine-cask
+                                     #   <category>-<vessel> (generic types)
+                                     #     wine-cask
+                                     #     sweet-wine-cask
+                                     #   <feature>-<vessel>
+                                     #     virgin-oak
+                                     #   undisclosed-cask (special case;
+                                     #     see disclosure_status below)
+
+name: null                           # REQUIRED. Display name.
+
+also_known_as: []                    # Alternative names. e.g. "ASB" for
+                                     # American Standard Barrel; "barrique"
+                                     # for the Bordeaux 225 L cask.
+
+
+# --- Classification ---------------------------------------------------------
+category: null                       # REQUIRED. One of:
+                                     #   bourbon       — ex-American whiskey
+                                     #   sherry        — ex-Spanish sherry
+                                     #                   (Jerez, Montilla,
+                                     #                   Sanlúcar)
+                                     #   wine          — ex-still wine (red,
+                                     #                   white, sweet, sparkling)
+                                     #   fortified     — ex-fortified wine
+                                     #                   other than sherry
+                                     #                   (Madeira, Port,
+                                     #                   Marsala, Vermouth)
+                                     #   virgin        — never previously
+                                     #                   used; new oak
+                                     #   beer          — ex-beer/ale/stout
+                                     #   rum           — ex-rum
+                                     #   other         — anything else
+                                     #                   (mezcal, tequila,
+                                     #                   cachaça, etc.)
+                                     #   undisclosed   — producer-secret
+                                     #                   (see Disclosure block)
+
+subcategory: null                    # OPTIONAL. Free text for finer-grained
+                                     # classification within category, e.g.
+                                     # "oloroso" within sherry,
+                                     # "Bordeaux Right Bank red" within wine.
+                                     # The slug encodes this in most cases;
+                                     # this field exists for display and
+                                     # for the search index.
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null          # Approximate vessel volume in litres.
+                                     # May be a single number or [min, max]
+                                     # for ranges. Cask volumes vary by
+                                     # cooperage and use; these are typical
+                                     # figures, not fixed specs. Examples:
+                                     #   bourbon-barrel       ≈ 190-200
+                                     #   sherry-butt          ≈ 480-520
+                                     #   barrique (Bordeaux)  ≈ 225
+                                     #   pièce (Burgundy)     ≈ 228
+                                     #   hogshead (HHD)       ≈ 250
+                                     #   puncheon             ≈ 500
+                                     #   port pipe            ≈ 550-650
+
+wood_species: null                   # american_oak | european_oak |
+                                     # french_oak | spanish_oak | mixed |
+                                     # mongolian_oak | japanese_oak |
+                                     # unknown | undisclosed
+                                     #
+                                     # The categorisation is by source rather
+                                     # than by Latin binomial because the
+                                     # industry sources oak by country rather
+                                     # than by species (American white oak
+                                     # = Quercus alba; French/Spanish/European
+                                     # = Quercus robur and Quercus petraea).
+                                     # Use `mixed` where the cask is known
+                                     # to be a blend; `unknown` where the
+                                     # source is unverified.
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: null                     # bourbon | rye_whiskey | sherry |
+                                     # red_wine | white_wine | sweet_wine |
+                                     # rose_wine | sparkling_wine | port |
+                                     # madeira | marsala | vermouth | rum |
+                                     # tequila | mezcal | beer | none |
+                                     # undisclosed | other
+                                     #
+                                     # "none" is for virgin oak.
+                                     # "undisclosed" is reserved for the
+                                     # deliberate-secrecy case.
+
+  specifics: null                    # Free text. e.g. "Oloroso sherry from
+                                     # a solera maintained in Jerez de la
+                                     # Frontera"; "Bourbon from Heaven Hill,
+                                     # Buffalo Trace, and other named
+                                     # Kentucky producers"; "Pomerol red
+                                     # wine from Bordeaux's Right Bank,
+                                     # Merlot-dominant blend". null for
+                                     # generic types and for undisclosed.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: null                      # Country where the cask was filled
+                                     # with its prior contents.
+  region: null                       # Region within country, e.g.
+                                     # "Bordeaux", "Jerez", "Kentucky".
+  appellation: null                  # For wine casks, the specific
+                                     # appellation if applicable
+                                     # (Pauillac, Pomerol, Sauternes,
+                                     # Côtes du Rhône, Vacqueyras, etc.).
+                                     # For sherry, the DO (Jerez-Xérès-
+                                     # Sherry; Manzanilla-Sanlúcar de
+                                     # Barrameda; Montilla-Moriles).
+  producer: null                     # The named producer of the prior
+                                     # contents, where disclosed
+                                     # (e.g. "Heaven Hill", "Buffalo Trace",
+                                     # "José Miguel Martín"). null where
+                                     # unknown or undisclosed.
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: unknown           # REQUIRED. One of:
+                                     #
+                                     #   disclosed
+                                     #     Full provenance publicly stated
+                                     #     by the producer or independently
+                                     #     verifiable. For category-level
+                                     #     entries (bourbon-barrel) where
+                                     #     the slug refers to a type rather
+                                     #     than a specific cask provenance,
+                                     #     use `disclosed` if the type is
+                                     #     publicly characterised — which
+                                     #     it always is for the broad
+                                     #     categories.
+                                     #
+                                     #   partially_disclosed
+                                     #     Some details (category, region)
+                                     #     publicly stated but specifics
+                                     #     (producer, vintage, exact
+                                     #     appellation) not disclosed. Common
+                                     #     for refill ex-wine casks where
+                                     #     the original wine producer is not
+                                     #     named.
+                                     #
+                                     #   undisclosed
+                                     #     The producer has actively chosen
+                                     #     to withhold cask information as
+                                     #     a feature of the release. The
+                                     #     Bruichladdich Black Art series
+                                     #     is the canonical case. NOT to be
+                                     #     used for "we don't have the data
+                                     #     yet" — use `unknown` for that.
+                                     #
+                                     #   unknown
+                                     #     No public data on the cask details
+                                     #     has been encountered in this
+                                     #     project's source set. The data
+                                     #     may be discoverable with more
+                                     #     research.
+                                     #
+                                     # The distinction between `undisclosed`
+                                     # and `unknown` is the schema's most
+                                     # load-bearing call: deliberate non-
+                                     # disclosure is information, missing
+                                     # data is absence.
+
+disclosure_notes: null               # OPTIONAL. Free text. Where the
+                                     # disclosure_status is `undisclosed`,
+                                     # the notes record what IS publicly
+                                     # known about the producer's secrecy
+                                     # policy (e.g. "Bruichladdich states
+                                     # the recipe is held only by the head
+                                     # distiller"). Where status is
+                                     # `partially_disclosed`, the notes
+                                     # record which fields are known and
+                                     # which are withheld.
+
+
+# --- Description ------------------------------------------------------------
+description: null                    # REQUIRED. Strict reference register.
+                                     # 2-5 sentences. What this cask type
+                                     # is, what the typical vessel and
+                                     # wood are, what its production-chain
+                                     # role is (its prior life and how it
+                                     # arrives at Scotch maturation). Avoid
+                                     # tasting-note prose; favour structural
+                                     # and supply-chain facts.
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null                       # OPTIONAL. The broader-category slug
+                                     # this cask is a specialisation of.
+                                     # e.g. for pomerol-wine-cask, parent
+                                     # would be wine-cask. For wine-cask,
+                                     # parent is null. Casks form a shallow
+                                     # tree, not a deep hierarchy.
+
+  alternatives: []                   # Sibling cask slugs that solve a
+                                     # similar maturation role differently.
+                                     # e.g. for oloroso-sherry-butt:
+                                     #   - pedro-ximenez-sherry-butt
+                                     #   - amontillado-sherry-butt
+                                     #   - fino-sherry-butt
+                                     # Use sparingly — the parent/child
+                                     # relationship covers most of the
+                                     # cross-reference work.
+
+
+# --- Used by ----------------------------------------------------------------
+# The build pipeline computes this from bottling.maturation[*].cask_type
+# and production_line.typical_cask_program references; it does not need to
+# be authored manually. The field is reserved here for future use.
+used_by: null                        # Populated at build time.
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # Same numbered-list pattern as
+                                     # elsewhere. Most cask entries cite
+                                     # one or two general-reference sources
+                                     # (industry texts, cooperage
+                                     # publications) plus any producer-
+                                     # specific source for named-provenance
+                                     # cases.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: stub                     # high | medium | low | stub
+last_reviewed: null
+contributors: []

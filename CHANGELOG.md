@@ -9,6 +9,145 @@ covers them all.
 
 ---
 
+## [0.3.0] — 2026-05-15
+
+Cask schema and population. The schema model now covers every entity
+type referenced in existing data; the cross-reference resolver reports
+zero dangling cask references (was 16 distinct cask slugs in v0.2.1).
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.1
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.1 (stub, no entries populated)
+- `cask.template.yml` v0.1 (new — 16 entries populated)
+
+### Schema additions
+
+**`cask.template.yml` v0.1 (new)**
+
+A new top-level entity type, parallel to distillery / production_line /
+bottling / bottler. Cask slugs are referenced from
+`bottling.maturation[*].cask_type`, `bottling.finish.cask_type`, and
+`production_line.typical_cask_program`.
+
+The schema's load-bearing design decision is the `disclosure_status`
+enum (`disclosed | partially_disclosed | undisclosed | unknown`):
+`undisclosed` is a positive declaration about producer secrecy (the
+Bruichladdich Black Art series is the canonical case), distinct from
+`unknown` which records missing-data-may-be-discoverable. The two are
+queryable as distinct categories. The first-class `undisclosed-cask`
+entry exists to make this explicit at the slug level — producer-secret
+information is information, not absence.
+
+Cask slugs are bare (not kind-prefixed), matching the convention for
+other top-level entity types. The previously-aspirational
+`cask/<type>` namespace mentioned in handover §6 is rejected in favour
+of the convention already used throughout the data
+(`cask_type: bourbon-barrel`).
+
+Schema fields: identity (id, name, aliases); classification (category,
+subcategory); vessel characteristics (typical_volume_litres,
+wood_species); prior_contents (category + free-text specifics); origin
+(country, region, appellation, producer); disclosure_status with
+optional disclosure_notes; description (strict reference register);
+related (parent slug, alternatives list); sources.
+
+### Data populated
+
+16 cask entries created under `/data/casks/`, covering all 16
+previously-dangling cask slugs reported by the cross-reference
+resolver:
+
+- **High confidence (5)**: `bourbon-barrel`, `oloroso-sherry-butt`,
+  `fino-sherry-butt`, `virgin-oak`, `undisclosed-cask`.
+- **Medium confidence (6)**: `wine-cask` (parent); named wine
+  appellations `pomerol-wine-cask`, `pauillac-wine-cask`,
+  `sauternes-wine-cask`, `amarone-wine-cask`, `burgundy-wine-cask`.
+- **Low confidence (5)**: `bordeaux-wine-cask` (generic Bordeaux),
+  `rhone-wine-cask` (generic Rhône), `ventoux-wine-cask`,
+  `mourvedre-wine-cask` (variety rather than appellation),
+  `sweet-wine-cask` (generic).
+
+### Documentation updates
+
+- **`docs/handover.md` §1 intro**: cask added as the fifth top-level
+  entity type alongside bottler.
+- **`docs/handover.md` §6 slug conventions**: cask slug form
+  specified as bare (matching other top-level entity types); concept
+  reference forms clarified (structured `<kind>/<slug>` vs URL-form
+  `concept/<kind>/<slug>`); bottler slug form added.
+- **`docs/handover.md` §10**: cask schema entry added to schema-list,
+  cask counts added to populated-data summary, next-priorities list
+  updated (cask schema item removed as resolved).
+- **`README.md`**: entities table extended with cask row; entity-
+  schemas row updated; casks-populated row added to state table.
+- **`TODO.md`**: cask schema item moved from "Not yet drafted" to
+  "Drafted but not finalised" with follow-up items.
+
+### Tooling
+
+- **`scripts/check_references.py`** extended to recognise the new
+  `casks/` directory under `/data/` and to handle the context-
+  sensitive `parent:` field correctly: cask `related.parent`
+  resolves as a cask slug, while distillery `ownership.parent` is a
+  company name string and is no longer false-flagged as a dangling
+  cask reference.
+
+### Post-population correctness pass
+
+A critical-analysis pass over the 16 cask entries identified and
+fixed several issues introduced in initial drafting:
+
+- **3 hallucinated source URLs removed.** `bourbon-barrel.yml`,
+  `oloroso-sherry-butt.yml`, and `virgin-oak.yml` cited
+  `scotchwhisky.com/whiskypedia/<NUM>/<slug>/` URLs whose specific
+  numeric IDs were not verified — only the URL pattern was
+  authentic (e.g. `/1827/bruichladdich/` exists and is correctly
+  cited elsewhere). Removed. The Wikipedia citations on the same
+  entries are retained as the sole external reference; virgin-oak
+  drops to `confidence: medium` with sources empty pending a
+  reliable cooperage publication.
+- **11 source-type misclassifications corrected.** Wikipedia URLs
+  were tagged `trade_publication` in 11 cask entries; corrected to
+  `type: wikipedia` to match the project convention (cf. existing
+  `harris.yml` source 3 as the worked example).
+- **Wood-species binomials hedged** where attribution is contested:
+  `amarone-wine-cask.yml` Slavonian oak changed from
+  `(Quercus petraea)` to `(most likely Quercus robur or
+  Q. petraea)`; `oloroso-sherry-butt.yml` and `fino-sherry-butt.yml`
+  similarly hedge "Spanish oak" species attribution.
+- **Speculative claims reframed.** The Spanish-oak-porosity claim
+  in `oloroso-sherry-butt.yml` and the drier-and-more-saline claim
+  in `fino-sherry-butt.yml` were stated in project voice; both
+  reattributed to trade convention or removed.
+- **Factual framing**: `bourbon-barrel.yml` description and origin
+  block now distinguish bourbon (Heaven Hill, Buffalo Trace, Four
+  Roses, Jim Beam — predominantly Kentucky) from Tennessee whiskey
+  (Jack Daniel's), noting that ex-Jack-Daniel's barrels enter the
+  Scotch supply chain alongside bourbon despite the legal
+  separation of the two categories.
+- **Burgundy single-variety claim hedged** in `burgundy-wine-cask.yml`
+  to acknowledge the Aligoté, Gamay, and minor-variety exceptions.
+- **Sauternes geography corrected** in `sauternes-wine-cask.yml`:
+  Sauternes is a separate AOC from Graves under the modern Bordeaux
+  AOC structure, not "the Graves region of Bordeaux" as initially
+  written.
+- **Invented source type removed**: `undisclosed-cask.yml` had a
+  source with `type: project_doc` pointing at `docs/handover.md` —
+  not a value used elsewhere in the project. Removed; the design
+  rationale lives in the description.
+- **`wine-cask.yml` prior_contents.category** changed from
+  `red_wine` to `null` to reflect actual usage: the slug is used as
+  the catch-all where a vatting combines several different ex-wine
+  cask sources (e.g. Bruichladdich Classic Laddie includes Madeira,
+  Merlot, Syrah, Muscat, and sweet wine cases within a single
+  bottling).
+
+---
+
 ## [0.2.1] — 2026-05-13
 
 Audit-driven correctness pass and the first two reusable patterns

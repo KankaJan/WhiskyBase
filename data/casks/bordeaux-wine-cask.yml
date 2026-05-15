@@ -1,0 +1,92 @@
+# =============================================================================
+# Bordeaux wine cask (generic)
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: low — entry stub for the case where the producer
+# discloses "Bordeaux" without naming a specific appellation. Prefer the
+# appellation-specific slug (pomerol-wine-cask, pauillac-wine-cask, etc.)
+# where the appellation IS disclosed.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bordeaux-wine-cask
+name: Bordeaux wine cask (unspecified appellation)
+also_known_as:
+  - red Bordeaux cask
+  - claret cask                     # British trade term for red Bordeaux.
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: Bordeaux red (appellation unspecified)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: 225          # Bordeaux barrique standard.
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine
+  specifics: |
+    Bordeaux AOC red wine, appellation not specified. Bordeaux red
+    wines are blends typically dominated by Cabernet Sauvignon (Left
+    Bank) or Merlot (Right Bank), with Cabernet Franc, Petit Verdot,
+    and Malbec as secondary components.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: Bordeaux
+  appellation: null                 # By design — this slug is for the
+                                    # partial-disclosure case.
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: partially_disclosed
+disclosure_notes: |
+  Region (Bordeaux) disclosed; specific appellation not.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Generic Bordeaux red wine cask reference, used when the producer's
+  disclosure specifies Bordeaux but not a specific appellation. Where
+  a specific appellation IS disclosed, prefer the appellation-named
+  slug (pomerol-wine-cask, pauillac-wine-cask). Used in Port Charlotte
+  Islay Barley 2014 as part of the 8% second-fill Bordeaux wine cask
+  share [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - pomerol-wine-cask
+    - pauillac-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bruichladdich.com/products/port-charlotte-islay-barley-2014
+    accessed: 2026-05-02
+    notes: |
+      Producer page disclosing Bordeaux wine cask share without
+      naming a specific appellation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: low
+last_reviewed: 2026-05-15
+contributors: []

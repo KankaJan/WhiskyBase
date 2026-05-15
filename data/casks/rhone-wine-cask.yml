@@ -1,0 +1,97 @@
+# =============================================================================
+# Rhône wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: rhone-wine-cask
+name: Rhône wine cask
+also_known_as:
+  - Côtes du Rhône cask
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: Rhône Valley red (Grenache / Syrah-dominant)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: 225
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine
+  specifics: |
+    Rhône Valley AOC red wine. The Rhône divides into northern Rhône
+    (Syrah-dominated, single-variety in most appellations) and southern
+    Rhône (Grenache-dominated blends with Syrah, Mourvèdre, Cinsault,
+    and others). The generic Rhône slug covers either; appellation-
+    specific slugs distinguish where disclosed (e.g.
+    ventoux-wine-cask for the Mont Ventoux foothills).
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: Rhône Valley
+  appellation: null
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Rhône Valley French oak wine cask. Rhône wines are most commonly
+  Grenache or Syrah-led red blends (southern Rhône) or single-variety
+  Syrah (northern Rhône). Used in Octomore 8.3 as one of the four
+  named French-red-wine cask types in the 44% European-oak share
+  (Pauillac, Ventoux, Rhône, Burgundy) [1]. Ventoux is technically
+  within the southern Rhône area and is recorded separately as
+  ventoux-wine-cask.
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - ventoux-wine-cask
+    - burgundy-wine-cask
+    - mourvedre-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.3 cask programme detail.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Rh%C3%B4ne_wine
+    accessed: 2026-05-15
+    notes: |
+      Used for regional split (northern/southern Rhône) and grape
+      composition.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

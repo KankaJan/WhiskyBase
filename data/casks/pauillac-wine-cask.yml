@@ -1,0 +1,92 @@
+# =============================================================================
+# Pauillac wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: pauillac-wine-cask
+name: Pauillac wine cask
+also_known_as: []
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: Bordeaux Left Bank red (Cabernet Sauvignon-dominant)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: 225
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine
+  specifics: |
+    Pauillac AOC red wine from Bordeaux's Médoc (Left Bank). Pauillac
+    is Cabernet Sauvignon-dominant, typically blended with Merlot and
+    Cabernet Franc, and is home to three of the five Bordeaux 1855
+    First Growths (Lafite, Latour, Mouton).
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: Bordeaux (Médoc / Left Bank)
+  appellation: Pauillac
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  225-litre French oak barrique previously used to age Pauillac AOC
+  red wine from the Médoc, the Left Bank of the Gironde estuary.
+  Pauillac wine is Cabernet Sauvignon-dominant and known for its
+  structure and tannin. Used in Octomore 8.3 as one of the four named
+  French-red-wine cask types contributing to the 44% European-oak
+  share of the cask programme (Pauillac, Ventoux, Rhône, Burgundy) [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - pomerol-wine-cask
+    - bordeaux-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.3 cask programme detail including the
+      four French-red-wine appellations.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Pauillac_AOC
+    accessed: 2026-05-15
+    notes: |
+      Used for appellation geography and grape composition.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

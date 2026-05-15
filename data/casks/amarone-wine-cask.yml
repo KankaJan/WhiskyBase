@@ -1,0 +1,101 @@
+# =============================================================================
+# Amarone wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: amarone-wine-cask
+name: Amarone wine cask
+also_known_as: []
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: Italian dried-grape red (Valpolicella appassimento)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null         # Italian wine casks vary widely:
+                                    # botti can be 500-2000+ L; barriques
+                                    # of 225 L also used.
+wood_species: european_oak          # Slavonian oak (most likely
+                                    # Quercus robur or Q. petraea —
+                                    # trade references typically do not
+                                    # specify species) common for
+                                    # traditional botti; French oak for
+                                    # newer barrique production.
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine
+  specifics: |
+    Amarone della Valpolicella DOCG red wine from the Veneto region of
+    northern Italy. Made by drying Corvina, Rondinella, and Molinara
+    grapes for ~120 days (the appassimento process) to concentrate
+    sugars before fermentation, producing a dry, powerful wine of
+    ~15-16% abv with substantial residual extract.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: Italy
+  region: Veneto
+  appellation: Amarone della Valpolicella
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Wine cask previously used to age Amarone della Valpolicella DOCG,
+  the dry powerful red wine of the Veneto produced by the appassimento
+  method (partial drying of Corvina, Rondinella, and Molinara grapes
+  before fermentation). The wine's high alcohol and dense extract
+  carry into Scotch maturation as substantial dark-fruit and dried-
+  fruit character. Used in Octomore 8.2 as the 2-year finishing cask
+  following 6 years of primary maturation in French/Austrian wine
+  casks [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives: []
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.spiritradar.com/whisky-db/octomore-edition-08.2-masterclass-167-ppm-ochdamh-mor-167-ppm-8yo-58.4-percent-700ml/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.2 cask programme detail including the
+      Amarone finish.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Amarone
+    accessed: 2026-05-15
+    notes: |
+      Used for appassimento method, grape composition, and DOCG
+      designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

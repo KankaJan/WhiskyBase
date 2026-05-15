@@ -1,0 +1,101 @@
+# =============================================================================
+# Undisclosed cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: high (as a category — the design choice is well-defined;
+# what is being declined is also well-defined).
+#
+# This is the schema's first-class entry for the deliberate-secrecy case.
+# It is not a placeholder for "we haven't found a source yet." For that,
+# use `disclosure_status: unknown` on the relevant cask field rather than
+# referencing this entry.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: undisclosed-cask
+name: Undisclosed cask
+also_known_as:
+  - producer-secret cask
+  - withheld-provenance cask
+
+
+# --- Classification ---------------------------------------------------------
+category: undisclosed
+subcategory: null
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null
+wood_species: undisclosed
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: undisclosed
+  specifics: null
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: null
+  region: null
+  appellation: null
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: undisclosed
+disclosure_notes: |
+  This entry represents the producer's deliberate withholding of cask
+  details as a feature of the release, distinct from missing data.
+  Releases referencing this slug carry their own notes on what IS
+  publicly stated (e.g. that maturation took place on Islay, or that
+  the spirit is from pre-2001 distillation) versus what is withheld
+  (cask types, fill numbers, proportions, finishing). The canonical
+  example is the Bruichladdich Black Art series, where the recipe is
+  held only by the head distiller [1].
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Reserved slug for cask references where the producer has deliberately
+  withheld cask information as a defining feature of the release.
+  Distinct from `disclosure_status: unknown`, which indicates absence
+  of data that may be discoverable with more research. The two cases
+  are recorded separately so that "X bottlings have producer-secret
+  cask provenance" is queryable as a distinct category from "X
+  bottlings lack data we should track down" [1]. The category is a
+  positive declaration about producer practice. Each release
+  referencing this slug carries its own per-bottling notes on what is
+  publicly known versus actively withheld.
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives: []
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://us.bruichladdich.com/products/bruichladdich-black-art-edition-11
+    accessed: 2026-05-02
+    notes: |
+      Bruichladdich Black Art 11 product page. Used as the canonical
+      worked example of deliberate cask-information withholding: "the
+      recipe only known to him [Adam Hannett]". The Black Art series
+      is the design-driving case for this schema entry.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

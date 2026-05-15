@@ -1,0 +1,152 @@
+# =============================================================================
+# Harris's Published PPM Methodology
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: methodology
+# Function: attestation referenced from production_line.peating
+# measurements where the source is Harris-derived. Distinct from
+# bruichladdich-published-ppm in one important respect: Harris does not
+# perform or commission its own PPM measurement; the published figure
+# is the maltster's (Bairds of Inverness) specification, inherited
+# without independent verification.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: harris-published-ppm
+title: Harris's published PPM methodology
+kind: methodology
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The Isle of Harris Distillery reports phenol PPM specifications for
+  The Hearach as the malt specification supplied by their maltster,
+  Bairds of Inverness. Bairds uses high performance liquid
+  chromatography (HPLC) summing the standard set of seven phenolic
+  compounds. Harris does not independently re-measure delivered
+  malt; the published PPM is the maltster's spec figure.
+
+body: |
+  The Isle of Harris Distillery, founded 2015, sources malted
+  barley from Bairds of Inverness for The Hearach core single malt
+  line. The malt is specified at 12-14 ppm phenols [1]. The
+  methodology behind that figure is inherited from Bairds rather
+  than performed by Harris itself; Bairds uses HPLC as its standard
+  for peated malt PPM disclosure, consistent with broader Scotch
+  industry practice for modern peated malt specs [2].
+
+  ## What this methodology measures
+
+  The Bairds spec PPM is the total phenol content of the kilned
+  malt before it is delivered to Harris and before it is mashed,
+  fermented, or distilled. As with all spec-stage PPM disclosures,
+  it is a specification of the malt input, not of the bottled
+  liquid. The phenol concentration in the new make spirit is
+  substantially lower than the malt-stage figure, and the figure in
+  bottled Hearach is lower again.
+
+  ## What this methodology does not claim
+
+  The published PPM figure is silent on:
+
+  - the concentration of phenols in the bottled Hearach
+  - the perceived smokiness of the finished whisky
+  - the specific phenolic profile (the standard seven-compound sum
+    discards information about which compounds are present in what
+    proportion)
+  - the origin or type of peat used by Bairds for the Harris malt
+    (Harris does not separately disclose Bairds' peat sourcing)
+
+  An independent measurement by Two Whisky Bros reported
+  approximately 12.1 ppm in delivered malt for The Hearach Batch 5,
+  consistent with the lower end of the disclosed spec range [3].
+  The reviewer did not state the measurement method explicitly; the
+  figure's alignment with the spec range and the maltster's standard
+  practice supports inferring HPLC + standard 7 methodology.
+
+  ## How this differs from related methodologies
+
+  This methodology is distinct from
+  [Bruichladdich's published PPM](concept/methodology/bruichladdich-published-ppm)
+  in one important respect: Bruichladdich appears to perform or
+  commission PPM measurement directly, and has explicitly attributed
+  specific figures (the 309.1 ppm Octomore 8.3 release) to HPLC
+  measurement in producer communications. Harris by contrast
+  inherits the maltster's standard without separate attribution;
+  the published Harris PPM is the supplier's spec sheet figure
+  reported through the distillery's product pages. The
+  [Scotch Whisky magazine Whiskypedia methodology](concept/methodology/scotch-whisky-published-ppm)
+  is a third related case — the same HPLC + standard 7 industry
+  default, but applied as derivative curation of producer specs by
+  a trade publication rather than as direct producer attribution.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/peating-measurement-methods
+  - methodology/bruichladdich-published-ppm
+  - methodology/scotch-whisky-published-ppm
+
+
+# --- Methodology block ------------------------------------------------------
+methodology:
+  measures:
+    - peating_ppm
+  method: hplc
+  compounds: standard_7
+  used_by:
+    - harris
+  adopted: null                        # Harris began production in
+                                       # 2015; the methodology has been
+                                       # used since the first commercial
+                                       # release of The Hearach in 2023.
+  limitations: |
+    Spec PPM only — measured at the malt stage by the maltster
+    (Bairds), not by Harris itself. Harris's published PPM is the
+    supplier's specification; the distillery does not perform or
+    commission independent verification of every malt delivery. The
+    seven-compound sum discards individual compound information; for
+    finer-grained analysis, GC-MS on the bottled liquid would be
+    required and is not part of Harris's published practice. The
+    inherited-from-supplier nature of this methodology means that
+    changes in Bairds' practice would propagate to Harris's
+    disclosed figures without separate notification.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://harrisdistillery.com/pages/the-hearach-core
+    accessed: 2026-05-02
+    notes: |
+      Producer page for The Hearach core line. Source for the
+      12-14 ppm malt specification and confirmation of Bairds of
+      Inverness as the maltster.
+
+  - id: 2
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/4892/isle-of-harris/
+    accessed: 2026-05-02
+    notes: |
+      Scotch Whisky Whiskypedia entry for Isle of Harris. Used for
+      malt-supplier confirmation and contextualisation against
+      industry-standard methodology.
+
+  - id: 3
+    type: independent_review
+    url: https://twowhiskybros.co.uk/blogs/blog/the-hearach-first-release-batch-1-the-hearach-first-release-batch-5
+    accessed: 2026-05-02
+    notes: |
+      Independent measurement reporting ~12.1 ppm in delivered
+      malt for Batch 5. Method not explicitly stated by reviewer;
+      figure's alignment with the Bairds spec range supports HPLC
+      inference.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

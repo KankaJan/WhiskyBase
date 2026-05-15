@@ -37,7 +37,8 @@ are five entity types:
 | Production line | `/data/production_lines/` | A recipe/spec produced at a distillery (one distillery may run several) |
 | Bottling | `/data/bottlings/` | A specific commercial release |
 | Concept | `/data/concepts/<kind>/` | Reference pages: methodology, educational, equipment, practice, glossary |
-| Bottler | `/data/bottlers/` | Commercial bottling entity, for independent bottlers (planned) |
+| Bottler | `/data/bottlers/` | Commercial bottling entity, for independent bottlers (schema drafted) |
+| Cask | `/data/casks/` | Reusable reference for cask types cited from bottlings and production lines |
 
 Cross-references between entities use slug strings; the build pipeline
 (not yet implemented) resolves these to links.
@@ -78,11 +79,12 @@ is no separate authentication, no proposal queue, no custom UI — PRs
 
 | Layer | Status |
 |---|---|
-| Entity schemas | Distillery v0.1, production_line v0.2.1, bottling v0.2, concept v0.1, bottler v0.1 (stub) |
+| Entity schemas | Distillery v0.1, production_line v0.2.1, bottling v0.2, concept v0.1, bottler v0.1 (stub), cask v0.1 |
 | Distilleries populated | 2 (Harris, Bruichladdich) |
 | Production lines | 4 |
 | Bottlings | 10 |
 | Concept pages | 3 (1 methodology, 1 educational, 1 equipment) |
+| Casks populated | 16 (5 high confidence, 6 medium, 5 low) |
 | Build pipeline | not yet implemented |
 
 See `TODO.md` for the active queue and `docs/handover.md` for the

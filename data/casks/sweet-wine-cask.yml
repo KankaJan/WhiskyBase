@@ -1,0 +1,110 @@
+# =============================================================================
+# Sweet wine cask (generic / Austrian context)
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: low — the slug is used for generic sweet wine
+# disclosure. The canonical instance in this data set is Octomore 8.2's
+# Austrian sweet wine cask share, which the producer described as
+# "full-bodied and charming" without disclosing specific appellation.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: sweet-wine-cask
+name: Sweet wine cask (unspecified)
+also_known_as:
+  - dessert wine cask
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: sweet wine (residual-sugar style, appellation unspecified)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null         # Variable; sweet wine traditions
+                                    # cover everything from 225 L
+                                    # barriques (Sauternes, Tokaji
+                                    # gönci) to 500 L+ botti (Italian
+                                    # passito).
+wood_species: european_oak          # Default for non-French sweet wines;
+                                    # may be French oak for Sauternes
+                                    # (covered by sauternes-wine-cask
+                                    # separately).
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: sweet_wine
+  specifics: |
+    Sweet wine of unspecified origin. The category covers
+    botrytised wines (Sauternes, Tokaji, Auslese), late-harvest
+    wines, ice wines (Eiswein), straw wines (vin de paille,
+    Strohwein), and dried-grape sweet wines (passito). Sweetness
+    is from residual sugar (interrupted fermentation) rather than
+    fortification — fortified sweet wines have their own categories
+    (Port, Madeira, sherry).
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: null                     # Octomore 8.2 case used Austrian
+                                    # sweet wine casks per producer
+                                    # disclosure, but the slug is the
+                                    # generic; named-appellation cases
+                                    # should use a more specific slug
+                                    # (e.g. sauternes-wine-cask).
+  region: null
+  appellation: null
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: partially_disclosed
+disclosure_notes: |
+  Wine style (sweet wine) disclosed; specific appellation, country,
+  and producer not. The Octomore 8.2 instance specifies "Austrian
+  sweet wine" without naming the appellation; the slug should remain
+  generic until a more specific producer practice emerges.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Generic sweet wine cask reference, used when the producer's
+  disclosure specifies sweet wine but not the appellation. The
+  category covers botrytised wines, late-harvest wines, ice wines,
+  straw wines, and dried-grape sweet wines (passito) — wines with
+  substantial residual sugar from interrupted fermentation rather
+  than from fortification. Used in Octomore 8.2 as one of three
+  primary 6-year maturation cask types (Mourvèdre, Austrian sweet
+  wine, Sauternes); the Austrian sweet wine component is the
+  instance for which this slug is used [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - sauternes-wine-cask           # Named-appellation sibling.
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.spiritradar.com/whisky-db/octomore-edition-08.2-masterclass-167-ppm-ochdamh-mor-167-ppm-8yo-58.4-percent-700ml/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.2 cask programme detail. Cites Austrian
+      sweet wine cask share with no specific appellation disclosed.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: low
+last_reviewed: 2026-05-15
+contributors: []

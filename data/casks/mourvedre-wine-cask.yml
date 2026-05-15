@@ -1,0 +1,104 @@
+# =============================================================================
+# Mourvèdre wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: low — the slug is unusual in that "Mourvèdre" is a
+# grape variety rather than an appellation. The cask is wine cask
+# previously holding a Mourvèdre-dominated wine, with the specific
+# appellation typically not disclosed.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: mourvedre-wine-cask
+name: Mourvèdre wine cask
+also_known_as:
+  - Monastrell cask
+  - Mataró cask
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: Mourvèdre-dominated red (variety, not appellation)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: red_wine
+  specifics: |
+    Wine produced predominantly from the Mourvèdre grape (also known
+    as Monastrell in Spain, Mataró in Catalonia and Australia). The
+    grape is the dominant variety in Bandol AOC (Provence), a
+    component in southern Rhône and Languedoc blends, and the leading
+    variety in Spanish appellations such as Jumilla and Yecla.
+    Producers don't typically disclose the specific appellation for
+    cask sourcing.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: null
+  appellation: null
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: partially_disclosed
+disclosure_notes: |
+  Grape variety disclosed; specific appellation and producer not.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Wine cask previously used to age wine made predominantly from the
+  Mourvèdre grape (also known as Monastrell or Mataró). Mourvèdre is
+  the principal grape of Bandol AOC in Provence and a major component
+  in southern Rhône blends; the variety produces dark, structured,
+  spice-forward wines. The unusual slug — naming a variety rather than
+  an appellation — reflects how the cask is most often disclosed
+  ("Mourvèdre wine cask") without further regional specification. Used
+  in Octomore 8.2 as one of three primary 6-year maturation cask
+  types [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - rhone-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.spiritradar.com/whisky-db/octomore-edition-08.2-masterclass-167-ppm-ochdamh-mor-167-ppm-8yo-58.4-percent-700ml/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.2 cask programme detail including the
+      Mourvèdre share.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Mourv%C3%A8dre
+    accessed: 2026-05-15
+    notes: |
+      Used for grape variety profile, synonyms, and primary
+      appellations.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: low
+last_reviewed: 2026-05-15
+contributors: []

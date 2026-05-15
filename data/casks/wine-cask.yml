@@ -1,0 +1,89 @@
+# =============================================================================
+# Wine cask (generic / partially disclosed)
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: wine-cask
+name: Wine cask (unspecified)
+also_known_as:
+  - ex-wine cask
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: unspecified (parent category)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: null
+  specifics: null
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: null
+  region: null
+  appellation: null
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: partially_disclosed
+disclosure_notes: |
+  The producer has stated that the cask previously held wine but
+  has not disclosed the appellation, vintage, or producer. Use
+  this slug when the disclosure stops at the wine category; use an
+  appellation-specific slug (pomerol-wine-cask, pauillac-wine-cask,
+  sauternes-wine-cask, etc.) where the appellation IS disclosed.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Generic ex-wine cask reference. Used when the producer's
+  disclosure specifies wine but not the type, and also as a
+  catch-all where a single SKU's vatting draws from several
+  ex-wine cask sources of differing kinds (the Bruichladdich
+  Classic Laddie is an example: this slug there covers a batch-
+  varying mix that has at times included Bordeaux, Madeira,
+  Merlot, Syrah, Muscat, and sweet wine casks). The parent slug
+  for the more specific appellation-named wine cask entries
+  (pomerol-wine-cask, pauillac-wine-cask, sauternes-wine-cask,
+  etc.). Where appellation IS disclosed, prefer the specific slug.
+  Records partial disclosure as its own category, distinct from
+  full disclosure (which gets its own specific slug) and from
+  undisclosed-cask (the deliberate-secrecy case).
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives:
+    - bordeaux-wine-cask
+    - burgundy-wine-cask
+    - rhone-wine-cask
+    - sweet-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

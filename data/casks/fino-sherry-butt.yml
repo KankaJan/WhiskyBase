@@ -1,0 +1,104 @@
+# =============================================================================
+# Fino sherry butt
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: high
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: fino-sherry-butt
+name: Fino sherry butt
+also_known_as:
+  - fino butt
+  - sherry butt (fino)
+
+
+# --- Classification ---------------------------------------------------------
+category: sherry
+subcategory: fino (biologically-aged under flor)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: [480, 520]
+wood_species: european_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: sherry
+  specifics: |
+    Fino sherry from the Jerez-Xeres-Sherry DO, aged under a layer
+    of flor yeast (a film-forming Saccharomyces yeast population,
+    sometimes designated S. beticus), which protects the wine from
+    oxidation and produces the pale colour and yeasty-saline
+    character of fino. Casks are seasoned with fino for Scotch
+    industry use under similar terms as oloroso butts.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: Spain
+  region: Andalusia
+  appellation: Jerez-Xeres-Sherry
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sherry butt previously used to age fino sherry, the dry
+  biologically-aged style of Jerez fortified wine [1]. Vessel of
+  ~500 L in European oak (most likely Quercus robur or Q. petraea).
+  Unlike oloroso, fino is aged under a flor yeast cap that limits
+  oxidation; the cask therefore carries less oxidative residue into
+  the whisky. Sensory differences between fino-cask and oloroso-cask
+  matured whisky are routinely described in trade press, with fino
+  casks commonly characterised as imparting drier and more saline
+  character than oloroso; the actual sensory contribution varies by
+  cask age, prior fills, and individual cask history, so the
+  characterisation is recorded here as a trade attribution rather
+  than as a universal property of the cask type. Less commonly used
+  than oloroso in Scotch maturation; appears in releases that
+  explicitly contrast fino with oloroso (such as the Jose Miguel
+  Martin casks used in the Hearach releases at Isle of Harris [2]).
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives:
+    - oloroso-sherry-butt
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Fino
+    accessed: 2026-05-15
+    notes: |
+      Used for fino style description (flor yeast, biological ageing).
+
+  - id: 2
+    type: official_website
+    url: https://harrisdistillery.com/pages/the-hearach-core
+    accessed: 2026-05-02
+    notes: |
+      Producer page documenting Jose Miguel Martin fino and oloroso
+      sherry butt sourcing for the Hearach core line.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

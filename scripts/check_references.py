@@ -3,8 +3,8 @@
 WhiskyBase cross-reference resolver.
 
 Walks every YAML entry under /data/, builds a slug index across all entity
-types (distilleries, production_lines, bottlings, bottlers, concepts by
-kind), then reports references that don't resolve. Output is warn-only:
+types (distilleries, production_lines, bottlings, bottlers, casks, concepts
+by kind), then reports references that don't resolve. Output is warn-only:
 per handover §8 dangling references are expected during authoring and the
 check should never block the build.
 
@@ -45,47 +45,30 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
 
 
-# ---------------------------------------------------------------------------
-# Reference field map.
-#
-# For each YAML key that represents a slug reference, declare what kind of
-# target the slug resolves against. Categories:
-#   "distillery", "production_line", "bottling", "bottler",
-#   "concept" (kind inferred from <kind>/<slug> namespace), "cask".
-#
-# Values that look like `<a>/<b>` are treated as namespaced; for concepts
-# the namespace is the kind, for bottler_series the namespace is the
-# bottler slug.
-# ---------------------------------------------------------------------------
-
 SCALAR_REFS = {
-    # bottling.yml
     "production_line": "production_line",
     "produced_at_distillery": "distillery",
     "bottled_by": "distillery_or_bottler",
     "bottler_series": "bottler_series",
-    # production_line.yml
     "distillery": "distillery",
-    # source.methodology.peating_ppm
     "basis_concept": "concept",
-    # maturation/finish
     "cask_type": "cask",
+    # `parent` is handled specially in walk_refs (context-dependent — only
+    # a slug reference when it appears under `related:` on a cask entry;
+    # `ownership.parent` on a distillery is a company name, not a slug).
 }
 
 LIST_REFS = {
-    # distillery.yml
     "production_lines": "production_line",
     "also_used_by_blenders": "distillery",
     "distinctive_features": "concept",
-    # production_line.yml
     "bottlings": "bottling",
     "typical_cask_program": "cask",
-    # concept.yml
     "related_concepts": "concept",
     "used_by": "distillery_or_bottler",
     "used_at_distilleries": "distillery",
     "adopted_by": "distillery_or_bottler",
-    "alternatives": "concept",
+    "alternatives": "cask_or_concept",
     "prerequisites": "concept",
     "covers": "concept",
     "see_also": "concept",
@@ -93,17 +76,11 @@ LIST_REFS = {
 }
 
 
-# ---------------------------------------------------------------------------
-# Loaders
-# ---------------------------------------------------------------------------
-
 def iter_yaml_files() -> Iterator[Path]:
-    """Yield every .yml file under /data/, in sorted order."""
     yield from sorted(DATA_DIR.rglob("*.yml"))
 
 
-def load_doc(path: Path) -> tuple[dict | None, str | None]:
-    """Load a YAML doc. Returns (doc, error_message)."""
+def load_doc(path: Path):
     try:
         with path.open(encoding="utf-8") as f:
             return yaml.safe_load(f), None
@@ -111,14 +88,7 @@ def load_doc(path: Path) -> tuple[dict | None, str | None]:
         return None, str(exc)
 
 
-# ---------------------------------------------------------------------------
-# Index
-# ---------------------------------------------------------------------------
-
-def classify_path(path: Path) -> tuple[str, str | None]:
-    """Return (entity_kind, sub_kind). For concepts the sub_kind is the
-    concept kind (methodology / educational / equipment / practice /
-    glossary), derived from the directory layout."""
+def classify_path(path: Path):
     rel = path.relative_to(DATA_DIR)
     top = rel.parts[0]
     if top == "concepts" and len(rel.parts) >= 3:
@@ -128,23 +98,12 @@ def classify_path(path: Path) -> tuple[str, str | None]:
         "production_lines": ("production_line", None),
         "bottlings": ("bottling", None),
         "bottlers": ("bottler", None),
+        "casks": ("cask", None),
     }.get(top, ("unknown", None))
 
 
-def build_index(files: Iterable[Path]) -> tuple[dict, list, list]:
-    """Walk every file once. Return (index, parse_errors, duplicate_ids).
-
-    index structure:
-        {
-          "distillery":      {slug: [path, ...]},
-          "production_line": {slug: [path, ...]},
-          "bottling":        {slug: [path, ...]},
-          "bottler":         {slug: [path, ...]},
-          "concept":         {f"{kind}/{slug}": [path, ...]},
-          "cask":            {slug: [path, ...]},   # always empty until /data/casks/ exists
-        }
-    """
-    index: dict[str, dict[str, list[Path]]] = defaultdict(lambda: defaultdict(list))
+def build_index(files: Iterable[Path]):
+    index = defaultdict(lambda: defaultdict(list))
     parse_errors = []
     docs = []
 
@@ -162,7 +121,7 @@ def build_index(files: Iterable[Path]) -> tuple[dict, list, list]:
             continue
         if entity == "concept":
             index["concept"][f"{sub_kind}/{sid}"].append(path)
-        elif entity in {"distillery", "production_line", "bottling", "bottler"}:
+        elif entity in {"distillery", "production_line", "bottling", "bottler", "cask"}:
             index[entity][sid].append(path)
 
     duplicates = []
@@ -174,16 +133,16 @@ def build_index(files: Iterable[Path]) -> tuple[dict, list, list]:
     return docs, index, parse_errors, duplicates
 
 
-# ---------------------------------------------------------------------------
-# Reference walking
-# ---------------------------------------------------------------------------
-
-def walk_refs(node: Any, refs: list, source_path: Path, breadcrumbs: list[str]):
-    """Recurse through a YAML node, recording slug references."""
+def walk_refs(node, refs, source_path, breadcrumbs):
     if isinstance(node, dict):
         for key, value in node.items():
             if key in SCALAR_REFS and isinstance(value, str) and value:
                 refs.append((SCALAR_REFS[key], value, source_path, ".".join(breadcrumbs + [key])))
+            elif key == "parent" and isinstance(value, str) and value and breadcrumbs and breadcrumbs[-1] == "related":
+                # Context-sensitive: `related.parent` is a cask slug
+                # reference; `ownership.parent` is a company name string,
+                # not a slug.
+                refs.append(("cask", value, source_path, ".".join(breadcrumbs + [key])))
             elif key in LIST_REFS and isinstance(value, list):
                 for i, item in enumerate(value):
                     if isinstance(item, str) and item:
@@ -194,8 +153,7 @@ def walk_refs(node: Any, refs: list, source_path: Path, breadcrumbs: list[str]):
             walk_refs(item, refs, source_path, breadcrumbs + [f"[{i}]"])
 
 
-def collect_source_ids(doc: dict) -> set[int]:
-    """Return the set of declared source IDs in the entry's sources block."""
+def collect_source_ids(doc):
     sources = doc.get("sources") or []
     ids = set()
     if isinstance(sources, list):
@@ -205,8 +163,7 @@ def collect_source_ids(doc: dict) -> set[int]:
     return ids
 
 
-def walk_source_id_refs(node: Any, refs: list, source_path: Path, breadcrumbs: list[str]):
-    """Find every `source_id:` field used in measurement / methodology blocks."""
+def walk_source_id_refs(node, refs, source_path, breadcrumbs):
     if isinstance(node, dict):
         for key, value in node.items():
             if key == "source_id" and isinstance(value, int):
@@ -217,10 +174,6 @@ def walk_source_id_refs(node: Any, refs: list, source_path: Path, breadcrumbs: l
             walk_source_id_refs(item, refs, source_path, breadcrumbs + [f"[{i}]"])
 
 
-# ---------------------------------------------------------------------------
-# Inline [N] source citation scan
-# ---------------------------------------------------------------------------
-
 PROSE_FIELDS = {"description", "body", "summary", "notes", "limitations",
                 "consequences", "distinguishing_features", "notes_official",
                 "climate_notes"}
@@ -228,7 +181,7 @@ PROSE_FIELDS = {"description", "body", "summary", "notes", "limitations",
 INLINE_CITE_RE = re.compile(r"\[(\d+)\]")
 
 
-def walk_prose_citations(node: Any, hits: list, source_path: Path, breadcrumbs: list[str]):
+def walk_prose_citations(node, hits, source_path, breadcrumbs):
     if isinstance(node, dict):
         for key, value in node.items():
             if key in PROSE_FIELDS and isinstance(value, str):
@@ -240,12 +193,7 @@ def walk_prose_citations(node: Any, hits: list, source_path: Path, breadcrumbs: 
             walk_prose_citations(item, hits, source_path, breadcrumbs + [f"[{i}]"])
 
 
-# ---------------------------------------------------------------------------
-# Resolution
-# ---------------------------------------------------------------------------
-
-def resolve(target_kind: str, slug: str, index: dict) -> bool:
-    """Return True if `slug` resolves to a real entry of `target_kind`."""
+def resolve(target_kind, slug, index):
     if target_kind == "distillery":
         return slug in index["distillery"]
     if target_kind == "production_line":
@@ -258,9 +206,9 @@ def resolve(target_kind: str, slug: str, index: dict) -> bool:
         return slug in index["cask"]
     if target_kind == "distillery_or_bottler":
         return slug in index["distillery"] or slug in index["bottler"]
+    if target_kind == "cask_or_concept":
+        return slug in index["cask"] or slug in index["concept"]
     if target_kind == "concept":
-        # Expect `<kind>/<slug>` form. Bare slugs are also accepted but
-        # reported as "shape" issues.
         return slug in index["concept"]
     if target_kind == "bottler_series":
         if "/" not in slug:
@@ -270,29 +218,25 @@ def resolve(target_kind: str, slug: str, index: dict) -> bool:
     return False
 
 
-# ---------------------------------------------------------------------------
-# Reporting
-# ---------------------------------------------------------------------------
-
-def rel(p: Path) -> str:
+def rel(p):
     try:
         return str(p.relative_to(REPO_ROOT))
     except ValueError:
         return str(p)
 
 
-def print_section(title: str):
+def print_section(title):
     print()
     print(title)
     print("-" * len(title))
 
 
-def main() -> int:
+def main():
     files = list(iter_yaml_files())
     docs, index, parse_errors, duplicates = build_index(files)
 
-    print(f"WhiskyBase reference check")
-    print(f"==========================")
+    print("WhiskyBase reference check")
+    print("==========================")
     print(f"Files scanned: {len(files)}")
 
     if parse_errors:
@@ -305,6 +249,7 @@ def main() -> int:
     print(f"  Production lines: {len(index['production_line'])}")
     print(f"  Bottlings:        {len(index['bottling'])}")
     print(f"  Bottlers:         {len(index['bottler'])}")
+    print(f"  Casks:            {len(index['cask'])}")
     print(f"  Concepts:         {len(index['concept'])}")
     concept_by_kind = defaultdict(int)
     for namespaced in index["concept"]:
@@ -320,14 +265,11 @@ def main() -> int:
             for p in paths:
                 print(f"    - {rel(p)}")
 
-    # ------------------------------------------------------------------
-    # Cross-reference resolution
-    # ------------------------------------------------------------------
     all_refs = []
     for path, doc in docs:
         walk_refs(doc, all_refs, path, [])
 
-    dangling_by_kind: dict[str, dict[str, list[tuple[Path, str]]]] = defaultdict(lambda: defaultdict(list))
+    dangling_by_kind = defaultdict(lambda: defaultdict(list))
     resolved = 0
     for target_kind, slug, source_path, field in all_refs:
         if resolve(target_kind, slug, index):
@@ -335,12 +277,12 @@ def main() -> int:
         else:
             dangling_by_kind[target_kind][slug].append((source_path, field))
 
-    total_dangling = sum(len(slugs) for slugs in dangling_by_kind.values())
+    total_dangling_slugs = sum(len(slugs) for slugs in dangling_by_kind.values())
+    total_dangling_refs = sum(len(refs) for slugs in dangling_by_kind.values() for refs in slugs.values())
 
     print_section("Cross-reference resolution")
     print(f"  Resolved:  {resolved}")
-    print(f"  Dangling:  {sum(len(refs) for slugs in dangling_by_kind.values() for refs in slugs.values())} "
-          f"({total_dangling} distinct slugs)")
+    print(f"  Dangling:  {total_dangling_refs} ({total_dangling_slugs} distinct slugs)")
 
     for kind in sorted(dangling_by_kind):
         slugs = dangling_by_kind[kind]
@@ -355,9 +297,6 @@ def main() -> int:
                 seen_paths.add(path)
                 print(f"    from {rel(path)} :: {field}")
 
-    # ------------------------------------------------------------------
-    # source_id integrity
-    # ------------------------------------------------------------------
     bad_source_ids = []
     bad_inline_citations = []
     for path, doc in docs:
@@ -382,10 +321,11 @@ def main() -> int:
 
     print_section(f"Inline [N] citation integrity ({len(bad_inline_citations)} bad)")
     if not bad_inline_citations:
-        print("  All inline `[N]` prose citations resolve.")
+        print("  All inline source citations resolve.")
     else:
         for path, field, sid, declared in bad_inline_citations:
-            print(f"  {rel(path)} :: {field} cites [{sid}] (declared: {declared})")
+            citation = "[" + str(sid) + "]"
+            print(f"  {rel(path)} :: {field} cites {citation} (declared: {declared})")
 
     return 0
 

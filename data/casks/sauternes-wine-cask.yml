@@ -1,0 +1,97 @@
+# =============================================================================
+# Sauternes wine cask
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: sauternes-wine-cask
+name: Sauternes wine cask
+also_known_as: []
+
+
+# --- Classification ---------------------------------------------------------
+category: wine
+subcategory: sweet white wine (Bordeaux botrytised)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: 225
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: sweet_wine
+  specifics: |
+    Sauternes AOC sweet white wine from south of the city of
+    Bordeaux, on the left bank of the Garonne river (Sauternes is a
+    separate appellation from the neighbouring Graves AOC and is
+    not formally part of Graves under the modern Bordeaux AOC
+    structure, though the two areas are geographically adjacent).
+    Made from Sémillon, Sauvignon Blanc, and Muscadelle grapes
+    affected by noble rot (Botrytis cinerea), which concentrates
+    sugars and produces a sweet wine with high residual extract.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: Bordeaux (Graves)
+  appellation: Sauternes
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  225-litre French oak barrique previously used to age Sauternes
+  AOC sweet white wine from south of the city of Bordeaux, on the
+  left bank of the Garonne river [2]. The base wine is made from
+  Sémillon-led blends affected by noble rot, producing a sweet wine
+  with high residual sugar. Used in Octomore 8.2 as one of the
+  three primary 6-year maturation cask types (Mourvèdre, Austrian
+  sweet wine, Sauternes) [1].
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: wine-cask
+  alternatives:
+    - sweet-wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://www.spiritradar.com/whisky-db/octomore-edition-08.2-masterclass-167-ppm-ochdamh-mor-167-ppm-8yo-58.4-percent-700ml/
+    accessed: 2026-05-02
+    notes: |
+      Source for Octomore 8.2 cask programme detail including the
+      Sauternes share.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Sauternes_(wine)
+    accessed: 2026-05-15
+    notes: |
+      Used for appellation, grape composition, and noble-rot
+      production method.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

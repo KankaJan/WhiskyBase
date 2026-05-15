@@ -18,10 +18,13 @@ types — **distillery** (physical production site), **production line**
 (a specific recipe produced at a distillery), and **bottling** (a
 specific commercial release) — plus a **concept** layer for reference
 content (methodology, educational, equipment, practice, glossary).
-Independent bottlers are modelled as a fourth top-level entity type
-(**bottler**); the schema is drafted as a v0.1 stub at
-`schema/bottler.template.yml` and will be pressure-tested once a real
-IB case is populated. Data lives as YAML in a
+Two additional top-level entity types extend the model: **bottler**
+for commercial bottling entities (independent bottlers, distillery
+bottling operations) — schema drafted at v0.1 stub, awaiting a real
+IB case; and **cask** for reusable cask-type references that bottlings
+and production lines cite from their maturation programmes — schema
+v0.1 with 16 entries populated, including the first-class
+`undisclosed-cask` for deliberately-secret cask provenance. Data lives as YAML in a
 Git repository; cross-references between entities use slugs; the
 build pipeline (not yet implemented) will turn the data into a static
 site.
@@ -197,9 +200,21 @@ Full rules in `docs/source-conflict-policy.md`.
 - Bottlings: for OBs, `<distillery>-<release-name>`
   (`bruichladdich-octomore-8-3`). For IBs (planned),
   `<bottler>-<distillery>-<descriptor>` (`cadenheads-bruichladdich-2004-20yo`).
-- Concepts: `<kind>/<slug>` form externally (`concept/methodology/bruichladdich-published-ppm`),
-  filed under `/data/concepts/<kind>/<slug>.yml` internally.
-- Casks (planned): `cask/<type>` namespace.
+- Bottlers: just the name (`cadenheads`, `signatory-vintage`).
+- Concepts: `<kind>/<slug>` form for structured references
+  (`methodology/bruichladdich-published-ppm` in `related_concepts` or
+  `basis_concept` fields); the file lives at
+  `/data/concepts/<kind>/<slug>.yml`. Markdown body links use the
+  URL-friendly variant `concept/<kind>/<slug>` (which the build
+  pipeline will rewrite to site URLs).
+- Casks: bare slug, lowercase-hyphenated, descriptive
+  (`bourbon-barrel`, `pomerol-wine-cask`, `undisclosed-cask`). Bare
+  form matches the convention for other top-level entity types;
+  concept-style kind prefixing is reserved for `/data/concepts/`
+  entries. Naming conventions: `<prior-contents>-<vessel>` for
+  named-provenance casks; `<category>-<vessel>` for generic types;
+  `<feature>-<vessel>` for special cases (`virgin-oak`,
+  `undisclosed-cask`).
 
 **Why concept slugs use `<kind>/<slug>` namespacing.** If we later
 split `/data/concepts/<kind>/` into `/data/methodologies/`,
@@ -285,6 +300,9 @@ back rather than absorbing it into the data model.
 - 4 production lines: 3 Bruichladdich (high), 1 Harris (medium)
 - 10 bottlings: 9 Bruichladdich, 1 Harris
 - 3 concept pages: 1 methodology, 1 educational, 1 equipment
+- 16 casks: 5 high confidence (bourbon-barrel, oloroso/fino sherry,
+  virgin-oak, undisclosed-cask), 6 medium (wine-cask parent + 5 named
+  appellations), 5 low (lesser-disclosed wine cases)
 
 **Schema:**
 
@@ -296,18 +314,19 @@ back rather than absorbing it into the data model.
   blocks)
 - `schema/bottler.template.yml` — v0.1 (stub; series modelling
   speculative, awaiting first real IB case)
+- `schema/cask.template.yml` — v0.1 (disclosure_status enum,
+  parent/alternatives relations; 16 entries populated)
 
 **Next priorities, in order of unblock value:**
 
 1. Pressure-test the bottler v0.1 stub schema against a real IB case
    (Cadenhead's Authentic Collection or Signatory Cask Strength is
    the likely first case) and promote to v0.2.
-2. Cask schema and `/data/casks/` directory; the bottling and
-   production_line entries reference cask slugs that have no backing.
-3. More concept pages: `methodology/harris-published-ppm`,
+2. More concept pages: `methodology/harris-published-ppm`,
+   `methodology/scotch-whisky-published-ppm`,
    `educational/aromatic-compounds-in-whisky`,
    `equipment/shell-and-tube-condenser`. The first dangling references
-   to clean up are the methodology ones.
+   to clean up are the methodology ones (resolves 3 dangling refs).
 4. Glossary entries; many are referenced from the existing educational
    page but unpopulated.
 5. JSON Schema validation tooling. Currently the only check is

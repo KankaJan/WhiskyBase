@@ -1,0 +1,161 @@
+# =============================================================================
+# Scotch Whisky magazine's Published PPM Methodology
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: methodology
+# Function: attestation referenced from source.methodology blocks where
+# the source is a Scotch Whisky magazine Whiskypedia structured spec
+# sheet. Used pragmatically as the default methodology declaration for
+# PPM figures appearing on Whiskypedia entries when the underlying
+# distillery does not have its own producer-attributed methodology page.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: scotch-whisky-published-ppm
+title: Scotch Whisky magazine's published PPM methodology
+kind: methodology
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Scotch Whisky magazine's Whiskypedia structured distillery entries
+  report phenol PPM specifications using high performance liquid
+  chromatography (HPLC) summing the standard set of seven phenolic
+  compounds. The methodology reflects modern Scotch industry
+  convention rather than being measured by the magazine itself; the
+  Whiskypedia pages curate producer-disclosed specs and present them
+  in a uniform structured format.
+
+body: |
+  Scotch Whisky magazine (scotchwhisky.com) maintains a structured
+  Whiskypedia section with one entry per distillery [1]. The entries
+  include production specifications — malt source, mash tun and
+  washback configuration, still dimensions, fermentation times, and
+  (where the distillery makes peated spirit) peating spec in PPM.
+
+  ## How the PPM figures get there
+
+  The Whiskypedia entries do not constitute independent measurement
+  by the magazine. They curate producer-disclosed specifications and
+  present them in a uniform structured format. PPM values appear as
+  the malt-stage specification (typically measured by HPLC summing
+  the standard seven phenolic compounds — the modern Scotch industry
+  default for peated malt specification, used across maltsters such
+  as Bairds of Inverness — Harris's supplier — and other major
+  Scotch industry malting houses).
+
+  ## What the figure represents
+
+  PPM as published on Whiskypedia is the total phenol content of
+  the kilned malt before it is mashed, fermented, or distilled. It
+  is a specification of the malt input, not of the bottled liquid.
+  The phenol concentration in the new make spirit is substantially
+  lower than the malt-stage figure, and the figure in the bottled
+  whisky is lower again, with the trajectory depending on the
+  production line, distillation regime, and cask programme.
+
+  ## What it does not claim
+
+  - The concentration of phenols in the bottled whisky.
+  - The perceived smokiness of the finished whisky.
+  - The specific phenolic profile (the standard seven-compound sum
+    discards information about which compounds are present in what
+    proportion).
+  - The origin or type of peat used by the distillery's maltster.
+
+  ## Limitations of this methodology
+
+  - Whiskypedia spec sheets are derivative — they curate
+    producer-disclosed values rather than independently measuring,
+    and may lag the most current producer disclosures.
+  - The HPLC + standard 7 method is implicit on the Whiskypedia
+    entries rather than per-entry attributed. The methodology
+    inference relies on Scotch industry context (i.e. that this is
+    the modern default), not on per-distillery attribution by
+    Scotch Whisky magazine.
+  - For distilleries that have explicitly attributed their PPM
+    figures to a measurement method in producer communications
+    (most notably Bruichladdich, which named HPLC explicitly when
+    announcing the 309.1 ppm Octomore 8.3 release in 2017 [3]), a
+    distillery-specific methodology page records that direct
+    attribution and is the more precise reference. See
+    [Bruichladdich's published PPM methodology](concept/methodology/bruichladdich-published-ppm)
+    as the worked example.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/peating-measurement-methods
+  - methodology/bruichladdich-published-ppm
+  - methodology/harris-published-ppm
+
+
+# --- Methodology block ------------------------------------------------------
+methodology:
+  measures:
+    - peating_ppm
+  method: hplc
+  compounds: standard_7
+  used_by:
+    - harris                           # Harris's Whiskypedia entry is
+                                       # the source cited via this
+                                       # methodology in data. Other
+                                       # distilleries' Whiskypedia
+                                       # entries become candidates as
+                                       # their entries are added.
+  adopted: null                        # The Whiskypedia structured
+                                       # section has been in continuous
+                                       # use across the magazine's
+                                       # active publication period; no
+                                       # specific adoption date for the
+                                       # PPM-disclosure convention is
+                                       # documented.
+  limitations: |
+    Whiskypedia spec sheets are derivative — they curate producer-
+    disclosed values rather than independently measuring. The
+    HPLC + standard 7 methodology is implicit (industry-standard for
+    modern Scotch) rather than explicitly attributed on the
+    Whiskypedia entries themselves. For distilleries that have their
+    own published methodology pages (e.g. Bruichladdich), prefer the
+    distillery-specific methodology slug, which records direct
+    producer attribution rather than derivative curation.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/
+    accessed: 2026-05-15
+    notes: |
+      Scotch Whisky magazine's Whiskypedia structured distillery
+      index. Used for confirmation of methodology convention across
+      structured entries.
+
+  - id: 2
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/4892/isle-of-harris/
+    accessed: 2026-05-02
+    notes: |
+      Worked example of a Whiskypedia structured spec sheet
+      reporting PPM — Isle of Harris entry showing the 12-14 ppm
+      specification for The Hearach.
+
+  - id: 3
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Used as the contrast case for direct producer attribution.
+      The article carries Bruichladdich's explicit statement: "Using
+      HPLC (high performance liquid chromatography), the readings
+      came back at 309.1 ppm" — direct producer attribution distinct
+      from Whiskypedia's derivative curation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

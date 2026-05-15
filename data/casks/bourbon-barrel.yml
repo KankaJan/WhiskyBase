@@ -1,0 +1,129 @@
+# =============================================================================
+# Bourbon barrel
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: high — well-documented across the industry; supply
+# chain, dimensions, and characteristics are widely published.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bourbon-barrel
+name: Bourbon barrel
+also_known_as:
+  - ASB                              # American Standard Barrel.
+  - ex-bourbon barrel
+  - American oak barrel              # Common but imprecise; bourbon barrels
+                                     # are American oak but not all American
+                                     # oak casks are ex-bourbon.
+
+
+# --- Classification ---------------------------------------------------------
+category: bourbon
+subcategory: American Standard Barrel
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: [190, 200]   # The American Standard Barrel is
+                                    # standardised around 53 US gallons
+                                    # (200.6 L); industry references
+                                    # commonly state 190-200 L for the
+                                    # post-rebuild Scotch fill capacity.
+
+wood_species: american_oak          # Quercus alba (American white oak),
+                                    # the species used for bourbon barrel
+                                    # production in trade convention.
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: bourbon
+  specifics: |
+    Bourbon whiskey from US distilleries, predominantly Kentucky-
+    based. The barrel is charred on the interior (Char #3 or Char #4
+    most common in industry practice) before bourbon use, and filled
+    with new-make bourbon at the producer's standard entry proof. US
+    federal regulations require bourbon to be aged in new charred
+    oak, so each barrel can be used only once for bourbon — driving
+    the supply of ex-bourbon barrels to the Scotch industry [1]. The
+    same vessel specification (charred new American oak, 53 US
+    gallons) is used for Tennessee whiskey, which is separately
+    regulated from bourbon; ex-Tennessee-whiskey barrels reach Scotch
+    maturation through the same supply chain.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: United States
+  region: Kentucky                  # Predominant. Tennessee, Indiana, and
+                                    # other US states also supply.
+  appellation: null
+  producer: null                    # Multiple, vary by source. Named
+                                    # producers commonly cited in Scotch
+                                    # disclosures include Heaven Hill,
+                                    # Buffalo Trace, Four Roses, and
+                                    # Jim Beam (bourbon), plus Jack
+                                    # Daniel's (Tennessee whiskey — the
+                                    # barrel specification is equivalent
+                                    # to bourbon barrels, though Jack
+                                    # Daniel's is not legally bourbon).
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The American Standard Barrel used for ageing bourbon whiskey,
+  recovered after bourbon ageing and shipped to Scotland for whisky
+  maturation. Constructed from American white oak (Quercus alba),
+  charred on the interior before bourbon use, with capacity of 53
+  US gallons (about 200 litres). US federal regulations require
+  bourbon to be aged in new charred oak, so each barrel can be used
+  only once for bourbon production [1]; this single-use rule
+  supplies the ex-bourbon barrels that dominate Scotch whisky
+  maturation. The barrel is the most common cask type in modern
+  Scotch maturation. The same vessel specification is used for
+  Tennessee whiskey (separately regulated, but charred new American
+  oak of the same dimensions); ex-Tennessee-whiskey barrels —
+  including those from Jack Daniel's, which is the largest single
+  Tennessee whiskey producer — enter the Scotch supply chain
+  alongside ex-bourbon and are functionally interchangeable.
+  Named producers cited in Scotch industry disclosures include
+  Heaven Hill, Buffalo Trace, Four Roses, and Jim Beam (bourbon),
+  plus Jack Daniel's (Tennessee whiskey); more often the source is
+  recorded as generic "first-fill bourbon" or "refill bourbon"
+  without naming the supplier.
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives:
+    - virgin-oak                    # The opposing choice: new oak rather
+                                    # than ex-bourbon.
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Bourbon_whiskey
+    accessed: 2026-05-15
+    notes: |
+      Used for the new-oak / single-use regulatory requirement
+      (27 CFR §5.143, US Standards of Identity for Distilled
+      Spirits) and broad characterisation of bourbon production.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []
