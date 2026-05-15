@@ -1,0 +1,248 @@
+# =============================================================================
+# Aromatic Compounds in Whisky
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Foundational page on the principal aromatic compound classes in
+# Scotch whisky, their origins, and how their concentrations change
+# through the production chain. The page acts as a parent/anchor for
+# the standard 7 phenolic compound glossary entries and is referenced
+# from educational/peating-measurement-methods.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: aromatic-compounds-in-whisky
+title: Aromatic compounds in whisky
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The principal aromatic compounds in whisky come from three sources:
+  the malt (especially when peated, contributing phenolic compounds
+  including the "standard 7" used in PPM measurement), the fermentation
+  (esters, higher alcohols, aldehydes), and the maturation cask
+  (vanillin, lactones, wood-derived guaiacol, eugenol). This page
+  describes the major compound classes, their origins, and how their
+  concentrations change through the production chain.
+
+body: |
+  Whisky character is shaped by hundreds of identified aromatic
+  compounds, but a small number of compound classes account for most
+  of what reaches the bottled liquid in measurable concentrations.
+  This page covers the principal classes and their production-chain
+  trajectory.
+
+  ## Phenolic compounds from peat
+
+  When malt destined for peated whisky is dried in a kiln over a peat
+  fire, the smoke deposits phenolic compounds onto the husk of the
+  green malt. These compounds are then carried through subsequent
+  production stages (mashing, fermentation, distillation, maturation)
+  at progressively reducing concentrations.
+
+  The principal phenolic compounds in peat smoke that are routinely
+  measured are:
+
+  - **Phenol** (C6H5OH) — the simplest phenolic compound, with a
+    sharp medicinal character. Hydroxyl group on a benzene ring; no
+    substituents.
+  - **The cresols** — methylphenols, with three positional isomers:
+    o-cresol (2-methylphenol), m-cresol (3-methylphenol), and
+    p-cresol (4-methylphenol). Each contributes phenolic odour of
+    varying medicinal-to-tar character.
+  - **Guaiacol** — 2-methoxyphenol. Characteristic smoke and sweet
+    woody character.
+  - **4-methylguaiacol** — 2-methoxy-4-methylphenol. Adds clove and
+    spice character to the guaiacol baseline.
+  - **4-ethylguaiacol** — 2-methoxy-4-ethylphenol. Similar to
+    4-methylguaiacol with a fuller sweet-spice profile.
+
+  These seven compounds — phenol, the three cresols, guaiacol,
+  4-methylguaiacol, and 4-ethylguaiacol — are collectively the
+  "standard 7" used in modern high performance liquid chromatography
+  (HPLC) PPM measurement. The HPLC method sums them to give a single
+  phenol PPM figure for the malt [1]. See
+  [peating measurement methods](concept/educational/peating-measurement-methods)
+  for the methodology discussion in full, including alternative
+  measurement approaches and what figures from them mean.
+
+  ## Aromatic compounds from wood
+
+  Maturation in oak casks introduces a different family of aromatic
+  compounds, derived primarily from the slow chemical breakdown of
+  wood lignin and hemicellulose:
+
+  - **Vanillin** — 4-hydroxy-3-methoxybenzaldehyde. The principal
+    aromatic compound responsible for vanilla character; product of
+    oak lignin breakdown, more pronounced in casks that have been
+    charred or toasted (heat treatment accelerates lignin
+    degradation).
+  - **Oak lactones** — particularly cis- and trans-β-methyl-γ-
+    octalactone, often called "whisky lactones." Coconut and woody
+    notes. American oak (Quercus alba) is richer in these than
+    European oak (Q. robur, Q. petraea); the cis isomer in
+    particular is more abundant in American oak.
+  - **Guaiacol** — appears here as a wood-derived compound (from
+    lignin degradation and from charring) distinct from the
+    peat-derived guaiacol covered above; the same molecule, but
+    arriving via a different production pathway.
+  - **Eugenol** — 4-allyl-2-methoxyphenol. Clove-like spice character
+    from oak lignin.
+  - **Ellagitannins and oak tannins** — not strictly aromatic
+    compounds but contributing colour, astringency, and to ongoing
+    oxidative chemistry during maturation. European oak is richer in
+    these than American oak.
+
+  The specific kinetics of how these compounds extract into spirit
+  during maturation — how the rate depends on cask charge, wood
+  surface area, temperature, humidity, prior fill, and cask history —
+  is the topic of a planned dedicated page; see TODO for
+  `educational/cask-maturation-kinetics`. Until that page exists,
+  specific kinetic claims in cask entries are hedged or attributed
+  to trade convention rather than stated as project voice.
+
+  ## Aromatic compounds from fermentation
+
+  Fermentation contributes a third family of aromatic compounds,
+  formed by yeast metabolism:
+
+  - **Esters** — fruity character (apple, pear, banana, pineapple).
+    Notable contributors include ethyl acetate, ethyl hexanoate,
+    isoamyl acetate. Ester formation increases with longer
+    fermentation times, which is one mechanism by which fermentation
+    duration affects spirit character.
+  - **Higher alcohols** (also called fusel alcohols) — propanol,
+    butanol, isoamyl alcohol, others. Contribute weight and warmth
+    but in excess produce harsh "fusel" character.
+  - **Aldehydes** — including acetaldehyde and others; some are
+    intermediates in further chemistry, some carry character through
+    distillation.
+  - **Sulphurous compounds** — dimethyl sulphide (DMS), dimethyl
+    trisulphide (DMTS), and related. These can carry through into
+    new make spirit and are the principal target of copper-catalysed
+    removal during distillation; see
+    [the copper conversation](concept/educational/copper-conversation).
+
+  ## Compound trajectory through production
+
+  The same compound class behaves very differently across the
+  production stages:
+
+  - **At kilning**: phenolic compounds deposit on green malt husk.
+    Phenol PPM is measured here in producer disclosures; this is
+    typically the highest concentration the phenols will be at in
+    any production-chain stage.
+  - **At mashing**: most phenolic compounds partition into the wort
+    along with sugars; a fraction stays bound to the spent grains
+    and is discarded with the draff.
+  - **At fermentation**: relatively little change for the kilned
+    phenolic compounds; significant generation of esters, higher
+    alcohols, and aldehydes from yeast metabolism; some sulphurous
+    compounds also generated.
+  - **At distillation**: phenolic compounds carry over into the new
+    make spirit at substantially reduced concentrations versus the
+    malt input. The spirit cut points (head, heart, tail timings)
+    influence which compounds appear in what proportion — phenols
+    are concentrated toward the tail of the distillation, so the
+    cut-tail timing affects retention. Sulphurous compounds are
+    targeted for removal by copper-catalysed reactions; see
+    [the copper conversation](concept/educational/copper-conversation).
+  - **At maturation**: phenolic and other spirit-borne aromatic
+    compounds in the spirit interact with wood-derived compounds;
+    some volatilise through evaporation (the "angel's share");
+    overall concentration of measured phenols decreases over time.
+    Wood-derived compounds (vanillin, lactones, ellagitannins) are
+    extracted into the spirit; their concentrations increase over
+    time, more steeply for first-fill casks than for refills.
+
+  The trajectory means that a 40 ppm malt spec does not translate to
+  a 40 ppm figure in the bottled liquid — the bottled figure is
+  typically well below the malt-stage spec, with the exact ratio
+  depending on production-line variables (fermentation, distillation,
+  cask programme, age, climate).
+
+  ## On the relationship between PPM and perceived smokiness
+
+  Phenol PPM is a useful but imperfect proxy for perceived
+  smokiness of the finished whisky. Within a single production
+  line, higher malt-spec PPM is generally observed to correlate
+  with greater perceived smokiness in the resulting whisky.
+  Across different production lines the same malt-spec PPM can
+  produce substantially different perceived smokiness — different
+  cut points, cask programmes, and ages all affect what reaches
+  the bottle. PPM is best understood as one input variable among
+  several, not as a perception score.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/peating-measurement-methods
+  - educational/copper-conversation
+  - methodology/bruichladdich-published-ppm
+  - methodology/harris-published-ppm
+  - methodology/scotch-whisky-published-ppm
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []                  # Reader can come in cold.
+  covers:
+    - glossary/phenol
+    - glossary/cresol
+    - glossary/guaiacol
+    - glossary/standard-seven-phenols
+    - glossary/phenol-ppm
+    - glossary/sulphur-in-new-make
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Used as the canonical worked example of producer-disclosed
+      phenol PPM with explicit HPLC methodology attribution.
+      Bruichladdich's statement: "Using HPLC (high performance liquid
+      chromatography), the readings came back at 309.1 ppm".
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Phenol
+    accessed: 2026-05-15
+    notes: |
+      Used for chemical identity and structure of phenol (C6H5OH).
+
+  - id: 3
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Guaiacol
+    accessed: 2026-05-15
+    notes: |
+      Used for chemical identity of guaiacol (2-methoxyphenol) and
+      its role in smoke-derived flavour compounds.
+
+  - id: 4
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Cresol
+    accessed: 2026-05-15
+    notes: |
+      Used for the three cresol positional isomers (o-, m-,
+      p-cresol).
+
+  - id: 5
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Vanillin
+    accessed: 2026-05-15
+    notes: |
+      Used for chemical identity of vanillin and its origin from
+      lignin breakdown.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

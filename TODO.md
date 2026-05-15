@@ -83,19 +83,25 @@ relevant section.
 Highest-priority concept pages, ordered by what cleans up the most
 dangling references in existing data:
 
-1. **`educational/aromatic-compounds-in-whisky`** — foundational
-   educational page on phenols, cresols, guaiacols. Referenced from
-   `educational/peating-measurement-methods` and many future
-   entries. Will require structured glossary entries for individual
-   compounds.
-2. **`equipment/shell-and-tube-condenser`** — the alternative to
-   worm tubs. Referenced from `equipment/worm-tub` as `alternatives:`.
-3. **`glossary/peating-block`** — referenced in the body of
-   `concept/educational/peating-measurement-methods`.
-4. **`glossary/phenol-ppm`** — referenced from `related_concepts`
-   of `concept/methodology/bruichladdich-published-ppm`.
-5. **`educational/copper-conversation`** — referenced from
-   `related_concepts` of `concept/equipment/worm-tub`.
+1. **`glossary/phenol`**, **`glossary/cresol`**, **`glossary/guaiacol`**,
+   **`glossary/standard-seven-phenols`** — the foundational set of
+   compound glossary entries. Each is referenced from `covers:` on
+   `educational/aromatic-compounds-in-whisky` and from
+   `related_concepts:` on `educational/peating-measurement-methods`.
+   Short entries — summary text, body null. Together they resolve
+   ~8 dangling references.
+2. **`glossary/sulphur-in-new-make`** — referenced from
+   `educational/copper-conversation` covers, from
+   `educational/aromatic-compounds-in-whisky` covers, and from
+   `equipment/worm-tub` related_concepts. Short summary; covered
+   in body of copper-conversation.
+3. **`glossary/lyne-arm`** — referenced from `equipment/worm-tub`
+   related_concepts. Short equipment-component glossary entry.
+4. **`glossary/classic-malts`** — referenced from
+   `equipment/worm-tub` related_concepts. A historical Diageo
+   marketing portfolio rather than a technical term; entry should
+   define it factually as a brand/portfolio designation rather than
+   adopting marketing framing.
 
 ### Concept pages to queue
 
@@ -142,10 +148,10 @@ references:
   Barley series, Springbank Local Barley, etc.)
 - `practice/on-island-maturation-policy` (Bruichladdich, Kilchoman,
   Bunnahabhain)
-- Glossary entries currently referenced from
-  `educational/peating-measurement-methods`: `phenol`, `guaiacol`,
-  `cresol`, `standard-seven-phenols`, `lyne-arm`,
-  `sulphur-in-new-make`, `classic-malts`
+- (Glossary entries previously listed here have been promoted to
+  the highest-priority concept-pages-to-create section above, since
+  they now constitute essentially all remaining dangling concept
+  references.)
 
 ---
 
@@ -203,6 +209,18 @@ references:
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-15** Five concept pages written, closing the previous
+  highest-priority list: `educational/aromatic-compounds-in-whisky`
+  (substantial teaching page covering phenolic chemistry,
+  fermentation aromatics, and wood-derived compounds);
+  `equipment/shell-and-tube-condenser` (contrast case for the
+  worm-tub page); `educational/copper-conversation` (sulphur-removal
+  chemistry and the established-vs-convention split for character
+  claims); `glossary/peating-block` and `glossary/phenol-ppm`
+  (short glossary entries). 5 distinct dangling slugs resolved;
+  6 new `covers:` references to as-yet-unwritten glossary entries
+  introduced (the glossary backlog is now the project's main
+  cleanup target).
 - **2026-05-15** Methodology concept pages
   `methodology/harris-published-ppm` and
   `methodology/scotch-whisky-published-ppm` written. Resolves the

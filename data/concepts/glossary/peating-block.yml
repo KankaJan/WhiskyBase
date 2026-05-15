@@ -1,0 +1,61 @@
+# =============================================================================
+# Peating block (project schema term)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# A short definition of the WhiskyBase-internal term "peating block" —
+# the structured YAML field that records peating measurements on
+# production_line entries.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: peating-block
+title: peating block
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  In WhiskyBase's schema, the `peating` block is the structured YAML
+  field on `production_line` entries that records phenol PPM
+  measurements with their full methodological context. It contains a
+  list of `measurements` records (each with stage, value, unit,
+  method, compounds, source_id, notes), a `peat_origin` field, and
+  free-text `notes`. Defined in `schema/production_line.template.yml`
+  v0.2.1. Distinct from the source-level `methodology.peating_ppm`
+  block, which lives under each source entry (in production_line and
+  bottling files) and records the methodology a given source uses
+  for its PPM figures.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/peating-measurement-methods
+  - methodology/bruichladdich-published-ppm
+  - methodology/harris-published-ppm
+  - methodology/scotch-whisky-published-ppm
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - peating measurements block
+    - peating field
+  part_of_speech: noun
+  see_also:
+    - educational/peating-measurement-methods
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # Project-internal term; defined by
+                                     # schema rather than external source.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

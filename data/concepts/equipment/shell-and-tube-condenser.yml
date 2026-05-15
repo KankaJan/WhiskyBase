@@ -1,0 +1,141 @@
+# =============================================================================
+# Shell-and-tube condenser
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: equipment
+# The modern Scotch industry default condenser type. This page is the
+# contrast case for the older worm-tub design and the high-copper-
+# contact endpoint of the spirit-character continuum.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: shell-and-tube-condenser
+title: Shell-and-tube condenser
+kind: equipment
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A vertical or horizontal vessel (the shell) enclosing a bundle of
+  copper tubes, used to condense spirit vapour from a still. Spirit
+  vapour passes through the tubes; cooling water flows through the
+  shell around them. The design provides large copper surface area
+  per unit of spirit, efficient heat transfer, and consequently
+  greater copper-spirit interaction than worm tubs. The modern
+  Scotch industry default condenser type.
+
+body: |
+  The shell-and-tube condenser comprises a sealed cylindrical shell
+  through which cooling water flows, with a bundle of copper tubes
+  inside; spirit vapour from the still passes through the tubes and
+  condenses on the inner copper surfaces. The condensed spirit
+  collects at the base and runs into the spirit safe.
+
+  ## Mechanism
+
+  Heat transfer is efficient because the tube bundle presents a
+  large surface area to a relatively small volume of spirit. Cooling
+  water in the shell can be controlled (and recirculated through a
+  heat exchanger) to maintain a stable condensation rate.
+
+  Copper-spirit interaction continues through the tube bundle —
+  unlike the worm tub, where the spirit travels through a single
+  coiled pipe immersed in a water bath, here the spirit encounters
+  copper on all sides of every tube. The much larger surface area
+  per unit of spirit means more contact between vapour and copper.
+
+  ## Effect on spirit character
+
+  Industry convention frames shell-and-tube condensers as
+  contributing to "cleaner," lighter spirit character with reduced
+  sulphur retention compared with worm tubs. The chemistry that
+  underwrites this framing is the
+  [copper conversation](concept/educational/copper-conversation):
+  copper-catalysed removal of dimethyl sulphide and related sulphur
+  compounds. The catalytic capacity is correlated with copper
+  surface area exposed to vapour, which is substantially greater in
+  shell-and-tube designs than in worm tubs.
+
+  The framing is widely repeated but the contribution of condenser
+  type specifically — separate from still shape, lyne arm angle,
+  cut points, and fermentation regime — is harder to isolate. The
+  most common worked example is the worm-tub minority (Mortlach,
+  Cragganmore, Talisker, Dalwhinnie, and others) producing
+  consistently weightier and more sulphur-influenced spirit
+  profiles than typical shell-and-tube distilleries, but the
+  causal contribution of the condenser alone is not the only
+  variable at work.
+
+  ## Industry usage
+
+  The shell-and-tube condenser is the modern default across Scotch
+  malt distilleries. The minority of distilleries still using worm
+  tubs are documented at
+  [worm-tub](concept/equipment/worm-tub); the much larger
+  population of shell-and-tube users is not exhaustively listed
+  here. Two distilleries currently in this knowledge base use
+  shell-and-tube condensers: Isle of Harris (both stills, with
+  descending lyne arms) [1] and Bruichladdich (across all four pot
+  stills) [2]. The condenser manufacturer is not separately
+  recorded for either site in the current source set; for Harris,
+  the still pair is built by Frilli of Siena, but the condenser
+  supplier is not separately stated by sources [1].
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - equipment/worm-tub
+  - educational/copper-conversation
+
+
+# --- Equipment block --------------------------------------------------------
+equipment:
+  category: condenser
+  used_at_distilleries:
+    - harris
+    - bruichladdich
+                                     # The vast majority of Scotch malt
+                                     # distilleries use shell-and-tube
+                                     # condensers; only the
+                                     # currently-populated entries are
+                                     # listed here. The worm-tub page
+                                     # holds the inverse list (the
+                                     # minority that don't use
+                                     # shell-and-tube).
+  distinguishing_features: |
+    Large copper surface area per unit of spirit, efficient heat
+    transfer, controllable cooling rate, supports catalytic sulphur
+    removal across the full tube bundle. Compact installation
+    relative to outdoor worm-tub tubs. Industry-default condenser
+    type for modern Scotch malt distillation.
+  alternatives:
+    - equipment/worm-tub
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/4892/isle-of-harris/
+    accessed: 2026-05-02
+    notes: |
+      Scotch Whisky Whiskypedia entry for Isle of Harris. Used for
+      confirmation of shell-and-tube condenser type and Frilli
+      manufacturer attribution.
+
+  - id: 2
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/1827/bruichladdich/
+    accessed: 2026-05-02
+    notes: |
+      Scotch Whisky Whiskypedia entry for Bruichladdich. Used for
+      confirmation of shell-and-tube condenser type across the
+      site's four pot stills.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

@@ -1,0 +1,69 @@
+# =============================================================================
+# Phenol PPM
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# Short definition of the PPM measurement unit as used in Scotch whisky
+# disclosures.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: phenol-ppm
+title: phenol PPM
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Phenol PPM (parts per million) is the measure of phenolic compound
+  concentration in malted barley used for peated whisky production.
+  The figure is typically measured by high performance liquid
+  chromatography (HPLC) summing the seven "standard 7" phenolic
+  compounds: phenol, the three cresols (o-, m-, p-cresol), guaiacol,
+  4-methylguaiacol, and 4-ethylguaiacol. The measurement is taken on
+  the kilned malt before mashing. The same abbreviation is sometimes
+  used at later stages (new-make spirit, bottled liquid), where it
+  refers to the same compound set but at substantially lower
+  concentrations.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/peating-measurement-methods
+  - educational/aromatic-compounds-in-whisky
+  - methodology/bruichladdich-published-ppm
+  - methodology/harris-published-ppm
+  - methodology/scotch-whisky-published-ppm
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - PPM (phenol)
+    - ppm phenols
+  part_of_speech: noun
+  see_also:
+    - educational/peating-measurement-methods
+    - educational/aromatic-compounds-in-whisky
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-02
+    notes: |
+      Used as the canonical worked example of producer-disclosed phenol
+      PPM with explicit methodology attribution (Bruichladdich's
+      309.1 ppm Octomore 8.3 by HPLC).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

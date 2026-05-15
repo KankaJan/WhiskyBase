@@ -1,0 +1,161 @@
+# =============================================================================
+# The Copper Conversation
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# An educational page on the chemistry and trade framing of copper's
+# role in distillation. Distinguishes established mechanisms from
+# widely-repeated trade convention.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: copper-conversation
+title: The copper conversation
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The "copper conversation" is the colloquial term used in distilling
+  literature for the chemical interaction between spirit vapour and
+  copper surfaces during distillation. Copper-catalysed reactions
+  remove sulphurous compounds (notably dimethyl sulphide and dimethyl
+  trisulphide), depositing them out of the spirit stream as copper
+  sulphide. Copper-spirit contact occurs across the still body, the
+  lyne arm, and the condenser; the total surface area and exposure
+  time determine how much sulphur is removed.
+
+body: |
+  Distillation in copper pot stills involves substantially more
+  than vaporising and condensing alcohol — the spirit vapour
+  reacts with the copper surfaces it touches along the way. The
+  industry term "copper conversation" captures the cumulative
+  effect of these interactions on the character of the new make
+  spirit.
+
+  ## Where the copper conversation happens
+
+  Spirit vapour encounters copper at several stages during a single
+  distillation:
+
+  - **Still body**: vapour rises through the copper still and
+    contacts the inner surface. Larger and taller stills present
+    more copper surface per unit of spirit, and allow more vapour
+    to fall back as reflux (re-distilling rather than passing on),
+    which increases total copper exposure.
+  - **Lyne arm**: the pipe carrying vapour from the still head to
+    the condenser. Ascending lyne arms increase reflux (vapour
+    falling back into the still); descending lyne arms reduce it.
+    Either way, copper-vapour contact continues here.
+  - **Condenser**: where vapour returns to liquid. Shell-and-tube
+    condensers present a large copper surface area (the full
+    interior of a tube bundle) to a continuous flow of vapour;
+    worm tubs present a smaller surface (a single coiled pipe
+    immersed in water) over a longer contact time.
+
+  ## Established chemistry
+
+  The principal mechanism is well-documented: dimethyl sulphide
+  (DMS [1]), dimethyl trisulphide (DMTS), and related volatile
+  sulphur compounds react with copper oxide on the still surface
+  to form less volatile copper sulphides, which deposit on the
+  surface rather than passing through with the spirit. The reaction
+  removes sulphur from the spirit stream and over time depletes
+  the reactive copper layer on the still; this is part of why pot
+  stills require periodic rebuilding. Scotch industry sources [2]
+  reference this generally as the still's effect on heavily-peated
+  or sulphur-prone spirit.
+
+  Greater copper surface area exposed to vapour increases sulphur
+  removal. This is the principal reason shell-and-tube condensers
+  produce lower-sulphur spirit than worm tubs all else equal, and
+  why larger stills generally produce lighter spirit than smaller
+  ones.
+
+  ## Trade convention with weaker direct evidence
+
+  The conventional framing — "more copper contact equals cleaner
+  spirit; less copper contact equals heavier spirit" — is widely
+  repeated and broadly consistent with the underlying chemistry,
+  but several specific claims sit on weaker direct evidence:
+
+  - **Specific character signatures attributed to specific
+    copper-contact regimes** (e.g. "Mortlach is meaty because of
+    worm tubs"). The correlation is observed and widely reported,
+    but isolating the causal contribution of the condenser alone —
+    separate from still shape, cut points, fermentation regime,
+    and maturation — is difficult outside controlled experiments.
+  - **The "copper depletion" framing** (where reactive copper is
+    consumed over time as it reacts with sulphur, requiring still
+    rebuilds at characteristic intervals). The mechanism is
+    established, but quantitative kinetics — how much copper is
+    consumed per unit of spirit, and how this varies by still
+    geometry and operating regime — is not consistently documented
+    in trade-accessible sources.
+  - **The reflux contribution**. Ascending lyne arms and tall
+    stills are conventionally associated with lighter spirit, with
+    the explanation that greater reflux means more copper contact.
+    The reflux mechanism itself is well established; its specific
+    contribution to character relative to the simple "more surface
+    area" account is harder to separate.
+
+  ## See also
+
+  - [worm-tub](concept/equipment/worm-tub) — the high-sulphur-
+    retention condenser regime.
+  - [shell-and-tube-condenser](concept/equipment/shell-and-tube-condenser) —
+    the high-copper-contact regime.
+  - [aromatic-compounds-in-whisky](concept/educational/aromatic-compounds-in-whisky) —
+    the adjacent chemistry covering phenolic, wood-derived, and
+    other aromatic compound classes.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - equipment/worm-tub
+  - equipment/shell-and-tube-condenser
+  - educational/aromatic-compounds-in-whisky
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []                  # Reader can come in cold.
+  covers:
+    - glossary/sulphur-in-new-make   # Covered in the established-
+                                     # chemistry section; the glossary
+                                     # entry exists as a separate page
+                                     # (TBD) but lookup-resolution
+                                     # routes here.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Dimethyl_sulfide
+    accessed: 2026-05-15
+    notes: |
+      Used for confirmation of dimethyl sulphide (DMS) as the
+      principal volatile sulphur compound targeted by copper-
+      catalysed removal during distillation. Wikipedia entry
+      covers DMS chemistry and its role in food/beverage flavour
+      chemistry.
+
+  - id: 2
+    type: trade_publication
+    url: https://maltspedia.com/distilleries/bruichladdich-distillery/
+    accessed: 2026-05-02
+    notes: |
+      Trade reference covering the "still effect on heavily-peated
+      spirit" framing used in the Bruichladdich line description;
+      illustrative of how the copper-conversation framing appears
+      in Scotch industry sources. Cited here for the industry
+      framing rather than for the underlying chemistry.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

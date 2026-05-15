@@ -299,7 +299,11 @@ back rather than absorbing it into the data model.
 - 2 distilleries: Harris (confidence: medium), Bruichladdich (high)
 - 4 production lines: 3 Bruichladdich (high), 1 Harris (medium)
 - 10 bottlings: 9 Bruichladdich, 1 Harris
-- 3 concept pages: 1 methodology, 1 educational, 1 equipment
+- 10 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
+  Whisky), 3 educational (peating-measurement-methods,
+  aromatic-compounds-in-whisky, copper-conversation), 2 equipment
+  (worm-tub, shell-and-tube-condenser), 2 glossary (peating-block,
+  phenol-ppm)
 - 16 casks: 5 high confidence (bourbon-barrel, oloroso/fino sherry,
   virgin-oak, undisclosed-cask), 6 medium (wine-cask parent + 5 named
   appellations), 5 low (lesser-disclosed wine cases)
@@ -319,14 +323,27 @@ back rather than absorbing it into the data model.
 
 **Next priorities, in order of unblock value:**
 
-1. Pressure-test the bottler v0.1 stub schema against a real IB case
-   (Cadenhead's Authentic Collection or Signatory Cask Strength is
-   the likely first case) and promote to v0.2.
-2. More concept pages: `methodology/harris-published-ppm`,
-   `methodology/scotch-whisky-published-ppm`,
-   `educational/aromatic-compounds-in-whisky`,
-   `equipment/shell-and-tube-condenser`. The first dangling references
-   to clean up are the methodology ones (resolves 3 dangling refs).
+1. **Pressure-test the bottler v0.1 stub schema** against a real
+   IB case (Cadenhead's Authentic Collection or Signatory Cask
+   Strength is the likely first case) and promote to v0.2. This
+   is the schema model's last unproven dimension; the IB/OB
+   discriminator in bottling v0.2 has never been exercised with
+   real data.
+2. **Glossary entries to close the remaining concept dangling
+   refs**: `phenol`, `cresol`, `guaiacol`, `standard-seven-phenols`,
+   `sulphur-in-new-make`, `lyne-arm`, `classic-malts`. Each is a
+   short entry (summary text, body usually null). Together these
+   resolve essentially all remaining concept dangling references
+   in the data. See TODO.md for the active list.
+3. **`educational/cask-maturation-kinetics`** — research-heavy
+   teaching page distinguishing established cask-maturation
+   chemistry from trade convention from open questions. Would let
+   several existing cask entries cite a sourced summary instead of
+   hedging in prose. Detailed scope in TODO.md.
+4. **Third distillery** (Springbank, Lagavulin, Highland Park, or
+   similar) — most likely to surface unknown schema gaps. Three is
+   the magic-number threshold for distillery patterns to emerge
+   from observation rather than guess.
 4. Glossary entries; many are referenced from the existing educational
    page but unpopulated.
 5. JSON Schema validation tooling. Currently the only check is
