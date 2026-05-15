@@ -1,0 +1,181 @@
+# =============================================================================
+# Wm Cadenhead Ltd (Cadenhead's)
+# =============================================================================
+# Schema: bottler.template.yml v0.1 (stub schema; this entry exercises it
+# for the first time)
+# Entry confidence: medium — basic identity, ownership, and series
+# structure are well-documented; the `series` field shape is the schema's
+# most speculative dimension and may force a v0.2 promotion. See
+# bruichladdich.NOTES.md for the schema-gap review.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cadenheads
+name: Wm Cadenhead Ltd
+also_known_as:
+  - Cadenhead's
+  - William Cadenhead's
+  - Wm Cadenhead
+website: https://cadenhead.scot
+
+
+# --- Type -------------------------------------------------------------------
+type: independent_bottler
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Campbeltown                  # Headquartered in Campbeltown since
+                                     # the 1972 acquisition by J&A
+                                     # Mitchell; originally Aberdeen.
+locality: Campbeltown
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1842                        # Founded as William Cadenhead & Co.
+                                     # in Aberdeen.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: J&A Mitchell & Co Ltd
+  parent: null                       # J&A Mitchell is the Springbank
+                                     # Distillery owner; family-owned,
+                                     # not a subsidiary of a larger
+                                     # group.
+  history:
+    - owner: William Cadenhead & Co. (and predecessor firms)
+      from: 1842
+      to: 1972
+                                     # The exact transition from
+                                     # original founding-firm name
+                                     # to "William Cadenhead & Co."
+                                     # is not consistently sourced
+                                     # and is flagged as a research
+                                     # request. The 1842 date is the
+                                     # consistently-cited founding
+                                     # year.
+    - owner: J&A Mitchell & Co Ltd
+      from: 1972
+      to: null
+
+
+# --- Operations -------------------------------------------------------------
+release_types:
+  - single_cask                      # Predominant — most Authentic
+                                     # Collection and small-batch
+                                     # releases are single-cask.
+  - small_batch                      # Some series use small-batch
+                                     # vatting from a few casks of the
+                                     # same distillery.
+  - blended_malt                     # Occasional. Cadenhead's blends
+                                     # appear in some lines.
+
+sources_from: []                     # Cadenhead's sources from many
+                                     # Scotch malt distilleries; the
+                                     # specific source set varies per
+                                     # release. Not enumerated at the
+                                     # bottler level. Specific
+                                     # distilleries are recorded on each
+                                     # bottling entry.
+
+
+# --- Series -----------------------------------------------------------------
+# Cadenhead's runs several long-standing release lines. The bottler
+# v0.1 schema's series field is a list of named series each with id,
+# name, description, first_released, active. The pressure-test below
+# surfaces a gap: real-world series are often nested (e.g., the
+# Authentic Collection has "small bottlings" and "wine cask finishes"
+# as sub-series). The flat list works for the broad designations but
+# may need a parent/child relationship for sub-series. Recorded as a
+# schema-gap observation; not changing v0.1 yet.
+series:
+  - id: authentic-collection
+    name: Authentic Collection
+    description: |
+      Single-cask, cask-strength, non-chill-filtered releases from
+      named Scotch malt distilleries. The longest-running and most
+      visible Cadenhead's series. Each release names the distillery
+      of origin, vintage (where disclosed), age, ABV, and outturn.
+    first_released: null             # Pre-2000; specific year not in
+                                     # current source set.
+    active: true
+
+  - id: original-collection
+    name: Original Collection
+    description: |
+      Vatted single-malt releases (multiple casks of the same
+      distillery vatted into a single bottling). Generally bottled
+      at 46% ABV, non-chill-filtered.
+    first_released: null
+    active: true
+
+  - id: small-batch
+    name: Small Batch
+    description: |
+      Small-batch (typically 2-6 casks) vattings, single-distillery,
+      bottled at cask strength or near it.
+    first_released: null
+    active: true
+
+  - id: closed-distillery
+    name: Closed Distillery Series
+    description: |
+      Periodic releases from silent (closed) distilleries —
+      Cadenhead's has access to stock that long predates current
+      operating ownership in several cases.
+    first_released: null
+    active: true
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Independent Scotch whisky bottler founded in Aberdeen in 1842.
+  The firm's name, ownership lineage, and operating history from
+  1842 through to William Cadenhead's eventual control of the firm
+  in the second half of the 19th century are not consistently
+  documented across popular sources and would benefit from a
+  primary historical reference (see TODO Research Requests).
+  Acquired by J&A Mitchell & Co Ltd, the family-owned proprietor
+  of Springbank Distillery, in 1972; subsequently relocated to
+  Campbeltown. The firm is one of the oldest continuously-
+  operating independent Scotch whisky bottlers and releases
+  single-cask and small-batch bottlings under several named
+  series, including the Authentic Collection (its most visible
+  line, single-cask cask-strength releases) and the Original
+  Collection (vatted single malts at 46% ABV). Cadenhead's does
+  not distil whisky itself; the J&A Mitchell ownership connection
+  to Springbank is structural rather than indicating a Springbank-
+  only sourcing relationship.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  wikidata_qid: null
+  whiskybase_id: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://cadenhead.scot
+    accessed: 2026-05-15
+    notes: |
+      Cadenhead's own website. Used for current operating status,
+      series listings, and Campbeltown headquarters confirmation.
+      Note: the founding-year claim (1842) is consistently stated
+      across Cadenhead's communications but the specific founding
+      circumstances, the firm's pre-Cadenhead name, and the
+      Cadenhead-takeover date are not deeply sourced here. See
+      TODO Research Requests for the primary-historical-source
+      upgrade.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

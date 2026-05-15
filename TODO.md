@@ -80,28 +80,17 @@ relevant section.
 
 ## Concept pages to create
 
-Highest-priority concept pages, ordered by what cleans up the most
-dangling references in existing data:
+The previously-tracked dangling concept references are now all
+resolved. The cross-reference resolver reports zero dangling
+concept slugs (the remaining 20 dangling references are all
+expected `used_at_distilleries` forward references from
+`equipment/worm-tub` pointing at distilleries not yet populated).
 
-1. **`glossary/phenol`**, **`glossary/cresol`**, **`glossary/guaiacol`**,
-   **`glossary/standard-seven-phenols`** — the foundational set of
-   compound glossary entries. Each is referenced from `covers:` on
-   `educational/aromatic-compounds-in-whisky` and from
-   `related_concepts:` on `educational/peating-measurement-methods`.
-   Short entries — summary text, body null. Together they resolve
-   ~8 dangling references.
-2. **`glossary/sulphur-in-new-make`** — referenced from
-   `educational/copper-conversation` covers, from
-   `educational/aromatic-compounds-in-whisky` covers, and from
-   `equipment/worm-tub` related_concepts. Short summary; covered
-   in body of copper-conversation.
-3. **`glossary/lyne-arm`** — referenced from `equipment/worm-tub`
-   related_concepts. Short equipment-component glossary entry.
-4. **`glossary/classic-malts`** — referenced from
-   `equipment/worm-tub` related_concepts. A historical Diageo
-   marketing portfolio rather than a technical term; entry should
-   define it factually as a brand/portfolio designation rather than
-   adopting marketing framing.
+New concept-page creation work is captured in the queue section
+below; the highest-priority slot is currently held by the
+research-requests work (see Research Requests section), since
+sourcing-upgrade work is more load-bearing than authoring new
+pages at this point.
 
 ### Concept pages to queue
 
@@ -148,10 +137,8 @@ references:
   Barley series, Springbank Local Barley, etc.)
 - `practice/on-island-maturation-policy` (Bruichladdich, Kilchoman,
   Bunnahabhain)
-- (Glossary entries previously listed here have been promoted to
-  the highest-priority concept-pages-to-create section above, since
-  they now constitute essentially all remaining dangling concept
-  references.)
+- (Glossary entries previously listed here have all been written
+  as of 2026-05-15. See Recently Completed.)
 
 ---
 
@@ -192,6 +179,107 @@ references:
 
 ---
 
+## Research requests
+
+Entries that currently cite Wikipedia (a volatile source per
+`docs/source-conflict-policy.md`) or that have empty `sources:`
+where they should have authoritative sources. Each needs a
+research pass to locate and cite stronger primary sources.
+
+### Compound-chemistry sources (PubChem upgrade)
+
+(All items in this sub-section migrated on 2026-05-15. The
+`educational/aromatic-compounds-in-whisky` page now relies on its
+`educational.covers` linkage to glossary entries which carry the
+canonical PubChem citations. The `educational/copper-conversation`
+page now cites PubChem CID 1068 directly for DMS.)
+
+### Appellation/AOC regulatory sources (INAO upgrade)
+
+The wine-cask entries cite Wikipedia for appellation rules and
+grape composition. The primary source is the INAO regulatory
+text for each AOC (the *cahier des charges*); secondary is the
+appellation council's technical publication. Affected:
+
+- `data/casks/pomerol-wine-cask.yml`
+- `data/casks/pauillac-wine-cask.yml`
+- `data/casks/sauternes-wine-cask.yml`
+- `data/casks/burgundy-wine-cask.yml`
+- `data/casks/rhone-wine-cask.yml`
+- `data/casks/ventoux-wine-cask.yml`
+- `data/casks/mourvedre-wine-cask.yml` — grape-variety reference;
+  could cite IPGRI / Vitis International Variety Catalogue rather
+  than Wikipedia.
+- `data/casks/amarone-wine-cask.yml` — DOCG regulatory text from
+  the Italian Ministero delle politiche agricole rather than
+  Wikipedia.
+
+### Sherry DO sources (Consejo Regulador upgrade)
+
+- `data/casks/oloroso-sherry-butt.yml` cites Wikipedia "Sherry"
+  for oloroso style description and Jerez DO geography. The
+  Consejo Regulador del Vino de Jerez publishes the DO's
+  regulatory text; that is the primary source for the
+  designation rules.
+- `data/casks/fino-sherry-butt.yml` cites Wikipedia "Fino" for
+  fino style description. Same Consejo Regulador as the primary;
+  for the flor-yeast microbiology, a published paper would be
+  more authoritative than Wikipedia.
+
+### Distilled-spirits regulatory sources (CFR upgrade)
+
+(Migrated on 2026-05-15. `data/casks/bourbon-barrel.yml` now cites
+ecfr.gov directly for 27 CFR §5.143 under the new `regulatory_text`
+source type.)
+
+### Distillery historical sources
+
+- **`data/distilleries/harris.yml`** cites Wikipedia for opening
+  date, production start, and grant funding details. Acceptable
+  per the volatility caveat for historical facts; consider
+  upgrading to the Highlands and Islands Enterprise grant
+  publication for the funding detail specifically.
+- **`data/distilleries/bruichladdich.yml`** cites Wikipedia for
+  several historical claims about ownership lineage and
+  mothballing windows. Same volatility-caveat acceptability;
+  consider upgrading the 1929-1936 mothballing window claim in
+  particular (currently marked TODO inline) to a primary
+  historical source.
+
+### Empty sources — need primary literature
+
+These entries have `sources: []` and would benefit from primary
+literature:
+
+- **`data/concepts/glossary/standard-seven-phenols.yml`** — SWRI
+  publications or malting industry technical literature for the
+  "standard 7" convention's origin and codification.
+- **`data/concepts/glossary/lyne-arm.yml`** — Scotch Whisky
+  Association technical publications or distilling industry
+  textbooks (e.g. Russell's "Whisky: Technology, Production and
+  Marketing") for the lyne-arm geometry's effect.
+- **`data/concepts/glossary/classic-malts.yml`** — Diageo's own
+  archival materials for the portfolio's launch in 1988 and its
+  subsequent expansions; independent historical retrospectives
+  (Jackson, Murray's annual guides) for corroboration.
+- **`data/casks/virgin-oak.yml`** — cooperage technical
+  publications (Speyside Cooperage, Tonnellerie Taransaud); SWRI
+  papers on new-oak extraction kinetics.
+- **`data/casks/wine-cask.yml`** — no external source needed
+  (project-internal generic category), but the description's
+  claims about typical configuration could be sourced if needed.
+
+### Why this section exists
+
+The project's policy is "every claim is sourced." Wikipedia
+citations were used as starting points during initial population
+but the volatility-caveat policy (introduced 2026-05-15) prefers
+primary sources where they're available and accessible. Migration
+is a research-time task rather than a authoring-time task; this
+section is the active backlog.
+
+---
+
 ## Process
 
 - **Validate every entry against schema before commit.** Once JSON
@@ -209,6 +297,49 @@ references:
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-15** Bottler IB pressure-test completed against
+  Cadenhead's Authentic Collection. Created
+  `data/bottlers/cadenheads.yml` (first real bottler entry,
+  exercises the bottler v0.1 stub schema) and
+  `data/bottlings/cadenheads-bunnahabhain-stub.yml` (schema-
+  pressure-test placeholder, marked `confidence: stub`,
+  exercises all four IB discriminator fields:
+  `produced_at_distillery`, `bottled_by`, `bottler_type`,
+  `bottler_series`). All four resolve cleanly. The bottling
+  entry's SCHEMA-GAPS block documents 5 observations that would
+  feed into bottler v0.2 promotion when triggered: sub-series
+  support (deferred until Signatory case forces it),
+  presentation-defaults on series (useful enhancement),
+  production_line forward refs for unpopulated distilleries
+  (acceptable per §8), resolver script gap on series-ID
+  validation, and bottler-distillery corporate affiliation
+  semantics (deferred).
+- **2026-05-15** Easy Research Request migrations applied:
+  `aromatic-compounds-in-whisky` (4 WP chemistry sources removed
+  — glossary entries carry canonical citations);
+  `copper-conversation` (WP DMS → PubChem CID 1068);
+  `bourbon-barrel` (WP Bourbon_whiskey → ecfr.gov 27 CFR §5.143
+  under new `regulatory_text` source type). Source-type
+  vocabulary extended with `regulatory_text`. Net effect: 6
+  Wikipedia citations eliminated from data; 12 files still
+  carry Wikipedia citations (8 wine-cask appellation entries,
+  2 sherry-butt entries, harris.yml, bruichladdich.yml — all
+  tracked in Research Requests for future appellation /
+  historical / sherry upgrades).
+- **2026-05-15** Glossary backlog cleared. Wrote
+  `glossary/phenol`, `glossary/cresol`, `glossary/guaiacol`,
+  `glossary/standard-seven-phenols`, `glossary/sulphur-in-new-make`,
+  `glossary/lyne-arm`, `glossary/classic-malts`. With these in
+  place, the cross-reference resolver reports zero dangling
+  concept references; the only remaining dangling refs are the
+  20 distillery forward-references from `equipment/worm-tub`,
+  which are expected per handover §8. Concept count: 17 (3
+  educational, 2 equipment, 9 glossary, 3 methodology). Also
+  introduced the project's Wikipedia-volatility policy in
+  `docs/source-conflict-policy.md` and added a new source-type
+  vocabulary entry `chemistry_database` for PubChem citations;
+  populated a Research Requests section in TODO for entries that
+  need a sourcing upgrade from Wikipedia to primary sources.
 - **2026-05-15** Five concept pages written, closing the previous
   highest-priority list: `educational/aromatic-compounds-in-whisky`
   (substantial teaching page covering phenolic chemistry,

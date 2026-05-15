@@ -1,0 +1,79 @@
+# =============================================================================
+# Sulphur in new make
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: sulphur-in-new-make
+title: sulphur in new make
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  "Sulphur in new make" refers to the residual content of volatile
+  sulphurous compounds in the new make spirit immediately after
+  distillation, before maturation. The principal compounds in this
+  category are dimethyl sulphide (DMS) [1] and dimethyl trisulphide
+  (DMTS) [2], generated during fermentation and partially carried
+  through distillation. New make sulphur content is the principal
+  target of copper-catalysed removal during distillation; see
+  `educational/copper-conversation`. Distilleries using equipment
+  configurations that reduce copper-spirit contact (notably worm-tub
+  condensers) typically produce new make spirit with higher residual
+  sulphur, which contributes to characteristic weight and meatiness
+  in the matured whisky.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/copper-conversation
+  - educational/aromatic-compounds-in-whisky
+  - equipment/worm-tub
+  - equipment/shell-and-tube-condenser
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - new make sulphur
+    - sulphur character (new make)
+  part_of_speech: noun
+  see_also:
+    - educational/copper-conversation
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/1068
+    accessed: 2026-05-15
+    notes: |
+      PubChem compound entry for dimethyl sulfide / DMS (CID 1068).
+      Used for chemical identity of the principal volatile sulphur
+      compound targeted by copper-catalysed removal.
+
+  - id: 2
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/19310
+    accessed: 2026-05-15
+    notes: |
+      PubChem compound entry for dimethyl trisulfide / DMTS
+      (CID 19310). The other principal volatile sulphur compound
+      in the same family. CID cited from secondary recall — verify
+      against PubChem search for "dimethyl trisulfide" and adjust
+      if needed (this is the only CID in the new glossary set that
+      was not cross-checked at write time).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

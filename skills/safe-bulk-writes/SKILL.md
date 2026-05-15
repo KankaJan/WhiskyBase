@@ -37,9 +37,36 @@ in a single conversational turn:
 4. **For truncated files, re-write serially (one Write call at a
    time).** The truncation failure mode is rarer than padding but
    harder to recover from, because the file content is genuinely
-   missing. Files where the YAML parses but the schema-level structure
-   is incomplete (e.g. `sources:` missing entirely on a file that
-   should have sources) need a fresh single-call Write.
+   missing. Files where the YAML parses but the schema-level
+   structure is incomplete (e.g. `sources:` missing entirely on a
+   file that should have sources) need a fresh single-call Write.
+
+5. **For files larger than ~10 KB, prefer bash-mediated writes.**
+   The Write tool has produced silent truncation on single Writes
+   of files in the 11–18 KB range. The reliable workaround is to
+   write via bash using Python or a heredoc. Example pattern to
+   repair a truncated tail:
+
+   ```bash
+   python3 << 'PYEOF'
+   fn = 'data/path/to/file.yml'
+   with open(fn) as f:
+       content = f.read()
+   idx = content.rfind('schema_version:')
+   if idx > 0:
+       fixed = content[:idx] + """schema_version: 0.1
+   confidence: medium
+   last_reviewed: 2026-05-15
+   contributors: []
+   """
+       with open(fn, 'w') as f:
+           f.write(fixed)
+   PYEOF
+   ```
+
+   For new large files: write the structural skeleton via Write
+   (small, reliable), then bash-append the body content in chunks.
+   Or write the entire file via a bash heredoc up front.
 
 ## Why this rule exists
 
@@ -56,7 +83,25 @@ modes:
   required complete re-writes.
 
 Subsequent re-writes in batches of ≤4 succeeded without corruption.
-Single Writes in isolation have never been observed to corrupt.
+
+A separate corruption pattern was observed later in the same
+session and in the 2026-05-15 concept-page session:
+
+- **Large-file truncation in single Writes.** Files larger than
+  approximately 11 KB have been silently truncated by the Write
+  tool even when written individually (not in a batch). The
+  truncation point on `aromatic-compounds-in-whisky.yml` was
+  exactly the same — 10964 bytes, mid-word in the final metadata
+  block — on two consecutive Write attempts of the same content.
+  Repairing the tail by appending the missing bytes via bash
+  recovered the file.
+  
+  Tentative threshold: single Writes have produced corruption-free
+  files up to roughly 10 KB; files between ~11 KB and ~18 KB have
+  shown truncation in observed cases; files above ~18 KB have not
+  been attempted as single Writes in this project. The threshold
+  may move; treat any file over ~10 KB as a candidate for the
+  bash-write workaround below.
 
 ## Verification routine
 

@@ -1,0 +1,64 @@
+# =============================================================================
+# Lyne arm
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: lyne-arm
+title: lyne arm
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The lyne arm is the pipe carrying spirit vapour from the head of a
+  pot still to the condenser. Its geometry — particularly the angle
+  it leaves the still at (ascending, horizontal, or descending) and
+  any bends or downward kinks — influences how much vapour falls
+  back into the still as reflux versus continuing to the condenser.
+  Ascending lyne arms increase reflux and produce lighter spirit
+  with more copper-spirit contact; descending lyne arms reduce
+  reflux and produce heavier spirit. The lyne arm is also one of
+  the surfaces over which the copper conversation continues.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/copper-conversation
+  - equipment/worm-tub
+  - equipment/shell-and-tube-condenser
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - lyne pipe
+    - lyne
+    - swan neck (informal; sometimes used for the still neck rather than the arm)
+  part_of_speech: noun
+  see_also:
+    - educational/copper-conversation
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # No authoritative primary source
+                                     # currently cited. The Scotch
+                                     # Whisky Association's technical
+                                     # documents and distilling industry
+                                     # textbooks (e.g., Russell's "Whisky:
+                                     # Technology, Production and
+                                     # Marketing") would be primary; not
+                                     # currently in the source set. See
+                                     # TODO for research request.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

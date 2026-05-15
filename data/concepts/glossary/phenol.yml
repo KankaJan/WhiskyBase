@@ -1,0 +1,73 @@
+# =============================================================================
+# Phenol
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: phenol
+title: phenol
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Phenol is the simplest member of the phenol class — an organic
+  compound with a hydroxyl group attached directly to an aromatic
+  ring (molecular formula C6H6O, structural formula C6H5OH) [1].
+  Phenols are distinct from aromatic alcohols, in which the hydroxyl
+  is attached to a saturated carbon that is itself bonded to the
+  aromatic ring (e.g. benzyl alcohol); the directly-bonded hydroxyl
+  in phenols gives them characteristic chemistry (greater acidity,
+  distinct reactivity) and is the reason they form a separate
+  IUPAC class. In whisky chemistry, phenol is the simplest and
+  namesake compound in the family of phenolic compounds deposited
+  on malt during peat-fired kilning. It is one of the seven
+  compounds summed in the standard HPLC measurement of malt PPM.
+  Sensory associations in the whisky context are with sharp
+  medicinal character — see `educational/aromatic-compounds-in-whisky`
+  for the project's canonical compound-flavor mapping.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/aromatic-compounds-in-whisky
+  - educational/peating-measurement-methods
+  - glossary/phenol-ppm
+  - glossary/cresol
+  - glossary/guaiacol
+  - glossary/standard-seven-phenols
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - hydroxybenzene
+    - carbolic acid
+    - benzenol
+  part_of_speech: noun
+  see_also:
+    - educational/aromatic-compounds-in-whisky
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/996
+    accessed: 2026-05-15
+    notes: |
+      PubChem compound entry for phenol (CID 996). Used for chemical
+      identity, molecular formula, and IUPAC nomenclature. Primary
+      authoritative source for compound identity.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

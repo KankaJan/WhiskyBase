@@ -132,15 +132,15 @@ educational:
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1
-    type: wikipedia
-    url: https://en.wikipedia.org/wiki/Dimethyl_sulfide
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/1068
     accessed: 2026-05-15
     notes: |
-      Used for confirmation of dimethyl sulphide (DMS) as the
-      principal volatile sulphur compound targeted by copper-
-      catalysed removal during distillation. Wikipedia entry
-      covers DMS chemistry and its role in food/beverage flavour
-      chemistry.
+      PubChem compound entry for dimethyl sulfide / DMS (CID 1068).
+      Used for confirmation of DMS as the principal volatile
+      sulphur compound targeted by copper-catalysed removal during
+      distillation. Migrated from Wikipedia 2026-05-15 per the
+      project's Wikipedia-volatility policy.
 
   - id: 2
     type: trade_publication

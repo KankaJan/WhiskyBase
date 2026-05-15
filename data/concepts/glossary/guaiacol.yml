@@ -1,0 +1,65 @@
+# =============================================================================
+# Guaiacol
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: guaiacol
+title: guaiacol
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Guaiacol is 2-methoxyphenol — a phenol ring with a methoxy
+  (OCH3) substituent in the position adjacent to the hydroxyl
+  (molecular formula C7H8O2) [1]. In whisky chemistry, guaiacol
+  reaches the spirit through two distinct production pathways: as
+  one of the seven phenolic compounds deposited on malt during
+  peat-fired kilning (counted in standard HPLC PPM measurement),
+  and separately from oak lignin degradation during cask charring
+  and maturation. Sensory associations in the whisky context are
+  with smoke and sweet-woody character.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/aromatic-compounds-in-whisky
+  - educational/peating-measurement-methods
+  - glossary/phenol
+  - glossary/cresol
+  - glossary/standard-seven-phenols
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - 2-methoxyphenol
+    - o-methoxyphenol
+    - methylcatechol
+  part_of_speech: noun
+  see_also:
+    - educational/aromatic-compounds-in-whisky
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/460
+    accessed: 2026-05-15
+    notes: |
+      PubChem compound entry for guaiacol (CID 460). Used for
+      chemical identity, molecular formula, and IUPAC nomenclature.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

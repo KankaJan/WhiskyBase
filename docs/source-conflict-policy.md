@@ -40,15 +40,84 @@ Not strict — exceptions exist — but a useful default.
 
 | Tier | Source type | Notes |
 |---|---|---|
+| 1 | Primary database (PubChem, NIST WebBook, IUPAC, INAO regulatory text, Code of Federal Regulations, ChemSpider) | Authoritative for chemical compound identity, appellation regulations, distilled-spirits regulatory rules. Stable and citable by anchor ID where applicable. |
 | 1 | Producer's structured spec sheet | Best for current equipment, recipe, malt spec |
 | 2 | Producer-authored prose page | Authoritative on intent, sometimes loose on numbers |
-| 2 | Wikipedia entry | Reliable for historical facts, sometimes mixes current and outdated equipment data |
+| 2 | Peer-reviewed journal paper (Journal of the Institute of Brewing, food chemistry, oak chemistry) | Authoritative for whisky-chemistry claims. Underused in current data; see TODO Research Requests. |
 | 3 | Scotch Whisky Whiskypedia structured page | Excellent for current production specs, well-curated |
 | 3 | Diffords Guide / Whisky.com / Master of Malt | Mixed; reliable when consistent with tier 1-2, suspect when alone |
 | 3 | Reputable independent reviewer with named author | Good for personal observations and tasting notes; less reliable for equipment numbers |
+| 3 | Wikipedia entry | **Volatile source** — entries change without notification. Use as a starting point but prefer the primary sources Wikipedia itself cites where available. See "Wikipedia volatility caveat" below. |
 | 4 | Retailer product pages | Often copies producer text but sometimes introduces errors |
 | 4 | Independent reviewer without named author | Use with caution |
 | 5 | Forum posts, social media, AI-generated content | Avoid as primary source; treat only as pointer to real source |
+
+## Wikipedia volatility caveat
+
+Wikipedia is treated as a volatile source: entries change without
+notification, can be subject to vandalism between revisions, and
+their citation graphs evolve as editors come and go. The project
+prefers more solid resources where they are available and
+accessible.
+
+Specifically:
+
+- **For chemical compound identity** (formula, structure, IUPAC
+  nomenclature, CAS number), cite **PubChem**
+  (`pubchem.ncbi.nlm.nih.gov/compound/<CID>`) or another primary
+  chemistry database (NIST WebBook, ChemSpider). PubChem entries
+  are anchored to a Compound ID (CID) that does not change; the
+  underlying data is curated against authoritative chemistry
+  references. Use `type: chemistry_database` for source classification.
+- **For appellation/AOC regulations** (Pomerol, Pauillac, Sauternes,
+  etc.), cite the appellation council's technical publication or
+  the INAO regulatory text rather than the Wikipedia summary.
+- **For US distilled-spirits regulation** (the bourbon new-oak
+  rule etc.), cite the Code of Federal Regulations directly
+  (`ecfr.gov`).
+- **For Scotch industry technical claims** (peating methods,
+  fermentation effects, copper-catalysis chemistry), cite the
+  primary research literature (SWRI publications, papers in the
+  Journal of the Institute of Brewing, Conner et al. on flavour
+  chemistry) rather than Wikipedia secondaries.
+
+Where Wikipedia is currently cited and a better source has been
+identified, the entry should be migrated. Where a better source
+has NOT been identified, the entry remains with the Wikipedia
+citation and a corresponding "research request" item appears in
+`TODO.md` under the Research Requests section.
+
+Wikipedia citations remain acceptable for:
+
+- Historical facts about a distillery's ownership lineage where
+  Wikipedia is itself drawing on documented sources and the claim
+  is non-contentious.
+- Geographic and administrative facts that are well-established
+  and not subject to revision (e.g. that Pauillac is in the
+  Médoc).
+- General context where the claim is non-load-bearing for the
+  entry's value.
+
+## Source-type vocabulary
+
+The `type:` field on source entries uses the following vocabulary:
+
+- `official_website` — producer's own website or other
+  first-party publication
+- `trade_publication` — third-party Scotch industry coverage
+  (Scotch Whisky magazine, Diffords, Whisky.com, etc.)
+- `wikipedia` — Wikipedia entry. Volatile (see above).
+- `chemistry_database` — primary chemistry database (PubChem,
+  NIST WebBook, etc.). Type introduced 2026-05-15.
+- `regulatory_text` — government or appellation-council
+  regulatory publication (US Code of Federal Regulations, INAO
+  *cahier des charges*, Consejo Regulador del Vino de Jerez DO
+  text, Italian DOC/DOCG ministerial publications). Type
+  introduced 2026-05-15.
+- `independent_review` — named-author tasting notes or visit
+  accounts
+- `peer_reviewed_paper` — journal paper. Reserved for future use
+  as research-request items are resolved.
 
 **Trade press writers can be wrong.** Drinkhacker, Whisky Advocate,
 The Whiskey Wash, Scotch Whisky magazine all employ professional

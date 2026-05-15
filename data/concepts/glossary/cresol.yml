@@ -1,0 +1,82 @@
+# =============================================================================
+# Cresol
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cresol
+title: cresol
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Cresol is the common name for a methylphenol — a phenol ring with
+  one methyl (CH3) substituent. Three positional isomers exist,
+  named for the position of the methyl group relative to the
+  hydroxyl: o-cresol (2-methylphenol) [1], m-cresol (3-methylphenol)
+  [2], and p-cresol (4-methylphenol) [3]. In whisky chemistry, all
+  three isomers are counted among the seven compounds summed in the
+  standard HPLC measurement of malt PPM. Sensory associations in the
+  whisky context cover a range from phenolic-medicinal to tarry,
+  varying by isomer.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/aromatic-compounds-in-whisky
+  - educational/peating-measurement-methods
+  - glossary/phenol
+  - glossary/guaiacol
+  - glossary/standard-seven-phenols
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - methylphenol
+    - o-cresol
+    - m-cresol
+    - p-cresol
+    - 2-methylphenol
+    - 3-methylphenol
+    - 4-methylphenol
+  part_of_speech: noun
+  see_also:
+    - educational/aromatic-compounds-in-whisky
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/335
+    accessed: 2026-05-15
+    notes: |
+      PubChem compound entry for o-cresol / 2-methylphenol (CID 335).
+
+  - id: 2
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/342
+    accessed: 2026-05-15
+    notes: |
+      PubChem compound entry for m-cresol / 3-methylphenol (CID 342).
+
+  - id: 3
+    type: chemistry_database
+    url: https://pubchem.ncbi.nlm.nih.gov/compound/2879
+    accessed: 2026-05-15
+    notes: |
+      PubChem compound entry for p-cresol / 4-methylphenol (CID 2879).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-15
+contributors: []

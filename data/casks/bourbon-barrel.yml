@@ -113,13 +113,18 @@ used_by: null
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1
-    type: wikipedia
-    url: https://en.wikipedia.org/wiki/Bourbon_whiskey
+    type: regulatory_text
+    url: https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5/subpart-I/section-5.143
     accessed: 2026-05-15
     notes: |
-      Used for the new-oak / single-use regulatory requirement
-      (27 CFR §5.143, US Standards of Identity for Distilled
-      Spirits) and broad characterisation of bourbon production.
+      US Code of Federal Regulations, Title 27, Part 5, section
+      5.143 (Standards of Identity for Distilled Spirits). Direct
+      primary source for the new-oak / single-use rule that
+      requires bourbon to be aged in new charred oak. Migrated
+      from Wikipedia 2026-05-15 per the project's Wikipedia-
+      volatility policy. The CFR section number may evolve under
+      reorganisations; if the URL stops resolving, search
+      ecfr.gov for "bourbon whisky" in Title 27.
 
 
 # --- Metadata ---------------------------------------------------------------

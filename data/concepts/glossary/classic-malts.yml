@@ -1,0 +1,74 @@
+# =============================================================================
+# Classic Malts
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# Note on voice: this entry intentionally avoids the marketing voice
+# in which the "Classic Malts" portfolio has typically been described.
+# It records the portfolio as a corporate marketing designation, not
+# as a curated reference standard.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: classic-malts
+title: Classic Malts
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  "Classic Malts of Scotland" (or "Classic Malts") is the trade
+  name for a marketing portfolio of single malt Scotch whiskies
+  introduced by United Distillers in the late 1980s (commonly
+  reported as 1988, though the specific launch date is not
+  currently sourced in this entry) and continued by its successor
+  companies (UDV, Diageo). The portfolio's original six malts —
+  Glenkinchie, Cragganmore, Dalwhinnie, Oban, Talisker, and
+  Lagavulin — were selected by United Distillers to represent six
+  regional styles within the company's portfolio at the time, not
+  by independent expert curation. The portfolio has been expanded
+  and rebranded several times since. References to the "Classic
+  Malts" in third-party Scotch coverage usually mean the original
+  six or some superset, but the precise composition has shifted
+  with corporate marketing changes.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []                  # Distillery slugs not yet
+                                      # populated; will reference the
+                                      # six distilleries when their
+                                      # entries land.
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - Classic Malts of Scotland
+    - United Distillers Classic Malts
+  part_of_speech: noun
+  see_also: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # No authoritative non-marketing
+                                     # primary source currently cited.
+                                     # Diageo's own marketing materials
+                                     # are the obvious primary source
+                                     # for the portfolio composition;
+                                     # independent historical
+                                     # retrospectives (e.g., Jackson's
+                                     # whisky writing, Murray's annual
+                                     # guides) would provide
+                                     # corroboration of the launch
+                                     # context and lineage. See TODO
+                                     # for research request.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

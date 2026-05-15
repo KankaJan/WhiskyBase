@@ -172,6 +172,20 @@ Treat source disagreement as data, not noise. The rules:
    If two sources give 17,500 L and 12,500 L for a still capacity,
    the entry records one of those figures, not 15,000 L.
 
+**Wikipedia volatility (added 2026-05-15).** Wikipedia is treated
+as a volatile source: entries change without notification, and
+their citation graphs evolve as editors come and go. Wikipedia is
+demoted from tier 2 to tier 3 in the source reliability hierarchy.
+Primary databases are preferred where available: PubChem
+(`chemistry_database` type) for compound chemistry, ecfr.gov
+(`regulatory_text` type) for US distilled-spirits regulation,
+INAO regulatory text for French wine appellations, Consejo
+Regulador for sherry. Wikipedia citations are acceptable for
+historical facts and non-load-bearing context but flagged for
+upgrade in the Research Requests section of `TODO.md` where a
+primary source exists. See `docs/source-conflict-policy.md` for
+the full policy and source-type vocabulary.
+
 Real examples in the existing data:
 
 - Bruichladdich wash still capacity: Diffords says 12,500 L; Wikipedia
@@ -274,6 +288,13 @@ This lets data authoring run ahead of concept-page authoring without
 breaking site builds. The warning output is the working list of
 "concept pages that need writing."
 
+`scripts/check_references.py` is the current implementation of this
+warn-not-fail check (since the build pipeline is still deferred).
+Run it from the repo root to surface dangling references, duplicate
+IDs, invalid `source_id` references, and inline `[N]` citations
+that don't match an entry's declared sources. The script's output
+is informational — it never blocks commit.
+
 ---
 
 ## 9. What is out of scope
@@ -299,11 +320,31 @@ back rather than absorbing it into the data model.
 - 2 distilleries: Harris (confidence: medium), Bruichladdich (high)
 - 4 production lines: 3 Bruichladdich (high), 1 Harris (medium)
 - 10 bottlings: 9 Bruichladdich, 1 Harris
-- 10 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
+- 17 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
   Whisky), 3 educational (peating-measurement-methods,
   aromatic-compounds-in-whisky, copper-conversation), 2 equipment
-  (worm-tub, shell-and-tube-condenser), 2 glossary (peating-block,
-  phenol-ppm)
+  (worm-tub, shell-and-tube-condenser), 9 glossary (peating-block,
+  phenol-ppm, phenol, cresol, guaiacol, standard-seven-phenols,
+  sulphur-in-new-make, lyne-arm, classic-malts). All previously-
+  tracked concept dangling references now resolve; only the 20
+  worm-tub `used_at_distilleries` forward refs remain (expected
+  per §8), plus 2 forward refs from the Cadenhead's IB
+  pressure-test stub (`bunnahabhain` distillery and its
+  `bunnahabhain-traditional` production_line — not yet
+  populated).
+- 1 bottler: Cadenhead's (`data/bottlers/cadenheads.yml`),
+  confidence: medium. First real bottler entry; populated 2026-
+  05-15 as part of the IB schema pressure-test. The bottler v0.1
+  stub schema held up for the Cadenhead's case; sub-series
+  modelling and series presentation defaults are deferred
+  schema-gap observations awaiting a second IB case (likely
+  Signatory) before v0.2 promotion.
+- 11 bottlings (was 10): the additional entry is
+  `cadenheads-bunnahabhain-stub`, a deliberate
+  `confidence: stub` schema-pressure-test placeholder
+  exercising the bottling v0.2 IB discriminator fields. Specific
+  release details (vintage, age, ABV, outturn, cask number) are
+  null pending substitution with a verifiable real release.
 - 16 casks: 5 high confidence (bourbon-barrel, oloroso/fino sherry,
   virgin-oak, undisclosed-cask), 6 medium (wine-cask parent + 5 named
   appellations), 5 low (lesser-disclosed wine cases)
@@ -323,18 +364,25 @@ back rather than absorbing it into the data model.
 
 **Next priorities, in order of unblock value:**
 
-1. **Pressure-test the bottler v0.1 stub schema** against a real
-   IB case (Cadenhead's Authentic Collection or Signatory Cask
-   Strength is the likely first case) and promote to v0.2. This
-   is the schema model's last unproven dimension; the IB/OB
-   discriminator in bottling v0.2 has never been exercised with
-   real data.
-2. **Glossary entries to close the remaining concept dangling
-   refs**: `phenol`, `cresol`, `guaiacol`, `standard-seven-phenols`,
-   `sulphur-in-new-make`, `lyne-arm`, `classic-malts`. Each is a
-   short entry (summary text, body usually null). Together these
-   resolve essentially all remaining concept dangling references
-   in the data. See TODO.md for the active list.
+1. **Signatory IB pressure-test** to force sub-series modelling
+   in bottler v0.2. Cadenhead's Authentic Collection (pressure-
+   tested 2026-05-15) has only minor informal sub-categories and
+   the bottler v0.1 flat-list series field handles it. Signatory
+   Vintage runs multiple formal sub-series (Cask Strength
+   Collection, Un-Chillfiltered Collection, etc.) each with
+   consistent presentation rules — the second IB case is what
+   will force the bottler v0.2 promotion. The
+   `cadenheads-bunnahabhain-stub` bottling's SCHEMA-GAPS block
+   lists the specific observations to feed into v0.2.
+2. **Research-request audit** (active backlog in TODO.md). The
+   project introduced a Wikipedia-volatility policy on 2026-05-15
+   and migrated 6 easy items: chemistry citations to PubChem,
+   CFR citation for bourbon-barrel. Remaining work is appellation
+   regulatory text (INAO, Consejo Regulador del Vino de Jerez,
+   Italian DOCG), sherry chemistry primary sources, and
+   distillery historical sources for Bruichladdich and Harris.
+   Most remaining items are research-time work; see the Research
+   Requests section of TODO.md.
 3. **`educational/cask-maturation-kinetics`** — research-heavy
    teaching page distinguishing established cask-maturation
    chemistry from trade convention from open questions. Would let
@@ -344,12 +392,6 @@ back rather than absorbing it into the data model.
    similar) — most likely to surface unknown schema gaps. Three is
    the magic-number threshold for distillery patterns to emerge
    from observation rather than guess.
-4. Glossary entries; many are referenced from the existing educational
-   page but unpopulated.
-5. JSON Schema validation tooling. Currently the only check is
-   `yaml.safe_load()` parse-passes. Validation against the templates
-   would catch typos and shape drift.
-6. Build pipeline (Astro + Pagefind, per earlier design conversation).
 
 **Full active queue:** see `TODO.md`.
 
@@ -391,3 +433,37 @@ records why the schema is shaped the way it is.
 When making non-trivial changes — adding a kind to the concept
 taxonomy, breaking schema changes, new entity types — update this
 document so the next handover has the latest picture.
+
+---
+
+## 13. Project tooling and skills
+
+Resources for ongoing authoring:
+
+- **`scripts/check_references.py`** — cross-reference resolver and
+  YAML parse check. Warn-only, never blocks commit. Run from the
+  repo root. Reports dangling references grouped by target type,
+  duplicate IDs, invalid `source_id` refs, and inline `[N]`
+  citations that don't resolve.
+- **`/skills/voice-register/SKILL.md`** — voice rules as a
+  project-local Claude skill (mirrors `docs/voice-register.md`).
+  Triggers when authoring prose for any entry.
+- **`/skills/safe-bulk-writes/SKILL.md`** — operating procedure
+  for writing many files in one turn. Codifies the lesson learned
+  in the cask-population session: parallel Write batches of 5+
+  files have produced NUL-byte padding and silent truncation;
+  single Writes of files larger than ~10 KB have also truncated.
+  Caps parallel batches at ≤4 and recommends verification via
+  `check_references.py` after each batch, with a bash-mediated
+  repair pattern for the truncation case.
+
+Load-bearing docs (in addition to this one):
+
+- `docs/voice-register.md` — canonical voice rules.
+- `docs/source-conflict-policy.md` — source reliability hierarchy,
+  Wikipedia-volatility policy, source-type vocabulary.
+- `docs/schema-design-notes.md` — schema design rationale.
+- `TODO.md` — active backlog. The Research Requests section
+  catalogues entries currently citing Wikipedia where a primary
+  source upgrade is available.
+- `CHANGELOG.md` — schema changes and notable project additions.

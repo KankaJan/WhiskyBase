@@ -1,0 +1,74 @@
+# =============================================================================
+# Standard seven phenols
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: standard-seven-phenols
+title: standard seven phenols
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The "standard seven" is the conventional set of seven phenolic
+  compounds summed in modern Scotch industry HPLC measurement of
+  malt PPM: phenol, o-cresol (2-methylphenol), m-cresol
+  (3-methylphenol), p-cresol (4-methylphenol), guaiacol
+  (2-methoxyphenol), 4-methylguaiacol (2-methoxy-4-methylphenol),
+  and 4-ethylguaiacol (2-methoxy-4-ethylphenol). The seven-compound
+  sum is what published producer PPM figures refer to unless an
+  alternative methodology is explicitly stated. The selection of
+  these particular seven compounds is industry convention rather
+  than chemical inevitability — other phenolic compounds are
+  present in peat-smoked malt but are not typically reported in
+  PPM disclosures.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/aromatic-compounds-in-whisky
+  - educational/peating-measurement-methods
+  - glossary/phenol
+  - glossary/cresol
+  - glossary/guaiacol
+  - glossary/phenol-ppm
+  - methodology/bruichladdich-published-ppm
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - standard 7 phenols
+    - standard 7
+    - seven-phenol HPLC
+  part_of_speech: noun
+  see_also:
+    - educational/aromatic-compounds-in-whisky
+    - educational/peating-measurement-methods
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # No authoritative primary source
+                                     # currently cited for the "standard
+                                     # seven" industry convention. The
+                                     # compound set is consistently used
+                                     # across producer disclosures
+                                     # (Bruichladdich, Harris via Bairds,
+                                     # etc.) but the convention's origin
+                                     # and codification are not traced
+                                     # to a specific publication in the
+                                     # current source set. See TODO for
+                                     # research request.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

@@ -209,36 +209,13 @@ sources:
       Bruichladdich's statement: "Using HPLC (high performance liquid
       chromatography), the readings came back at 309.1 ppm".
 
-  - id: 2
-    type: wikipedia
-    url: https://en.wikipedia.org/wiki/Phenol
-    accessed: 2026-05-15
-    notes: |
-      Used for chemical identity and structure of phenol (C6H5OH).
-
-  - id: 3
-    type: wikipedia
-    url: https://en.wikipedia.org/wiki/Guaiacol
-    accessed: 2026-05-15
-    notes: |
-      Used for chemical identity of guaiacol (2-methoxyphenol) and
-      its role in smoke-derived flavour compounds.
-
-  - id: 4
-    type: wikipedia
-    url: https://en.wikipedia.org/wiki/Cresol
-    accessed: 2026-05-15
-    notes: |
-      Used for the three cresol positional isomers (o-, m-,
-      p-cresol).
-
-  - id: 5
-    type: wikipedia
-    url: https://en.wikipedia.org/wiki/Vanillin
-    accessed: 2026-05-15
-    notes: |
-      Used for chemical identity of vanillin and its origin from
-      lignin breakdown.
+  # Compound identity claims throughout the body (phenol, the
+  # three cresols, guaiacol, vanillin, eugenol, oak lactones, DMS,
+  # DMTS) are sourced via the glossary entries the page covers
+  # (see educational.covers above). Each glossary entry carries
+  # the canonical PubChem citation for that compound; the
+  # educational page is a synthesis and does not duplicate those
+  # citations inline.
 
 
 # --- Metadata ---------------------------------------------------------------
