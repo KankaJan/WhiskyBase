@@ -1,0 +1,217 @@
+# =============================================================================
+# Lagavulin (main / only production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — main production-line variables (heavily-
+# peated Port Ellen malt, slow distillation, predominantly ex-bourbon
+# and ex-sherry maturation) are well-documented across producer and
+# trade-press references. Specific numeric details flagged inline.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: lagavulin
+name: Lagavulin
+distillery: lagavulin
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1816              # Original and only recipe; in
+                                  # continuous production since the
+                                  # 1816 licensing of the distillery
+                                  # [1][2].
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in               # Lagavulin does not floor-malt; malt
+                                  # is sourced from Diageo's own Port
+                                  # Ellen Maltings, also on Islay [1].
+                                  # Port Ellen Maltings is the primary
+                                  # malting facility for Diageo's Islay
+                                  # distilleries (Lagavulin, Caol Ila,
+                                  # plus historically others including
+                                  # Talisker via cross-shipping).
+  maltster: Port Ellen Maltings   # Diageo-owned malting facility on
+                                  # Islay; supplies Lagavulin's
+                                  # heavily-peated malt to spec.
+  variety:
+    - Concerto                    # Modern standard variety used at
+                                  # Port Ellen Maltings.
+    - Optic                       # Used historically; some current
+                                  # use depends on the year's barley
+                                  # supply.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: 35
+      unit: ppm
+      method: hplc
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Lagavulin's malt phenol specification is approximately
+        35 ppm — heavily-peated Islay malt produced at Port Ellen
+        Maltings to the Lagavulin specification [1][2]. Note that
+        this is lower than Laphroaig's 40+ ppm and substantially
+        lower than Octomore's editions, but at the heavily-peated
+        end of mainstream Scotch malt practice. Methodology is
+        inherited from Port Ellen Maltings' standard practice;
+        Lagavulin does not separately attribute the measurement
+        method (see methodology/scotch-whisky-published-ppm for
+        the industry-default basis).
+
+  peat_origin: local              # Port Ellen Maltings uses Islay-cut
+                                  # peat for the heavily-peated malt
+                                  # produced for Lagavulin and Caol Ila
+                                  # [1]. Islay peat is characterised
+                                  # by its substantial sphagnum content
+                                  # and coastal influence; the
+                                  # provenance is part of the
+                                  # Lagavulin profile that producer
+                                  # references emphasise.
+
+  notes: |
+    Lagavulin's heavily-peated character comes from Port Ellen
+    Maltings' Islay-peat-kilned malt at ~35 ppm spec. The malt
+    is delivered to the distillery rather than produced on site;
+    this is the standard arrangement for Diageo's Islay
+    distilleries.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 55
+  hours_max: 75
+  hours_typical: 60               # Approximately 55-75 hours
+                                  # depending on operational
+                                  # conditions; ~60 hours typical per
+                                  # commonly-cited specs [2]. Long
+                                  # fermentation is part of Lagavulin's
+                                  # equipment philosophy though not at
+                                  # the extreme long-ferment end
+                                  # (Springbank, Bruichladdich use
+                                  # longer).
+  yeast: null                     # Specific yeast strain not
+                                  # consistently disclosed; the
+                                  # cross-cutting yeast research item
+                                  # in TODO covers this.
+  notes: |
+    Fermentation in 10 Oregon-pine washbacks at Lagavulin.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                  # Conventional double distillation
+                                  # [1]. The producer cites a
+                                  # particularly slow spirit-still run
+                                  # (~10 hours per cycle per some
+                                  # trade references) as character-
+                                  # shaping.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Slow distillation in pear-shaped stills with descending lyne
+      arms; specific ABV cut points not consistently disclosed.
+  new_make_abv: null              # TODO: verify.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                # First-fill and refill ex-bourbon
+                                  # casks dominate the Lagavulin core
+                                  # programme. The flagship 16 Year
+                                  # Old is predominantly ex-bourbon
+                                  # matured [1].
+  - oloroso-sherry-butt           # Refill ex-sherry casks used in
+                                  # core releases and the Distillers
+                                  # Edition (which uses PX sherry
+                                  # specifically for the finish).
+  - wine-cask                     # PX (Pedro Ximénez) sherry casks
+                                  # used for the Distillers Edition
+                                  # finish, currently using the
+                                  # generic wine-cask slug pending
+                                  # a more specific px-sherry-cask
+                                  # entry (the project's cask
+                                  # vocabulary has fino and oloroso
+                                  # sherry butts but not PX yet).
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - lagavulin-16
+  - lagavulin-distillers-edition
+  - lagavulin-12-cask-strength
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The single production line at Lagavulin Distillery, in continuous
+  operation since 1816 [1][2]. Heavily-peated (~35 ppm malt spec)
+  Islay malt sourced from Diageo's Port Ellen Maltings — Lagavulin
+  does not floor-malt on site. Fermentation in 10 Oregon-pine
+  washbacks over approximately 55-75 hours, followed by slow
+  double distillation in two pear-shaped wash and spirit stills.
+  Primary maturation in coastal dunnage warehouses at Lagavulin
+  Bay, predominantly in ex-bourbon American oak with substantial
+  refill ex-sherry component. The Distillers Edition variant
+  receives an additional PX (Pedro Ximénez) sherry-cask finish;
+  see the bottling entries for specific cask-programme detail.
+  All releases under the Lagavulin name share this single
+  production line; sub-brand variation (Distillers Edition,
+  Special Releases, age-statement variants) is bottling-level
+  rather than line-level.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/lagavulin/
+    accessed: 2026-05-15
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: methodology/scotch-whisky-published-ppm
+        notes: |
+          Lagavulin's PPM is inherited from Port Ellen Maltings'
+          malt specification. Diageo / Port Ellen Maltings does
+          not separately publish a methodology attribution;
+          methodology assignment uses the broader Scotch industry
+          convention (HPLC + standard 7). A future enhancement
+          might introduce methodology/port-ellen-maltings-published-ppm
+          when other Diageo Islay distilleries are populated.
+    notes: |
+      Diageo's Malts.com page for Lagavulin. Used for malt source
+      (Port Ellen Maltings), peating spec (~35 ppm), production
+      overview, and cask programme philosophy.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Lagavulin_distillery
+    accessed: 2026-05-15
+    notes: |
+      Wikipedia entry. Used for historical context, fermentation
+      duration, and slow-distillation framing.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

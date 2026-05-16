@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/production_line.schema.json",
+  "title": "Production line",
+  "description": "A distinct recipe/spec produced at a distillery.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "distillery", "schema_version"],
+  "properties": {
+    "id": { "$ref": "_common.schema.json#/definitions/slug" },
+    "name": { "type": "string", "minLength": 1 },
+    "distillery": { "$ref": "_common.schema.json#/definitions/slug" },
+    "status": { "enum": ["active", "discontinued", "experimental", "historical"] },
+    "first_produced": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_or_year_month" }
+      ]
+    },
+    "discontinued": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_integer" }
+      ]
+    },
+    "malt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "source": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["bought_in", "floor_malted_onsite", "mixed", "unknown"] }
+          ]
+        },
+        "maltster": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "variety": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            { "type": "array", "items": { "type": "string" } }
+          ]
+        }
+      }
+    },
+    "peating": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "measurements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "stage": { "enum": ["spec", "malt_delivered", "new_make", "in_bottle"] },
+              "value": {
+                "oneOf": [
+                  { "type": "number", "minimum": 0 },
+                  { "type": "array", "items": { "type": "number", "minimum": 0 }, "minItems": 2, "maxItems": 2 }
+                ]
+              },
+              "unit": { "enum": ["ppm", "mg_per_litre"] },
+              "method": { "enum": ["hplc", "4_aminoantipyrine", "gc_ms", "folin_ciocalteu", "unspecified"] },
+              "compounds": { "enum": ["standard_7", "extended", "individual", "unspecified"] },
+              "source_id": { "type": "integer", "minimum": 1 },
+              "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+            }
+          }
+        },
+        "peat_origin": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["none", "local", "mainland_scotland", "imported", "mixed", "unknown"] }
+          ]
+        },
+        "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+    "fermentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "hours_min": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "hours_max": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "hours_typical": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "yeast": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+    "distillation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "regime": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["double", "triple", "partial_triple", "2.5x", "2.81x", "other"] }
+          ]
+        },
+        "spirit_cut": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "start_abv": { "$ref": "_common.schema.json#/definitions/abv" },
+            "end_abv": { "$ref": "_common.schema.json#/definitions/abv" },
+            "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+          }
+        },
+        "new_make_abv": { "$ref": "_common.schema.json#/definitions/abv" }
+      }
+    },
+    "default_fill_strength_abv": { "$ref": "_common.schema.json#/definitions/abv" },
+    "typical_cask_program": { "$ref": "_common.schema.json#/definitions/slug_list" },
+    "bottlings": { "$ref": "_common.schema.json#/definitions/slug_list" },
+    "description": { "type": ["string", "null"] },
+    "external_ids": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "whiskybase_id": { "$ref": "_common.schema.json#/definitions/external_id_value" },
+        "whiskyhunter_id": { "$ref": "_common.schema.json#/definitions/external_id_value" },
+        "scotchwhisky_url": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
+    "schema_version": { "$ref": "_common.schema.json#/definitions/schema_version_value" },
+    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "last_reviewed": {
+      "oneOf": [
+        { "$ref": "_common.schema.json#/definitions/iso_date" },
+        { "type": "null" }
+      ]
+    },
+    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+  }
+}

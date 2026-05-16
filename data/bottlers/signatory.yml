@@ -1,0 +1,224 @@
+# =============================================================================
+# Signatory Vintage Scotch Whisky Co. Ltd
+# =============================================================================
+# Schema: bottler.template.yml v0.2
+# Entry confidence: medium — basic identity, ownership, and series
+# inventory are well-documented; specific founding details and the
+# exact composition of historical sub-series are less well sourced
+# in popular references and would benefit from primary historical
+# documentation.
+#
+# This entry was the second pressure-test of the bottler v0.1 stub
+# schema. The pressure-test confirmed the hypothesis from
+# Cadenhead's (pressure-test #1) that Signatory's sub-series with
+# consistent presentation rules would force a v0.2 promotion. The
+# v0.2 schema landed 2026-05-15 with two additions: an OPTIONAL
+# `parent:` field on the series shape, and an OPTIONAL
+# `presentation_defaults:` block. The series block below uses both
+# new features. The original SCHEMA-GAPS rationale is preserved at
+# the end of this file for the historical record.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: signatory-vintage
+name: Signatory Vintage Scotch Whisky Co. Ltd
+also_known_as:
+  - Signatory
+  - Signatory Vintage
+website: https://signatory.co.uk
+
+
+# --- Type -------------------------------------------------------------------
+type: independent_bottler
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Highlands
+locality: Pitlochry                  # Headquartered at Edradour
+                                     # Distillery in Pitlochry (acquired
+                                     # 2002). Originally Edinburgh.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1988                        # Founded by Andrew Symington.
+                                     # Specific founding-circumstances
+                                     # detail is not deeply sourced here;
+                                     # see TODO Research Requests.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Andrew Symington / Signatory Vintage Scotch Whisky Co. Ltd
+  parent: null                       # Privately held; not part of a
+                                     # larger group. Signatory itself
+                                     # owns Edradour Distillery since
+                                     # 2002.
+  history:
+    - owner: Signatory Vintage Scotch Whisky Co. Ltd
+      from: 1988
+      to: null
+
+
+# --- Operations -------------------------------------------------------------
+release_types:
+  - single_cask
+  - small_batch
+  - vatting
+
+sources_from: []                     # Signatory sources broadly across
+                                     # Scotch malt distilleries; not
+                                     # enumerated at the bottler level.
+
+
+# --- Series -----------------------------------------------------------------
+# Uses bottler v0.2 features: `parent:` for hierarchical relationships,
+# `presentation_defaults:` for series-level presentation rules.
+series:
+  - id: cask-strength-collection
+    name: Cask Strength Collection
+    description: |
+      Single-cask, single-distillery, cask-strength releases. Each
+      release names the distillery, distillation date, bottling
+      date, ABV, cask number, cask type, and outturn.
+    first_released: null
+    active: true
+    parent: null
+    presentation_defaults:
+      cask_strength: true
+      non_chill_filtered: true
+      natural_colour: true
+      batch_or_cask_type: single_cask
+      abv: null                      # varies per release at cask
+                                     # strength
+
+  - id: un-chillfiltered-collection
+    name: Un-Chillfiltered Collection
+    description: |
+      Vatted-cask releases from a single distillery, bottled at
+      46% ABV. Each release names the distillery, vintage range or
+      age, and the casks involved where disclosed.
+    first_released: null
+    active: true
+    parent: null
+    presentation_defaults:
+      cask_strength: false
+      non_chill_filtered: true
+      natural_colour: true
+      batch_or_cask_type: vatting
+      abv: 46.0
+
+  - id: 100-proof-edition
+    name: 100 Proof Edition
+    description: |
+      Releases bottled at exactly 57.1% ABV (British 100° proof).
+      Single-distillery, vatted from one or more casks at the
+      producer's discretion.
+    first_released: null
+    active: true
+    parent: null
+    presentation_defaults:
+      cask_strength: false
+      non_chill_filtered: true
+      natural_colour: true
+      batch_or_cask_type: vatting
+      abv: 57.1
+
+  - id: decanter-collection
+    name: Decanter Collection
+    description: |
+      Older single-cask releases presented in decanter-style
+      bottles, typically older spirit (20+ years). Presentation
+      rules inherit from the Cask Strength Collection with the
+      distinctive decanter packaging.
+    first_released: null
+    active: true
+    parent: cask-strength-collection
+    presentation_defaults:
+      cask_strength: true
+      non_chill_filtered: true
+      natural_colour: true
+      batch_or_cask_type: single_cask
+      abv: null
+
+  - id: vintage-collection
+    name: Vintage Collection
+    description: |
+      The original Signatory release line; vintage-dated single-
+      cask releases at variable presentation. The line's name is
+      the source of "Signatory Vintage" as the company brand.
+      Less actively maintained than CSC and UCF in recent years.
+    first_released: 1988
+    active: true
+    parent: null
+    presentation_defaults: null      # More variable than the newer
+                                     # series; no fixed defaults.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Independent Scotch whisky bottler founded in 1988 by Andrew
+  Symington. The company owns Edradour Distillery in Pitlochry,
+  acquired in 2002 from Pernod Ricard, and is currently
+  headquartered there. Signatory releases bottlings under several
+  named sub-series, each with consistent presentation rules
+  encoded in the series block's `presentation_defaults`: the Cask
+  Strength Collection (single-cask cask-strength), the
+  Un-Chillfiltered Collection (46% ABV vattings), the 100 Proof
+  Edition (57.1% ABV), the Decanter Collection (older releases in
+  distinctive bottles, presentation-inherited from CSC), and the
+  legacy Vintage Collection.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  wikidata_qid: null
+  whiskybase_id: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://signatory.co.uk
+    accessed: 2026-05-15
+    notes: |
+      Signatory's own website. Used for current operating status,
+      Pitlochry headquarters confirmation, and sub-series listings.
+      Founding-year claim (1988) is consistently stated across
+      Signatory's communications but the specific founding
+      circumstances are not deeply sourced here. See TODO
+      Research Requests for primary historical documentation.
+
+
+# --- Historical note: v0.2 schema rationale -------------------------------
+# This entry's pressure-test against bottler v0.1 surfaced two gaps
+# that drove the v0.2 schema bump (applied 2026-05-15):
+#
+# 1. Series with consistent presentation rules (CSC, UCF, 100 Proof)
+#    forced bottlings to redundantly restate the same fields
+#    (cask_strength, non_chill_filtered, etc.) on every entry.
+#    v0.2 fix: `presentation_defaults:` block per series.
+#
+# 2. The Decanter Collection is a presentation variant of CSC
+#    rather than a wholly separate series, but v0.1's flat list
+#    modelled all series as peers. v0.2 fix: optional `parent:`
+#    field on the series shape.
+#
+# Both features are now in active use in this entry's series
+# block. The bottler v0.1 stub schema's pre-promotion design
+# carried hypotheses about what these features should look like
+# (see the Cadenhead's SCHEMA-GAPS block at the end of
+# `data/bottlings/cadenheads-bunnahabhain-stub.yml`); the v0.2
+# design as applied here is data-driven from Signatory's actual
+# series structure rather than from the Cadenhead's hypotheses
+# alone.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

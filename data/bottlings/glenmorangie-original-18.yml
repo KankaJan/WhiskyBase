@@ -1,0 +1,141 @@
+# =============================================================================
+# Glenmorangie 18 Year Old
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — well-known core release with widely-cited
+# specifications.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenmorangie-original-18
+name: Glenmorangie 18 Year Old
+production_line: glenmorangie-original
+produced_at_distillery: glenmorangie
+bottled_by: glenmorangie
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Core release; re-bottled in
+                                  # batches.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0                         # Glenmorangie 18 is bottled at 43%
+                                  # ABV [1].
+age_statement: 18
+vintage: null
+cask_strength: false
+non_chill_filtered: false
+natural_colour: false
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Glenmorangie 18 is matured 15 years in ex-bourbon, then a portion
+# is moved to oloroso sherry casks for the final 3 years; the
+# components are then re-vatted [1]. This is a partial-finish or
+# secondary-maturation arrangement rather than a single cask
+# programme. Per the project's documented convention (handover
+# §10's deferred re-cask vs finish boundary discussion), the
+# 3-year sherry phase is substantial enough to be modelled as a
+# maturation entry rather than a finish.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: 1.0
+    duration_years: 18            # The full 18 years includes 15 yrs
+                                  # in ex-bourbon for all spirit;
+                                  # a portion goes to oloroso for the
+                                  # last 3 years and is then re-vatted.
+                                  # Maturation entry simplified here;
+                                  # see notes.
+    cooperage: null
+    notes: |
+      Primary maturation in ex-bourbon American oak. Per the
+      producer's description, the full population spends 15 years
+      in ex-bourbon. After that, a portion is moved to oloroso
+      sherry casks for the remaining 3 years and the components
+      are re-vatted before bottling.
+
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null              # Producer-disclosed proportion not
+                                  # consistently quantified; some
+                                  # sources cite ~30% sherry-finished
+                                  # but this varies.
+    duration_years: 3
+    cooperage: null
+    notes: |
+      Final 3-year secondary maturation in oloroso sherry casks
+      for a portion of the spirit, then re-vatted with the
+      ex-bourbon-only portion.
+
+finish: null                      # The sherry-cask exposure is 3
+                                  # years for a partial population —
+                                  # modelled as a secondary maturation
+                                  # entry rather than a finish per
+                                  # the project's convention
+                                  # (finishes are typically <12 months
+                                  # terminal exposure).
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 100.00                  # Approximate UK retail.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenmorangie 18 Year Old, the line's long-aged core release,
+  bottled at 43% ABV [1]. Maturation programme: 15 years in
+  ex-bourbon American oak for the full population; a portion is
+  then moved to oloroso sherry casks for the final 3 years and
+  re-vatted with the ex-bourbon-only portion before bottling.
+  The partial sherry exposure is a defining presentation feature
+  versus the simpler ex-bourbon-only 10 Year Old.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenmorangie.com
+    accessed: 2026-05-15
+    notes: |
+      Glenmorangie's own website. Used for ABV (43%), 18-year
+      age, and the 15+3 ex-bourbon + oloroso maturation
+      arrangement.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

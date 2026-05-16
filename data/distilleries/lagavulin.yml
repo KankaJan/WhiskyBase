@@ -1,0 +1,279 @@
+# =============================================================================
+# Lagavulin Distillery
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — well-documented across producer, Diageo
+# corporate communications, trade press, Wikipedia, and a substantial
+# enthusiast literature. Specific numeric details (still capacities,
+# warehouse counts, exact annual production) are reported with some
+# variation across sources.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: lagavulin
+name: Lagavulin Distillery
+also_known_as: []
+wikidata_qid: null                # TODO Research Requests: confirm.
+website: https://www.malts.com/en/our-whisky-collection/lagavulin/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islay
+sub_region: Kildalton            # Southern Islay coastline; Lagavulin
+                                  # sits between Laphroaig and Ardbeg in
+                                  # the Kildalton parish, along the
+                                  # southeast coast.
+locality: Port Ellen, Isle of Islay
+coordinates:
+  lat: 55.6325                    # Approximate; needs authoritative
+                                  # geographic verification.
+  lon: -6.1264
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1816                     # Licensed 1816 by John Johnston [1][2];
+                                  # the Lagavulin site had earlier
+                                  # illicit distilling activity per
+                                  # historical accounts but 1816 is the
+                                  # consistently-cited official founding.
+first_spirit: 1816
+mothballed_periods: []            # Continuous operation since 1816 per
+                                  # standard references; specific
+                                  # operational pauses across the 20th
+                                  # century not catalogued here.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Diageo plc
+  parent: Diageo plc              # Lagavulin is wholly owned by Diageo
+                                  # via its Scotch malts portfolio.
+  history:
+    - owner: John Johnston
+      from: 1816
+      to: null
+                                  # Founding licensee. Specific
+                                  # transition dates through the
+                                  # mid-19th century not fully sourced
+                                  # here; the distillery passed through
+                                  # several hands before the Mackie
+                                  # acquisition.
+    - owner: James Mackie & Co / Mackie & Co Distillers / White Horse Distillers
+      from: 1889
+      to: 1927
+                                  # Acquired by James Mackie & Co in
+                                  # 1889 [2]; the Mackie family
+                                  # eventually evolved the firm into
+                                  # White Horse Distillers, retaining
+                                  # Lagavulin until the 1927
+                                  # amalgamation.
+    - owner: Distillers Company Ltd (DCL) — via White Horse merger
+      from: 1927
+      to: 1986
+                                  # White Horse Distillers merged into
+                                  # the Distillers Company Ltd in 1927;
+                                  # Lagavulin came under DCL control as
+                                  # part of that consolidation. DCL
+                                  # itself became part of United
+                                  # Distillers in the late 1980s.
+    - owner: United Distillers / Guinness / UDV
+      from: 1986
+      to: 1997
+                                  # Following the Guinness acquisition
+                                  # of DCL and subsequent corporate
+                                  # restructuring through the late
+                                  # 1980s and early 1990s.
+    - owner: Diageo plc
+      from: 1997
+      to: null
+                                  # Diageo formed in 1997 from the
+                                  # Grand Metropolitan / Guinness
+                                  # merger; Lagavulin has been Diageo-
+                                  # owned ever since.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Solan Lochs
+                                  # Lagavulin draws process water from
+                                  # the Solan Lochs above the distillery
+                                  # [1][2]. The water flows over peat
+                                  # and contributes to the spirit's
+                                  # character.
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: semi_lauter               # Stainless-steel semi-lauter [2];
+                                  # modernised over the 20th century.
+  material: stainless_steel
+  capacity_kg: null               # TODO: verify. ~4.4-5 tonnes is
+                                  # commonly cited.
+
+washbacks:
+  count: 10                       # 10 washbacks per commonly-cited
+                                  # specifications [2]. Pine
+                                  # construction (Oregon pine /
+                                  # Douglas fir) is the standard
+                                  # Diageo Islay practice.
+  material: oregon_pine
+  capacity_litres: null
+
+stills:
+  # Lagavulin's stills are pear-shaped (sometimes called "onion-shaped"
+  # in trade descriptions) — broad-bellied with a relatively short
+  # neck. The shape, combined with very slow distillation (one of the
+  # slowest spirit-still runs in Scotch per producer references), is
+  # part of Lagavulin's character-shaping equipment philosophy.
+  wash_still:
+    count: 2
+    capacity_litres: null         # TODO: verify. ~11,000-12,500 L per
+                                  # commonly-cited figures but specific
+                                  # numbers vary across sources.
+    charge_litres: null
+    shape: pear                   # Pear-shaped per producer materials
+                                  # [1]. Sometimes described as "onion"
+                                  # in trade references; the two terms
+                                  # are often used interchangeably for
+                                  # similar still profiles.
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: descending
+    condenser: shell_and_tube
+  spirit_still:
+    count: 2
+    capacity_litres: null
+    charge_litres: null
+    shape: pear
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: descending
+    condenser: shell_and_tube
+
+
+warehouses:
+  - id: lagavulin-bay-dunnage
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      Traditional dunnage warehouses at Lagavulin Bay, on the
+      southern coast of Islay. Coastal climate; cool, damp, saline
+      air. The seafront location is cited by the producer and by
+      trade references as contributing to the spirit's matured
+      character, particularly the saline / iodine notes commonly
+      attributed to Lagavulin's coastal-warehouse-aged stock [1].
+
+# Lagavulin also has additional warehouse capacity in the broader
+# Islay area and mainland storage at Diageo's Cambus and other sites.
+# These are not separately enumerated here; the on-site coastal
+# dunnage warehouses are the canonical maturation location for the
+# Lagavulin character.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 2450000      # ~2.45 million LPA per commonly-cited
+                                  # figures [2]. Lagavulin runs below
+                                  # its theoretical maximum capacity;
+                                  # actual production has historically
+                                  # been constrained.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []             # Lagavulin's equipment is broadly
+                                  # consistent across the 20th century
+                                  # with the current configuration;
+                                  # specific minor updates not
+                                  # catalogued here.
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - lagavulin                     # Single production line — the
+                                  # standard heavily-peated Lagavulin
+                                  # recipe. Special releases
+                                  # (Distillers Edition, age-statement
+                                  # variants) are modelled as bottlings
+                                  # within this line rather than as
+                                  # separate lines, since they share
+                                  # the same recipe and equipment.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []         # Lagavulin spirit has historically
+                                  # been used in Diageo blends
+                                  # (notably White Horse, which was
+                                  # founded by the Lagavulin owners).
+                                  # Specific blender-supply
+                                  # arrangements not catalogued at
+                                  # this level.
+
+
+# --- Distinctive Features ---------------------------------------------------
+distinctive_features: []          # Concept layer not yet populated.
+                                  # Candidate concepts:
+                                  # - practice/long-fermentation
+                                  #   (Lagavulin is cited for
+                                  #   exceptionally slow distillation)
+                                  # - practice/coastal-dunnage-maturation
+                                  # The Classic Malts portfolio
+                                  # designation (one of the six
+                                  # originals) is referenced in the
+                                  # description rather than as a
+                                  # structured distinctive feature.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Heavily peated Islay distillery founded in 1816 by John Johnston
+  on Lagavulin Bay, on the Kildalton coast of southern Islay
+  between Laphroaig and Ardbeg [1][2]. Acquired by James Mackie &
+  Co (later White Horse Distillers) in 1889 and brought under
+  Distillers Company Ltd ownership through the 1927 White Horse
+  merger; subsequently passed through Guinness / United Distillers
+  during the late-1980s industry consolidations and has been
+  Diageo-owned since the 1997 Diageo formation. Lagavulin is one
+  of the six original [Classic Malts of Scotland](concept/glossary/classic-malts)
+  launched by United Distillers in the late 1980s. Production uses
+  heavily-peated malt sourced from Diageo's Port Ellen Maltings
+  (Lagavulin does not floor-malt on site) at approximately 35 ppm
+  malt phenol spec, fermented in 10 pine washbacks, and distilled
+  in two pear-shaped wash and spirit stills. The producer cites a
+  particularly slow spirit-still run as character-shaping.
+  Maturation is predominantly in coastal dunnage warehouses on
+  the Lagavulin Bay site, which trade references frequently
+  associate with the saline / iodine character commonly
+  attributed to long-aged Lagavulin core releases in independent
+  reviews.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/lagavulin/
+    accessed: 2026-05-15
+    notes: |
+      Diageo's Malts.com page for Lagavulin. Used for current
+      operating status, water source (Solan Lochs), production-
+      philosophy overview, and Classic Malts designation.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Lagavulin_distillery
+    accessed: 2026-05-15
+    notes: |
+      Wikipedia entry on Lagavulin distillery. Used for historical
+      lineage (1816 founding, Mackie/White Horse era, DCL/Diageo
+      transitions), equipment overview, and broader production
+      context. Acceptable per the Wikipedia-volatility caveat for
+      historical facts; flagged for primary-historical-source
+      upgrade — see TODO Research Requests.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

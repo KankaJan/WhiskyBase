@@ -10,11 +10,19 @@ relevant section.
 
 ### Drafted but not finalised
 
-- **Bottler schema** (`schema/bottler.template.yml`) is a draft. Will
-  need refinement once IB data starts arriving. The series modelling
-  in particular is speculative and may need to change once we have a
-  real case (likely Cadenhead's Authentic Collection or Signatory
-  Cask Strength Collection).
+- **Bottler schema** (`schema/bottler.template.yml`) is v0.2 with
+  2 entries populated (Cadenhead's, Signatory Vintage). The v0.1 →
+  v0.2 promotion (2026-05-15) added optional `parent:` and
+  `presentation_defaults:` fields on the series shape, data-driven
+  from the Signatory pressure-test. Schema is mature for current
+  scope. Follow-ups:
+  - First non-stub IB bottling release to replace one of the
+    schema-pressure-test stubs (`cadenheads-bunnahabhain-stub`,
+    `signatory-caol-ila-stub`) with verifiable real release data.
+  - Signatory founding-circumstances research (Research Requests).
+  - Resolver script extension to validate the series-id part of
+    `bottler_series` references (currently only validates the
+    bottler-slug part).
 - **Cask schema** (`schema/cask.template.yml`) is v0.1 with 16
   entries populated. Follow-ups:
   - **Enrich the low-confidence wine entries** (`bordeaux-wine-cask`,
@@ -67,10 +75,10 @@ relevant section.
   YAML templates would catch typos and shape drift. Defer until the
   data set is large enough to justify the tooling investment —
   probably 5+ distilleries, 50+ bottlings.
-- **Multiple warehouses per distillery.** Current distillery schema
-  has a single `warehouse:` block. Should probably be a list.
-  Bruichladdich uses warehouses at multiple Islay locations.
-  Springbank and Bunnahabhain will likely force the change too.
+- **Multiple warehouses per distillery** — RESOLVED 2026-05-15.
+  Distillery schema v0.2 changed `warehouse:` single block to
+  `warehouses:` list, data-driven from the Springbank pressure-test.
+  See Recently Completed.
 - **RRP across markets.** Bottlings sometimes have RRP in GBP, USD,
   EUR depending on which market the source covered. The schema
   should accept multiple RRP entries (one per market) rather than
@@ -275,8 +283,112 @@ The project's policy is "every claim is sourced." Wikipedia
 citations were used as starting points during initial population
 but the volatility-caveat policy (introduced 2026-05-15) prefers
 primary sources where they're available and accessible. Migration
-is a research-time task rather than a authoring-time task; this
+is a research-time task rather than an authoring-time task; this
 section is the active backlog.
+
+---
+
+## Cross-cutting research
+
+These are not file-specific source upgrades (those are in Research
+Requests above). They are broader research tasks that would
+strengthen the project's overall coverage. Source priority for all
+four: in-depth technical / historical / peer-reviewed literature
+rather than popular guides — see the "Existing literature
+catalogue" item.
+
+### Yeast strains and fermentation regimes
+
+Yeast disclosure is sparse across the populated production lines.
+Most entries currently have `yeast: null` (Bruichladdich's three
+lines, Harris, Springbank's three lines). Glenmorangie's main line
+records `yeast: distillers` per the producer's standard claim.
+Bruichladdich has a single-source claim for Mauri / Kerry strains
+not yet corroborated (also in Bruichladdich-specific TODOs).
+
+Task: systematically gather published yeast-strain information
+across distilleries; identify whether a glossary or educational
+concept on yeast types (distiller's yeast vs brewer's yeast vs
+wild yeast as in Glenmorangie Allta vs Saccharomyces species more
+generally) is worth adding. Source priority: SWRI publications,
+peer-reviewed journal papers on yeast metabolism in Scotch
+fermentation. NOT popular trade press.
+
+### Barley varieties and maltster sourcing
+
+Current populated coverage shows the same handful of varieties
+recurring (Concerto across 5 lines; Optic across 4-5; Bere and
+Propino in specific releases; Publican and Chalice in one or two
+lines). Bairds of Inverness is named as the maltster for Harris
+and Bruichladdich; other distilleries don't consistently disclose
+the maltster.
+
+Task: verify maltster sourcing per distillery (commercial vs
+in-house); consider adding barley varieties as glossary entries
+(`glossary/concerto`, `glossary/optic`, `glossary/bere`,
+`glossary/propino`); consider a `practice/external-malting`
+concept (Bairds is referenced from multiple distilleries, would
+warrant its own page). Source priority: agronomic literature,
+HGCA / AHDB barley variety reports, maltster technical
+publications. NOT producer marketing copy.
+
+### Undocumented technical concepts
+
+A check-pass for whisky-domain technical terms that appear in
+prose fields across the data but are not yet captured as glossary
+entries. Candidates noticed during current population work:
+
+- Distillation: foreshots, heart cut, feints, low wines, new
+  make, spirit safe, swan neck, reflux
+- Fermentation: wort, wash, lautering, sparging
+- Maturation: reductive vs oxidative maturation, angel's share,
+  cask-charge ratio
+- Equipment-state distinctions: direct fire vs indirect steam
+  heating
+- Regional: Highland, Lowland, Speyside, Islay, Campbeltown,
+  Islands designations (the SWA classification scheme; currently
+  in distillery `region:` fields without concept backing)
+
+Task: grep all populated prose fields for these and similar
+terms; prioritise glossary entries for terms referenced from 3+
+entries; defer terms appearing once. The SWA regional
+classification is a good candidate for `concept/practice/swa-
+regional-designations` since it's referenced from every
+distillery entry's `region:` field.
+
+### Existing literature catalogue
+
+The project would benefit from a curated bibliography of in-depth
+references for cross-referencing prose claims. Priority candidates
+(NOT popular guides; in-depth technical, historical, or
+peer-reviewed):
+
+- **Russell, I. (ed.) "Whisky: Technology, Production and
+  Marketing"** (Academic Press). Standard technical reference
+  covering malting, brewing, distillation, maturation, analysis.
+- **Buxton, I. & Hughes, P. "The Science and Commerce of Whisky"**
+  (RSC Publishing).
+- **MacLean, C.** analytical works ("Scotch Whisky: A Liquid
+  History" for historical context).
+- **The Malt Whisky Yearbook** series — annual industry
+  statistics, production figures, capacity tables.
+- Industry / academic journals:
+  - *Journal of the Institute of Brewing*
+  - *Food Chemistry*
+  - *Journal of Agricultural and Food Chemistry*
+  - *Journal of Cereal Science*
+- **SWRI publications** (Scotch Whisky Research Institute) — both
+  peer-reviewed papers and industry-trade reports.
+- **Mosedale, J. R. & Puech, J.-L.** papers on oak extractives.
+- **Conner, J. M.** on whisky flavour chemistry.
+
+Task: build a `docs/bibliography.md` or
+`data/sources/literature.yml` catalogue. Exclude popular books /
+consumer guides. Goal is a citable reference set for the
+educational pages, methodology concept pages, and the planned
+`educational/cask-maturation-kinetics` page — all of which
+currently soft-pedal claims that could be sourced to in-depth
+literature.
 
 ---
 
@@ -284,7 +396,14 @@ section is the active backlog.
 
 - **Validate every entry against schema before commit.** Once JSON
   Schema tooling is in place, this should be a CI step. Until then,
-  the YAML parseability check is the minimum safety net.
+  the YAML parseability check (run via `scripts/check_references.py`)
+  is the minimum safety net.
+- **JSON Schema validation tooling** — deferred per project
+  thresholds ("5+ distilleries, 50+ bottlings" per current
+  guideline). With Glenmorangie populated and Lagavulin planned
+  next, the 5-distillery threshold will be reached; bottlings
+  remain well below the 50-bottling threshold (currently 18).
+  Evaluate after Lagavulin lands.
 - **Build pipeline.** Astro + Pagefind + MapLibre + CC-BY-SA data
   layer, MIT code layer. Deferred until enough data exists to
   justify the work.
@@ -297,23 +416,90 @@ section is the active backlog.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-16** JSON Schema validation tooling landed. Hand-authored
+  draft-07 schemas in `/schema/json/` for all six entity types,
+  wired into `scripts/check_references.py` as a warn-only pass. The
+  new pass surfaced ten silently-truncated files from earlier
+  sessions (5 cask entries, 5 concept entries) — all restored from
+  last committed version. Distillery `mothballed_periods` item shape
+  canonised on `from`/`to`/`note` matching the ownership.history
+  convention; Bruichladdich's two `start`/`end` entries migrated.
+  Schema permissiveness gaps surfaced and patched: integer years,
+  integer/string IDs, string schema_version (`0.2.1`), nullable
+  equipment_changes.year, YYYY-MM string for rrp.as_of and
+  notes_independent.date. Project v0.7.0.
+- **2026-05-15** Fifth distillery (Lagavulin) populated. Heavily
+  peated Islay distillery; Diageo-owned. Single production line
+  (lagavulin) with malt sourced from Port Ellen Maltings at ~35
+  ppm spec; methodology assigned to
+  `methodology/scotch-whisky-published-ppm` since Lagavulin
+  doesn't separately attribute the measurement. Pear-shaped
+  stills, slow distillation, coastal dunnage maturation at
+  Lagavulin Bay. Three representative bottlings: Lagavulin 16
+  (flagship; resolves `glossary/classic-malts` as one of the six
+  originals via prose-level markdown link), Distillers Edition
+  (PX-finished, annual recurring — exercises bottling.finish
+  block plus a SCHEMA-OBSERVATION about cross-distillery Diageo
+  series), 12 Year Old Cask Strength (Special Releases — CS +
+  NCF + natural colour combo). With this fifth distillery, the
+  project crosses the TODO-deferred threshold for JSON Schema
+  validation tooling ("5+ distilleries, 50+ bottlings"); the
+  bottlings threshold (21 vs 50) is not yet crossed but the
+  distillery threshold is, making JSON Schema validation a
+  defensible next move. Pure data addition with no schema change
+  — distillery v0.2's multi-warehouse list (single-element for
+  Lagavulin) was already established by the Springbank work.
+- **2026-05-15** Fourth distillery (Glenmorangie) populated.
+  Highland-region single-line operation; pure data addition with
+  no schema change (Springbank's earlier multi-warehouse pressure-
+  test already lifted distillery v0.2). First use of the
+  `still.height_m` field as load-bearing data (5.14 m / 16'10"
+  for Glenmorangie's tall stills). Signet and Allta flagged as
+  candidate separate production_line entries in the distillery
+  entry's SCHEMA-OBSERVATIONS block; deferred until usage
+  justifies modelling them as distinct lines. Three representative
+  bottlings populated: The Original 10 (40% ABV chill-filtered
+  with caramel — different presentation tradition than the 46%
+  NCF natural-colour core of Springbank/Bruichladdich/Harris),
+  18 Year Old (15+3 ex-bourbon-then-partial-oloroso maturation —
+  exercises the secondary-maturation-not-finish convention), and
+  Quinta Ruban 14 (port-finished — exercises the bottling
+  schema's `finish:` block). Total bottlings now 18 (16 OB + 2
+  IB stubs).
+- **2026-05-15** Third distillery (Springbank) populated, driving
+  distillery schema v0.1 → v0.2 promotion. Springbank is structurally
+  the most complex distillery in the data so far: three production
+  lines (Springbank 2.5×, Longrow double, Hazelburn triple) sharing
+  one set of equipment; multi-warehouse layout; floor-malted barley
+  in-house; direct-fired wash still with worm-tub condensation paired
+  with indirect-steam spirit stills using shell-and-tube. The v0.1
+  pressure-test surfaced the warehouse-as-list gap (resolved in v0.2:
+  `warehouse:` → `warehouses:` list shape, with Springbank's three
+  distinct on-site / adjacent warehouses now properly represented).
+  Existing distilleries (Harris, Bruichladdich) migrated to v0.2 with
+  single-element warehouses lists preserving all prior fields.
+  Bottlings: 3 representative Springbank-line entries (Springbank 10,
+  Longrow Peated, Hazelburn 10), one per line, confidence medium.
+  Project v0.6.0.
+- **2026-05-15** Bottler schema v0.1 → v0.2 promotion. Signatory
+  pressure-test confirmed the Cadenhead's SCHEMA-GAPS hypotheses
+  with real data: series with consistent presentation rules
+  (Signatory's CSC, UCF, 100 Proof) need a `presentation_defaults:`
+  block on the series shape, and sub-series like the Decanter
+  Collection need an OPTIONAL `parent:` field. Both added to
+  bottler v0.2. `data/bottlers/signatory.yml` populated (confidence
+  medium) using both new features. `data/bottlings/signatory-
+  caol-ila-stub.yml` populated as schema-pressure-test placeholder.
+  Cadenhead's entry bumped to schema_version 0.2 but does not use
+  the new features (its series have less formal presentation
+  enforcement). Project v0.5.0.
 - **2026-05-15** Bottler IB pressure-test completed against
   Cadenhead's Authentic Collection. Created
-  `data/bottlers/cadenheads.yml` (first real bottler entry,
-  exercises the bottler v0.1 stub schema) and
-  `data/bottlings/cadenheads-bunnahabhain-stub.yml` (schema-
-  pressure-test placeholder, marked `confidence: stub`,
-  exercises all four IB discriminator fields:
-  `produced_at_distillery`, `bottled_by`, `bottler_type`,
-  `bottler_series`). All four resolve cleanly. The bottling
-  entry's SCHEMA-GAPS block documents 5 observations that would
-  feed into bottler v0.2 promotion when triggered: sub-series
-  support (deferred until Signatory case forces it),
-  presentation-defaults on series (useful enhancement),
-  production_line forward refs for unpopulated distilleries
-  (acceptable per §8), resolver script gap on series-ID
-  validation, and bottler-distillery corporate affiliation
-  semantics (deferred).
+  `data/bottlers/cadenheads.yml` and
+  `data/bottlings/cadenheads-bunnahabhain-stub.yml`. All four IB
+  discriminator fields resolve cleanly. SCHEMA-GAPS block in the
+  bottling stub documents 5 observations that subsequently fed
+  into bottler v0.2.
 - **2026-05-15** Easy Research Request migrations applied:
   `aromatic-compounds-in-whisky` (4 WP chemistry sources removed
   — glossary entries carry canonical citations);
@@ -326,52 +512,3 @@ Git history.)
   2 sherry-butt entries, harris.yml, bruichladdich.yml — all
   tracked in Research Requests for future appellation /
   historical / sherry upgrades).
-- **2026-05-15** Glossary backlog cleared. Wrote
-  `glossary/phenol`, `glossary/cresol`, `glossary/guaiacol`,
-  `glossary/standard-seven-phenols`, `glossary/sulphur-in-new-make`,
-  `glossary/lyne-arm`, `glossary/classic-malts`. With these in
-  place, the cross-reference resolver reports zero dangling
-  concept references; the only remaining dangling refs are the
-  20 distillery forward-references from `equipment/worm-tub`,
-  which are expected per handover §8. Concept count: 17 (3
-  educational, 2 equipment, 9 glossary, 3 methodology). Also
-  introduced the project's Wikipedia-volatility policy in
-  `docs/source-conflict-policy.md` and added a new source-type
-  vocabulary entry `chemistry_database` for PubChem citations;
-  populated a Research Requests section in TODO for entries that
-  need a sourcing upgrade from Wikipedia to primary sources.
-- **2026-05-15** Five concept pages written, closing the previous
-  highest-priority list: `educational/aromatic-compounds-in-whisky`
-  (substantial teaching page covering phenolic chemistry,
-  fermentation aromatics, and wood-derived compounds);
-  `equipment/shell-and-tube-condenser` (contrast case for the
-  worm-tub page); `educational/copper-conversation` (sulphur-removal
-  chemistry and the established-vs-convention split for character
-  claims); `glossary/peating-block` and `glossary/phenol-ppm`
-  (short glossary entries). 5 distinct dangling slugs resolved;
-  6 new `covers:` references to as-yet-unwritten glossary entries
-  introduced (the glossary backlog is now the project's main
-  cleanup target).
-- **2026-05-15** Methodology concept pages
-  `methodology/harris-published-ppm` and
-  `methodology/scotch-whisky-published-ppm` written. Resolves the
-  last 3 dangling methodology references in existing data.
-  Methodology concept count is now 3 (Bruichladdich, Harris, Scotch
-  Whisky). Also added `safe-bulk-writes` skill at
-  `/skills/safe-bulk-writes/SKILL.md` codifying the lesson from the
-  cask-population NUL-bytes / truncation incident, and queued the
-  `educational/cask-maturation-kinetics` page in the
-  concept-pages-to-queue section.
-- **2026-05-15** Cask schema v0.1 + 16 entries populated. All cask
-  cross-references now resolve. Disclosure_status enum (with
-  undisclosed-cask as a first-class entry) lands. Project v0.3.0.
-- **2026-05-13** Audit-driven correctness pass and first reusable
-  patterns: basis_concept slug normalisation (19 refs), PC Islay
-  Barley 2014 SWA labelling-convention resolution, peat_origin enum
-  extension, 10 bottling schema-header bumps, handover/README
-  bottler-draft acknowledgment, `scripts/check_references.py`,
-  `skills/voice-register/SKILL.md`. Project v0.2.1.
-- **2026-05-13** Initial repository commit. Schema, 2 distilleries, 4
-  production lines, 10 bottlings (migrated to v0.2), 3 concept pages,
-  bottler schema stub, docs (handover, voice register, source
-  conflict policy, schema design notes, contributing).

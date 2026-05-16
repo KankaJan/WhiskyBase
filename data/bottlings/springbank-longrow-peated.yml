@@ -1,0 +1,123 @@
+# =============================================================================
+# Longrow Peated (core, no age statement)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — core Longrow release; widely-cited
+# specifications (46% ABV, NCF, natural colour, heavily-peated
+# character). Single-SKU pattern; batch-to-batch cask programme
+# variation is real but not captured at single-SKU level.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: springbank-longrow-peated
+name: Longrow Peated
+production_line: springbank-longrow
+produced_at_distillery: springbank
+bottled_by: springbank
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Core release; re-bottled in
+                                  # batches over time.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0                         # Core Longrow Peated NAS is
+                                  # bottled at 46% ABV [1].
+age_statement: null               # No age statement on the core
+                                  # Longrow Peated NAS release. Other
+                                  # Longrow releases (10yo, 18yo,
+                                  # vintage editions) carry age
+                                  # statements.
+vintage: null
+cask_strength: false
+non_chill_filtered: true          # [1]
+natural_colour: true              # [1]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Longrow Peated is vatted from a typical Longrow cask programme,
+# predominantly ex-bourbon for the heavily-peated profile.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null              # Approximate 100% ex-bourbon for
+                                  # the core Longrow Peated NAS;
+                                  # other Longrow releases include
+                                  # sherry and wine cask programmes.
+    duration_years: null          # NAS — minimum age not disclosed
+                                  # but typically 6-8 years per trade
+                                  # characterisation.
+    cooperage: null
+    notes: |
+      Predominantly ex-bourbon for the core Longrow Peated NAS.
+      The dedicated peat character is the defining variable;
+      cask programme is intentionally simple to let the malt
+      character through.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 50.00                   # Approximate UK retail.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Core no-age-statement release of the Longrow line, bottled at
+  46% ABV non-chill-filtered with natural colour [1]. Heavily-
+  peated (50-55 ppm malt spec) and double-distilled, in contrast
+  to Springbank's lightly-peated 2.5×-distilled core. The
+  Longrow line was first distilled at Springbank in 1973
+  reviving the name of an earlier 19th-century Campbeltown
+  distillery. The core peated NAS release is the most accessible
+  Longrow expression; aged and special releases (Longrow 18, 21,
+  Red, etc.) sit alongside it.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://springbank.scot
+    accessed: 2026-05-15
+    notes: |
+      Springbank's own website. Used for ABV (46%), non-chill-
+      filtered status, natural-colour status, and Longrow line
+      characterisation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

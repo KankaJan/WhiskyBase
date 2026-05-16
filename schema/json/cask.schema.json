@@ -1,0 +1,149 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/cask.schema.json",
+  "title": "Cask",
+  "description": "Reusable reference for a type of cask, referenced from production_line.typical_cask_program and bottling.maturation[*].cask_type / bottling.finish.cask_type.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "category",
+    "disclosure_status",
+    "description",
+    "schema_version"
+  ],
+  "properties": {
+    "id": { "$ref": "_common.schema.json#/definitions/slug" },
+    "name": { "type": "string", "minLength": 1 },
+    "also_known_as": { "$ref": "_common.schema.json#/definitions/string_list" },
+
+    "category": {
+      "enum": [
+        "bourbon",
+        "sherry",
+        "wine",
+        "fortified",
+        "virgin",
+        "beer",
+        "rum",
+        "other",
+        "undisclosed"
+      ]
+    },
+    "subcategory": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+
+    "typical_volume_litres": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "number", "exclusiveMinimum": 0 },
+        {
+          "type": "array",
+          "items": { "type": "number", "exclusiveMinimum": 0 },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      ]
+    },
+
+    "wood_species": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "enum": [
+            "american_oak",
+            "european_oak",
+            "french_oak",
+            "spanish_oak",
+            "mixed",
+            "mongolian_oak",
+            "japanese_oak",
+            "slavonian_oak",
+            "unknown",
+            "undisclosed"
+          ]
+        }
+      ]
+    },
+
+    "prior_contents": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "enum": [
+                "bourbon",
+                "rye_whiskey",
+                "sherry",
+                "red_wine",
+                "white_wine",
+                "sweet_wine",
+                "rose_wine",
+                "sparkling_wine",
+                "fortified_wine",
+                "port",
+                "madeira",
+                "marsala",
+                "vermouth",
+                "rum",
+                "tequila",
+                "mezcal",
+                "beer",
+                "none",
+                "undisclosed",
+                "other"
+              ]
+            }
+          ]
+        },
+        "specifics": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "country": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "region": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "appellation": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "producer": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+
+    "disclosure_status": {
+      "enum": ["disclosed", "partially_disclosed", "undisclosed", "unknown"]
+    },
+    "disclosure_notes": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+
+    "description": { "type": ["string", "null"] },
+
+    "related": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "parent": { "$ref": "_common.schema.json#/definitions/nullable_slug" },
+        "alternatives": { "$ref": "_common.schema.json#/definitions/slug_list" }
+      }
+    },
+
+    "used_by": { "type": ["array", "null"] },
+
+    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
+
+    "schema_version": {
+      "type": "number"
+    },
+    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "last_reviewed": {
+      "oneOf": [
+        { "$ref": "_common.schema.json#/definitions/iso_date" },
+        { "type": "null" }
+      ]
+    },
+    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+  }
+}

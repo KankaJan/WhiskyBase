@@ -1,7 +1,7 @@
 # =============================================================================
 # Bruichladdich Distillery
 # =============================================================================
-# Schema: distillery.template.yml v0.1
+# Schema: distillery.template.yml v0.2
 # Entry confidence: high — extensively documented across producer, trade
 # press, Wikipedia, and independent visit accounts. Several still-capacity
 # figures conflict between sources; resolved using the most internally
@@ -33,12 +33,12 @@ status: operating
 founded: 1881                     # Built by the Harvey brothers [1][2].
 first_spirit: 1881
 mothballed_periods:
-  - start: 1929
-    end: 1936                     # Approximate — closures during the
+  - from: 1929
+    to: 1936                     # Approximate — closures during the
                                   # 1920s-30s downturn; sources differ on
                                   # exact dates. TODO verify.
-  - start: 1994
-    end: 2001                     # Closed by Whyte and Mackay 1994 [1].
+  - from: 1994
+    to: 2001                     # Closed by Whyte and Mackay 1994 [1].
                                   # Production resumed under the Reynier
                                   # ownership group in May 2001 [1][2].
 
@@ -159,18 +159,18 @@ stills:
 # the Scotch single malt scope of this knowledge base but noted here
 # for site equipment completeness.
 
-warehouse:
-  type: mixed                     # Dunnage, racking and palletised, on the
-                                  # distillery site and at additional Islay
-                                  # locations including the former Octomore
-                                  # farm [3][13].
-  location: on_site               # All maturation takes place on Islay [10].
-                                  # An explicit policy of the distillery
-                                  # since the 2001 reopening.
-  climate_notes: |
-    Coastal location on Loch Indaal exposed to Atlantic weather [2][13].
-    On-island maturation policy means all stocks are exposed to Islay's
-    maritime climate.
+warehouses:
+  - type: mixed                     # Dunnage, racking and palletised, on the
+                                    # distillery site and at additional Islay
+                                    # locations including the former Octomore
+                                    # farm [3][13].
+    location: on_site               # All maturation takes place on Islay [10].
+                                    # An explicit policy of the distillery
+                                    # since the 2001 reopening.
+    climate_notes: |
+      Coastal location on Loch Indaal exposed to Atlantic weather [2][13].
+      On-island maturation policy means all stocks are exposed to Islay's
+      maritime climate.
 
 
 # --- Capacity ---------------------------------------------------------------
@@ -372,7 +372,7 @@ sources:
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.1
+schema_version: 0.2
 confidence: high
 last_reviewed: 2026-05-02
 contributors: []

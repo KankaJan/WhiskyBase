@@ -1,0 +1,169 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/bottling.schema.json",
+  "title": "Bottling",
+  "description": "A specific commercial release.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "produced_at_distillery",
+    "bottled_by",
+    "bottler_type",
+    "schema_version"
+  ],
+  "properties": {
+    "id": { "$ref": "_common.schema.json#/definitions/slug" },
+    "name": { "type": "string", "minLength": 1 },
+    "produced_at_distillery": { "$ref": "_common.schema.json#/definitions/slug" },
+    "production_line": { "$ref": "_common.schema.json#/definitions/nullable_slug" },
+    "bottled_by": { "$ref": "_common.schema.json#/definitions/slug" },
+    "bottler_type": { "enum": ["distillery", "independent_bottler"] },
+    "bottler_series": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*$" }
+      ]
+    },
+    "release_date": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_or_year_month" }
+      ]
+    },
+    "discontinued": { "type": ["boolean", "null"] },
+    "availability": {
+      "oneOf": [
+        { "type": "null" },
+        { "enum": ["core", "limited", "travel_retail", "single_cask", "discontinued", "other"] }
+      ]
+    },
+    "abv": { "$ref": "_common.schema.json#/definitions/abv" },
+    "age_statement": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+    "vintage": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_integer" }
+      ]
+    },
+    "cask_strength": { "$ref": "_common.schema.json#/definitions/boolean_or_null" },
+    "non_chill_filtered": { "$ref": "_common.schema.json#/definitions/boolean_or_null" },
+    "natural_colour": { "$ref": "_common.schema.json#/definitions/boolean_or_null" },
+    "bottle_size_ml": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+    "batch_or_cask": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["batch", "small_batch", "single_cask", "vatting"] }
+          ]
+        },
+        "number": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "string" },
+            { "type": "integer" }
+          ]
+        },
+        "outturn_bottles": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+        "cask_numbers": { "type": "array" }
+      }
+    },
+    "maturation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cask_type": { "$ref": "_common.schema.json#/definitions/slug" },
+          "fill_number": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+          "proportion": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "number", "minimum": 0, "maximum": 1 }
+            ]
+          },
+          "duration_years": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+          "duration_months": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+          "cooperage": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+          "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+        }
+      }
+    },
+    "finish": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cask_type": { "$ref": "_common.schema.json#/definitions/slug" },
+            "duration_months": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+            "duration_years": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+            "cooperage": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+            "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+          }
+        }
+      ]
+    },
+    "rrp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "currency": { "$ref": "_common.schema.json#/definitions/currency_iso4217" },
+        "amount": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "as_of": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "_common.schema.json#/definitions/year_or_year_month" }
+          ]
+        }
+      }
+    },
+    "external_ids": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "whiskybase_id": { "$ref": "_common.schema.json#/definitions/external_id_value" },
+        "whiskyhunter_id": { "$ref": "_common.schema.json#/definitions/external_id_value" },
+        "ean": { "$ref": "_common.schema.json#/definitions/external_id_value" }
+      }
+    },
+    "description": { "type": ["string", "null"] },
+    "notes_official": { "type": ["string", "null"] },
+    "notes_independent": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "reviewer": { "type": "string" },
+          "url": { "type": ["string", "null"] },
+          "date": {
+            "oneOf": [
+              { "type": "null" },
+              { "$ref": "_common.schema.json#/definitions/year_or_year_month" }
+            ]
+          },
+          "nose": { "type": ["string", "null"] },
+          "palate": { "type": ["string", "null"] },
+          "finish": { "type": ["string", "null"] },
+          "summary": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
+    "schema_version": { "$ref": "_common.schema.json#/definitions/schema_version_value" },
+    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "last_reviewed": {
+      "oneOf": [
+        { "$ref": "_common.schema.json#/definitions/iso_date" },
+        { "type": "null" }
+      ]
+    },
+    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+  }
+}

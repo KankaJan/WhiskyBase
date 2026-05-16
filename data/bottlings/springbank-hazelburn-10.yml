@@ -1,0 +1,117 @@
+# =============================================================================
+# Hazelburn 10 Year Old (core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — core Hazelburn release; widely-cited
+# specifications (46% ABV, NCF, natural colour). Single-SKU pattern.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: springbank-hazelburn-10
+name: Hazelburn 10 Year Old
+production_line: springbank-hazelburn
+produced_at_distillery: springbank
+bottled_by: springbank
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Core release; re-bottled in
+                                  # batches over time.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0                         # Core Hazelburn 10 Year Old is
+                                  # bottled at 46% ABV [1].
+age_statement: 10
+vintage: null
+cask_strength: false
+non_chill_filtered: true          # [1]
+natural_colour: true              # [1]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Hazelburn 10 is predominantly ex-bourbon matured per the line's
+# core-release profile.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null              # Approximate 100% ex-bourbon for
+                                  # the core Hazelburn 10. Other
+                                  # Hazelburn releases (12yo
+                                  # rundlets-and-kilderkins, 13yo
+                                  # sherry-wood, sauternes wood,
+                                  # rum-wood etc.) use varied cask
+                                  # programmes.
+    duration_years: 10
+    cooperage: null
+    notes: |
+      Predominantly ex-bourbon for the core 10 Year Old.
+      Hazelburn's unpeated triple-distilled spirit shows the
+      bourbon-cask influence clearly.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 55.00                   # Approximate UK retail.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Core 10-year-old release of the Hazelburn line, bottled at 46%
+  ABV non-chill-filtered with natural colour [1]. Unpeated and
+  triple-distilled, in contrast to Springbank's lightly-peated
+  2.5×-distilled core and Longrow's heavily-peated double-
+  distilled core. Hazelburn was first distilled at Springbank in
+  1997 reviving the name of an earlier 19th-century Campbeltown
+  distillery (Hazelburn, 1825-1925). The core 10 is the reference
+  expression of the Hazelburn line; older and special-cask
+  Hazelburn releases sit alongside it.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://springbank.scot
+    accessed: 2026-05-15
+    notes: |
+      Springbank's own website. Used for ABV (46%), non-chill-
+      filtered status, natural-colour status, and Hazelburn line
+      characterisation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

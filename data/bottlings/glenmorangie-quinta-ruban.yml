@@ -1,0 +1,161 @@
+# =============================================================================
+# Glenmorangie Quinta Ruban (port-finished, core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing core release exercising
+# the bottling schema's finish block. The Quinta Ruban has been
+# released at various age statements over the years (12 Year Old
+# being the current standard); the entry captures the current core
+# release.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenmorangie-quinta-ruban
+name: Glenmorangie Quinta Ruban 14 Year Old
+production_line: glenmorangie-original
+produced_at_distillery: glenmorangie
+bottled_by: glenmorangie
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Quinta Ruban has been in
+                                  # continuous release since the
+                                  # late 1990s; the 14 Year Old age
+                                  # statement is the current standard
+                                  # (prior versions used 12 Year Old).
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0                         # Quinta Ruban 14 is bottled at
+                                  # 46% ABV [1] — higher than The
+                                  # Original 10's 40% and the 18's
+                                  # 43%, allowing non-chill-filtered
+                                  # presentation.
+age_statement: 14
+vintage: null
+cask_strength: false
+non_chill_filtered: true          # [1]
+natural_colour: false             # Caramel colouring is used in the
+                                  # Glenmorangie range generally;
+                                  # Quinta Ruban not explicitly
+                                  # marketed as natural-colour.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Glenmorangie Quinta Ruban: ~10 years in ex-bourbon American oak,
+# then a port-cask finish (port pipe) for the remaining duration.
+# The port-cask exposure is typically 2 years for the current 14
+# Year Old version. The terminal exposure to port is substantial
+# enough to be borderline between "finish" and "secondary
+# maturation"; per the project's documented convention
+# (handover §10 deferred re-cask vs finish boundary), terminal
+# exposure of <12 months is finish, longer is maturation. 2 years
+# is therefore borderline; the producer markets it as a "finish"
+# and that framing is retained here.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: 1.0
+    duration_years: 12            # Approximate primary maturation
+                                  # before transfer to port casks.
+    cooperage: null
+    notes: |
+      Primary maturation in ex-bourbon American oak.
+
+finish:
+  cask_type: wine-cask            # Port wine cask. Currently using
+                                  # the generic `wine-cask` slug
+                                  # since the project's cask
+                                  # vocabulary does not yet have a
+                                  # specific `port-pipe` or
+                                  # `ruby-port-wine-cask` entry;
+                                  # see SCHEMA-OBSERVATION below.
+  duration_months: 24
+  duration_years: 2
+  cooperage: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 70.00                   # Approximate UK retail.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Port-finished core release in the Glenmorangie extra-matured
+  range, 14 Year Old [1]. Approximately 12 years primary maturation
+  in ex-bourbon American oak, finished for approximately 2 years
+  in port pipes from Quintas (vineyards) on the Douro in Portugal
+  — the "Quinta Ruban" name refers to this port-wine cask
+  provenance. Bottled at 46% ABV non-chill-filtered. The Quinta
+  Ruban is one of Glenmorangie's longest-running cask-finish
+  releases and one of the canonical commercial port-finished
+  Scotch whiskies.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenmorangie.com
+    accessed: 2026-05-15
+    notes: |
+      Glenmorangie's own website. Used for ABV (46%), age (14
+      years), non-chill-filtered status, and port-finish
+      programme description.
+
+
+# --- SCHEMA-OBSERVATION (cask vocabulary) ----------------------------------
+# This entry uses the generic `wine-cask` slug for the port-pipe
+# finish. The project's cask vocabulary does not currently include
+# a specific `port-pipe` or `ruby-port-wine-cask` entry. Port
+# pipes (typically ~550-650 L) are structurally distinct from
+# Bordeaux-style barriques and are sourced from a regulated
+# appellation (the Douro DOC) similar to French wine AOCs.
+#
+# Candidate cask slugs to add to /data/casks/ when Port-finished
+# releases accumulate:
+#  - port-pipe (generic, partially-disclosed)
+#  - ruby-port-wine-cask
+#  - tawny-port-wine-cask
+#
+# Currently `wine-cask` is acceptable as the partial-disclosure
+# generic. The producer specifies port without naming the specific
+# style (ruby, tawny, vintage), so partial-disclosure is honest.
+# When more port-finished bottlings land, the project should
+# decide whether to split port out as its own category.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

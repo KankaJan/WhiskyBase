@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/_common.schema.json",
+  "description": "Shared definitions referenced from entity-type schemas. Not a standalone validator.",
+  "definitions": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "minLength": 1
+    },
+    "nullable_slug": {
+      "oneOf": [
+        { "$ref": "#/definitions/slug" },
+        { "type": "null" }
+      ]
+    },
+    "kind_slug": {
+      "description": "Concept slug in <kind>/<slug> form.",
+      "type": "string",
+      "pattern": "^(methodology|educational|equipment|practice|glossary)/[a-z0-9][a-z0-9-]*$"
+    },
+    "iso_date": {
+      "description": "YYYY-MM-DD ISO date.",
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "year_or_year_month": {
+      "description": "YYYY or YYYY-MM. Accepts integer (YYYY only) or string.",
+      "oneOf": [
+        { "type": "string", "pattern": "^\\d{4}(-\\d{2})?$" },
+        { "type": "integer", "minimum": 1400, "maximum": 2100 }
+      ]
+    },
+    "year_integer": {
+      "type": "integer",
+      "minimum": 1400,
+      "maximum": 2100
+    },
+    "schema_version_value": {
+      "description": "Schema version may be number (0.2) or string (0.2.1).",
+      "oneOf": [
+        { "type": "number" },
+        { "type": "string", "pattern": "^\\d+(\\.\\d+)*$" }
+      ]
+    },
+    "external_id_value": {
+      "description": "External database IDs may be integer or string.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "integer" },
+        { "type": "null" }
+      ]
+    },
+    "confidence": {
+      "enum": ["high", "medium", "low", "stub"]
+    },
+    "source_type": {
+      "enum": [
+        "official_website",
+        "trade_publication",
+        "book",
+        "wikipedia",
+        "wikidata",
+        "company_filing",
+        "independent_review",
+        "interview",
+        "chemistry_database",
+        "regulatory_text",
+        "peer_reviewed_paper",
+        "other"
+      ]
+    },
+    "methodology_block": {
+      "description": "Source-level methodology declaration (currently models peating_ppm only).",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "peating_ppm": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "method": {
+              "enum": [
+                "hplc",
+                "4_aminoantipyrine",
+                "gc_ms",
+                "folin_ciocalteu",
+                "unspecified"
+              ]
+            },
+            "compounds": {
+              "enum": ["standard_7", "extended", "individual", "unspecified"]
+            },
+            "basis_concept": { "$ref": "#/definitions/kind_slug" },
+            "notes": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "integer", "minimum": 1 },
+        "type": { "$ref": "#/definitions/source_type" },
+        "url": { "type": ["string", "null"] },
+        "citation": { "type": ["string", "null"] },
+        "accessed": {
+          "oneOf": [
+            { "$ref": "#/definitions/iso_date" },
+            { "type": "null" }
+          ]
+        },
+        "methodology": {
+          "oneOf": [
+            { "$ref": "#/definitions/methodology_block" },
+            { "type": "null" }
+          ]
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+    "sources_list": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/source" }
+    },
+    "abv": {
+      "description": "Alcohol by volume, percent.",
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "currency_iso4217": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z]{3}$"
+    },
+    "string_or_null": {
+      "type": ["string", "null"]
+    },
+    "boolean_or_null": {
+      "type": ["boolean", "null"]
+    },
+    "integer_or_null": {
+      "type": ["integer", "null"]
+    },
+    "number_or_null": {
+      "type": ["number", "null"]
+    },
+    "string_list": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "slug_list": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/slug" }
+    }
+  }
+}

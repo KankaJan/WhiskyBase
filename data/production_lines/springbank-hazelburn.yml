@@ -1,0 +1,177 @@
+# =============================================================================
+# Hazelburn (triple-distilled unpeated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — Hazelburn is the youngest of the three
+# Springbank lines (first distilled 1997) and is less extensively
+# documented than the Springbank and Longrow lines, but the basic
+# recipe variables (unpeated, triple-distilled) are consistently
+# reported.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: springbank-hazelburn
+name: Hazelburn
+distillery: springbank
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1997              # Hazelburn was first distilled at
+                                  # Springbank in 1997 [1][2], reviving
+                                  # the name of an earlier Campbeltown
+                                  # distillery (Hazelburn, operated
+                                  # 1825-1925 in central Campbeltown).
+                                  # Regular release programme
+                                  # established in the 2000s.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: floor_malted_onsite     # Same floor maltings as the other
+                                  # Springbank lines; Hazelburn's
+                                  # kilning regime omits the peat-fire
+                                  # phase entirely.
+  maltster: Springbank Distillery
+  variety:
+    - Concerto                    # Modern standard variety.
+    - Optic                       # Used historically.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: 0
+      unit: ppm
+      method: hplc                # Method resolved via the broader
+                                  # Scotch industry convention; not
+                                  # materially relevant when value
+                                  # is zero but recorded for schema
+                                  # consistency.
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Unpeated specification. Hazelburn's malt is kilned without
+        a peat-fire phase — the same floor-malting facility
+        producing Springbank's lightly-peated and Longrow's
+        heavily-peated malt also produces Hazelburn's unpeated
+        malt, distinguished by kilning regime alone.
+
+  peat_origin: none               # Hazelburn uses no peat. Requires
+                                  # production_line schema v0.2.1+ for
+                                  # the "none" enum value.
+
+  notes: |
+    Hazelburn is Springbank's unpeated line, defined by the absence
+    of a peat-fire kilning phase. The same floor maltings produce
+    all three Springbank lines; Hazelburn's defining recipe
+    variable is the kilning omission.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 72
+  hours_max: 110
+  hours_typical: null
+  yeast: null
+  notes: |
+    Same fermentation regime as the other Springbank lines.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: triple                  # DISTINCTIVE relative to Springbank
+                                  # (2.5×) and Longrow (double):
+                                  # Hazelburn uses conventional triple
+                                  # distillation. The three distillation
+                                  # regimes available at the Springbank
+                                  # site are achieved via the same
+                                  # three-still configuration (one
+                                  # wash still + two spirit stills)
+                                  # operated in different combinations
+                                  # rather than via dedicated equipment
+                                  # per line.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Triple-distillation cuts not consistently disclosed in
+      numeric form.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel
+  - oloroso-sherry-butt
+  - wine-cask                     # Wine and fortified-wine cask
+                                  # finishes appear in the Hazelburn
+                                  # range, particularly sauternes
+                                  # and rum finishes in some releases.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - springbank-hazelburn-10       # Core 10-year-old (representative
+                                  # bottling).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Unpeated triple-distilled Springbank production line, first
+  distilled in 1997 [1][2] reviving the name of an earlier
+  Campbeltown distillery (Hazelburn, operated 1825-1925).
+  Distinguished from the Springbank and Longrow lines by two
+  recipe variables: malt peating (unpeated, peat_origin: none)
+  and distillation regime (triple rather than Springbank's 2.5×
+  or Longrow's double). Uses the same equipment as the other
+  Springbank lines — same direct-fired wash still with worm-tub
+  condensation, same indirect-steam spirit stills with shell-and-
+  tube condensers, same boatskin-larch washbacks, same floor
+  maltings (with kilning regime omitting peat).
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://springbank.scot
+    accessed: 2026-05-15
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: methodology/scotch-whisky-published-ppm
+        notes: |
+          Methodology assignment is nominal since Hazelburn's
+          peating spec is zero. The methodology is recorded for
+          schema consistency.
+    notes: |
+      Springbank's own website. Used for Hazelburn line
+      characterisation and 1997 first-distillation date.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Springbank_distillery
+    accessed: 2026-05-15
+    notes: |
+      Used for Hazelburn naming history (the older 1825-1925
+      Campbeltown Hazelburn distillery) and 1997 production date.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

@@ -9,6 +9,284 @@ covers them all.
 
 ---
 
+## [0.7.0] — 2026-05-16
+
+JSON Schema validation tooling added. Hand-authored draft-07 schemas
+for all six entity types live in `/schema/json/`; the resolver in
+`scripts/check_references.py` now runs validation as a warn-only pass
+alongside the existing reference resolution. The threshold of 5+
+distilleries (deferred since the cask-schema work) is crossed,
+making the tooling investment defensible against the data set.
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.2 (template change: mothballed_periods
+  convention canonised to `from`/`to`/`note`, matching ownership.history)
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.2
+- `cask.template.yml` v0.1
+
+### Additions
+
+- `/schema/json/_common.schema.json` — shared definitions (slug, source,
+  source_type enum, ABV, currency, year forms, schema_version forms,
+  external_id values).
+- `/schema/json/{distillery,production_line,bottling,bottler,cask,concept}.schema.json`
+  — one per entity type. Draft-07. Cross-file `$ref` to `_common` is
+  rewritten to in-document `#/definitions/...` at load time by the
+  resolver script (jsonschema 3.2.0 cross-file `$ref` is brittle).
+- `scripts/check_references.py` — adds JSON Schema validation pass.
+  YAML dates (`datetime.date`) are coerced to ISO strings before
+  validation. Findings are printed grouped by entity type, warn-only.
+
+### Schema convention change
+
+**Distillery `mothballed_periods` item shape**
+
+The distillery template previously documented `{start: YYYY, end: YYYY}`
+for mothballed period entries. Real data (Springbank, then audited
+across the corpus) uses `{from: YYYY, to: YYYY, note: ...}` — matching
+the `from`/`to` convention already in `ownership.history`. The
+template has been updated to canonise `from`/`to`/`note`. The one
+existing entry using `start`/`end` (Bruichladdich) has been migrated.
+
+This is a convention change rather than a schema-shape change — both
+forms parse as YAML; the JSON Schema validation now rejects `start`/`end`.
+Distillery schema version stays at v0.2 because the on-disk template
+shape is unchanged in field count or relationships.
+
+### Resolver bug surfacing
+
+The new JSON Schema validation pass surfaced ten silently-truncated
+files left over from earlier sessions:
+
+- 5 cask entries (`amarone-wine-cask`, `burgundy-wine-cask`,
+  `fino-sherry-butt`, `oloroso-sherry-butt`, `sauternes-wine-cask`)
+  missing their trailing `# --- Metadata` block (schema_version,
+  confidence, last_reviewed, contributors).
+- 5 concept entries (`copper-conversation`, `shell-and-tube-condenser`,
+  `classic-malts`, `peating-block`, `sulphur-in-new-make`) similarly
+  truncated.
+
+All ten were restored from the last committed version on `master`.
+The cross-reference resolver (YAML parse + index) was tolerant of
+the truncations because YAML loaded the partial documents
+successfully; only the JSON Schema required-field check caught the
+missing metadata blocks. This is the load-bearing case for the
+validation tooling and immediately justified the investment.
+
+---
+
+## [0.6.0] — 2026-05-15
+
+Third distillery populated (Springbank), driving distillery schema
+v0.1 → v0.2 promotion for multi-warehouse support. Schema model
+remains fully exercised across all six entity types. Three
+distilleries is the threshold for distillery-pattern observation
+that the project has been working toward.
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.2 (was v0.1)
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.2
+- `cask.template.yml` v0.1
+
+### Schema changes
+
+**`distillery.template.yml` v0.1 → v0.2**
+
+Single change: `warehouse:` (single block) → `warehouses:` (list of
+blocks). The list entries preserve the v0.1 fields (`type`,
+`location`, `climate_notes`) and add an OPTIONAL `id:` for
+distinguishing multiple warehouses within one entry.
+
+Data-driven from the Springbank pressure-test: Springbank operates
+multiple distinct warehouses on the Campbeltown site (dunnage +
+racked) plus additional warehousing at the adjacent Glengyle site,
+and the single-block `warehouse:` field could not capture this.
+The gap was predicted in handover §10's deferred decisions and in
+TODO; the Springbank case confirmed it with real data.
+
+Migration: Harris and Bruichladdich both bumped to v0.2 with their
+existing warehouse blocks wrapped in single-element lists,
+preserving all previous fields.
+
+### Data populated
+
+- **`data/distilleries/springbank.yml`** (new). Third distillery in
+  the project. Confidence: medium. Documents Springbank's distinctive
+  configuration: 1828 founding with continuous Mitchell family
+  ownership since 1837; floor maltings on site; direct-fired wash
+  still with worm-tub condensation paired with indirect-steam
+  spirit stills using shell-and-tube condensers; three production
+  lines (Springbank, Longrow, Hazelburn) sharing equipment.
+- **`data/production_lines/springbank-springbank.yml`** (new). 2.5×
+  distillation, lightly peated (12-15 ppm spec).
+- **`data/production_lines/springbank-longrow.yml`** (new). Double
+  distillation, heavily peated (50-55 ppm spec). Revived 1973 from
+  an earlier 19th-century Campbeltown distillery name.
+- **`data/production_lines/springbank-hazelburn.yml`** (new). Triple
+  distillation, unpeated (`peat_origin: none`). First distilled
+  1997 from the earlier 19th-century Hazelburn name.
+- **`data/bottlings/springbank-springbank-10.yml`** (new). Core 10
+  Year Old, 46% NCF natural colour, batch-vatted.
+- **`data/bottlings/springbank-longrow-peated.yml`** (new). Core
+  Longrow Peated NAS, 46% NCF natural colour.
+- **`data/bottlings/springbank-hazelburn-10.yml`** (new). Core
+  Hazelburn 10 Year Old, 46% NCF natural colour.
+
+All Springbank-line production lines use the new v0.2.1
+`peat_origin: none` for Hazelburn and the existing `2.5x` enum
+value for Springbank's distillation regime. The `floor_malted_onsite`
+malt source value is in active use for the first time.
+
+### Migrations applied
+
+- **`data/distilleries/harris.yml`** schema_version bumped 0.1 →
+  0.2. Single-element `warehouses:` list wrapping the prior
+  warehouse block. Stale header comment "Schema:
+  distillery.template.yml v0.1" updated.
+- **`data/distilleries/bruichladdich.yml`** same: schema_version
+  bump and warehouse-block wrapped in single-element list. Stale
+  header comment updated.
+
+### Post-population correctness pass
+
+- **`glossary/phenol.yml`** repaired — file had been silently
+  truncated mid-sources block during an earlier session; the inline
+  citation `[1]` was therefore dangling per the
+  check_references.py inline-citation check. Sources block
+  restored (PubChem CID 996 citation).
+- **`springbank.yml` factual hedges**: washback material changed
+  from `boatskin_larch` to plain `larch` (the "boatskin" reference
+  is a construction-method term, not a species — conflating the
+  two was imprecise); mash tun cast-iron claim hedged with
+  acknowledgement that primary-source corroboration would
+  strengthen and an alternative interpretation can't be ruled out.
+
+### Documentation updates
+
+- `docs/handover.md` §10 schema versions list (distillery v0.2),
+  populated counts (3 distilleries, 7 production lines, 15
+  bottlings), next priorities (Springbank done; Research Requests
+  audit now #1).
+- `README.md` state table updated.
+- `TODO.md` — "Multiple warehouses per distillery" item moved out
+  of deferred refinements (RESOLVED 2026-05-15). Recently Completed
+  entry added.
+
+### Workflow note
+
+Second consecutive v0.x schema bump driven by the iterative-
+evaluation pattern codified in CLAUDE.md. Both bottler v0.2
+(2026-05-15 earlier) and distillery v0.2 (this entry) followed
+the same shape: write the new entry in the existing schema,
+document the genuine failure points in a SCHEMA-GAPS block,
+design v0.2 based on observation, apply, migrate existing data.
+Data-driven schema design rather than speculative.
+
+---
+
+## [0.5.0] — 2026-05-15
+
+Bottler schema v0.1 → v0.2 promotion driven by the Signatory IB
+pressure-test. With this entry the schema model is fully exercised
+across all six entity types — every schema has been pressure-tested
+against real data.
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.1
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.2 (was v0.1 stub)
+- `cask.template.yml` v0.1
+
+### Schema changes
+
+**`bottler.template.yml` v0.1 → v0.2**
+
+The Signatory pressure-test confirmed two gaps identified
+hypothetically in the Cadenhead's pressure-test (v0.4.0) and added
+both fields to the series shape:
+
+- **`parent: <series-id>`** (OPTIONAL). Used when a series is a
+  presentation variant or sub-batch of another. Worked example:
+  Signatory's Decanter Collection has
+  `parent: cask-strength-collection` — the Decanter Collection
+  is essentially CSC with different bottle packaging, not a
+  wholly separate series.
+- **`presentation_defaults:`** (OPTIONAL). Captures consistent
+  presentation rules that apply to all bottlings under a series.
+  Fields: `cask_strength`, `non_chill_filtered`, `natural_colour`,
+  `batch_or_cask_type`, `abv`. Bottlings inherit these unless
+  they explicitly override. Worked examples: Signatory's
+  Un-Chillfiltered Collection has `presentation_defaults.abv: 46.0`
+  and `cask_strength: false`, `non_chill_filtered: true`,
+  `natural_colour: true`, `batch_or_cask_type: vatting`; Cask
+  Strength Collection has `cask_strength: true`,
+  `batch_or_cask_type: single_cask` (with ABV variable per cask).
+
+Both features data-driven from Signatory's actual series structure
+rather than speculation. Cadenhead's hypotheses (in the
+cadenheads-bunnahabhain-stub SCHEMA-GAPS block) accurately
+predicted these features; Signatory's data confirmed them and
+provided concrete design parameters.
+
+### Data populated
+
+- **`data/bottlers/signatory.yml`** (new). Second real bottler
+  entry. Confidence: medium. Uses both new v0.2 features actively:
+  `presentation_defaults` on CSC, UCF, 100 Proof, and Decanter
+  series; `parent: cask-strength-collection` on the Decanter
+  Collection. Documents Wm Cadenhead Ltd's main competitor and the
+  case that drove the v0.2 promotion.
+- **`data/bottlings/signatory-caol-ila-stub.yml`** (new).
+  Schema-pressure-test placeholder for a Signatory Cask Strength
+  Collection release. Confidence: stub. Exercises all four
+  bottling v0.2 IB discriminator fields against the Signatory
+  bottler entry; the four `[v0.1 redundancy]` markers in the
+  field comments document fields that v0.2 makes inheritable from
+  the series presentation_defaults.
+
+### Migrations applied
+
+- **`data/bottlers/cadenheads.yml`** schema_version bumped 0.1 →
+  0.2. Cadenhead's series do not have strong presentation-default
+  enforcement; the v0.2 fields are available but not used in this
+  entry. Stale header and series-block-preamble comments updated
+  to reflect v0.2 in place.
+
+### Documentation updates
+
+- `docs/handover.md` §1 (intro — bottler now v0.2 with 2 entries),
+  §10 (schema versions list, populated counts, next priorities
+  rewritten — third distillery now #1).
+- `README.md` (entity-schemas row, new "Bottlers populated" row in
+  state table).
+- `TODO.md` — bottler item moved out of "Drafted but not
+  finalised" (now mature for current scope); Recently Completed
+  entry added.
+
+### Workflow note
+
+This is the first v0.x schema promotion driven explicitly by the
+iterative-evaluation pattern codified in CLAUDE.md: write the
+Signatory entry in v0.1 first (the existing stub schema) to
+surface what genuinely failed, *then* design and apply v0.2 based
+on the actual gaps. The Cadenhead's SCHEMA-GAPS block had
+hypothesised the design 2026-05-15 earlier in the session;
+Signatory's data confirmed the hypotheses and refined the field
+shapes. Data-driven schema design rather than speculative.
+
+---
+
 ## [0.4.0] — 2026-05-15
 
 Cross-reference graph completion (concept-page arc),

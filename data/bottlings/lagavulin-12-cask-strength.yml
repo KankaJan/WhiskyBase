@@ -1,0 +1,132 @@
+# =============================================================================
+# Lagavulin 12 Year Old Cask Strength (Special Releases annual)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — single-SKU representation of an annual
+# recurring release. Each year's release has distinct ABV and
+# outturn; the entry captures the family.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: lagavulin-12-cask-strength
+name: Lagavulin 12 Year Old Cask Strength (Special Releases)
+production_line: lagavulin
+produced_at_distillery: lagavulin
+bottled_by: lagavulin
+bottler_type: distillery
+bottler_series: null              # Part of Diageo's annual Special
+                                  # Releases programme — see
+                                  # SCHEMA-OBSERVATION on Distillers
+                                  # Edition for the cross-distillery
+                                  # series question.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Annual recurring release as part
+                                  # of Diageo's Special Releases. Each
+                                  # year carries its own bottling.
+discontinued: false               # Continuously released annually
+                                  # since circa 2002 within the
+                                  # Special Releases programme.
+availability: limited             # Limited annual outturn per year;
+                                  # sells through.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: null                         # Varies per year — typically 56-58%
+                                  # ABV cask strength. Each year's
+                                  # release carries its specific ABV
+                                  # on the label.
+age_statement: 12
+vintage: null
+cask_strength: true               # Cask strength by series definition
+                                  # [1].
+non_chill_filtered: true          # NCF by series definition [1].
+natural_colour: true              # Natural colour by series
+                                  # definition [1].
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: small_batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Lagavulin 12 CS is small-batch vatted from refill ex-bourbon
+# casks per the Special Releases pattern. Specific cask-programme
+# variation across years exists.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: 2                # Predominantly refill ex-bourbon
+                                  # for the Special Releases 12 Year
+                                  # Old programme.
+    proportion: 1.0
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Refill ex-bourbon casks. The choice of refill (rather than
+      first-fill) for the 12 Year Old Cask Strength gives the
+      release a less bourbon-influenced profile than the 16
+      Year Old core, allowing the Lagavulin spirit character to
+      come through more directly.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 120.00                  # Approximate UK retail at release;
+                                  # secondary market prices typically
+                                  # higher.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Annual cask-strength 12-year-old release from Lagavulin under
+  Diageo's Special Releases programme [1]. The 12 Year Old Cask
+  Strength has been released annually since approximately 2002;
+  each year's release uses refill ex-bourbon casks with the same
+  age statement and presentation philosophy (cask strength,
+  non-chill-filtered, natural colour) but with year-specific ABV,
+  outturn, and minor cask-programme variation. The cask-strength
+  format provides a less filtered window onto the Lagavulin
+  spirit than the 43% ABV chill-filtered 16 Year Old core
+  release — a complementary expression rather than a substitute.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/lagavulin/
+    accessed: 2026-05-15
+    notes: |
+      Diageo's Malts.com page for Lagavulin. Used for age (12
+      years), cask-strength / NCF / natural-colour presentation,
+      and Special Releases series context.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

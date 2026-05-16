@@ -1,5 +1,5 @@
 # =============================================================================
-# DISTILLERY SCHEMA TEMPLATE — v0.1
+# DISTILLERY SCHEMA TEMPLATE — v0.2
 # =============================================================================
 # Purpose: describes the physical site and its equipment. A distillery has
 # zero or more production lines (recipes/specs), each of which has zero or
@@ -63,9 +63,12 @@ founded: null                        # REQUIRED. Year first spirit ran. Use
                                      #   pre-production. null for unknown
                                      #   historical cases.
 first_spirit: null                   # YYYY or YYYY-MM. When new make first ran.
-mothballed_periods: []               # List of {start: YYYY, end: YYYY} pairs.
-                                     # e.g. [{start: 1985, end: 1989}]
-                                     # Use end: null for ongoing closure.
+mothballed_periods: []               # List of {from: YYYY, to: YYYY, note: ...}
+                                     # entries. e.g. [{from: 1985, to: 1989}]
+                                     # Use to: null for ongoing closure.
+                                     # `from`/`to` matches the ownership.history
+                                     # convention; the `note` field is optional
+                                     # free-text context.
 
 
 # --- Ownership --------------------------------------------------------------
@@ -124,12 +127,36 @@ stills:
     lyne_arm_angle: null
     condenser: null
 
-warehouse:
-  type: null                         # dunnage | racked | palletised | mixed
-  location: null                     # on_site | off_site | mixed
-  climate_notes: null                # Free text on climatic exposure if it
-                                     # materially affects maturation
-                                     # (coastal, hill-top, underground, etc.).
+warehouses: []                       # v0.2: list of warehouse entries.
+                                     # Each entry shape:
+                                     #
+                                     #   - id: campbeltown-dunnage      # OPTIONAL identifier,
+                                     #                                  # useful when the
+                                     #                                  # distillery has
+                                     #                                  # multiple distinct
+                                     #                                  # warehouses to refer
+                                     #                                  # to.
+                                     #     type: dunnage                # dunnage | racked |
+                                     #                                  # palletised | mixed
+                                     #     location: on_site            # on_site | off_site |
+                                     #                                  # mixed
+                                     #     climate_notes: null          # Free text on climatic
+                                     #                                  # exposure if it
+                                     #                                  # materially affects
+                                     #                                  # maturation (coastal,
+                                     #                                  # hill-top, underground,
+                                     #                                  # etc.).
+                                     #
+                                     # Single-warehouse distilleries use a
+                                     # one-element list. Multi-warehouse
+                                     # distilleries (Springbank, Bunnahabhain,
+                                     # Bruichladdich for some periods, etc.)
+                                     # use multiple entries.
+                                     #
+                                     # v0.1 → v0.2: the old `warehouse:` single
+                                     # block has been replaced with `warehouses:`
+                                     # list. Existing entries migrate by
+                                     # wrapping their single block in a list.
 
 
 # --- Capacity ---------------------------------------------------------------
@@ -227,7 +254,7 @@ sources: []
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.1
+schema_version: 0.2
 confidence: stub                     # high   — multi-source, vetted, current
                                      # medium — well-sourced, some gaps
                                      # low    — single-source or contested

@@ -1,0 +1,183 @@
+# =============================================================================
+# Longrow (heavily peated double-distilled production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — well-documented PPM spec and heavily-
+# peated character; production-line origin in the 1970s revival of an
+# older Campbeltown name is consistently reported.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: springbank-longrow
+name: Longrow
+distillery: springbank
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1973              # Longrow was first distilled at
+                                  # Springbank in 1973 [1][2], reviving
+                                  # the name of an earlier Campbeltown
+                                  # distillery that operated 1824-1896
+                                  # on an adjacent site (the original
+                                  # Longrow was acquired by Springbank's
+                                  # owners in 1896 and demolished
+                                  # afterwards). The 1973 use of the
+                                  # name was for a heavily-peated
+                                  # experimental run; regular production
+                                  # established in the 1980s-90s.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: floor_malted_onsite     # Same floor maltings as the
+                                  # Springbank and Hazelburn lines;
+                                  # different kilning regime (heavy
+                                  # peating).
+  maltster: Springbank Distillery
+  variety:
+    - Concerto                    # Modern standard variety.
+    - Optic                       # Used historically.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: [50, 55]             # Heavily-peated malt specification;
+                                  # commonly-cited figures place
+                                  # Longrow at 50-55 ppm [1][2].
+                                  # Some sources cite 60 ppm for
+                                  # specific batches; the 50-55 range
+                                  # is the producer's stated
+                                  # specification for the standard
+                                  # Longrow malt.
+      unit: ppm
+      method: hplc
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Producer-stated heavily-peated malt specification. As with
+        the other Springbank lines, the methodology is not
+        explicitly attributed by Springbank and inherits the
+        broader Scotch industry convention.
+
+  peat_origin: local              # Same peat source as the Springbank
+                                  # line, kilned in the same floor
+                                  # maltings but with extended peat-
+                                  # fire phase.
+
+  notes: |
+    Longrow's heavily-peated malt is produced in the same floor
+    maltings as Springbank's lightly-peated malt and Hazelburn's
+    unpeated malt. The difference is the kilning regime: Longrow
+    receives an extended peat-fire phase that deposits substantially
+    more phenolic compounds on the malt husk.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 72
+  hours_max: 110
+  hours_typical: null
+  yeast: null
+  notes: |
+    Same fermentation regime as the Springbank and Hazelburn lines —
+    same boatskin-larch washbacks, same long-fermentation practice.
+    The distinguishing recipe variables for Longrow relative to
+    Springbank are malt peating and distillation regime.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                  # DISTINCTIVE relative to the other
+                                  # Springbank lines: Longrow uses
+                                  # conventional double distillation
+                                  # (one wash still → one spirit
+                                  # still). The 2.5× and 3× regimes
+                                  # are reserved for Springbank and
+                                  # Hazelburn respectively.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Cut points not consistently disclosed for Longrow specifically;
+      operational rather than fixed-ABV.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel
+  - oloroso-sherry-butt
+  - wine-cask                     # Wine and fortified-wine cask
+                                  # finishes appear in the Longrow
+                                  # range.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - springbank-longrow-peated     # Core Longrow release
+                                  # (representative bottling).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Heavily-peated Springbank production line, first distilled in
+  1973 [1][2] reviving the name of an earlier Campbeltown
+  distillery (Longrow, operated 1824-1896 on an adjacent site,
+  acquired by the Mitchells in 1896). Distinguished from the
+  Springbank line by two recipe variables: malt peating
+  (50-55 ppm spec versus 12-15 ppm for the Springbank line) and
+  distillation regime (conventional double rather than Springbank's
+  2.5×). Uses the same equipment as Springbank and Hazelburn —
+  same direct-fired wash still with worm-tub condensation, same
+  indirect-steam spirit stills with shell-and-tube condensers,
+  same boatskin-larch washbacks, same floor maltings — with the
+  defining variables being malt peating and distillation regime.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://springbank.scot
+    accessed: 2026-05-15
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: methodology/scotch-whisky-published-ppm
+        notes: |
+          Springbank does not publish an explicit methodology
+          attribution. Inherits the broader Scotch industry
+          convention.
+    notes: |
+      Springbank's own website. Used for malt specification,
+      Longrow line characterisation, and 1973 first-distillation
+      date.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Springbank_distillery
+    accessed: 2026-05-15
+    notes: |
+      Used for Longrow naming history (the older 1824-1896
+      Campbeltown Longrow distillery) and 1973 production date.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

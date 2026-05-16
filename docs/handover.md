@@ -20,11 +20,12 @@ specific commercial release) — plus a **concept** layer for reference
 content (methodology, educational, equipment, practice, glossary).
 Two additional top-level entity types extend the model: **bottler**
 for commercial bottling entities (independent bottlers, distillery
-bottling operations) — schema drafted at v0.1 stub, awaiting a real
-IB case; and **cask** for reusable cask-type references that bottlings
-and production lines cite from their maturation programmes — schema
-v0.1 with 16 entries populated, including the first-class
-`undisclosed-cask` for deliberately-secret cask provenance. Data lives as YAML in a
+bottling operations) — schema at v0.2 with 2 entries populated
+(Cadenhead's, Signatory Vintage); and **cask** for reusable cask-
+type references that bottlings and production lines cite from their
+maturation programmes — schema v0.1 with 16 entries populated,
+including the first-class `undisclosed-cask` for deliberately-
+secret cask provenance. Data lives as YAML in a
 Git repository; cross-references between entities use slugs; the
 build pipeline (not yet implemented) will turn the data into a static
 site.
@@ -317,8 +318,18 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 2 distilleries: Harris (confidence: medium), Bruichladdich (high)
-- 4 production lines: 3 Bruichladdich (high), 1 Harris (medium)
+- 5 distilleries: Harris (confidence: medium), Bruichladdich (high),
+  Springbank (medium — drove the distillery v0.1 → v0.2 promotion
+  for multi-warehouse support), Glenmorangie (medium — Highland-
+  region single-line, LVMH ownership, first use of `still.height_m`
+  as load-bearing data), Lagavulin (medium — heavily peated Islay,
+  Diageo ownership, resolves the `glossary/classic-malts`
+  reference target as one of the original six Classic Malts).
+- 9 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
+  triple), 1 Glenmorangie (medium — main line; Signet/Allta
+  deferred), 1 Lagavulin (medium — heavily-peated Islay single
+  line).
 - 10 bottlings: 9 Bruichladdich, 1 Harris
 - 17 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
   Whisky), 3 educational (peating-measurement-methods,
@@ -332,66 +343,85 @@ back rather than absorbing it into the data model.
   pressure-test stub (`bunnahabhain` distillery and its
   `bunnahabhain-traditional` production_line — not yet
   populated).
-- 1 bottler: Cadenhead's (`data/bottlers/cadenheads.yml`),
-  confidence: medium. First real bottler entry; populated 2026-
-  05-15 as part of the IB schema pressure-test. The bottler v0.1
-  stub schema held up for the Cadenhead's case; sub-series
-  modelling and series presentation defaults are deferred
-  schema-gap observations awaiting a second IB case (likely
-  Signatory) before v0.2 promotion.
-- 11 bottlings (was 10): the additional entry is
-  `cadenheads-bunnahabhain-stub`, a deliberate
-  `confidence: stub` schema-pressure-test placeholder
-  exercising the bottling v0.2 IB discriminator fields. Specific
-  release details (vintage, age, ABV, outturn, cask number) are
-  null pending substitution with a verifiable real release.
+- 2 bottlers: Cadenhead's (`data/bottlers/cadenheads.yml`,
+  confidence medium, populated 2026-05-15 against bottler v0.1)
+  and Signatory Vintage (`data/bottlers/signatory.yml`,
+  confidence medium, populated 2026-05-15 against bottler v0.2).
+  The Signatory pressure-test confirmed the hypothesis from the
+  Cadenhead's SCHEMA-GAPS block and drove the bottler v0.2
+  promotion (presentation_defaults and parent fields). Cadenhead's
+  entry was bumped to schema v0.2 but does not use the new
+  features (its series have less formal presentation
+  enforcement).
+- 21 bottlings: 19 OB releases (10 Bruichladdich/Harris + 3
+  Springbank + 3 Glenmorangie + 3 Lagavulin — Lagavulin 16,
+  Distillers Edition PX-finished, 12 Year Old Cask Strength
+  Special Releases) + 2 IB pressure-test stubs
+  (`cadenheads-bunnahabhain-stub`, `signatory-caol-ila-stub`).
+  Both stubs marked `confidence: stub`; their purpose is
+  exercising the bottling v0.2 IB discriminator fields and
+  surfacing schema gaps. Specific release details (vintage, age,
+  ABV, outturn, cask number) are null pending substitution with
+  verifiable real releases.
 - 16 casks: 5 high confidence (bourbon-barrel, oloroso/fino sherry,
   virgin-oak, undisclosed-cask), 6 medium (wine-cask parent + 5 named
   appellations), 5 low (lesser-disclosed wine cases)
 
 **Schema:**
 
-- `schema/distillery.template.yml` — v0.1
+- `schema/distillery.template.yml` — v0.2 (warehouses as list,
+  data-driven from Springbank pressure-test; mothballed_periods
+  canonised on `from`/`to`/`note` per JSON Schema audit)
 - `schema/production_line.template.yml` — v0.2.1 (peating block,
   source methodology, `peat_origin: none`)
 - `schema/bottling.template.yml` — v0.2 (IB discrimination)
 - `schema/concept.template.yml` — v0.1 (kind discriminator, per-kind
   blocks)
-- `schema/bottler.template.yml` — v0.1 (stub; series modelling
-  speculative, awaiting first real IB case)
+- `schema/bottler.template.yml` — v0.2 (presentation_defaults
+  and parent fields added, data-driven from Signatory pressure-test)
 - `schema/cask.template.yml` — v0.1 (disclosure_status enum,
   parent/alternatives relations; 16 entries populated)
 
+**Validation tooling (2026-05-16):**
+
+- `/schema/json/` holds draft-07 JSON Schemas for every entity type
+  plus a shared `_common.schema.json` for slugs, sources, ABVs, etc.
+- `scripts/check_references.py` runs JSON Schema validation as a
+  warn-only pass alongside reference resolution. Cross-file refs to
+  `_common` are merged into each entity schema at load time
+  (jsonschema 3.2.0 cross-file `$ref` is brittle). YAML dates are
+  coerced to ISO strings before validation. Current state: 0
+  findings across all 70 files.
+
 **Next priorities, in order of unblock value:**
 
-1. **Signatory IB pressure-test** to force sub-series modelling
-   in bottler v0.2. Cadenhead's Authentic Collection (pressure-
-   tested 2026-05-15) has only minor informal sub-categories and
-   the bottler v0.1 flat-list series field handles it. Signatory
-   Vintage runs multiple formal sub-series (Cask Strength
-   Collection, Un-Chillfiltered Collection, etc.) each with
-   consistent presentation rules — the second IB case is what
-   will force the bottler v0.2 promotion. The
-   `cadenheads-bunnahabhain-stub` bottling's SCHEMA-GAPS block
-   lists the specific observations to feed into v0.2.
-2. **Research-request audit** (active backlog in TODO.md). The
+1. **Research-request audit** (active backlog in TODO.md). The
    project introduced a Wikipedia-volatility policy on 2026-05-15
-   and migrated 6 easy items: chemistry citations to PubChem,
+   and migrated 6 easy items: chemistry citations to PubChem and
    CFR citation for bourbon-barrel. Remaining work is appellation
    regulatory text (INAO, Consejo Regulador del Vino de Jerez,
    Italian DOCG), sherry chemistry primary sources, and
    distillery historical sources for Bruichladdich and Harris.
-   Most remaining items are research-time work; see the Research
-   Requests section of TODO.md.
-3. **`educational/cask-maturation-kinetics`** — research-heavy
+   Most remaining items are research-time work requiring stable
+   web access; see the Research Requests section of TODO.md.
+2. **`educational/cask-maturation-kinetics`** — research-heavy
    teaching page distinguishing established cask-maturation
    chemistry from trade convention from open questions. Would let
    several existing cask entries cite a sourced summary instead of
    hedging in prose. Detailed scope in TODO.md.
-4. **Third distillery** (Springbank, Lagavulin, Highland Park, or
-   similar) — most likely to surface unknown schema gaps. Three is
-   the magic-number threshold for distillery patterns to emerge
-   from observation rather than guess.
+3. **Cross-cutting research backlog** — yeasts, malts, undocumented
+   technical concepts, existing literature catalogue. Four items
+   added 2026-05-16 in `TODO.md` §Cross-cutting research. These
+   open up entire substrata of the data model (yeast as
+   first-class entity? malt-source provenance fields on production
+   lines?) and are the next horizon once Wikipedia migration
+   ground-clearing wraps.
+4. **First non-stub IB bottling** to replace one of the two
+   pressure-test stubs (`cadenheads-bunnahabhain-stub`,
+   `signatory-caol-ila-stub`). Each blocks a forward reference
+   chain (Bunnahabhain / Caol Ila distillery + production line)
+   so the substitution requires populating those distilleries
+   first or accepting two more forward refs as expected.
 
 **Full active queue:** see `TODO.md`.
 

@@ -79,13 +79,11 @@ is no separate authentication, no proposal queue, no custom UI — PRs
 
 | Layer | Status |
 |---|---|
-| Entity schemas | Distillery v0.1, production_line v0.2.1, bottling v0.2, concept v0.1, bottler v0.1 (stub), cask v0.1 |
-| Distilleries populated | 2 (Harris, Bruichladdich) |
-| Production lines | 4 |
-| Bottlings | 10 |
-| Concept pages | 3 (1 methodology, 1 educational, 1 equipment) |
+| Entity schemas | Distillery v0.2, production_line v0.2.1, bottling v0.2, concept v0.1, bottler v0.2, cask v0.1 |
+| Distilleries populated | 5 (Harris, Bruichladdich, Springbank, Glenmorangie, Lagavulin) |
+| Production lines | 9 |
+| Bottlings | 21 (19 OB + 2 IB stubs) |
+| Concept pages | 17 (3 methodology, 3 educational, 2 equipment, 9 glossary) |
+| Bottlers populated | 2 (Cadenhead's, Signatory Vintage) |
 | Casks populated | 16 (5 high confidence, 6 medium, 5 low) |
-| Build pipeline | not yet implemented |
-
-See `TODO.md` for the active queue and `docs/handover.md` for the
-project's current design rationale.
+| Bu

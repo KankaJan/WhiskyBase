@@ -1,0 +1,208 @@
+# =============================================================================
+# Springbank (2.5× distilled, lightly peated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — well-documented peating spec, 2.5× regime
+# (industry-distinctive), and floor-malted-on-site malting. Specific
+# numeric details (exact PPM, cut points) flagged inline where
+# uncertain.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: springbank-springbank
+name: Springbank
+distillery: springbank
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1828              # Springbank line is the original house
+                                  # style of the distillery [1][2].
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: floor_malted_onsite     # DISTINCTIVE: Springbank performs its
+                                  # own malting on traditional floor
+                                  # maltings, one of the few remaining
+                                  # commercial floor maltings in Scotland
+                                  # [1][2]. The Springbank line uses
+                                  # lightly-peated malt (kilned with a
+                                  # short peat-fire phase).
+  maltster: Springbank Distillery # Self-malted on the Springbank site.
+  variety:
+    - Concerto                    # Primary modern variety used in core
+                                  # production [1]; varieties have varied
+                                  # historically.
+    - Optic                       # Documented in older releases [2].
+    - Bere                        # Used in Bere Barley releases (rare).
+    - Various heritage varieties for Local Barley releases.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: [12, 15]             # Lightly-peated malt specification;
+                                  # commonly-cited figures place
+                                  # Springbank's malt phenol at 12-15 ppm
+                                  # [1]. Variability across batches is
+                                  # part of Springbank's stated
+                                  # equipment-philosophy of accepting
+                                  # batch-to-batch variation rather than
+                                  # tightly engineering it out.
+      unit: ppm
+      method: hplc                # Industry-standard HPLC + standard 7;
+                                  # method not explicitly attributed by
+                                  # Springbank but inherited from the
+                                  # broader Scotch industry convention
+                                  # (see methodology/
+                                  # scotch-whisky-published-ppm).
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Producer-stated lightly-peated malt specification. Springbank
+        does not publish a methodology declaration with the same
+        explicitness as Bruichladdich; the methodology assignment
+        here uses the broader Scotch industry convention.
+
+  peat_origin: local              # Springbank kilns with peat sourced
+                                  # in the broader Kintyre / Western
+                                  # Scotland area. The specific peat
+                                  # bog is not consistently disclosed;
+                                  # "local" is the appropriate value
+                                  # for the broad designation.
+
+  notes: |
+    Springbank's lightly-peated malt is produced in the same floor
+    maltings that produce the heavily-peated malt for Longrow and the
+    unpeated malt for Hazelburn — the same physical maltings,
+    different kilning regimes.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 72
+  hours_max: 110
+  hours_typical: null             # Long fermentation in boatskin-larch
+                                  # washbacks [1][2]; specific typical
+                                  # duration varies seasonally.
+  yeast: null                     # Brewer's yeast strain; specific
+                                  # strain not consistently disclosed.
+  notes: |
+    Long fermentation in distinctive boatskin-larch washbacks is one
+    of Springbank's equipment-philosophy choices. The unusually long
+    fermentation (relative to industry typical 48-72 hours) is
+    associated by reviewers with the ester-rich character of all
+    three Springbank lines.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: 2.5x                    # DISTINCTIVE: Springbank's
+                                  # signature 2.5× distillation. The
+                                  # wash from the wash still goes
+                                  # through one spirit still
+                                  # (single-pass for ~80%) and a
+                                  # second spirit still (second-pass
+                                  # for the remaining ~20%); the
+                                  # resulting low-wines are blended
+                                  # to produce the final spirit. The
+                                  # 2.5× framing is the producer's
+                                  # own description [1].
+  spirit_cut:
+    start_abv: null               # Cuts not consistently disclosed
+                                  # in numeric form for Springbank's
+                                  # 2.5× regime.
+    end_abv: null
+    notes: |
+      The 2.5× regime requires careful balancing of the single-pass
+      and second-pass spirit cuts. Specific cut points are
+      operationally determined rather than fixed-ABV.
+  new_make_abv: null              # Approximate fill strength varies;
+                                  # specific figure not consistently
+                                  # disclosed.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null   # Specific figure not in current
+                                  # source set; verification flagged.
+typical_cask_program:
+  - bourbon-barrel
+  - oloroso-sherry-butt
+  - wine-cask                     # Wine and fortified-wine cask
+                                  # finishes appear regularly in
+                                  # Springbank releases.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - springbank-springbank-10      # Core 10-year-old (representative
+                                  # bottling).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The original Springbank house style, 2.5×-distilled and lightly
+  peated, produced on the same equipment as the Longrow and
+  Hazelburn lines but distinguished by malt peating and
+  distillation regime. Malt is produced on Springbank's own floor
+  maltings (one of the few remaining commercial floor maltings in
+  Scotland) and kilned with a moderate peat-fire phase to a malt
+  phenol specification of approximately 12-15 ppm [1]. The wash
+  still is direct-fired with worm-tub condensation; the two spirit
+  stills (used in single-pass and second-pass modes for the 2.5×
+  regime) are indirect-steam heated with shell-and-tube
+  condensers. Long fermentation in boatskin-larch washbacks
+  contributes to the line's ester-rich character. All maturation
+  is on-site in Campbeltown [1][2].
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null            # TODO: locate Scotch Whisky
+                                    # Whiskypedia URL for Springbank.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://springbank.scot
+    accessed: 2026-05-15
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: methodology/scotch-whisky-published-ppm
+        notes: |
+          Springbank does not publish an explicit methodology
+          attribution. The PPM figures inherit the broader Scotch
+          industry's implicit HPLC + standard 7 convention; see
+          methodology/scotch-whisky-published-ppm.
+    notes: |
+      Springbank's own website. Used for malt specification, 2.5×
+      distillation regime description, equipment philosophy, and
+      production-line distinctions.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Springbank_distillery
+    accessed: 2026-05-15
+    notes: |
+      Used for historical context (1828 founding, continuous family
+      ownership), equipment-philosophy descriptions, and broader
+      Springbank production overview. Acceptable per the
+      Wikipedia-volatility caveat for historical and broadly-
+      established facts.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

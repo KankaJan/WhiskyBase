@@ -1,0 +1,191 @@
+# =============================================================================
+# Glenmorangie Original (main production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — main production-line variables (long
+# fermentation, tall stills, predominantly ex-bourbon maturation) are
+# well-documented across producer and trade-press references. Specific
+# numeric details (fermentation hours, cut points) less consistently
+# sourced.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenmorangie-original
+name: Glenmorangie Original
+distillery: glenmorangie
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1843              # Original house style since the
+                                  # distillery's founding [1][2].
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in               # Glenmorangie no longer operates
+                                  # floor maltings; malt is sourced
+                                  # from commercial maltsters [1].
+  maltster: null                  # Specific commercial maltster(s)
+                                  # not consistently disclosed across
+                                  # references. Several Scotch
+                                  # industry maltsters supply
+                                  # Glenmorangie.
+  variety:
+    - Concerto                    # Modern standard barley variety in
+                                  # Scotch malt production.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: 0
+      unit: ppm
+      method: hplc
+      compounds: standard_7
+      source_id: 1
+      notes: |
+        Glenmorangie Original is unpeated. The malt specification
+        is at or near zero phenols; the line is one of Scotland's
+        canonical light-to-medium-bodied unpeated malts.
+
+  peat_origin: none               # No peat used. Requires
+                                  # production_line schema v0.2.1+.
+
+  notes: |
+    Glenmorangie has produced some lightly-peated Private Edition
+    releases at the distillery over the years, but the main
+    Glenmorangie line is unpeated.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 50
+  hours_max: 60
+  hours_typical: 52              # ~52 hours commonly cited [1][2].
+                                  # Longer than industry minimum but
+                                  # not at the extreme long-ferment end
+                                  # (Glenfarclas, Glendronach, etc.,
+                                  # use shorter; Springbank,
+                                  # Bruichladdich, etc., use longer).
+  yeast: distillers              # Standard commercial distiller's
+                                  # yeast [1]. Allta (a different
+                                  # Glenmorangie sub-brand, not the
+                                  # main line) uses wild yeast.
+  notes: |
+    Standard distiller's-yeast fermentation in the 12 stainless-
+    steel washbacks.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                  # Conventional double distillation
+                                  # [1].
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Cuts taken to favour the lighter, more aromatic spirit
+      character that the tall stills are designed to produce.
+      Specific ABV cut points not consistently disclosed.
+  new_make_abv: null              # TODO: verify. Specific new-make
+                                  # ABV figure not in current source
+                                  # set.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                # Glenmorangie's primary maturation
+                                  # programme uses ex-bourbon as the
+                                  # default; the producer states that
+                                  # approximately 70% of its core
+                                  # cask programme uses "slow-grown"
+                                  # American oak ex-bourbon casks
+                                  # specified by the distillery [1].
+                                  # Cask-finishing programmes (Quinta
+                                  # Ruban, Lasanta, Nectar d'Or, etc.)
+                                  # transfer matured spirit into the
+                                  # finishing cask after the primary
+                                  # ex-bourbon maturation.
+  - oloroso-sherry-butt           # Used in the Lasanta range.
+  - wine-cask                     # Various wine-cask finishes in the
+                                  # Private Edition and core extras.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - glenmorangie-original-10
+  - glenmorangie-original-18
+  - glenmorangie-quinta-ruban
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The main production line of Glenmorangie Distillery, in
+  production since the distillery's founding in 1843 [1][2].
+  Unpeated, double-distilled in Glenmorangie's distinctive tall
+  stills, with the tall-still and ascending-lyne-arm
+  configuration producing a substantial reflux that contributes
+  to the line's relatively light and aromatic character. The
+  primary cask programme is ex-bourbon American oak (the
+  producer specifies "slow-grown" oak for its core programme),
+  with substantial cask-finish releases (Quinta Ruban,
+  Lasanta, Nectar d'Or, Companta, etc.) using the original
+  ex-bourbon spirit transferred into a finishing cask after
+  primary maturation. Glenmorangie pioneered modern commercial
+  cask-finish programmes; the finishing approach is now widely
+  adopted across the Scotch industry.
+
+  Distinct from this main line are Glenmorangie's Signet
+  (chocolate malt blend) and Allta (wild yeast,
+  Saccharomyces diaemath) recipes — these are recipe-variable
+  variants candidate for separate production_line entries; see
+  SCHEMA-OBSERVATIONS in the distillery entry.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenmorangie.com
+    accessed: 2026-05-15
+    methodology:
+      peating_ppm:
+        method: hplc
+        compounds: standard_7
+        basis_concept: methodology/scotch-whisky-published-ppm
+        notes: |
+          Glenmorangie does not publish an explicit peating
+          methodology since the line is unpeated. Methodology
+          assignment is nominal; recorded for schema consistency.
+    notes: |
+      Glenmorangie's own website. Used for malt source (bought-in),
+      tall-still equipment description, fermentation duration, cask
+      programme philosophy, and ex-bourbon primary maturation.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Glenmorangie_distillery
+    accessed: 2026-05-15
+    notes: |
+      Wikipedia entry. Used for historical context and broader
+      production overview. Acceptable per the Wikipedia-volatility
+      caveat for historical and well-established facts.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

@@ -1,48 +1,40 @@
 #!/usr/bin/env python3
 """
-WhiskyBase cross-reference resolver.
+WhiskyBase cross-reference resolver and JSON Schema validator.
 
 Walks every YAML entry under /data/, builds a slug index across all entity
 types (distilleries, production_lines, bottlings, bottlers, casks, concepts
-by kind), then reports references that don't resolve. Output is warn-only:
-per handover §8 dangling references are expected during authoring and the
-check should never block the build.
+by kind), then reports references that don't resolve and any JSON Schema
+violations. Output is warn-only.
 
-Run from the repository root:
-
-    python3 scripts/check_references.py
-
-Reports:
-    - YAML parse failures (any file that doesn't load).
-    - Index summary: counts per entity type.
-    - Dangling cross-references, grouped by target type, with the slug
-      and the list of referencing files.
-    - Duplicate id declarations (same slug declared in more than one file).
-    - Invalid `source_id` references inside `peating.measurements` blocks
-      and source `methodology` blocks (id cited that doesn't exist in the
-      entry's `sources:` list).
-    - Inline `[N]` source-citation references in prose fields where N
-      does not match any source `id` declared in the entry.
-
-Exit code is always 0 — the script reports, the human decides.
+Exit code is always 0.
 """
 
 from __future__ import annotations
 
+import datetime as _dt
+import json
 import re
 import sys
 from collections import defaultdict
 from pathlib import Path
-from typing import Any, Iterable, Iterator
+from typing import Iterable, Iterator
 
 try:
     import yaml
 except ImportError:
     sys.exit("PyYAML required. Install with: pip install pyyaml")
 
+try:
+    from jsonschema import Draft7Validator
+    _JSONSCHEMA_AVAILABLE = True
+except ImportError:
+    _JSONSCHEMA_AVAILABLE = False
+
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
+SCHEMA_JSON_DIR = REPO_ROOT / "schema" / "json"
 
 
 SCALAR_REFS = {
@@ -53,9 +45,6 @@ SCALAR_REFS = {
     "distillery": "distillery",
     "basis_concept": "concept",
     "cask_type": "cask",
-    # `parent` is handled specially in walk_refs (context-dependent — only
-    # a slug reference when it appears under `related:` on a cask entry;
-    # `ownership.parent` on a distillery is a company name, not a slug).
 }
 
 LIST_REFS = {
@@ -74,6 +63,95 @@ LIST_REFS = {
     "see_also": "concept",
     "contrast_with": "concept",
 }
+
+
+ENTITY_SCHEMA_FILE = {
+    "distillery": "distillery.schema.json",
+    "production_line": "production_line.schema.json",
+    "bottling": "bottling.schema.json",
+    "bottler": "bottler.schema.json",
+    "cask": "cask.schema.json",
+    "concept": "concept.schema.json",
+}
+
+
+_COMMON_REF_PREFIX = "_common.schema.json#/definitions/"
+
+
+def _to_json_compatible(value):
+    if isinstance(value, _dt.datetime):
+        return value.date().isoformat()
+    if isinstance(value, _dt.date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {k: _to_json_compatible(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_to_json_compatible(v) for v in value]
+    return value
+
+
+def _rewrite_common_refs(node):
+    if isinstance(node, dict):
+        new = {}
+        for k, v in node.items():
+            if k == "$ref" and isinstance(v, str) and v.startswith(_COMMON_REF_PREFIX):
+                tail = v[len(_COMMON_REF_PREFIX):]
+                new[k] = "#/definitions/" + tail
+            else:
+                new[k] = _rewrite_common_refs(v)
+        return new
+    if isinstance(node, list):
+        return [_rewrite_common_refs(v) for v in node]
+    return node
+
+
+def _load_schemas():
+    if not _JSONSCHEMA_AVAILABLE:
+        return {}, list(ENTITY_SCHEMA_FILE), [
+            "jsonschema library not installed - pip install jsonschema"
+        ]
+
+    common_path = SCHEMA_JSON_DIR / "_common.schema.json"
+    if not common_path.exists():
+        return {}, list(ENTITY_SCHEMA_FILE), [
+            f"_common.schema.json not found in {SCHEMA_JSON_DIR}"
+        ]
+
+    try:
+        common = json.loads(common_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        return {}, list(ENTITY_SCHEMA_FILE), [
+            f"_common.schema.json invalid: {exc}"
+        ]
+
+    common_defs = common.get("definitions", {})
+    validators = {}
+    missing = []
+    errors = []
+
+    for entity, filename in ENTITY_SCHEMA_FILE.items():
+        path = SCHEMA_JSON_DIR / filename
+        if not path.exists():
+            missing.append(entity)
+            continue
+        try:
+            schema = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            errors.append(f"{filename}: {exc}")
+            continue
+        merged_defs = dict(common_defs)
+        merged_defs.update(schema.get("definitions", {}))
+        schema["definitions"] = merged_defs
+        schema = _rewrite_common_refs(schema)
+        schema.pop("$id", None)
+        try:
+            validator = Draft7Validator(schema)
+        except Exception as exc:
+            errors.append(f"{filename}: {exc}")
+            continue
+        validators[entity] = validator
+
+    return validators, missing, errors
 
 
 def iter_yaml_files() -> Iterator[Path]:
@@ -106,7 +184,6 @@ def build_index(files: Iterable[Path]):
     index = defaultdict(lambda: defaultdict(list))
     parse_errors = []
     docs = []
-
     for path in files:
         doc, err = load_doc(path)
         if err:
@@ -123,13 +200,11 @@ def build_index(files: Iterable[Path]):
             index["concept"][f"{sub_kind}/{sid}"].append(path)
         elif entity in {"distillery", "production_line", "bottling", "bottler", "cask"}:
             index[entity][sid].append(path)
-
     duplicates = []
     for entity, slugs in index.items():
         for slug, paths in slugs.items():
             if len(paths) > 1:
                 duplicates.append((entity, slug, paths))
-
     return docs, index, parse_errors, duplicates
 
 
@@ -139,9 +214,6 @@ def walk_refs(node, refs, source_path, breadcrumbs):
             if key in SCALAR_REFS and isinstance(value, str) and value:
                 refs.append((SCALAR_REFS[key], value, source_path, ".".join(breadcrumbs + [key])))
             elif key == "parent" and isinstance(value, str) and value and breadcrumbs and breadcrumbs[-1] == "related":
-                # Context-sensitive: `related.parent` is a cask slug
-                # reference; `ownership.parent` is a company name string,
-                # not a slug.
                 refs.append(("cask", value, source_path, ".".join(breadcrumbs + [key])))
             elif key in LIST_REFS and isinstance(value, list):
                 for i, item in enumerate(value):
@@ -326,6 +398,41 @@ def main():
         for path, field, sid, declared in bad_inline_citations:
             citation = "[" + str(sid) + "]"
             print(f"  {rel(path)} :: {field} cites {citation} (declared: {declared})")
+
+    validators, missing, schema_errors = _load_schemas()
+
+    print_section("JSON Schema validation")
+    if not _JSONSCHEMA_AVAILABLE:
+        print("  jsonschema library not installed - install with: pip install jsonschema")
+    elif schema_errors:
+        for msg in schema_errors:
+            print(f"  {msg}")
+    else:
+        if missing:
+            print(f"  Schema files not found for: {', '.join(sorted(missing))}")
+        findings_by_entity = defaultdict(list)
+        validated_count = 0
+        for path, doc in docs:
+            entity, _sub = classify_path(path)
+            validator = validators.get(entity)
+            if validator is None:
+                continue
+            validated_count += 1
+            doc_json = _to_json_compatible(doc)
+            for err in validator.iter_errors(doc_json):
+                loc = "/".join(str(x) for x in err.absolute_path) or "<root>"
+                findings_by_entity[entity].append((path, loc, err.message))
+
+        total_findings = sum(len(v) for v in findings_by_entity.values())
+        print(f"  Files validated: {validated_count}")
+        print(f"  Findings: {total_findings}")
+        for entity in sorted(findings_by_entity):
+            findings = findings_by_entity[entity]
+            label = "finding" if len(findings) == 1 else "findings"
+            print(f"\n  {entity} ({len(findings)} {label})")
+            for path, loc, message in findings:
+                short = message if len(message) <= 200 else message[:200] + "..."
+                print(f"    {rel(path)} :: {loc}: {short}")
 
     return 0
 

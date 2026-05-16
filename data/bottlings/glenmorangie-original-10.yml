@@ -1,0 +1,124 @@
+# =============================================================================
+# Glenmorangie The Original (10 Year Old, flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — core flagship release; presentation
+# specifications (40% ABV, age statement) are widely-cited and stable.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenmorangie-original-10
+name: Glenmorangie The Original 10 Year Old
+production_line: glenmorangie-original
+produced_at_distillery: glenmorangie
+bottled_by: glenmorangie
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Core release; re-bottled in
+                                  # batches over time.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0                         # Glenmorangie The Original is
+                                  # consistently bottled at 40% ABV
+                                  # [1]. Note: lower than the 46%
+                                  # standard adopted by Springbank,
+                                  # Bruichladdich, and Harris core
+                                  # releases — Glenmorangie's
+                                  # presentation is closer to the
+                                  # broader Diageo / Highland 40%
+                                  # convention than the 46% +
+                                  # NCF + natural-colour trend.
+age_statement: 10
+vintage: null
+cask_strength: false
+non_chill_filtered: false         # Glenmorangie The Original is
+                                  # chill-filtered (industry-standard
+                                  # for 40% ABV releases to prevent
+                                  # cloudiness).
+natural_colour: false             # Caramel colouring (E150a) is
+                                  # used in the standard Glenmorangie
+                                  # range per industry-typical
+                                  # practice at this ABV level.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Glenmorangie's standard programme: 10 years exclusively in
+# ex-bourbon American oak casks. The "slow-grown" oak specification
+# is part of Glenmorangie's marketing but the underlying cask type
+# is standard ex-bourbon American oak.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: 1.0
+    duration_years: 10
+    cooperage: null
+    notes: |
+      Predominantly ex-bourbon American oak per the line's main
+      cask programme [1].
+
+finish: null                      # The Original is unfinished.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 40.00                   # Approximate UK retail; varies.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The flagship core release of Glenmorangie, 10 years matured in
+  ex-bourbon American oak casks, bottled at 40% ABV [1]. The
+  Original (formerly "Original 10 Year Old") is among the
+  best-selling single-malt Scotch whiskies. Chill-filtered with
+  caramel colouring per the industry-standard convention at this
+  ABV level. The reference expression of the Glenmorangie line
+  before any cask-finishing or special-edition variation.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenmorangie.com
+    accessed: 2026-05-15
+    notes: |
+      Glenmorangie's own website. Used for ABV (40%), age (10
+      years), exclusive ex-bourbon maturation, and core-range
+      designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

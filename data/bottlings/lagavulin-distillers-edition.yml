@@ -1,0 +1,193 @@
+# =============================================================================
+# Lagavulin Distillers Edition (PX-finished, annual recurring)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — Distillers Edition is a recurring annual
+# release with stable presentation specifications, though specific
+# vintage details vary year to year.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: lagavulin-distillers-edition
+name: Lagavulin Distillers Edition (PX-finished)
+production_line: lagavulin
+produced_at_distillery: lagavulin
+bottled_by: lagavulin
+bottler_type: distillery
+bottler_series: null              # The Distillers Edition series
+                                  # is a Diageo-internal series
+                                  # spanning multiple distilleries
+                                  # (Lagavulin DE, Talisker DE,
+                                  # Oban DE, etc.) — would benefit
+                                  # from a bottler_series modelling
+                                  # once Diageo is populated as a
+                                  # bottler entry (or via a
+                                  # distillery-bottler arrangement).
+                                  # Deferred for now.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Annual recurring release; each
+                                  # year carries a distinct vintage
+                                  # and bottling year, but the
+                                  # presentation specs (ABV, finish
+                                  # type, age statement) are stable.
+discontinued: false
+availability: core                # Continuously available as an
+                                  # annual recurring release.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0                         # Distillers Edition is bottled at
+                                  # 43% ABV per the long-running
+                                  # series convention [1].
+age_statement: null               # The Distillers Edition typically
+                                  # carries no fixed age statement;
+                                  # each year's release uses spirit
+                                  # of varying age from the relevant
+                                  # vintage. Vintage-dated rather
+                                  # than age-statement-dated.
+vintage: null                     # Varies per release year; not
+                                  # specified at the entry level.
+                                  # Each annual release names its
+                                  # distillation and bottling years
+                                  # on the label.
+cask_strength: false
+non_chill_filtered: false
+natural_colour: false
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null                    # Each annual release is a distinct
+                                  # batch, but the entry represents
+                                  # the family rather than a specific
+                                  # year.
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Lagavulin Distillers Edition: primary maturation in ex-bourbon
+# American oak (typical Lagavulin core programme), with a
+# secondary maturation in PX (Pedro Ximénez) sherry casks for the
+# finish. The PX exposure is substantial enough to be borderline
+# between "finish" and "secondary maturation" by the project's
+# convention; the producer markets it as a finish and the duration
+# (commonly ~6-12 months) is at the boundary.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: 1.0
+    duration_years: null          # Varies per year; typically
+                                  # 13-16 years primary maturation
+                                  # before transfer.
+    cooperage: null
+    notes: |
+      Primary maturation in ex-bourbon American oak per the
+      Lagavulin standard programme.
+
+finish:
+  cask_type: wine-cask            # PX (Pedro Ximénez) sherry cask
+                                  # finish. Currently using the
+                                  # generic wine-cask slug — the
+                                  # project's cask vocabulary has
+                                  # fino-sherry-butt and
+                                  # oloroso-sherry-butt but not yet
+                                  # pedro-ximenez-sherry-butt; flagged
+                                  # for future cask-entry creation
+                                  # (PX is the sweet sherry style,
+                                  # structurally distinct from fino
+                                  # and oloroso and warrants its own
+                                  # cask slug).
+  duration_months: null           # Commonly ~6-12 months across the
+                                  # series; not strictly fixed.
+  duration_years: null
+  cooperage: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 100.00                  # Approximate UK retail for
+                                  # current-year releases.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Lagavulin Distillers Edition, an annual recurring release with
+  a Pedro Ximénez (PX) sherry-cask finish over Lagavulin's
+  standard ex-bourbon primary maturation, bottled at 43% ABV
+  [1]. The Distillers Edition is a Diageo-internal series
+  spanning multiple distilleries (Lagavulin, Talisker, Oban,
+  Cragganmore, Dalwhinnie, Glenkinchie); each distillery's
+  Distillers Edition uses a finishing-cask type characteristic
+  of the distillery's regional or stylistic identity (the
+  Lagavulin DE uses PX). Each year's release carries a distinct
+  vintage and bottling year; the presentation specs (43% ABV,
+  PX finish, batch vatting) are stable across years.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/lagavulin/
+    accessed: 2026-05-15
+    notes: |
+      Diageo's Malts.com page for Lagavulin. Used for ABV (43%),
+      PX-finish characterisation, and Distillers Edition series
+      context.
+
+
+# --- SCHEMA-OBSERVATION (PX cask slug + Distillers Edition series) -------
+# Two small observations surfaced by this entry:
+#
+# 1. **Pedro Ximénez sherry cask vocabulary.** The project's cask
+#    entries include `fino-sherry-butt` and `oloroso-sherry-butt`
+#    but not `pedro-ximenez-sherry-butt`. PX is structurally
+#    distinct from fino and oloroso (sweet rather than dry, made
+#    from sun-dried Pedro Ximénez grapes, very high residual
+#    sugar) and is a common finishing cask in Scotch — Lagavulin
+#    Distillers Edition, Glendronach PX-finished, Glenfarclas
+#    105, etc. all use PX casks. Candidate addition to
+#    /data/casks/ when PX-finished bottlings accumulate.
+#
+# 2. **Diageo Distillers Edition as a cross-distillery series.**
+#    The Distillers Edition isn't a Lagavulin-specific marketing
+#    line; it's a Diageo-internal series spanning multiple
+#    distilleries. The project's `bottler_series` field (designed
+#    for IB bottler series) doesn't naturally fit Diageo's
+#    multi-distillery cross-cut. Two design options when this
+#    matters: (a) populate Diageo as a bottler entity (even
+#    though it's a corporate parent rather than a distinct
+#    bottling operation) and use the existing bottler_series
+#    mechanism; (b) introduce a separate `corporate_series` or
+#    `cross_distillery_series` field for OB-series spanning
+#    multiple distilleries within one corporate owner. Deferred
+#    until more such cross-cuts surface (Diageo Special Releases,
+#    Pernod Ricard / Chivas Brothers cross-distillery series,
+#    etc.).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

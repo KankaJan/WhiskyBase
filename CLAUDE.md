@@ -202,7 +202,12 @@ unless asked.
 
 ## Tooling pointers
 
-- `scripts/check_references.py` — cross-reference resolver.
+- `scripts/check_references.py` — cross-reference resolver and
+  JSON Schema validator (warn-only).
+- `/schema/json/` — draft-07 JSON Schemas, one per entity type,
+  plus a shared `_common.schema.json`. The YAML templates remain the
+  human-readable source of truth; JSON Schemas are the machine-readable
+  validators. Keep them in sync when the template changes.
 - `/skills/voice-register/SKILL.md` — voice rules.
 - `/skills/safe-bulk-writes/SKILL.md` — file-write safety.
 - `docs/handover.md` — project orientation (start here for new

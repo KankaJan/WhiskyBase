@@ -1,0 +1,159 @@
+# =============================================================================
+# Signatory Vintage Cask Strength Collection: Caol Ila (schema pressure-test stub)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: stub
+#
+# IMPORTANT — this entry is a schema-pressure-test placeholder, not a
+# publication-ready record. It is the second of two IB pressure-test
+# stubs (the first is `cadenheads-bunnahabhain-stub.yml`). The point
+# of this entry is to surface the bottler v0.1 → v0.2 schema gap with
+# real data, specifically:
+#
+# - The Cask Strength Collection has consistent presentation rules
+#   (cask strength, single cask, NCF, natural colour). Every CSC
+#   bottling must restate these rules in v0.1 — see the redundant
+#   fields below marked with "[v0.1 redundancy]".
+#
+# Specific release details (vintage, age, ABV, outturn, cask number)
+# are marked null or hedged; a verifiable real CSC release should be
+# substituted before any publication.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: signatory-caol-ila-stub
+name: Signatory Cask Strength Collection Caol Ila (stub)
+production_line: caol-ila-traditional       # Forward ref — Caol Ila
+                                            # not yet populated.
+produced_at_distillery: caol-ila            # Forward ref.
+bottled_by: signatory-vintage               # Resolves to the new
+                                            # Signatory bottler entry.
+bottler_type: independent_bottler
+bottler_series: signatory-vintage/cask-strength-collection
+                                            # Namespaced series ref.
+                                            # Resolves to the
+                                            # cask-strength-collection
+                                            # series in the bottler
+                                            # entry.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: true                          # CSC releases sell
+                                            # through; single-cask
+                                            # outturn is finite.
+availability: limited
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: null                                   # Real release: stated
+                                            # cask strength.
+age_statement: null
+vintage: null
+cask_strength: true                         # [v0.1 redundancy] CSC
+                                            # always cask strength.
+                                            # In v0.2 this could be
+                                            # inherited from the
+                                            # series presentation_
+                                            # defaults block.
+non_chill_filtered: true                    # [v0.1 redundancy] CSC
+                                            # always NCF.
+natural_colour: true                        # [v0.1 redundancy] CSC
+                                            # always natural colour.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: single_cask                         # [v0.1 redundancy] CSC
+                                            # always single-cask.
+  number: null                              # Real release: cask
+                                            # number explicitly
+                                            # disclosed on label.
+  outturn_bottles: null                     # CSC single-cask outturn
+                                            # varies by cask type
+                                            # (hogshead ~200-300,
+                                            # sherry butt ~500-700).
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel               # Resolves to /data/casks/.
+                                            # Common choice for CSC
+                                            # releases.
+    fill_number: null
+    proportion: 1.0
+    duration_years: null
+    cooperage: null
+    notes: |
+      Placeholder. Real CSC release names the cask type and number;
+      Signatory CSC bottlings are typically transparent about cask
+      provenance.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Schema-pressure-test placeholder for an Independent Bottling under
+  the Signatory Vintage Cask Strength Collection. Production-line
+  and distillery references point at Caol Ila (not yet populated,
+  exercising the forward-reference pattern per handover §8); the
+  bottler reference resolves to `data/bottlers/signatory.yml`. The
+  four IB discriminator fields all carry resolvable values, with
+  the `bottler_series` field pointing at the
+  `cask-strength-collection` sub-series defined in the bottler
+  entry.
+
+  The four `[v0.1 redundancy]` markers in the fields above (
+  cask_strength: true, non_chill_filtered: true, natural_colour:
+  true, batch_or_cask.type: single_cask) are present because the
+  bottler v0.1 schema has no way for the series declaration to
+  express presentation defaults that all bottlings under that
+  series automatically inherit. In a v0.2 schema with
+  `series.presentation_defaults`, these fields could be omitted
+  from individual bottlings under the CSC and inherited from the
+  series declaration, with bottling-level overrides where a
+  specific release deviates.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://signatory.co.uk
+    accessed: 2026-05-15
+    notes: |
+      Signatory's own website. Used here for the Cask Strength
+      Collection series definition (single-cask, cask strength,
+      non-chill-filtered, natural colour), which applies across
+      all releases in the series and is the data point that
+      motivates the bottler v0.2 presentation_defaults design.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: stub
+last_reviewed: 2026-05-15
+contributors: []

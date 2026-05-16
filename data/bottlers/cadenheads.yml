@@ -1,8 +1,10 @@
 # =============================================================================
 # Wm Cadenhead Ltd (Cadenhead's)
 # =============================================================================
-# Schema: bottler.template.yml v0.1 (stub schema; this entry exercises it
-# for the first time)
+# Schema: bottler.template.yml v0.2 (post-promotion; this entry uses
+# the v0.1 flat-series form since Cadenhead's presentation rules are
+# minor — the v0.2 presentation_defaults and parent fields are optional
+# and omitted here)
 # Entry confidence: medium — basic identity, ownership, and series
 # structure are well-documented; the `series` field shape is the schema's
 # most speculative dimension and may force a v0.2 promotion. See
@@ -83,14 +85,15 @@ sources_from: []                     # Cadenhead's sources from many
 
 
 # --- Series -----------------------------------------------------------------
-# Cadenhead's runs several long-standing release lines. The bottler
-# v0.1 schema's series field is a list of named series each with id,
-# name, description, first_released, active. The pressure-test below
-# surfaces a gap: real-world series are often nested (e.g., the
-# Authentic Collection has "small bottlings" and "wine cask finishes"
-# as sub-series). The flat list works for the broad designations but
-# may need a parent/child relationship for sub-series. Recorded as a
-# schema-gap observation; not changing v0.1 yet.
+# Cadenhead's runs several long-standing release lines. Each is
+# modelled as a top-level series here. The bottler v0.2 schema's
+# OPTIONAL `presentation_defaults` and `parent` fields are not used
+# in this entry because Cadenhead's series have less formal
+# presentation enforcement than Signatory's (see
+# data/bottlers/signatory.yml for the v0.2-features-in-use case).
+# Cadenhead's series could optionally adopt presentation_defaults
+# if/when sourced documentation of their consistent rules becomes
+# available.
 series:
   - id: authentic-collection
     name: Authentic Collection
@@ -175,7 +178,7 @@ sources:
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.1
+schema_version: 0.2
 confidence: medium
 last_reviewed: 2026-05-15
 contributors: []

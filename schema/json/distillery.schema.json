@@ -1,0 +1,249 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/distillery.schema.json",
+  "title": "Distillery",
+  "description": "Physical production site.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "country", "status", "schema_version"],
+  "properties": {
+    "id": { "$ref": "_common.schema.json#/definitions/slug" },
+    "name": { "type": "string", "minLength": 1 },
+    "also_known_as": { "$ref": "_common.schema.json#/definitions/string_list" },
+    "wikidata_qid": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^Q\\d+$" }
+      ]
+    },
+    "website": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+    "country": { "type": "string", "minLength": 1 },
+    "region": {
+      "oneOf": [
+        { "type": "null" },
+        { "enum": ["Highlands", "Lowlands", "Speyside", "Islay", "Campbeltown", "Islands"] }
+      ]
+    },
+    "sub_region": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+    "locality": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lat": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "lon": { "$ref": "_common.schema.json#/definitions/number_or_null" }
+      }
+    },
+    "status": {
+      "enum": ["operating", "mothballed", "silent", "demolished", "planned", "under_construction"]
+    },
+    "founded": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_integer" }
+      ]
+    },
+    "first_spirit": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_or_year_month" }
+      ]
+    },
+    "mothballed_periods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "from": {
+            "oneOf": [
+              { "type": "null" },
+              { "$ref": "_common.schema.json#/definitions/year_integer" }
+            ]
+          },
+          "to": {
+            "oneOf": [
+              { "type": "null" },
+              { "$ref": "_common.schema.json#/definitions/year_integer" }
+            ]
+          },
+          "note": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+          "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+        }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "current": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "parent": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "owner": { "type": "string" },
+              "from": {
+                "oneOf": [
+                  { "type": "null" },
+                  { "$ref": "_common.schema.json#/definitions/year_integer" }
+                ]
+              },
+              "to": {
+                "oneOf": [
+                  { "type": "null" },
+                  { "$ref": "_common.schema.json#/definitions/year_integer" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "water_source": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+    "mash_tun": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["traditional_rake", "traditional_open_top", "semi_lauter", "full_lauter", "unknown"] }
+          ]
+        },
+        "material": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["stainless_steel", "cast_iron", "copper", "wood"] }
+          ]
+        },
+        "capacity_kg": { "$ref": "_common.schema.json#/definitions/number_or_null" }
+      }
+    },
+    "washbacks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "count": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+        "material": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["oregon_pine", "larch", "stainless_steel", "douglas_fir", "corten_steel", "scottish_larch", "other"] }
+          ]
+        },
+        "capacity_litres": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+    "stills": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wash_still": { "$ref": "#/definitions/still" },
+        "spirit_still": { "$ref": "#/definitions/still" },
+        "intermediate_still": { "$ref": "#/definitions/still" },
+        "low_wines_still": { "$ref": "#/definitions/still" },
+        "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+    "warehouses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": ["string", "null"] },
+          "type": {
+            "oneOf": [
+              { "type": "null" },
+              { "enum": ["dunnage", "racked", "palletised", "mixed"] }
+            ]
+          },
+          "location": {
+            "oneOf": [
+              { "type": "null" },
+              { "enum": ["on_site", "off_site", "mixed"] }
+            ]
+          },
+          "climate_notes": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+          "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+        }
+      }
+    },
+    "annual_capacity_lpa": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+    "equipment_changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "year": {
+            "oneOf": [
+              { "type": "null" },
+              { "$ref": "_common.schema.json#/definitions/year_integer" }
+            ]
+          },
+          "change": { "type": ["string", "null"] },
+          "notes": { "type": ["string", "null"] },
+          "source_id": { "type": ["integer", "null"], "minimum": 1 }
+        }
+      }
+    },
+    "production_lines": { "$ref": "_common.schema.json#/definitions/slug_list" },
+    "also_used_by_blenders": { "$ref": "_common.schema.json#/definitions/slug_list" },
+    "distinctive_features": {
+      "type": "array",
+      "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+    },
+    "description": { "type": ["string", "null"] },
+    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
+    "schema_version": { "$ref": "_common.schema.json#/definitions/schema_version_value" },
+    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "last_reviewed": {
+      "oneOf": [
+        { "$ref": "_common.schema.json#/definitions/iso_date" },
+        { "type": "null" }
+      ]
+    },
+    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+  },
+  "definitions": {
+    "still": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "count": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+        "capacity_litres": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "charge_litres": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "shape": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["onion", "lantern", "plain", "boil_ball", "lamp_glass", "pear", "other"] }
+          ]
+        },
+        "height_m": { "$ref": "_common.schema.json#/definitions/number_or_null" },
+        "heating": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["direct_fire", "indirect_steam", "internal_coil", "external_heat_exchanger", "mixed"] }
+          ]
+        },
+        "lyne_arm_angle": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["ascending", "horizontal", "descending"] }
+          ]
+        },
+        "condenser": {
+          "oneOf": [
+            { "type": "null" },
+            { "enum": ["shell_and_tube", "worm_tub", "mixed"] }
+          ]
+        },
+        "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/concept.schema.json",
+  "title": "Concept",
+  "description": "Reference page (methodology, educational, equipment, practice, or glossary).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "kind",
+    "summary",
+    "schema_version"
+  ],
+  "properties": {
+    "id": { "$ref": "_common.schema.json#/definitions/slug" },
+    "title": { "type": "string", "minLength": 1 },
+    "kind": {
+      "enum": ["methodology", "educational", "equipment", "practice", "glossary"]
+    },
+
+    "summary": { "type": "string", "minLength": 1 },
+    "body": { "type": ["string", "null"] },
+
+    "related_concepts": {
+      "type": "array",
+      "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+    },
+
+    "methodology": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "measures": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "method": {
+              "enum": [
+                "hplc",
+                "4_aminoantipyrine",
+                "gc_ms",
+                "folin_ciocalteu",
+                "unspecified"
+              ]
+            },
+            "compounds": {
+              "enum": ["standard_7", "extended", "individual", "unspecified"]
+            },
+            "used_by": { "$ref": "_common.schema.json#/definitions/slug_list" },
+            "adopted": {
+              "oneOf": [
+                { "type": "null" },
+                { "$ref": "_common.schema.json#/definitions/year_or_year_month" },
+                { "$ref": "_common.schema.json#/definitions/year_integer" }
+              ]
+            },
+            "limitations": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+          }
+        }
+      ]
+    },
+
+    "educational": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "prerequisites": {
+              "type": "array",
+              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+            },
+            "covers": {
+              "type": "array",
+              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+            }
+          }
+        }
+      ]
+    },
+
+    "equipment": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "category": {
+              "enum": [
+                "mash_tun",
+                "washback",
+                "still",
+                "condenser",
+                "mill",
+                "kiln",
+                "other"
+              ]
+            },
+            "used_at_distilleries": { "$ref": "_common.schema.json#/definitions/slug_list" },
+            "distinguishing_features": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+            "alternatives": {
+              "type": "array",
+              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+            }
+          }
+        }
+      ]
+    },
+
+    "practice": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "adopted_by": { "$ref": "_common.schema.json#/definitions/slug_list" },
+            "consequences": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+            "contrast_with": {
+              "type": "array",
+              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+            }
+          }
+        }
+      ]
+    },
+
+    "glossary": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "aliases": { "type": "array", "items": { "type": "string" } },
+            "part_of_speech": {
+              "oneOf": [
+                { "type": "null" },
+                { "enum": ["noun", "verb", "adjective", "phrase"] }
+              ]
+            },
+            "see_also": {
+              "type": "array",
+              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+            }
+          }
+        }
+      ]
+    },
+
+    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
+
+    "schema_version": { "type": "number" },
+    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "last_reviewed": {
+      "oneOf": [
+        { "$ref": "_common.schema.json#/definitions/iso_date" },
+        { "type": "null" }
+      ]
+    },
+    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "methodology" } } },
+      "then": {
+        "properties": {
+          "methodology": { "type": "object" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "educational" } } },
+      "then": {
+        "properties": {
+          "educational": { "type": "object" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "equipment" } } },
+      "then": {
+        "properties": {
+          "equipment": { "type": "object" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "practice" } } },
+      "then": {
+        "properties": {
+          "practice": { "type": "object" }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "glossary" } } },
+      "then": {
+        "properties": {
+          "glossary": { "type": "object" }
+        }
+      }
+    }
+  ]
+}

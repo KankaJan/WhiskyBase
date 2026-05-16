@@ -1,0 +1,324 @@
+# =============================================================================
+# Glenmorangie Distillery
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — well-documented across producer, trade
+# press, and Wikipedia. Tall-still claim is consistent across sources;
+# specific still capacity and exact production figures are less
+# consistently sourced. Sub-brand structure (Signet, Allta, Astar)
+# raises a schema-modelling question discussed in SCHEMA-OBSERVATIONS
+# at the end of this file.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenmorangie
+name: Glenmorangie Distillery
+also_known_as: []
+wikidata_qid: null                # TODO Research Requests: confirm.
+website: https://www.glenmorangie.com
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Highlands
+sub_region: Easter Ross
+locality: Tain, Ross-shire
+coordinates:
+  lat: 57.8124                    # Approximate; needs verification
+                                  # against an authoritative geographic
+                                  # source.
+  lon: -4.0464
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1843                     # Founded by William Matheson [1][2].
+                                  # Distillery licensed 1843; whisky
+                                  # production established that year.
+first_spirit: 1843
+mothballed_periods: []            # Glenmorangie has operated more or
+                                  # less continuously since founding,
+                                  # with occasional production
+                                  # adjustments but no extended
+                                  # mothballing periods comparable to
+                                  # the 20th-century Bruichladdich or
+                                  # Springbank closures.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Glenmorangie Distillery Co Ltd
+  parent: Moët Hennessy            # Owned by Moët Hennessy, the
+                                  # wines-and-spirits subsidiary of LVMH,
+                                  # since the 2004 acquisition [1][2].
+  history:
+    - owner: William Matheson
+      from: 1843
+      to: 1849
+                                  # Founding owner. Approximate end
+                                  # date; specific transitional history
+                                  # in mid-19th-century Glenmorangie
+                                  # not fully sourced here.
+    - owner: Glenmorangie Distillery Co Ltd (independent)
+      from: 1887
+      to: 2004
+                                  # The Glenmorangie Distillery Co Ltd
+                                  # was incorporated in 1887 [2]. The
+                                  # company was acquired by Macdonald
+                                  # & Muir (subsequently renamed
+                                  # Glenmorangie plc) during the 20th
+                                  # century; specific transition dates
+                                  # are not consistently sourced. The
+                                  # 1887-2004 period covers the
+                                  # independent / Macdonald-era of the
+                                  # company.
+    - owner: Moët Hennessy (LVMH)
+      from: 2004
+      to: null
+                                  # Acquired by Moët Hennessy (LVMH
+                                  # group) in 2004 [1][2].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Tarlogie Springs
+                                  # Glenmorangie's process water comes
+                                  # from Tarlogie Springs, a hard
+                                  # mineralised water source that the
+                                  # distillery cites as distinctive
+                                  # among Scotch distilleries [1].
+                                  # The hardness of the water is
+                                  # uncommon — most Scotch is made
+                                  # with soft water.
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: semi_lauter               # Stainless steel semi-lauter [2];
+                                  # modernised over the 20th century
+                                  # from earlier traditional designs.
+  material: stainless_steel
+  capacity_kg: null               # TODO: verify. Several capacity
+                                  # figures appear in trade references.
+
+washbacks:
+  count: 12                       # 12 washbacks per commonly-cited
+                                  # specifications [2]. Stainless
+                                  # steel.
+  material: stainless_steel
+  capacity_litres: null           # TODO: verify per-vessel capacity.
+
+stills:
+  # Glenmorangie is widely cited as having Scotland's tallest stills
+  # — the producer's marketing references "the height of an adult
+  # giraffe" for the still height. The specific measurement varies
+  # by what's included (still body alone vs. with lyne arm) but
+  # ~5.14 m / 16'10" for the still body is the commonly-cited figure
+  # [1]. The tall-still claim is the equipment-philosophy core of
+  # Glenmorangie's identity.
+  wash_still:
+    count: 4
+    capacity_litres: null         # TODO: verify.
+    charge_litres: null
+    shape: lantern                # Tall lantern-style stills with
+                                  # distinctive elongated necks [1].
+    height_m: 5.14                # "16 feet 10 inches" — the producer's
+                                  # standard citation [1]. Note this
+                                  # is the still body; including lyne
+                                  # arm rises higher.
+    heating: indirect_steam       # Modern steam coil heating.
+    lyne_arm_angle: ascending     # Ascending lyne arms paired with
+                                  # tall stills give substantial
+                                  # reflux — part of the producer's
+                                  # design rationale for the lightness
+                                  # of the Glenmorangie spirit [1].
+    condenser: shell_and_tube
+  spirit_still:
+    count: 4                      # Four spirit stills paired with the
+                                  # four wash stills, for eight stills
+                                  # total. The current still count
+                                  # reflects expansions during the
+                                  # 20th and early 21st centuries.
+    capacity_litres: null
+    charge_litres: null
+    shape: lantern
+    height_m: 5.14
+    heating: indirect_steam
+    lyne_arm_angle: ascending
+    condenser: shell_and_tube
+
+
+warehouses:
+  - id: tain-on-site
+    type: mixed                   # Glenmorangie operates multiple
+                                  # warehouses; on-site Tain
+                                  # warehouses are predominantly
+                                  # traditional dunnage in the older
+                                  # structures, with newer racked
+                                  # warehousing added over the years.
+    location: on_site
+    climate_notes: |
+      Tain, Easter Ross — cool maritime climate moderated by the
+      Dornoch Firth. Glenmorangie has been on the same site since
+      1843; the older warehouses are traditional stone dunnage,
+      with progressive expansion through the 20th and 21st
+      centuries adding racked warehousing.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 6000000      # ~6 million LPA per commonly-cited
+                                  # figures [2]. Glenmorangie is one of
+                                  # the larger Scotch malt distilleries
+                                  # by capacity; the figure has grown
+                                  # over time as the site has expanded.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: null
+    note: |
+      The current eight-still configuration is the result of
+      expansion from an earlier smaller setup. Specific dates of
+      successive expansions not fully catalogued here; the major
+      modern expansion came under Macdonald & Muir / Glenmorangie
+      plc ownership over the 20th century.
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - glenmorangie-original         # The main production line — standard
+                                  # Glenmorangie recipe.
+                                  #
+                                  # NOTE: Glenmorangie also operates
+                                  # several distinct sub-brand recipes
+                                  # — Signet (chocolate malt blend),
+                                  # Allta (wild yeast, Saccharomyces
+                                  # diaemath), and various limited
+                                  # Private Edition releases. These
+                                  # are candidate separate-line
+                                  # entries (different recipes vs the
+                                  # main line); deferred until usage
+                                  # patterns justify the modelling.
+                                  # See SCHEMA-OBSERVATIONS at the
+                                  # end of this file.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []         # Glenmorangie spirit is supplied to
+                                  # the broader Moët Hennessy / LVMH
+                                  # blends but the distillery's output
+                                  # is predominantly bottled as single
+                                  # malt rather than supplied to
+                                  # independent blenders.
+
+
+# --- Distinctive Features ---------------------------------------------------
+distinctive_features: []          # Concept layer not yet populated.
+                                  # Candidate concepts:
+                                  # - equipment/tall-narrow-neck-stills
+                                  #   (already in TODO concept-queue;
+                                  #   Glenmorangie is one of the canon-
+                                  #   ical examples).
+                                  # - practice/extra-maturation-finishes
+                                  #   (Glenmorangie pioneered modern
+                                  #   commercial finishing programmes).
+                                  # - practice/wild-yeast-fermentation
+                                  #   (Glenmorangie Allta).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Highland distillery founded in 1843 by William Matheson in Tain,
+  Easter Ross, on the southern shore of the Dornoch Firth [1][2].
+  Distinguished structurally by stills of unusual height (the body
+  of each still measures approximately 5.14 m / 16'10"), paired
+  with ascending lyne arms that give the spirit substantial reflux
+  and contribute to the line's lightness. Glenmorangie has been
+  continuously operating since 1843 with progressive equipment
+  expansion; current configuration is eight stills (four wash, four
+  spirit). Water is drawn from Tarlogie Springs, a hard mineralised
+  source uncommon in Scotch whisky production [1]. The distillery
+  was independent through the 19th century, owned by Macdonald &
+  Muir / Glenmorangie plc for most of the 20th, and has been part
+  of Moët Hennessy (the wines-and-spirits subsidiary of LVMH) since
+  2004 [1][2]. Glenmorangie pioneered modern commercial cask-finish
+  programmes (the Quinta Ruban, Lasanta, Nectar d'Or, Companta, and
+  similar releases) and continues to develop limited Private
+  Edition expressions.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenmorangie.com
+    accessed: 2026-05-15
+    notes: |
+      Glenmorangie's own website. Used for water source (Tarlogie
+      Springs), still height ("height of an adult giraffe" /
+      5.14 m), current ownership confirmation, and production
+      philosophy.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Glenmorangie_distillery
+    accessed: 2026-05-15
+    notes: |
+      Wikipedia entry on Glenmorangie distillery. Used for
+      historical lineage (1843 founding, 1887 company
+      incorporation, 2004 LVMH acquisition), still-count expansion
+      history, and broader production overview. Acceptable per the
+      Wikipedia-volatility caveat for historical facts; flagged
+      for primary-historical-source upgrade — see TODO Research
+      Requests.
+
+
+# --- SCHEMA-OBSERVATIONS (sub-brand modelling question) -------------------
+# This block documents an open data-modelling question rather than a
+# schema gap that needs fixing.
+#
+# **The sub-brand question for Glenmorangie.** The distillery
+# produces several distinct recipes beyond the standard
+# Glenmorangie line:
+#
+# - **Glenmorangie Signet** — a blend that includes chocolate malt
+#   (a heavily-kilned dark malt typically used in stout brewing,
+#   uncommon in Scotch). Different malt source by definition.
+# - **Glenmorangie Allta** — uses a wild yeast strain
+#   (Saccharomyces diaemath) isolated from barley grown at
+#   Cadboll Estate, rather than the standard distiller's yeast
+#   used in the main line. Different fermentation.
+# - **Private Edition releases** (Tùsail, Tarlogan, Astar,
+#   Companta, etc.) — vary across several axes; some use
+#   different malts (winter barley, heritage varieties), some
+#   different yeasts, some different cask programmes.
+#
+# Per project precedent (Bruichladdich's three lines —
+# Bruichladdich/Port Charlotte/Octomore — differ in malt
+# peating, with all other equipment shared), Signet and Allta
+# arguably warrant their own production_line entries because
+# they involve different recipe variables. Astar is more
+# borderline — same recipe, different cask programme.
+#
+# Decision for this entry: model only the main "glenmorangie-
+# original" production line. Defer Signet and Allta as separate
+# production_line entries until usage patterns justify the
+# split. The current single-line modelling is closer to how the
+# producer presents the brand (Glenmorangie as one company-level
+# brand with sub-brands) than to the multi-line Bruichladdich
+# pattern, but the project's bar for "separate production line"
+# is recipe-variable difference, which Signet and Allta meet.
+# This decision is provisional and worth revisiting when usage
+# (specifically, populating Signet or Allta bottlings) forces
+# the question.
+#
+# No schema gap. This is a modelling choice with two defensible
+# options; the project's current data does not yet force the
+# choice.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

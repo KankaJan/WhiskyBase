@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/bottler.schema.json",
+  "title": "Bottler",
+  "description": "Commercial bottling entity: distillery-owned bottling operations or independent bottlers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "type",
+    "schema_version"
+  ],
+  "properties": {
+    "id": { "$ref": "_common.schema.json#/definitions/slug" },
+    "name": { "type": "string", "minLength": 1 },
+    "also_known_as": { "$ref": "_common.schema.json#/definitions/string_list" },
+    "website": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+
+    "type": {
+      "enum": ["independent_bottler", "distillery_bottler"]
+    },
+
+    "country": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+    "region": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+    "locality": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+
+    "status": {
+      "enum": ["operating", "dormant", "closed"]
+    },
+    "founded": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_integer" }
+      ]
+    },
+
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "current": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "parent": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "owner": { "type": "string" },
+              "from": {
+                "oneOf": [
+                  { "type": "null" },
+                  { "$ref": "_common.schema.json#/definitions/year_integer" }
+                ]
+              },
+              "to": {
+                "oneOf": [
+                  { "type": "null" },
+                  { "$ref": "_common.schema.json#/definitions/year_integer" }
+                ]
+              },
+              "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+            }
+          }
+        }
+      }
+    },
+
+    "release_types": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "single_cask",
+          "small_batch",
+          "vatting",
+          "blended_malt",
+          "blended_whisky",
+          "other"
+        ]
+      }
+    },
+
+    "sources_from": { "$ref": "_common.schema.json#/definitions/slug_list" },
+
+    "series": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+          "name": { "type": ["string", "null"] },
+          "description": { "type": ["string", "null"] },
+          "first_released": {
+            "oneOf": [
+              { "type": "null" },
+              { "$ref": "_common.schema.json#/definitions/year_integer" }
+            ]
+          },
+          "active": { "type": ["boolean", "null"] },
+          "parent": { "type": ["string", "null"], "pattern": "^[a-z0-9][a-z0-9-]*$" },
+          "presentation_defaults": {
+            "oneOf": [
+              { "type": "null" },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "cask_strength": { "type": ["boolean", "null"] },
+                  "non_chill_filtered": { "type": ["boolean", "null"] },
+                  "natural_colour": { "type": ["boolean", "null"] },
+                  "batch_or_cask_type": {
+                    "oneOf": [
+                      { "type": "null" },
+                      { "enum": ["single_cask", "small_batch", "vatting", "batch"] }
+                    ]
+                  },
+                  "abv": { "$ref": "_common.schema.json#/definitions/abv" }
+                }
+              }
+            ]
+          },
+          "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+        }
+      }
+    },
+
+    "description": { "type": ["string", "null"] },
+
+    "external_ids": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "wikidata_qid": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "whiskybase_id": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+
+    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
+
+    "schema_version": { "type": "number" },
+    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "last_reviewed": {
+      "oneOf": [
+        { "$ref": "_common.schema.json#/definitions/iso_date" },
+        { "type": "null" }
+      ]
+    },
+    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+  }
+}

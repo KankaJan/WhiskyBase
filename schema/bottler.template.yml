@@ -1,5 +1,5 @@
 # =============================================================================
-# BOTTLER SCHEMA TEMPLATE — v0.1 (DRAFT / STUB)
+# BOTTLER SCHEMA TEMPLATE — v0.2
 # =============================================================================
 # Purpose: a bottler is a commercial entity that releases bottlings.
 # This template covers both:
@@ -10,12 +10,24 @@
 #   - Independent bottlers (Cadenhead's, Signatory, Gordon & MacPhail,
 #     etc.) who source cask spirit from multiple distilleries.
 #
-# STATUS: this is a draft. The schema has not yet been used to populate
-# real data. Fields and structure may change once we start populating
-# IB releases. See docs/handover.md section 7 for context.
+# v0.1 → v0.2 changes (data-driven, from Signatory pressure-test):
+#   - Series shape gains an OPTIONAL `parent: <series-id>` field for
+#     parent/child relationships between series (e.g. Signatory's
+#     Decanter Collection is a presentation variant of the Cask
+#     Strength Collection).
+#   - Series shape gains an OPTIONAL `presentation_defaults:` block
+#     for series that enforce consistent presentation rules across
+#     all bottlings (e.g. Signatory's Cask Strength Collection
+#     always bottles single-cask at cask strength NCF natural-
+#     colour; Un-Chillfiltered Collection always at 46% ABV vatted).
+#     Bottling entries under such a series may omit the defaulted
+#     fields; explicit bottling-level values override the series
+#     default.
 #
 # Bottling entries reference bottlers via the `bottled_by` slug field
-# in bottling.template.yml v0.2.
+# in bottling.template.yml v0.2. Series references use the
+# `bottler_series: <bottler-slug>/<series-id>` form on bottlings.
+# See docs/handover.md section 7 for context.
 # =============================================================================
 
 
@@ -76,19 +88,55 @@ sources_from: []                     # OPTIONAL. List of distillery slugs
 
 # --- Series -----------------------------------------------------------------
 series: []                           # List of named release series the
-                                     # bottler runs. Shape per entry:
+                                     # bottler runs. Shape per entry
+                                     # (v0.2):
                                      #
-                                     # - id: authentic-collection
-                                     #   name: Authentic Collection
-                                     #   description: |
-                                     #     Brief description in reference
-                                     #     register.
-                                     #   first_released: null    # YYYY
-                                     #   active: true            # boolean
+                                     #   - id: cask-strength-collection
+                                     #     name: Cask Strength Collection
+                                     #     description: |
+                                     #       Brief description in reference
+                                     #       register.
+                                     #     first_released: null    # YYYY
+                                     #     active: true            # boolean
+                                     #
+                                     #     # OPTIONAL: parent series for
+                                     #     # hierarchical relationships.
+                                     #     # Use when this series is a
+                                     #     # presentation variant or
+                                     #     # sub-batch of another.
+                                     #     parent: null            # OR <series-id>
+                                     #
+                                     #     # OPTIONAL: presentation defaults
+                                     #     # inherited by bottlings under
+                                     #     # this series. Each field
+                                     #     # individually optional; a
+                                     #     # bottling may override any
+                                     #     # field explicitly. Omit the
+                                     #     # whole block (or set to null)
+                                     #     # for series with no fixed
+                                     #     # presentation rules.
+                                     #     presentation_defaults:
+                                     #       cask_strength: true
+                                     #       non_chill_filtered: true
+                                     #       natural_colour: true
+                                     #       batch_or_cask_type: single_cask
+                                     #                            # single_cask |
+                                     #                            # small_batch |
+                                     #                            # vatting |
+                                     #                            # batch
+                                     #       abv: null            # number when
+                                     #                            # the series
+                                     #                            # enforces a
+                                     #                            # fixed ABV
+                                     #                            # (e.g. 46.0
+                                     #                            # for UCF,
+                                     #                            # 57.1 for
+                                     #                            # 100 Proof);
+                                     #                            # null otherwise
                                      #
                                      # Bottling entries reference series
                                      # via `bottler_series: <bottler-slug>/<series-id>`
-                                     # (e.g. cadenheads/authentic-collection).
+                                     # (e.g. signatory-vintage/cask-strength-collection).
 
 
 # --- Description ------------------------------------------------------------
@@ -110,7 +158,7 @@ sources: []                          # Same numbered-list pattern as
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.1
+schema_version: 0.2
 confidence: stub
-last_reviewed: null
+last_reviewed: 2026-05-15
 contributors: []

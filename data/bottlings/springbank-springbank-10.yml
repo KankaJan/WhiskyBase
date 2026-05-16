@@ -1,0 +1,137 @@
+# =============================================================================
+# Springbank 10 Year Old (core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — core flagship release with widely-cited
+# specifications (46% ABV, NCF, natural colour). Specific batch
+# details (cask programme proportions, exact outturn) vary across
+# releases and are not captured at single-SKU level here.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: springbank-springbank-10
+name: Springbank 10 Year Old
+production_line: springbank-springbank
+produced_at_distillery: springbank
+bottled_by: springbank             # OB release — bottler is the
+                                   # distillery itself.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Core release; not a single
+                                  # release date — re-bottled in
+                                  # batches over time.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0                         # Springbank's core 10 Year Old is
+                                  # consistently bottled at 46% ABV
+                                  # [1]. Other Springbank releases
+                                  # (cask strength editions, special
+                                  # bottlings) vary.
+age_statement: 10
+vintage: null
+cask_strength: false
+non_chill_filtered: true          # [1]
+natural_colour: true              # [1]
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch                     # Springbank 10 Year Old core
+                                  # bottling is vatted from multiple
+                                  # casks. Individual batches are not
+                                  # generally numbered on the label
+                                  # in the way Bruichladdich's Classic
+                                  # Laddie batches are.
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Springbank 10 Year Old is vatted from a typical Springbank cask
+# programme (ex-bourbon and ex-sherry, with proportions varying
+# batch to batch). Specific proportions for the core SKU are not
+# consistently disclosed at the bottling level.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null              # Approximate 60-70% ex-bourbon
+                                  # across recent batches per common
+                                  # trade-press characterisation;
+                                  # not consistently disclosed.
+    duration_years: 10            # Minimum age statement.
+    cooperage: null
+    notes: |
+      Predominant cask type for the Springbank 10. Mix of first-
+      fill and refill ex-bourbon barrels across batches.
+
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null              # Approximate 30-40% ex-sherry
+                                  # across recent batches; varies.
+    duration_years: 10
+    cooperage: null
+    notes: |
+      Ex-sherry component. Mix of first-fill and refill across
+      batches.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 60.00                   # Approximate UK retail; varies
+                                  # by allocation and retailer.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Core 10-year-old release of the Springbank line, bottled at 46%
+  ABV non-chill-filtered with natural colour [1]. Vatted from
+  Springbank's typical cask programme (predominantly ex-bourbon
+  with an ex-sherry component, proportions varying batch to
+  batch). 2.5×-distilled and lightly peated to the Springbank
+  line's malt specification; produced from floor-malted barley
+  on the Springbank site in Campbeltown. The core 10 is the
+  reference expression of the Springbank line.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://springbank.scot
+    accessed: 2026-05-15
+    notes: |
+      Springbank's own website. Used for ABV (46%), non-chill-
+      filtered status, natural-colour status, and core-range
+      designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

@@ -1,0 +1,386 @@
+# =============================================================================
+# Springbank Distillery
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — basic identity, ownership lineage, three
+# production lines, and the distinctive direct-fired-wash-still /
+# worm-tub-on-wash configuration are all well-documented. Specific
+# numeric details (still capacities, washback counts, annual LPA) are
+# less consistently sourced across popular references and are flagged
+# inline.
+#
+# This entry is the third distillery in the project (after Harris and
+# Bruichladdich) and the second pressure-test of the distillery v0.1
+# schema. Cadenhead's-style SCHEMA-GAPS block at the end documents
+# what surfaces. Predicted gap: multiple warehouses cannot be
+# captured by the single-block `warehouse:` field; confirmed below.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: springbank
+name: Springbank Distillery
+also_known_as: []
+wikidata_qid: null                # TODO Research Requests: confirm.
+website: https://springbank.scot
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Campbeltown
+sub_region: Kintyre
+locality: Campbeltown
+coordinates:
+  lat: 55.4253                    # Approximate; needs verification
+                                  # against authoritative source.
+  lon: -5.6043
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1828                     # Founded by William Reid [1][2].
+first_spirit: 1828                # Same year as founding per consistent
+                                  # sources.
+mothballed_periods:
+  - from: 1979
+    to: 1989
+    note: |
+      Production paused for approximately a decade during the Scotch
+      industry contraction; restarted at the end of the 1980s with the
+      same equipment philosophy that the distillery had always operated
+      under [2]. Other shorter pauses across the 20th century are
+      reported but exact dates need primary-historical verification.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: J&A Mitchell & Co Ltd
+  parent: null                    # Privately family-owned; not part of a
+                                  # larger group. The same J&A Mitchell
+                                  # also owns Cadenhead's (the bottler;
+                                  # see data/bottlers/cadenheads.yml) and
+                                  # the adjacent Glengyle distillery.
+  history:
+    - owner: William Reid
+      from: 1828
+      to: 1837
+                                  # Reid founded the distillery but
+                                  # encountered financial difficulty;
+                                  # ownership passed to the Mitchell
+                                  # family (related to Reid by marriage)
+                                  # in 1837 [2]. Specific transaction
+                                  # details and Reid's exact role after
+                                  # 1837 not fully sourced.
+    - owner: Mitchell family / J&A Mitchell & Co Ltd
+      from: 1837
+      to: null
+                                  # Continuous family ownership since
+                                  # 1837 — one of the longest unbroken
+                                  # family-ownership records in
+                                  # Scotch [1][2]. The corporate name
+                                  # "J&A Mitchell & Co Ltd" was
+                                  # adopted later in the 19th century;
+                                  # specific date not in current source
+                                  # set.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Crosshill Loch
+                                  # Surface loch in the hills above
+                                  # Campbeltown [1][2]. Springbank
+                                  # explicitly cites Crosshill Loch as
+                                  # the process-water source.
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: traditional_open_top      # Open-topped traditional mash tun [2].
+                                  # Springbank retains an older mash-tun
+                                  # design than most modern Scotch
+                                  # distilleries.
+  material: cast_iron             # Cast iron per producer
+                                  # documentation [1]. The traditional
+                                  # cast-iron design is consistent with
+                                  # Springbank's broader equipment-
+                                  # retention philosophy but
+                                  # independent trade-press
+                                  # corroboration would strengthen
+                                  # the claim — flagged as a research
+                                  # request. An alternative
+                                  # interpretation (stainless-steel
+                                  # vessel with cast-iron components)
+                                  # cannot be ruled out from current
+                                  # sources.
+  capacity_kg: null               # TODO: verify. ~3.5 tonnes is one
+                                  # commonly-cited figure but the
+                                  # specific number needs sourcing.
+
+washbacks:
+  count: 6                        # Six boatskin-larch washbacks per
+                                  # commonly-cited specs [2]. Boatskin
+                                  # larch is unusual in modern Scotch
+                                  # (most distilleries use Oregon
+                                  # pine / Douglas fir or stainless
+                                  # steel).
+  material: larch                 # Larch is the species cited
+                                  # consistently across sources. The
+                                  # term "boatskin larch" is used in
+                                  # some industry references and refers
+                                  # to a traditional construction
+                                  # method (boatskin / lapstrake-style
+                                  # overlapping planks) rather than a
+                                  # distinct species; recorded here as
+                                  # plain "larch" to avoid conflating
+                                  # construction method with material.
+  capacity_litres: null           # TODO: verify per-washback volume.
+
+stills:
+  # Springbank operates three stills total: one wash still, two spirit
+  # stills. The wash still is DIRECT-FIRED (rare in modern Scotch —
+  # most are steam-heated), with worm-tub condensation. The two spirit
+  # stills use indirect steam heating and shell-and-tube condensers.
+  # This is the equipment configuration that supports all three
+  # production lines (Springbank, Longrow, Hazelburn); the lines
+  # differ in malt peating and distillation regime rather than in
+  # equipment.
+  wash_still:
+    count: 1
+    capacity_litres: null         # TODO: confirm. ~21,000 L is one
+                                  # figure but not consistently sourced.
+    charge_litres: null
+    shape: onion                  # Onion-shaped per producer materials
+                                  # [1]. Confirmation in trade
+                                  # references not fully checked here.
+    height_m: null
+    heating: direct_fire          # DISTINCTIVE: direct-fire heating is
+                                  # rare in modern Scotch. Springbank
+                                  # is one of very few distilleries
+                                  # retaining a direct-fired wash
+                                  # still [2].
+    lyne_arm_angle: descending    # Per producer materials [1].
+    condenser: worm_tub           # DISTINCTIVE: worm-tub on the wash
+                                  # still combined with shell-and-tube
+                                  # on the spirit stills is itself a
+                                  # rare configuration. Most worm-tub
+                                  # distilleries use worm tubs on
+                                  # both/all stills [2].
+  spirit_still:
+    count: 2                      # Two spirit stills; both indirect
+                                  # steam heated, both shell-and-tube
+                                  # condensed. One is the primary spirit
+                                  # still, the other is used for the
+                                  # second-pass redistillation of the
+                                  # ~20% that constitutes Springbank's
+                                  # 2.5× regime.
+    capacity_litres: null         # TODO: confirm individual still
+                                  # capacities.
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: indirect_steam       # Indirect steam (in contrast to the
+                                  # direct-fired wash still).
+    lyne_arm_angle: descending
+    condenser: shell_and_tube
+
+# Springbank also has a malt floor (one of the few remaining in
+# Scotland) for on-site malting — see floor_maltings_onsite note in
+# the description and the malting fields on each production_line
+# entry.
+
+warehouses:
+  - id: campbeltown-dunnage
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      Traditional dunnage warehouses on the Springbank site in
+      central Campbeltown. Coastal climate; cool, damp. The dunnage
+      style (low-stack, earth-floor where retained) is consistent
+      with Springbank's broader equipment-philosophy of retaining
+      traditional methods. Maturation in these warehouses
+      contributes to the heavier, more sulphurous character
+      associated with Springbank and Longrow.
+
+  - id: campbeltown-racked
+    type: racked
+    location: on_site
+    climate_notes: |
+      Newer racked warehousing added to the Springbank site over
+      the 20th century to expand storage capacity. Same coastal
+      Campbeltown climate as the dunnage warehouses but with the
+      higher stack-density of racked storage.
+
+  - id: glengyle-shared
+    type: mixed
+    location: off_site
+    climate_notes: |
+      Additional warehousing at the adjacent Glengyle distillery
+      site (also J&A Mitchell-owned). Technically off-site
+      relative to the Springbank distillery proper but
+      geographically adjacent in Campbeltown. Specific warehouse
+      types at Glengyle not separately catalogued in this entry;
+      flagged for future detail.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 750000       # Approximately 750,000 LPA per
+                                  # commonly-cited figures [2].
+                                  # Production typically below capacity;
+                                  # exact production figures vary year
+                                  # to year and are not publicly broken
+                                  # down by line.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []             # Springbank is documented as having
+                                  # operated with broadly the same
+                                  # equipment philosophy throughout its
+                                  # operating life. Specific minor
+                                  # equipment updates over the centuries
+                                  # not catalogued here.
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - springbank-springbank          # Springbank — 2.5× distillation,
+                                   # lightly peated.
+  - springbank-longrow             # Longrow — double distillation,
+                                   # heavily peated.
+  - springbank-hazelburn           # Hazelburn — triple distillation,
+                                   # unpeated.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []         # Springbank single-malt is not
+                                  # supplied for blending in significant
+                                  # volume; the distillery's output
+                                  # goes predominantly to its own
+                                  # bottlings and to selected
+                                  # independent bottlers (notably
+                                  # Cadenhead's, with which it shares
+                                  # corporate ownership).
+
+
+# --- Distinctive Features ---------------------------------------------------
+distinctive_features: []          # Concept layer not yet populated.
+                                  # Candidate concepts:
+                                  # - practice/floor-maltings-on-site
+                                  # - equipment/direct-fired-wash-still
+                                  # - equipment/worm-tub-on-wash-only
+                                  # - practice/full-on-site-production
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Founded in 1828 by William Reid in Campbeltown, Argyll, on
+  Scotland's Kintyre peninsula [1][2]. Acquired by the Mitchell
+  family (related to Reid by marriage) in 1837; has been
+  continuously family-owned by J&A Mitchell & Co Ltd ever since
+  [2]. Springbank is one of three currently-operating Campbeltown
+  distilleries (with Glen Scotia, and the adjacent Glengyle, the
+  latter also Mitchell-owned). The distillery produces three
+  distinct production lines on shared equipment — Springbank
+  (2.5× distillation, lightly peated), Longrow (double
+  distillation, heavily peated), and Hazelburn (triple
+  distillation, unpeated) — distinguished by malt peating and
+  distillation regime rather than by equipment. Malting,
+  fermentation, distillation, maturation, and bottling are all
+  performed on site, an integrated-production approach unusual in
+  modern Scotch. The wash still is direct-fired and condensed
+  through a worm tub; the two spirit stills are indirect-steam
+  heated and use shell-and-tube condensers — itself a rare hybrid
+  configuration. Springbank's floor maltings are among the few
+  remaining in commercial operation in Scotland.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://springbank.scot
+    accessed: 2026-05-15
+    notes: |
+      Springbank's own website. Used for current operating status,
+      water source (Crosshill Loch), production philosophy
+      (on-site malting through bottling), and equipment overview.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Springbank_distillery
+    accessed: 2026-05-15
+    notes: |
+      Wikipedia entry on Springbank distillery. Used for
+      historical lineage (1828 founding, 1837 Mitchell
+      acquisition), continuous family ownership claim, and
+      mothballed period context. Acceptable per the
+      Wikipedia-volatility caveat for historical facts but
+      flagged for primary-historical-source upgrade — see TODO
+      Research Requests.
+
+
+# --- SCHEMA-GAPS observed during this pressure-test ------------------------
+# This block is non-schema content for the distillery v0.2 promotion
+# discussion. Springbank is the third distillery in the project and
+# the second pressure-test of the distillery v0.1 schema.
+#
+# 1. **Multiple warehouses (CONFIRMED).** Predicted in TODO and in
+#    handover §10 deferred-decisions list. Confirmed here: Springbank
+#    has multiple distinct warehouses on the Campbeltown site
+#    (dunnage + racked) plus additional warehousing at the adjacent
+#    Glengyle distillery. The single-block `warehouse:` field cannot
+#    capture this. v0.2 design: change `warehouse:` to a list of
+#    warehouse entries, each carrying the current type/location/
+#    climate_notes fields plus optionally a `name:` or `description:`
+#    for distinguishing entries.
+#
+#    Suggested v0.2 shape:
+#    ```yaml
+#    warehouses:                  # NB plural
+#      - id: campbeltown-dunnage  # OPTIONAL identifier
+#        type: dunnage
+#        location: on_site
+#        climate_notes: |
+#          Traditional dunnage warehouses on the Springbank site
+#          ...
+#      - id: glengyle-overflow
+#        type: racked
+#        location: off_site       # NB Glengyle is adjacent but
+#                                 # technically separate site
+#        climate_notes: |
+#          ...
+#    ```
+#
+#    Migration: Harris and Bruichladdich both currently use a single
+#    warehouse block. Their v0.2 form would be a one-element list,
+#    preserving all existing fields.
+#
+# 2. **Distillation regime per-line.** The `distillation.regime` enum
+#    on production_line already includes `2.5x` and `partial_triple`
+#    (verified during this pressure-test). No schema gap for
+#    Springbank's distillation specifically. ✓
+#
+# 3. **Floor maltings (NEW for Springbank).** The `malt.source` enum
+#    on production_line already includes `floor_malted_onsite` —
+#    will be used by Springbank's three production lines. No schema
+#    gap. ✓ However, the schema doesn't currently model the FLOOR
+#    MALTINGS as equipment in their own right (analogous to mash tun,
+#    washbacks, stills). For now this is captured in the production_
+#    line's malt block; the floor maltings as a site-level piece of
+#    equipment could become a candidate addition if a future
+#    distillery (or a future detailed Springbank entry) needs to
+#    record specific malting-floor dimensions, capacity, peat-burning
+#    schedule, etc. Defer.
+#
+# 4. **Direct-fired wash still (NEW for Springbank).** The
+#    `still.heating` enum (per `wash_still.heating: direct_fire`
+#    above) already supports this value. ✓ No schema gap.
+#
+# 5. **Continuous family ownership lineage.** The `ownership.history`
+#    block works fine for Springbank's two-period history (Reid 1828-
+#    1837; Mitchells 1837-present). No schema gap. ✓
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

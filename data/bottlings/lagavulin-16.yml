@@ -1,0 +1,138 @@
+# =============================================================================
+# Lagavulin 16 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship release with
+# stable presentation specifications.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: lagavulin-16
+name: Lagavulin 16 Year Old
+production_line: lagavulin
+produced_at_distillery: lagavulin
+bottled_by: lagavulin
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                # Core release; re-bottled in
+                                  # batches over time. The 16 Year
+                                  # Old has been Lagavulin's flagship
+                                  # core release since the late 1980s,
+                                  # established as part of the Classic
+                                  # Malts launch.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0                         # Lagavulin 16 is bottled at 43%
+                                  # ABV [1].
+age_statement: 16
+vintage: null
+cask_strength: false
+non_chill_filtered: false         # Lagavulin 16 is chill-filtered
+                                  # (industry-standard for the
+                                  # presentation at this ABV).
+natural_colour: false             # Caramel colouring is used in the
+                                  # standard Lagavulin range per
+                                  # industry-typical practice.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Lagavulin 16 is predominantly ex-bourbon matured with a refill
+# ex-sherry component, per Diageo's standard programme for the
+# release. Specific proportions are not publicly disclosed at the
+# bottling level.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null              # Approximate 70-80% ex-bourbon
+                                  # across recent batches per common
+                                  # trade-press characterisation;
+                                  # not consistently disclosed by
+                                  # producer.
+    duration_years: 16
+    cooperage: null
+    notes: |
+      Predominant cask type. Mix of first-fill and refill
+      ex-bourbon barrels per Diageo's standard practice.
+
+  - cask_type: oloroso-sherry-butt
+    fill_number: 2                # Generally refill where included.
+    proportion: null              # Approximate 20-30% across recent
+                                  # batches; varies.
+    duration_years: 16
+    cooperage: null
+    notes: |
+      Refill sherry component. Contributes to the Lagavulin 16's
+      depth and the characteristic dark-fruit notes that
+      reviewers cite.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 80.00                   # Approximate UK retail; allocations
+                                  # vary.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Lagavulin's flagship core release, 16 years matured predominantly
+  in ex-bourbon American oak with a refill ex-sherry component,
+  bottled at 43% ABV [1]. The 16 Year Old was established as
+  Lagavulin's reference expression at the launch of Diageo's
+  (then United Distillers') Classic Malts portfolio in the late
+  1980s and has been continuously available since. Chill-filtered
+  with caramel colouring per industry-typical practice at this
+  ABV. The 16-year age statement at the core-range level is
+  longer than the modern norm — most Scotch flagship cores sit
+  at 10-12 years; Lagavulin 16 reflects the older default
+  established before "no-age-statement" releases became
+  widespread.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/lagavulin/
+    accessed: 2026-05-15
+    notes: |
+      Diageo's Malts.com page for Lagavulin. Used for ABV (43%),
+      age (16 years), and core-range designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-15
+contributors: []

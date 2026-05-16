@@ -1,7 +1,7 @@
 # =============================================================================
 # Isle of Harris Distillery
 # =============================================================================
-# Schema: distillery.template.yml v0.1
+# Schema: distillery.template.yml v0.2
 # Entry confidence: medium — well-sourced from multiple independent trade
 # references, but several specs (washback count/material, mash tun grist
 # weight) are reported inconsistently across sources. See per-field notes.
@@ -109,17 +109,17 @@ stills:
 
 # Both stills manufactured by Frilli, Siena, Italy [9].
 
-warehouse:
-  type: null                      # Type not consistently reported.
-                                  # TODO: confirm dunnage vs racked.
-  location: mixed                 # On-site warehouse in Tarbert; off-site
-                                  # warehouse near Ardhasaig on the shores
-                                  # of Loch a Siar [2][7].
-  climate_notes: |
-    Maritime location with oceanic climate moderated by the Gulf Stream
-    despite the latitude (~57.9 °N). The distillery reports relatively
-    stable seasonal temperatures, which it associates with reductive
-    maturation conditions [1][7].
+warehouses:
+  - type: null                      # Type not consistently reported.
+                                    # TODO: confirm dunnage vs racked.
+    location: mixed                 # On-site warehouse in Tarbert; off-site
+                                    # warehouse near Ardhasaig on the shores
+                                    # of Loch a Siar [2][7].
+    climate_notes: |
+      Maritime location with oceanic climate moderated by the Gulf Stream
+      despite the latitude (~57.9 °N). The distillery reports relatively
+      stable seasonal temperatures, which it associates with reductive
+      maturation conditions [1][7].
 
 
 # --- Capacity ---------------------------------------------------------------
@@ -278,7 +278,7 @@ sources:
 
 
 # --- Metadata ---------------------------------------------------------------
-schema_version: 0.1
+schema_version: 0.2
 confidence: medium
 last_reviewed: 2026-05-02
 contributors: []
