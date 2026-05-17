@@ -1,0 +1,287 @@
+# =============================================================================
+# Highland Park
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership, and broad
+# production characteristics are well-grounded against the producer's
+# website and standard trade-reference literature. Specific equipment
+# specifications (still counts, washback configuration, capacities)
+# hedged where direct producer disclosure is not currently sourced.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: highland-park
+name: Highland Park
+also_known_as: []
+wikidata_qid: null
+website: https://www.highlandparkwhisky.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islands                       # Informal trade-press designation.
+                                      # Under the Scotch Whisky Regulations
+                                      # 2009, all Scottish islands except
+                                      # Islay fall within the formal
+                                      # Highland protected locality. The
+                                      # "Islands" region is widely used in
+                                      # trade press but is not part of
+                                      # the 2009 Regulations. See
+                                      # educational/swa-regional-designations.
+sub_region: Orkney
+locality: Kirkwall, Mainland Orkney
+coordinates:
+  lat: 58.973
+  lon: -2.951                         # Approximate; on the southern
+                                      # outskirts of Kirkwall.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1798                         # Conventional founding date,
+                                      # commonly cited; founder usually
+                                      # attributed to the Eunson family
+                                      # (Magnus Eunson named in
+                                      # secondary sources). Primary
+                                      # ownership records exist in
+                                      # Orkney archives but specific
+                                      # founding-circumstances detail
+                                      # is not currently sourced
+                                      # against primary documents [1].
+first_spirit: null
+mothballed_periods: []                # No major modern mothballing
+                                      # periods recorded; continuous
+                                      # operation through the 20th
+                                      # century.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: The Edrington Group
+  parent: null                        # Edrington is itself a
+                                      # privately-held company
+                                      # (majority-owned by The Robertson
+                                      # Trust, a Scottish charitable
+                                      # trust). No commercial parent
+                                      # in the conventional sense.
+  history:
+    - owner: Eunson family / James Robertson (Excise officer)
+      from: 1798
+      to: null
+      notes: |
+        Conventional 19th-century ownership lineage; specific
+        transfers and dates are documented variably in the
+        Orkney-history literature [1][2].
+    - owner: Highland Distilleries Co.
+      from: 1937
+      to: 1999
+      notes: |
+        Highland Park became part of Highland Distilleries Co.
+        in the 20th century; the company itself was an
+        amalgamation that consolidated several Scottish
+        distilleries.
+    - owner: Edrington (Highland Distillers Group)
+      from: 1999
+      to: null
+      notes: |
+        Edrington (formerly the Robertson & Baxter group)
+        acquired Highland Distillers in 1999; Highland Park
+        has been an Edrington-owned distillery since.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Cattie Maggie's spring   # Local Orkney spring source;
+                                       # also Crantit lochan referenced
+                                       # in producer materials. Names
+                                       # variously transliterated
+                                       # across sources [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: full_lauter                    # Modern lauter tun installed in
+                                       # recent equipment upgrades;
+                                       # specific year of installation
+                                       # not currently sourced. Prior
+                                       # generations of equipment used
+                                       # traditional rake-and-plough.
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: 12                            # Commonly cited count; specific
+                                       # capacity figures vary across
+                                       # trade-reference sources [2].
+  material: oregon_pine                # Traditional Oregon pine
+                                       # washbacks; long-fermentation
+                                       # regimes typical of the spirit
+                                       # character profile.
+  capacity_litres: null
+  notes: |
+    Fermentation duration is commonly reported as long (60+ hours)
+    contributing to the ester-developed spirit profile; specific
+    figures vary across sources and are hedged here pending
+    primary-source verification [2].
+
+stills:
+  wash_still:
+    count: 2
+    capacity_litres: null
+    charge_litres: null
+    shape: lantern                     # Lantern / boil-ball profile
+                                       # commonly cited in trade
+                                       # references; specific
+                                       # geometric data not directly
+                                       # disclosed [2].
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 2
+    capacity_litres: null
+    charge_litres: null
+    shape: lantern
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+warehouses:
+  - id: orkney-coastal
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      Coastal Orkney warehousing; cool damp climate, salt air
+      exposure. The North Atlantic coastal climate of Orkney is
+      cited by the producer as contributing to the spirit's
+      maturation character, though the specific quantitative
+      effect on maturation kinetics is not separately attested
+      against primary research [2]. See
+      educational/cask-maturation-kinetics for the general
+      maturation-kinetics framework.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: null              # Site capacity figures circulate
+                                       # in the trade press but specific
+                                       # current figures should be
+                                       # verified against the most recent
+                                       # Malt Whisky Yearbook edition [2].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []                  # Significant 20th-century
+                                       # equipment changes (steam
+                                       # conversion, mash-tun
+                                       # replacement) are documented
+                                       # variably; not yet sourced
+                                       # against primary records.
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - highland-park                      # Single production line.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []           # Highland Park malt is used
+                                       # in Edrington blends (notably
+                                       # Famous Grouse and Cutty Sark
+                                       # historically); the blending
+                                       # relationship is documented in
+                                       # the producer's group reporting.
+                                       # Blends are not currently modelled
+                                       # as a project entity type — empty
+                                       # list per project convention,
+                                       # rather than a dangling slug
+                                       # reference.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features:
+  - practice/floor-malting             # Highland Park retains partial
+                                       # on-site floor malting (~20% of
+                                       # grain requirement commonly
+                                       # cited); the practice page
+                                       # documents the broader
+                                       # surviving floor-malting set
+                                       # and Highland Park's place in
+                                       # it.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Highland Park is a malt whisky distillery in Kirkwall on Mainland
+  Orkney, founded in 1798 and owned by The Edrington Group since
+  Edrington's 1999 acquisition of Highland Distillers Co. [1][2].
+  Geographically the most northerly Scotch malt distillery in
+  Scotland, Highland Park sits within the formal Highland region
+  under the Scotch Whisky Regulations 2009 but is commonly marketed
+  in the trade press as an "Islands" producer; see
+  educational/swa-regional-designations for the formal-vs-informal
+  regional designation question. The site retains partial on-site
+  floor malting (commonly cited at around 20% of its grain
+  requirement) using local Orkney peat from Hobbister Moor, which
+  is heather-dominated rather than the moss-dominated peat of
+  mainland Scotland or Islay — a compositional difference that
+  producer literature attributes a distinctive aroma signature to
+  but which is not separately quantified against primary phenol
+  analysis in the project's current sources. Coastal dunnage
+  warehousing on the Orkney site exposes maturing casks to North
+  Atlantic salt air; the producer cites this as contributing to
+  the spirit's profile.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.highlandparkwhisky.com/
+    accessed: 2026-05-17
+    notes: |
+      Highland Park's producer website. Used for site identity,
+      Orkney location, founding date (1798), and the on-site
+      floor-malting and Hobbister Moor peat claims. Producer-
+      direct source; cross-check for specific equipment figures
+      should consult The Malt Whisky Yearbook (source 2) and the
+      historical literature (see Moss & Hume 1981 in
+      docs/bibliography.md for the broader industrial-history
+      context).
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Highland Park entry covers production
+      figures, equipment configuration, ownership, and recent
+      release detail.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      The Malt Whisky Yearbook is the trade-reference cross-check
+      for specific production figures. Specific year-by-year
+      figures vary; the most recent edition available should
+      be consulted for current values. See docs/bibliography.md
+      for the Yearbook's broader profile and caveats.
+
+  - id: 3
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Highland_Park_distillery
+    accessed: 2026-05-17
+    notes: |
+      Wikipedia entry. Volatile source per project policy
+      (docs/source-conflict-policy.md); used here as a
+      secondary cross-check on ownership-history dates and
+      general site characterisation. Primary claims should
+      rely on sources 1 and 2 (producer + Yearbook) plus
+      Moss & Hume 1981 / Weir / Udo for historical and
+      industrial detail (see docs/bibliography.md).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

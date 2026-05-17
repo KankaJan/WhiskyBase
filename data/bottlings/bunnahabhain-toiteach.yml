@@ -1,0 +1,130 @@
+# =============================================================================
+# Bunnahabhain Toiteach (peated core release)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — peated core release with stable
+# presentation specifications across recent labelling.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bunnahabhain-toiteach
+name: Bunnahabhain Toiteach
+production_line: bunnahabhain-toiteach
+produced_at_distillery: bunnahabhain
+bottled_by: bunnahabhain
+bottler_type: distillery
+bottler_series: null                # The Toiteach / Moine releases
+                                    # form a labelled product line
+                                    # but not a formal Diageo-style
+                                    # "Special Releases" series.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                  # No age statement on the standard
+                                    # Toiteach core release; the
+                                    # spirit is bottled as a vatting
+                                    # at the producer's chosen maturity.
+discontinued: false
+availability: core                  # Currently available core release.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.3                           # Matches the Bunnahabhain Traditional
+                                    # 12 Year Old's 46.3% presentation;
+                                    # the NCF natural-colour core
+                                    # convention extends across both
+                                    # the lightly-peated and peated
+                                    # sub-lines.
+age_statement: null                 # NAS release.
+vintage: null
+cask_strength: false
+non_chill_filtered: true            # NCF per the 2010 Bunnahabhain
+                                    # core-range transition.
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting                     # Standard small-vatting at the
+                                    # producer's chosen maturity.
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                # Predominant cask type for the
+                                    # Toiteach core.
+    duration_years: null            # NAS — specific average age not
+                                    # disclosed.
+    cooperage: null
+    notes: |
+      Ex-bourbon barrels predominate. The peated spirit + ex-bourbon
+      combination is consistent with the typical Scotch peated-style
+      cask strategy (peated character carries through bourbon-cask
+      maturation without sherry overlay).
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 50.00                     # Approximate UK retail at recent
+                                    # release pricing; matches the
+                                    # Bunnahabhain 12 Year Old pricing
+                                    # tier.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Bunnahabhain Toiteach is the producer's peated core release,
+  drawn from the distillery's separate peated production runs at
+  spec ppm in the 35-40 range (against the 1-2 ppm of the
+  default Bunnahabhain Traditional production) [1]. Bottled at
+  46.3% ABV non-chill-filtered at natural colour, the Toiteach
+  matches the post-2010 Bunnahabhain core-range presentation
+  convention and sits at the same price tier as the 12 Year Old
+  flagship. The peated character contrasts with the south-Islay
+  producers (Lagavulin, Laphroaig, Ardbeg) in being applied to a
+  spirit that otherwise comes from Bunnahabhain's lighter-bodied
+  house style (peat-free water source, large onion-shape stills);
+  the result is positioned as a peated-Islay expression with a
+  distinct profile from the south-coast cluster.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://bunnahabhain.com/
+    accessed: 2026-05-17
+    notes: |
+      Bunnahabhain producer website. Used for ABV (46.3%),
+      NCF natural-colour presentation, NAS status, and the
+      peated-style positioning.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

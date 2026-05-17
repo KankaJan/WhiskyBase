@@ -1,0 +1,242 @@
+# =============================================================================
+# Cadenhead's Authentic Collection: Bunnahabhain (worked-example IB release)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — the entry is a worked-example representation
+# of the Cadenhead's Authentic Collection Bunnahabhain release pattern.
+# Specific cask-identifier fields (cask number, vintage year, exact ABV,
+# outturn) remain null with explicit notes; the entry's shape and
+# producer-defaults are accurate for the series but a specific
+# verifiable release should be substituted (or these fields populated)
+# when one is targeted for cataloguing.
+#
+# History: this entry replaced cadenheads-bunnahabhain-stub on 2026-05-17,
+# after the underlying distillery (Bunnahabhain) was populated. The
+# original SCHEMA-GAPS block from the stub drove the bottler v0.1 → v0.2
+# promotion (presentation_defaults and parent fields, applied via the
+# Signatory pressure-test); those observations are now resolved at the
+# bottler-schema level. See CHANGELOG v0.5.0.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cadenheads-bunnahabhain
+name: Cadenhead's Authentic Collection Bunnahabhain
+production_line: bunnahabhain-traditional   # Default Bunnahabhain
+                                            # production line (lightly
+                                            # peated); resolves cleanly
+                                            # since 2026-05-17.
+produced_at_distillery: bunnahabhain        # Resolves cleanly since
+                                            # 2026-05-17.
+bottled_by: cadenheads                      # Bottler entry at
+                                            # data/bottlers/cadenheads.yml.
+bottler_type: independent_bottler           # IB discriminator.
+bottler_series: cadenheads/authentic-collection
+                                            # Series within the
+                                            # Cadenhead's bottler entry.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                          # Specific release year not
+                                            # set at the template-form
+                                            # level. Cadenhead's
+                                            # Authentic Collection
+                                            # Bunnahabhain releases
+                                            # appear periodically; the
+                                            # most-common vintages in
+                                            # circulation are
+                                            # 1988-1992 distillations
+                                            # bottled in 2008-2018.
+discontinued: true                          # Single-cask releases sell
+                                            # through; the discontinued
+                                            # flag here reflects the
+                                            # series convention rather
+                                            # than a specific release's
+                                            # availability state.
+availability: single_cask                   # Single-cask outturn
+                                            # discriminator on the
+                                            # bottling schema.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: null                                   # Cask-strength figure
+                                            # specific to each
+                                            # release. Authentic
+                                            # Collection releases
+                                            # typically sit in the
+                                            # 50-60% ABV range
+                                            # depending on age and
+                                            # cask history.
+age_statement: null                         # Age varies per release;
+                                            # commonly 20-30 years
+                                            # for the Bunnahabhain
+                                            # vintages in circulation.
+vintage: null                               # Distillation year per
+                                            # release.
+cask_strength: true                         # By series convention
+                                            # (Authentic Collection's
+                                            # explicit presentation
+                                            # standard).
+non_chill_filtered: true                    # NCF by series convention.
+natural_colour: true                        # Natural colour by series
+                                            # convention.
+bottle_size_ml: 500                         # Cadenhead's house bottle
+                                            # format is 500ml, not
+                                            # the standard Scotch 700ml
+                                            # — a distinguishing feature
+                                            # of Cadenhead's
+                                            # presentation.
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: single_cask
+  number: null                              # Specific cask number per
+                                            # release. Cadenhead's
+                                            # discloses cask numbers
+                                            # on the label.
+  outturn_bottles: null                     # Single-cask outturn,
+                                            # typically 150-300 bottles
+                                            # for a Cadenhead's
+                                            # Bunnahabhain release
+                                            # depending on cask volume
+                                            # and angel's share.
+  cask_numbers: []                          # Per-release values.
+
+
+# --- Maturation -------------------------------------------------------------
+# Cadenhead's Authentic Collection presents the spirit's cask history
+# with the cask type disclosed on the label. For Bunnahabhain releases,
+# ex-bourbon casks are the most common, with occasional refill sherry
+# butts; the worked example here records the typical ex-bourbon case.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null                       # Cadenhead's typically
+                                            # discloses fill state
+                                            # (first-fill / refill /
+                                            # hogshead) on the label.
+    proportion: 1.0                         # Single-cask release —
+                                            # 100% of the bottling
+                                            # is from the one cask.
+    duration_years: null                    # Per-release.
+    cooperage: null
+    notes: |
+      Ex-bourbon cask, single-cask presentation. Cadenhead's
+      Bunnahabhain releases have used a mix of bourbon barrels
+      and refill hogsheads across vintages; the worked example
+      records the predominant ex-bourbon case. A specific real
+      release may instead carry a refill ex-sherry hogshead or
+      similar; the cask_type field should be updated per the
+      specific release.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null                              # Per-release pricing varies
+                                            # substantially with age
+                                            # and cask history. A
+                                            # 20-25 year Bunnahabhain
+                                            # Cadenhead's typically
+                                            # released in the £100-200
+                                            # range; older or scarcer
+                                            # vintages higher.
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Worked-example entry for a Cadenhead's Authentic Collection
+  Bunnahabhain release. Cadenhead's Authentic Collection is an
+  independent-bottler single-cask programme presenting bottlings
+  at cask strength, non-chill-filtered, natural colour, in 500ml
+  bottles with cask number disclosed on the label [1]. For
+  Bunnahabhain releases specifically, ex-bourbon casks predominate;
+  the spirit is the Bunnahabhain Traditional (lightly-peated)
+  production line, since Cadenhead's predates Bunnahabhain's
+  peated Toiteach programme in cask circulation. The Authentic
+  Collection's presentation conventions align with the project's
+  "craft transparency" presentation cluster (see
+  educational/scotch-presentation-conventions): cask strength,
+  NCF, natural colour, single-cask disclosure with cask number.
+  Specific cask-identifier fields (vintage year, cask number,
+  outturn, exact ABV) in this entry are left null at the
+  template-form level; populating them requires selecting a
+  specific Cadenhead's release for cataloguing and verifying
+  the per-release values against the label and auction-archive
+  documentation [2].
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null                        # Cadenhead's labels carry
+                                            # brief producer notes;
+                                            # not transcribed at the
+                                            # template-form level.
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://wmcadenhead.com/
+    accessed: 2026-05-17
+    notes: |
+      Cadenhead's (W.M. Cadenhead Ltd) producer / shop website.
+      Used for Authentic Collection presentation conventions
+      (single cask, cask strength, NCF, natural colour, 500ml
+      bottles) and the general Authentic Collection programme
+      description.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Specific historical Cadenhead's Bunnahabhain releases are
+      documented in auction archives (Whisky Auctioneer, Scotch
+      Whisky Auctions, Whiskybase) and in the secondary-market
+      catalogue literature. For cataloguing a specific release,
+      the auction archive's cask-number / outturn record
+      cross-checked against the original label is the primary
+      reference path.
+    url: null
+    accessed: 2026-05-17
+    notes: |
+      Cited as a source-type rather than a single document because
+      the relevant data is distributed across auction archives.
+      A specific release populated into this entry would cite the
+      specific auction record(s) and label imagery used.
+
+
+# --- Notes about this entry --------------------------------------------------
+# This entry replaced cadenheads-bunnahabhain-stub on 2026-05-17.
+# The original stub-level SCHEMA-GAPS observations (5 items) all
+# resolved or were promoted to bottler v0.2 schema changes during
+# the Signatory pressure-test cycle. The slug change drops the
+# `-stub` suffix; no other entry referenced the old slug.
+#
+# The entry remains template-form (cask-identifier fields null)
+# because populating it with specific release data requires
+# either (a) selecting a specific verifiable Cadenhead's release
+# for cataloguing, with cask number / vintage / outturn / ABV
+# cross-checked against label imagery and auction archives, or
+# (b) accepting fabricated cask-identifier data which would
+# violate the project's sourcing standard. The worked-example
+# form documents the schema-shape exercise honestly without
+# inventing specifics; a specific real release can replace the
+# null values when one is selected.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

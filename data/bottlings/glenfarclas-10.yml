@@ -1,0 +1,133 @@
+# =============================================================================
+# Glenfarclas 10 Year Old (entry-level core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing entry-level core release
+# with stable presentation specifications.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfarclas-10
+name: Glenfarclas 10 Year Old
+production_line: glenfarclas
+produced_at_distillery: glenfarclas
+bottled_by: glenfarclas
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                  # Continuous core release;
+                                    # batch-to-batch updates only.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0                           # Entry-level core presentation;
+                                    # lower end of the Scotch ABV
+                                    # range.
+age_statement: 10
+vintage: null
+cask_strength: false
+non_chill_filtered: false           # 40% ABV core release — chill-
+                                    # filtered per industry-typical
+                                    # practice for this presentation
+                                    # tier (see educational/chill-
+                                    # filtering).
+natural_colour: false               # Caramel colouring (E150a) used
+                                    # per industry-typical practice
+                                    # at this tier.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null                # Predominant cask type per the
+                                    # Glenfarclas house style; specific
+                                    # proportions vary between batches.
+    duration_years: 10
+    cooperage: null
+    notes: |
+      Sherry-cask-matured spirit forms the predominant component
+      of the 10 Year Old. The 10-year maturation sits in
+      cask-extraction phase 2 per educational/cask-maturation-
+      kinetics — deep enough into maturation to develop the
+      sherry-cask character without yet reaching the slow-
+      exchange phase of older expressions.
+
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                # Supplements the sherry-cask base.
+    duration_years: 10
+    cooperage: null
+    notes: |
+      Ex-bourbon barrels supplement the sherry-cask base.
+
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 45.00                     # Approximate UK retail at recent
+                                    # release pricing.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenfarclas's entry-level core release, 10 years matured
+  predominantly in oloroso ex-sherry butts (with ex-bourbon
+  barrels supplementing) and bottled at 40% ABV [1]. The 10 Year
+  Old sits at the entry point of the Glenfarclas family-tree
+  range that runs from 10 through to 40 year age statements at
+  this tier, and is the most-volume of the core releases. Chill-
+  filtered with caramel colouring per industry-typical practice
+  at this ABV tier (see educational/chill-filtering and
+  educational/scotch-presentation-conventions). The direct-fired
+  distillation that defines the Glenfarclas house style is
+  consistently applied across all core-range bottlings; see the
+  distillery entry for the equipment-level treatment.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfarclas.com/
+    accessed: 2026-05-17
+    notes: |
+      Glenfarclas producer website. Used for ABV (40%), age
+      (10 years), and sherry-cask-led programme designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

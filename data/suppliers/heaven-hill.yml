@@ -1,0 +1,309 @@
+# =============================================================================
+# Heaven Hill Distilleries Inc.
+# =============================================================================
+# Schema: supplier.template.yml v0.1 (DRAFT)
+# Entry confidence: medium — company-level identity, ownership
+# trajectory, and the relevance-to-Scotch (ex-bourbon cask supply) are
+# well-grounded against public sources. Specific Scotch-cask supply
+# relationships are not consistently disclosed by either side; this
+# entry documents what is verifiable about the company and notes the
+# disclosure gap.
+# =============================================================================
+# This is the second supplier entry, exercising the v0.1 schema's
+# `type: cooperage_source` enum branch (Bairds Malt was the first
+# entry, type=maltster). The pressure-test purpose: does the v0.1
+# schema accommodate a non-maltster supplier cleanly?
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: heaven-hill
+name: Heaven Hill Distilleries Inc.
+also_known_as:
+  - Heaven Hill
+  - Heaven Hill Brands
+website: https://www.heavenhill.com/
+
+
+# --- Type -------------------------------------------------------------------
+type: cooperage_source                # Second branch of the supplier
+                                      # type enum, exercising the
+                                      # v0.1 schema beyond the
+                                      # maltster default tested by
+                                      # Bairds Malt. Heaven Hill's
+                                      # relevance to Scotch is as a
+                                      # source of single-use ex-bourbon
+                                      # barrels under US federal
+                                      # regulation requiring new
+                                      # charred-oak for straight
+                                      # bourbon (see
+                                      # data/casks/bourbon-barrel.yml
+                                      # and glossary/heaven-hill).
+
+
+# --- Location ---------------------------------------------------------------
+country: United States
+region: Kentucky                      # Bardstown-headquartered;
+                                      # production sites at both
+                                      # Bardstown and Louisville
+                                      # (Bernheim Distillery).
+
+
+# --- Sites ------------------------------------------------------------------
+sites:
+  - id: bardstown-hq
+    name: Heaven Hill headquarters (Bardstown)
+    country: United States
+    locality: Bardstown, Kentucky
+    capabilities: |
+      Corporate headquarters and bottling operations. The
+      original Bardstown distillery was destroyed in a 1996
+      fire that took out approximately 90,000 barrels of
+      maturing bourbon; the site was rebuilt as the bottling
+      and visitor-experience headquarters while distillation
+      moved to the acquired Bernheim Distillery in Louisville.
+
+  - id: bernheim-distillery
+    name: Bernheim Distillery (Louisville)
+    country: United States
+    locality: Louisville, Kentucky
+    capabilities: |
+      Heaven Hill's principal production facility since the
+      1999 acquisition of Bernheim from Diageo. Operates as
+      Heaven Hill's main distillery; produces the company's
+      bourbon and rye whiskies for both Heaven Hill brands
+      and contract-distillation relationships. The ex-bourbon
+      barrel supply for international whisky cooperages
+      originates predominantly from this site's bourbon
+      production.
+
+  - id: cox-creek
+    name: Cox's Creek warehouse complex
+    country: United States
+    locality: Cox's Creek (near Bardstown), Kentucky
+    capabilities: |
+      Principal maturation-warehouse complex; large rickhouse
+      capacity for the company's bourbon ageing inventory.
+      Empty post-bourbon barrels exit this complex (after
+      the bourbon dump-out) into the international cooperage
+      trade.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1935                         # Founded by the Shapira family
+                                      # (Ed, David, Gary, George,
+                                      # and Mose Shapira) in Bardstown,
+                                      # Kentucky, after the repeal of
+                                      # US Prohibition. The Shapira
+                                      # family remains the controlling
+                                      # ownership group.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Heaven Hill Brands         # Privately-held; the Shapira
+                                      # family is the controlling
+                                      # owner group.
+  parent: null                        # No commercial parent — the
+                                      # Shapira family ownership is
+                                      # the top of the structure.
+  history:
+    - owner: Shapira family (Heaven Hill Distilleries Inc.)
+      from: 1935
+      to: null
+      notes: |
+        Founder-family ownership continuous since the 1935
+        founding. The company has remained family-controlled
+        through multiple generations, a relatively rare pattern
+        among large US distilling operations (most peers have
+        passed through corporate-acquisition cycles). The 2024
+        announcement of a partial-equity sale to Bain Capital
+        was reported in trade press but the Shapira family
+        retained controlling interest.
+
+
+# --- Products / Capabilities ------------------------------------------------
+products:
+  - type: kentucky_straight_bourbon
+    description: |
+      Heaven Hill's principal product line. Distilled at the
+      Bernheim site, matured in new charred American-oak
+      barrels per 27 CFR §5.143(c) requirements (see
+      data/casks/bourbon-barrel.yml and
+      glossary/heaven-hill). Heaven Hill operates one of the
+      largest bourbon-maturation inventories in the US.
+
+  - type: kentucky_straight_rye
+    description: |
+      Including the Rittenhouse, Pikesville, and Mellow Corn
+      brands; rye production is a smaller share of the
+      company's output than bourbon but uses the same new
+      charred-oak barrel requirement.
+
+  - type: ex_bourbon_barrels
+    description: |
+      Once-used ex-bourbon barrels released to the
+      international cooperage trade after the bourbon
+      dump-out. Heaven Hill is among the most-named US
+      producers in Scotch industry cooperage-source
+      disclosures (alongside Buffalo Trace, Four Roses, Jim
+      Beam, and Jack Daniel's for Tennessee whiskey) — see
+      data/casks/bourbon-barrel.yml. The barrels are
+      shipped to cooperages for shaving, recoopering, or
+      direct fill into Scotch maturation programmes.
+      Heaven Hill does not operate its own cooperage; the
+      barrels are sourced from independent US cooperages
+      (predominantly Independent Stave Company) before
+      being filled with bourbon, then released after a
+      single bourbon fill.
+
+
+# --- Supplies to ------------------------------------------------------------
+supplies_to: []                       # Heaven Hill-branded ex-bourbon
+                                      # barrels appear in WhiskyBase
+                                      # populated entries for
+                                      # Bruichladdich Octomore 8.1
+                                      # (named cooperage providers
+                                      # included Heaven Hill) and
+                                      # Harris Hearach Batch 1 batches
+                                      # (Heaven Hill barrels disclosed
+                                      # at specific proportions). These
+                                      # are bottling-level disclosures
+                                      # rather than distillery-level
+                                      # exclusive-supplier relationships;
+                                      # `supplies_to` is left empty
+                                      # because supply is per-batch
+                                      # cooperage-market sourcing
+                                      # rather than a structured
+                                      # distillery-supplier contract.
+                                      # See SCHEMA-OBSERVATIONS below.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Heaven Hill Distilleries Inc. is a Bardstown, Kentucky-based
+  family-owned bourbon and rye producer founded in 1935 by the
+  Shapira family after the repeal of US Prohibition. The
+  company operates the Bernheim Distillery in Louisville
+  (acquired from Diageo in 1999, after a fire destroyed the
+  original Bardstown distillery in 1996) and one of the largest
+  bourbon-ageing inventories in the United States. Heaven Hill's
+  relevance to Scotch whisky is structural: US federal regulation
+  (27 CFR §5.143(c)) requires straight bourbon to be matured in
+  new charred American-oak barrels, releasing single-use barrels
+  to the international whisky-cooperage market after dump-out
+  (see data/casks/bourbon-barrel.yml and glossary/heaven-hill).
+  Heaven Hill barrels appear in WhiskyBase populated entries
+  for Bruichladdich Octomore 8.1 (named cooperage disclosure)
+  and Harris Hearach Batch 1 batches at substantial proportions.
+  Beyond Scotch supply, the company's principal brands include
+  Evan Williams, Elijah Craig, Larceny, Old Fitzgerald, Henry
+  McKenna, and Rittenhouse Rye.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  wikidata_qid: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.heavenhill.com/
+    accessed: 2026-05-17
+    notes: |
+      Heaven Hill Brands corporate / consumer-brand website.
+      Used for company founding date (1935), Shapira family
+      ownership lineage, principal product lines, and
+      Bardstown / Bernheim site distinctions.
+
+  - id: 2
+    type: regulatory_text
+    url: https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5
+    accessed: 2026-05-17
+    notes: |
+      US Code of Federal Regulations Title 27 Part 5 (Labeling
+      and Advertising of Distilled Spirits). §5.143(c) defines
+      "straight bourbon" and requires maturation in new charred
+      oak barrels — the regulatory basis for the single-use
+      barrel supply that connects Heaven Hill to Scotch
+      maturation via the ex-bourbon cask trade. Same source
+      cited by data/casks/bourbon-barrel.yml and
+      glossary/heaven-hill.
+
+  - id: 3
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Heaven_Hill
+    accessed: 2026-05-17
+    notes: |
+      Wikipedia entry; volatile source per project policy
+      (docs/source-conflict-policy.md). Used as a cross-check
+      for the 1996 fire date, the 1999 Bernheim acquisition
+      from Diageo, and the broader corporate history.
+      Primary claims rest on sources 1 and 2.
+
+
+# =============================================================================
+# SCHEMA-OBSERVATIONS observed during this entry (v0.1 second pressure-test)
+# =============================================================================
+# 1. **supplies_to: empty list is the right pattern for cooperage sources.**
+#    Unlike Bairds Malt (which has named distillery customers via
+#    direct malt supply contracts), Heaven Hill's relationship to
+#    Scotch is via the secondary cooperage market — the barrels are
+#    sold once for bourbon, dumped, then enter the cooperage trade
+#    without Heaven Hill itself having distillery-supplier relationships
+#    with Scotch producers. The empty `supplies_to:` list with an
+#    explanatory comment is appropriate; the schema doesn't need to
+#    distinguish "no relationships" from "relationships exist but not
+#    disclosed". Acceptable as-is.
+#
+# 2. **`type: cooperage_source` works without v0.1 schema modification.**
+#    The cooperage_source enum value accommodates Heaven Hill cleanly.
+#    All v0.1 fields applicable. No SCHEMA-GAPS surfaced from the type
+#    discriminator side.
+#
+# 3. **Multi-site description fits the existing `sites:` shape.**
+#    Heaven Hill operates 3 main sites (Bardstown HQ, Bernheim
+#    Distillery, Cox's Creek warehouse complex) of which only one
+#    actively produces — but all three have distinct functions
+#    documented in the company's public materials. The `sites:` list
+#    shape from v0.1 accommodates this with no modification needed;
+#    the `capabilities:` free-text field handles per-site functional
+#    differences (HQ / distillation / warehouse) cleanly.
+#
+# 4. **`products:` list shape works for cooperage byproducts.**
+#    The Heaven Hill ex-bourbon barrels are not a primary product
+#    (they're a cooperage byproduct of bourbon production) but the
+#    `products:` list accepts them naturally with a `type:` like
+#    `ex_bourbon_barrels`. The free-text type field is the right call
+#    here — closed-enum type values per supplier-type would have
+#    needed a specialised enum branch for cooperage_source byproducts
+#    that the current schema doesn't require.
+#
+# 5. **Family ownership without parent company.** Heaven Hill's
+#    ownership is "Shapira family via Heaven Hill Brands" with no
+#    commercial parent — `ownership.current` set to the brand entity,
+#    `ownership.parent` null with explanatory comment. The
+#    `ownership.history` list with one entry covering the entire
+#    1935-onward Shapira-family ownership period is the right
+#    representation. The 2024 Bain Capital partial-equity sale could
+#    be added as a sub-entry if/when its details are more fully
+#    sourced; current treatment leaves it noted but not split out.
+#
+# Overall conclusion: v0.1 supplier schema accommodates Heaven Hill
+# cleanly without surfacing any new SCHEMA-GAPS beyond the 6
+# observations already documented in data/suppliers/bairds-malt.yml.
+# **The schema stays at v0.1 with 2 entries populated.** No promotion
+# driven. A third pressure-test (e.g., a yeast supplier like Mauri or
+# Kerry) would further validate; the existing 2-entry coverage
+# (maltster + cooperage_source) already exercises the type-enum
+# branch differentiation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

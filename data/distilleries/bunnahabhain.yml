@@ -1,0 +1,355 @@
+# =============================================================================
+# Bunnahabhain
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership trajectory, and
+# broad production characteristics are well-grounded. Specific
+# equipment dimensions and current annual capacity hedged pending
+# direct verification.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bunnahabhain
+name: Bunnahabhain
+also_known_as: []                     # Gaelic Bunnahabhain ("mouth of
+                                      # the river"); occasionally
+                                      # transliterated "Bunnahabhainn"
+                                      # in older sources.
+wikidata_qid: null
+website: https://bunnahabhain.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islay                         # Formal SWA region (Scotch
+                                      # Whisky Regulations 2009, Schedule
+                                      # 1, Islay protected locality);
+                                      # see educational/swa-regional-
+                                      # designations.
+sub_region: null
+locality: Port Askaig, Islay         # North-east coast of Islay,
+                                      # geographically separated from
+                                      # the south-coast cluster
+                                      # (Lagavulin, Laphroaig, Ardbeg)
+                                      # that defines the heavy-peating
+                                      # Islay style.
+coordinates:
+  lat: 55.882
+  lon: -6.121                         # Approximate; on Islay's
+                                      # north-east coast facing the
+                                      # Sound of Islay.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1881                         # Built specifically as a malt
+                                      # distillery for the Greenlees
+                                      # brothers' Claymore blend, with
+                                      # William Robertson of Robertson
+                                      # & Baxter as co-founder [1][2].
+first_spirit: null
+mothballed_periods:
+  - from: 1982
+    to: 1984
+    note: |
+      Production paused during the early-1980s industry-wide
+      downturn following over-supply; resumed under continued
+      Highland Distilleries ownership [2].
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Distell International Ltd
+  parent: Heineken N.V.                # Distell acquired by Heineken
+                                       # in 2023, completing a transition
+                                       # from South African-listed
+                                       # Distell Group to Heineken
+                                       # subsidiary status.
+  history:
+    - owner: William Robertson and the Greenlees brothers
+      from: 1881
+      to: 1887
+      notes: |
+        Founding owners. The site was built specifically to supply
+        single malt for the Greenlees brothers' Claymore blend, in
+        a remote north-east Islay location chosen for access to
+        peat-free water and shipping by the Sound of Islay.
+    - owner: Highland Distilleries Co. Ltd
+      from: 1887
+      to: 1999
+      notes: |
+        Bunnahabhain became part of the Highland Distilleries
+        amalgamation in 1887, then operated under continuous
+        Highland Distilleries ownership through the 20th century
+        (including the 1982-84 mothballing period) until
+        Edrington's acquisition of Highland Distilleries [2].
+    - owner: Edrington (via Highland Distillers Group)
+      from: 1999
+      to: 2003
+      notes: |
+        Edrington acquired Highland Distilleries Co. in 1999;
+        Bunnahabhain transferred as part of the deal but was sold
+        on shortly afterwards along with Tobermory and Deanston
+        as Edrington focused on its core Macallan / Highland Park
+        / Famous Grouse portfolio.
+    - owner: Burn Stewart Distillers
+      from: 2003
+      to: 2013
+      notes: |
+        Burn Stewart Distillers acquired Bunnahabhain (plus
+        Tobermory and Deanston) from Edrington in 2003.
+    - owner: Distell Group
+      from: 2013
+      to: 2023
+      notes: |
+        Distell Group (South Africa-listed) acquired Burn Stewart
+        Distillers in 2013. During Distell ownership, Bunnahabhain
+        transitioned its core range to non-chill-filtered natural
+        colour presentation (announced 2010 before the Distell
+        sale, fully effected during the Distell years).
+    - owner: Distell International Ltd (Heineken subsidiary)
+      from: 2023
+      to: null
+      notes: |
+        Heineken completed acquisition of Distell in 2023;
+        Bunnahabhain remains operated under the Distell
+        International name as a Heineken subsidiary.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Margadale River          # Water from Loch Staoinsha
+                                       # flowing via the Margadale
+                                       # River to the distillery site;
+                                       # the water is peat-free, in
+                                       # contrast to the peaty water
+                                       # sources at the south-Islay
+                                       # distilleries — one of the
+                                       # factors underlying
+                                       # Bunnahabhain's lightly-peated
+                                       # house style [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: full_lauter                    # Modern lauter tun; specific
+                                       # installation year not currently
+                                       # sourced against primary
+                                       # records.
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: 6
+  material: oregon_pine
+  capacity_litres: null
+
+stills:
+  wash_still:
+    count: 2
+    capacity_litres: null              # Bunnahabhain stills are large
+                                       # by Scotch malt-distillery
+                                       # standards; specific capacity
+                                       # figures vary across trade-
+                                       # reference sources and are
+                                       # hedged here.
+    charge_litres: null
+    shape: onion                       # Onion-style stills with broad
+                                       # bases tapering to relatively
+                                       # short necks; contributes to
+                                       # the spirit's heavier-bodied
+                                       # character compared with the
+                                       # taller-still distilleries.
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 2
+    capacity_litres: null
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+warehouses:
+  - id: islay-coastal
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      Coastal Islay warehousing on the Sound of Islay.
+      Maritime exposure typical of Islay producers; see
+      educational/cask-maturation-kinetics for the general
+      maritime-warehouse climate context.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: null              # Current annual capacity figures
+                                       # vary across trade-reference
+                                       # sources; verify against most
+                                       # recent Malt Whisky Yearbook
+                                       # edition [3].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 2010
+    change: |
+      Core range transitioned to non-chill-filtered natural-colour
+      presentation. Announced by then-owner Burn Stewart Distillers
+      as a transparency-positioning move covering Bunnahabhain
+      (plus the sister distillery Tobermory and the
+      Deanston Highland malt). The change is a presentation /
+      bottling-side decision rather than an equipment change;
+      recorded here because it materially repositioned the
+      distillery's market presentation across the post-2010
+      releases [1].
+    notes: null
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - bunnahabhain-traditional           # Default lightly-peated /
+                                       # essentially-unpeated line
+                                       # producing the standard
+                                       # Bunnahabhain core releases.
+  - bunnahabhain-toiteach              # Peated sub-line at ~35-40 ppm
+                                       # spec, run periodically using
+                                       # the same equipment with a
+                                       # peated commercial malt.
+                                       # Bottled separately as the
+                                       # Toiteach / Moine core
+                                       # releases.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []              # Bunnahabhain was originally
+                                       # built specifically to supply
+                                       # the Greenlees brothers' Claymore
+                                       # blend; throughout its
+                                       # Highland Distilleries period
+                                       # it remained predominantly a
+                                       # blend-supply distillery (Cutty
+                                       # Sark, Famous Grouse). Under
+                                       # Burn Stewart and Distell
+                                       # ownership the share bottled as
+                                       # single malt has increased
+                                       # substantially. Blends not
+                                       # modelled as project entity
+                                       # type — empty list per
+                                       # convention used elsewhere.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []               # Lightly-peated Islay producer;
+                                       # no equipment-level distinctive
+                                       # features cross-referenced
+                                       # against the current concept
+                                       # set (Bunnahabhain uses
+                                       # shell-and-tube condensers and
+                                       # full-lauter mash, both already
+                                       # the modern industry default).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Bunnahabhain is a malt whisky distillery on the north-east coast
+  of Islay, founded in 1881 by William Robertson and the Greenlees
+  brothers to supply single malt for the Claymore blend [1][2].
+  The site sits within the formal Islay protected locality under
+  the Scotch Whisky Regulations 2009 (see
+  educational/swa-regional-designations) but is geographically
+  and stylistically separate from the south-coast Islay cluster
+  (Lagavulin, Laphroaig, Ardbeg, Bowmore): the distillery's water
+  source is peat-free, and the default production-line spirit is
+  lightly peated (around 1-2 ppm) rather than the 25-50 ppm range
+  of the south-Islay producers. A separate peated sub-line
+  (variously labelled Toiteach or Moine across release windows)
+  produces a heavier-peated spirit (around 35-40 ppm spec).
+  Ownership has trajectoried through Highland Distilleries (1887-
+  1999), Edrington (1999-2003), Burn Stewart Distillers
+  (2003-2013), and Distell Group (2013-onwards, becoming a
+  Heineken subsidiary in 2023) [2][3]. The core range was
+  re-presented in 2010 as non-chill-filtered natural colour at
+  46.3% ABV, a transparency-positioning move from the
+  Burn Stewart era that persisted under Distell ownership.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://bunnahabhain.com/
+    accessed: 2026-05-17
+    notes: |
+      Bunnahabhain's producer website. Used for site identity,
+      Islay north-east-coast location, founding date (1881),
+      water-source description (Margadale River, peat-free),
+      the lightly-peated default profile, and the 2010 NCF
+      natural-colour transition.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Bunnahabhain entry covers ownership
+      history (Highland Distilleries → Edrington → Burn Stewart
+      → Distell), production figures, and equipment configuration.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check. Specific annual capacity and
+      equipment-dimension figures should be verified against the
+      most recent edition.
+
+  - id: 3
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Bunnahabhain_distillery
+    accessed: 2026-05-17
+    notes: |
+      Wikipedia entry; volatile source per project policy
+      (docs/source-conflict-policy.md). Used as a secondary
+      cross-check on ownership-history dates and the broader
+      industrial context. Primary claims rest on sources 1 and
+      2.
+
+
+# --- SCHEMA-OBSERVATIONS observed during this entry -------------------------
+# 1. **Peated sub-line modelling — RESOLVED 2026-05-17.**
+#    Bunnahabhain produces both a default lightly-peated spirit
+#    (Bunnahabhain Traditional) and a separate heavily-peated
+#    sub-line (Toiteach / Moine across different release windows).
+#    The Toiteach production is now modelled as a separate
+#    `bunnahabhain-toiteach` production_line (added 2026-05-17),
+#    matching the Springbank multi-line pattern. The choice for a
+#    separate line rather than a `peating_variant:` attribute on
+#    the default line reflects (a) the substantially different
+#    malt input (peated commercial malt vs the default
+#    lightly-peated supply), (b) the separate scheduled production
+#    runs, and (c) the separately branded bottling (Toiteach core
+#    is sold as a distinct product, not as a peated variant of
+#    Bunnahabhain 12).
+#
+# 2. **Ownership-history continuity.** Bunnahabhain's ownership
+#    transitioned across 5 distinct corporate entities since
+#    founding, including the Heineken acquisition of Distell in
+#    2023. The distillery template's `ownership.history` list
+#    handles this cleanly with one entry per ownership period.
+#    No schema gap.
+#
+# 3. **Margadale River / Loch Staoinsha water-source naming.**
+#    The water-source field accepts a single string; the actual
+#    source is documented variably as "Margadale River" (the
+#    river) or "Loch Staoinsha" (the loch feeding the river).
+#    Single string acceptable; this is producer-style naming
+#    variance, not a schema issue.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

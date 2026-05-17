@@ -1,0 +1,138 @@
+# =============================================================================
+# Glenfarclas 25 Year Old (luxury core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing luxury core release with
+# stable presentation specifications.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfarclas-25
+name: Glenfarclas 25 Year Old
+production_line: glenfarclas
+produced_at_distillery: glenfarclas
+bottled_by: glenfarclas
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0                           # 43% ABV places the 25 Year Old
+                                    # at the traditional Scotch
+                                    # premium-flagship strength; the
+                                    # release is chill-filtered at
+                                    # this ABV per the producer's
+                                    # luxury-core presentation.
+age_statement: 25
+vintage: null
+cask_strength: false
+non_chill_filtered: false           # 43% ABV release — chill-
+                                    # filtered per industry-typical
+                                    # practice below the 46% NCF
+                                    # threshold (see educational/
+                                    # chill-filtering). Contrasts
+                                    # with the 15 Year Old's
+                                    # 46% NCF natural-colour
+                                    # presentation.
+natural_colour: false               # Caramel colouring used per
+                                    # industry-typical practice at
+                                    # this tier.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null                # Predominant cask type. The 25
+                                    # Year Old's extended maturation
+                                    # in ex-sherry casks places it
+                                    # in the slow-exchange phase per
+                                    # educational/cask-maturation-
+                                    # kinetics.
+    duration_years: 25
+    cooperage: null
+    notes: |
+      Long-aged sherry-cask maturation. The 25-year duration
+      reaches the slow-exchange phase of cask kinetics (year
+      ~8 onward per the educational/cask-maturation-kinetics
+      framework), with continued slow extraction of deeper-
+      layer compounds and progressive oxidative development
+      cumulating across the long maturation.
+
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 280.00                    # Approximate UK retail at recent
+                                    # release pricing; luxury-tier
+                                    # pricing reflecting both the
+                                    # 25-year age and the angel's
+                                    # share losses across that
+                                    # maturation.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenfarclas's luxury core release at the 25-year age tier,
+  matured predominantly in oloroso ex-sherry butts and bottled
+  at 43% ABV [1]. The 25 Year Old reaches the slow-exchange
+  phase of cask maturation kinetics (see educational/cask-
+  maturation-kinetics §3), with extended sherry-cask character
+  development and cumulative oxidative changes characterising
+  the spirit. Chill-filtered with caramel colouring at the
+  43% ABV presentation per industry-typical practice for the
+  luxury-core tier — contrasting with the Glenfarclas 15 Year
+  Old's higher-ABV NCF natural-colour presentation. The
+  Glenfarclas family-tree range continues beyond the 25 Year
+  Old with 30 and 40 Year Old expressions at higher price
+  tiers and longer maturation depths.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfarclas.com/
+    accessed: 2026-05-17
+    notes: |
+      Glenfarclas producer website. Used for ABV (43%), age
+      (25 years), and sherry-cask-led programme designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

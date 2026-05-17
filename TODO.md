@@ -47,23 +47,24 @@ relevant section.
     `sherry_history: transport | seasoned | mixed` field if/when a
     bottling materially turns on this distinction.
 - **Supplier schema** (`schema/supplier.template.yml`,
-  `schema/json/supplier.schema.json`) is v0.1 DRAFT with 0 entries.
-  Schema is registered in the resolver (`/data/suppliers/`
-  directory exists; resolver indexes supplier slugs) but no entries
-  are populated. The schema parallels the bottler entity type for
-  upstream commercial entities (maltster | cooperage_source |
-  yeast_supplier | barley_breeder | other), with fields for sites,
-  ownership, products, supplies_to. Promotion criteria:
-  - First entry: a real pressure-test. Bairds Malt Ltd is the
-    natural first candidate (5+ refs from current production_line
-    entries) once a Bairds-specific source — beyond the producer
-    website — is identified.
+  `schema/json/supplier.schema.json`) is v0.1 with 1 entry
+  populated (Bairds Malt Ltd, 2026-05-17). The pressure-test
+  conclusion: v0.1 schema is adequate for current data; no v0.2
+  promotion driven. SCHEMA-GAPS block in
+  `data/suppliers/bairds-malt.yml` documents 6 observations for a
+  possible future v0.2 promotion (per-product produced_at_sites
+  field; OPTIONAL per-supplier-type product enums; relationship
+  metadata on supplies_to; site-level external_ids). Follow-ups:
+  - Second / third pressure-test entries (a yeast supplier or
+    cooperage source) will provide further data on whether the
+    SCHEMA-GAPS observations materially affect new entries or
+    can stay deferred indefinitely.
   - When 3+ entries are populated, evaluate whether
     production_line entries should add a structured `maltster:`
     field referencing supplier slugs, replacing the current
     free-text `malt.maltster` field. This would be the v0.2
-    promotion (data-driven, like the bottler v0.1 → v0.2
-    transition).
+    promotion candidate (data-driven, like the bottler v0.1 →
+    v0.2 transition).
   - When a bottling entry materially turns on supplier identity
     (e.g., a "100% Heaven Hill cooperage" release), add a
     structured `cooperage_source:` field on the bottling entry
@@ -603,6 +604,139 @@ fermentation engineering) that should be sourced for the planned
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-17** Eighth distillery (Glenfarclas) populated.
+  First populated distillery in the formal SWA Speyside region —
+  Glenmorangie is geographically northern Highland, not Speyside,
+  so the project's region coverage now includes Speyside as well
+  as Highlands / Islay / Islands / Campbeltown. First populated
+  distillery exercising the schema's `heating: direct_fire`
+  enum value (all prior populated distilleries use
+  `indirect_steam`); the JSON Schema validator confirmed the
+  enum value works. Family-owned by J. & G. Grant in unbroken
+  succession since 1865 — unusual at industry scale where most
+  Scotch distilleries have passed through corporate-acquisition
+  cycles. Six direct-fired pot stills (3 wash + 3 spirit), the
+  largest pot stills in Speyside. Single production line
+  (`glenfarclas`, unpeated, sherry-cask-led). Three bottlings:
+  Glenfarclas 10 (40% chill-filtered entry-level core),
+  Glenfarclas 15 (46% NCF natural-colour premium core — unusual
+  in combining a 15-year age statement with the higher-ABV NCF
+  natural-colour pattern that other producers adopted only in
+  the 2010s), Glenfarclas 25 (43% chill-filtered luxury core).
+  All three cross-reference `educational/cask-maturation-kinetics`
+  for the maturation-phase framework (10 in phase 2, 25 in
+  the slow-exchange phase). Critical-eval fix: removed
+  self-referential project-state claim from the distillery
+  description prose ("the first formally-Speyside distillery in
+  WhiskyBase's populated data set" was a category error — the
+  data-set membership isn't a fact about the distillery).
+  Counts: 111 → 115 files, 7 → 8 distilleries, 12 → 13
+  production lines, 26 → 29 bottlings, 437 → 457 resolved refs,
+  21 dangling refs (no change), 0 findings.
+- **2026-05-17** Three sequential deliverables: Bunnahabhain
+  Toiteach + first non-stub IB pressure-test + second supplier
+  pressure-test. (a) Bunnahabhain Toiteach peated sub-line added
+  (`bunnahabhain-toiteach` production_line at 35-40 ppm spec
+  range + `bunnahabhain-toiteach` core bottling at 46.3% NCF
+  natural colour). The Bunnahabhain distillery entry's
+  production_lines list updated to include both lines;
+  SCHEMA-OBSERVATIONS Toiteach note marked RESOLVED. Tests
+  multi-line modelling on Bunnahabhain at smaller scale than
+  Springbank's three lines. (b) IB pressure-test
+  `cadenheads-bunnahabhain-stub` replaced with
+  `cadenheads-bunnahabhain` (worked-example real release form):
+  slug renamed, confidence promoted stub → medium, presentation
+  conventions populated with Cadenhead's house defaults (single
+  cask, cask strength, NCF, natural colour, 500ml bottle).
+  Cask-identifier fields (cask number, vintage, outturn, exact
+  ABV) remain null with explicit "template-form pending
+  specific-release verification" notes — honest stance vs
+  fabricating cask-identifier data. Old stub file overwritten
+  with placeholder empty YAML (resolver ignores; user needs to
+  `del` the file from Windows shell to fully clean up).
+  (c) Second supplier entry: Heaven Hill (data/suppliers/
+  heaven-hill.yml) at `type: cooperage_source`, the second
+  branch of the supplier type enum. Three sites (Bardstown HQ,
+  Bernheim Distillery, Cox's Creek warehouses), three product
+  types, Shapira-family ownership lineage since 1935.
+  SCHEMA-OBSERVATIONS block confirms v0.1 schema is adequate
+  for the non-maltster supplier-type case; no v0.2 promotion
+  driven. **Supplier schema now has 2 entries covering 2 of 5
+  enum branches (maltster + cooperage_source).** Counts: 107 →
+  111 files, 11 → 12 production lines, 25 → 26 bottlings,
+  1 → 2 suppliers, 428 → 437 resolved refs, 21 → 21 dangling
+  refs (no new dangling), 0 findings.
+- **2026-05-17** Seventh distillery (Bunnahabhain) populated.
+  North-east Islay (geographically and stylistically separate from
+  the south-coast peated cluster), founded 1881 to supply the
+  Greenlees brothers' Claymore blend. Five-stage ownership history
+  (Highland Distilleries → Edrington → Burn Stewart → Distell →
+  Heineken/Distell) populated cleanly via `ownership.history`.
+  Lightly-peated default production at ~1-2 ppm spec — exercises
+  the low end of the peating spectrum (contrast to Lagavulin's
+  ~35 ppm and Octomore's 167-258 ppm). Peat-free water source
+  from the Margadale River. Onion-shape stills, shell-and-tube
+  condensers. Single production line populated
+  (`bunnahabhain-traditional`); the separate Toiteach/Moine
+  peated sub-line is documented in SCHEMA-OBSERVATIONS but
+  deferred from this round. One flagship bottling populated:
+  Bunnahabhain 12 Year Old (46.3% ABV, NCF natural colour since
+  2010) — exercises the "craft transparency" presentation cluster
+  from `educational/scotch-presentation-conventions` at a
+  high-volume core release point (one of the early industry
+  transitions from 40% chill-filtered E150a to 46.3% NCF natural
+  colour for a core release). **Resolves 2 dangling forward refs**
+  (cadenheads-bunnahabhain-stub → bunnahabhain and
+  bunnahabhain-traditional). Counts: 104 → 107 files, 6 → 7
+  distilleries, 10 → 11 production lines, 24 → 25 bottlings,
+  416 → 428 resolved refs, 23 → 21 dangling refs, 0 findings.
+- **2026-05-17** Sixth distillery (Highland Park) populated.
+  Orkney, founded 1798, Edrington-owned (since 1999 via the
+  Highland Distillers acquisition). Single production line
+  (`highland-park`) with partial on-site floor-malting (~20% per
+  producer disclosure) using local Hobbister Moor peat;
+  exercises `practice/floor-malting` cross-reference. Region
+  recorded as `Islands` per trade convention with explicit note
+  in the entry that the formal SWA region (Scotch Whisky
+  Regulations 2009) is Highland — pressure-tests the
+  `educational/swa-regional-designations` formal-vs-informal
+  framing. Sherry-cask-heavy maturation programme (oloroso
+  ex-sherry butts predominantly + ex-bourbon supplement); cross-
+  references `educational/cask-maturation-kinetics` for the
+  phase-2 extraction framework in the Highland Park 18 entry.
+  Three bottlings populated: Highland Park 12 (40% ABV chill-
+  filtered, modern "Viking Honour" rebrand of the long-standing
+  flagship), Highland Park 18 (43% ABV chill-filtered, "Viking
+  Pride" rebrand), Highland Park Cask Strength (annual recurring
+  series, NCF natural-colour at 60-65% ABV — exercises the
+  cask-strength / NCF / natural-colour cluster from
+  `educational/scotch-presentation-conventions`). Critical-eval
+  fixes: removed `famous-grouse` slug from `also_used_by_blenders`
+  (blends not modelled as project entity type; empty list with
+  comment matches project convention used in lagavulin /
+  glenmorangie / bruichladdich / springbank); generalised two
+  producer-URL paths to homepage to avoid URL-hallucination risk.
+  Counts: 99 → 104 files, 5 → 6 distilleries, 9 → 10 production
+  lines, 21 → 24 bottlings, 394 → 416 resolved refs, 0 findings.
+- **2026-05-17** Supplier schema v0.1 pressure-test. First supplier
+  entry — `data/suppliers/bairds-malt.yml` — written against the
+  v0.1 DRAFT schema, mirroring the bottler v0.1 → v0.2 pattern
+  (Cadenhead's then Signatory). Multi-site coverage (Inverness,
+  Pencaitland, Witham) tests the `sites:` list shape; HPLC phenol
+  measurement capability tests the per-site `capabilities:` field;
+  `products:` list covers peated + unpeated malt; `supplies_to:`
+  resolves to harris and bruichladdich slugs (resolver count 392
+  → 394). SCHEMA-GAPS block at the end of the entry documents
+  6 observations for a possible future v0.2 promotion (per-product
+  produced_at_sites field; OPTIONAL per-supplier-type product
+  enums; relationship metadata on supplies_to; site-level
+  external_ids). **Conclusion: v0.1 is adequate for current data;
+  no promotion needed.** Schema stays at v0.1 with Bairds as its
+  first populated entry. Next pressure-test (yeast supplier or
+  cooperage source) will provide further data. Critical-eval fix
+  applied: source-type mismatch on the internal cross-reference
+  source (trade_publication → other). Project counts: 99 files
+  scanned, 1 supplier, 394 resolved refs, 0 validator findings.
 - **2026-05-16** Filtering deep dive + presentation conventions
   + appellation migrations + supplier schema. Three substantial
   deliverables in one pass. (a) `educational/chill-filtering` and

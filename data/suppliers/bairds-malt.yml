@@ -1,0 +1,263 @@
+# =============================================================================
+# Bairds Malt Ltd
+# =============================================================================
+# Schema: supplier.template.yml v0.1 (DRAFT)
+# Entry confidence: medium — company-level identity and site list are
+# well-grounded against the producer's own website and the project's
+# existing methodology/harris-published-ppm entry. Specific founding
+# year and detailed ownership history hedged pending primary-source
+# verification.
+# =============================================================================
+# This is the first supplier entry, written against the v0.1 DRAFT
+# schema as a pressure-test mirroring the bottler v0.1 → v0.2 pattern
+# (Cadenhead's then Signatory). The SCHEMA-GAPS block at the end of
+# this entry documents observations for a possible v0.2 promotion.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bairds-malt
+name: Bairds Malt Ltd
+also_known_as:
+  - Bairds
+  - Bairds of Inverness
+website: https://www.bairds-malt.co.uk/
+
+
+# --- Type -------------------------------------------------------------------
+type: maltster
+
+
+# --- Location ---------------------------------------------------------------
+country: United Kingdom              # Operates across Scotland and
+                                     # England; Inverness is the
+                                     # most-referenced site for Scotch
+                                     # supply.
+region: null                         # Multi-region operator; the
+                                     # `sites:` list below provides
+                                     # the regional breakdown.
+
+
+# --- Sites ------------------------------------------------------------------
+sites:
+  - id: inverness
+    name: Bairds of Inverness
+    country: Scotland
+    locality: Inverness
+    capabilities: |
+      Drum malting, peated and unpeated capability, HPLC-based
+      phenol measurement for the peated specification range used
+      by Scotch distillery customers. The Inverness site is the
+      most-referenced Bairds plant in WhiskyBase populated data:
+      named maltster for Harris Distillery's Hearach core line
+      and for several Bruichladdich peated releases (Islay Barley
+      vintages, Octomore 8.3) [1][2].
+
+  - id: pencaitland
+    name: Bairds Pencaitland
+    country: Scotland
+    locality: Pencaitland, East Lothian
+    capabilities: |
+      Malting site in the Scottish Lowlands; serves Scotch and
+      English whisky operations. Specific customer relationships
+      are not consistently disclosed [1].
+
+  - id: witham
+    name: Bairds Witham
+    country: England
+    locality: Witham, Essex
+    capabilities: |
+      English malting site; supplies English distillers and
+      brewing operations. Less commonly cited in Scotch-specific
+      sourcing disclosures because of distance from Scottish
+      distillery sites [1].
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: null                        # Bairds malting has a long history
+                                     # (the family malting business dates
+                                     # to the 19th century, but the modern
+                                     # corporate form has shifted across
+                                     # parent groups). A precise founding
+                                     # year for the current corporate
+                                     # entity is not currently sourced
+                                     # in this entry — see SCHEMA-GAPS.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Bairds Malt Ltd            # Operating-company name; the
+                                      # company has historically been
+                                      # part of larger malting / food-
+                                      # ingredient groups.
+  parent: null                        # Specific parent group / holding-
+                                      # company structure varies over
+                                      # time; not currently sourced
+                                      # against primary records.
+  history: []                         # Ownership-history reconstruction
+                                      # requires Companies House filings
+                                      # or sector-history sources;
+                                      # deferred.
+
+
+# --- Products / Capabilities ------------------------------------------------
+products:
+  - type: unpeated_malt
+    description: |
+      Standard unpeated malted barley to customer-specified
+      varieties (Concerto, Optic, and others) and standard
+      brewing / distilling specifications.
+
+  - type: peated_malt
+    description: |
+      Peated malted barley at customer-specified phenol levels,
+      measured by HPLC. Spec ppm range covers the Scotch malt
+      industry's peated-style needs from lightly peated
+      (~5-20 ppm) through heavily peated (~50-80 ppm) and the
+      extreme-peating segment (~100-260 ppm for the Octomore
+      sub-series). Methodology cross-reference:
+      `methodology/harris-published-ppm` documents the HPLC
+      standard-seven-phenols approach as used at the Inverness
+      site [2].
+
+
+# --- Supplies to ------------------------------------------------------------
+supplies_to:
+  - harris                            # Harris Distillery (Hearach core
+                                      # line) — confirmed via the
+                                      # production_line.malt.maltster
+                                      # field on harris-the-hearach.
+  - bruichladdich                     # Bruichladdich Distillery — for
+                                      # Islay Barley series and Octomore
+                                      # 8.3 batch (confirmed via
+                                      # production_line maltster fields
+                                      # and bottling notes [3]).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Bairds Malt Ltd is a UK commercial maltster operating from sites
+  at Inverness (Scotland), Pencaitland (East Lothian, Scotland),
+  and Witham (Essex, England). The Inverness site supplies peated
+  and unpeated malt to Scotch malt distilleries including Harris
+  and Bruichladdich; Bairds operates HPLC-based phenol measurement
+  for the peated specifications and reports spec-stage ppm values
+  to customer distilleries [1][2]. The company is one of the
+  principal commercial maltsters serving the Scotch industry
+  alongside Crisp Malt, Simpsons Malt, Muntons, and Boortmalt (see
+  `practice/external-malting`).
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  wikidata_qid: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bairds-malt.co.uk/
+    accessed: 2026-05-17
+    notes: |
+      Bairds Malt company website. Used for site listing
+      (Inverness, Pencaitland, Witham), product / specification
+      capabilities including HPLC phenol measurement, and
+      general company information. Producer-direct source.
+
+  - id: 2
+    type: other
+    citation: |
+      Internal cross-reference to the project's
+      methodology/harris-published-ppm concept page, which
+      records the Bairds-Inverness HPLC methodology as the
+      grounding for Harris's peating-spec disclosures. The
+      methodology page in turn cites the Harris distillery
+      production_line entry's source set.
+    url: null
+    accessed: 2026-05-17
+    notes: |
+      The HPLC methodology claim is structurally cross-referenced
+      to project-internal pages rather than directly sourced to a
+      Bairds technical publication. Specific Bairds-side
+      documentation (technical datasheet, customer-facing
+      specification document) would replace this cross-reference
+      if accessed.
+
+  - id: 3
+    type: trade_publication
+    url: https://scotchwhisky.com/magazine/latest-news/15546/octomore-08-3-is-world-s-peatiest-scotch/
+    accessed: 2026-05-17
+    notes: |
+      Scotch Whisky magazine reporting on the Octomore 8.3
+      release, which discloses Bairds of Inverness as the
+      maltster. Cited from the project's bruichladdich-octomore-8-3
+      bottling entry source set.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []
+
+
+# =============================================================================
+# SCHEMA-GAPS observed during this pressure-test
+# =============================================================================
+# Notes for a possible v0.1 → v0.2 promotion. Mirrors the Cadenhead's
+# pressure-test pattern that drove bottler v0.1 → v0.2.
+#
+# 1. **Products list shape works adequately.** The free-text `products:`
+#    list with `type:` + `description:` accommodates Bairds's two
+#    principal output classes (peated and unpeated malt) cleanly.
+#    The `type:` field is left freeform (not enum-restricted) on the
+#    v0.1 design; this is the right call for now because product
+#    categorisation differs across supplier types (a yeast supplier's
+#    products wouldn't fit a maltster's enum). When 3-4 supplier
+#    entries are populated, consider adding an OPTIONAL per-type
+#    enum that activates based on the supplier's `type` field.
+#
+# 2. **Capabilities at site level vs product level.** Currently the
+#    HPLC phenol measurement capability is recorded both in
+#    `sites[0].capabilities` (free text) and via the `products[]`
+#    entry for peated malt. This duplication is unavoidable while
+#    the products list is supplier-level rather than site-level.
+#    The schema could add an OPTIONAL `produced_at_sites:` field on
+#    each product entry, listing the site IDs where that product is
+#    produced. Defer until a multi-site supplier with site-specific
+#    products forces the pattern.
+#
+# 3. **Founding year hedge.** Bairds Malt's founding year is not
+#    currently sourced. The v0.1 schema accepts `founded: null`
+#    cleanly, so the schema isn't blocking — but the gap reflects
+#    a general need for company-history primary sources (Companies
+#    House filings, sector histories like Moss & Hume 1981).
+#
+# 4. **Site-specific external_ids.** The current schema has
+#    `external_ids:` at the supplier level only. Multi-site
+#    suppliers may have per-site identifiers (Companies House
+#    plant registrations, environmental-permit numbers). Defer
+#    until a real entry requires this.
+#
+# 5. **No `notes` field at top level.** The bottler and distillery
+#    schemas don't have top-level `notes:` either; consistency
+#    preserved. SCHEMA-GAPS / SCHEMA-OBSERVATIONS comment blocks
+#    (as used here) handle the same role.
+#
+# 6. **`supplies_to:` list captures distillery slugs without
+#    relationship metadata.** Bairds supplies Harris on what
+#    appears to be a primary / exclusive basis for the Hearach
+#    core line, but Bruichladdich on a partial / vintage-batch
+#    basis. The schema cannot currently distinguish these supply
+#    relationship types. If a future entry requires this, the
+#    `supplies_to:` shape could change from a list of slugs to a
+#    list of objects: `{distillery: <slug>, relationship_type:
+#    primary|batch|trial, notes: ...}`. Defer until concrete need.
+#
+# Overall: v0.1 schema accommodates Bairds adequately. None of the
+# observed gaps require a v0.2 promotion at this point. The schema
+# stays at v0.1 with Bairds Malt as its first populated entry; the
+# next pressure-test (a yeast supplier or a cooperage source entry)
+# will provide further data for a possible promotion.

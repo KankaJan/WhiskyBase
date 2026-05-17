@@ -1,0 +1,160 @@
+# =============================================================================
+# Glenfarclas production line
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity and house-style
+# characterisation are well-grounded; specific fermentation duration,
+# spirit-cut points, and yeast strain not currently sourced against
+# primary disclosure.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfarclas
+name: Glenfarclas
+distillery: glenfarclas
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1836                  # Concurrent with distillery
+                                      # founding. The site has run a
+                                      # single production recipe
+                                      # throughout its history; no
+                                      # peated, triple-distilled, or
+                                      # alternative-malt variants
+                                      # have been introduced.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: null                      # Commercial malt supplier(s)
+                                      # not consistently disclosed.
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                    # Glenfarclas spirit is unpeated;
+                                      # no spec-stage peating
+                                      # measurement applicable.
+  peat_origin: none                   # Positive declaration of
+                                      # unpeated production (see
+                                      # production_line.template.yml
+                                      # v0.2.1 peat_origin enum which
+                                      # includes 'none' for this
+                                      # case).
+  notes: |
+    Glenfarclas is an unpeated Speyside single malt; the house
+    character derives from the direct-fired distillation and the
+    sherry-cask-led maturation programme, not from peating.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                      # Conventional double
+                                      # distillation.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Specific cut points not disclosed in current sourcing.
+      The direct-fired distillation is the defining feature
+      of the line; see the distillery entry's `stills:` block
+      for the equipment-level treatment.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - oloroso-sherry-butt               # Predominant cask type for the
+                                      # core range. Glenfarclas's
+                                      # sherry-cask focus is among
+                                      # the most consistent in the
+                                      # Scotch industry — the
+                                      # distillery has emphasised
+                                      # sherry-cask maturation
+                                      # continuously through the
+                                      # 20th century even as many
+                                      # Speyside peers moved toward
+                                      # ex-bourbon-led programmes.
+  - bourbon-barrel                    # Ex-bourbon barrels supplement
+                                      # the sherry-cask base in some
+                                      # of the younger expressions
+                                      # and limited releases.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - glenfarclas-10
+  - glenfarclas-15
+  - glenfarclas-25
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Glenfarclas production line is the single recipe run at
+  the namesake Speyside distillery: an unpeated single malt with
+  a sherry-cask-led house style, distilled in six direct-fired
+  pot stills (three wash + three spirit) [1][2]. The direct-
+  fired distillation is the line's defining process feature —
+  gas heating applied directly under the still copper rather
+  than the modern indirect-steam standard — contributing to a
+  heavier-bodied, more sulphury new make than the indirect-
+  steam-heated Speyside norm. The cask programme predominantly
+  uses oloroso ex-sherry butts (with ex-bourbon barrels
+  supplementing in younger and limited releases), producing
+  the characteristic dark-fruit / dried-fruit / nutty profile
+  the line is known for. The family-tree core range spans 10 to
+  40 year age statements, with the separate Family Casks vintage-
+  specific cask-strength programme covering distillation years
+  back to the 1950s.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfarclas.com/
+    accessed: 2026-05-17
+    notes: |
+      Glenfarclas producer website. Used for production-line
+      identity (single recipe, unpeated, sherry-cask-led),
+      direct-fired distillation, and the core-range structure.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Glenfarclas entry — production line
+      detail cross-reference.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

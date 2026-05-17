@@ -1,0 +1,140 @@
+# =============================================================================
+# Glenfarclas 15 Year Old (premium core, most-cited expression)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing premium core release with
+# stable presentation specifications. The 15 Year Old is the most
+# commonly cited Glenfarclas expression in trade-press writing.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfarclas-15
+name: Glenfarclas 15 Year Old
+production_line: glenfarclas
+produced_at_distillery: glenfarclas
+bottled_by: glenfarclas
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0                           # 46% ABV places the 15 Year Old
+                                    # at the NCF-threshold convention
+                                    # for Scotch (see
+                                    # educational/chill-filtering).
+                                    # Unusually for a 15-year core
+                                    # release at this price tier,
+                                    # Glenfarclas 15 has been at 46%
+                                    # for decades — predating the
+                                    # broader industry shift toward
+                                    # higher-ABV NCF presentation.
+age_statement: 15
+vintage: null
+cask_strength: false
+non_chill_filtered: true            # 46% NCF for the 15 Year Old —
+                                    # the higher-ABV NCF natural-
+                                    # colour pattern that other
+                                    # producers adopted in the 2010s
+                                    # has been Glenfarclas's 15 Year
+                                    # Old presentation for far
+                                    # longer.
+natural_colour: true                # Glenfarclas at the 15-year and
+                                    # older tier presents at natural
+                                    # colour.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null                # Predominant cask type; the 15
+                                    # Year Old's sherry-cask
+                                    # character intensity is higher
+                                    # than the 10 Year Old's given
+                                    # the longer maturation.
+    duration_years: 15
+    cooperage: null
+    notes: |
+      Sherry-cask-led maturation. The 15-year duration sits in
+      educational/cask-maturation-kinetics phase 2 (slower
+      extraction from intact wood), allowing the spirit to
+      develop substantial sherry-cask character beyond the
+      surface-layer extraction of younger expressions.
+
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 75.00                     # Approximate UK retail at recent
+                                    # release pricing; the 46% NCF
+                                    # natural-colour 15-year tier sits
+                                    # above the 10 Year Old's pricing.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenfarclas's most-cited premium core release, 15 years
+  matured predominantly in oloroso ex-sherry butts and bottled
+  at 46% ABV non-chill-filtered at natural colour [1]. The
+  Glenfarclas 15 Year Old is unusual at its price tier in
+  combining a 15-year age statement with the higher-ABV NCF
+  natural-colour presentation pattern that other producers
+  adopted only in the 2010s; the Glenfarclas 15 has held this
+  presentation for decades. The 15-year maturation deepens the
+  sherry-cask character of the 10 Year Old without yet reaching
+  the slow-exchange phase that characterises the older
+  expressions in the family-tree range. The 15 Year Old is the
+  most widely cited Glenfarclas expression in trade-press
+  writing and is the natural reference point for the
+  distillery's house style.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfarclas.com/
+    accessed: 2026-05-17
+    notes: |
+      Glenfarclas producer website. Used for ABV (46%), age
+      (15 years), NCF natural-colour designation, and the
+      sherry-cask-led programme.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

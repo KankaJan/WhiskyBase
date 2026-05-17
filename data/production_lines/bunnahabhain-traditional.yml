@@ -1,0 +1,184 @@
+# =============================================================================
+# Bunnahabhain Traditional (default lightly-peated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity and broad spec are
+# grounded against the producer disclosures and standard trade
+# references; specific phenol-ppm figures, fermentation duration, and
+# spirit-cut points hedged pending direct verification.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bunnahabhain-traditional
+name: Bunnahabhain (traditional, lightly-peated default)
+distillery: bunnahabhain
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1881                  # Concurrent with distillery
+                                      # founding. The default lightly-
+                                      # peated production has been the
+                                      # site's predominant output
+                                      # throughout its operational
+                                      # history; the peated sub-line
+                                      # (Toiteach / Moine) is a more
+                                      # recent addition (introduced
+                                      # in the mid-2000s).
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                   # Commercial malt; specific
+                                      # maltster relationship not
+                                      # consistently disclosed across
+                                      # current sources.
+  maltster: null
+  variety: null                       # Variety not consistently
+                                      # disclosed at the line level.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: 2                        # Lightly-peated / essentially-
+                                      # unpeated by Scotch standards;
+                                      # the default Bunnahabhain
+                                      # production is commonly cited
+                                      # at around 1-2 ppm in the malt
+                                      # spec. Specific method and
+                                      # compound-set not directly
+                                      # sourced.
+      unit: ppm
+      method: unspecified
+      compounds: unspecified
+      source_id: 1
+      notes: |
+        Bunnahabhain's default production sits at the low end of
+        the Scotch peating spectrum — close enough to unpeated
+        that some sources describe the line as "unpeated" without
+        further qualification. The producer characterisation as
+        "lightly peated" with low-but-non-zero ppm reflects the
+        practical malt-spec figure rather than a strictly
+        zero-peated specification. Specific measurement method
+        and compound set not currently sourced; treat the figure
+        as approximate trade-press / producer disclosure.
+  peat_origin: unknown                # The low default peating level
+                                      # makes peat-origin attribution
+                                      # less load-bearing than for
+                                      # heavily-peated producers; the
+                                      # commercial malt's peat origin
+                                      # is not consistently disclosed
+                                      # in current sources.
+  notes: |
+    The lightly-peated default contrasts with the south-Islay
+    cluster (Lagavulin ~35 ppm, Laphroaig ~40-50, Ardbeg
+    ~50-55) and is consistent with the distillery's peat-free
+    water source from the Margadale River. The separate
+    Toiteach / Moine peated sub-line produces a heavier-peated
+    spirit (around 35-40 ppm spec) in scheduled production
+    runs; the Toiteach line is not yet modelled as a separate
+    production_line entry (see SCHEMA-OBSERVATIONS on the
+    distillery entry for the modelling decision).
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null                 # Specific figures not currently
+                                      # sourced; conventional Scotch
+                                      # malt fermentation range
+                                      # (~48-72 hours) presumed.
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                      # Conventional double distillation.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Specific cut points not disclosed in current sourcing.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null       # Standard Scotch fill strength
+                                      # range (~63.5%) presumed; not
+                                      # separately disclosed for
+                                      # Bunnahabhain.
+typical_cask_program:
+  - bourbon-barrel                    # Ex-bourbon barrels predominate
+                                      # in the core 12 Year Old
+                                      # programme.
+  - oloroso-sherry-butt               # Sherry-cask component
+                                      # contributes to the 18 and 25
+                                      # Year Old expressions and to
+                                      # some limited releases.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - bunnahabhain-12
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Bunnahabhain Traditional production line is the distillery's
+  default output: a lightly-peated Islay single malt at around
+  1-2 ppm spec phenol level, contrasting with the heavily-peated
+  south-Islay producers (Lagavulin, Laphroaig, Ardbeg) that
+  dominate trade-press characterisation of "Islay style" [1][2].
+  The line uses peat-free water from the Margadale River, large
+  onion-shape stills with shell-and-tube condensers, and a cask
+  programme led by ex-bourbon barrels with oloroso ex-sherry
+  butts contributing to the older and limited-release
+  expressions. A separate Toiteach / Moine sub-line at heavier
+  peating (~35-40 ppm) is produced in scheduled runs and is
+  bottled as a distinct branded line; that production is not
+  yet modelled as a separate production_line entry in this
+  project.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://bunnahabhain.com/
+    accessed: 2026-05-17
+    notes: |
+      Producer website. Used for the lightly-peated default-
+      production characterisation, water-source description
+      (Margadale River, peat-free), and the cask-programme
+      summary.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Bunnahabhain entry — production-line
+      detail and equipment configuration cross-reference.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

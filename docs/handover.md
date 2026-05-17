@@ -318,19 +318,42 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 5 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 8 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
   as load-bearing data), Lagavulin (medium — heavily peated Islay,
   Diageo ownership, resolves the `glossary/classic-malts`
-  reference target as one of the original six Classic Malts).
-- 9 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  reference target as one of the original six Classic Malts),
+  Highland Park (medium — Orkney site, Edrington ownership, first
+  populated distillery with `region: Islands` informal-trade
+  designation per `educational/swa-regional-designations`; first
+  distillery with `distinctive_features: [practice/floor-malting]`
+  cross-reference as a populated distillery practitioner of partial
+  on-site floor malting), Bunnahabhain (medium — north-east Islay,
+  Distell/Heineken ownership, lightly-peated default production
+  contrasting with the heavily-peated south-Islay cluster; five-
+  stage ownership history exercises the
+  `ownership.history` field densely; **resolved the 2 forward refs
+  from cadenheads-bunnahabhain-stub**), Glenfarclas (medium —
+  Speyside, **first populated distillery in the formal SWA
+  Speyside region**; J. & G. Grant family-owned in unbroken
+  succession since 1865; **first populated distillery exercising
+  `heating: direct_fire` schema enum value** — all six pot stills
+  direct-fired, contrasting with the `indirect_steam` default used
+  by the prior seven populated distilleries).
+- 12 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
-  line).
-- 10 bottlings: 9 Bruichladdich, 1 Harris
+  line), 1 Highland Park (medium — moderately peated heather-
+  peat single line, sherry-cask-heavy maturation programme),
+  2 Bunnahabhain (medium — lightly-peated `bunnahabhain-traditional`
+  default at 1-2 ppm spec + peated `bunnahabhain-toiteach` sub-line
+  at 35-40 ppm spec, exercising multi-line modelling at smaller
+  scale than Springbank),
+  1 Glenfarclas (medium — single line, unpeated Speyside, sherry-
+  cask-led house style, direct-fired distillation throughout).
 - 45 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
   Whisky), 8 educational (peating-measurement-methods,
   aromatic-compounds-in-whisky, copper-conversation,
@@ -339,12 +362,18 @@ back rather than absorbing it into the data model.
   scotch-presentation-conventions), 2 equipment (worm-tub,
   shell-and-tube-condenser), 2 practice (floor-malting,
   external-malting), 30 glossary.
-- 0 supplier entries. `supplier` entity type schema drafted at
-  v0.1 (`schema/supplier.template.yml`,
-  `schema/json/supplier.schema.json`); resolver indexes
-  `data/suppliers/`. Schema is DRAFT pending a first
-  pressure-test entry (likely Bairds Malt Ltd). See
-  TODO §Schema work §Drafted but not finalised. All previously-tracked concept dangling references
+- 2 suppliers: Bairds Malt Ltd
+  (`data/suppliers/bairds-malt.yml`, populated 2026-05-17 against
+  supplier v0.1 as the first pressure-test, type=maltster) and
+  Heaven Hill Distilleries Inc.
+  (`data/suppliers/heaven-hill.yml`, populated 2026-05-17 as the
+  second pressure-test, type=cooperage_source — exercising the
+  second branch of the supplier type enum). Multi-site shape
+  exercised across both entries. SCHEMA-GAPS / SCHEMA-OBSERVATIONS
+  blocks in both entries document the v0.1 schema as adequate for
+  current data; no v0.2 promotion driven. The supplier schema
+  has covered 2 of 5 enum branches; further pressure-tests (yeast
+  supplier, barley breeder) deferred. All previously-tracked concept dangling references
   now resolve; only the 20 worm-tub `used_at_distilleries` forward
   refs remain (expected per §8), plus 2 forward refs from the
   Cadenhead's IB pressure-test stub (`bunnahabhain` distillery and
@@ -360,12 +389,33 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 21 bottlings: 19 OB releases (10 Bruichladdich/Harris + 3
-  Springbank + 3 Glenmorangie + 3 Lagavulin — Lagavulin 16,
-  Distillers Edition PX-finished, 12 Year Old Cask Strength
-  Special Releases) + 2 IB pressure-test stubs
-  (`cadenheads-bunnahabhain-stub`, `signatory-caol-ila-stub`).
-  Both stubs marked `confidence: stub`; their purpose is
+- 29 bottlings: 28 working entries (10 Bruichladdich/Harris + 3
+  Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
+  2 Bunnahabhain + 3 Glenfarclas + 1 worked-example IB release
+  `cadenheads-bunnahabhain`) + 1 remaining IB pressure-test stub
+  (`signatory-caol-ila-stub`).
+  Glenfarclas bottlings: 10 Year Old (40% chill-filtered
+  entry-level), 15 Year Old (46% NCF natural-colour — unusual in
+  combining a 15-year age statement with the higher-ABV NCF
+  natural-colour pattern that other producers adopted only in
+  the 2010s), 25 Year Old (43% chill-filtered luxury core
+  reaching the slow-exchange maturation phase per
+  educational/cask-maturation-kinetics). The
+  `cadenheads-bunnahabhain-stub` was superseded 2026-05-17 by the
+  worked-example `cadenheads-bunnahabhain` (slug renamed, confidence
+  promoted stub → medium; the old stub file overwritten with empty
+  YAML pending physical deletion from Windows). Bunnahabhain
+  bottlings: 12 Year Old (46.3% NCF natural-colour flagship), Toiteach
+  (peated NAS core at 46.3% NCF natural-colour). Highland Park
+  bottlings: 12 Year Old (40% chill-filtered), 18 Year Old (43%),
+  Cask Strength (annual NCF natural-colour at 60-65% ABV).
+  `cadenheads-bunnahabhain` is the first non-stub IB-release entry
+  in populated data, exercising the bottling v0.2 IB discriminator
+  fields against a real distillery (Bunnahabhain) and a real
+  bottler series (Cadenhead's Authentic Collection). Cask-identifier
+  fields remain template-form with explicit notes pending
+  specific-release verification.
+  Both IB stubs marked `confidence: stub`; their purpose is
   exercising the bottling v0.2 IB discriminator fields and
   surfacing schema gaps. Specific release details (vintage, age,
   ABV, outturn, cask number) are null pending substitution with
@@ -428,33 +478,39 @@ back rather than absorbing it into the data model.
 
 **Next priorities, in order of unblock value:**
 
-1. **Research-request audit** (active backlog in TODO.md). The
-   project introduced a Wikipedia-volatility policy on 2026-05-15
-   and migrated 6 easy items: chemistry citations to PubChem and
-   CFR citation for bourbon-barrel. Remaining work is appellation
-   regulatory text (INAO, Consejo Regulador del Vino de Jerez,
-   Italian DOCG), sherry chemistry primary sources, and
-   distillery historical sources for Bruichladdich and Harris.
-   Most remaining items are research-time work requiring stable
-   web access; see the Research Requests section of TODO.md.
-2. **`educational/cask-maturation-kinetics`** — research-heavy
-   teaching page distinguishing established cask-maturation
-   chemistry from trade convention from open questions. Would let
-   several existing cask entries cite a sourced summary instead of
-   hedging in prose. Detailed scope in TODO.md.
-3. **Cross-cutting research backlog** — yeasts, malts, undocumented
-   technical concepts, existing literature catalogue. Four items
-   added 2026-05-16 in `TODO.md` §Cross-cutting research. These
-   open up entire substrata of the data model (yeast as
-   first-class entity? malt-source provenance fields on production
-   lines?) and are the next horizon once Wikipedia migration
-   ground-clearing wraps.
-4. **First non-stub IB bottling** to replace one of the two
-   pressure-test stubs (`cadenheads-bunnahabhain-stub`,
-   `signatory-caol-ila-stub`). Each blocks a forward reference
-   chain (Bunnahabhain / Caol Ila distillery + production line)
-   so the substitution requires populating those distilleries
-   first or accepting two more forward refs as expected.
+1. **Build pipeline planning** (`docs/build-pipeline-plan.md`).
+   The project's eventual deliverable per project README is a
+   static site (Astro + Pagefind + MapLibre per earlier handover
+   notes). With 8 distilleries / 13 production lines / 29
+   bottlings / 45 concept pages / 2 suppliers / 16 casks
+   populated, the data side is now mature enough to design the
+   build pipeline against. Pre-frontend gap analysis is in
+   TODO.md §Pre-frontend checklist (added 2026-05-17): page-type
+   taxonomy, slug → URL routing convention, markdown-link
+   rewriting strategy, search-index scope, map data source.
+2. **Replace `signatory-caol-ila-stub`** with a worked-example
+   real release. The cadenheads-bunnahabhain-stub was superseded
+   on 2026-05-17 by a worked-example IB release; the same
+   pattern should be applied to the remaining Signatory stub.
+   Requires populating Caol Ila distillery first (or accepting
+   the forward refs as expected). Caol Ila as a ninth distillery
+   would simultaneously resolve the 2 remaining IB-stub forward
+   refs.
+3. **Cross-cutting research follow-ups**:
+   - Ground the 10 Russell-textbook citations (currently hedged
+     "page refs TBA") against actual page numbers when a copy
+     of Russell ed. 2014 becomes available.
+   - INAO / MIPAAF / Consejo Regulador specific-document URLs
+     (currently citing institutional homepages) — research-time
+     work requiring stable web access.
+4. **`equipment/direct-fired-still` concept page** — Glenfarclas
+   (added 2026-05-17) exercises `heating: direct_fire` as the
+   first populated distillery; a concept page would let
+   distillery `distinctive_features:` resolve cleanly to it.
+   Trade-press writing on direct-fired distillation conflates
+   chemistry claims with house-style attribution; the page would
+   sit in the project's `equipment/` kind alongside `worm-tub`
+   and `shell-and-tube-condenser`.
 
 **Full active queue:** see `TODO.md`.
 

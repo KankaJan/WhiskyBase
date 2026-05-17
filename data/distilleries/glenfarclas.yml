@@ -1,0 +1,315 @@
+# =============================================================================
+# Glenfarclas
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership lineage, and
+# defining production characteristics (direct-fired stills, sherry-
+# cask house style, family ownership) are well-grounded against the
+# producer's own materials and standard trade references. Specific
+# equipment capacities and current annual capacity hedged pending
+# direct verification.
+# =============================================================================
+# First populated distillery exercising `region: Speyside` (the
+# previous Highland-and-Islands set did not include a formal
+# Speyside producer), and first populated distillery exercising
+# `heating: direct_fire` (all prior populated distilleries use
+# indirect_steam). These two firsts make Glenfarclas a meaningful
+# breadth addition beyond the eighth-distillery count.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfarclas
+name: Glenfarclas
+also_known_as: []
+wikidata_qid: null
+website: https://www.glenfarclas.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Speyside                       # Formal SWA region (Scotch
+                                       # Whisky Regulations 2009,
+                                       # Schedule 1, Speyside protected
+                                       # locality). First populated
+                                       # distillery in the formal
+                                       # Speyside region — Glenmorangie
+                                       # is in the northern Highlands,
+                                       # not Speyside; see
+                                       # educational/swa-regional-
+                                       # designations for the formal
+                                       # vs trade-press regional
+                                       # framework.
+sub_region: null                       # Specifically on the Spey-side
+                                       # slope of the Ben Rinnes hills,
+                                       # between Aberlour and
+                                       # Grantown-on-Spey.
+locality: Marypark, Ballindalloch
+coordinates:
+  lat: 57.430
+  lon: -3.355                          # Approximate; on the A95 road
+                                       # in Speyside.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1836                          # Year of official licensing
+                                       # under the 1823 Excise Act
+                                       # framework, with farm distilling
+                                       # at the site predating the
+                                       # formal licence [1][2].
+first_spirit: null
+mothballed_periods: []                 # No notable modern mothballing;
+                                       # continuous operation through
+                                       # the 20th century.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: J. & G. Grant
+  parent: null                         # J. & G. Grant is a private
+                                       # family-owned company; no
+                                       # commercial parent. The Grant
+                                       # family of Glenfarclas is
+                                       # distinct from the Grant
+                                       # family of Glenfiddich
+                                       # (William Grant & Sons) —
+                                       # two unrelated Scottish
+                                       # distilling families sharing
+                                       # the surname.
+  history:
+    - owner: Robert Hay
+      from: 1836
+      to: 1865
+      notes: |
+        Distilling at the Glenfarclas site predates the 1823 Excise
+        Act formalisation of licensed Scotch distilling; Robert
+        Hay's 1836 licensing brought the operation into the
+        formal regulatory framework. The early operating period
+        is documented variably in the Speyside-history
+        literature [1].
+    - owner: J. & G. Grant (John and George Grant)
+      from: 1865
+      to: null
+      notes: |
+        John Grant bought the distillery from Robert Hay in 1865,
+        beginning the continuous family ownership that has
+        persisted through six generations to the present.
+        Glenfarclas is among the very few large Scotch
+        distilleries to have remained under uninterrupted
+        family ownership since the 19th century — most Scotch
+        distilleries have passed through corporate-acquisition
+        cycles (Diageo, Pernod Ricard, Suntory, etc.) over the
+        same period [1][2].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Green Burn               # Stream rising on the slope
+                                       # of Ben Rinnes (the Speyside
+                                       # mountain that several
+                                       # surrounding distilleries
+                                       # share as a water source); the
+                                       # specific Glenfarclas stream is
+                                       # known as the Green Burn [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: semi_lauter
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: 12                            # Commonly cited figure across
+                                       # trade-reference sources.
+                                       # Stainless steel; replaced the
+                                       # earlier wooden washbacks in
+                                       # the late 20th century [2].
+  material: stainless_steel
+  capacity_litres: null
+
+stills:
+  wash_still:
+    count: 3
+    capacity_litres: null              # Glenfarclas operates the
+                                       # largest pot stills in
+                                       # Speyside, commonly cited at
+                                       # around 25,000 litres for the
+                                       # wash stills and ~21,000 litres
+                                       # for the spirit stills; specific
+                                       # figures vary across trade-
+                                       # reference sources and are
+                                       # hedged here pending direct
+                                       # verification [2].
+    charge_litres: null
+    shape: onion                       # Large onion-shape stills with
+                                       # broad bases tapering to short
+                                       # necks; consistent with the
+                                       # heavier-bodied house style
+                                       # the distillery produces.
+    height_m: null
+    heating: direct_fire               # **All Glenfarclas stills are
+                                       # direct-fired (gas heating
+                                       # applied directly under the
+                                       # still copper, rather than via
+                                       # internal steam coils or
+                                       # external heat exchangers).**
+                                       # This is now rare in Scotch
+                                       # production — most distilleries
+                                       # converted to indirect steam
+                                       # heating in the 20th century
+                                       # for energy efficiency and
+                                       # process control. Glenfarclas
+                                       # is among the very small set
+                                       # of distilleries retaining
+                                       # direct fire on all stills [1].
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 3
+    capacity_litres: null
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: direct_fire               # Direct-fired throughout
+                                       # (see wash_still note).
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+warehouses:
+  - id: ballindalloch-traditional
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      On-site dunnage warehousing on the Speyside slope of
+      Ben Rinnes; inland climate (no maritime influence,
+      contrasting with the Islay and Orkney producers in the
+      populated set). See educational/cask-maturation-kinetics
+      for the general warehouse-climate context.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: null              # Annual capacity figures vary
+                                       # across trade-reference
+                                       # sources; verify against most
+                                       # recent Malt Whisky Yearbook
+                                       # edition [2].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []                  # Notable equipment changes
+                                       # (washback conversion from
+                                       # wood to stainless steel, the
+                                       # phased still-house additions
+                                       # going from 4 to 6 stills) are
+                                       # documented variably; not yet
+                                       # sourced against primary
+                                       # records to specific years.
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - glenfarclas                        # Single production line —
+                                       # unpeated Speyside single
+                                       # malt with sherry-cask-led
+                                       # maturation.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []              # Glenfarclas has historically
+                                       # supplied smaller volumes to
+                                       # the blend trade than the
+                                       # larger Diageo / Pernod
+                                       # Ricard-owned Speyside
+                                       # distilleries; under family
+                                       # ownership the distillery
+                                       # has prioritised its own
+                                       # single-malt range. Blends
+                                       # not modelled as project
+                                       # entity type — empty list
+                                       # per convention used
+                                       # elsewhere.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []               # No equipment-concept page yet
+                                       # exists for direct-fired
+                                       # distillation; this would be
+                                       # a natural concept page to
+                                       # add (`equipment/direct-fired-
+                                       # still`) given Glenfarclas
+                                       # exercises the practice
+                                       # distinctly. Queued in
+                                       # TODO §Concept pages to queue.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenfarclas is a malt whisky distillery at Marypark in
+  Ballindalloch, on the Speyside slope of Ben Rinnes, founded
+  in 1836 under the post-1823 Excise Act licensing framework and
+  owned by the Grant family (J. & G. Grant) in continuous unbroken
+  succession since 1865 [1][2]. The site sits within the formal
+  Speyside protected locality under the Scotch Whisky Regulations
+  2009 (see educational/swa-regional-designations) — specifically
+  on the slope of Ben Rinnes, the Speyside mountain shared as a
+  water source by several surrounding distilleries.
+  Glenfarclas is one of the very small set of Scotch distilleries
+  retaining direct-fired distillation on all stills — gas heating
+  applied directly under the still copper, rather than the modern
+  indirect-steam standard — which contributes to the distillery's
+  heavier-bodied sulphury-edged house style. The maturation
+  programme is heavily sherry-cask-led, with oloroso ex-sherry
+  butts predominant in the core range. The Grant-family ownership
+  has spanned six generations and is unusual among large Scotch
+  distilleries, most of which have passed through corporate-
+  acquisition cycles over the same period.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfarclas.com/
+    accessed: 2026-05-17
+    notes: |
+      Glenfarclas producer website. Used for site identity,
+      Speyside location, founding date (1836), Grant family
+      continuous ownership since 1865, direct-fired distillation,
+      and water-source description.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Glenfarclas entry covers production
+      figures, equipment specification (still count and
+      approximate capacity), ownership lineage detail, and
+      historical context.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check. Specific equipment
+      capacities and current annual capacity should be verified
+      against the most recent edition.
+
+  - id: 3
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Glenfarclas_distillery
+    accessed: 2026-05-17
+    notes: |
+      Wikipedia entry; volatile source per project policy
+      (docs/source-conflict-policy.md). Used as secondary
+      cross-check on ownership-history dates (1836 founding,
+      1865 Grant family acquisition) and general site
+      characterisation. Primary claims rest on sources 1 and 2;
+      historical-industrial detail also available in Moss & Hume
+      1981 (see docs/bibliography.md) for the broader
+      Speyside-distillery context.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

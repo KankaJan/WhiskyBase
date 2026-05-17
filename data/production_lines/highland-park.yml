@@ -1,0 +1,203 @@
+# =============================================================================
+# Highland Park production line
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity and broad spec are
+# grounded; specific phenol-ppm figures, yeast strain, and exact
+# fermentation duration hedged pending primary disclosure.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: highland-park
+name: Highland Park
+distillery: highland-park
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1798                  # Concurrent with distillery
+                                      # founding; the site has
+                                      # operated single-production-
+                                      # line throughout its history.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: mixed                       # Partial on-site floor-malted
+                                      # plus bought-in commercial
+                                      # malt to make up the balance.
+                                      # Commonly cited proportion is
+                                      # ~20% floor-malted on site;
+                                      # the remainder is supplied by
+                                      # commercial maltsters [1].
+  maltster: null                      # Bought-in malt supplier(s)
+                                      # not consistently disclosed in
+                                      # current sourcing; not yet
+                                      # cross-referenced to the
+                                      # bairds-malt or other supplier
+                                      # entries.
+  variety: null                       # Variety not consistently
+                                      # disclosed at the line level;
+                                      # specific vintage releases may
+                                      # disclose variety per-batch.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: 20                       # Commonly cited peat-spec value
+                                      # for Highland Park's
+                                      # heather-peated malt. Specific
+                                      # disclosure context and method
+                                      # not directly sourced;
+                                      # treat as approximate trade-
+                                      # press figure [1][2].
+      unit: ppm
+      method: unspecified
+      compounds: unspecified
+      source_id: 1
+      notes: |
+        Specific measurement method and compound set not
+        currently sourced. The methodology gap is similar to
+        the scotch-whisky-published-ppm methodology page
+        (concept/methodology/scotch-whisky-published-ppm),
+        which documents how most Scotch ppm disclosures
+        underspecify the analytical basis.
+  peat_origin: local                  # Local Orkney peat cut at
+                                      # Hobbister Moor (south-west of
+                                      # the distillery). Heather-
+                                      # dominated peat composition
+                                      # distinct from mainland-
+                                      # Scotland and Islay
+                                      # moss-dominated peat;
+                                      # producer-attributed aromatic
+                                      # signature flagged but not
+                                      # separately quantified against
+                                      # primary phenol analysis [1].
+  notes: |
+    The Highland Park spirit's peated character is at the
+    moderate end of the Scotch peating spectrum (around 20 ppm
+    spec); the line is not heavily peated in the Islay sense.
+    Producer-attributed character notes ("heather honey",
+    "smoky") cite the heather-peat composition; specific phenol
+    profiling against the standard-seven-phenols HPLC framework
+    is not currently sourced.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null                 # Long fermentation regime
+                                      # commonly cited (60+ hours);
+                                      # specific producer-disclosed
+                                      # figures not currently sourced.
+  yeast: null                         # Producer-disclosed strain not
+                                      # currently sourced; the
+                                      # `distillers-yeast` glossary
+                                      # entry covers the general
+                                      # convention.
+  notes: |
+    Long-fermentation regime; specific duration figures vary
+    across trade references. The fermentation profile
+    contributes to the spirit's ester-developed character per
+    the standard distilling-yeast / long-fermentation discussion
+    in glossary/fermentation.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                      # Conventional double distillation.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Specific cut points not disclosed in current sourcing.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null       # Standard Scotch fill strength
+                                      # range (~63.5%) commonly cited
+                                      # for the line; not separately
+                                      # disclosed for Highland Park
+                                      # specifically.
+typical_cask_program:
+  - oloroso-sherry-butt               # Sherry-cask programme is a
+                                      # defining feature of Highland
+                                      # Park's maturation profile;
+                                      # historically heavy oloroso
+                                      # ex-sherry use, with American-
+                                      # oak ex-sherry casks also a
+                                      # prominent component in modern
+                                      # cask selection.
+  - bourbon-barrel                    # Ex-bourbon barrels supplement
+                                      # the sherry-cask base across
+                                      # most releases.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - highland-park-12
+  - highland-park-18
+  - highland-park-cask-strength
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Highland Park production line operates at the namesake
+  distillery on Mainland Orkney, producing a single moderately-
+  peated malt that has been the site's sole spirit recipe
+  throughout its operational history [1]. Partial on-site floor
+  malting (commonly cited at around 20% of grain requirement)
+  uses local Orkney peat from Hobbister Moor; the heather-
+  dominated peat composition gives the spirit's smoky component
+  a producer-attributed character distinct from moss-dominated
+  Islay and mainland-Scotland peat, though the specific
+  phenol-profile differences are not separately quantified
+  against the standard-seven-phenols HPLC framework in current
+  sourcing. The maturation programme is sherry-cask-heavy
+  (oloroso ex-sherry butts predominantly, with ex-bourbon
+  barrels supplementing) and uses coastal dunnage warehousing
+  on the Orkney site [1][2].
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.highlandparkwhisky.com/
+    accessed: 2026-05-17
+    notes: |
+      Producer website. Used for the 20% on-site floor-malting
+      figure, local Hobbister Moor peat origin, the heather-
+      peat compositional claim, and the long-fermentation /
+      sherry-cask maturation profile.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Highland Park entry — production line
+      details cross-reference.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check for production-line specifics.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

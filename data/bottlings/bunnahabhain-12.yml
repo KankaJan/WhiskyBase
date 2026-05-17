@@ -1,0 +1,156 @@
+# =============================================================================
+# Bunnahabhain 12 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship release with
+# stable presentation specifications since the 2010 NCF natural-colour
+# transition.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bunnahabhain-12
+name: Bunnahabhain 12 Year Old
+production_line: bunnahabhain-traditional
+produced_at_distillery: bunnahabhain
+bottled_by: bunnahabhain
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                  # Core release; the 12 Year Old
+                                    # predates the 2010 NCF natural-
+                                    # colour transition (earlier
+                                    # incarnations were 40% ABV chill-
+                                    # filtered). The current 46.3% ABV
+                                    # NCF natural-colour livery has
+                                    # been continuously available since
+                                    # 2010 [1].
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.3                           # 46.3% ABV sits just above the
+                                    # 46% NCF-threshold convention
+                                    # (see educational/chill-filtering),
+                                    # the producer-empirical strength
+                                    # at which chill-filtering becomes
+                                    # unnecessary for haze prevention.
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: true            # Bunnahabhain transitioned to NCF
+                                    # in 2010 as a transparency-
+                                    # positioning move; see
+                                    # educational/scotch-presentation-
+                                    # conventions for the cluster
+                                    # context.
+natural_colour: true                # Natural colour by producer
+                                    # disclosure since 2010 [1].
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Ex-bourbon-led maturation with an ex-sherry component. Specific
+# proportions vary between batches and are not consistently disclosed
+# at the core-release level [1].
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                # Predominant cask type for the
+                                    # 12 Year Old.
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Ex-bourbon barrels predominate. The cask programme is
+      consistent with the producer characterisation of the
+      12 Year Old as a "Bunnahabhain house style" expression —
+      lightly-peated spirit matured to develop the sherry-and-
+      nutty character associated with the distillery's
+      bourbon-led core.
+
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null                # Sherry-cask component contributes
+                                    # to the 12's nutty / dark-fruit
+                                    # character. Specific proportion
+                                    # varies between batches.
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Sherry-cask component. Lighter sherry-cask use than the
+      18 and 25 Year Old expressions, consistent with the 12 as
+      the entry-level core in the range.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 50.00                     # Approximate UK retail at recent
+                                    # release pricing; the 46.3% NCF
+                                    # natural-colour positioning sits
+                                    # at the upper end of "premium core"
+                                    # pricing.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Bunnahabhain's flagship core release, 12 years matured in a
+  bourbon-barrel-led programme with an oloroso ex-sherry
+  component, bottled at 46.3% ABV non-chill-filtered at natural
+  colour [1]. The current presentation has been in place since
+  Bunnahabhain's 2010 transparency-positioning transition: prior
+  to 2010 the release was bottled at 40% ABV chill-filtered with
+  caramel colouring, in the conventional industrial-core
+  presentation. The post-2010 livery places Bunnahabhain 12 in
+  the "craft / transparency" presentation cluster (NCF, natural
+  colour, ≥46% ABV) — see educational/scotch-presentation-
+  conventions — and is notable as one of the early high-volume
+  core releases to make that transition. The lightly-peated
+  Bunnahabhain spirit (around 1-2 ppm at malt spec) carries
+  the maritime Islay influence from coastal warehousing without
+  the heavy-peating character of the south-Islay producers.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://bunnahabhain.com/
+    accessed: 2026-05-17
+    notes: |
+      Bunnahabhain producer website. Used for ABV (46.3%), age
+      (12 years), NCF natural-colour presentation, and the
+      2010 transition context.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

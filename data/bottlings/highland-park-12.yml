@@ -1,0 +1,146 @@
+# =============================================================================
+# Highland Park 12 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship release with
+# stable presentation specifications across recent years.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: highland-park-12
+name: Highland Park 12 Year Old (Viking Honour)
+production_line: highland-park
+produced_at_distillery: highland-park
+bottled_by: highland-park
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                  # Core release; continuously
+                                    # available with periodic
+                                    # presentation updates (the
+                                    # "Viking Honour" marketing
+                                    # treatment is a recent
+                                    # producer-side rebrand; the
+                                    # 12-year flagship itself
+                                    # predates the current livery
+                                    # by decades).
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0                           # Standard core-flagship
+                                    # presentation; lower end of
+                                    # the Scotch ABV range.
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: false           # Standard 40% ABV core
+                                    # release; chill-filtering is
+                                    # routine industry practice
+                                    # below the 46% threshold (see
+                                    # educational/chill-filtering).
+natural_colour: false               # Caramel colouring (E150a)
+                                    # permitted under SWR2009 reg 7
+                                    # and used in the standard
+                                    # presentation, as is typical
+                                    # for industrial-core releases.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Sherry-cask-heavy maturation programme is the line's defining
+# feature. Specific oloroso / American-oak ex-sherry proportions
+# vary between batches and are not consistently disclosed at the
+# core-release level.
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null                # Predominant cask type per
+                                    # producer characterisation;
+                                    # specific proportion not
+                                    # consistently disclosed [1].
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Sherry-cask-matured spirit forms the predominant component
+      of the 12 Year Old. Producer literature emphasises a
+      sherry-oak-led character; specific cask programme detail
+      varies batch-to-batch.
+
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                # Supplements the sherry-cask
+                                    # base.
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Ex-bourbon barrels supplement the sherry-cask base.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 45.00                     # Approximate UK retail; high-
+                                    # volume core pricing.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Highland Park's flagship core release, 12 years matured with a
+  sherry-cask-led programme (predominantly oloroso ex-sherry
+  butts, with ex-bourbon barrels supplementing) and bottled at
+  40% ABV [1]. The "Viking Honour" suffix in the modern
+  livery is a producer-marketing rebrand applied to the
+  long-standing 12 Year Old release; the underlying spirit
+  specification has remained at 12 years and 40% ABV through
+  the rebrand. Chill-filtered with caramel colouring per
+  industry-typical practice at this ABV (see
+  educational/chill-filtering and
+  educational/scotch-presentation-conventions for the producer-
+  positioning context).
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.highlandparkwhisky.com/
+    accessed: 2026-05-17
+    notes: |
+      Producer page for Highland Park 12 Year Old (Viking
+      Honour livery). Used for ABV (40%), age (12 years),
+      and sherry-cask-led programme designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

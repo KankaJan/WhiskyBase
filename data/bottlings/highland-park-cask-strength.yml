@@ -1,0 +1,148 @@
+# =============================================================================
+# Highland Park Cask Strength (annual release series)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — annual recurring release; specific
+# vintage / release-number ABV varies by year.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: highland-park-cask-strength
+name: Highland Park Cask Strength (annual release)
+production_line: highland-park
+produced_at_distillery: highland-park
+bottled_by: highland-park
+bottler_type: distillery
+bottler_series: null               # Annual recurring release; each
+                                   # year carries its own release-
+                                   # number labelling rather than a
+                                   # formal named series. The
+                                   # "Release No." numbering on
+                                   # recent bottlings has been
+                                   # consistent.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                 # Annual recurring; each year's
+                                   # release has its own date and
+                                   # specific ABV.
+discontinued: false                # Continuously released annually
+                                   # in the modern programme.
+availability: limited              # Limited annual outturn; sells
+                                   # through.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: null                          # Varies per release; typically
+                                   # in the 60-65% ABV range, with
+                                   # specific Release No. ABVs
+                                   # published on label.
+age_statement: null                # No age statement on the modern
+                                   # Cask Strength series — sold as
+                                   # a vatting of mature spirit at
+                                   # cask strength.
+vintage: null
+cask_strength: true                # Cask-strength by series
+                                   # definition (see
+                                   # glossary/cask-strength).
+non_chill_filtered: true           # NCF by convention at the cask-
+                                   # strength tier (see
+                                   # educational/scotch-presentation-conventions).
+natural_colour: true               # Natural colour by convention
+                                   # at this tier.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: small_batch                # Small-batch vatting from
+                                   # selected sherry-cask-matured
+                                   # spirit.
+  number: null                     # Each year carries a release
+                                   # number ("Release No. X") on
+                                   # the label.
+  outturn_bottles: null            # Annual outturn varies; not
+                                   # consistently disclosed across
+                                   # all releases.
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null               # Predominant component, per the
+                                   # Cask Strength series's
+                                   # sherry-cask-heavy profile.
+                                   # Specific proportions vary per
+                                   # release.
+    duration_years: null           # NAS release; specific maturation
+                                   # duration not disclosed.
+    cooperage: null
+    notes: |
+      Sherry-cask-matured spirit forms the predominant component
+      of the Cask Strength series, consistent with the broader
+      Highland Park maturation programme. The cask-strength
+      presentation provides a less-filtered window onto the
+      sherry-cask-led character than the 40% ABV chill-filtered
+      12 Year Old.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 95.00                    # Approximate UK retail at release;
+                                   # secondary-market prices vary.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Highland Park's annual cask-strength release programme bottles
+  small-batch vattings of sherry-cask-matured spirit at the
+  spirit's actual cask-withdrawal strength (typically in the
+  60-65% ABV range; specific Release No. ABV published per
+  release). The series is bottled non-chill-filtered at natural
+  colour by convention, contrasting with the chill-filtered
+  caramel-coloured 40% ABV 12 Year Old flagship (see
+  educational/scotch-presentation-conventions for the producer
+  positioning framework). Each annual release carries its own
+  Release No. labelling rather than a vintage; the underlying
+  cask programme remains broadly consistent across the series
+  (oloroso ex-sherry butts predominantly). The 2017 launch of
+  the current Cask Strength series succeeded the older "Dark
+  Origins" and similar earlier NAS premium expressions.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.highlandparkwhisky.com/
+    accessed: 2026-05-17
+    notes: |
+      Highland Park producer website. Used for the Cask Strength
+      series's cask-strength / NCF / natural-colour presentation
+      and the small-batch sherry-cask programme.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

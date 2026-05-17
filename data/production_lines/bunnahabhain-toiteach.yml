@@ -1,0 +1,179 @@
+# =============================================================================
+# Bunnahabhain Toiteach (peated sub-line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — peated-line identity grounded; specific
+# year-by-year production-run scheduling and exact phenol-spec ppm
+# hedged pending direct producer disclosure.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bunnahabhain-toiteach
+name: Bunnahabhain Toiteach (peated sub-line)
+distillery: bunnahabhain
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null                  # The peated production runs at
+                                      # Bunnahabhain are a 21st-century
+                                      # development; specific first-
+                                      # production year not currently
+                                      # sourced against primary
+                                      # records. Trade-press
+                                      # references place the peated
+                                      # programme's emergence in the
+                                      # mid-2000s [1].
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: null                      # Commercial maltster supplier(s)
+                                      # not consistently disclosed.
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value:
+        - 35
+        - 40                          # Trade-press characterisation
+                                      # of the Toiteach / Moine
+                                      # programme as in the 35-40 ppm
+                                      # spec range; specific producer
+                                      # disclosure for a numeric
+                                      # phenol-spec figure not
+                                      # consistently sourced. Treated
+                                      # as a disclosed range rather
+                                      # than a precise figure.
+      unit: ppm
+      method: unspecified
+      compounds: unspecified
+      source_id: 1
+      notes: |
+        Range-form disclosure consistent with producer
+        characterisation of Toiteach as "peated" (versus the
+        default Bunnahabhain "lightly peated") but without a
+        precise ppm number routinely on label. Specific
+        measurement method and compound-set not directly
+        sourced.
+  peat_origin: unknown                # Peat origin for the Toiteach
+                                      # malt not consistently disclosed
+                                      # in current sources; commercial
+                                      # malt supply.
+  notes: |
+    The Toiteach (Gaelic for "smoky") production runs use a
+    peated commercial malt at a substantially higher spec ppm
+    than the default Bunnahabhain Traditional production
+    (~1-2 ppm). The same equipment, water source, and core
+    process are used for both lines; the differentiating
+    variable is the malt spec. Successive labellings have
+    used "Toiteach" and "Moine" (Gaelic for "peat") across
+    release windows; the underlying production line is the
+    same.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null                 # Process parameters shared with
+                                      # the Bunnahabhain Traditional
+                                      # line.
+  yeast: null
+  notes: |
+    Process parameters mirror the Bunnahabhain Traditional
+    production line; the peated and unpeated variants differ
+    only in malt input.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Specific cut points not disclosed in current sourcing;
+      shared with the Bunnahabhain Traditional line.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                    # Ex-bourbon barrels predominate
+                                      # in the Toiteach / Moine core
+                                      # releases.
+  - oloroso-sherry-butt               # Sherry-cask component appears
+                                      # in some Toiteach limited
+                                      # editions; less prominent than
+                                      # in the older expressions of the
+                                      # Traditional line.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - bunnahabhain-toiteach
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Bunnahabhain Toiteach production line is the distillery's
+  peated sub-line, running periodically alongside the
+  predominant lightly-peated Bunnahabhain Traditional production
+  using the same equipment and process but with a peated
+  commercial malt at substantially higher spec phenol level
+  (commonly cited in the 35-40 ppm range, contrasting with the
+  Traditional line's 1-2 ppm) [1]. The peated programme is a
+  21st-century development at Bunnahabhain, emerging in the
+  mid-2000s and consolidated under successive labellings
+  (Toiteach, then Moine, then Toiteach again across release
+  windows). The line is bottled separately as Toiteach /
+  Toiteach a Dha core releases; ex-bourbon barrels predominate
+  in the maturation programme.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://bunnahabhain.com/
+    accessed: 2026-05-17
+    notes: |
+      Producer website. Used for the existence of the peated
+      production line, the Toiteach / Moine naming history, and
+      the ~35-40 ppm spec phenol-range characterisation.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Bunnahabhain entry — peated production
+      programme cross-reference.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check. Specific scheduling of
+      peated production runs and the year-by-year output
+      breakdown should be verified against the most recent
+      edition.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []
