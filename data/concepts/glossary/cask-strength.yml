@@ -1,0 +1,65 @@
+# =============================================================================
+# Cask strength
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cask-strength
+title: Cask strength
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  "Cask strength" describes a whisky bottled at the alcoholic
+  strength at which it was withdrawn from the cask, without dilution
+  to a fixed presentation strength. The term is industry convention
+  rather than a regulated label term: the Scotch Whisky Regulations
+  2009 do not define "cask strength" specifically [1], so producers
+  apply it with some latitude. In contemporary use the figure is
+  typically in the range 50–60% ABV, varying by age, climate, and
+  cask history. Cask-strength releases sit at the higher-disclosure
+  end of the presentation spectrum, generally also bottled non-chill-
+  filtered and at natural colour. Compare against the standard
+  flagship presentation strength of 40–46% ABV, which involves
+  pre-bottling dilution with water to a fixed target.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/abv
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - CS
+    - natural strength
+  part_of_speech: noun
+  see_also:
+    - glossary/abv
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009. Sets the minimum
+      bottling strength for Scotch (40% ABV) but does not define
+      "cask strength" as a regulated term; producer use is by
+      convention.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-16
+contributors: []

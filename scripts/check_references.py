@@ -3,9 +3,9 @@
 WhiskyBase cross-reference resolver and JSON Schema validator.
 
 Walks every YAML entry under /data/, builds a slug index across all entity
-types (distilleries, production_lines, bottlings, bottlers, casks, concepts
-by kind), then reports references that don't resolve and any JSON Schema
-violations. Output is warn-only.
+types (distilleries, production_lines, bottlings, bottlers, casks, suppliers,
+concepts by kind), then reports references that don't resolve and any JSON
+Schema violations. Output is warn-only.
 
 Exit code is always 0.
 """
@@ -62,6 +62,7 @@ LIST_REFS = {
     "covers": "concept",
     "see_also": "concept",
     "contrast_with": "concept",
+    "supplies_to": "distillery",
 }
 
 
@@ -72,6 +73,7 @@ ENTITY_SCHEMA_FILE = {
     "bottler": "bottler.schema.json",
     "cask": "cask.schema.json",
     "concept": "concept.schema.json",
+    "supplier": "supplier.schema.json",
 }
 
 
@@ -177,6 +179,7 @@ def classify_path(path: Path):
         "bottlings": ("bottling", None),
         "bottlers": ("bottler", None),
         "casks": ("cask", None),
+        "suppliers": ("supplier", None),
     }.get(top, ("unknown", None))
 
 
@@ -198,7 +201,7 @@ def build_index(files: Iterable[Path]):
             continue
         if entity == "concept":
             index["concept"][f"{sub_kind}/{sid}"].append(path)
-        elif entity in {"distillery", "production_line", "bottling", "bottler", "cask"}:
+        elif entity in {"distillery", "production_line", "bottling", "bottler", "cask", "supplier"}:
             index[entity][sid].append(path)
     duplicates = []
     for entity, slugs in index.items():
@@ -276,6 +279,8 @@ def resolve(target_kind, slug, index):
         return slug in index["bottler"]
     if target_kind == "cask":
         return slug in index["cask"]
+    if target_kind == "supplier":
+        return slug in index["supplier"]
     if target_kind == "distillery_or_bottler":
         return slug in index["distillery"] or slug in index["bottler"]
     if target_kind == "cask_or_concept":
@@ -322,6 +327,7 @@ def main():
     print(f"  Bottlings:        {len(index['bottling'])}")
     print(f"  Bottlers:         {len(index['bottler'])}")
     print(f"  Casks:            {len(index['cask'])}")
+    print(f"  Suppliers:        {len(index['supplier'])}")
     print(f"  Concepts:         {len(index['concept'])}")
     concept_by_kind = defaultdict(int)
     for namespaced in index["concept"]:

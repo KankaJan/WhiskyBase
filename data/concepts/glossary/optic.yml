@@ -1,0 +1,63 @@
+# =============================================================================
+# Optic (spring two-row malting barley)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: optic
+title: Optic
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Optic is a spring two-row malting barley variety bred by the
+  Scottish Crop Research Institute (SCRI, now the James Hutton
+  Institute) at Invergowrie, registered for UK commercial cultivation
+  in the mid-1990s and approved by the Institute of Brewing &
+  Distilling for malt distilling [1]. Optic was the dominant
+  malting variety in Scotch malt production from the late 1990s
+  through the 2000s before being displaced by Concerto from
+  approximately 2012 onward. Optic remains in cultivation as a
+  legacy / contractual variety at a smaller scale; some
+  distilleries (including Springbank's Longrow and Hazelburn lines)
+  retain Optic alongside Concerto.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases: []
+  part_of_speech: noun
+  see_also: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://ahdb.org.uk/cereals-oilseeds/recommended-lists
+    accessed: 2026-05-16
+    notes: |
+      AHDB Recommended Lists. Specific registration date for Optic
+      (~1995) and its peak years on the Recommended List should
+      be verified against historical RL documents when accessed.
+      SCRI breeding programme records, available via the James
+      Hutton Institute archive, are the upstream authoritative
+      source for parentage and breeding methodology.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

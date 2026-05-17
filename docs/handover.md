@@ -331,17 +331,24 @@ back rather than absorbing it into the data model.
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
   line).
 - 10 bottlings: 9 Bruichladdich, 1 Harris
-- 17 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
-  Whisky), 3 educational (peating-measurement-methods,
-  aromatic-compounds-in-whisky, copper-conversation), 2 equipment
-  (worm-tub, shell-and-tube-condenser), 9 glossary (peating-block,
-  phenol-ppm, phenol, cresol, guaiacol, standard-seven-phenols,
-  sulphur-in-new-make, lyne-arm, classic-malts). All previously-
-  tracked concept dangling references now resolve; only the 20
-  worm-tub `used_at_distilleries` forward refs remain (expected
-  per §8), plus 2 forward refs from the Cadenhead's IB
-  pressure-test stub (`bunnahabhain` distillery and its
-  `bunnahabhain-traditional` production_line — not yet
+- 45 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
+  Whisky), 8 educational (peating-measurement-methods,
+  aromatic-compounds-in-whisky, copper-conversation,
+  swa-regional-designations, cask-fill-states,
+  cask-maturation-kinetics, chill-filtering,
+  scotch-presentation-conventions), 2 equipment (worm-tub,
+  shell-and-tube-condenser), 2 practice (floor-malting,
+  external-malting), 30 glossary.
+- 0 supplier entries. `supplier` entity type schema drafted at
+  v0.1 (`schema/supplier.template.yml`,
+  `schema/json/supplier.schema.json`); resolver indexes
+  `data/suppliers/`. Schema is DRAFT pending a first
+  pressure-test entry (likely Bairds Malt Ltd). See
+  TODO §Schema work §Drafted but not finalised. All previously-tracked concept dangling references
+  now resolve; only the 20 worm-tub `used_at_distilleries` forward
+  refs remain (expected per §8), plus 2 forward refs from the
+  Cadenhead's IB pressure-test stub (`bunnahabhain` distillery and
+  its `bunnahabhain-traditional` production_line — not yet
   populated).
 - 2 bottlers: Cadenhead's (`data/bottlers/cadenheads.yml`,
   confidence medium, populated 2026-05-15 against bottler v0.1)
@@ -381,6 +388,10 @@ back rather than absorbing it into the data model.
   and parent fields added, data-driven from Signatory pressure-test)
 - `schema/cask.template.yml` — v0.1 (disclosure_status enum,
   parent/alternatives relations; 16 entries populated)
+- `schema/supplier.template.yml` — v0.1 DRAFT (maltster /
+  cooperage_source / yeast_supplier / barley_breeder / other;
+  sites list, ownership, products, supplies_to; 0 entries
+  populated, awaiting first pressure-test)
 
 **Validation tooling (2026-05-16):**
 
@@ -391,7 +402,29 @@ back rather than absorbing it into the data model.
   `_common` are merged into each entity schema at load time
   (jsonschema 3.2.0 cross-file `$ref` is brittle). YAML dates are
   coerced to ISO strings before validation. Current state: 0
-  findings across all 70 files.
+  findings across all 85 files.
+
+**Reference documents:**
+
+- `docs/bibliography.md` — curated literature catalogue
+  (2026-05-16, expanded). 767-line inventory covering 33 entries
+  across 7 sections: technical reference books (Russell 2014,
+  Piggott 1989 and 1983, Lyons & Hill, Boulton & Quain 2001,
+  Buxton & Hughes 2014, Udo 2006), peer-reviewed paper authors
+  / groups (Mosedale & Puech, Conner, Paterson & Piggott
+  Strathclyde, Wanikawa Suntory, Aylott, SWRI staff), industry /
+  academic journals (JIB, JSFA, Food Chemistry, JAFC, J Cereal
+  Sci, Trends in Food Sci & Tech, Food Res Intl, LWT, Chem
+  Senses, Flavour & Fragrance), institutional sources (SWRI,
+  ICBD, SWA, HMRC, Worshipful Company of Distillers), annual
+  publications (Malt Whisky Yearbook, Whisky Magazine), and
+  historical / contextual works (MacLean, Moss & Hume 1981,
+  Weir on DCL). Documents the project's positive sourcing
+  standard and the exclusion criteria. Ten concept entries
+  currently cite Russell ed. 2014 with `confidence: medium`
+  hedges (listed under Russell's Cited-by subsection in the
+  bibliography); grounding those against actual page references
+  is queued research work.
 
 **Next priorities, in order of unblock value:**
 

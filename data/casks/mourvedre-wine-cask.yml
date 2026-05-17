@@ -96,6 +96,27 @@ sources:
       Used for grape variety profile, synonyms, and primary
       appellations.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.inao.gouv.fr/
+    accessed: 2026-05-16
+    citation: |
+      Cahier des charges de l'appellation d'origine contrôlée
+      "Bandol", Institut national de l'origine et de la qualité
+      (INAO). Mourvèdre's principal French AOC home; the cahier
+      requires at least 50% Mourvèdre in Bandol red wines, with
+      Grenache, Cinsault, Syrah, and Carignan permitted as
+      blending partners.
+    notes: |
+      Primary regulatory text for Bandol AOC as Mourvèdre's
+      principal AOC reference. The project's generic
+      mourvedre-wine-cask slug records the variety rather than a
+      specific appellation; Bandol is cited here as the closest
+      regulatory grounding for Mourvèdre-dominant wines. Where a
+      specific cask is from a different appellation (Provence
+      Côtes du Rhône, etc.), that appellation's cahier should be
+      consulted.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1

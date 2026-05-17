@@ -1,0 +1,69 @@
+# =============================================================================
+# Vatting
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: vatting
+title: Vatting
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Vatting is the combination of mature whisky from multiple casks
+  into a single batch before bottling. Within a single distillery,
+  vatting smooths out cask-to-cask variation to produce a
+  reproducible release (the standard practice for distillery core
+  releases such as Lagavulin 16 and Glenmorangie Original). Across
+  distilleries, vatting of single-malt Scotch from multiple
+  distilleries produces "blended malt Scotch whisky" — one of the
+  five regulated Scotch categories defined by the Scotch Whisky
+  Regulations 2009 [1]. The complementary concept is "single cask"
+  (see glossary/single-cask), where one cask is bottled without
+  vatting. The term is industry convention; the 2009 Regulations
+  do not define "vatting" itself but the resulting categories
+  (single malt, blended malt, blended Scotch) are regulated.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/single-cask
+  - glossary/single-malt
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - vatted malt
+  part_of_speech: noun
+  see_also:
+    - glossary/single-cask
+    - glossary/single-malt
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009 define the Scotch whisky
+      categories (single malt, single grain, blended malt, blended
+      grain, blended Scotch). "Vatting" itself is not a regulated
+      term but is the standard industry term for the combination
+      step.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-16
+contributors: []

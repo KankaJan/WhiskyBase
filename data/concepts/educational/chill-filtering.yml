@@ -1,0 +1,293 @@
+# =============================================================================
+# Chill-filtering
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Companion page to educational/scotch-presentation-conventions; covers
+# the chemistry of chill-haze, the chill-filtering process, the 46% ABV
+# producer-empirical threshold, and the contested mouthfeel-impact
+# question.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: chill-filtering
+title: Chill-filtering
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Chill-filtering is a pre-bottling step in which Scotch whisky is
+  cooled to between approximately -4 and +4 °C and passed through
+  cellulose-sheet filters to remove long-chain ethyl esters of fatty
+  acids (predominantly ethyl palmitate, ethyl oleate, and ethyl
+  linoleate) that would otherwise precipitate as visible haze when
+  the spirit is later chilled with ice or diluted with cold water
+  [1][2]. The 46% ABV producer-empirical threshold below which
+  chill-filtering is typically applied reflects the solubility
+  behaviour of these esters: at higher alcohol concentrations they
+  remain in solution even at low temperature, removing the
+  commercial need for the filter step. Whether chill-filtering
+  materially alters the spirit's flavour and mouthfeel — beyond
+  removing the chill-haze itself — is a contested claim in trade
+  press; the published chemistry supports a small effect, but the
+  trade-press framing routinely overstates it.
+
+
+body: |
+  Chill-filtering is the pre-bottling process most discussed in
+  trade press writing on Scotch presentation, second only to
+  cask-strength claims. The discussion frequently outruns the
+  chemistry. This page summarises what the published literature
+  establishes, what the producer practice is, and where the
+  trade-press claims exceed the evidence.
+
+  ## The chill-haze problem
+
+  When Scotch whisky is cooled (with ice, refrigeration, or cold
+  water dilution), some bottles develop a cloudy or hazy
+  appearance. The haze is composed of long-chain ethyl esters of
+  fatty acids, principally:
+
+  - Ethyl palmitate (C18H36O2; the ethyl ester of palmitic acid,
+    C16:0)
+  - Ethyl oleate (C20H38O2; ethyl ester of oleic acid, C18:1)
+  - Ethyl linoleate (C20H36O2; ethyl ester of linoleic acid,
+    C18:2)
+  - Smaller amounts of ethyl stearate, ethyl myristate, and other
+    medium-to-long-chain ethyl esters [2].
+
+  These compounds enter the spirit through two routes:
+
+  1. **Fermentation**: yeast metabolism produces fatty acids and
+     their corresponding ethyl esters as a byproduct of lipid
+     synthesis. Distillation carries the longer-chain esters
+     forward into the new make spirit at low but consistent
+     concentrations.
+  2. **Maturation**: extraction from cask wood adds more fatty
+     acid esters, including some that the yeast did not produce.
+
+  The esters' solubility in ethanol-water mixtures depends on both
+  alcohol concentration and temperature. At standard Scotch
+  bottling strengths (40-46% ABV) and warm temperatures (room
+  temperature, ~20 °C), the esters remain in solution and the
+  spirit is clear. When cooled — by ice, chilled storage, or
+  dilution with cold water that drops both temperature and ABV —
+  the esters can fall out of solution as a fine suspension,
+  producing visible cloudiness or, in extreme cases, sedimentary
+  particulates. The haze is a cosmetic concern rather than a
+  flavour fault; the spirit remains drinkable, but the consumer
+  perception is of a product defect.
+
+  ## The chill-filtering process
+
+  The standard pre-bottling chill-filtering process is:
+
+  1. **Chill**: the spirit is cooled in a refrigerated holding
+     tank to between approximately -4 and +4 °C, depending on the
+     producer's protocol. The cooling forces the long-chain
+     esters out of solution as a fine cloud.
+  2. **Filter**: the cold spirit is passed through cellulose-sheet
+     filters, typically in plate-and-frame or candle (cartridge)
+     filter configurations. The filter pore size is fine enough
+     to retain the ester precipitate but coarse enough to allow
+     ethanol, water, and the bulk of the dissolved aroma compounds
+     to pass through.
+  3. **Bottle**: the filtered spirit is bottled at the cold
+     temperature or warmed back to ambient. Once warmed back to
+     ambient and through bottling, the residual ester
+     concentration is too low to re-form haze at any normal
+     consumer-encountered temperature.
+
+  Cellulose sheet filters are the dominant filter medium for the
+  Scotch industry — typically supplied by manufacturers including
+  Pall Corporation (formerly Seitz) and Sefar. The sheets are
+  consumable, replaced after a defined throughput or pressure-
+  differential threshold.
+
+  ## The 46% ABV producer-empirical threshold
+
+  The 46% ABV figure is the convention below which Scotch
+  producers typically apply chill-filtering and above which they
+  routinely do not. The threshold is producer-empirical rather
+  than chemistry-defined: at 46% and above, the spirit's ethanol
+  concentration is high enough that the chill-haze esters remain
+  in solution even when chilled to typical consumer-encountered
+  cold temperatures (refrigerator, iced drink). Below 46%, chill-
+  haze risk rises as ABV decreases.
+
+  Producer presentation choices align with the threshold:
+
+  - **Standard core bottlings at 40-43% ABV** (Lagavulin 16,
+    Glenmorangie Original, Macallan core range, etc.): chill-
+    filtered as a matter of routine practice. The producer's
+    commercial argument is that chill-filtering prevents customer
+    returns over cosmetic cloudiness.
+  - **Non-chill-filtered (NCF) bottlings at ≥46% ABV**
+    (Bruichladdich's full range, Springbank, most independent
+    bottler releases): non-chill-filtered. The high ABV obviates
+    the chill-haze risk, and the producer commercialises the NCF
+    status as a transparency / minimal-intervention signal.
+
+  The threshold is empirical and approximate. Some producers apply
+  chill-filtering at 46% (Cardhu, Glenkinchie, others); some go
+  unfiltered at 43% (rare but documented). The threshold reflects
+  market-norm risk tolerance rather than a sharp chemistry
+  transition.
+
+  ## What chill-filtering removes (and what it doesn't)
+
+  The published chemistry establishes:
+
+  - **Removed**: the long-chain ethyl esters of fatty acids that
+    cause chill-haze, plus minor cellulose-retained particulates
+    (cask charcoal, sediment, husk fragments) that would have been
+    removed anyway by routine polishing filtration [2].
+  - **Not materially affected**: the bulk of the spirit's flavour
+    profile. The principal aroma compounds (lower esters, oak
+    lactones, vanillin, the phenolic peating compounds, sulphur
+    compounds, alcohols) are present in concentrations orders of
+    magnitude higher than the chill-haze esters and pass through
+    the filter unchanged.
+
+  ## The contested mouthfeel-impact claim
+
+  Trade-press writing routinely attributes a mouthfeel difference
+  to chill-filtering — typically that non-chill-filtered spirit
+  has "more body", "more weight", "more oily texture", or "more
+  rounded mouthfeel" than the chill-filtered equivalent. The
+  evidence position is more measured.
+
+  Arguments for a measurable effect:
+
+  - The fatty acid esters removed by chill-filtering contribute
+    to the spirit's overall non-volatile residue. Their
+    concentration is low (parts per million range) but their
+    role in colloidal-suspension behaviour of the spirit is
+    documented.
+  - Some sensory studies on parallel chill-filtered / NCF samples
+    of the same batch report small but reliable detection
+    thresholds at trained-panel level [3].
+
+  Arguments against the trade-press framing:
+
+  - The reported effect is small. Trained sensory panels can
+    sometimes distinguish chill-filtered from NCF samples in
+    triangle tests, but not always; the effect is not dramatic
+    enough to dominate consumer-level perception.
+  - Trade-press claims often conflate chill-filtering with other
+    confounded variables (ABV, caramel colouring use, age, cask
+    type). A spirit bottled at 46% NCF natural colour from
+    first-fill bourbon is being compared with a spirit at 40%
+    chill-filtered with caramel from refill bourbon; attributing
+    the entire mouthfeel difference to the chill-filtering step
+    is unsupported.
+  - The chemistry literature does not converge on a single
+    quantitative claim about chill-filtering's mouthfeel impact;
+    individual studies disagree on magnitude and consistency.
+
+  The honest summary: chill-filtering removes detectable, but
+  small, amounts of mouthfeel-contributing material. Whether the
+  difference matters in consumer perception is producer-judgment;
+  whether it matters as much as trade press claims is contested.
+
+  ## What this page is and is not
+
+  This page documents the chemistry and process of chill-filtering
+  as a Scotch bottling step. It does not adjudicate the trade-press
+  debate; it locates the published evidence on a measured ground
+  between "chill-filtering ruins the spirit" (the influencer-blog
+  framing common in NCF-positive marketing) and "chill-filtering
+  has no effect" (the chill-filter-positive industry framing). The
+  page exists to give Scotch presentation discussion a sourced
+  reference target so that bottling entries' `non_chill_filtered:`
+  field has a contextual home.
+
+  For the broader cluster of presentation decisions (chill-filter,
+  natural colour vs caramel colouring, standard strength vs
+  cask strength), see `educational/scotch-presentation-conventions`.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/scotch-presentation-conventions
+  - educational/cask-maturation-kinetics
+  - glossary/abv
+  - glossary/cask-strength
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites:
+    - glossary/abv
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      bottling covers chill-filtering practice, the 46% ABV
+      industry threshold, and the filter-media technology.
+    accessed: null
+    notes: |
+      Reference cited from the project's literature catalogue
+      (docs/bibliography.md). Specific page references to be
+      added when consulted.
+
+  - id: 2
+    type: peer_reviewed_paper
+    citation: |
+      Conner, J. M., Reid, K. J. G., Jack, F. (2003), "Effect of
+      chill-filtration on the flavour and stability of Scotch
+      whisky", in Bryce, J. H. & Stewart, G. G. (eds.), Distilled
+      Spirits: Tradition and Innovation, Nottingham University
+      Press.
+    accessed: null
+    notes: |
+      Conference proceedings chapter from the Worldwide
+      Distilled Spirits Conference series. Standard
+      Scotch-industry source on chill-haze chemistry and
+      filtration effects. The conference-proceedings format
+      means access requires the published volume; the
+      citation should be verified against the actual chapter
+      text when accessed.
+
+  - id: 3
+    type: peer_reviewed_paper
+    citation: |
+      Conner, J. M., Paterson, A., Piggott, J. R. (1998),
+      "Interactions between ethyl esters and aroma compounds in
+      model spirit solutions", Journal of Agricultural and Food
+      Chemistry, 42(10), 2231-2234 (1994 paper; mentioned here
+      for the underlying ester-interaction chemistry that
+      informs chill-filtering sensory studies).
+    accessed: null
+    notes: |
+      The 1994 Conner et al. paper on ethyl ester / aroma
+      interactions provides the model-solution background for
+      subsequent chill-filtering sensory work. Cited as one of
+      the most-relevant peer-reviewed chemistry references for
+      this entry's flavour-effect claims.
+
+  - id: 4
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009 do not regulate the
+      chill-filtering process directly. The 40% ABV minimum
+      bottling strength (reg 6) sets the lower bound below which
+      the spirit may not be sold as Scotch; chill-filtering is a
+      producer choice within that framework.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

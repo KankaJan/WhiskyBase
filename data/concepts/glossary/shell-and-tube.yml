@@ -1,0 +1,77 @@
+# =============================================================================
+# Shell-and-tube condenser
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: shell-and-tube
+title: Shell-and-tube condenser
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A shell-and-tube condenser is the modern industrial condenser
+  type used in the majority of Scotch malt distilleries since the
+  mid-20th century. Spirit vapour passes through a bundle of
+  vertical copper tubes contained inside an outer shell; cooling
+  water circulates around the tubes in the shell space. The
+  geometry presents a large copper surface area per unit of vapour
+  and condenses the spirit quickly. Compared with the older worm-tub
+  arrangement (see equipment/worm-tub), shell-and-tube condensers
+  typically produce a lighter, more sulphur-stripped new make
+  because vapour-copper contact during condensation is more
+  extensive [1]. Most Scotch distilleries built or refurbished
+  after the 1960s use shell-and-tube; worm tubs survive at a small
+  number of distilleries where the heavier character they produce
+  is part of the house style. For mechanism detail see
+  equipment/shell-and-tube-condenser; for the broader copper-vapour
+  interaction see educational/copper-conversation.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - equipment/shell-and-tube-condenser
+  - equipment/worm-tub
+  - educational/copper-conversation
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - shell and tube
+    - shell-and-tube
+  part_of_speech: noun
+  see_also:
+    - equipment/shell-and-tube-condenser
+    - equipment/worm-tub
+    - educational/copper-conversation
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      distillation covers condenser types, surface-area effects on
+      sulphur removal, and the historical transition from worm tubs
+      to shell-and-tube.
+    accessed: null
+    notes: |
+      Reference cited from the project's literature catalogue;
+      specific page references to be added when consulted.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

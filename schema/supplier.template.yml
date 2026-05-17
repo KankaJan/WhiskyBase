@@ -1,0 +1,171 @@
+# =============================================================================
+# SUPPLIER SCHEMA TEMPLATE — v0.1 (DRAFT)
+# =============================================================================
+# Status: DRAFT. The schema is registered in /schema/json/supplier.schema.json
+# and supported by scripts/check_references.py, but no entries have been
+# populated yet. The schema's first pressure-test will come from a bottling
+# or production_line entry that materially turns on supplier identity
+# (e.g., a "100% Heaven Hill cooperage" release, or a per-bottling
+# disclosure naming a specific yeast strain).
+#
+# Defer criteria (see TODO §Schema work §Not yet drafted):
+#   - 5+ named maltsters across populated production_line entries, OR
+#   - a bottling entry where supplier identity is the defining feature
+# When either triggers, the schema can be promoted from draft to active
+# and existing glossary entries (bairds-malt, heaven-hill, buffalo-trace,
+# distillers-yeast) can be partially migrated to supplier entries.
+# =============================================================================
+# Purpose: a supplier is a commercial third party that provides an
+# upstream input to Scotch production. The entity type covers:
+#   - Maltsters (commercial malting companies supplying barley malt)
+#   - Cooperage sources (typically bourbon distilleries whose used
+#     barrels feed the Scotch ex-bourbon cask supply)
+#   - Yeast suppliers (commercial yeast houses providing distilling
+#     yeast strains)
+#   - Other commercial upstream entities
+#
+# Parallels the bottler entity type but for the upstream side of the
+# supply chain. Where the bottler entity covers commercial entities
+# that turn cask spirit into a finished release, the supplier entity
+# covers commercial entities whose inputs feed the spirit's character
+# from earlier stages.
+#
+# What this schema describes: identity, type, location, sites,
+# ownership, principal products/specifications, references.
+#
+# What this schema does NOT describe (do not add):
+#   - Recipe or spec for any individual product (those would be
+#     separately modelled if the project ever needs that detail).
+#   - Distillery-specific supply contracts (those are
+#     producer-private and out of scope).
+#   - Tasting notes (out of scope across the project).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: example-supplier                 # REQUIRED. Lowercase slug.
+                                     # Convention: name lowercased,
+                                     # spaces -> hyphens, abbreviations
+                                     # preserved (e.g. bairds-malt,
+                                     # heaven-hill, buffalo-trace,
+                                     # mauri-yeast, kerry-distilling).
+name: null                           # REQUIRED. Display name.
+also_known_as: []                    # Alternative names or historical
+                                     # names.
+website: null                        # Official URL where applicable.
+
+
+# --- Type -------------------------------------------------------------------
+type: maltster                       # REQUIRED. One of:
+                                     #   maltster        — commercial
+                                     #                     malting company
+                                     #   cooperage_source — bourbon /
+                                     #                     other distillery
+                                     #                     whose used
+                                     #                     barrels feed the
+                                     #                     Scotch cooperage
+                                     #                     supply
+                                     #   yeast_supplier  — commercial
+                                     #                     yeast house
+                                     #   barley_breeder  — plant-breeding
+                                     #                     company
+                                     #                     (Syngenta, KWS,
+                                     #                     SCRI/JHI)
+                                     #   other           — any other
+                                     #                     upstream commercial
+                                     #                     entity
+
+
+# --- Location ---------------------------------------------------------------
+country: null                        # Primary operating country.
+region: null                         # Primary operating region within
+                                     # the country, where applicable.
+
+
+# --- Sites ------------------------------------------------------------------
+sites: []                            # OPTIONAL list of sites operated by
+                                     # the supplier. Multi-site suppliers
+                                     # (Bairds Malt with Inverness,
+                                     # Pencaitland, Witham) populate
+                                     # multiple entries. Single-site
+                                     # suppliers use a one-element list.
+                                     #
+                                     # Shape per entry:
+                                     #   - id: inverness           # OPTIONAL
+                                     #                             # local identifier;
+                                     #                             # useful for
+                                     #                             # multi-site
+                                     #                             # entities
+                                     #     name: Bairds Inverness
+                                     #     country: Scotland
+                                     #     locality: Inverness
+                                     #     capabilities: |
+                                     #       Free text describing what the
+                                     #       site does. e.g. "Drum malting,
+                                     #       HPLC phenol-spec measurement,
+                                     #       peated and unpeated
+                                     #       capability."
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating                    # operating | dormant | closed
+founded: null                        # YYYY
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: null                      # Current legal owner.
+  parent: null                       # Parent company.
+  history: []                        # Chronological list of past
+                                     # owners with from/to years, same
+                                     # pattern as the distillery and
+                                     # bottler templates.
+
+
+# --- Products / Capabilities ------------------------------------------------
+products: []                         # OPTIONAL list of principal product
+                                     # types / specification capabilities.
+                                     # Shape per entry:
+                                     #   - type: peated_malt
+                                     #     description: |
+                                     #       Peated malt at customer-
+                                     #       specified phenol level,
+                                     #       measured by HPLC.
+                                     #
+                                     # Free-form; not enforced as a
+                                     # closed enum because product
+                                     # categories vary by supplier type.
+
+
+# --- Supplies to ------------------------------------------------------------
+supplies_to: []                      # OPTIONAL list of distillery slugs
+                                     # this supplier is publicly known
+                                     # to supply. Build pipeline may
+                                     # compute this from the inverse
+                                     # direction (production_line entries
+                                     # naming the maltster); the field
+                                     # is reserved for explicit declared
+                                     # supply relationships.
+
+
+# --- Description ------------------------------------------------------------
+# Strict reference register. 2-4 sentences. What the supplier does, who
+# owns it, what distinguishes its supply position. Not marketing copy.
+description: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  wikidata_qid: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # Same numbered-list pattern as
+                                     # elsewhere.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: stub                     # high | medium | low | stub
+last_reviewed: 2026-05-16
+contributors: []

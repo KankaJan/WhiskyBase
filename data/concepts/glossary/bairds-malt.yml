@@ -1,0 +1,72 @@
+# =============================================================================
+# Bairds Malt Ltd
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bairds-malt
+title: Bairds Malt Ltd
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Bairds Malt Ltd is a UK commercial maltster supplying Scotch
+  malt distilleries from sites at Inverness (Scotland), Pencaitland
+  (East Lothian, Scotland), and Witham (Essex, England). The
+  Inverness site (Bairds of Inverness) is the most-referenced
+  Bairds plant in WhiskyBase populated entries, supplying Harris
+  Distillery (The Hearach core), Bruichladdich (Islay Barley
+  releases and the Octomore 8.3 batch reported on Bairds malt),
+  and others. Bairds operates HPLC-based phenol measurement for
+  peated specifications, providing the spec-stage ppm values
+  cited by Harris and Bruichladdich [1]. The company is one of
+  several principal commercial maltsters serving the Scotch
+  industry alongside Crisp Malt, Simpsons Malt, Muntons, and
+  Boortmalt (see practice/external-malting).
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - practice/external-malting
+  - methodology/harris-published-ppm
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - Bairds
+    - Bairds of Inverness
+  part_of_speech: noun
+  see_also:
+    - practice/external-malting
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.bairds-malt.co.uk/
+    accessed: 2026-05-16
+    notes: |
+      Bairds Malt company website. Used for site listing
+      (Inverness, Pencaitland, Witham), product / specification
+      capabilities including HPLC phenol measurement, and
+      general company information. Producer-direct source;
+      cross-check the specific HPLC-methodology claim against
+      the methodology/harris-published-ppm concept page, which
+      records Harris's Bairds-supplied peating-spec citation
+      pathway.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

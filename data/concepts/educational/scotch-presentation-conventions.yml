@@ -1,0 +1,241 @@
+# =============================================================================
+# Scotch presentation conventions
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Cluster page covering the family of bottling-side presentation
+# decisions: chill-filtering, non-chill-filtered (NCF), natural colour
+# vs caramel colouring (E150a), standard strength vs cask strength.
+# Companion to educational/chill-filtering (the chemistry deep-dive)
+# and educational/cask-fill-states (the maturation-side cluster page).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: scotch-presentation-conventions
+title: Scotch presentation conventions
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Scotch whisky presentation — the bottling-side choices made
+  after maturation but before sale — clusters around four
+  decisions: bottling strength, chill-filtering, colouring, and
+  cask-strength claims. The four are correlated in producer
+  practice: high-volume core releases at 40-43% ABV typically pair
+  with chill-filtering and caramel colouring (E150a); craft /
+  premium / independent-bottler releases at 46% ABV and above
+  typically pair with non-chill-filtered (NCF) and natural-colour
+  presentation. The Scotch Whisky Regulations 2009 set the
+  regulatory frame — minimum 40% ABV [1, reg 6], permitted
+  caramel colouring (E150a only) under [1, reg 7] — but the
+  presentation conventions themselves are industry practice, not
+  regulation.
+
+
+body: |
+  Maturation ends with the cask broached and the spirit pumped
+  through a series of pre-bottling steps. Each of the four
+  decision points below has its own producer-economic logic and
+  its own consumer-perception signal; producer presentation
+  conventions track those signals rather than chemistry alone.
+
+  ## The four decision points
+
+  ### 1. Bottling strength
+
+  Scotch's minimum bottling strength under the 2009 Regulations is
+  40% ABV [1]. Producer practice splits the market into bands:
+
+  - **40% ABV**: the legal minimum. Common for high-volume,
+    travel-retail, and price-sensitive core releases (Famous
+    Grouse, J&B, many supermarket-own-brand Scotch).
+  - **43% ABV**: traditional Scotch strength for several core
+    flagship single malts (Lagavulin 16, Glenfiddich 12,
+    Glenmorangie Original at 40% — actually Glenmorangie is
+    lower; varies by release). The 43% band is a long-standing
+    convention.
+  - **46% ABV**: the de facto NCF threshold (see chill-filtering
+    discussion below). Common for craft / premium / no-age-
+    statement upscale releases (Bruichladdich, Springbank, much
+    of the Glenfarclas / Aberlour upper range).
+  - **48-58% ABV**: cask-strength range. Variable per release;
+    typically annual special releases and independent-bottler
+    single-cask programmes.
+  - **58%+**: the higher cask-strength range, including some
+    very-young high-strength releases. Bruichladdich Octomore
+    sub-series at filling strength of 68.5% includes some
+    bottlings within this range.
+
+  Lower bottling strength means higher bottle yield per cask (the
+  spirit is diluted with water to reach the target strength); the
+  economic incentive is to bottle as low as the brand positioning
+  permits. The "cask strength" claim trades yield against the
+  premium signal of unfiltered, unwatered presentation.
+
+  ### 2. Chill-filtering vs non-chill-filtered (NCF)
+
+  See `educational/chill-filtering` for the chemistry deep-dive.
+  Summary: chill-filtering at -4 to +4 °C through cellulose sheets
+  removes long-chain ethyl esters of fatty acids that would
+  otherwise precipitate as visible haze when the bottled spirit is
+  later chilled or diluted with cold water. The 46% ABV producer
+  threshold marks the empirical solubility crossover above which
+  the esters remain in solution even when cold.
+
+  Producer choice:
+
+  - Standard strength (40-43%): chill-filtered, almost universal
+    industry practice for commercial risk reasons.
+  - 46%+ ABV: non-chill-filtered is the convention, with NCF
+    routinely highlighted on the label as a transparency claim.
+
+  Whether the difference is sensorily significant is contested;
+  see `educational/chill-filtering` §"The contested mouthfeel-impact
+  claim" for the project's measured framing.
+
+  ### 3. Natural colour vs caramel colouring (E150a)
+
+  The Scotch Whisky Regulations 2009 [1, reg 7] permit "spirit
+  caramel" (the colour additive E150a, a caramel produced under
+  controlled conditions from sugar) as the only authorised
+  colouring agent for Scotch. The use is to standardise colour
+  appearance across batches, since cask-derived colour varies
+  considerably with cask fill state, age, and individual cask
+  history.
+
+  Producer choice:
+
+  - **Caramel-coloured (default)**: standard practice for
+    industrial-scale core releases. E150a is added in trace
+    quantities (well below taste-detection threshold for most
+    consumers; published levels in commercial Scotch are
+    typically 0.1-5 ppm equivalent) to standardise colour.
+  - **Natural colour**: the spirit is bottled with only the
+    colour that the cask programme produced. Common in craft /
+    premium / independent-bottler presentations, often paired
+    with NCF and 46%+ ABV positioning. Marketed as a
+    transparency claim.
+
+  The colour-detection sensory question parallels the
+  chill-filtering one: at the trace levels used in commercial
+  practice, E150a is generally below flavour-impact threshold,
+  but trade-press writing routinely attributes flavour notes
+  ("flat", "less vibrant") to caramel-coloured spirit. Sensory
+  evidence for these claims is mixed.
+
+  ### 4. Cask strength claims
+
+  "Cask strength" is producer terminology for spirit bottled at
+  the alcoholic strength at which it was withdrawn from the cask,
+  without dilution to a fixed target. The 2009 Regulations do not
+  define the term; it is industry convention only. See
+  `glossary/cask-strength` for the definitional treatment.
+
+  Cask-strength releases sit at the high-disclosure end of the
+  presentation spectrum and typically pair with NCF and natural
+  colour. The package is sometimes marketed as the "honest"
+  presentation: minimal intervention, full disclosure of strength
+  and provenance.
+
+  ## The presentation-positioning matrix
+
+  In practice the four decisions are not independent. Producer
+  presentation clusters into recognisable types:
+
+  - **Industrial-core**: 40-43% ABV, chill-filtered, caramel-
+    coloured. Examples: Famous Grouse, Glenfiddich 12 (43%, CF,
+    E150a). Optimised for shelf consistency and volume.
+  - **Premium core**: 40-46% ABV, chill-filtered or NCF depending
+    on threshold, natural colour increasingly the norm at 46%+.
+    Examples: Lagavulin 16 (43%, CF, E150a — the older Diageo
+    convention), Glenmorangie Original (40%, CF, E150a).
+  - **Craft / transparency**: 46%+ ABV, NCF, natural colour.
+    Examples: Bruichladdich Classic Laddie (50%, NCF, natural
+    colour), Springbank 10 (46%, NCF, natural colour), most
+    independent bottlers.
+  - **Cask-strength annual / special**: 48-60%+ ABV, single-cask
+    or small-batch, NCF, natural colour. Examples: Lagavulin 12
+    Cask Strength (annual special), Aberlour A'bunadh, many IB
+    releases.
+  - **Cask-strength experimental**: 58%+ ABV, single distillery
+    or sub-line. Examples: Bruichladdich Octomore series filled
+    at 68.5% ABV.
+
+  These clusters are conventions, not rules. Producers
+  occasionally mix signals (43% NCF natural colour is rare but
+  exists; 50% chill-filtered exists in some travel-retail
+  expressions).
+
+  ## What the conventions signal
+
+  The clustered conventions correlate with producer market
+  positioning. The "industrial-core" cluster signals
+  reproducibility, shelf stability, and accessibility; the
+  "craft / transparency" cluster signals provenance disclosure,
+  minimal intervention, and a premium audience. The conventions
+  are commercial signals first; the chemistry differences
+  underlying them are real but often smaller than the
+  positioning implies (see `educational/chill-filtering` and the
+  parallel discussion of E150a above).
+
+  The project's data records each decision as a separate field
+  on bottling entries (`abv`, `non_chill_filtered`,
+  `natural_colour`, `cask_strength`). Pattern queries across
+  presentation are therefore straightforward: filtering for
+  `non_chill_filtered: true` plus `natural_colour: true` plus
+  `abv >= 46` identifies the craft / transparency cluster.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/chill-filtering
+  - educational/cask-fill-states
+  - educational/cask-maturation-kinetics
+  - glossary/abv
+  - glossary/cask-strength
+  - glossary/single-cask
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites:
+    - glossary/abv
+    - glossary/cask-strength
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009. Regulation 6 sets the
+      minimum bottling strength (40% ABV). Regulation 7 permits
+      "spirit caramel" (E150a) as the only authorised colouring
+      agent for Scotch. The Regulations do not define
+      "chill-filtering", "non-chill-filtered", "natural colour",
+      or "cask strength" as regulated label terms — these are
+      industry conventions.
+
+  - id: 2
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      bottling covers the four presentation decisions in their
+      commercial context.
+    accessed: null
+    notes: |
+      Reference cited from the project's literature catalogue.
+      Specific page references to be added when consulted.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

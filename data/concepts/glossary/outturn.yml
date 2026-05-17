@@ -1,0 +1,61 @@
+# =============================================================================
+# Outturn
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: outturn
+title: Outturn
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  "Outturn" is the total number of bottles released from a single
+  cask or small-batch vatting. The figure is producer-disclosed on
+  the label for many single-cask releases and small-batch limited
+  editions; this project records it on the bottling entry under
+  `batch_or_cask.outturn_bottles`. Outturn is set by the volume of
+  liquid remaining in the cask after the "angel's share" evaporation
+  losses, the bottling strength chosen, and the bottle size.
+  Independent bottlers commonly disclose outturn for single-cask
+  releases as a transparency signal; large-volume core releases
+  rarely do.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - outturn bottles
+  part_of_speech: noun
+  see_also: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []                          # Industry term without single
+                                     # authoritative reference; the
+                                     # term is consistently used in
+                                     # producer / IB release
+                                     # disclosures and in trade press.
+                                     # No primary regulatory definition.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium                   # No primary regulatory citation;
+                                     # `medium` rather than `high` to
+                                     # reflect that the empty sources
+                                     # block is intentional but
+                                     # warrants follow-up if a
+                                     # technical reference surfaces.
+last_reviewed: 2026-05-16
+contributors: []

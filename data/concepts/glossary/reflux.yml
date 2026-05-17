@@ -1,0 +1,75 @@
+# =============================================================================
+# Reflux (in pot-still distillation)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: reflux
+title: Reflux
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Reflux is the partial condensation of spirit vapour back into
+  liquid before it exits the still, returning the heavier
+  components for re-distillation while the lighter, more volatile
+  fractions continue forward to the condenser. Reflux is the
+  principal mechanism through which still geometry shapes new make
+  character: tall stills with long necks and ascending lyne arms
+  generate substantial reflux and produce lighter, more
+  ester-driven spirit; short stills with descending lyne arms
+  minimise reflux and produce a heavier, more sulphury, more
+  congener-rich spirit [1]. The Glenmorangie wash and spirit
+  stills (16'10" tall, ascending lyne arms) and the Lagavulin
+  pear-shaped stills with descending lyne arms exemplify the
+  high-reflux and low-reflux ends of the spectrum. Reflux also
+  extends spirit-copper contact time, amplifying the "copper
+  conversation" effects on sulphur removal (see
+  educational/copper-conversation).
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/copper-conversation
+  - glossary/lyne-arm
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases: []
+  part_of_speech: noun
+  see_also:
+    - educational/copper-conversation
+    - glossary/lyne-arm
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      distillation covers reflux mechanism, still geometry
+      effects, and the relationship between reflux ratio and new
+      make character.
+    accessed: null
+    notes: |
+      Standard technical reference. Specific quantitative
+      treatment of reflux ratios should be cross-checked against
+      this and against Conner papers when the §Existing literature
+      catalogue work surfaces concrete references.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

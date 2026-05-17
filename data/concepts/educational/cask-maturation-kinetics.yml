@@ -1,0 +1,378 @@
+# =============================================================================
+# Cask maturation kinetics
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Covers the established chemistry of cask maturation, the kinetic
+# phases, oxidative and reductive components, angel's share, and the
+# trade-attributed claims that exceed the chemistry evidence. Sourced
+# against Mosedale & Puech 1998, Conner et al., Wanikawa Suntory work,
+# and Russell ed. 2014. confidence: medium with explicit grounding
+# hedges; specific quantitative claims should be verified against the
+# cited primary literature when accessible.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cask-maturation-kinetics
+title: Cask maturation kinetics
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Cask maturation is the multi-year process by which new make spirit
+  in an oak cask develops the colour, flavour, and aroma profile of
+  finished Scotch. The kinetic picture has three principal components:
+  extraction of compounds from the oak (vanillin, oak lactones,
+  tannins, hemicellulosic sugars, furanic compounds, and prior-
+  contents residues), oxidative changes within the spirit driven by
+  slow oxygen ingress through the cask staves, and evaporative losses
+  ("angel's share"). The established chemistry accounts for most of
+  the observable change in colour, principal aroma compounds, and
+  ABV over time; producer claims about subtler character traits
+  (mouthfeel, texture, specific house-character markers) frequently
+  exceed what the published chemistry supports and should be treated
+  as attribution-required rather than settled fact [1][2].
+
+
+body: |
+  Maturation is the longest single stage in Scotch whisky production
+  — three years at minimum under the Scotch Whisky Regulations
+  2009, commonly eight to twenty for core releases, occasionally
+  longer for limited bottlings. Across that duration the new make
+  spirit transforms from a colourless, congener-rich distillate
+  into a finished whisky whose colour, flavour profile, and
+  perceived quality are substantially shaped by the cask. This
+  page summarises what the published chemistry literature
+  establishes about that transformation, distinguishes it from
+  trade-attributed claims, and flags the open questions where
+  primary research has not converged.
+
+  ## What is extracted from the oak
+
+  Oak cask wood is composed predominantly of cellulose, hemicellulose,
+  and lignin, plus minor fractions of tannins, oak lactones, and
+  volatile aromatic compounds developed by the cooper's toasting
+  and charring. Maturation extracts the following principal
+  groups [1]:
+
+  - **Vanillin and related lignin breakdown products** (vanillin,
+    syringaldehyde, coniferaldehyde, sinapaldehyde). These are
+    products of the thermal degradation of lignin during the
+    cooper's toasting and charring, then leached into the spirit
+    over the maturation period. Vanillin in particular contributes
+    the "vanilla" descriptor commonly applied to ex-bourbon
+    matured Scotch.
+  - **Oak lactones** (cis- and trans-β-methyl-γ-octalactone, also
+    known as "whisky lactones" or "oak lactones"). The cis isomer
+    has a coconut / sweet-oak aroma; the trans isomer is more
+    "green" and woody. The cis-to-trans ratio differs between
+    American oak (Quercus alba) and European oak (Q. robur,
+    Q. petraea), giving American-oak ex-bourbon casks a
+    characteristically different aromatic signature from European-
+    oak ex-sherry casks [2][3].
+  - **Hydrolysable tannins** (gallotannins, ellagitannins). These
+    contribute astringency, structure, and — through reactions
+    with spirit alcohol over time — colour-stable polymers that
+    accumulate in long-matured whiskies.
+  - **Hemicellulosic sugars and furanic compounds** (furfural,
+    5-methylfurfural, 5-hydroxymethylfurfural). The toasting
+    process partially caramelises the hemicellulose layer just
+    inside the cooper's char; subsequent maturation extracts
+    these caramelised sugars, contributing colour and the
+    "toasted" / "burnt sugar" descriptor.
+  - **Prior-contents residues** in ex-bourbon, ex-sherry, ex-port,
+    or ex-wine casks. A first-fill ex-bourbon cask carries
+    residual bourbon (ethyl esters, oak-derived bourbon
+    extractives) that re-extract into the Scotch fill; an
+    ex-sherry butt similarly carries oxidised wine compounds.
+    The residue layer depletes across successive Scotch fills,
+    which is why first-fill casks deliver more cask-character
+    impact than refills (see `educational/cask-fill-states`).
+
+  ## Kinetic phases
+
+  Extraction across a multi-year maturation is not linear. Three
+  distinguishable phases have been described in the peer-reviewed
+  cooperage and spirit-maturation literature [1][2]:
+
+  1. **Initial rapid extraction (year 0 to ~1-2)**: surface-layer
+     extractives — those that have been partially solubilised by
+     the cooper's toasting and by the cask's prior contents — pass
+     into the spirit relatively quickly. Vanillin, the lighter
+     furanic compounds, and the immediately-accessible hemicellulosic
+     sugars accumulate during this phase. Spirit colour develops
+     visibly within the first 6-12 months in a first-fill cask.
+
+  2. **Slower extraction from intact wood (year ~2 to ~8)**: as the
+     surface layer depletes, further extraction depends on solvent
+     penetration into the wood matrix. The penetration is slow
+     (driven by the spirit's ethanol concentration and the cask's
+     internal pressure cycle, which itself responds to temperature
+     and humidity changes). Oak lactones, the heavier tannins, and
+     deeper-layer lignin breakdown products enter the spirit during
+     this phase.
+
+  3. **Slow exchange / equilibrium (year ~8 onward)**: extraction
+     rates approach equilibrium between cask wood and spirit. Net
+     change becomes dominated by oxidative reactions within the
+     spirit (see below) and by continued slow depletion of the
+     residual wood reservoir. Producer claims that very-long-aged
+     Scotch develops "polished" or "integrated" character above
+     and beyond the extraction profile are attributed to this
+     phase, though the chemistry-evidence specificity is limited
+     [1].
+
+  The phase boundaries are approximate and depend on cask
+  size (larger casks slow extraction by reducing the
+  surface-to-volume ratio), cask fill strength (higher ABV
+  extracts more lipid-soluble compounds), warehouse climate, and
+  prior-contents intensity. Quantitative kinetic curves for
+  individual extractives appear in the cooperage literature
+  (Mosedale's work in particular [1]), but the project's data
+  records aggregate maturation duration rather than per-compound
+  extraction profiles.
+
+  ## Oxidative changes
+
+  Oak casks are imperfectly air-tight. Slow oxygen ingress
+  through the staves and the bunghole drives gradual oxidation
+  of the spirit:
+
+  - Ethanol oxidises to acetaldehyde and, in trace amounts,
+    acetic acid.
+  - Aldehydes generated from oxidation participate in further
+    reactions producing esters; the net ester profile shifts
+    over maturation as some are formed and others hydrolyse.
+  - Sulphur compounds inherited from new make (dimethyl
+    sulphide, dimethyl trisulphide, see
+    `glossary/sulphur-in-new-make`) gradually oxidise and reduce
+    in concentration, contributing to the maturation-driven
+    decline in "new make" character.
+  - Phenolic compounds slowly modify; some peated whiskies
+    are reported to show declining peat intensity over very long
+    maturations, though the published quantification for this
+    decline is sparse.
+
+  The total oxidative effect is small per year but cumulative
+  across a long maturation. Producers sometimes refer to "open"
+  maturation regimes (warmer warehouses, more variable RH,
+  ascending lyne arm of the spirit-cycle within the cask) that
+  encourage oxidation, contrasted with "closed" regimes (cool,
+  steady-humidity dunnage warehouses) that minimise it.
+
+  ## Reductive vs oxidative maturation
+
+  Trade-press writing on Scotch maturation distinguishes
+  "oxidative" from "reductive" maturation regimes. The terms
+  reflect the cumulative oxygen exposure across the maturation
+  rather than discrete process choices: warmer, drier warehouses
+  with substantial internal-volume cycling allow more total
+  oxygen ingress; cooler, damper, more stable warehouses allow
+  less.
+
+  The chemistry distinction is real (more oxygen exposure means
+  more cumulative aldehyde formation, more ester turnover, and
+  faster loss of sulphury new make character) but the binary
+  trade-press framing is an over-simplification. Most Scotch
+  maturations sit somewhere on a continuum between the two
+  extremes, and the cask's prior contents and fill strength
+  contribute character variables that interact with the warehouse
+  climate.
+
+  ## Angel's share
+
+  Cask staves are not waterproof; spirit volume is lost across
+  maturation through both ethanol evaporation and water
+  evaporation. The aggregate loss is typically 2-3% of the cask
+  contents per year in temperate Scottish warehouses [1], though
+  the figure varies with warehouse temperature, relative humidity,
+  cask material and integrity, and cask age.
+
+  The composition of the loss depends on the warehouse's relative
+  humidity. In a high-humidity warehouse (typical for coastal
+  Scottish dunnage warehouses), ethanol evaporates preferentially
+  to water; the spirit's ABV declines over time. In a low-humidity
+  warehouse, water evaporates preferentially; the ABV rises.
+  Producers' choice of warehouse location is one of several
+  variables that affect the cask-strength figure at any given
+  point in the maturation timeline.
+
+  Cumulative angel's share losses can be substantial: a typical
+  ten-year maturation loses 20-30% of the spirit volume to
+  evaporation, and a twenty-five-year maturation can lose 40-60%.
+  This is the principal economic driver of the cost gradient
+  between younger and older Scotch.
+
+  ## Cask fill strength
+
+  Scotch traditionally filled casks at around 63.5% ABV (the
+  "standard cask filling strength" in pre-2000s industry practice);
+  some producers fill higher (Bruichladdich's Octomore line is
+  filled at 68.5% ABV [4]). Higher fill strength accelerates
+  extraction of lipid-soluble compounds (oak lactones, certain
+  esters) and slows extraction of water-soluble compounds (some
+  hemicellulosic sugars, polar phenols). The choice trades off
+  faster wood-character development against altered relative
+  proportions of extracted classes.
+
+  ## Contested and open questions
+
+  Several producer-attributed maturation effects exceed what the
+  published chemistry supports:
+
+  - **Mouthfeel and texture** claims (perceived viscosity,
+    "creaminess", "rounded" character) are widely repeated in
+    trade press as effects of long maturation or specific cask
+    types. The chemistry literature offers limited direct
+    correlation between identifiable wood-extractive compounds
+    and these sensory descriptors, partly because mouthfeel is
+    notoriously difficult to quantify in sensory studies.
+    Treat producer mouthfeel claims as attribution-required
+    sensory experience rather than settled chemistry.
+
+  - **House character** claims tracing specific aroma signatures
+    to particular cask programmes. Maturation undeniably shapes
+    character, but distillery-to-distillery comparisons are
+    confounded by differences in new make spirit composition,
+    warehouse climate, and fill strength as well as cask
+    selection. Attributing a specific descriptor to a specific
+    cask type with the existing literature requires careful
+    chemistry control that the trade press rarely supplies.
+
+  - **Optimum age** claims. The "ideal age" for any specific
+    Scotch line is a producer judgment combining flavour
+    development, economic constraints (angel's share losses
+    against finished-spirit revenue), and market positioning.
+    There is no chemistry-based "optimum"; spirit continues to
+    change indefinitely.
+
+  - **Over-maturation**. Producer comment on tannin / wood
+    over-extraction at very long maturations (typically 30+
+    years) reflects sensory experience that is consistent with
+    extended-extraction phase chemistry, but the threshold age
+    is highly variable and depends on the same cask-and-climate
+    factors that govern primary extraction.
+
+  ## What this page is and is not
+
+  This page documents the established cask-maturation chemistry
+  at a level appropriate for the project's reference register.
+  It does not adjudicate disputes within the peer-reviewed
+  literature (oxygen-transfer rates, the relative importance of
+  oak-lactone isomers across cask geographies, the role of
+  tannin-ethanol polymerisation in colour stability — all of
+  which have active research streams). The page exists to give
+  the project's cask, production_line, and bottling entries a
+  consistent technical reference point so that prose claims
+  about maturation can either cite this page or, where they
+  exceed the established chemistry, signal their attribution
+  clearly.
+
+  Quantitative claims in the cited literature should be
+  cross-checked against the primary papers (see
+  `docs/bibliography.md`) when grounding the seven Russell-
+  citing concept entries against actual page references.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/cask-fill-states
+  - educational/copper-conversation
+  - glossary/sulphur-in-new-make
+  - glossary/new-make
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites:
+    - glossary/new-make
+    - educational/cask-fill-states
+  covers:
+    - glossary/cask-strength
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: peer_reviewed_paper
+    citation: |
+      Mosedale, J. R. & Puech, J.-L. (1998), "Wood maturation of
+      distilled beverages", Trends in Food Science & Technology,
+      9(3), 95-101.
+    url: https://doi.org/10.1016/S0924-2244(98)00024-7
+    accessed: null
+    notes: |
+      Canonical review of oak-derived compound extraction in
+      spirit maturation: vanillin and lignin breakdown
+      products, oak lactones, tannins, hemicellulosic sugars,
+      furanic compounds. The most-cited single reference on
+      whisky maturation chemistry; specific quantitative
+      claims in this entry should be verified against the
+      paper text when accessed.
+
+  - id: 2
+    type: peer_reviewed_paper
+    citation: |
+      Conner, J. M., Paterson, A., Piggott, J. R. (1992),
+      "Changes in wood extractives from oak cask staves through
+      maturation of Scotch malt whisky", Journal of the Science
+      of Food and Agriculture, 60(3), 349-353.
+    accessed: null
+    notes: |
+      Scotch-specific stave-extraction kinetics study from the
+      Strathclyde sensory chemistry group (Conner / Paterson /
+      Piggott). Cited for the phased-extraction structure
+      described in this entry.
+
+  - id: 3
+    type: peer_reviewed_paper
+    citation: |
+      Wanikawa, A., Hosoi, K., Kato, T., Nakagawa, K. (2002),
+      "Identification of green note compounds in malt whisky
+      using multidimensional gas chromatography", Flavour and
+      Fragrance Journal, 17(3), 207-211.
+    accessed: null
+    notes: |
+      Suntory research on aromatic compounds in matured whisky;
+      cited for the American-vs-European oak lactone isomer
+      profile contrast referenced in this entry.
+
+  - id: 4
+    type: trade_publication
+    url: null
+    accessed: 2026-05-16
+    citation: |
+      Internal cross-reference: the Octomore 68.5% ABV cask fill
+      strength is documented in data/production_lines/bruichladdich-
+      octomore.yml (default_fill_strength_abv field), with that
+      entry's own sourcing trail (Bruichladdich Classic Laddie tour
+      / FAQ disclosures plus the per-bottling release documentation
+      summarised in the Octomore production-line entry).
+    notes: |
+      The 68.5% figure is consistent across multiple Octomore
+      releases; cross-checked against the project's own Octomore
+      production-line entry rather than against a single
+      producer-page URL that would carry unstable URL-rot risk.
+
+  - id: 5
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      maturation.
+    accessed: null
+    notes: |
+      Standard technical reference. Cited generally for the
+      maturation-stage framework; specific quantitative claims
+      in this entry should be cross-checked against the
+      chapter text when accessed. See docs/bibliography.md for
+      the full bibliographic record.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

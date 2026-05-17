@@ -1,0 +1,73 @@
+# =============================================================================
+# Mashing
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: mashing
+title: Mashing
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Mashing is the production stage in which milled malted barley
+  (grist) is mixed with hot water in a mash tun to extract
+  fermentable sugars from the malt's starch. The mash is typically
+  carried out in three or four water additions at increasing
+  temperatures (the first at ~64-67 °C to activate amylase enzymes,
+  subsequent waters hotter to recover remaining extract); the
+  sugary liquid drained off is called "wort" and is cooled before
+  fermentation. Mashing also dissolves the soluble phenolic
+  compounds deposited on the malt husk during peated kilning,
+  partitioning them into the wort and carrying peat-character into
+  the spirit [1]. Mash-tun designs include the traditional rake
+  type (mechanical arms stir the grist), semi-lauter (stationary
+  knives lift the mash bed for drainage), and full-lauter (modern
+  fully-mechanised). Mash-tun type is a site-level equipment
+  choice recorded on the distillery entry's mash_tun.type field.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/fermentation
+  - glossary/kiln
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - mash
+  part_of_speech: noun
+  see_also:
+    - glossary/fermentation
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      mashing covers temperature programmes, enzyme activity, wort
+      extract efficiency, and phenol partitioning into wort.
+    accessed: null
+    notes: |
+      Standard technical reference. The temperature ranges and
+      water-addition pattern are widely consistent across modern
+      Scotch malt distilleries with minor producer-specific
+      variations.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

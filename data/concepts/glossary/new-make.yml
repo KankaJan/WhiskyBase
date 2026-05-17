@@ -1,0 +1,63 @@
+# =============================================================================
+# New make spirit
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: new-make
+title: New make
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  "New make" (also "new make spirit") is the unaged distillate
+  collected from the spirit still as the middle cut, before any cask
+  maturation. New make is colourless, typically at a strength of
+  ~65–75% ABV depending on the producer's standard cut points, and
+  carries the bulk of the congener profile (fruity esters, sulphury
+  compounds, phenols if peated) that maturation will then modify
+  through cask interaction and oxidative change. New make is the
+  legal starting point for Scotch whisky maturation under the
+  Scotch Whisky Regulations 2009 [1]; the spirit must be filled to
+  cask at a strength not exceeding 94.8% ABV and matured in oak for
+  at least three years in Scotland to qualify as Scotch.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - new-make spirit
+    - new make spirit
+    - new-make
+  part_of_speech: noun
+  see_also: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009. Sets the maximum
+      cask-filling strength (94.8% ABV) and the minimum maturation
+      period (3 years in oak casks not exceeding 700 litres, in
+      Scotland) that distinguish new make from finished Scotch.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-16
+contributors: []

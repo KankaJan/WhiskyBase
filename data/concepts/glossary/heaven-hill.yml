@@ -1,0 +1,69 @@
+# =============================================================================
+# Heaven Hill (Kentucky bourbon distillery and cooperage supplier)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: heaven-hill
+title: Heaven Hill
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Heaven Hill is a Kentucky bourbon distillery and one of the
+  largest US producers of straight bourbon whiskey. Its
+  significance to Scotch whisky is as a source of ex-bourbon
+  barrels: US federal regulation (27 CFR §5.143(c)) requires
+  straight bourbon to be aged in new charred-oak barrels, which
+  means each barrel is used once for bourbon and then exported
+  for further use [1]. Heaven Hill is among the most commonly
+  cited named providers of ex-bourbon barrels to Scotch
+  distilleries that disclose cooperage provenance, appearing in
+  WhiskyBase populated bottling and cask entries (Harris Hearach
+  Batch 1 batches; Bruichladdich Octomore 8.1 cooperage
+  disclosure). The company has operated since 1935 from
+  Bardstown, Kentucky.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/cask-fill-states
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases: []
+  part_of_speech: noun
+  see_also:
+    - educational/cask-fill-states
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5
+    accessed: 2026-05-16
+    notes: |
+      US Code of Federal Regulations, Title 27, Part 5
+      (Labeling and Advertising of Distilled Spirits).
+      §5.143(c) defines "straight bourbon" and requires
+      maturation in new charred-oak barrels — the regulatory
+      basis for the single-use barrel supply that feeds the
+      ex-bourbon cask trade. See also the bourbon-barrel cask
+      entry (data/casks/bourbon-barrel.yml) which cites the
+      same CFR section.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

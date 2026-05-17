@@ -215,5 +215,8 @@ unless asked.
 - `docs/source-conflict-policy.md` — full source policy.
 - `docs/voice-register.md` — full voice policy.
 - `docs/schema-design-notes.md` — schema design rationale.
+- `docs/bibliography.md` — curated catalogue of in-depth,
+  peer-reviewed, and institutional reference works. The project's
+  positive sourcing standard (exclusion criteria included).
 - `TODO.md` — active backlog and Research Requests.
 - `CHANGELOG.md` — schema changes and notable additions.

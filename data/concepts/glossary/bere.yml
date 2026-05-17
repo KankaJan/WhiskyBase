@@ -1,0 +1,91 @@
+# =============================================================================
+# Bere (six-row landrace barley)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: bere
+title: Bere
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Bere is a six-row landrace barley cultivated in Scotland for
+  several centuries, predating the modern two-row malting barleys
+  bred from the 19th century onward. It is genetically a Hordeum
+  vulgare var. distichum landrace, distinct from contemporary
+  malting varieties; field cultivation persists at small scale,
+  primarily on Orkney where it is grown for the Birsay (Barony)
+  Mill and used by local breweries and distilleries (including
+  Highland Park's experimental releases and Bruichladdich's Bere
+  Barley series). Bere yields lower than modern varieties (typical
+  yields ~2-3 t/ha versus 6-8 t/ha for Concerto), gives lower
+  extract during mashing, and produces a spirit profile described
+  in trade reviews as more grain-forward and rustic compared with
+  modern-variety equivalents [1]. Agronomic and malting-relevant
+  work on Bere has been published by researchers at Orkney
+  College / UHI (Wishart and others) and the Scottish Agricultural
+  College / SRUC; the variety is recorded in the European
+  Cooperative Programme for Plant Genetic Resources (ECPGR) barley
+  landrace inventories as a heritage genetic resource.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - bere barley
+    - bear (historical English usage)
+  part_of_speech: noun
+  see_also: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: peer_reviewed_paper
+    citation: |
+      Theobald, H. E., Wishart, J., Martin, P., Buttriss, J. L.,
+      French, J. H. (2006), "The nutritional properties of flours
+      derived from Orkney grown Bere barley", Nutrition Bulletin,
+      31(1), 8-14. DOI 10.1111/j.1467-3010.2006.00528.x.
+    accessed: null
+    notes: |
+      Representative peer-reviewed source on Bere as a cultivated
+      grain. The paper covers compositional analysis rather than
+      malting / distilling specifically, but is one of the
+      few primary-literature references on Bere in current
+      cultivation. Specific distilling-relevant claims (lower
+      extract, distinctive spirit character) require further
+      sourcing — Wishart's later work at Orkney College / UHI is
+      the natural follow-up. See TODO §Cross-cutting research
+      §Barley varieties and maltster sourcing.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.baronymill.com/bere-barley/
+    accessed: 2026-05-16
+    notes: |
+      Barony Mill (formerly Birsay Mill), Orkney — the principal
+      surviving Bere processor. The mill's own page documents
+      Bere cultivation and historical use; useful as a primary
+      producer reference for the variety's current cultivation
+      status, with the caveat that producer self-description
+      carries the usual marketing-voice qualifications.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

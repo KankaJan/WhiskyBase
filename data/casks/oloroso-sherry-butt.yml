@@ -79,11 +79,14 @@ description: |
   later whisky use); first-fill contains more residual sherry and
   imparts correspondingly more sherry character. European-oak
   sherry casks contribute different chemical signatures to
-  maturation than American-oak ex-bourbon casks (tannin and
-  ellagitannin profiles differ between the wood sources); specific
-  kinetic claims about colour development or extraction rates vary
-  between trade and academic sources and are not stated here as
-  project voice.
+  maturation than American-oak ex-bourbon casks: tannin and
+  ellagitannin profiles differ between the wood sources, and the
+  cis-/trans-oak-lactone isomer ratio diverges systematically
+  across the two oak geographies (see
+  [cask maturation kinetics](concept/educational/cask-maturation-kinetics)).
+  Specific quantitative claims about colour development or
+  extraction rates remain attribution-required between trade and
+  academic sources.
 
 
 # --- Related Casks ----------------------------------------------------------
@@ -111,6 +114,31 @@ sources:
     notes: |
       Used for oloroso style description (oxidative ageing, lack of
       flor) and Jerez DO geography.
+
+  - id: 2
+    type: regulatory_text
+    url: https://www.sherry.wine/
+    accessed: 2026-05-16
+    citation: |
+      Reglamento de la Denominación de Origen "Jerez-Xérès-Sherry"
+      and "Manzanilla-Sanlúcar de Barrameda", Consejo Regulador
+      del Vino de Jerez, published in the Boletín Oficial del
+      Estado (BOE) of Spain. The reglamento defines the
+      geographical "Marco de Jerez" production zone (Jerez de la
+      Frontera, El Puerto de Santa María, Sanlúcar de Barrameda),
+      the permitted grape varieties (Palomino Fino predominantly,
+      with Pedro Ximénez and Moscatel for sweet styles), the
+      solera and criadera ageing system, and the stylistic
+      classification (fino, manzanilla, amontillado, oloroso,
+      palo cortado, etc.).
+    notes: |
+      Primary regulatory text for the Jerez DO (which encompasses
+      oloroso as one of its styles). Consejo Regulador del Vino de
+      Jerez is the authoritative regulatory body; the
+      Boletín Oficial del Estado publishes the formal text.
+      The Consejo's English-language site (sherry.wine) is given
+      as the stable institutional URL; specific reglamento PDF
+      URLs should be verified when accessed.
 
 
 # --- Metadata ---------------------------------------------------------------

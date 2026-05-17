@@ -84,6 +84,26 @@ sources:
     notes: |
       Used for appellation geography and grape composition.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.inao.gouv.fr/
+    accessed: 2026-05-16
+    citation: |
+      Cahier des charges de l'appellation d'origine contrôlée
+      "Pauillac", Institut national de l'origine et de la qualité
+      (INAO), homologated by the French Ministry of Agriculture and
+      registered as a Protected Designation of Origin (PDO) under
+      EU Regulation 1308/2013.
+    notes: |
+      Primary regulatory text for the Pauillac AOC. The cahier
+      defines the appellation's geographical boundary, permitted
+      grape varieties (Cabernet Sauvignon-dominant blend, with
+      Merlot, Cabernet Franc, Petit Verdot, Malbec, Carménère
+      permitted in restricted proportions), maximum yields, and
+      vinification rules. Specific URL via INAO's product
+      repository should be verified when accessed; the INAO
+      homepage is given as the stable institutional source.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1

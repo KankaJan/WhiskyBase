@@ -1,0 +1,145 @@
+# =============================================================================
+# SWA regional designations for Scotch whisky
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Covers the five formal SWA-defined Scotch whisky regions plus the
+# informal trade-use "Islands" designation. Source: Scotch Whisky
+# Regulations 2009 (UK Statutory Instrument 2009 No. 2890).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: swa-regional-designations
+title: SWA regional designations
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The Scotch Whisky Regulations 2009 define five formal regional or
+  locality designations for Scotch whisky — Highland, Lowland,
+  Speyside, Islay, and Campbeltown — with geographical boundaries set
+  by the regulation. A sixth designation, "Islands", is widely used
+  in trade-press writing but is not part of the 2009 Regulations;
+  whiskies labelled as "Islands" fall within the formal Highland
+  region under the regulation [1].
+
+body: |
+  Regional classification of Scotch whisky is a legal and
+  geographical scheme, not a guarantee of style or character. Two
+  distilleries within the same SWA region may produce very different
+  spirits, and the boundary between regions has historically shifted
+  with administrative reorganisation rather than with anything
+  intrinsic to the whisky.
+
+  ## The five formal regions
+
+  The Scotch Whisky Regulations 2009, schedule 1, define the
+  following protected geographical indications [1]:
+
+  - **Highland**: the area of Scotland north of an imaginary line
+    drawn between Greenock on the west and Dundee on the east (the
+    "Highland Line"). This is the largest region by area and by
+    distillery count.
+  - **Lowland**: the area of Scotland south of the Highland Line.
+  - **Speyside**: the area surrounding the rivers Spey, Livet, and
+    Findhorn, with boundaries defined in the regulation. Speyside
+    sits within the broader Highland area geographically; the
+    Speyside designation is a regulation-level protected subdivision
+    of the Highland region rather than a separate region.
+  - **Islay**: the island of Islay in the Inner Hebrides.
+  - **Campbeltown**: the town of Campbeltown on the Kintyre
+    peninsula.
+
+  The Scotch Whisky Regulations protect these as "protected
+  localities" within Scotland. A whisky bearing one of these
+  designations must have been distilled in the named area; the
+  designation makes no claim about maturation location, bottling, or
+  style.
+
+  ## "Islands" as informal trade designation
+
+  "Islands" is widely used by trade publications, retailers, and
+  some producers to describe whiskies from Scottish islands other
+  than Islay — Orkney (Highland Park, Scapa), Skye (Talisker), Mull
+  (Tobermory / Ledaig), Jura (Isle of Jura), Arran (Isle of Arran),
+  Lewis and Harris (Isle of Harris Distillery), and historically
+  others. None of these are within the Islay protected locality.
+
+  Under the 2009 Regulations, all Scottish islands except Islay fall
+  within the formal Highland region [1]. Whiskies from these
+  distilleries are legally Highland Scotch even when commonly
+  marketed as "Islands". The "Islands" label has no protected legal
+  status and the regulation does not define its boundaries.
+
+  Data note: WhiskyBase records the `region:` field on distillery
+  entries using both formal and informal designations where in
+  common use, including "Islands" for distilleries on the islands
+  other than Islay. This reflects observed trade convention, not the
+  2009 Regulations. Readers should treat "Islands" as descriptive
+  rather than regulatory.
+
+  ## What the designations do and do not claim
+
+  Regional labels are geographical, not stylistic. The historical
+  association of "Islay" with heavy peating, or "Lowland" with light
+  triple-distilled spirit, is a generalisation that does not hold
+  uniformly: Islay produces unpeated whiskies (e.g. Bunnahabhain
+  core, Bruichladdich's unpeated line) and Lowland producers operate
+  double-distillation programmes. The designation tells the consumer
+  where the whisky was distilled; it does not predict what is in the
+  bottle.
+
+  ## Pre-2009 regional usage
+
+  The five-region scheme codified in 2009 reflects long-established
+  SWA convention. Earlier industry usage sometimes employed
+  additional or different splits (Northern / Southern / Western /
+  Eastern Highland subdivisions, or treating Speyside and Highland
+  as fully separate from one another rather than nested). The 2009
+  Regulations are the authoritative current source for protected
+  status.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []                # Will cross-reference SWA-defined
+                                    # production rules and the formal
+                                    # Scotch whisky categories
+                                    # (single malt, blended malt, etc.)
+                                    # once those concept pages exist.
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites: []
+  covers: []                        # Bare-term mentions of Highland /
+                                    # Lowland / Speyside / Islay /
+                                    # Campbeltown / Islands in distillery
+                                    # region: fields and in prose should
+                                    # tooltip to this page once the
+                                    # build pipeline auto-resolves
+                                    # uncovered terms.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009 (UK Statutory Instrument
+      2009 No. 2890). Schedule 1 defines the protected localities
+      (Highland, Lowland, Speyside, Islay, Campbeltown) and the
+      geographical boundaries that apply to each. Authoritative
+      source for what is and is not a protected regional
+      designation under UK and (via the EU geographical indications
+      framework at the time of enactment) European law.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-16
+contributors: []

@@ -1,0 +1,79 @@
+# =============================================================================
+# Distiller's yeast (Saccharomyces cerevisiae in Scotch fermentation)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: distillers-yeast
+title: Distiller's yeast
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  "Distiller's yeast" is the colloquial industry term for the
+  Saccharomyces cerevisiae strains selected and propagated for
+  Scotch malt whisky fermentation. Distinct strains have been
+  developed for distilling versus brewing applications: distilling
+  strains are selected for high alcohol yield (high sugar-to-
+  ethanol conversion efficiency at temperatures typical of
+  Scotch washbacks, 18-32 °C across fermentation), tolerance to
+  the higher gravity of distilling worts (often higher than ale
+  brewing wort), and a tendency to produce ester profiles
+  appropriate to spirit (rather than the more emphasised hop-
+  derived aroma profiles selected for in brewing strains) [1].
+  Two yeast houses dominate Scotch supply: Mauri Yeast (now part
+  of AB Mauri) and Kerry Group's distilling yeast division
+  (formerly Anchor / Lallemand), with Saf-Instant and other
+  smaller suppliers serving niche segments. Distillery disclosure
+  of specific yeast strains is uneven; most production_line
+  entries currently record yeast: distillers (generic claim) or
+  yeast: null (undisclosed).
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/fermentation
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - distilling yeast
+    - distillers yeast
+  part_of_speech: noun
+  see_also:
+    - glossary/fermentation
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      fermentation covers yeast strain selection, the
+      distilling-vs-brewing distinction, and strain-specific
+      ester profiles. Reference cited from the project's
+      literature catalogue (docs/bibliography.md).
+    accessed: null
+    notes: |
+      Standard technical reference. The named-supplier
+      identifications (Mauri, Kerry, Lallemand, Saf-Instant)
+      are widely reported in trade press but supplier-specific
+      claims warrant cross-checking against producer disclosures
+      (often guarded) and SWRI literature.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

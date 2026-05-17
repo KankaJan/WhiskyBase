@@ -93,6 +93,29 @@ sources:
       Used for appassimento method, grape composition, and DOCG
       designation.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.politicheagricole.it/
+    accessed: 2026-05-16
+    citation: |
+      Disciplinare di produzione della Denominazione di Origine
+      Controllata e Garantita "Amarone della Valpolicella",
+      Ministero delle politiche agricole alimentari e forestali
+      (MIPAAF), Italy. The disciplinare defines the geographical
+      boundary in the Veneto region (province of Verona), the
+      appassimento (partial-drying) production method, the
+      Corvina-dominant grape composition (with Rondinella, Molinara,
+      Corvinone permitted), minimum drying duration, minimum
+      alcohol content, and ageing requirements.
+    notes: |
+      Primary regulatory text for the Amarone della Valpolicella
+      DOCG. MIPAAF is the Italian Ministry of Agriculture, the
+      authoritative regulatory body for Italian DO products;
+      the Consorzio Tutela Vini Valpolicella publishes
+      operational guidance for member producers. Specific
+      disciplinare URL via the MIPAAF repository should be
+      verified when accessed.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1

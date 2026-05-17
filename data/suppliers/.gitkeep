@@ -1,0 +1,4 @@
+# Suppliers directory — held empty pending the first supplier entry.
+# See schema/supplier.template.yml v0.1 (DRAFT) for the entity type
+# definition and TODO §Schema work §Not yet drafted for the defer
+# criteria that gate populated entries.

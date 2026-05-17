@@ -58,10 +58,12 @@ description: |
   American oak in Scotch industry use, though European-oak virgin
   casks also appear. The defining contrast is with ex-bourbon
   barrels (the dominant cask in modern Scotch maturation): both
-  are typically American oak, but the ex-bourbon barrel has already
-  had a single bourbon fill drawing the most immediately-soluble
-  wood compounds into the bourbon, while the virgin oak cask
-  presents the full compound load to the Scotch spirit. Virgin oak
+  are typically American oak, but the ex-bourbon barrel has
+  already had a single bourbon fill that drew the surface-layer
+  extractives into the bourbon (see
+  [cask maturation kinetics](concept/educational/cask-maturation-kinetics)
+  for the kinetic-phase model), while the virgin oak cask
+  presents the full extractive reservoir to the Scotch spirit. Virgin oak
   is consequently used more sparingly than ex-bourbon — typically
   as a component in a multi-cask programme rather than as a sole
   maturation vessel.

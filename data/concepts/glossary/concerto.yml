@@ -1,0 +1,68 @@
+# =============================================================================
+# Concerto (spring two-row malting barley)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: concerto
+title: Concerto
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Concerto is a spring two-row malting barley variety bred by
+  Syngenta Seeds, registered for commercial use in the late 2000s
+  and approved by the Institute of Brewing & Distilling (IBD) for
+  malt distilling [1]. From roughly 2012 onward Concerto became
+  the dominant variety in Scotch malt production, replacing Optic
+  as the standard high-yield malting barley grown in Scotland and
+  northern England. Concerto remains in commercial cultivation
+  alongside newer varieties (Propino, Laureate) that compete or
+  succeed it on yield, malting quality, and disease resistance.
+  Concerto is the most common variety value in WhiskyBase
+  production_line.malt.variety fields, recorded across 5+ lines
+  (Bruichladdich Bruichladdich, Port Charlotte, Glenmorangie
+  Original, Harris The Hearach, Lagavulin, Springbank's three
+  lines).
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases: []
+  part_of_speech: noun
+  see_also: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://ahdb.org.uk/cereals-oilseeds/recommended-lists
+    accessed: 2026-05-16
+    notes: |
+      Agriculture and Horticulture Development Board (AHDB)
+      Recommended Lists for Cereals & Oilseeds. The Recommended
+      List is the authoritative UK reference for currently
+      cultivated malting barley varieties, including IBD-approved
+      status for malt distilling. Specific year-by-year status and
+      registration details for Concerto should be verified against
+      the historical AHDB RL documents when accessed; the variety
+      has been on the RL since the late 2000s.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

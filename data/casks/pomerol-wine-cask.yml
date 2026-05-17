@@ -85,6 +85,22 @@ sources:
     notes: |
       Used for appellation geography and grape composition.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.inao.gouv.fr/
+    accessed: 2026-05-16
+    citation: |
+      Cahier des charges de l'appellation d'origine contrôlée
+      "Pomerol", Institut national de l'origine et de la qualité
+      (INAO), registered as PDO under EU Regulation 1308/2013.
+    notes: |
+      Primary regulatory text for the Pomerol AOC. The cahier
+      defines the appellation's boundary on the Right Bank of the
+      Dordogne, permitted grape varieties (Merlot-dominant with
+      Cabernet Franc, Cabernet Sauvignon, Malbec permitted),
+      yields and vinification rules. Specific URL via INAO's
+      product repository should be verified when accessed.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1

@@ -1,0 +1,64 @@
+# =============================================================================
+# Propino (spring two-row malting barley)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: propino
+title: Propino
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Propino is a spring two-row malting barley variety bred by KWS
+  UK Ltd, registered for UK commercial cultivation in the early
+  2010s and approved by the Institute of Brewing & Distilling for
+  malt distilling [1]. Propino is grown alongside Concerto as a
+  rotational alternative; its agronomic profile (yield, disease
+  resistance, malting quality) is broadly comparable, allowing
+  growers to spread varietal risk across the cropping season.
+  Within WhiskyBase populated production-line entries, Propino is
+  currently recorded only for Bruichladdich Port Charlotte (2014
+  Islay Barley vintage); the variety appears more commonly in
+  bottling-level disclosures for specific vintage releases than in
+  ongoing core-line specifications.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases: []
+  part_of_speech: noun
+  see_also: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: trade_publication
+    url: https://ahdb.org.uk/cereals-oilseeds/recommended-lists
+    accessed: 2026-05-16
+    notes: |
+      AHDB Recommended Lists. Specific registration year for
+      Propino should be verified against the historical AHDB RL
+      documents; the variety entered commercial cultivation in
+      the early 2010s. KWS UK technical datasheets are the
+      breeder-side primary source for parentage and trait
+      profile.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

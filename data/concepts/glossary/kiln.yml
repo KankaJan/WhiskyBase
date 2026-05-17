@@ -1,0 +1,77 @@
+# =============================================================================
+# Kiln (malt kilning)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: kiln
+title: Kiln
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A kiln is the heated drying chamber in which germinated malted
+  barley is dried at the end of the malting process. Kilning halts
+  germination, drives moisture out of the green malt down to ~4-5%,
+  and — when peat smoke is introduced into the air stream — deposits
+  phenolic compounds on the husk that survive into the finished
+  spirit as the source of "peated" character [1]. Kilning
+  temperature, duration, and the timing of peat-smoke introduction
+  are the principal control variables for the peating level of a
+  Scotch malt and for the colour and roast notes that develop in
+  the kilned malt. Modern industrial maltings use indirect-fired
+  kilns with separately controlled peat-smoke generators; a small
+  number of distilleries retain on-site floor-malting and operate
+  traditional pagoda-roofed kilns directly above the malting floor.
+  The surviving on-site malting practice is concentrated among older
+  distilleries and revivalist operations; commonly-cited current
+  examples include Springbank, Highland Park, Bowmore, Laphroaig,
+  and Balvenie (the last for a small percentage of its malt only).
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/peating-measurement-methods
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - malt kiln
+    - kilning
+  part_of_speech: noun
+  see_also:
+    - educational/peating-measurement-methods
+    - educational/aromatic-compounds-in-whisky
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      malting covers kilning temperature profiles, peat-smoke
+      introduction, and the chemistry of phenol deposition on the
+      malt husk. Reference cited from the project's literature
+      catalogue.
+    accessed: null
+    notes: |
+      Standard technical reference for kilning. The named-distillery
+      list of surviving floor-malting operations is widely reported
+      in trade press; the count fluctuates as distilleries restart
+      or retire on-site malting.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

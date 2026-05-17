@@ -1,0 +1,185 @@
+# =============================================================================
+# Floor malting (on-site traditional)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: practice
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: floor-malting
+title: Floor malting
+kind: practice
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Floor malting is the traditional batch malting process in which
+  steeped barley is spread on a stone or concrete malting floor and
+  manually turned by hand (using rakes, shovels, or wooden shieling
+  ploughs) during germination, then dried in a kiln directly above
+  the floor. Modern industrial maltings have largely replaced floor
+  malting with mechanised pneumatic systems (Saladin boxes, drum
+  maltings, Galland-Henning rectangular vessels) that handle vastly
+  larger volumes with lower labour input. A small number of Scotch
+  malt distilleries retain on-site floor malting for a portion of
+  their grain requirement, generally less than 30% of total malt
+  intake; the practice is maintained for combinations of
+  authenticity, heritage signalling, and a producer-attributed
+  character claim that floor-malted grain delivers a subtly
+  different new make profile [1].
+
+body: |
+  Floor malting predates modern pneumatic malting by several
+  centuries. Until the late 19th century, virtually all malted
+  barley produced for Scotch was floor-malted on site at each
+  distillery. The industrialisation of malting from approximately
+  1900 onward — driven by labour costs, capacity demands, and
+  the technical advantages of mechanised drum and Saladin systems
+  — concentrated production into large commercial maltings
+  serving multiple distilleries. By the second half of the 20th
+  century, on-site floor malting had become economically marginal
+  for most operators.
+
+  ## What floor malting involves
+
+  The malting cycle is essentially the same regardless of the
+  equipment used:
+
+  1. **Steeping**: barley is soaked in water (with rest periods
+     for oxygen access) until the grain reaches 42-46% moisture
+     content.
+  2. **Germination**: the wet grain is allowed to germinate over
+     4-7 days; enzymes (amylases, proteases) develop while the
+     embryo grows.
+  3. **Kilning**: heat is applied to halt germination, dry the
+     grain to ~4-5% moisture, and develop the flavour compounds
+     associated with the kiln stage (including the deposition
+     of phenolic compounds on the husk if peat smoke is
+     introduced).
+
+  Floor malting handles step 2 on an open masonry floor with
+  manual turning. The grain bed is typically 10-30 cm deep and
+  must be turned several times a day to prevent matting,
+  overheating, and rootlet entanglement. Modulating bed depth
+  and turning frequency lets the maltster control the green-malt
+  temperature.
+
+  ## Current practitioners
+
+  As of recent industry surveys [2], on-site floor malting in
+  Scotch malt distilleries is concentrated among older
+  distilleries that have preserved the practice and revivalist
+  operations that have reinstated it. Commonly-cited current
+  practitioners:
+
+  - **Springbank** (Campbeltown) — 100% on-site floor malting,
+    a defining feature of the production line.
+  - **Highland Park** (Orkney) — partial floor malting (around
+    20% of grain) blended with bought-in malt from commercial
+    maltsters.
+  - **Bowmore** (Islay) — partial floor malting (around 25-30%)
+    with commercial supplementation.
+  - **Laphroaig** (Islay) — partial floor malting with
+    in-house peating; bought-in malt also used.
+  - **Balvenie** (Speyside) — small percentage floor-malted
+    (~15%); supplements with commercial maltster supply.
+  - **Kilchoman** (Islay) — revivalist; 100% floor-malted for
+    the 100% Islay range, supplemented for other releases.
+
+  Exact percentages and operational details fluctuate; the
+  practice depends on individual distillery economics and
+  ownership policy. The Springbank case is the outlier in
+  scale: Springbank's commitment to all-onsite floor malting is
+  the most extensive among current operators and is documented
+  in the project's `data/distilleries/springbank.yml` entry.
+
+  ## What the practice delivers (and what is contested)
+
+  The producer claim — repeated in trade press — is that
+  floor-malted grain produces a different character in new make
+  spirit, with various attributed effects (richer texture,
+  more grain character, subtler peating). The chemistry
+  evidence for these effects is limited and confounded with
+  other differences (different barley varieties, different
+  peating regimes, different malt-to-spirit-character
+  controls). The honest summary is that floor malting is a
+  process-input variable like any other; whether it produces a
+  systematically distinguishable spirit is an open question
+  the trade press has not resolved with primary chemistry. See
+  TODO §Cross-cutting research §Barley varieties and maltster
+  sourcing for the queued research item.
+
+  ## What this entry is and is not
+
+  This page documents floor malting as a production practice
+  adopted by named distilleries. It does not warrant the
+  producer-attributed character claims. The page exists to
+  give the `practice/floor-malting` slug a stable reference
+  target that distillery entries can point at without each
+  re-arguing the case for floor malting's significance.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/kiln
+  - glossary/mashing
+
+
+# --- Per-kind block ---------------------------------------------------------
+practice:
+  adopted_by: []                       # Distillery slugs not yet
+                                       # populated for the listed
+                                       # practitioners; only Springbank
+                                       # currently has a populated
+                                       # distillery entry, with floor
+                                       # malting documented there. Other
+                                       # distilleries (Highland Park,
+                                       # Bowmore, Laphroaig, Balvenie,
+                                       # Kilchoman) will populate this
+                                       # list when their entries land.
+  consequences: |
+    Producer-attributed character differences in new make spirit
+    are claimed by floor-malting practitioners but are not
+    consistently corroborated in the peer-reviewed flavour-
+    chemistry literature; treat the claims as producer
+    self-description until primary-source flavour analysis is
+    available.
+  contrast_with:
+    - practice/external-malting
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      malting covers floor and pneumatic systems, their
+      respective process controls, and the historical
+      transition from floor to industrial malting.
+    accessed: null
+    notes: |
+      Reference cited from the project's literature catalogue
+      (docs/bibliography.md). Specific page references to be
+      added when consulted.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-16
+    notes: |
+      The Malt Whisky Yearbook (annual). Distillery production
+      summaries in the Yearbook record on-site malting status
+      where disclosed; specific percentages cited above are
+      drawn from generally-circulated trade reporting and
+      should be cross-checked against the most recent Yearbook
+      edition and producer disclosures.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

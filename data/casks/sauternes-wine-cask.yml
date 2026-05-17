@@ -89,6 +89,23 @@ sources:
       Used for appellation, grape composition, and noble-rot
       production method.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.inao.gouv.fr/
+    accessed: 2026-05-16
+    citation: |
+      Cahier des charges de l'appellation d'origine contrôlée
+      "Sauternes", Institut national de l'origine et de la qualité
+      (INAO), registered as PDO under EU Regulation 1308/2013.
+    notes: |
+      Primary regulatory text for the Sauternes AOC. The cahier
+      defines the appellation's location south of Bordeaux on the
+      left bank of the Garonne, the Sémillon / Sauvignon Blanc /
+      Muscadelle permitted varieties, the noble-rot (Botrytis
+      cinerea) harvest requirement, and the minimum residual
+      sugar level. Specific URL via INAO's product repository
+      should be verified when accessed.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1

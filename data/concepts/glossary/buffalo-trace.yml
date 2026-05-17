@@ -1,0 +1,68 @@
+# =============================================================================
+# Buffalo Trace (Kentucky bourbon distillery and cooperage supplier)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: buffalo-trace
+title: Buffalo Trace
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Buffalo Trace is a Kentucky bourbon distillery operated by
+  Sazerac Company at Frankfort, Kentucky, and one of the most
+  prominent US producers of premium and limited-release bourbon.
+  As with Heaven Hill (see glossary/heaven-hill), Buffalo Trace's
+  relevance to Scotch is as a source of ex-bourbon barrels — US
+  federal regulation requires straight bourbon to be aged in new
+  charred-oak barrels [1], releasing single-use barrels to the
+  international whisky cooperage market. Buffalo Trace is among
+  the named providers of ex-bourbon barrels in WhiskyBase
+  populated entries (Bruichladdich Octomore 8.1, Harris Hearach
+  Batch 1 batches at substantial proportions), where producers
+  have chosen to disclose cooperage origin. The distillery is
+  also notable for its experimental product lines (Antique
+  Collection, Single Oak Project) but these are not directly
+  relevant to Scotch ex-bourbon supply.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/cask-fill-states
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases: []
+  part_of_speech: noun
+  see_also:
+    - educational/cask-fill-states
+    - glossary/heaven-hill
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-5
+    accessed: 2026-05-16
+    notes: |
+      US CFR Title 27 Part 5 (§5.143(c)) — same regulatory
+      basis as the Heaven Hill entry. The single-use new-oak-
+      barrel requirement is the source of the ex-bourbon barrel
+      supply for Scotch.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

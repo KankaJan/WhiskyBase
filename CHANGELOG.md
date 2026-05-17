@@ -9,6 +9,124 @@ covers them all.
 
 ---
 
+## [0.8.0] — 2026-05-16
+
+New `supplier` entity type schema drafted at v0.1, registered with
+the resolver and JSON Schema validator. Currently 0 populated
+entries — schema is DRAFT until a real pressure-test case lands.
+Plus appellation-citation migrations across 10 cask entries
+(INAO / MIPAAF / Consejo Regulador del Vino de Jerez), the
+chill-filtering and scotch-presentation-conventions educational
+pages, and the bibliography expansion to 33 entries across 7
+sections.
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.2
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.2
+- `cask.template.yml` v0.1
+- `supplier.template.yml` v0.1 (NEW, DRAFT)
+
+### New entity type: supplier
+
+Models commercial upstream third parties — maltsters, cooperage
+sources (bourbon distilleries supplying ex-bourbon barrels),
+yeast suppliers, barley breeders — that the project's existing
+entity types either represent only via free-text mentions
+(maltsters in production_line.malt.maltster as a string,
+cooperage sources in cask description prose) or not at all
+(yeast suppliers). The schema parallels `bottler` in shape:
+
+- Top-level identity (id, name, also_known_as, website).
+- `type` enum discriminator (maltster | cooperage_source |
+  yeast_supplier | barley_breeder | other).
+- Country/region + optional `sites:` list for multi-site
+  operators (Bairds Malt with Inverness, Pencaitland, Witham).
+- Ownership block matching the distillery/bottler pattern.
+- `products:` list for principal product types / specification
+  capabilities.
+- `supplies_to:` list of distillery slugs (build-pipeline-
+  computable from the inverse direction).
+
+The schema is registered in `schema/json/supplier.schema.json`
+(draft-07, additionalProperties: false, parallels bottler in
+required-field rigour). The resolver
+(`scripts/check_references.py`) adds `data/suppliers/` to the
+scan path, `supplies_to` to the LIST_REFS cross-reference
+targets, and `supplier` to the entity-schema validator dict.
+
+**Status: DRAFT.** No entries populated. Schema awaits a real
+pressure-test (likely Bairds Malt Ltd, which has the most
+references in current data). Existing glossary entries
+(bairds-malt, heaven-hill, buffalo-trace, distillers-yeast)
+remain as short-tooltip references; supplier entries when
+added provide the structured-fields layer alongside.
+
+### Appellation regulatory migrations
+
+10 cask entries migrated from Wikipedia-primary to
+regulatory-text-primary sourcing for appellation rules:
+
+- 7 INAO French AOCs: Pauillac, Pomerol, Sauternes, Burgundy
+  framework, Rhône framework, Ventoux, Bandol (cited as
+  Mourvèdre's principal French AOC home).
+- 1 Italian DOCG via MIPAAF: Amarone della Valpolicella.
+- 2 Consejo Regulador del Vino de Jerez DO entries: oloroso
+  and fino sherry butts.
+
+Each migration adds a `regulatory_text` source at id N+1 of
+the entry's sources block; Wikipedia citations are preserved
+per the project's policy on retaining rejected/secondary
+sources for transparency. Specific cahier-des-charges /
+disciplinare / reglamento URLs are unstable; entries cite
+institutional homepages with explicit notes that specific
+document URLs should be verified when accessed (follow-up
+work).
+
+### Educational pages added
+
+- `educational/chill-filtering` — chill-haze chemistry (long-
+  chain ethyl ester precipitation), the chill-filtering process
+  (-4 to +4 °C through cellulose sheets), the 46% ABV
+  producer-empirical threshold, and the contested
+  mouthfeel-impact question. Sources: Russell 2014, Conner
+  et al. 2003 (Worldwide Distilled Spirits Conf. proceedings),
+  Conner et al. 1994, SWR 2009.
+- `educational/scotch-presentation-conventions` — cluster page
+  covering bottling strength, chill-filter vs NCF, natural
+  colour vs caramel colouring, cask-strength claims. Maps the
+  presentation-positioning matrix (industrial-core / premium
+  core / craft transparency / cask-strength special). Sources:
+  SWR 2009 reg 6/7, Russell ch. bottling.
+
+### Bibliography expansion
+
+`docs/bibliography.md` expanded from 388 to 767 lines via the
+completeness audit. Now covers 33 entries across 7 sections:
+technical reference books (Russell, Piggott 1989 and 1983,
+Lyons & Hill, Boulton & Quain, Buxton & Hughes, Udo),
+peer-reviewed paper groups (Mosedale & Puech, Conner,
+Paterson/Piggott Strathclyde, Wanikawa Suntory, Aylott, SWRI
+staff), academic journals (JIB, JSFA, Food Chemistry, JAFC,
+J Cereal Sci, Trends in Food Sci & Tech, Food Res Intl, LWT,
+Chem Senses, Flavour & Fragrance), institutional sources
+(SWRI, ICBD, SWA, HMRC, Worshipful Company of Distillers),
+annual publications, and historical / contextual works (MacLean,
+Moss & Hume 1981, Weir on DCL).
+
+### Counts at this entry
+
+- 45 concept pages (8 educational, 30 glossary, 3 methodology,
+  2 equipment, 2 practice)
+- 16 cask entries (all with regulatory-text primary sourcing
+  where applicable)
+- 392 resolved cross-references, 0 JSON Schema findings.
+
+---
+
 ## [0.7.0] — 2026-05-16
 
 JSON Schema validation tooling added. Hand-authored draft-07 schemas

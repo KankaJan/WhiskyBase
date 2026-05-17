@@ -1,0 +1,63 @@
+# =============================================================================
+# Single malt Scotch whisky
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: single-malt
+title: Single malt Scotch whisky
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  "Single malt Scotch whisky" is one of the five protected category
+  designations under the Scotch Whisky Regulations 2009. The
+  regulation defines it as a Scotch whisky produced from only water
+  and malted barley at a single distillery by batch distillation in
+  pot stills [1]. "Single" refers to single-distillery origin, not
+  to a single cask or single batch; a standard single malt release
+  typically vats spirit from many casks at the distillery, all
+  produced from the same recipe. The other four protected
+  categories under the 2009 Regulations are single grain, blended
+  malt, blended grain, and blended Scotch whisky.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/swa-regional-designations
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - single malt
+    - SMSW
+  part_of_speech: noun
+  see_also:
+    - educational/swa-regional-designations
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009. Regulation 3 sets out the
+      five Scotch whisky category definitions, including single
+      malt: produced at a single distillery from only water and
+      malted barley, distilled in pot stills by batch distillation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-16
+contributors: []

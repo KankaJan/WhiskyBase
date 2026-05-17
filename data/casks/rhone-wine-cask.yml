@@ -89,6 +89,26 @@ sources:
       Used for regional split (northern/southern Rhône) and grape
       composition.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.inao.gouv.fr/
+    accessed: 2026-05-16
+    citation: |
+      Cahiers des charges of the Côtes du Rhône AOC and the
+      Northern Rhône single-village appellations (Côte-Rôtie,
+      Hermitage, Crozes-Hermitage, etc.), Institut national de
+      l'origine et de la qualité (INAO). The Rhône Valley
+      operates a hierarchical AOC framework split between
+      Northern Rhône (Syrah-dominant) and Southern Rhône
+      (Grenache-dominant with Syrah, Mourvèdre, and other
+      varieties in blends).
+    notes: |
+      Primary regulatory text for the Rhône AOC framework. The
+      generic rhone-wine-cask slug covers the regional level;
+      where a specific village appellation is disclosed at
+      bottling level, the corresponding individual cahier is
+      the proper source.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1

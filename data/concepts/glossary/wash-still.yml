@@ -1,0 +1,77 @@
+# =============================================================================
+# Wash still
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: wash-still
+title: Wash still
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The wash still is the first of two (or three) pot stills used in
+  Scotch malt whisky distillation. It is charged with fermented
+  wash at ~7-9% ABV and distils that wash into "low wines" at
+  ~20-25% ABV; the entire wash-still output passes to the next
+  still in the sequence (the spirit still in a double-distillation
+  regime, or an intermediate still in triple distillation), where
+  the spirit cut is made. The wash still therefore performs a bulk
+  concentration step rather than a flavour-shaping cut. Wash stills
+  are typically larger than the spirit still at the same site
+  (capacity ratios of 1.5:1 to 2:1 are common); shape, height,
+  lyne-arm angle, and condenser type contribute to the spirit's
+  character via the "copper conversation" (see
+  educational/copper-conversation) before the second distillation
+  refines it further [1].
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/copper-conversation
+  - glossary/new-make
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases: []                       # "low wines still" is sometimes
+                                    # used colloquially but properly
+                                    # refers to a distinct intermediate
+                                    # still in triple-distillation
+                                    # configurations, not the wash
+                                    # still.
+  part_of_speech: noun
+  see_also:
+    - educational/copper-conversation
+    - glossary/new-make
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      distillation covers wash- and spirit-still operation, the
+      typical capacity ratios, and the role of still geometry in
+      shaping new make character.
+    accessed: null
+    notes: |
+      Standard technical reference. The capacity-ratio range and
+      ABV-progression figures are conventional across the
+      industry; the cited reference is the standard authoritative
+      source for the underlying engineering.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

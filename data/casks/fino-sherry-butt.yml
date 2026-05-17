@@ -59,10 +59,12 @@ description: |
   the whisky. Sensory differences between fino-cask and oloroso-cask
   matured whisky are routinely described in trade press, with fino
   casks commonly characterised as imparting drier and more saline
-  character than oloroso; the actual sensory contribution varies by
-  cask age, prior fills, and individual cask history, so the
-  characterisation is recorded here as a trade attribution rather
-  than as a universal property of the cask type. Less commonly used
+  character than oloroso; the underlying difference in prior-
+  contents chemistry (fino's flor-mediated reduction versus
+  oloroso's oxidative ageing) is well-documented, but the specific
+  spirit-side flavour contributions remain attribution-required
+  rather than universal cask-type properties (see
+  [cask maturation kinetics](concept/educational/cask-maturation-kinetics)). Less commonly used
   than oloroso in Scotch maturation; appears in releases that
   explicitly contrast fino with oloroso (such as the Jose Miguel
   Martin casks used in the Hearach releases at Isle of Harris [2]).
@@ -95,6 +97,26 @@ sources:
     notes: |
       Producer page documenting Jose Miguel Martin fino and oloroso
       sherry butt sourcing for the Hearach core line.
+
+  - id: 3
+    type: regulatory_text
+    url: https://www.sherry.wine/
+    accessed: 2026-05-16
+    citation: |
+      Reglamento de la Denominación de Origen "Jerez-Xérès-Sherry"
+      and "Manzanilla-Sanlúcar de Barrameda", Consejo Regulador
+      del Vino de Jerez, published in the Boletín Oficial del
+      Estado (BOE) of Spain. Defines the Marco de Jerez
+      geographical area, Palomino Fino as the principal grape,
+      the flor-yeast biological ageing requirement for fino
+      style, and the contrast with manzanilla (similar
+      flor-aged wine produced in Sanlúcar de Barrameda).
+    notes: |
+      Primary regulatory text for the Jerez DO. The reglamento
+      defines the fino style specifically; manzanilla is the
+      Sanlúcar-only equivalent under the same regulatory
+      framework. See oloroso-sherry-butt for the matching
+      citation on the oxidative-aged style.
 
 
 # --- Metadata ---------------------------------------------------------------

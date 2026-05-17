@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "whiskybase://schema/json/supplier.schema.json",
+  "title": "Supplier",
+  "description": "Commercial upstream entity: maltster, cooperage source, yeast supplier, barley breeder, or other.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "type", "schema_version"],
+  "properties": {
+    "id": { "$ref": "_common.schema.json#/definitions/slug" },
+    "name": { "type": "string", "minLength": 1 },
+    "also_known_as": { "$ref": "_common.schema.json#/definitions/string_list" },
+    "website": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+
+    "type": {
+      "enum": [
+        "maltster",
+        "cooperage_source",
+        "yeast_supplier",
+        "barley_breeder",
+        "other"
+      ]
+    },
+
+    "country": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+    "region": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+
+    "sites": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": ["string", "null"] },
+          "name": { "type": ["string", "null"] },
+          "country": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+          "locality": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+          "capabilities": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+        }
+      }
+    },
+
+    "status": {
+      "enum": ["operating", "dormant", "closed"]
+    },
+    "founded": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "_common.schema.json#/definitions/year_integer" }
+      ]
+    },
+
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "current": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "parent": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+        "history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "owner": { "type": "string" },
+              "from": {
+                "oneOf": [
+                  { "type": "null" },
+                  { "$ref": "_common.schema.json#/definitions/year_integer" }
+                ]
+              },
+              "to": {
+                "oneOf": [
+                  { "type": "null" },
+                  { "$ref": "_common.schema.json#/definitions/year_integer" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "type": { "type": "string" },
+          "description": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+        }
+      }
+    },
+
+    "supplies_to": { "$ref": "_common.schema.json#/definitions/slug_list" },
+
+    "description": { "type": ["string", "null"] },
+
+    "external_ids": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "wikidata_qid": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+      }
+    },
+
+    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
+
+    "schema_version": { "$ref": "_common.schema.json#/definitions/schema_version_value" },
+    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "last_reviewed": {
+      "oneOf": [
+        { "$ref": "_common.schema.json#/definitions/iso_date" },
+        { "type": "null" }
+      ]
+    },
+    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+  }
+}

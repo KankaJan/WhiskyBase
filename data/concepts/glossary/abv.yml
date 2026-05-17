@@ -1,0 +1,64 @@
+# =============================================================================
+# ABV (alcohol by volume)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: abv
+title: ABV
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  ABV (alcohol by volume) is the volumetric concentration of ethanol
+  in a finished spirit, expressed as a percentage at a standard
+  reference temperature of 20 °C in the UK and EU [1]. ABV is the
+  measure printed on Scotch whisky labels; it is the figure used in
+  this project's `abv:` fields on bottling entries. Spirit-strength
+  measurement is regulated in the UK by the alcoholometry provisions
+  carried over from the Alcoholic Liquor Duties Act 1979 and
+  associated Customs and Excise notices, which prescribe 20 °C as
+  the reference temperature for declared ABV [1].
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/cask-strength
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - alcohol by volume
+    - alcoholic strength by volume
+    - "% vol"
+  part_of_speech: noun
+  see_also:
+    - glossary/cask-strength
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/ukpga/1979/4/contents
+    accessed: 2026-05-16
+    notes: |
+      Alcoholic Liquor Duties Act 1979 (as amended). The Act and the
+      HMRC notices issued under it set out the UK measurement
+      framework for spirit strength, including the 20 °C reference
+      temperature for declared ABV. The EU spirit drinks regulation
+      (Regulation (EU) 2019/787) carries the same 20 °C convention.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-16
+contributors: []

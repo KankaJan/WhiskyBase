@@ -1,0 +1,168 @@
+# =============================================================================
+# Cask fill states (first-fill, refill, exhausted)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Covers the fill-number convention used in the cask schema's
+# fill_number field and in bottling.maturation entries, and the
+# trade-shorthand "ex-bourbon" / "ex-sherry" notation.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cask-fill-states
+title: Cask fill states
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A Scotch whisky cask is reused across multiple maturations. "Fill
+  number" (1 = first-fill, 2 = second-fill / refill, 3 = third-fill,
+  and so on) tracks how many times the cask has held Scotch spirit.
+  Each successive fill extracts less from the wood, producing
+  systematically lighter cask influence — a first-fill ex-bourbon
+  cask delivers more vanilla / coconut / sweet-oak character than a
+  third-fill version of the same cask. The fill-number convention is
+  industry-standard but is not regulated by the Scotch Whisky
+  Regulations 2009 [1].
+
+body: |
+  Cask reuse is fundamental to Scotch economics and to the
+  character of mature Scotch. Casks are expensive, and a single oak
+  cask is typically used for three to five Scotch maturations
+  spanning 30-60 years before its wood compounds are exhausted.
+
+  ## What "fill" counts
+
+  The fill number counts Scotch fills, not absolute cask fills. A
+  "first-fill ex-bourbon barrel" is on its second fill counted from
+  the cask's life: it held bourbon first, then is filled with Scotch
+  new make for the first time. From the Scotch industry's
+  perspective, that is "first-fill"; the prior bourbon fill is
+  acknowledged through the "ex-bourbon" prefix but does not enter
+  the fill count.
+
+  The convention is symmetric for other prior contents: a
+  "first-fill oloroso butt" held oloroso sherry first, then Scotch.
+  A "refill ex-bourbon" cask held bourbon, then Scotch for a first
+  Scotch maturation, then Scotch again — this is the cask's second
+  Scotch fill. Some producers and bottlers use "second-fill" and
+  "refill" interchangeably; others reserve "refill" for any fill
+  from second onward.
+
+  ## What changes across fills
+
+  Each Scotch maturation extracts and consumes wood-derived
+  compounds: vanillin (from lignin breakdown), oak lactones (from
+  the oak's cis- and trans-isomer profile), tannins, hemicellulosic
+  sugars contributing colour and sweetness, and — in ex-bourbon and
+  ex-sherry casks — residual prior-contents components soaked into
+  the wood [2]. After each fill these reservoirs deplete. A
+  first-fill ex-bourbon cask delivers substantially more vanilla
+  and coconut character than the same cask on its third Scotch
+  fill; a first-fill oloroso butt delivers more dark-fruit and
+  saline sherry character than its refill counterpart.
+
+  Producers exploit the depletion deliberately. Heavily peated new
+  make is often matured in refill ex-bourbon (rather than
+  first-fill) because the goal is to expose the peat smoke without
+  layering on heavy bourbon-derived vanilla. Lighter unpeated
+  spirit may use first-fill for the opposite reason: to give the
+  cask a chance to dominate the spirit's profile.
+
+  ## Exhausted casks
+
+  After multiple Scotch fills the cask's wood-derived extractives
+  fall below a useful threshold. Industry practice handles
+  exhausted casks several ways: rejuvenation by re-charring or
+  re-toasting the inner surface, restoring a portion of the
+  extractable compounds; recoopering, where the cask is broken
+  down and recombined with new staves; or retirement. The fill
+  count typically tops out at three or four Scotch fills for
+  most casks before rejuvenation or retirement, though specific
+  outcomes depend on cask construction, prior contents, and the
+  Scotch fill profile.
+
+  ## "Ex-bourbon" and "ex-sherry" notation
+
+  The "ex-" prefix is industry shorthand for the cask's prior
+  contents. "Ex-bourbon" is by far the most common Scotch cask
+  type: American Standard Barrels emptied of bourbon by US
+  producers (US federal regulation requires bourbon to be aged
+  in *new* charred oak barrels, releasing huge volumes of
+  once-used barrels onto the international whisky-cooperage
+  market). "Ex-sherry" — historically the original Scotch cask
+  type before bourbon barrels dominated — refers to butts and
+  hogsheads previously holding Spanish sherry, today typically
+  oloroso or Pedro Ximénez. Other prior contents (Port, Madeira,
+  wine, rum, etc.) take corresponding "ex-" labels.
+
+  Importantly, the modern "ex-sherry" cask is usually a *seasoned*
+  cask: built specifically as a Scotch maturation cask, then
+  filled with sherry for 18-36 months purely to season the wood
+  before shipping to Scotland. This is distinct from historical
+  transport butts that genuinely held sherry being shipped to
+  the UK. The seasoning industry around Jerez exists because the
+  bottle-shipping of sherry replaced cask-shipping in the early
+  20th century, breaking the supply of "naturally" used sherry
+  butts to Scotland.
+
+  ## How this project records fill state
+
+  Cask entries under `/data/casks/` describe the cask type at
+  category level (`bourbon-barrel`, `oloroso-sherry-butt`,
+  etc.) without committing to a fill number — fill is per-use.
+  Bottling entries record fill in the `maturation[*].fill_number`
+  field on each maturation stage, where disclosed by the
+  producer or independent bottler. Many releases do not
+  disclose fill number; the field is null in those cases.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts: []
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites: []
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009. The Regulations require
+      maturation in oak casks not exceeding 700 litres for at least
+      three years, but do not specify or regulate cask fill number,
+      cask prior contents, or rejuvenation practice — these are
+      industry conventions.
+
+  - id: 2
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      maturation covers wood extractives, fill-number depletion
+      curves, and rejuvenation. Reference cited from the project's
+      literature catalogue (TODO §Existing literature catalogue);
+      specific page references to be added when consulted.
+    accessed: null
+    notes: |
+      Cited as the standard technical reference for the
+      compositional changes across cask fills (vanillin, oak
+      lactones, tannins, hemicelluloses). Specific quantitative
+      claims should be cross-checked against this and against
+      Mosedale & Puech (1998) when the project's literature
+      catalogue work surfaces concrete chapter and page references.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

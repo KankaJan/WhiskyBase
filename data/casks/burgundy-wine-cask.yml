@@ -104,6 +104,26 @@ sources:
     notes: |
       Used for appellation hierarchy, grape rules, and vessel sizing.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.inao.gouv.fr/
+    accessed: 2026-05-16
+    citation: |
+      Cahiers des charges of the Burgundy (Bourgogne) AOC system,
+      Institut national de l'origine et de la qualité (INAO).
+      The Burgundy region operates a hierarchical AOC framework
+      from regional Bourgogne AOC through village, premier cru,
+      and grand cru tiers, each with its own cahier; the
+      project's generic burgundy-wine-cask slug covers the
+      regional level unless a more specific appellation is
+      disclosed.
+    notes: |
+      Primary regulatory text for the Burgundy AOC framework.
+      For specific village or cru appellations cited at the
+      bottling level, the corresponding individual cahier des
+      charges is the proper source; the generic slug here
+      cites the regional framework.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1

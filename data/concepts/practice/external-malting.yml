@@ -1,0 +1,168 @@
+# =============================================================================
+# External malting (contract / commercial malting)
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: practice
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: external-malting
+title: External malting
+kind: practice
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  External malting is the production practice in which a distillery
+  contracts a commercial maltster to supply malted barley to a
+  defined specification, rather than malting on-site. The majority
+  of Scotch malt distilleries source most or all of their grain
+  this way. Commercial maltings operate at industrial scale (drum
+  maltings, Saladin boxes, Galland-Henning vessels) and supply
+  multiple distilleries from a small number of large facilities,
+  trading the heritage / on-site claim associated with floor
+  malting for substantially lower unit cost, consistent
+  specification, and supply reliability. The principal Scottish
+  and UK commercial maltsters serving the Scotch industry include
+  Bairds Malt Ltd (sites at Inverness, Pencaitland, and Witham),
+  Crisp Malt (Diss / Norfolk and Portgordon), Simpsons Malt
+  (Berwick / Tweed Valley), Muntons (Stowmarket), and Boortmalt
+  (Buckie / Inverness, part of the international Boortmalt group).
+
+
+body: |
+  The economic logic of external malting is straightforward.
+  On-site malting requires capital (steeping vessels, germination
+  floors or pneumatic equipment, kilns), labour, and floor space
+  that a distillery could otherwise dedicate to mashing,
+  fermentation, or distillation capacity. Commercial maltings
+  amortise this capital across many distilleries simultaneously
+  and offer specification consistency that is difficult to
+  reproduce in batch-process on-site malting. The trade-off is
+  that distilleries cede direct control over malt-stage variables
+  to a third party.
+
+  ## What the contract specifies
+
+  A malt supply contract typically specifies:
+
+  - Barley variety (Concerto, Optic, Propino, etc.) and source
+    region.
+  - Total phenols (in ppm, for peated specifications) measured by
+    a stated method (commonly HPLC with the standard seven
+    phenols; see educational/peating-measurement-methods).
+  - Moisture content target (typically 4-5% post-kiln).
+  - Diastatic power and other enzymatic specifications.
+  - Trace specifications (nitrogen content, kernel size
+    distribution, husk integrity).
+  - Delivery cadence and volumes.
+
+  The peating ppm is the most-discussed contract variable in
+  trade press because it underpins a distillery's spirit
+  character. A heavily-peated specification (Octomore lines:
+  167-258 ppm at spec; Lagavulin: ~35 ppm) is delivered by the
+  maltster to the distillery's order; this is why the project's
+  data treats `peating.measurements[*]` with a `stage: spec`
+  marker — the producer-disclosed ppm is the maltster's spec ppm,
+  not necessarily what survives into the new make or the bottle.
+
+  ## Principal commercial maltsters serving Scotch
+
+  In WhiskyBase populated entries, named maltsters include:
+
+  - **Bairds Malt Ltd** (Inverness site) — supplies Harris
+    (`glossary/bairds-malt`), Bruichladdich for the Islay Barley
+    and Octomore series, and others.
+  - **Port Ellen Maltings** (Islay) — operated by Diageo on
+    Islay; supplies Lagavulin, Caol Ila, Talisker, and other
+    Diageo distilleries. Not a third-party contract maltster
+    in the strict sense (Diageo-internal) but plays the same
+    structural role for Diageo's Islay operations.
+  - **Crisp Malt** — Norfolk and Portgordon. Crisp supplies a
+    wide range of distilleries with varying peating
+    specifications.
+  - **Simpsons Malt** — Berwick / Tweed Valley. Major UK
+    maltster, supplies both Scotch and English whisky
+    operations.
+  - **Boortmalt (Buckie / Inverness)** — part of the
+    international Boortmalt group; supplies multiple Scottish
+    distilleries.
+
+  See `glossary/bairds-malt` for the current populated
+  glossary entry. Other named maltsters will receive glossary
+  entries as they accumulate references in populated data; the
+  named-commercial-supplier modelling question (whether a
+  dedicated entity type — analogous to `bottler` — should be
+  introduced for maltsters, yeast suppliers, and bourbon
+  cooperages collectively) is queued for schema evolution
+  once the pattern accumulates enough pressure-test cases.
+
+  ## What the practice trades away
+
+  External malting concentrates malt-stage decisions in a small
+  number of large operators. Heritage-marketing positioning
+  (Springbank, Kilchoman) is the principal counter-strategy.
+  For distilleries with high-volume production demands, the
+  trade-off is generally judged in favour of external malting;
+  for distilleries cultivating a craft-scale positioning, the
+  trade-off goes the other way.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - practice/floor-malting
+  - glossary/kiln
+  - glossary/bairds-malt
+
+
+# --- Per-kind block ---------------------------------------------------------
+practice:
+  adopted_by: []                       # Distillery slugs not yet
+                                       # systematically populated; the
+                                       # practice applies by default to
+                                       # most malt distilleries. The
+                                       # explicit list is omitted because
+                                       # of its near-universal coverage —
+                                       # the more useful inverse is the
+                                       # floor-malting list (see
+                                       # practice/floor-malting).
+  consequences: |
+    Concentrates malt-stage process control in a small number of
+    commercial maltsters. Trade-off: lower unit cost and tighter
+    specification reproducibility, against loss of direct
+    distillery-level control over the malt stage.
+  contrast_with:
+    - practice/floor-malting
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      malting covers contract specifications, commercial-maltster
+      operation, and the economic structure of the industry.
+    accessed: null
+    notes: |
+      Reference cited from the project's literature catalogue.
+      Specific page references to be added when consulted.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-16
+    notes: |
+      The Malt Whisky Yearbook records maltster relationships
+      where disclosed. Useful as a cross-check on which
+      distilleries source from which maltster, though
+      disclosure is uneven.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-16
+contributors: []

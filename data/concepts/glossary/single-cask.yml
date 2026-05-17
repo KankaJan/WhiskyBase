@@ -1,0 +1,71 @@
+# =============================================================================
+# Single cask
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: single-cask
+title: Single cask
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A "single cask" release is a bottling drawn from one individual
+  cask, with no vatting (combining of multiple casks) before
+  bottling. The Scotch Whisky Regulations 2009 do not define
+  "single cask" as a regulated label term [1]; the term is industry
+  convention, used predominantly by independent bottlers (Cadenhead's
+  Authentic Collection, Signatory Cask Strength Collection, Gordon
+  & MacPhail Connoisseurs Choice, and many smaller IBs) and by
+  distilleries for limited single-cask programmes. Single-cask
+  releases typically disclose the cask number and the outturn
+  (number of bottles produced from the cask); the small outturn
+  (200-600 bottles is typical for a refill cask, larger for a
+  first-fill) means each cask release is its own micro-edition
+  rather than a reproducible product. The complementary concept is
+  "vatting" (see glossary/vatting), in which multiple casks are
+  combined to produce a larger, more consistent release.
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/outturn
+  - glossary/vatting
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - single-cask release
+  part_of_speech: noun
+  see_also:
+    - glossary/outturn
+    - glossary/vatting
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/contents
+    accessed: 2026-05-16
+    notes: |
+      The Scotch Whisky Regulations 2009. The Regulations define
+      the five Scotch whisky categories (single malt, single
+      grain, blended malt, blended grain, blended Scotch) but do
+      not define "single cask" as a regulated descriptor — the
+      term is industry convention.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-16
+contributors: []

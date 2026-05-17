@@ -84,6 +84,22 @@ sources:
     notes: |
       Used for appellation geography and grape rules.
 
+  - id: 3
+    type: regulatory_text
+    url: https://www.inao.gouv.fr/
+    accessed: 2026-05-16
+    citation: |
+      Cahier des charges de l'appellation d'origine contrôlée
+      "Ventoux" (formerly Côtes du Ventoux until renamed by INAO
+      decision in 2008), Institut national de l'origine et de la
+      qualité (INAO). The appellation surrounds Mont Ventoux in
+      the Vaucluse department of southern France.
+    notes: |
+      Primary regulatory text for the Ventoux AOC. Defines the
+      appellation boundary, the Grenache and Syrah-led grape
+      composition rules, and maximum yields. Specific URL via
+      INAO's product repository should be verified when accessed.
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
