@@ -34,6 +34,7 @@ const bottlerSeriesLabel = seriesParts.length === 2
 <BaseLayout
   title={bottling.name}
   description={bottling.description?.split('\n')[0]?.slice(0, 150)}
+  pagefindMeta={{ entity: 'Bottling', release_type: bottlerTypeLabel }}
 >
   <article class="bottling-page">
     <EntityHeader

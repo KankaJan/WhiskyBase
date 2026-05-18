@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/postbuild.mjs",
+    "build:astro-only": "astro build",
     "preview": "astro preview",
     "check": "astro check",
     "astro": "astro"
@@ -15,6 +16,7 @@
   "dependencies": {
     "astro": "^5.0.0",
     "marked": "^14.1.0",
+    "pagefind": "^1.1.0",
     "yaml": "^2.6.0"
   },
   "devDependencies": {

@@ -29,6 +29,10 @@ if (!distillery) {
 <BaseLayout
   title={distillery.name}
   description={distillery.description?.split('\n')[0]}
+  pagefindMeta={{
+    entity: 'Distillery',
+    region: distillery.region ?? '',
+  }}
 >
   <article class="distillery-page">
     <EntityHeader

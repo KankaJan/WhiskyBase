@@ -659,6 +659,51 @@ Status: queued.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-18** Build-pipeline plan items 5-8 landed:
+  Pagefind search, Reference pages, /explore/ cross-cutting query
+  pages, MapLibre map. /site/ source additions: `src/lib/references.ts`
+  (registry of design/policy docs ported as routed pages);
+  `src/pages/search.astro` (PagefindUI widget against a
+  `data-pagefind-body`-marked `<main>` in BaseLayout); 6 reference
+  pages under `/reference/<slug>/` covering about, source-conflict-
+  policy, voice-register, bibliography, schema-design-notes,
+  contributing (consumed from `/docs/*.md` at build time, leading h1
+  stripped); 5 `/explore/` pages — by-region, by-ownership,
+  by-peating (binned at the standard ppm tiers from the
+  glossary/peating-block convention), by-presentation (cask-strength
+  / NCF / natural-colour / single-cask / small-batch cuts),
+  by-cask-category. MapLibre map page `/map/` plots 9 distillery
+  coordinates on a Carto Positron basemap with click-to-popup
+  detail links; fits bounds to the pin extent. BaseLayout extended
+  with `indexable` + `pagefindMeta` props; entity detail pages emit
+  per-page metadata (entity, region, release_type, cask_category,
+  etc.) so Pagefind filter chips work. Index pages marked
+  `indexable={false}` to avoid duplicate listings in search. Build
+  script changed to `astro build && node scripts/postbuild.mjs`; the
+  postbuild helper resolves `ASTRO_OUT_DIR` and runs
+  `npx pagefind --site <outDir>` so Windows-native and sandbox
+  builds both produce `<outDir>/pagefind/`. New runtime dep:
+  `pagefind@^1.1.0`. New About page at `docs/about.md` synthesises
+  the project's scope, exclusions, and dual-licence position for
+  reader-facing context. Verification: `astro check` passes (only
+  pre-existing @types/node errors); `scripts/check_references.py`
+  reports 0 findings; sandbox couldn't run the full Astro build
+  (>45s) but the wiring is mechanical — Windows-side
+  `npm install && npm run build` will produce `/dist/pagefind/`
+  end-to-end. Counts unchanged in the data layer.
+- **2026-05-17** Full entity-type rendering coverage + Wikipedia-
+  style UI refactor (133 HTML pages). Detail + index pages for
+  production lines, bottlings, bottlers, casks, suppliers; refined
+  concept-page block dispatch for all 5 kinds; concept overview +
+  per-kind sub-indexes. UI refactored to content-first Wikipedia
+  layout (42rem measure, #3366cc links, alt-row table headers,
+  cards stripped). Loader by-id fix (`loadAll().find(x => x.id ===
+  slug)`) handles filename/id mismatches like bottlers/signatory.yml
+  (id `signatory-vintage`). Home page rewritten as a sortable
+  populated-entities table. Build infrastructure adjusted for
+  cross-platform builds: `vite.cacheDir` pinned to /tmp on Linux
+  sandbox, `outDir` overridable via `ASTRO_OUT_DIR`. No schema
+  changes; no data changes.
 - **2026-05-17** Frontend scaffolding landed (`/site/`). First
   iteration of the Astro-based static site per the implementation
   sequencing in `docs/build-pipeline-plan.md`. Stack: Astro 5 +
@@ -753,382 +798,3 @@ Git history.)
   21 → 22 (net: +3 forward refs from direct-fired-still's
   used_at_distilleries list to Macallan / Glenlivet / Ben Nevis,
   -2 resolved by Caol Ila landing). 0 validator findings.
-- **2026-05-17** Eighth distillery (Glenfarclas) populated.
-  First populated distillery in the formal SWA Speyside region —
-  Glenmorangie is geographically northern Highland, not Speyside,
-  so the project's region coverage now includes Speyside as well
-  as Highlands / Islay / Islands / Campbeltown. First populated
-  distillery exercising the schema's `heating: direct_fire`
-  enum value (all prior populated distilleries use
-  `indirect_steam`); the JSON Schema validator confirmed the
-  enum value works. Family-owned by J. & G. Grant in unbroken
-  succession since 1865 — unusual at industry scale where most
-  Scotch distilleries have passed through corporate-acquisition
-  cycles. Six direct-fired pot stills (3 wash + 3 spirit), the
-  largest pot stills in Speyside. Single production line
-  (`glenfarclas`, unpeated, sherry-cask-led). Three bottlings:
-  Glenfarclas 10 (40% chill-filtered entry-level core),
-  Glenfarclas 15 (46% NCF natural-colour premium core — unusual
-  in combining a 15-year age statement with the higher-ABV NCF
-  natural-colour pattern that other producers adopted only in
-  the 2010s), Glenfarclas 25 (43% chill-filtered luxury core).
-  All three cross-reference `educational/cask-maturation-kinetics`
-  for the maturation-phase framework (10 in phase 2, 25 in
-  the slow-exchange phase). Critical-eval fix: removed
-  self-referential project-state claim from the distillery
-  description prose ("the first formally-Speyside distillery in
-  WhiskyBase's populated data set" was a category error — the
-  data-set membership isn't a fact about the distillery).
-  Counts: 111 → 115 files, 7 → 8 distilleries, 12 → 13
-  production lines, 26 → 29 bottlings, 437 → 457 resolved refs,
-  21 dangling refs (no change), 0 findings.
-- **2026-05-17** Three sequential deliverables: Bunnahabhain
-  Toiteach + first non-stub IB pressure-test + second supplier
-  pressure-test. (a) Bunnahabhain Toiteach peated sub-line added
-  (`bunnahabhain-toiteach` production_line at 35-40 ppm spec
-  range + `bunnahabhain-toiteach` core bottling at 46.3% NCF
-  natural colour). The Bunnahabhain distillery entry's
-  production_lines list updated to include both lines;
-  SCHEMA-OBSERVATIONS Toiteach note marked RESOLVED. Tests
-  multi-line modelling on Bunnahabhain at smaller scale than
-  Springbank's three lines. (b) IB pressure-test
-  `cadenheads-bunnahabhain-stub` replaced with
-  `cadenheads-bunnahabhain` (worked-example real release form):
-  slug renamed, confidence promoted stub → medium, presentation
-  conventions populated with Cadenhead's house defaults (single
-  cask, cask strength, NCF, natural colour, 500ml bottle).
-  Cask-identifier fields (cask number, vintage, outturn, exact
-  ABV) remain null with explicit "template-form pending
-  specific-release verification" notes — honest stance vs
-  fabricating cask-identifier data. Old stub file overwritten
-  with placeholder empty YAML (resolver ignores; user needs to
-  `del` the file from Windows shell to fully clean up).
-  (c) Second supplier entry: Heaven Hill (data/suppliers/
-  heaven-hill.yml) at `type: cooperage_source`, the second
-  branch of the supplier type enum. Three sites (Bardstown HQ,
-  Bernheim Distillery, Cox's Creek warehouses), three product
-  types, Shapira-family ownership lineage since 1935.
-  SCHEMA-OBSERVATIONS block confirms v0.1 schema is adequate
-  for the non-maltster supplier-type case; no v0.2 promotion
-  driven. **Supplier schema now has 2 entries covering 2 of 5
-  enum branches (maltster + cooperage_source).** Counts: 107 →
-  111 files, 11 → 12 production lines, 25 → 26 bottlings,
-  1 → 2 suppliers, 428 → 437 resolved refs, 21 → 21 dangling
-  refs (no new dangling), 0 findings.
-- **2026-05-17** Seventh distillery (Bunnahabhain) populated.
-  North-east Islay (geographically and stylistically separate from
-  the south-coast peated cluster), founded 1881 to supply the
-  Greenlees brothers' Claymore blend. Five-stage ownership history
-  (Highland Distilleries → Edrington → Burn Stewart → Distell →
-  Heineken/Distell) populated cleanly via `ownership.history`.
-  Lightly-peated default production at ~1-2 ppm spec — exercises
-  the low end of the peating spectrum (contrast to Lagavulin's
-  ~35 ppm and Octomore's 167-258 ppm). Peat-free water source
-  from the Margadale River. Onion-shape stills, shell-and-tube
-  condensers. Single production line populated
-  (`bunnahabhain-traditional`); the separate Toiteach/Moine
-  peated sub-line is documented in SCHEMA-OBSERVATIONS but
-  deferred from this round. One flagship bottling populated:
-  Bunnahabhain 12 Year Old (46.3% ABV, NCF natural colour since
-  2010) — exercises the "craft transparency" presentation cluster
-  from `educational/scotch-presentation-conventions` at a
-  high-volume core release point (one of the early industry
-  transitions from 40% chill-filtered E150a to 46.3% NCF natural
-  colour for a core release). **Resolves 2 dangling forward refs**
-  (cadenheads-bunnahabhain-stub → bunnahabhain and
-  bunnahabhain-traditional). Counts: 104 → 107 files, 6 → 7
-  distilleries, 10 → 11 production lines, 24 → 25 bottlings,
-  416 → 428 resolved refs, 23 → 21 dangling refs, 0 findings.
-- **2026-05-17** Sixth distillery (Highland Park) populated.
-  Orkney, founded 1798, Edrington-owned (since 1999 via the
-  Highland Distillers acquisition). Single production line
-  (`highland-park`) with partial on-site floor-malting (~20% per
-  producer disclosure) using local Hobbister Moor peat;
-  exercises `practice/floor-malting` cross-reference. Region
-  recorded as `Islands` per trade convention with explicit note
-  in the entry that the formal SWA region (Scotch Whisky
-  Regulations 2009) is Highland — pressure-tests the
-  `educational/swa-regional-designations` formal-vs-informal
-  framing. Sherry-cask-heavy maturation programme (oloroso
-  ex-sherry butts predominantly + ex-bourbon supplement); cross-
-  references `educational/cask-maturation-kinetics` for the
-  phase-2 extraction framework in the Highland Park 18 entry.
-  Three bottlings populated: Highland Park 12 (40% ABV chill-
-  filtered, modern "Viking Honour" rebrand of the long-standing
-  flagship), Highland Park 18 (43% ABV chill-filtered, "Viking
-  Pride" rebrand), Highland Park Cask Strength (annual recurring
-  series, NCF natural-colour at 60-65% ABV — exercises the
-  cask-strength / NCF / natural-colour cluster from
-  `educational/scotch-presentation-conventions`). Critical-eval
-  fixes: removed `famous-grouse` slug from `also_used_by_blenders`
-  (blends not modelled as project entity type; empty list with
-  comment matches project convention used in lagavulin /
-  glenmorangie / bruichladdich / springbank); generalised two
-  producer-URL paths to homepage to avoid URL-hallucination risk.
-  Counts: 99 → 104 files, 5 → 6 distilleries, 9 → 10 production
-  lines, 21 → 24 bottlings, 394 → 416 resolved refs, 0 findings.
-- **2026-05-17** Supplier schema v0.1 pressure-test. First supplier
-  entry — `data/suppliers/bairds-malt.yml` — written against the
-  v0.1 DRAFT schema, mirroring the bottler v0.1 → v0.2 pattern
-  (Cadenhead's then Signatory). Multi-site coverage (Inverness,
-  Pencaitland, Witham) tests the `sites:` list shape; HPLC phenol
-  measurement capability tests the per-site `capabilities:` field;
-  `products:` list covers peated + unpeated malt; `supplies_to:`
-  resolves to harris and bruichladdich slugs (resolver count 392
-  → 394). SCHEMA-GAPS block at the end of the entry documents
-  6 observations for a possible future v0.2 promotion (per-product
-  produced_at_sites field; OPTIONAL per-supplier-type product
-  enums; relationship metadata on supplies_to; site-level
-  external_ids). **Conclusion: v0.1 is adequate for current data;
-  no promotion needed.** Schema stays at v0.1 with Bairds as its
-  first populated entry. Next pressure-test (yeast supplier or
-  cooperage source) will provide further data. Critical-eval fix
-  applied: source-type mismatch on the internal cross-reference
-  source (trade_publication → other). Project counts: 99 files
-  scanned, 1 supplier, 394 resolved refs, 0 validator findings.
-- **2026-05-16** Filtering deep dive + presentation conventions
-  + appellation migrations + supplier schema. Three substantial
-  deliverables in one pass. (a) `educational/chill-filtering` and
-  `educational/scotch-presentation-conventions` written, closing
-  the filtering research item and the presentation-conventions
-  cluster page that has been queued since round 2. Chill-haze
-  chemistry (ethyl ester precipitation), 46% ABV producer-empirical
-  threshold rationale, the contested mouthfeel-impact question
-  framed between trade-press extremes. Presentation cluster maps
-  the 4-decision matrix (strength / chill-filter / colour / cask-
-  strength) against the producer positioning landscape. (b) All
-  10 appellation cask entries migrated from Wikipedia-primary to
-  regulatory-text-primary sourcing: 7 INAO French AOCs (Pauillac,
-  Pomerol, Sauternes, Burgundy framework, Rhône framework,
-  Ventoux, Bandol for Mourvèdre), 1 MIPAAF Italian DOCG (Amarone),
-  2 Consejo Regulador del Vino de Jerez (oloroso, fino).
-  Wikipedia citations preserved per project policy on
-  rejected-source retention. (c) `supplier` entity type schema
-  drafted at v0.1: `schema/supplier.template.yml` (171 lines) +
-  `schema/json/supplier.schema.json` parallels the bottler entity
-  for upstream commercial parties (maltster | cooperage_source |
-  yeast_supplier | barley_breeder | other), with sites, ownership,
-  products, supplies_to fields. Resolver and JSON Schema validator
-  updated to know about `data/suppliers/`; entity-schema dict in
-  `scripts/check_references.py` gains the supplier mapping; new
-  `supplies_to` LIST_REF target added. Schema is DRAFT until a
-  pressure-test entry is added; existing glossary entries
-  (bairds-malt, heaven-hill, buffalo-trace, distillers-yeast) are
-  NOT migrated — they coexist with future supplier entries.
-  Concept count 43 → 45 (8 educational + 30 glossary + 2 practice
-  + 2 equipment + 3 methodology). Resolved refs 379 → 392. 0
-  validator findings.
-- **2026-05-16** Cask-entry prose cleanup against the new
-  cask-maturation-kinetics page. Three entries had hedging prose
-  about kinetic claims that the new educational page now grounds:
-  oloroso-sherry-butt (the "not stated here as project voice"
-  hedge replaced with a concrete cis-/trans-lactone-isomer claim
-  cross-referenced to the kinetics page); fino-sherry-butt (the
-  "trade attribution rather than universal property" hedge
-  rewritten to attribute the prior-contents-chemistry difference
-  while keeping spirit-side flavour-contribution claims
-  attribution-required); virgin-oak (the "immediately-soluble
-  wood compounds" claim tightened to "surface-layer extractives"
-  with a cross-reference to the kinetic-phase model). All three
-  cross-references use markdown-link form
-  (`[cask maturation kinetics](concept/educational/cask-maturation-kinetics)`)
-  per the concept template's inline-reference convention. No
-  schema changes; prose-only edits.
-- **2026-05-16** Two more cross-cutting deliverables landed.
-  (1) Bibliography completeness pass: docs/bibliography.md expanded
-  from 388 to 767 lines, adding 5 reference texts (Piggott 1989 and
-  1983, Lyons & Hill *The Alcohol Textbook*, Boulton & Quain
-  *Brewing Yeast and Fermentation*, Udo *Scottish Whisky
-  Distilleries*), 5 peer-reviewed author groups (Paterson/Piggott
-  Strathclyde group, Wanikawa/Hosoi Suntory, Aylott authenticity,
-  SWRI staff Bringhurst/Brookes/Brosnan), 4 journals (JSFA, Food
-  Research International, LWT, Chemical Senses, Flavour & Fragrance
-  Journal), 3 institutional sources (Heriot-Watt ICBD, SWA,
-  Worshipful Company of Distillers, HMRC), and 2 historical-
-  industrial references (Moss & Hume 1981, Weir on DCL). The audit
-  shifted the catalogue from "covers entries I already wrote" to
-  "covers the field". (2) `educational/cask-maturation-kinetics`
-  written — the flagship research-heavy teaching page that the
-  TODO has carried since the cask schema landed. Covers the three
-  kinetic phases of extraction, oxidative changes, reductive vs
-  oxidative maturation, angel's share composition by RH, fill-
-  strength effects, and an explicit section on contested /
-  trade-attributed claims that exceed the published chemistry.
-  5 sources (Mosedale & Puech 1998 with DOI, Conner et al. 1992,
-  Wanikawa et al. 2002, Russell chapter, internal cross-reference
-  to the Octomore production-line entry for the 68.5% fill).
-  Concept count 42 → 43. URL-hallucination caught and replaced in
-  critical-eval pass (initial draft cited a Bruichladdich URL I
-  couldn't verify; replaced with internal-data cross-reference).
-- **2026-05-16** Cross-cutting research rounds 4-5: barley
-  varieties + maltster practice + commercial-entity glossaries +
-  distillers yeast (10 new pages). Barley: glossary/{concerto,
-  optic, bere, propino}. Maltster practice pages:
-  practice/{floor-malting, external-malting}. Named commercial
-  entities: glossary/{bairds-malt, heaven-hill, buffalo-trace}.
-  Yeast: glossary/distillers-yeast. Concept count 32 → 42 (5
-  educational + 2 equipment + 30 glossary + 3 methodology + 2
-  practice — first practice-kind entries). Resolved refs 355 → 372.
-  Named-supplier schema question (would parallel the bottler entity
-  type) documented as a deferred candidate in §Schema work §Not
-  yet drafted; defer until 5+ named maltsters accumulate OR a
-  bottling materially turns on supplier identity. Source pattern
-  continues: AHDB / IBD framework citations at confidence medium
-  with verification hedges; CFR §5.143(c) for the bourbon-barrel
-  supply chain at confidence medium; Russell + Theobald 2006 for
-  the technical and Bere claims.
-- **2026-05-16** Literature catalogue v1 landed
-  (`docs/bibliography.md`). Curated inventory of in-depth,
-  peer-reviewed, and institutional references covering the
-  works cited (Russell ed. 2014, Mosedale & Puech 1998, Conner
-  papers) and the works queued for future grounding (Buxton &
-  Hughes 2014, MacLean, Malt Whisky Yearbook, SWRI, four
-  primary academic journals). Documents the project's positive
-  sourcing standard (peer-review / academic publisher /
-  institutional research body / primary-source historical
-  writing) and the exclusion criteria for non-qualifying
-  material (consumer scoring guides, distillery-funded books,
-  influencer blogs). Follow-up: cross-check the seven
-  Russell-citing concept entries against actual page references
-  when a copy becomes available; schema-integration via
-  `literature_id:` field is deferred (see §Existing literature
-  catalogue follow-ups).
-- **2026-05-16** Cross-cutting research round 3: 5 medium-frequency
-  glossary entries. `glossary/shell-and-tube` (tooltip pointing to
-  the existing equipment page), `glossary/reflux` (distillation
-  physics; cross-references lyne-arm and copper-conversation),
-  `glossary/single-cask` (industry convention, not SWR2009-regulated
-  — explicit), `glossary/mashing` (production stage, ties to
-  mash_tun.type field), `glossary/vatting` (combination step,
-  paired with single-cask). Concept count 27 → 32 (22 glossary
-  entries). Russell-textbook citation pattern continued on 3 of
-  the 5 with the same `confidence: medium` + "page refs TBA" hedge;
-  the regulatory entries (single-cask, vatting) cite SWR 2009 at
-  `confidence: high`. Deferred this round: heaven-hill / buffalo-
-  trace (named-commercial-entity question better handled with the
-  barley/malt cross-cutting work; same schema-thought issue as
-  Bairds maltster).
-- **2026-05-16** Cross-cutting research round 2: 4 more concept
-  pages from the audit follow-up queue.
-  `educational/cask-fill-states` (first-fill / refill / fill_number
-  mechanics, ex-bourbon / ex-sherry shorthand, seasoned vs transport
-  sherry butts — sourced to SWA Regulations 2009 and Russell ed.
-  textbook), `glossary/fermentation` (washback fermentation, 7-9% ABV
-  wash, secondary bacterial activity in long fermentations),
-  `glossary/kiln` (malt drying, peating mechanism, surviving
-  floor-malting practice with qualified named examples),
-  `glossary/wash-still` (bulk concentration step, capacity ratios,
-  copper conversation tie-in). Concept count 23 → 27 (5 educational
-  + 17 glossary). Four entries cite the Russell textbook with
-  `confidence: medium` and explicit notes that specific page
-  references await the §Existing literature catalogue work — those
-  citations should be cross-checked when the catalogue lands.
-- **2026-05-16** Cross-cutting research round 1: undocumented
-  technical concepts audit + 6 new pages. Audit greps all prose
-  fields across `/data/`, frequency-ranks candidate technical
-  terms. Round 1 outputs: `educational/swa-regional-designations`
-  (resolves Highland/Lowland/Speyside/Islay/Campbeltown/Islands
-  references — sourced to Scotch Whisky Regulations 2009),
-  `glossary/abv`, `glossary/new-make`, `glossary/cask-strength`,
-  `glossary/single-malt` (sourced to SWA Regulations 2009),
-  `glossary/outturn` (industry-usage term, no primary regulatory
-  citation, confidence medium). Concept count 17 → 23. Audit
-  surfaced a follow-up queue documented in §Cross-cutting research
-  (cask-fill-states, presentation conventions, kiln, fermentation,
-  wash-still, etc.).
-- **2026-05-16** JSON Schema validation tooling landed. Hand-authored
-  draft-07 schemas in `/schema/json/` for all six entity types,
-  wired into `scripts/check_references.py` as a warn-only pass. The
-  new pass surfaced ten silently-truncated files from earlier
-  sessions (5 cask entries, 5 concept entries) — all restored from
-  last committed version. Distillery `mothballed_periods` item shape
-  canonised on `from`/`to`/`note` matching the ownership.history
-  convention; Bruichladdich's two `start`/`end` entries migrated.
-  Schema permissiveness gaps surfaced and patched: integer years,
-  integer/string IDs, string schema_version (`0.2.1`), nullable
-  equipment_changes.year, YYYY-MM string for rrp.as_of and
-  notes_independent.date. Project v0.7.0.
-- **2026-05-15** Fifth distillery (Lagavulin) populated. Heavily
-  peated Islay distillery; Diageo-owned. Single production line
-  (lagavulin) with malt sourced from Port Ellen Maltings at ~35
-  ppm spec; methodology assigned to
-  `methodology/scotch-whisky-published-ppm` since Lagavulin
-  doesn't separately attribute the measurement. Pear-shaped
-  stills, slow distillation, coastal dunnage maturation at
-  Lagavulin Bay. Three representative bottlings: Lagavulin 16
-  (flagship; resolves `glossary/classic-malts` as one of the six
-  originals via prose-level markdown link), Distillers Edition
-  (PX-finished, annual recurring — exercises bottling.finish
-  block plus a SCHEMA-OBSERVATION about cross-distillery Diageo
-  series), 12 Year Old Cask Strength (Special Releases — CS +
-  NCF + natural colour combo). With this fifth distillery, the
-  project crosses the TODO-deferred threshold for JSON Schema
-  validation tooling ("5+ distilleries, 50+ bottlings"); the
-  bottlings threshold (21 vs 50) is not yet crossed but the
-  distillery threshold is, making JSON Schema validation a
-  defensible next move. Pure data addition with no schema change
-  — distillery v0.2's multi-warehouse list (single-element for
-  Lagavulin) was already established by the Springbank work.
-- **2026-05-15** Fourth distillery (Glenmorangie) populated.
-  Highland-region single-line operation; pure data addition with
-  no schema change (Springbank's earlier multi-warehouse pressure-
-  test already lifted distillery v0.2). First use of the
-  `still.height_m` field as load-bearing data (5.14 m / 16'10"
-  for Glenmorangie's tall stills). Signet and Allta flagged as
-  candidate separate production_line entries in the distillery
-  entry's SCHEMA-OBSERVATIONS block; deferred until usage
-  justifies modelling them as distinct lines. Three representative
-  bottlings populated: The Original 10 (40% ABV chill-filtered
-  with caramel — different presentation tradition than the 46%
-  NCF natural-colour core of Springbank/Bruichladdich/Harris),
-  18 Year Old (15+3 ex-bourbon-then-partial-oloroso maturation —
-  exercises the secondary-maturation-not-finish convention), and
-  Quinta Ruban 14 (port-finished — exercises the bottling
-  schema's `finish:` block). Total bottlings now 18 (16 OB + 2
-  IB stubs).
-- **2026-05-15** Third distillery (Springbank) populated, driving
-  distillery schema v0.1 → v0.2 promotion. Springbank is structurally
-  the most complex distillery in the data so far: three production
-  lines (Springbank 2.5×, Longrow double, Hazelburn triple) sharing
-  one set of equipment; multi-warehouse layout; floor-malted barley
-  in-house; direct-fired wash still with worm-tub condensation paired
-  with indirect-steam spirit stills using shell-and-tube. The v0.1
-  pressure-test surfaced the warehouse-as-list gap (resolved in v0.2:
-  `warehouse:` → `warehouses:` list shape, with Springbank's three
-  distinct on-site / adjacent warehouses now properly represented).
-  Existing distilleries (Harris, Bruichladdich) migrated to v0.2 with
-  single-element warehouses lists preserving all prior fields.
-  Bottlings: 3 representative Springbank-line entries (Springbank 10,
-  Longrow Peated, Hazelburn 10), one per line, confidence medium.
-  Project v0.6.0.
-- **2026-05-15** Bottler schema v0.1 → v0.2 promotion. Signatory
-  pressure-test confirmed the Cadenhead's SCHEMA-GAPS hypotheses
-  with real data: series with consistent presentation rules
-  (Signatory's CSC, UCF, 100 Proof) need a `presentation_defaults:`
-  block on the series shape, and sub-series like the Decanter
-  Collection need an OPTIONAL `parent:` field. Both added to
-  bottler v0.2. `data/bottlers/signatory.yml` populated (confidence
-  medium) using both new features. `data/bottlings/signatory-
-  caol-ila-stub.yml` populated as schema-pressure-test placeholder.
-  Cadenhead's entry bumped to schema_version 0.2 but does not use
-  the new features (its series have less formal presentation
-  enforcement). Project v0.5.0.
-- **2026-05-15** Bottler IB pressure-test completed against
-  Cadenhead's Authentic Collection. Created
-  `data/bottlers/cadenheads.yml` and
-  `data/bottlings/cadenheads-bunnahabhain-stub.yml`. All four IB
-  discriminator fields resolve cleanly. SCHEMA-GAPS block in the
-  bottling stub documents 5 observations that subsequently fed
-  into bottler v0.2.
-- **2026-05-15** Easy Research Request migrations applied:
-  `aromatic-compounds-in-whisky` (4 WP chemistry sources removed
-  — glossary entries carry canonical citations);
-  `copper-conversation` (WP DMS → PubChem CID 1068);
-  `bourbon-barrel` (WP Bourbon_whiskey → ecfr.gov 27 CFR §5.143
-  under new `regulatory_text` source type). Source-type
-  vocabulary extended with `regulatory_text`. Net effect: 6
-  Wikipedia citations eliminated from data; 12 files still
-  carry Wikipedia citations (8 wine-cask appellation entries,
-  2 sherry-butt entries, harris.yml, bruichladdich.yml — all
-  tracked in Research Requests for future appellation /
-  historical / sherry upgrades).

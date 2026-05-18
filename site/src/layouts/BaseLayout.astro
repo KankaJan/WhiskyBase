@@ -4,9 +4,23 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  /**
+   * When true, the page's <main> is marked with `data-pagefind-body`
+   * so Pagefind indexes its prose. Defaults to true; set false for
+   * pages with no useful indexable content (e.g. an index page that
+   * is just a table of links also covered elsewhere).
+   */
+  indexable?: boolean;
+  /** Optional Pagefind meta keys to attach to the page record. */
+  pagefindMeta?: Record<string, string>;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  indexable = true,
+  pagefindMeta = {},
+} = Astro.props;
 const siteTitle = 'WhiskyBase';
 ---
 
@@ -28,11 +42,21 @@ const siteTitle = 'WhiskyBase';
           <a href="/bottlings/">Bottlings</a>
           <a href="/casks/">Casks</a>
           <a href="/concept/">Concepts</a>
+          <a href="/map/">Map</a>
+          <a href="/explore/">Explore</a>
+          <a href="/reference/">Reference</a>
+          <a href="/search/">Search</a>
         </nav>
       </div>
     </header>
 
-    <main class="site-main">
+    <main
+      class="site-main"
+      data-pagefind-body={indexable ? '' : undefined}
+    >
+      {Object.entries(pagefindMeta).map(([k, v]) => (
+        <span hidden data-pagefind-meta={`${k}:${v}`} />
+      ))}
       <slot />
     </main>
 

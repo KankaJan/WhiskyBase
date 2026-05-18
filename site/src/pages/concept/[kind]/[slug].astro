@@ -52,6 +52,10 @@ const relatedLinks = (concept.related_concepts ?? []).map((ref) => ({
 <BaseLayout
   title={concept.title}
   description={concept.summary?.split('\n')[0]?.slice(0, 150)}
+  pagefindMeta={{
+    entity: 'Concept',
+    concept_kind: kindLabel[concept.kind] ?? concept.kind,
+  }}
 >
   <article class="concept-page">
     <EntityHeader

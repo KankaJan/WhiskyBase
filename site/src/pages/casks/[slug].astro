@@ -33,7 +33,11 @@ function fmtVolume(v: number | [number, number] | null | undefined): string {
 }
 ---
 
-<BaseLayout title={cask.name} description={cask.description?.split('\n')[0]?.slice(0, 150)}>
+<BaseLayout
+  title={cask.name}
+  description={cask.description?.split('\n')[0]?.slice(0, 150)}
+  pagefindMeta={{ entity: 'Cask', cask_category: cask.category ?? '' }}
+>
   <article class="page">
     <EntityHeader
       name={cask.name}

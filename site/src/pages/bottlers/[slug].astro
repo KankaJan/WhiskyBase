@@ -24,7 +24,11 @@ const typeLabel = bottler.type === 'independent_bottler'
   : 'Distillery bottling operation';
 ---
 
-<BaseLayout title={bottler.name} description={bottler.description?.split('\n')[0]?.slice(0, 150)}>
+<BaseLayout
+  title={bottler.name}
+  description={bottler.description?.split('\n')[0]?.slice(0, 150)}
+  pagefindMeta={{ entity: 'Bottler', bottler_type: typeLabel }}
+>
   <article class="page">
     <EntityHeader
       name={bottler.name}

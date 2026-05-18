@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { loadDistilleries } from '../lib/data';
+
+const distilleries = loadDistilleries();
+const pins = distilleries
+  .filter((d) =>
+    typeof d.coordinates?.lat === 'number' &&
+    typeof d.coordinates?.lon === 'number',
+  )
+  .map((d) => ({
+    id: d.id,
+    name: d.name,
+    region: d.region ?? null,
+    lat: d.coordinates!.lat as number,
+    lon: d.coordinates!.lon as number,
+    status: d.status,
+  }));
+---
+
+<BaseLayout
+  title="Map"
+  description="Map of Scotch whisky distilleries with coordinates recorded in WhiskyBase."
+  indexable={false}
+>
+  <article class="content">
+    <h1>Map</h1>
+    <p class="lede">
+      Distilleries plotted by published coordinates. Click a pin to
+      open the distillery page. Map base from CARTO (Positron) over
+      OpenStreetMap data; attribution at the bottom right of the
+      map.
+    </p>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css"
+      crossorigin="anonymous"
+    />
+    <div id="map" class="map" data-pins={JSON.stringify(pins)}>
+      <noscript>
+        <p class="noscript-msg">
+          The map requires JavaScript. Browse distilleries by
+          coordinates via the <a href="/explore/by-region/">by-region</a>
+          page instead.
+        </p>
+      </noscript>
+    </div>
+
+    <p class="meta">
+      {pins.length} of {distilleries.length} distilleries plotted
+      (the rest lack published coordinates).
+    </p>
+
+    <script is:inline>
+      (() => {
+        const init = () => {
+          const el = document.getElementById('map');
+          if (!el) return;
+          const pins = JSON.parse(el.dataset.pins || '[]');
+          // eslint-disable-next-line no-undef
+          const map = new maplibregl.Map({
+            container: 'map',
+            style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+            center: [-4.5, 57.0],
+            zoom: 5.5,
+          });
+          // eslint-disable-next-line no-undef
+          map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+
+          map.on('load', () => {
+            for (const p of pins) {
+              const popupHtml =
+                '<strong><a href="/distilleries/' + p.id + '/">' +
+                p.name + '</a></strong>' +
+                (p.region ? '<br><span class="region">' + p.region + '</span>' : '') +
+                (p.status ? '<br><span class="status">' + p.status + '</span>' : '');
+              // eslint-disable-next-line no-undef
+              new maplibregl.Marker({ color: '#3366cc' })
+                .setLngLat([p.lon, p.lat])
+                // eslint-disable-next-line no-undef
+                .setPopup(new maplibregl.Popup({ offset: 18 }).setHTML(popupHtml))
+                .addTo(map);
+            }
+
+            // Fit map to pin extent so the user lands on the
+            // populated area without manually scrolling.
+            if (pins.length > 0) {
+              // eslint-disable-next-line no-undef
+              const bounds = new maplibregl.LngLatBounds();
+              for (const p of pins) bounds.extend([p.lon, p.lat]);
+              map.fitBounds(bounds, { padding: 40, maxZoom: 9, duration: 0 });
+            }
+          });
+        };
+
+        const s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js';
+        s.crossOrigin = 'anonymous';
+        s.onload = init;
+        document.head.appendChild(s);
+      })();
+    </script>
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  .lede { color: var(--muted-color); font-style: italic; }
+  .meta { color: var(--muted-color); font-size: 0.9rem; }
+  .noscript-msg {
+    color: var(--muted-color);
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .map {
+    width: 100%;
+    height: 32rem;
+    margin: 1rem 0;
+    border: 1px solid var(--rule-color);
+  }
+  .map :global(.maplibregl-popup-content) {
+    font-family: var(--body-font);
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  .map :global(.maplibregl-popup-content a) {
+    color: var(--link-color);
+  }
+  .map :global(.region),
+  .map :global(.status) {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+  }
+</style>

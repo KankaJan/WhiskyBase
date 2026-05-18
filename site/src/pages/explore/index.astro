@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  loadDistilleries,
+  loadProductionLines,
+  loadBottlings,
+  loadCasks,
+} from '../../lib/data';
+
+const distillerCount = loadDistilleries().length;
+const lineCount = loadProductionLines().length;
+const bottlingCount = loadBottlings().length;
+const caskCount = loadCasks().length;
+
+const cuts = [
+  {
+    slug: 'by-region',
+    title: 'Distilleries by region',
+    description: `Distilleries grouped by Scotch whisky region: Speyside, Highland, Islay, Lowland, Campbeltown, Islands.`,
+    count: distillerCount,
+  },
+  {
+    slug: 'by-ownership',
+    title: 'Distilleries by ownership',
+    description: `Distilleries grouped by current parent company.`,
+    count: distillerCount,
+  },
+  {
+    slug: 'by-peating',
+    title: 'Production lines by peating',
+    description: `Production lines binned by phenol level: unpeated, lightly peated, medium-peated, heavily peated, extreme-peated.`,
+    count: lineCount,
+  },
+  {
+    slug: 'by-presentation',
+    title: 'Bottlings by presentation',
+    description: `Bottlings grouped by presentation traits: cask strength, non-chill-filtered, natural colour, single cask.`,
+    count: bottlingCount,
+  },
+  {
+    slug: 'by-cask-category',
+    title: 'Casks by category',
+    description: `Cask types grouped by category: bourbon, sherry, fortified, wine, virgin, undisclosed.`,
+    count: caskCount,
+  },
+];
+---
+
+<BaseLayout
+  title="Explore"
+  description="Cross-cutting views of WhiskyBase data: by region, ownership, peating level, presentation, and cask category."
+  indexable={false}
+>
+  <article class="content">
+    <h1>Explore</h1>
+    <p class="lede">
+      Cross-cutting views of the data — the same entries seen
+      through different facets. Useful when looking for "all
+      distilleries in Islay," "all heavily peated production lines,"
+      or "all cask-strength NCF releases."
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cut</th>
+          <th>Description</th>
+          <th class="count-col">Items</th>
+        </tr>
+      </thead>
+      <tbody>
+        {cuts.map((c) => (
+          <tr>
+            <td><a href={`/explore/${c.slug}/`}>{c.title}</a></td>
+            <td>{c.description}</td>
+            <td class="count-col">{c.count}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  .lede { color: var(--muted-color); font-style: italic; }
+  table { width: 100%; }
+  .count-col {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    width: 4rem;
+  }
+</style>

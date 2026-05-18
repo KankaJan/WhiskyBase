@@ -1,8 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getEntityCounts } from '../lib/data';
+import { REFERENCES } from '../lib/references';
 
 const counts = getEntityCounts();
+const referenceCount = REFERENCES.length;
 ---
 
 <BaseLayout
@@ -35,13 +37,38 @@ const counts = getEntityCounts();
               <td class="count-col">{c.count}</td>
             </tr>
           ))}
+          <tr>
+            <td><a href="/reference/">Reference</a></td>
+            <td>Project policies, design notes, and about pages.</td>
+            <td class="count-col">{referenceCount}</td>
+          </tr>
         </tbody>
       </table>
-      <p class="hint">
-        Only the distilleries section is render-complete in this
-        first scaffolding iteration. Other entity-type pages
-        follow in subsequent iterations per the implementation
-        sequencing in <code>docs/build-pipeline-plan.md</code>.
+    </section>
+
+    <section>
+      <h2>Map and cross-cutting views</h2>
+      <p>
+        <a href="/map/">Map</a> — distilleries plotted by published
+        coordinates, click a pin to open the distillery page.
+      </p>
+      <p>
+        <a href="/explore/">Explore</a> the same entries through
+        different facets — distilleries by region or ownership,
+        production lines by peating level, bottlings by presentation
+        (cask strength, NCF, natural colour, single cask), or casks
+        by category.
+      </p>
+    </section>
+
+    <section>
+      <h2>Search</h2>
+      <p>
+        <a href="/search/">Full-text search</a> covers every detail
+        page on the site (distilleries, production lines, bottlings,
+        bottlers, casks, suppliers, reference concepts, and the
+        policy pages). Filter by entity type with the dropdown after
+        running a query.
       </p>
     </section>
   </article>

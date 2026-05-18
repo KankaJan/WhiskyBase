@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadDistilleries, type Distillery } from '../../lib/data';
+
+const distilleries = loadDistilleries();
+
+// Canonical ordering for Scotch regions; anything else lands in
+// "Other" at the end. Distilleries without a region field land in
+// "Unknown".
+const REGION_ORDER = [
+  'Speyside',
+  'Highland',
+  'Islay',
+  'Lowland',
+  'Campbeltown',
+  'Islands',
+];
+
+function normalizeRegion(r: string | null | undefined): string {
+  if (!r) return 'Unknown';
+  // Producers occasionally use case variants — normalise to the
+  // canonical capitalisation when there's a match.
+  const lower = r.toLowerCase();
+  const match = REGION_ORDER.find((c) => c.toLowerCase() === lower);
+  return match ?? r;
+}
+
+const grouped: Record<string, Distillery[]> = {};
+for (const d of distilleries) {
+  const key = normalizeRegion(d.region);
+  (grouped[key] = grouped[key] ?? []).push(d);
+}
+
+const orderedKeys = [
+  ...REGION_ORDER.filter((r) => grouped[r]),
+  ...Object.keys(grouped)
+    .filter((k) => !REGION_ORDER.includes(k) && k !== 'Unknown')
+    .sort(),
+  ...(grouped['Unknown'] ? ['Unknown'] : []),
+];
+---
+
+<BaseLayout
+  title="Distilleries by region"
+  description="Scotch whisky distilleries grouped by region."
+  indexable={false}
+>
+  <article class="content">
+    <p class="breadcrumb"><a href="/explore/">Explore</a> ›</p>
+    <h1>Distilleries by region</h1>
+    <p class="lede">
+      {distilleries.length} distilleries across {orderedKeys.length} regions.
+    </p>
+
+    {orderedKeys.map((region) => (
+      <section>
+        <h2>{region} ({grouped[region].length})</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Distillery</th>
+              <th>Sub-region / locality</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {grouped[region].map((d) => (
+              <tr>
+                <td><a href={`/distilleries/${d.id}/`}>{d.name}</a></td>
+                <td>{d.sub_region ?? d.locality ?? '—'}</td>
+                <td>{d.status ?? '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    ))}
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  .breadcrumb { font-size: 0.9rem; color: var(--muted-color); margin: 0 0 0.5rem; }
+  .lede { color: var(--muted-color); font-style: italic; }
+  table { width: 100%; }
+</style>

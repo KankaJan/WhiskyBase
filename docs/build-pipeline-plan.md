@@ -17,17 +17,38 @@ firm; "OPEN" decisions list the trade-offs and a recommended path.
 Open decisions can be resolved as part of frontend implementation
 or in a v0.2 revision of this document.
 
-**Implementation progress (2026-05-17):** First-iteration
-scaffolding landed in `/site/` per the §Implementation sequencing
-order. Astro 5 + TypeScript + `yaml` for parsing. Home page,
-distilleries index, and distillery detail page render against the
-YAML data layer. Components: EntityHeader, LocationBlock,
-OwnershipHistory, EquipmentSpec, SourcesBlock, ProductionLinesList,
-Footer. Build verified at structure-level; runtime
-`npm install && npm run build` to be run from the development host
-(sandbox network throttling prevented runtime verification in the
-scaffolding session). Other entity types deferred to subsequent
-iterations per the sequencing order.
+**Implementation progress (2026-05-18):** All 8 items of the
+§Implementation sequencing list have landed.
+
+- Items 1-3 (scaffolding, distillery rendering, markdown helper with
+  entity-link rewriting + inline `[N]` citation resolution): shipped
+  2026-05-17.
+- Item 4 (other entity types — production lines, bottlings,
+  bottlers, casks, suppliers; concept-block dispatch refined for all
+  5 kinds): shipped 2026-05-17 alongside the Wikipedia-style UI
+  refactor.
+- Item 5 (Pagefind search): shipped 2026-05-18. `<main>` carries
+  `data-pagefind-body`, BaseLayout takes optional `pagefindMeta`,
+  detail pages emit per-entity-type meta for the filter chips,
+  `/search/` page mounts PagefindUI, postbuild step runs
+  `pagefind --site $outDir`.
+- Item 6 (MapLibre map): shipped 2026-05-18 at `/map/` over Carto
+  Positron tiles; pins fitted to extent on load.
+- Item 7 (cross-cutting `/explore/` queries): shipped 2026-05-18.
+  `/explore/by-region/`, `by-ownership/`, `by-peating/`,
+  `by-presentation/`, `by-cask-category/` against the existing
+  loaders.
+- Item 8 (reference pages): shipped 2026-05-18 at `/reference/<slug>/`.
+  Six entries: about, source-policy, voice-register, bibliography,
+  schema-design-notes, contributing. Sources read at build time
+  from `/docs/*.md` (leading h1 stripped).
+
+Run `npm install && npm run build` from `/site/`. The build script
+chains `astro build` and a `postbuild.mjs` helper that resolves the
+output directory and runs Pagefind. End-to-end verification is
+Windows-side: the Linux sandbox times out on a full build and the
+bundled Pagefind binary segfaults in that environment; both work
+on the developer host.
 
 ## Stack
 
@@ -428,24 +449,31 @@ content-quality backlog.
 
 ## Implementation sequencing
 
-When implementation begins, the suggested order:
+All items below are LANDED (last updated 2026-05-18). Order
+preserved as a historical record of the planned sequence.
 
 1. **Static site scaffolding** — Astro project skeleton, base
-   layout, footer with licensing.
-2. **Distillery pages** (8 entries × ~1 page) — the most
-   information-dense entity type; getting these right validates
-   the component design.
-3. **Concept pages** (45 entries × ~1 page) — the second
+   layout, footer with licensing. **LANDED 2026-05-17.**
+2. **Distillery pages** (9 entries × ~1 page) — the most
+   information-dense entity type; getting these right validated
+   the component design. **LANDED 2026-05-17.**
+3. **Concept pages** (46 entries × ~1 page) — the second
    information-dense entity type, exercises markdown-link
-   rewriting heavily.
+   rewriting heavily. **LANDED 2026-05-17.**
 4. **Other entity types** (production lines, bottlings, bottlers,
-   casks, suppliers).
-5. **Index pages and search** — depends on all entity pages
-   existing.
-6. **Map** — depends on distillery pages existing.
-7. **Cross-cutting query pages** — depends on all data structure.
-8. **Reference pages** (about, bibliography, etc.) — minimal
-   dependencies; can be done in parallel with any of the above.
+   casks, suppliers). **LANDED 2026-05-17.**
+5. **Index pages and search** — Pagefind, indexes `<main>` content
+   with `data-pagefind-body`, per-entity meta for filter chips;
+   `/search/` page mounts PagefindUI. **LANDED 2026-05-18.**
+6. **Map** — MapLibre GL at `/map/`, Carto Positron basemap,
+   pins fitted to extent. **LANDED 2026-05-18.**
+7. **Cross-cutting query pages** — `/explore/` index plus
+   by-region, by-ownership, by-peating, by-presentation,
+   by-cask-category. **LANDED 2026-05-18.**
+8. **Reference pages** — `/reference/` index plus about,
+   source-policy, voice-register, bibliography,
+   schema-design-notes, contributing. Source docs read from
+   `/docs/*.md` at build time. **LANDED 2026-05-18.**
 
 ---
 

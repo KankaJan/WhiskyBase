@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { REFERENCES, type ReferenceEntry } from '../../lib/references';
+
+const categories: Array<{ slug: ReferenceEntry['category']; label: string; description: string }> = [
+  {
+    slug: 'about',
+    label: 'About',
+    description: 'Project orientation and contributing.',
+  },
+  {
+    slug: 'policy',
+    label: 'Policies',
+    description:
+      'Standing rules for sources, voice, and bibliography. Followed by every entry.',
+  },
+  {
+    slug: 'design',
+    label: 'Design notes',
+    description:
+      'Rationale behind the structured-data schemas — what was promoted, what was rejected.',
+  },
+];
+
+const byCategory: Record<string, ReferenceEntry[]> = {};
+for (const r of REFERENCES) {
+  (byCategory[r.category] = byCategory[r.category] ?? []).push(r);
+}
+---
+
+<BaseLayout
+  title="Reference"
+  description="Project policies, design notes, and about pages."
+  indexable={false}
+>
+  <article class="content">
+    <h1>Reference</h1>
+    <p class="lede">
+      Standing rules and design rationale for the WhiskyBase data
+      layer. These pages explain how the project works — what
+      counts as a source, how the voice register is enforced, and
+      why the schemas are shaped the way they are.
+    </p>
+
+    {categories.map((c) => byCategory[c.slug] && (
+      <section>
+        <h2>{c.label}</h2>
+        <p class="cat-desc">{c.description}</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {byCategory[c.slug].map((r) => (
+              <tr>
+                <td><a href={`/reference/${r.slug}/`}>{r.title}</a></td>
+                <td>{r.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    ))}
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  .lede { color: var(--muted-color); font-style: italic; }
+  .cat-desc {
+    color: var(--muted-color);
+    font-size: 0.95rem;
+    margin: 0.25rem 0 0.5rem;
+  }
+  table { width: 100%; }
+  td:first-child { white-space: nowrap; }
+</style>

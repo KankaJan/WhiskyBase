@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadDistilleries, type Distillery } from '../../lib/data';
+
+const distilleries = loadDistilleries();
+
+function ownerLabel(d: Distillery): string {
+  // Prefer parent (group/holding company) over current (direct
+  // operating subsidiary) for grouping — that's what produces
+  // useful clusters (Diageo vs. Pernod Ricard vs. Edrington vs.
+  // family-owned vs. independent).
+  return d.ownership?.parent ?? d.ownership?.current ?? 'Unknown';
+}
+
+const grouped: Record<string, Distillery[]> = {};
+for (const d of distilleries) {
+  const key = ownerLabel(d);
+  (grouped[key] = grouped[key] ?? []).push(d);
+}
+
+// Order by group size descending, then alphabetical. Unknown last.
+const orderedKeys = Object.keys(grouped).sort((a, b) => {
+  if (a === 'Unknown') return 1;
+  if (b === 'Unknown') return -1;
+  const sizeDiff = grouped[b].length - grouped[a].length;
+  if (sizeDiff !== 0) return sizeDiff;
+  return a.localeCompare(b);
+});
+---
+
+<BaseLayout
+  title="Distilleries by ownership"
+  description="Scotch whisky distilleries grouped by current parent company."
+  indexable={false}
+>
+  <article class="content">
+    <p class="breadcrumb"><a href="/explore/">Explore</a> ›</p>
+    <h1>Distilleries by ownership</h1>
+    <p class="lede">
+      Grouped by parent company. Where no parent is recorded, the
+      direct current owner is used.
+    </p>
+
+    {orderedKeys.map((owner) => (
+      <section>
+        <h2>{owner} ({grouped[owner].length})</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Distillery</th>
+              <th>Region</th>
+              <th>Direct owner</th>
+            </tr>
+          </thead>
+          <tbody>
+            {grouped[owner].map((d) => (
+              <tr>
+                <td><a href={`/distilleries/${d.id}/`}>{d.name}</a></td>
+                <td>{d.region ?? '—'}</td>
+                <td>{d.ownership?.current ?? '—'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    ))}
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  .breadcrumb { font-size: 0.9rem; color: var(--muted-color); margin: 0 0 0.5rem; }
+  .lede { color: var(--muted-color); font-style: italic; }
+  table { width: 100%; }
+</style>

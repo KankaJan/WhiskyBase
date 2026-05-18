@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadBottlings, type Bottling } from '../../lib/data';
+
+const bottlings = loadBottlings();
+
+// Each cut returns the bottlings that match. A bottling can appear
+// in multiple cuts (cask-strength NCF releases show up under both).
+interface Cut {
+  slug: string;
+  label: string;
+  description: string;
+  test: (b: Bottling) => boolean;
+}
+
+const CUTS: Cut[] = [
+  {
+    slug: 'cask-strength',
+    label: 'Cask strength',
+    description:
+      'Bottled at the natural ABV reached by maturation, without dilution.',
+    test: (b) => b.cask_strength === true,
+  },
+  {
+    slug: 'ncf',
+    label: 'Non-chill-filtered',
+    description:
+      'Skips the chill-filtration step that removes fatty acids and esters at cold serving temperatures.',
+    test: (b) => b.non_chill_filtered === true,
+  },
+  {
+    slug: 'natural-colour',
+    label: 'Natural colour',
+    description:
+      'Bottled without spirit caramel (E150a) colour-correction.',
+    test: (b) => b.natural_colour === true,
+  },
+  {
+    slug: 'single-cask',
+    label: 'Single cask',
+    description:
+      'Releases drawn from one cask rather than a vat of multiple casks.',
+    test: (b) =>
+      b.batch_or_cask?.type === 'single_cask' ||
+      b.batch_or_cask?.type === 'single-cask',
+  },
+  {
+    slug: 'small-batch',
+    label: 'Small batch / vatted',
+    description:
+      'Releases vatted from a small number of named casks (typical IB outturn 200–2000 bottles).',
+    test: (b) =>
+      b.batch_or_cask?.type === 'small_batch' ||
+      b.batch_or_cask?.type === 'small-batch' ||
+      b.batch_or_cask?.type === 'vatted',
+  },
+];
+
+function fmtAbv(abv: number | null | undefined): string {
+  if (typeof abv !== 'number') return '—';
+  return `${abv.toFixed(1)}%`;
+}
+function fmtAge(b: Bottling): string {
+  if (typeof b.age_statement === 'number') return `${b.age_statement} yo`;
+  if (typeof b.vintage === 'number') return `vintage ${b.vintage}`;
+  return 'NAS';
+}
+---
+
+<BaseLayout
+  title="Bottlings by presentation"
+  description="Bottlings grouped by presentation traits: cask strength, non-chill-filtered, natural colour, single cask, small batch."
+  indexable={false}
+>
+  <article class="content">
+    <p class="breadcrumb"><a href="/explore/">Explore</a> ›</p>
+    <h1>Bottlings by presentation</h1>
+    <p class="lede">
+      Bottlings grouped by their presentation traits. A release can
+      appear in multiple cuts — a cask-strength single-cask NCF
+      release appears in all three sections. Traits the producer
+      hasn't disclosed are treated as absent, not unknown.
+    </p>
+
+    {CUTS.map((cut) => {
+      const matches = bottlings.filter(cut.test);
+      if (matches.length === 0) return null;
+      return (
+        <section>
+          <h2>{cut.label} ({matches.length})</h2>
+          <p class="cut-desc">{cut.description}</p>
+          <table>
+            <thead>
+              <tr>
+                <th>Bottling</th>
+                <th>Distillery</th>
+                <th class="num-col">ABV</th>
+                <th class="num-col">Age</th>
+              </tr>
+            </thead>
+            <tbody>
+              {matches.map((b) => (
+                <tr>
+                  <td><a href={`/bottlings/${b.id}/`}>{b.name}</a></td>
+                  <td><a href={`/distilleries/${b.produced_at_distillery}/`}>{b.produced_at_distillery}</a></td>
+                  <td class="num-col">{fmtAbv(b.abv)}</td>
+                  <td class="num-col">{fmtAge(b)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      );
+    })}
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  .breadcrumb { font-size: 0.9rem; color: var(--muted-color); margin: 0 0 0.5rem; }
+  .lede { color: var(--muted-color); font-style: italic; }
+  .cut-desc { color: var(--muted-color); font-size: 0.95rem; }
+  table { width: 100%; }
+  .num-col { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; width: 4.5rem; }
+</style>

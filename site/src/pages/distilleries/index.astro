@@ -5,7 +5,11 @@ import { loadDistilleries } from '../../lib/data';
 const distilleries = loadDistilleries();
 ---
 
-<BaseLayout title="Distilleries" description="Scotch whisky distilleries — physical production sites.">
+<BaseLayout
+  title="Distilleries"
+  description="Scotch whisky distilleries — physical production sites."
+  indexable={false}
+>
   <article class="content">
     <h1>Distilleries</h1>
     <p class="lede">

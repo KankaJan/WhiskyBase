@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadProductionLines, type ProductionLineFull } from '../../lib/data';
+
+const lines = loadProductionLines();
+
+// Peating bin definitions in ppm phenol. These tiers are widely used
+// in the trade and producer marketing; they are not regulatory.
+// Cutoffs follow the convention summarised in the glossary entry
+// /concept/glossary/peating-block/.
+interface Bin {
+  slug: string;
+  label: string;
+  description: string;
+  test: (ppm: number) => boolean;
+}
+const BINS: Bin[] = [
+  {
+    slug: 'unpeated',
+    label: 'Unpeated (≤ 2 ppm)',
+    description: 'Effectively no smoke character.',
+    test: (p) => p <= 2,
+  },
+  {
+    slug: 'lightly-peated',
+    label: 'Lightly peated (2–15 ppm)',
+    description: 'Background smoke at most.',
+    test: (p) => p > 2 && p <= 15,
+  },
+  {
+    slug: 'medium-peated',
+    label: 'Medium-peated (15–30 ppm)',
+    description: 'Recognisable smoke; ex. the standard Islay band.',
+    test: (p) => p > 15 && p <= 30,
+  },
+  {
+    slug: 'heavily-peated',
+    label: 'Heavily peated (30–50 ppm)',
+    description: 'Pronounced smoke as the spec target.',
+    test: (p) => p > 30 && p <= 50,
+  },
+  {
+    slug: 'extreme-peated',
+    label: 'Extreme-peated (> 50 ppm)',
+    description: 'Specialist releases above the typical Islay range.',
+    test: (p) => p > 50,
+  },
+];
+
+/**
+ * Pick the production line's headline peating ppm. Use the first
+ * measurement at malt-delivered or spec stage. If only a range is
+ * recorded, use the midpoint.
+ */
+function headlinePpm(line: ProductionLineFull): number | null {
+  const ms = line.peating?.measurements ?? [];
+  // Prefer malt_delivered, then spec.
+  const preferOrder = ['malt_delivered', 'spec', 'new_make', 'in_bottle'];
+  for (const stage of preferOrder) {
+    const m = ms.find((x) => x.stage === stage);
+    if (!m) continue;
+    if (m.unit !== 'ppm') continue;
+    const v = m.value;
+    if (Array.isArray(v)) return (v[0] + v[1]) / 2;
+    return v;
+  }
+  // No qualifying ppm measurement.
+  return null;
+}
+
+interface BinGroup {
+  bin: Bin;
+  members: Array<{ line: ProductionLineFull; ppm: number }>;
+}
+
+const groups: BinGroup[] = BINS.map((bin) => ({ bin, members: [] }));
+const undisclosed: ProductionLineFull[] = [];
+
+for (const line of lines) {
+  const ppm = headlinePpm(line);
+  if (ppm === null) {
+    undisclosed.push(line);
+    continue;
+  }
+  const target = groups.find((g) => g.bin.test(ppm));
+  if (target) target.members.push({ line, ppm });
+  else undisclosed.push(line);
+}
+
+// Sort within each bin by ppm ascending.
+for (const g of groups) {
+  g.members.sort((a, b) => a.ppm - b.ppm);
+}
+
+function fmtPpm(v: number): string {
+  return Number.isInteger(v) ? `${v} ppm` : `${v.toFixed(1)} ppm`;
+}
+---
+
+<BaseLayout
+  title="Production lines by peating"
+  description="Production lines binned by phenol level (ppm)."
+  indexable={false}
+>
+  <article class="content">
+    <p class="breadcrumb"><a href="/explore/">Explore</a> ›</p>
+    <h1>Production lines by peating</h1>
+    <p class="lede">
+      Production lines binned by their headline phenol measurement
+      (malt-delivered ppm, falling back to spec / new-make if not
+      published). Range measurements are summarised by their
+      midpoint for bin assignment; the cell shows the range. Bin
+      cutoffs follow the convention summarised in
+      <a href="/concept/glossary/peating-block/">peating block</a>.
+    </p>
+
+    {groups.map((g) => g.members.length > 0 && (
+      <section>
+        <h2>{g.bin.label} ({g.members.length})</h2>
+        <p class="bin-desc">{g.bin.description}</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Production line</th>
+              <th>Distillery</th>
+              <th class="ppm-col">Peating</th>
+            </tr>
+          </thead>
+          <tbody>
+            {g.members.map(({ line }) => {
+              const m = (line.peating?.measurements ?? []).find(
+                (x) =>
+                  x.unit === 'ppm' &&
+                  ['malt_delivered', 'spec', 'new_make', 'in_bottle'].includes(x.stage),
+              );
+              const display = m
+                ? Array.isArray(m.value)
+                  ? `${m.value[0]}–${m.value[1]} ppm`
+                  : fmtPpm(m.value)
+                : '—';
+              return (
+                <tr>
+                  <td><a href={`/production-lines/${line.id}/`}>{line.name}</a></td>
+                  <td><a href={`/distilleries/${line.distillery}/`}>{line.distillery}</a></td>
+                  <td class="ppm-col">{display}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
+    ))}
+
+    {undisclosed.length > 0 && (
+      <section>
+        <h2>No headline phenol figure ({undisclosed.length})</h2>
+        <p class="bin-desc">
+          Lines where the project has not recorded a phenol
+          measurement at malt-delivered, spec, or new-make stage.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Production line</th>
+              <th>Distillery</th>
+            </tr>
+          </thead>
+          <tbody>
+            {undisclosed.map((line) => (
+              <tr>
+                <td><a href={`/production-lines/${line.id}/`}>{line.name}</a></td>
+                <td><a href={`/distilleries/${line.distillery}/`}>{line.distillery}</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  .breadcrumb { font-size: 0.9rem; color: var(--muted-color); margin: 0 0 0.5rem; }
+  .lede { color: var(--muted-color); font-style: italic; }
+  .bin-desc { color: var(--muted-color); font-size: 0.95rem; }
+  table { width: 100%; }
+  .ppm-col { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+</style>

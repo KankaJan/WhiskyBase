@@ -25,6 +25,7 @@ const descHtml = renderMarkdown(line.description, sourceIds);
 <BaseLayout
   title={line.name}
   description={line.description?.split('\n')[0]?.slice(0, 150)}
+  pagefindMeta={{ entity: 'Production line' }}
 >
   <article class="line-page">
     <EntityHeader

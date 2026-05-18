@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Search"
+  description="Full-text search across WhiskyBase: distilleries, production lines, bottlings, casks, bottlers, suppliers, and reference concepts."
+  indexable={false}
+>
+  <article>
+    <h1>Search</h1>
+
+    <p>
+      Full-text search across every page on this site. The index is
+      built at compile time from the rendered HTML, so it covers prose
+      descriptions, structured fields exposed in the page, and
+      concept-page reference body content.
+    </p>
+
+    <p>
+      Filter by entity type using the dropdown after running a query.
+    </p>
+
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+    <div id="search-root" class="search-root"></div>
+    <script is:inline>
+      (() => {
+        const init = () => {
+          // PagefindUI is exposed as a global by pagefind-ui.js
+          // eslint-disable-next-line no-new, no-undef
+          new PagefindUI({
+            element: '#search-root',
+            showSubResults: true,
+            showImages: false,
+            resetStyles: false,
+            translations: {
+              placeholder: 'Search distilleries, bottlings, concepts…',
+              clear_search: 'Clear',
+              load_more: 'Load more results',
+              search_label: 'Search WhiskyBase',
+              filters_label: 'Filter',
+              zero_results: 'No results for [SEARCH_TERM]',
+              many_results: '[COUNT] results for [SEARCH_TERM]',
+              one_result: '[COUNT] result for [SEARCH_TERM]',
+              alt_search:
+                'No results for [SEARCH_TERM]. Showing results for [DIFFERENT_TERM] instead.',
+              search_suggestion:
+                'No results for [SEARCH_TERM]. Try one of the following searches:',
+              searching: 'Searching for [SEARCH_TERM]…',
+            },
+          });
+        };
+        const s = document.createElement('script');
+        s.src = '/pagefind/pagefind-ui.js';
+        s.onload = init;
+        document.head.appendChild(s);
+      })();
+    </script>
+
+    <noscript>
+      <p class="note">
+        Search requires JavaScript. With JS disabled, browse via the
+        navigation header or the indexes linked from the home page.
+      </p>
+    </noscript>
+  </article>
+
+  <style>
+    .search-root {
+      margin: 1.5rem 0;
+    }
+    /* Match Pagefind UI to the Wikipedia palette. */
+    .search-root {
+      --pagefind-ui-primary: var(--link-color);
+      --pagefind-ui-text: var(--text-color);
+      --pagefind-ui-background: var(--bg-color);
+      --pagefind-ui-border: var(--rule-color);
+      --pagefind-ui-tag: var(--bg-alt);
+      --pagefind-ui-border-width: 1px;
+      --pagefind-ui-border-radius: 4px;
+      --pagefind-ui-font: var(--body-font);
+    }
+    .note {
+      color: var(--muted-color);
+      font-size: 0.9rem;
+    }
+  </style>
+</BaseLayout>

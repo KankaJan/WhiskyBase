@@ -495,26 +495,32 @@ back rather than absorbing it into the data model.
   bibliography); grounding those against actual page references
   is queued research work.
 
+**Build-pipeline status (2026-05-18):** all 8 items of the
+build-pipeline-plan §Implementation sequencing have landed.
+Items 1-4 (scaffolding, distillery rendering, markdown-link
+rewriting, full entity-type rendering coverage) shipped through
+2026-05-17. Items 5-8 (Pagefind search, MapLibre map, /explore/
+cross-cutting query pages, reference pages) shipped 2026-05-18.
+The /site/ source builds via `npm install && npm run build` from
+`/site/`; postbuild step runs Pagefind against the Astro output.
+Verification of the full chain is Windows-side (the Linux sandbox
+times out on a full build and Pagefind's bundled binary segfaults
+in the sandbox; both work on the developer host).
+
 **Next priorities, in order of unblock value:**
 
-1. **Build pipeline planning** (`docs/build-pipeline-plan.md`).
-   The project's eventual deliverable per project README is a
-   static site (Astro + Pagefind + MapLibre per earlier handover
-   notes). With 8 distilleries / 13 production lines / 29
-   bottlings / 45 concept pages / 2 suppliers / 16 casks
-   populated, the data side is now mature enough to design the
-   build pipeline against. Pre-frontend gap analysis is in
-   TODO.md §Pre-frontend checklist (added 2026-05-17): page-type
-   taxonomy, slug → URL routing convention, markdown-link
-   rewriting strategy, search-index scope, map data source.
-2. **Replace `signatory-caol-ila-stub`** with a worked-example
-   real release. The cadenheads-bunnahabhain-stub was superseded
-   on 2026-05-17 by a worked-example IB release; the same
-   pattern should be applied to the remaining Signatory stub.
-   Requires populating Caol Ila distillery first (or accepting
-   the forward refs as expected). Caol Ila as a ninth distillery
-   would simultaneously resolve the 2 remaining IB-stub forward
-   refs.
+1. **Confidence-rubric tooltip on entity pages** (TODO.md §Frontend
+   follow-ups). The confidence field renders as inline coloured text
+   in EntityHeader with a native `title=""` tooltip — limited and
+   mobile-hostile. The build-pipeline-plan §Data-display decisions
+   specified an accessible popover with the per-level explanation
+   and a link to the rendered source-conflict-policy reference page
+   (now live at `/reference/source-policy/`). Implement once as a
+   shared `<ConfidenceBadge>` component.
+2. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
+   The 2026-05-17 stub-supersession overwrote the file with empty
+   YAML; the resolver ignores it but the file should be deleted
+   from the Windows shell to fully clean up.
 3. **Cross-cutting research follow-ups**:
    - Ground the 10 Russell-textbook citations (currently hedged
      "page refs TBA") against actual page numbers when a copy
@@ -522,14 +528,11 @@ back rather than absorbing it into the data model.
    - INAO / MIPAAF / Consejo Regulador specific-document URLs
      (currently citing institutional homepages) — research-time
      work requiring stable web access.
-4. **`equipment/direct-fired-still` concept page** — Glenfarclas
-   (added 2026-05-17) exercises `heating: direct_fire` as the
-   first populated distillery; a concept page would let
-   distillery `distinctive_features:` resolve cleanly to it.
-   Trade-press writing on direct-fired distillation conflates
-   chemistry claims with house-style attribution; the page would
-   sit in the project's `equipment/` kind alongside `worm-tub`
-   and `shell-and-tube-condenser`.
+4. **Data-layer growth.** With the rendering pipeline complete,
+   the limiting factor on the site's usefulness is now the data
+   density. The 10th distillery is the natural next entry;
+   Glenfiddich and Macallan are the obvious gaps in the
+   Speyside coverage.
 
 **Full active queue:** see `TODO.md`.
 

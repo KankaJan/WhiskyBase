@@ -28,7 +28,11 @@ const typeLabels: Record<string, string> = {
 };
 ---
 
-<BaseLayout title={supplier.name} description={supplier.description?.split('\n')[0]?.slice(0, 150)}>
+<BaseLayout
+  title={supplier.name}
+  description={supplier.description?.split('\n')[0]?.slice(0, 150)}
+  pagefindMeta={{ entity: 'Supplier', supplier_type: supplier.type ?? '' }}
+>
   <article class="page">
     <EntityHeader
       name={supplier.name}

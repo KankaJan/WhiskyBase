@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  REFERENCES,
+  getReference,
+  loadReferenceBody,
+} from '../../lib/references';
+import { renderMarkdown } from '../../lib/markdown';
+
+export async function getStaticPaths() {
+  return REFERENCES.map((r) => ({ params: { slug: r.slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing slug param');
+
+const entry = getReference(slug);
+if (!entry) throw new Error(`Reference entry not found: ${slug}`);
+
+const body = loadReferenceBody(entry);
+const bodyHtml = renderMarkdown(body);
+---
+
+<BaseLayout
+  title={entry.title}
+  description={entry.description}
+  pagefindMeta={{ entity: 'Reference', category: entry.category }}
+>
+  <article class="reference-page">
+    <p class="breadcrumb">
+      <a href="/reference/">Reference</a> ›
+    </p>
+    <h1>{entry.title}</h1>
+    <p class="lede">{entry.description}</p>
+
+    <div class="body" set:html={bodyHtml} />
+  </article>
+</BaseLayout>
+
+<style>
+  .reference-page {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  .breadcrumb {
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    margin: 0 0 0.5rem;
+  }
+  .lede {
+    color: var(--muted-color);
+    font-style: italic;
+    margin: 0.25rem 0 1.25rem;
+  }
+  .body :global(hr) {
+    border: 0;
+    border-top: 1px solid var(--rule-light);
+    margin: 1.5rem 0;
+  }
+  .body :global(blockquote) {
+    border-left: 3px solid var(--rule-color);
+    margin: 1rem 0;
+    padding: 0.25rem 0.75rem;
+    color: var(--muted-color);
+    background: var(--bg-alt);
+  }
+  .body :global(code) {
+    background: var(--bg-alt);
+    padding: 0.1em 0.3em;
+    border-radius: 2px;
+  }
+  .body :global(pre) {
+    background: var(--bg-alt);
+    padding: 0.6rem 0.8rem;
+    overflow-x: auto;
+    border: 1px solid var(--rule-light);
+    border-radius: 3px;
+  }
+  .body :global(pre code) {
+    background: transparent;
+    padding: 0;
+  }
+</style>
