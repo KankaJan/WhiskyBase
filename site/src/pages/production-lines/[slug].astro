@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntityHeader from '../../components/EntityHeader.astro';
+import SourcesBlock from '../../components/SourcesBlock.astro';
+import PeatingDisplay from '../../components/production-line/PeatingDisplay.astro';
+import MaltDetail from '../../components/production-line/MaltDetail.astro';
+import DistillationRegime from '../../components/production-line/DistillationRegime.astro';
+import { loadProductionLines, loadProductionLineFull } from '../../lib/data';
+import { renderMarkdown, collectSourceIds } from '../../lib/markdown';
+
+export async function getStaticPaths() {
+  const lines = loadProductionLines();
+  return lines.map((l) => ({ params: { slug: l.id } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing slug param');
+const line = loadProductionLineFull(slug);
+if (!line) throw new Error(`Production line not found: ${slug}`);
+
+const sourceIds = collectSourceIds(line.sources);
+const descHtml = renderMarkdown(line.description, sourceIds);
+---
+
+<BaseLayout
+  title={line.name}
+  description={line.description?.split('\n')[0]?.slice(0, 150)}
+>
+  <article class="line-page">
+    <EntityHeader
+      name={line.name}
+      entityType="Production line"
+      status={line.status}
+      confidence={line.confidence}
+      lastReviewed={line.last_reviewed}
+    />
+
+    <p class="parent-link">
+      Produced at <a href={`/distilleries/${line.distillery}/`}>{line.distillery}</a>
+      {line.first_produced && <span> · first produced {line.first_produced}</span>}
+    </p>
+
+    {descHtml && (
+      <section class="description">
+        <div set:html={descHtml} />
+      </section>
+    )}
+
+    <MaltDetail malt={line.malt} />
+
+    <PeatingDisplay peating={line.peating} sources={line.sources} />
+
+    <DistillationRegime
+      fermentation={line.fermentation}
+      distillation={line.distillation}
+      defaultFillStrengthAbv={line.default_fill_strength_abv}
+    />
+
+    {line.typical_cask_program && line.typical_cask_program.length > 0 && (
+      <section>
+        <h2>Typical cask programme</h2>
+        <ul>
+          {line.typical_cask_program.map((c) => (
+            <li><a href={`/casks/${c}/`}>{c}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {line.bottlings && line.bottlings.length > 0 && (
+      <section>
+        <h2>Bottlings</h2>
+        <ul>
+          {line.bottlings.map((b) => (
+            <li><a href={`/bottlings/${b}/`}>{b}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {line.sources && line.sources.length > 0 && (
+      <SourcesBlock sources={line.sources} />
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .line-page {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  .parent-link {
+    color: var(--muted-color);
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+  .description :global(p) {
+    margin: 0.5rem 0;
+  }
+</style>

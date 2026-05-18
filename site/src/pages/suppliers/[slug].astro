@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntityHeader from '../../components/EntityHeader.astro';
+import OwnershipHistory from '../../components/OwnershipHistory.astro';
+import SourcesBlock from '../../components/SourcesBlock.astro';
+import { loadSuppliers, loadSupplier } from '../../lib/data';
+import { renderMarkdown, renderInline, collectSourceIds } from '../../lib/markdown';
+
+export async function getStaticPaths() {
+  const suppliers = loadSuppliers();
+  return suppliers.map((s) => ({ params: { slug: s.id } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing slug param');
+const supplier = loadSupplier(slug);
+if (!supplier) throw new Error(`Supplier not found: ${slug}`);
+
+const sourceIds = collectSourceIds(supplier.sources);
+const descHtml = renderMarkdown(supplier.description, sourceIds);
+
+const typeLabels: Record<string, string> = {
+  maltster: 'Maltster',
+  cooperage_source: 'Cooperage source',
+  yeast_supplier: 'Yeast supplier',
+  barley_breeder: 'Barley breeder',
+  other: 'Other supplier',
+};
+---
+
+<BaseLayout title={supplier.name} description={supplier.description?.split('\n')[0]?.slice(0, 150)}>
+  <article class="page">
+    <EntityHeader
+      name={supplier.name}
+      entityType={typeLabels[supplier.type] ?? supplier.type}
+      status={supplier.status}
+      confidence={supplier.confidence}
+      lastReviewed={supplier.last_reviewed}
+    />
+
+    {(supplier.country || supplier.region || supplier.founded || supplier.website) && (
+      <section>
+        <h2>Identity</h2>
+        <dl>
+          {supplier.country && (<><dt>Country</dt><dd>{supplier.country}</dd></>)}
+          {supplier.region && (<><dt>Region</dt><dd>{supplier.region}</dd></>)}
+          {supplier.founded && (<><dt>Founded</dt><dd>{supplier.founded}</dd></>)}
+          {supplier.website && (<><dt>Website</dt><dd><a href={supplier.website}>{supplier.website}</a></dd></>)}
+        </dl>
+      </section>
+    )}
+
+    {descHtml && (
+      <section class="description">
+        <div set:html={descHtml} />
+      </section>
+    )}
+
+    {supplier.ownership && <OwnershipHistory ownership={supplier.ownership} />}
+
+    {supplier.sites && supplier.sites.length > 0 && (
+      <section>
+        <h2>Sites</h2>
+        <div class="site-list">
+          {supplier.sites.map((site) => (
+            <article class="site-item">
+              <h3>{site.name ?? site.id ?? 'site'}</h3>
+              <p class="site-meta">
+                {site.locality && <span>{site.locality}</span>}
+                {site.country && <span>, {site.country}</span>}
+              </p>
+              {site.capabilities && (
+                <div set:html={renderInline(site.capabilities, sourceIds)} class="capabilities" />
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {supplier.products && supplier.products.length > 0 && (
+      <section>
+        <h2>Products</h2>
+        <ul class="product-list">
+          {supplier.products.map((p) => (
+            <li>
+              <strong>{p.type.replace(/_/g, ' ')}</strong>
+              {p.description && (
+                <div set:html={renderInline(p.description, sourceIds)} class="prod-desc" />
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {supplier.supplies_to && supplier.supplies_to.length > 0 && (
+      <section>
+        <h2>Supplies to</h2>
+        <ul>
+          {supplier.supplies_to.map((d) => (
+            <li><a href={`/distilleries/${d}/`}>{d}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {supplier.sources && supplier.sources.length > 0 && (
+      <SourcesBlock sources={supplier.sources} />
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .page { max-width: var(--site-max-width); margin: 0 auto; }
+  .description :global(p) { margin: 0.5rem 0; }
+  .site-list { display: flex; flex-direction: column; gap: 1rem; }
+  .site-item {
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--rule-color);
+    background: var(--bg-alt);
+  }
+  .site-item h3 { margin: 0 0 0.3rem; }
+  .site-meta { margin: 0 0 0.5rem; color: var(--muted-color); font-size: 0.9rem; }
+  .capabilities :global(p) { margin: 0.3rem 0; font-size: 0.95rem; }
+  .product-list { list-style: none; padding: 0; }
+  .product-list li { padding: 0.5rem 0; border-bottom: 1px dashed var(--rule-light); }
+  .product-list li:last-child { border-bottom: 0; }
+  .prod-desc :global(p) { margin: 0.25rem 0; font-size: 0.95rem; color: var(--muted-color); }
+</style>

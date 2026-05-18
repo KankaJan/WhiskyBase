@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { loadConceptsByKind } from '../../../lib/data';
+
+type Kind = 'methodology' | 'educational' | 'equipment' | 'practice' | 'glossary';
+
+export async function getStaticPaths() {
+  const KINDS: Kind[] = ['methodology', 'educational', 'equipment', 'practice', 'glossary'];
+  return KINDS.map((kind) => ({ params: { kind } }));
+}
+
+const KINDS: Kind[] = ['methodology', 'educational', 'equipment', 'practice', 'glossary'];
+
+const kindLabels: Record<Kind, string> = {
+  methodology: 'Methodology',
+  educational: 'Educational',
+  equipment: 'Equipment',
+  practice: 'Practice',
+  glossary: 'Glossary',
+};
+
+const kindDescriptions: Record<Kind, string> = {
+  methodology:
+    'Attestations of how a specific source measures a specific quantity (peating ppm, etc.).',
+  educational:
+    'Explanatory pages on topics referenced from many entries.',
+  equipment:
+    'Equipment or technique references — worm tubs, direct-fired stills, shell-and-tube condensers.',
+  practice:
+    'Production policies that distilleries adopt: floor malting, external malting, etc.',
+  glossary:
+    'Short term definitions.',
+};
+
+const { kind } = Astro.params;
+if (!kind || !KINDS.includes(kind as Kind)) {
+  throw new Error(`Unknown concept kind: ${kind}`);
+}
+const k = kind as Kind;
+const entries = loadConceptsByKind(k);
+---
+
+<BaseLayout
+  title={`${kindLabels[k]} concepts`}
+  description={kindDescriptions[k]}
+>
+  <article class="content">
+    <p class="breadcrumb"><a href="/concept/">Concepts</a> ›</p>
+    <h1>{kindLabels[k]}</h1>
+    <p class="lede">{kindDescriptions[k]} — {entries.length} {entries.length === 1 ? 'entry' : 'entries'}.</p>
+
+    {k === 'glossary' ? (
+      <table class="entries-table">
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Summary</th>
+          </tr>
+        </thead>
+        <tbody>
+          {entries.map((e) => (
+            <tr>
+              <td><a href={`/concept/glossary/${e.id}/`}>{e.title}</a></td>
+              <td>{e.summary?.split('\n')[0]?.slice(0, 180)}{e.summary && e.summary.length > 180 ? '…' : ''}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      <ul class="entries-list">
+        {entries.map((e) => (
+          <li>
+            <a href={`/concept/${k}/${e.id}/`}><strong>{e.title}</strong></a>
+            {e.summary && (
+              <p class="entry-summary">
+                {e.summary.split('\n').slice(0, 3).join(' ').slice(0, 280)}{e.summary.length > 280 ? '…' : ''}
+              </p>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .content {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  .breadcrumb {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+    color: var(--muted-color);
+  }
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem;
+  }
+  .lede {
+    color: var(--muted-color);
+    margin: 0 0 1rem;
+  }
+  .entries-table {
+    width: 100%;
+  }
+  .entries-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .entries-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .entries-list li:last-child {
+    border-bottom: 0;
+  }
+  .entry-summary {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+    margin: 0.2rem 0 0;
+  }
+</style>

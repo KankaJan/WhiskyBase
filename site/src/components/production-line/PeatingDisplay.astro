@@ -1,0 +1,107 @@
+---
+import { renderInline, collectSourceIds } from '../../lib/markdown';
+
+interface Measurement {
+  stage: string;
+  value: number | [number, number];
+  unit: string;
+  method?: string;
+  compounds?: string;
+  source_id?: number;
+  notes?: string | null;
+}
+
+interface Props {
+  peating?: {
+    measurements?: Measurement[];
+    peat_origin?: string | null;
+    notes?: string | null;
+  };
+  sources?: Array<{ id?: number }>;
+}
+
+const { peating, sources } = Astro.props;
+const sourceIds = collectSourceIds(sources);
+
+const measurements = peating?.measurements ?? [];
+const peatOrigin = peating?.peat_origin;
+const notesHtml = renderInline(peating?.notes, sourceIds);
+
+function formatValue(v: number | [number, number]): string {
+  if (Array.isArray(v)) return `${v[0]}–${v[1]}`;
+  return String(v);
+}
+
+const stageLabels: Record<string, string> = {
+  spec: 'Spec (malt order)',
+  malt_delivered: 'Malt delivered',
+  new_make: 'New make',
+  in_bottle: 'In bottle',
+};
+
+const methodLabels: Record<string, string> = {
+  hplc: 'HPLC',
+  '4_aminoantipyrine': '4-AAP',
+  gc_ms: 'GC-MS',
+  folin_ciocalteu: 'Folin-C',
+  unspecified: 'Unspec.',
+};
+
+const compoundLabels: Record<string, string> = {
+  standard_7: 'Standard 7',
+  extended: 'Extended',
+  individual: 'Individual',
+  unspecified: 'Unspec.',
+};
+
+const peatOriginLabels: Record<string, string> = {
+  none: 'None (unpeated)',
+  local: 'Local',
+  mainland_scotland: 'Mainland Scotland',
+  imported: 'Imported',
+  mixed: 'Mixed',
+  unknown: 'Unknown',
+};
+---
+
+{(measurements.length > 0 || peatOrigin || notesHtml) && (
+  <section>
+    <h2>Peating</h2>
+
+    {peatOrigin && (
+      <dl>
+        <dt>Peat origin</dt>
+        <dd>{peatOriginLabels[peatOrigin] ?? peatOrigin}</dd>
+      </dl>
+    )}
+
+    {measurements.length > 0 && (
+      <table>
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>Value</th>
+            <th>Unit</th>
+            <th>Method</th>
+            <th>Compounds</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          {measurements.map((m) => (
+            <tr>
+              <td>{stageLabels[m.stage] ?? m.stage}</td>
+              <td><strong>{formatValue(m.value)}</strong></td>
+              <td>{m.unit}</td>
+              <td>{m.method ? (methodLabels[m.method] ?? m.method) : '—'}</td>
+              <td>{m.compounds ? (compoundLabels[m.compounds] ?? m.compounds) : '—'}</td>
+              <td>{m.source_id ? <a href={`#source-${m.source_id}`}>[{m.source_id}]</a> : '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )}
+
+    {notesHtml && <p set:html={notesHtml} />}
+  </section>
+)}

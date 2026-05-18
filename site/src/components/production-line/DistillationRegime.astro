@@ -1,0 +1,97 @@
+---
+interface Props {
+  fermentation?: {
+    hours_min?: number | null;
+    hours_max?: number | null;
+    hours_typical?: number | null;
+    yeast?: string | null;
+    notes?: string | null;
+  };
+  distillation?: {
+    regime?: string | null;
+    spirit_cut?: {
+      start_abv?: number | null;
+      end_abv?: number | null;
+      notes?: string | null;
+    };
+    new_make_abv?: number | null;
+  };
+  defaultFillStrengthAbv?: number | null;
+}
+
+const { fermentation, distillation, defaultFillStrengthAbv } = Astro.props;
+
+const regimeLabels: Record<string, string> = {
+  double: 'Double',
+  triple: 'Triple',
+  partial_triple: 'Partial triple',
+  '2.5x': '2.5× (Springbank style)',
+  '2.81x': '2.81×',
+  other: 'Other',
+};
+
+const hasFerm = fermentation && (fermentation.hours_typical || fermentation.hours_min || fermentation.yeast);
+const hasDist = distillation && (distillation.regime || distillation.new_make_abv || distillation.spirit_cut?.start_abv);
+---
+
+{(hasFerm || hasDist || defaultFillStrengthAbv) && (
+  <section>
+    <h2>Fermentation &amp; distillation</h2>
+
+    {hasFerm && (
+      <>
+        <h3>Fermentation</h3>
+        <dl>
+          {fermentation!.hours_typical && (
+            <>
+              <dt>Typical duration</dt>
+              <dd>{fermentation!.hours_typical} hours</dd>
+            </>
+          )}
+          {fermentation!.hours_min !== null && fermentation!.hours_min !== undefined && (
+            <>
+              <dt>Duration range</dt>
+              <dd>{fermentation!.hours_min}–{fermentation!.hours_max ?? '?'} hours</dd>
+            </>
+          )}
+          {fermentation!.yeast && (
+            <>
+              <dt>Yeast</dt>
+              <dd>{fermentation!.yeast}</dd>
+            </>
+          )}
+        </dl>
+      </>
+    )}
+
+    {hasDist && (
+      <>
+        <h3>Distillation</h3>
+        <dl>
+          {distillation!.regime && (
+            <>
+              <dt>Regime</dt>
+              <dd>{regimeLabels[distillation!.regime] ?? distillation!.regime}</dd>
+            </>
+          )}
+          {distillation!.spirit_cut?.start_abv && (
+            <>
+              <dt>Spirit cut</dt>
+              <dd>{distillation!.spirit_cut.start_abv}% – {distillation!.spirit_cut.end_abv ?? '?'}%</dd>
+            </>
+          )}
+          {distillation!.new_make_abv && (
+            <>
+              <dt>New make</dt>
+              <dd>{distillation!.new_make_abv}% ABV</dd>
+            </>
+          )}
+        </dl>
+      </>
+    )}
+
+    {defaultFillStrengthAbv && (
+      <p><strong>Cask fill strength:</strong> {defaultFillStrengthAbv}% ABV</p>
+    )}
+  </section>
+)}

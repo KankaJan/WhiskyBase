@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadSuppliers } from '../../lib/data';
+
+const suppliers = loadSuppliers();
+---
+
+<BaseLayout title="Suppliers">
+  <article class="content">
+    <h1>Suppliers</h1>
+    <p class="lede">
+      {suppliers.length} upstream commercial supplier{suppliers.length === 1 ? '' : 's'} — maltsters,
+      cooperage sources, yeast houses, barley breeders.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Supplier</th><th>Type</th><th>Country</th><th>Founded</th></tr>
+      </thead>
+      <tbody>
+        {suppliers.map((s) => (
+          <tr>
+            <td><a href={`/suppliers/${s.id}/`}>{s.name}</a></td>
+            <td>{s.type.replace(/_/g, ' ')}</td>
+            <td>{s.country ?? '—'}</td>
+            <td>{s.founded ?? '—'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 600; margin: 0 0 0.3rem; }
+  .lede { color: var(--muted-color); margin: 0 0 1rem; }
+  table { width: 100%; }
+</style>

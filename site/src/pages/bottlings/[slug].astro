@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntityHeader from '../../components/EntityHeader.astro';
+import SourcesBlock from '../../components/SourcesBlock.astro';
+import PresentationStrip from '../../components/bottling/PresentationStrip.astro';
+import MaturationDetail from '../../components/bottling/MaturationDetail.astro';
+import { loadBottlings, loadBottling } from '../../lib/data';
+import { renderMarkdown, collectSourceIds } from '../../lib/markdown';
+
+export async function getStaticPaths() {
+  const bottlings = loadBottlings();
+  return bottlings.map((b) => ({ params: { slug: b.id } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing slug param');
+const bottling = loadBottling(slug);
+if (!bottling) throw new Error(`Bottling not found: ${slug}`);
+
+const sourceIds = collectSourceIds(bottling.sources);
+const descHtml = renderMarkdown(bottling.description, sourceIds);
+const notesHtml = renderMarkdown(bottling.notes_official, sourceIds);
+
+const bottlerTypeLabel = bottling.bottler_type === 'distillery'
+  ? 'Distillery release'
+  : 'Independent bottling';
+
+const seriesParts = bottling.bottler_series?.split('/') ?? [];
+const bottlerSeriesLabel = seriesParts.length === 2
+  ? `${seriesParts[0]} / ${seriesParts[1].replace(/-/g, ' ')}`
+  : bottling.bottler_series;
+---
+
+<BaseLayout
+  title={bottling.name}
+  description={bottling.description?.split('\n')[0]?.slice(0, 150)}
+>
+  <article class="bottling-page">
+    <EntityHeader
+      name={bottling.name}
+      entityType={bottlerTypeLabel}
+      confidence={bottling.confidence}
+      lastReviewed={bottling.last_reviewed}
+    />
+
+    <PresentationStrip
+      abv={bottling.abv}
+      ageStatement={bottling.age_statement}
+      vintage={bottling.vintage}
+      caskStrength={bottling.cask_strength}
+      nonChillFiltered={bottling.non_chill_filtered}
+      naturalColour={bottling.natural_colour}
+      bottleSizeMl={bottling.bottle_size_ml}
+      availability={bottling.availability}
+    />
+
+    <p class="parent-link">
+      Produced at <a href={`/distilleries/${bottling.produced_at_distillery}/`}>{bottling.produced_at_distillery}</a>
+      {bottling.production_line && (
+        <span> · line <a href={`/production-lines/${bottling.production_line}/`}>{bottling.production_line}</a></span>
+      )}
+      {bottling.bottler_type === 'independent_bottler' && (
+        <span> · bottled by <a href={`/bottlers/${bottling.bottled_by}/`}>{bottling.bottled_by}</a></span>
+      )}
+      {bottlerSeriesLabel && (
+        <span> · series <em>{bottlerSeriesLabel}</em></span>
+      )}
+    </p>
+
+    {descHtml && (
+      <section class="description">
+        <div set:html={descHtml} />
+      </section>
+    )}
+
+    {bottling.batch_or_cask && (bottling.batch_or_cask.type || bottling.batch_or_cask.number || bottling.batch_or_cask.outturn_bottles) && (
+      <section>
+        <h2>Batch / cask</h2>
+        <dl>
+          {bottling.batch_or_cask.type && (
+            <>
+              <dt>Type</dt>
+              <dd>{bottling.batch_or_cask.type.replace(/_/g, ' ')}</dd>
+            </>
+          )}
+          {bottling.batch_or_cask.number !== null && bottling.batch_or_cask.number !== undefined && bottling.batch_or_cask.number !== '' && (
+            <>
+              <dt>Number</dt>
+              <dd>{bottling.batch_or_cask.number}</dd>
+            </>
+          )}
+          {bottling.batch_or_cask.outturn_bottles && (
+            <>
+              <dt>Outturn</dt>
+              <dd>{bottling.batch_or_cask.outturn_bottles.toLocaleString()} bottles</dd>
+            </>
+          )}
+        </dl>
+      </section>
+    )}
+
+    <MaturationDetail
+      maturation={bottling.maturation}
+      finish={bottling.finish}
+      sources={bottling.sources}
+    />
+
+    {bottling.rrp && bottling.rrp.amount && (
+      <section>
+        <h2>Approximate launch price</h2>
+        <p>
+          <strong>{bottling.rrp.currency} {bottling.rrp.amount}</strong>
+          {bottling.rrp.as_of && <span class="hint"> (as of {bottling.rrp.as_of})</span>}
+        </p>
+        <p class="hint">
+          Indicative only; real-world prices vary by market and time.
+          WhiskyBase does not track secondary-market prices.
+        </p>
+      </section>
+    )}
+
+    {notesHtml && (
+      <section>
+        <h2>Producer tasting notes</h2>
+        <div set:html={notesHtml} />
+        <p class="hint">Producer-disclosed; rendered with attribution per project policy.</p>
+      </section>
+    )}
+
+    {bottling.sources && bottling.sources.length > 0 && (
+      <SourcesBlock sources={bottling.sources} />
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .bottling-page {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  .parent-link {
+    color: var(--muted-color);
+    margin: 0.5rem 0 1rem;
+    font-size: 0.95rem;
+  }
+  .description :global(p) {
+    margin: 0.5rem 0;
+  }
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.875rem;
+  }
+</style>

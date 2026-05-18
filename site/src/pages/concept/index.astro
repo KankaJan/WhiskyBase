@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadConceptsByKind } from '../../lib/data';
+import { renderInline } from '../../lib/markdown';
+
+const kinds = [
+  {
+    slug: 'methodology',
+    label: 'Methodology',
+    description:
+      'Attestations of how a specific source measures a specific quantity. Linked from production-line and bottling sources via the basis_concept field.',
+  },
+  {
+    slug: 'educational',
+    label: 'Educational',
+    description:
+      'Explanatory pages on topics referenced from many entries. Each stands alone as readable content.',
+  },
+  {
+    slug: 'equipment',
+    label: 'Equipment',
+    description:
+      'Equipment or technique references that cut across multiple distilleries — worm-tub condensers, direct-fired stills, shell-and-tube condensers.',
+  },
+  {
+    slug: 'practice',
+    label: 'Practice',
+    description:
+      'Production policies or choices that distilleries adopt — floor malting, external malting, etc.',
+  },
+  {
+    slug: 'glossary',
+    label: 'Glossary',
+    description:
+      'Short term definitions. Used as hover-tooltip references throughout the site.',
+  },
+];
+
+const kindData = kinds.map((k) => {
+  const entries = loadConceptsByKind(k.slug as 'methodology' | 'educational' | 'equipment' | 'practice' | 'glossary');
+  return { ...k, count: entries.length, entries };
+});
+
+const totalCount = kindData.reduce((sum, k) => sum + k.count, 0);
+---
+
+<BaseLayout
+  title="Concepts"
+  description="Reference pages for Scotch whisky methodology, educational topics, equipment, practices, and glossary terms."
+>
+  <article class="content">
+    <h1>Concepts</h1>
+    <p class="lede">
+      {totalCount} concept pages across five kinds. Each concept
+      shares the same envelope (title, summary, body, related,
+      sources) with a kind-specific structured block.
+    </p>
+
+    <table class="kinds-table">
+      <thead>
+        <tr>
+          <th>Kind</th>
+          <th>Description</th>
+          <th class="count-col">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {kindData.map((k) => (
+          <tr>
+            <td><a href={`/concept/${k.slug}/`}>{k.label}</a></td>
+            <td>{k.description}</td>
+            <td class="count-col">{k.count}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    <p class="hint">
+      The hover-tooltip mechanism that surfaces glossary
+      definitions inline within prose is queued in the
+      <code>TODO §Frontend follow-ups</code> backlog; concept
+      pages render at their canonical URLs in the meantime.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .content {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem;
+  }
+  .lede {
+    color: var(--muted-color);
+    margin: 0 0 1rem;
+  }
+  .kinds-table {
+    width: 100%;
+  }
+  .count-col {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    width: 4rem;
+  }
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+  }
+</style>

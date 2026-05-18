@@ -1,0 +1,69 @@
+---
+interface Props {
+  abv?: number | null;
+  ageStatement?: number | null;
+  vintage?: number | null;
+  caskStrength?: boolean | null;
+  nonChillFiltered?: boolean | null;
+  naturalColour?: boolean | null;
+  bottleSizeMl?: number | null;
+  availability?: string | null;
+}
+
+const props = Astro.props;
+---
+
+<div class="presentation-strip">
+  {props.abv !== null && props.abv !== undefined && (
+    <span class="spec"><strong>{props.abv}%</strong> ABV</span>
+  )}
+  {props.ageStatement && (
+    <span class="spec"><strong>{props.ageStatement}</strong> yo</span>
+  )}
+  {props.vintage && (
+    <span class="spec">vintage <strong>{props.vintage}</strong></span>
+  )}
+  {props.bottleSizeMl && (
+    <span class="spec"><strong>{props.bottleSizeMl}</strong> ml</span>
+  )}
+  {props.caskStrength === true && <span class="flag flag-cask-strength">cask strength</span>}
+  {props.nonChillFiltered === true && <span class="flag flag-ncf">NCF</span>}
+  {props.naturalColour === true && <span class="flag flag-natural">natural colour</span>}
+  {props.availability && (
+    <span class="availability availability-{props.availability}">{props.availability.replace(/_/g, ' ')}</span>
+  )}
+</div>
+
+<style>
+  .presentation-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 0.5rem 0 1rem;
+    align-items: baseline;
+  }
+  .spec {
+    color: var(--muted-color);
+    font-size: 0.95rem;
+  }
+  .spec strong {
+    color: var(--text-color);
+    font-variant-numeric: tabular-nums;
+  }
+  .flag {
+    font-size: 0.75rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--rule-color);
+    border-radius: 2px;
+    color: var(--muted-color);
+    text-transform: lowercase;
+  }
+  .flag-cask-strength { border-color: var(--confidence-high); color: var(--confidence-high); }
+  .flag-ncf { border-color: var(--link-color); color: var(--link-color); }
+  .flag-natural { border-color: var(--link-color); color: var(--link-color); }
+  .availability {
+    font-size: 0.8rem;
+    color: var(--muted-color);
+    font-style: italic;
+  }
+</style>

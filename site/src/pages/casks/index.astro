@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadCasks } from '../../lib/data';
+
+const casks = loadCasks();
+const grouped = casks.reduce<Record<string, typeof casks>>((acc, c) => {
+  (acc[c.category] = acc[c.category] ?? []).push(c);
+  return acc;
+}, {});
+const categoryOrder = ['bourbon', 'sherry', 'fortified', 'wine', 'virgin', 'undisclosed', 'beer', 'rum', 'other'];
+const categories = Object.keys(grouped).sort((a, b) => {
+  const ai = categoryOrder.indexOf(a);
+  const bi = categoryOrder.indexOf(b);
+  return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+});
+---
+
+<BaseLayout title="Casks">
+  <article class="content">
+    <h1>Cask types</h1>
+    <p class="lede">
+      {casks.length} reusable cask-type references — bottlings and
+      production lines cite these from their maturation programmes.
+    </p>
+
+    {categories.map((cat) => (
+      <section>
+        <h2>{cat.replace(/_/g, ' ')}</h2>
+        <ul>
+          {grouped[cat].map((c) => (
+            <li>
+              <a href={`/casks/${c.id}/`}>{c.name}</a>
+              {c.subcategory && <span class="meta"> · {c.subcategory}</span>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 600; margin: 0 0 0.3rem; }
+  .lede { color: var(--muted-color); margin: 0 0 1rem; }
+  .meta { color: var(--muted-color); font-size: 0.9rem; }
+</style>

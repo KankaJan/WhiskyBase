@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntityHeader from '../../components/EntityHeader.astro';
+import SourcesBlock from '../../components/SourcesBlock.astro';
+import { loadCasks, loadCask } from '../../lib/data';
+import { renderMarkdown, renderInline, collectSourceIds } from '../../lib/markdown';
+
+export async function getStaticPaths() {
+  const casks = loadCasks();
+  return casks.map((c) => ({ params: { slug: c.id } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) throw new Error('Missing slug param');
+const cask = loadCask(slug);
+if (!cask) throw new Error(`Cask not found: ${slug}`);
+
+const sourceIds = collectSourceIds(cask.sources);
+const descHtml = renderMarkdown(cask.description, sourceIds);
+const disclosureNotesHtml = renderInline(cask.disclosure_notes, sourceIds);
+
+const disclosureLabels: Record<string, string> = {
+  disclosed: 'Disclosed (provenance public)',
+  partially_disclosed: 'Partially disclosed',
+  undisclosed: 'Deliberately undisclosed (producer-secret)',
+  unknown: 'Unknown (no public data)',
+};
+
+function fmtVolume(v: number | [number, number] | null | undefined): string {
+  if (v === null || v === undefined) return '—';
+  if (Array.isArray(v)) return `${v[0]}–${v[1]} L`;
+  return `${v} L`;
+}
+---
+
+<BaseLayout title={cask.name} description={cask.description?.split('\n')[0]?.slice(0, 150)}>
+  <article class="page">
+    <EntityHeader
+      name={cask.name}
+      entityType="Cask type"
+      confidence={cask.confidence}
+      lastReviewed={cask.last_reviewed}
+    />
+
+    <section>
+      <h2>Classification</h2>
+      <dl>
+        <dt>Category</dt><dd>{cask.category}</dd>
+        {cask.subcategory && (<><dt>Subcategory</dt><dd>{cask.subcategory}</dd></>)}
+        {cask.wood_species && (<><dt>Wood species</dt><dd>{cask.wood_species.replace(/_/g, ' ')}</dd></>)}
+        <dt>Typical volume</dt><dd>{fmtVolume(cask.typical_volume_litres)}</dd>
+      </dl>
+    </section>
+
+    {cask.prior_contents && (cask.prior_contents.category || cask.prior_contents.specifics) && (
+      <section>
+        <h2>Prior contents</h2>
+        <dl>
+          {cask.prior_contents.category && (<><dt>Category</dt><dd>{cask.prior_contents.category.replace(/_/g, ' ')}</dd></>)}
+        </dl>
+        {cask.prior_contents.specifics && (
+          <p set:html={renderInline(cask.prior_contents.specifics, sourceIds)} />
+        )}
+      </section>
+    )}
+
+    {cask.origin && (cask.origin.country || cask.origin.region || cask.origin.appellation) && (
+      <section>
+        <h2>Origin</h2>
+        <dl>
+          {cask.origin.country && (<><dt>Country</dt><dd>{cask.origin.country}</dd></>)}
+          {cask.origin.region && (<><dt>Region</dt><dd>{cask.origin.region}</dd></>)}
+          {cask.origin.appellation && (<><dt>Appellation</dt><dd>{cask.origin.appellation}</dd></>)}
+          {cask.origin.producer && (<><dt>Producer</dt><dd>{cask.origin.producer}</dd></>)}
+        </dl>
+      </section>
+    )}
+
+    <section>
+      <h2>Disclosure</h2>
+      <p><strong>{disclosureLabels[cask.disclosure_status] ?? cask.disclosure_status}</strong></p>
+      {disclosureNotesHtml && <p set:html={disclosureNotesHtml} />}
+    </section>
+
+    {descHtml && (
+      <section class="description">
+        <div set:html={descHtml} />
+      </section>
+    )}
+
+    {cask.related && (cask.related.parent || (cask.related.alternatives && cask.related.alternatives.length > 0)) && (
+      <section>
+        <h2>Related casks</h2>
+        {cask.related.parent && (
+          <p><strong>Parent:</strong> <a href={`/casks/${cask.related.parent}/`}>{cask.related.parent}</a></p>
+        )}
+        {cask.related.alternatives && cask.related.alternatives.length > 0 && (
+          <>
+            <h3>Alternatives</h3>
+            <ul>
+              {cask.related.alternatives.map((a) => (
+                <li><a href={`/casks/${a}/`}>{a}</a></li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+    )}
+
+    {cask.sources && cask.sources.length > 0 && (
+      <SourcesBlock sources={cask.sources} />
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .page { max-width: var(--site-max-width); margin: 0 auto; }
+  .description :global(p) { margin: 0.5rem 0; }
+</style>

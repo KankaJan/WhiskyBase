@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadProductionLines } from '../../lib/data';
+
+const lines = loadProductionLines();
+
+function formatPeating(line: typeof lines[0]): string {
+  const m = line.peating?.measurements?.[0];
+  if (!m) return '—';
+  const v = m.value;
+  if (Array.isArray(v)) return `${v[0]}–${v[1]} ppm`;
+  return `${v} ppm`;
+}
+---
+
+<BaseLayout title="Production lines">
+  <article class="content">
+    <h1>Production lines</h1>
+    <p class="lede">
+      {lines.length} production lines — distinct recipes / specs run
+      at the populated distilleries. One distillery may run multiple
+      lines (Springbank runs three; Bunnahabhain runs two).
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Line</th>
+          <th>Distillery</th>
+          <th>Peating (spec)</th>
+          <th>Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        {lines.map((l) => (
+          <tr>
+            <td><a href={`/production-lines/${l.id}/`}>{l.name}</a></td>
+            <td><a href={`/distilleries/${l.distillery}/`}>{l.distillery}</a></td>
+            <td>{formatPeating(l)}</td>
+            <td><span class={`confidence confidence-${l.confidence}`}>{l.confidence}</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </article>
+</BaseLayout>
+
+<style>
+  .content {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem;
+  }
+  .lede {
+    color: var(--muted-color);
+    margin: 0 0 1rem;
+  }
+  table { width: 100%; }
+  .confidence { font-size: 0.85rem; }
+  .confidence-high { color: var(--confidence-high); }
+  .confidence-medium { color: var(--confidence-medium); }
+  .confidence-low { color: var(--confidence-low); }
+  .confidence-stub { color: var(--confidence-stub); }
+</style>

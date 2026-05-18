@@ -1,0 +1,49 @@
+---
+interface Props {
+  malt?: {
+    source?: string | null;
+    maltster?: string | null;
+    variety?: string | string[] | null;
+  };
+}
+
+const { malt } = Astro.props;
+const sourceLabels: Record<string, string> = {
+  bought_in: 'Bought-in (commercial maltster)',
+  floor_malted_onsite: 'Floor-malted on-site',
+  mixed: 'Mixed (on-site + bought-in)',
+  unknown: 'Unknown',
+};
+
+function formatVariety(v: string | string[] | null | undefined): string {
+  if (!v) return '—';
+  if (Array.isArray(v)) return v.join(', ');
+  return v;
+}
+---
+
+{malt && (malt.source || malt.maltster || malt.variety) && (
+  <section>
+    <h2>Malt</h2>
+    <dl>
+      {malt.source && (
+        <>
+          <dt>Source</dt>
+          <dd>{sourceLabels[malt.source] ?? malt.source}</dd>
+        </>
+      )}
+      {malt.maltster && (
+        <>
+          <dt>Maltster</dt>
+          <dd>{malt.maltster}</dd>
+        </>
+      )}
+      {malt.variety && (
+        <>
+          <dt>Variety</dt>
+          <dd>{formatVariety(malt.variety)}</dd>
+        </>
+      )}
+    </dl>
+  </section>
+)}

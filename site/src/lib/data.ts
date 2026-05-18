@@ -139,8 +139,7 @@ export function loadDistilleries(): Distillery[] {
 }
 
 export function loadDistillery(slug: string): Distillery | null {
-  const path = join(DATA_DIR, 'distilleries', `${slug}.yml`);
-  return loadYamlFile<Distillery>(path);
+  return loadDistilleries().find((d) => d.id === slug) ?? null;
 }
 
 // ----- Production lines (minimal, for distillery's referenced lines) -----
@@ -356,8 +355,290 @@ export function loadConceptsByKind(kind: ConceptKind): ConceptFull[] {
  * scanning all kinds if the kind is unknown (defensive).
  */
 export function loadConceptFull(kind: string, slug: string): ConceptFull | null {
-  const path = join(DATA_DIR, 'concepts', kind, `${slug}.yml`);
-  const c = loadYamlFile<ConceptFull>(path);
-  if (c === null) return null;
-  return { ...c, kind: kind as ConceptKind };
+  return loadConceptsByKind(kind as ConceptKind).find((c) => c.id === slug) ?? null;
+}
+
+// ----- Extended ProductionLine type -----
+
+export interface PeatingMeasurement {
+  stage: 'spec' | 'malt_delivered' | 'new_make' | 'in_bottle';
+  value: number | [number, number];
+  unit: 'ppm' | 'mg_per_litre';
+  method?: string;
+  compounds?: string;
+  source_id?: number;
+  notes?: string | null;
+}
+
+export interface ProductionLineFull extends ProductionLine {
+  first_produced?: string | number | null;
+  malt?: {
+    source?: string | null;
+    maltster?: string | null;
+    variety?: string | string[] | null;
+  };
+  peating?: {
+    measurements?: PeatingMeasurement[];
+    peat_origin?: string | null;
+    notes?: string | null;
+  };
+  fermentation?: {
+    hours_min?: number | null;
+    hours_max?: number | null;
+    hours_typical?: number | null;
+    yeast?: string | null;
+    notes?: string | null;
+  };
+  distillation?: {
+    regime?: string | null;
+    spirit_cut?: {
+      start_abv?: number | null;
+      end_abv?: number | null;
+      notes?: string | null;
+    };
+    new_make_abv?: number | null;
+  };
+  default_fill_strength_abv?: number | null;
+  typical_cask_program?: string[];
+  bottlings?: string[];
+  sources?: Source[];
+  schema_version?: number | string;
+  confidence?: 'high' | 'medium' | 'low' | 'stub';
+  last_reviewed?: string | null;
+}
+
+export function loadProductionLines(): ProductionLineFull[] {
+  const dir = join(DATA_DIR, 'production_lines');
+  return listYamlFiles(dir)
+    .map((f) => loadYamlFile<ProductionLineFull>(join(dir, f)))
+    .filter((d): d is ProductionLineFull => d !== null)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function loadProductionLineFull(slug: string): ProductionLineFull | null {
+  return loadProductionLines().find((p) => p.id === slug) ?? null;
+}
+
+// ----- Bottling -----
+
+export interface BottlingMaturation {
+  cask_type: string;
+  fill_number?: number | null;
+  proportion?: number | null;
+  duration_years?: number | null;
+  duration_months?: number | null;
+  cooperage?: string | null;
+  notes?: string | null;
+}
+
+export interface Bottling {
+  id: string;
+  name: string;
+  production_line?: string | null;
+  produced_at_distillery: string;
+  bottled_by: string;
+  bottler_type: 'distillery' | 'independent_bottler';
+  bottler_series?: string | null;
+  release_date?: string | null;
+  discontinued?: boolean | null;
+  availability?: string | null;
+  abv?: number | null;
+  age_statement?: number | null;
+  vintage?: number | null;
+  cask_strength?: boolean | null;
+  non_chill_filtered?: boolean | null;
+  natural_colour?: boolean | null;
+  bottle_size_ml?: number | null;
+  batch_or_cask?: {
+    type?: string | null;
+    number?: string | number | null;
+    outturn_bottles?: number | null;
+    cask_numbers?: string[];
+  };
+  maturation?: BottlingMaturation[];
+  finish?: {
+    cask_type?: string;
+    duration_months?: number | null;
+    duration_years?: number | null;
+    cooperage?: string | null;
+    notes?: string | null;
+  } | null;
+  rrp?: {
+    currency?: string | null;
+    amount?: number | null;
+    as_of?: string | number | null;
+  };
+  external_ids?: Record<string, string | number | null>;
+  description?: string | null;
+  notes_official?: string | null;
+  sources?: Source[];
+  schema_version?: number | string;
+  confidence?: 'high' | 'medium' | 'low' | 'stub';
+  last_reviewed?: string | null;
+}
+
+export function loadBottlings(): Bottling[] {
+  const dir = join(DATA_DIR, 'bottlings');
+  return listYamlFiles(dir)
+    .map((f) => loadYamlFile<Bottling>(join(dir, f)))
+    .filter((b): b is Bottling => b !== null && typeof b.id === 'string')
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function loadBottling(slug: string): Bottling | null {
+  return loadBottlings().find((b) => b.id === slug) ?? null;
+}
+
+// ----- Bottler -----
+
+export interface BottlerSeries {
+  id: string;
+  name?: string | null;
+  description?: string | null;
+  first_released?: number | null;
+  active?: boolean | null;
+  parent?: string | null;
+  presentation_defaults?: {
+    cask_strength?: boolean | null;
+    non_chill_filtered?: boolean | null;
+    natural_colour?: boolean | null;
+    batch_or_cask_type?: string | null;
+    abv?: number | null;
+  } | null;
+  notes?: string | null;
+}
+
+export interface Bottler {
+  id: string;
+  name: string;
+  also_known_as?: string[];
+  website?: string | null;
+  type: 'independent_bottler' | 'distillery_bottler';
+  country?: string | null;
+  region?: string | null;
+  locality?: string | null;
+  status?: string;
+  founded?: number | null;
+  ownership?: {
+    current?: string | null;
+    parent?: string | null;
+    history?: Array<{ owner: string; from?: number | null; to?: number | null; notes?: string | null }>;
+  };
+  release_types?: string[];
+  sources_from?: string[];
+  series?: BottlerSeries[];
+  description?: string | null;
+  sources?: Source[];
+  schema_version?: number | string;
+  confidence?: 'high' | 'medium' | 'low' | 'stub';
+  last_reviewed?: string | null;
+}
+
+export function loadBottlers(): Bottler[] {
+  const dir = join(DATA_DIR, 'bottlers');
+  return listYamlFiles(dir)
+    .map((f) => loadYamlFile<Bottler>(join(dir, f)))
+    .filter((b): b is Bottler => b !== null)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function loadBottler(slug: string): Bottler | null {
+  return loadBottlers().find((b) => b.id === slug) ?? null;
+}
+
+// ----- Cask -----
+
+export interface Cask {
+  id: string;
+  name: string;
+  also_known_as?: string[];
+  category: string;
+  subcategory?: string | null;
+  typical_volume_litres?: number | [number, number] | null;
+  wood_species?: string | null;
+  prior_contents?: {
+    category?: string | null;
+    specifics?: string | null;
+  };
+  origin?: {
+    country?: string | null;
+    region?: string | null;
+    appellation?: string | null;
+    producer?: string | null;
+  };
+  disclosure_status: string;
+  disclosure_notes?: string | null;
+  description?: string | null;
+  related?: {
+    parent?: string | null;
+    alternatives?: string[];
+  };
+  sources?: Source[];
+  schema_version?: number | string;
+  confidence?: 'high' | 'medium' | 'low' | 'stub';
+  last_reviewed?: string | null;
+}
+
+export function loadCasks(): Cask[] {
+  const dir = join(DATA_DIR, 'casks');
+  return listYamlFiles(dir)
+    .map((f) => loadYamlFile<Cask>(join(dir, f)))
+    .filter((c): c is Cask => c !== null)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function loadCask(slug: string): Cask | null {
+  return loadCasks().find((c) => c.id === slug) ?? null;
+}
+
+// ----- Supplier -----
+
+export interface SupplierSite {
+  id?: string;
+  name?: string;
+  country?: string | null;
+  locality?: string | null;
+  capabilities?: string | null;
+}
+
+export interface SupplierProduct {
+  type: string;
+  description?: string | null;
+}
+
+export interface Supplier {
+  id: string;
+  name: string;
+  also_known_as?: string[];
+  website?: string | null;
+  type: 'maltster' | 'cooperage_source' | 'yeast_supplier' | 'barley_breeder' | 'other';
+  country?: string | null;
+  region?: string | null;
+  sites?: SupplierSite[];
+  status?: string;
+  founded?: number | null;
+  ownership?: {
+    current?: string | null;
+    parent?: string | null;
+    history?: Array<{ owner: string; from?: number | null; to?: number | null; notes?: string | null }>;
+  };
+  products?: SupplierProduct[];
+  supplies_to?: string[];
+  description?: string | null;
+  sources?: Source[];
+  schema_version?: number | string;
+  confidence?: 'high' | 'medium' | 'low' | 'stub';
+  last_reviewed?: string | null;
+}
+
+export function loadSuppliers(): Supplier[] {
+  const dir = join(DATA_DIR, 'suppliers');
+  return listYamlFiles(dir)
+    .map((f) => loadYamlFile<Supplier>(join(dir, f)))
+    .filter((s): s is Supplier => s !== null)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export function loadSupplier(slug: string): Supplier | null {
+  return loadSuppliers().find((s) => s.id === slug) ?? null;
 }

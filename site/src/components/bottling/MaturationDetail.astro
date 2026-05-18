@@ -1,0 +1,126 @@
+---
+import { renderInline, collectSourceIds } from '../../lib/markdown';
+
+interface MaturationStage {
+  cask_type: string;
+  fill_number?: number | null;
+  proportion?: number | null;
+  duration_years?: number | null;
+  duration_months?: number | null;
+  cooperage?: string | null;
+  notes?: string | null;
+}
+
+interface Props {
+  maturation?: MaturationStage[];
+  finish?: {
+    cask_type?: string;
+    duration_months?: number | null;
+    duration_years?: number | null;
+    cooperage?: string | null;
+    notes?: string | null;
+  } | null;
+  sources?: Array<{ id?: number }>;
+}
+
+const { maturation, finish, sources } = Astro.props;
+const sourceIds = collectSourceIds(sources);
+
+function fmtFill(n: number | null | undefined): string {
+  if (n === null || n === undefined) return '—';
+  if (n === 1) return 'first-fill';
+  if (n === 2) return 'refill';
+  return `fill ${n}`;
+}
+
+function fmtProportion(p: number | null | undefined): string {
+  if (p === null || p === undefined) return '—';
+  return `${Math.round(p * 100)}%`;
+}
+
+function fmtDuration(years: number | null | undefined, months: number | null | undefined): string {
+  if (years) return `${years} yr${years !== 1 ? 's' : ''}`;
+  if (months) return `${months} mo`;
+  return '—';
+}
+---
+
+{maturation && maturation.length > 0 && (
+  <section>
+    <h2>Maturation</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Cask type</th>
+          <th>Fill</th>
+          <th>Proportion</th>
+          <th>Duration</th>
+          <th>Cooperage</th>
+        </tr>
+      </thead>
+      <tbody>
+        {maturation.map((m) => (
+          <tr>
+            <td><a href={`/casks/${m.cask_type}/`}>{m.cask_type}</a></td>
+            <td>{fmtFill(m.fill_number)}</td>
+            <td>{fmtProportion(m.proportion)}</td>
+            <td>{fmtDuration(m.duration_years, m.duration_months)}</td>
+            <td>{m.cooperage ?? '—'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+
+    {maturation.some((m) => m.notes) && (
+      <>
+        <h3>Notes</h3>
+        <ul class="cask-notes">
+          {maturation.filter((m) => m.notes).map((m) => (
+            <li>
+              <strong>{m.cask_type}:</strong> <span set:html={renderInline(m.notes, sourceIds)} />
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+  </section>
+)}
+
+{finish && finish.cask_type && (
+  <section>
+    <h2>Finish</h2>
+    <dl>
+      <dt>Cask type</dt>
+      <dd><a href={`/casks/${finish.cask_type}/`}>{finish.cask_type}</a></dd>
+      {(finish.duration_years || finish.duration_months) && (
+        <>
+          <dt>Duration</dt>
+          <dd>{fmtDuration(finish.duration_years, finish.duration_months)}</dd>
+        </>
+      )}
+      {finish.cooperage && (
+        <>
+          <dt>Cooperage</dt>
+          <dd>{finish.cooperage}</dd>
+        </>
+      )}
+    </dl>
+    {finish.notes && <p set:html={renderInline(finish.notes, sourceIds)} />}
+  </section>
+)}
+
+<style>
+  .cask-notes {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  .cask-notes li {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: var(--muted-color);
+  }
+  .cask-notes li strong {
+    color: var(--text-color);
+  }
+</style>

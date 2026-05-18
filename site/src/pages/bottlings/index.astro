@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadBottlings } from '../../lib/data';
+
+const bottlings = loadBottlings();
+---
+
+<BaseLayout title="Bottlings">
+  <article class="content">
+    <h1>Bottlings</h1>
+    <p class="lede">
+      {bottlings.length} bottlings — specific commercial releases.
+      Each entry covers per-release specifications (ABV, age,
+      presentation, maturation), cross-referenced to the distillery,
+      production line, and cask types involved.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Release</th>
+          <th>Distillery</th>
+          <th class="num">ABV</th>
+          <th class="num">Age</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        {bottlings.map((b) => (
+          <tr>
+            <td><a href={`/bottlings/${b.id}/`}>{b.name}</a></td>
+            <td><a href={`/distilleries/${b.produced_at_distillery}/`}>{b.produced_at_distillery}</a></td>
+            <td class="num">{b.abv !== null && b.abv !== undefined ? `${b.abv}%` : '—'}</td>
+            <td class="num">{b.age_statement ?? 'NAS'}</td>
+            <td>{b.bottler_type === 'distillery' ? 'OB' : 'IB'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </article>
+</BaseLayout>
+
+<style>
+  .content { max-width: var(--site-max-width); margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 600; margin: 0 0 0.3rem; }
+  .lede { color: var(--muted-color); margin: 0 0 1rem; }
+  table { width: 100%; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+</style>
