@@ -1,0 +1,55 @@
+---
+interface Props {
+  country: string;
+  region?: string | null;
+  subRegion?: string | null;
+  locality?: string | null;
+  coordinates?: { lat?: number | null; lon?: number | null };
+}
+
+const { country, region, subRegion, locality, coordinates } = Astro.props;
+const hasCoords =
+  coordinates?.lat !== null &&
+  coordinates?.lat !== undefined &&
+  coordinates?.lon !== null &&
+  coordinates?.lon !== undefined;
+---
+
+<section>
+  <h2>Location</h2>
+  <dl>
+    <dt>Country</dt>
+    <dd>{country}</dd>
+    {region && (
+      <>
+        <dt>Region</dt>
+        <dd>{region}</dd>
+      </>
+    )}
+    {subRegion && (
+      <>
+        <dt>Sub-region</dt>
+        <dd>{subRegion}</dd>
+      </>
+    )}
+    {locality && (
+      <>
+        <dt>Locality</dt>
+        <dd>{locality}</dd>
+      </>
+    )}
+    {hasCoords && (
+      <>
+        <dt>Coordinates</dt>
+        <dd><code>{coordinates!.lat}, {coordinates!.lon}</code> <span class="hint">(WGS84, approximate)</span></dd>
+      </>
+    )}
+  </dl>
+</section>
+
+<style>
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+  }
+</style>

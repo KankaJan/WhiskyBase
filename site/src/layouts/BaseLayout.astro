@@ -1,0 +1,195 @@
+---
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const siteTitle = 'WhiskyBase';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {description && <meta name="description" content={description} />}
+    <title>{title} | {siteTitle}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="site-title">{siteTitle}</a>
+        <nav>
+          <a href="/distilleries/">Distilleries</a>
+          <a href="/production-lines/">Production lines</a>
+          <a href="/bottlings/">Bottlings</a>
+          <a href="/casks/">Casks</a>
+          <a href="/concept/">Concepts</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <style is:global>
+      :root {
+        --site-max-width: 42rem;
+        --body-font: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          Helvetica, Arial, sans-serif;
+        --serif-font: Georgia, 'Times New Roman', Times, serif;
+        --mono-font: ui-monospace, 'SF Mono', 'Cascadia Code',
+          'Roboto Mono', Menlo, Consolas, monospace;
+        --text-color: #202122;
+        --muted-color: #54595d;
+        --link-color: #3366cc;
+        --rule-color: #a2a9b1;
+        --rule-light: #eaecf0;
+        --bg-color: #ffffff;
+        --bg-alt: #f8f9fa;
+        --confidence-high: #2f7a3a;
+        --confidence-medium: #b07b00;
+        --confidence-low: #c84a1a;
+        --confidence-stub: #d12626;
+      }
+
+      html {
+        font-family: var(--body-font);
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-color);
+        background: var(--bg-color);
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      a {
+        color: var(--link-color);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Wikipedia-style section heading: thin rule under h2,
+         normal weight, content flows directly below. */
+      main h2 {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin: 1.5rem 0 0.5rem;
+        padding-bottom: 0.25rem;
+        border-bottom: 1px solid var(--rule-color);
+      }
+
+      main h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 1rem 0 0.4rem;
+      }
+
+      main h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0.75rem 0 0.3rem;
+      }
+
+      main p,
+      main ul,
+      main ol,
+      main dl {
+        margin: 0.5rem 0;
+      }
+
+      main section {
+        margin: 1.25rem 0;
+      }
+
+      /* Definition lists: compact, inline-ish layout for
+         metadata pairs. */
+      main dl {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 0.2rem 0.75rem;
+      }
+      main dl dt {
+        color: var(--muted-color);
+        font-weight: 400;
+      }
+      main dl dd {
+        margin: 0;
+      }
+
+      /* Wikipedia-style tables. */
+      main table {
+        border-collapse: collapse;
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+        background: var(--bg-color);
+      }
+      main table th,
+      main table td {
+        border: 1px solid var(--rule-color);
+        padding: 0.3rem 0.6rem;
+        text-align: left;
+        vertical-align: top;
+      }
+      main table thead th {
+        background: var(--bg-alt);
+        font-weight: 600;
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: var(--mono-font);
+        font-size: 0.9em;
+      }
+    </style>
+
+    <style>
+      .site-header {
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid var(--rule-color);
+        background: var(--bg-color);
+      }
+      .header-inner {
+        max-width: var(--site-max-width);
+        margin: 0 auto;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .site-title {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--text-color);
+      }
+      .site-title:hover {
+        text-decoration: none;
+      }
+      nav {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-size: 0.95rem;
+      }
+      .site-main {
+        flex: 1;
+        padding: 1rem 1rem 2rem;
+      }
+    </style>
+  </body>
+</html>

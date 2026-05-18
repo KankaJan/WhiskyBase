@@ -1,0 +1,61 @@
+---
+import { rewriteEntityHref } from '../../lib/markdown';
+
+interface Props {
+  educational: {
+    prerequisites?: string[];
+    covers?: string[];
+  };
+}
+
+const { educational } = Astro.props;
+
+const prereqs = (educational.prerequisites ?? []).map((ref) => ({
+  ref,
+  href: rewriteEntityHref(`concept/${ref}`),
+}));
+const covers = (educational.covers ?? []).map((ref) => ({
+  ref,
+  href: rewriteEntityHref(`concept/${ref}`),
+}));
+---
+
+{(prereqs.length > 0 || covers.length > 0) && (
+  <section>
+    <h2>Educational detail</h2>
+
+    {prereqs.length > 0 && (
+      <>
+        <h3>Prerequisites</h3>
+        <ul>
+          {prereqs.map((p) => (
+            <li><a href={p.href}>{p.ref}</a></li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    {covers.length > 0 && (
+      <>
+        <h3>Covers</h3>
+        <p class="hint">
+          This page is the canonical reference for the following
+          concepts; their glossary entries may defer to the
+          treatment here.
+        </p>
+        <ul>
+          {covers.map((c) => (
+            <li><a href={c.href}>{c.ref}</a></li>
+          ))}
+        </ul>
+      </>
+    )}
+  </section>
+)}
+
+<style>
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+  }
+</style>

@@ -261,12 +261,19 @@ also_used_by_blenders: []         # Springbank single-malt is not
 
 
 # --- Distinctive Features ---------------------------------------------------
-distinctive_features: []          # Concept layer not yet populated.
-                                  # Candidate concepts:
-                                  # - practice/floor-maltings-on-site
-                                  # - equipment/direct-fired-wash-still
-                                  # - equipment/worm-tub-on-wash-only
-                                  # - practice/full-on-site-production
+distinctive_features:
+  - practice/floor-malting        # 100% on-site floor malting
+                                  # (the most extensive among
+                                  # current Scotch practitioners).
+  - equipment/direct-fired-still  # Wash still direct-fired
+                                  # (spirit stills indirect-steam);
+                                  # see concept page for the
+                                  # mixed-configuration case.
+  - equipment/worm-tub            # Worm tub on wash still only;
+                                  # spirit stills use shell-and-tube
+                                  # (also documented in the
+                                  # worm-tub equipment page's
+                                  # per-distillery notes).
 
 
 # --- Description ------------------------------------------------------------

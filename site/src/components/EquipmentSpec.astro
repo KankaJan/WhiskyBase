@@ -1,0 +1,171 @@
+---
+interface Still {
+  count?: number | null;
+  capacity_litres?: number | null;
+  charge_litres?: number | null;
+  shape?: string | null;
+  height_m?: number | null;
+  heating?: string | null;
+  lyne_arm_angle?: string | null;
+  condenser?: string | null;
+}
+
+interface Warehouse {
+  id?: string;
+  type?: string | null;
+  location?: string | null;
+  climate_notes?: string | null;
+}
+
+interface Props {
+  waterSource?: string | null;
+  mashTun?: {
+    type?: string | null;
+    material?: string | null;
+    capacity_kg?: number | null;
+  };
+  washbacks?: {
+    count?: number | null;
+    material?: string | null;
+    capacity_litres?: number | null;
+    notes?: string | null;
+  };
+  stills?: {
+    wash_still?: Still;
+    spirit_still?: Still;
+    intermediate_still?: Still;
+  };
+  warehouses?: Warehouse[];
+  annualCapacityLpa?: number | null;
+}
+
+const {
+  waterSource,
+  mashTun,
+  washbacks,
+  stills,
+  warehouses,
+  annualCapacityLpa,
+} = Astro.props;
+
+function fmt(v: string | number | null | undefined): string {
+  if (v === null || v === undefined || v === '') return '—';
+  return String(v);
+}
+
+function renderStill(label: string, s?: Still) {
+  if (!s) return null;
+  return { label, ...s };
+}
+
+const stillRows = [
+  renderStill('Wash still', stills?.wash_still),
+  renderStill('Spirit still', stills?.spirit_still),
+  renderStill('Intermediate still', stills?.intermediate_still),
+].filter((s): s is NonNullable<typeof s> => s !== null);
+---
+
+<section>
+  <h2>Equipment</h2>
+
+  {waterSource && (
+    <p><strong>Water source:</strong> {waterSource}</p>
+  )}
+
+  {mashTun && (
+    <>
+      <h3>Mash tun</h3>
+      <dl>
+        <dt>Type</dt><dd>{fmt(mashTun.type)}</dd>
+        <dt>Material</dt><dd>{fmt(mashTun.material)}</dd>
+        <dt>Capacity</dt><dd>{mashTun.capacity_kg ? `${mashTun.capacity_kg} kg` : '—'}</dd>
+      </dl>
+    </>
+  )}
+
+  {washbacks && (
+    <>
+      <h3>Washbacks</h3>
+      <dl>
+        <dt>Count</dt><dd>{fmt(washbacks.count)}</dd>
+        <dt>Material</dt><dd>{fmt(washbacks.material)}</dd>
+        <dt>Capacity</dt><dd>{washbacks.capacity_litres ? `${washbacks.capacity_litres} L each` : '—'}</dd>
+      </dl>
+    </>
+  )}
+
+  {stillRows.length > 0 && (
+    <>
+      <h3>Stills</h3>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Count</th>
+            <th>Capacity</th>
+            <th>Shape</th>
+            <th>Heating</th>
+            <th>Lyne arm</th>
+            <th>Condenser</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stillRows.map((s) => (
+            <tr>
+              <th scope="row">{s.label}</th>
+              <td>{fmt(s.count)}</td>
+              <td>{s.capacity_litres ? `${s.capacity_litres} L` : '—'}</td>
+              <td>{fmt(s.shape)}</td>
+              <td>{fmt(s.heating)}</td>
+              <td>{fmt(s.lyne_arm_angle)}</td>
+              <td>{fmt(s.condenser)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  )}
+
+  {warehouses && warehouses.length > 0 && (
+    <>
+      <h3>Warehouses</h3>
+      <ul class="warehouses">
+        {warehouses.map((w) => (
+          <li>
+            <strong>{w.id ?? 'warehouse'}</strong>
+            <span class="meta">
+              {w.type && <span> · {w.type}</span>}
+              {w.location && <span> · {w.location.replace('_', ' ')}</span>}
+            </span>
+            {w.climate_notes && <div class="climate-notes">{w.climate_notes}</div>}
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {annualCapacityLpa && (
+    <p><strong>Annual capacity:</strong> {annualCapacityLpa.toLocaleString()} LPA</p>
+  )}
+</section>
+
+<style>
+  .warehouses {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  .warehouses li {
+    margin: 0.4rem 0;
+  }
+  .meta {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+  }
+  .climate-notes {
+    margin: 0.25rem 0 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    white-space: pre-wrap;
+  }
+</style>

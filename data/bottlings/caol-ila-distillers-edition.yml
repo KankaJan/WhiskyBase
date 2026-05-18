@@ -1,0 +1,172 @@
+# =============================================================================
+# Caol Ila Distillers Edition (Moscatel-finished annual recurring)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — annual recurring release within
+# Diageo's cross-distillery Distillers Edition programme.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: caol-ila-distillers-edition
+name: Caol Ila Distillers Edition (Moscatel finish)
+production_line: caol-ila-traditional
+produced_at_distillery: caol-ila
+bottled_by: caol-ila
+bottler_type: distillery
+bottler_series: null                # See SCHEMA-OBSERVATION on
+                                    # data/bottlings/lagavulin-
+                                    # distillers-edition.yml — the
+                                    # cross-distillery Distillers
+                                    # Edition programme is documented
+                                    # at the bottling level but not
+                                    # yet modelled as a formal
+                                    # cross-distillery series in
+                                    # the bottler schema.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                  # Annual recurring release within
+                                    # Diageo's Distillers Edition
+                                    # programme. Each year carries
+                                    # its own release-date and
+                                    # vintage / bottling-year
+                                    # combination [1].
+discontinued: false
+availability: limited
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0                           # Distillers Edition core
+                                    # presentation across the Diageo
+                                    # programme; consistent with the
+                                    # Lagavulin Distillers Edition
+                                    # and other entries in the
+                                    # series.
+age_statement: null                 # No age statement on the
+                                    # Distillers Edition core
+                                    # presentation; the spirit is
+                                    # vatted at the producer's
+                                    # chosen maturity (typically
+                                    # mid-to-upper teens of years
+                                    # for the Diageo Distillers
+                                    # Edition format).
+vintage: null                       # Each release carries the
+                                    # distillation year on label;
+                                    # not template-set here.
+cask_strength: false
+non_chill_filtered: false
+natural_colour: false
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: small_batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+# Distillers Edition format: primary ex-bourbon maturation, then
+# transferred to fortified-wine casks for a substantive secondary
+# maturation. For Caol Ila specifically the secondary cask is
+# Moscatel (Spanish fortified Muscat-grape wine cask), distinguishing
+# the Caol Ila Distillers Edition from the Lagavulin Distillers
+# Edition's PX (Pedro Ximénez) secondary finish.
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                # Primary maturation phase.
+    duration_years: null            # Vintage-specific.
+    cooperage: null
+    notes: |
+      Ex-bourbon barrels for the primary maturation. The
+      ex-bourbon component dominates the spirit's character
+      development before the Moscatel-cask secondary phase.
+
+  - cask_type: wine-cask              # Moscatel secondary cask. The
+                                      # project's cask vocabulary
+                                      # currently uses the generic
+                                      # wine-cask slug for fortified
+                                      # Moscatel; a specific
+                                      # `moscatel-wine-cask` slug
+                                      # could be added if frequency
+                                      # justifies it (currently this
+                                      # is the only WhiskyBase entry
+                                      # citing Moscatel finishing).
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      Moscatel ex-wine cask secondary maturation. Moscatel is
+      a fortified Spanish wine produced from Muscat / Moscatel
+      grapes, predominantly in Andalusia. The secondary
+      maturation duration for Distillers Edition releases is
+      typically 12-24 months — long enough to qualify as a
+      substantive secondary maturation rather than a short
+      "finish" (per the project's convention; see
+      data/bottlings/lagavulin-distillers-edition.yml for the
+      parallel PX-finish discussion).
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 85.00                     # Approximate UK retail at recent
+                                    # release pricing; sits above the
+                                    # Caol Ila 12 Year Old's tier.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Caol Ila's annual Distillers Edition release within Diageo's
+  cross-distillery Distillers Edition programme, distinguished
+  by a secondary Moscatel-cask maturation following primary
+  ex-bourbon maturation [1]. The Moscatel finish layers
+  fortified-Muscat-wine character (dried-fruit and grape
+  sweetness) over the underlying Caol Ila peated profile,
+  producing a contrast that the Distillers Edition format
+  exploits across the Diageo malt portfolio (each participating
+  distillery uses a different secondary cask: Lagavulin uses
+  PX, Talisker uses Amoroso sherry, Glenkinchie uses Amontillado,
+  etc.). The Distillers Edition releases are bottled at 43%
+  ABV; not formally a "Special Releases" Diageo programme but a
+  parallel annual recurring series running since the late 1990s.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/caol-ila/
+    accessed: 2026-05-17
+    notes: |
+      Diageo's Malts.com page for Caol Ila. Used for the
+      Distillers Edition presentation, the Moscatel secondary
+      cask designation, and the broader Distillers Edition
+      programme context across the Diageo malt portfolio.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

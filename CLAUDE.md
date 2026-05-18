@@ -218,5 +218,18 @@ unless asked.
 - `docs/bibliography.md` — curated catalogue of in-depth,
   peer-reviewed, and institutional reference works. The project's
   positive sourcing standard (exclusion criteria included).
+- `docs/build-pipeline-plan.md` — design document for the
+  eventual static-site build (Astro + Pagefind + MapLibre).
+  Page-type taxonomy, URL routing, markdown-link rewriting rules,
+  search-index scope, map data source, tasting-notes /
+  commercial-info display decisions. Read before starting any
+  frontend implementation work.
+- `/site/` — Astro 5 site source (MIT licence, separate from
+  the CC-BY-SA data layer). First-iteration scaffolding
+  (2026-05-17): home page + distilleries index + distillery
+  detail page render against the YAML data. Components and data
+  loader in `/site/src/`. Run `npm install && npm run build`
+  from `/site/` to build; see `/site/README.md` for the
+  developer guide.
 - `TODO.md` — active backlog and Research Requests.
 - `CHANGELOG.md` — schema changes and notable additions.

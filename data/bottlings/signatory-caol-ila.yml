@@ -1,0 +1,281 @@
+# =============================================================================
+# Signatory Vintage Cask Strength Collection: Caol Ila (worked-example IB release)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — the entry is a worked-example
+# representation of the Signatory Cask Strength Collection Caol Ila
+# release pattern. Specific cask-identifier fields (cask number,
+# vintage year, exact ABV, outturn) remain null with explicit notes;
+# the entry's shape and producer-defaults are accurate for the series
+# but a specific verifiable release should be substituted when one is
+# targeted for cataloguing.
+#
+# History: this entry replaced signatory-caol-ila-stub on 2026-05-17,
+# after the underlying distillery (Caol Ila) was populated. The
+# original SCHEMA-GAPS observations from the stub drove the bottler
+# v0.1 → v0.2 promotion (presentation_defaults block on series); those
+# observations are now resolved at the bottler-schema level via the
+# Signatory entry's presentation_defaults declarations. See CHANGELOG
+# v0.5.0.
+# =============================================================================
+# This is the parallel-pattern entry to data/bottlings/
+# cadenheads-bunnahabhain.yml — the worked-example IB transition for
+# the Signatory bottler, mirroring the cadenheads-bunnahabhain
+# transition for the Cadenhead's bottler.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: signatory-caol-ila
+name: Signatory Cask Strength Collection Caol Ila
+production_line: caol-ila-traditional        # Resolves cleanly since
+                                             # 2026-05-17.
+produced_at_distillery: caol-ila             # Resolves cleanly since
+                                             # 2026-05-17.
+bottled_by: signatory-vintage                # Bottler entry at
+                                             # data/bottlers/signatory.yml.
+bottler_type: independent_bottler            # IB discriminator.
+bottler_series: signatory-vintage/cask-strength-collection
+                                             # Series within the
+                                             # Signatory bottler entry.
+                                             # The Cask Strength
+                                             # Collection's presentation
+                                             # rules (single cask,
+                                             # cask strength, NCF,
+                                             # natural colour) are
+                                             # declared at the series
+                                             # level via the bottler
+                                             # v0.2 schema's
+                                             # presentation_defaults
+                                             # block; this bottling
+                                             # inherits those defaults.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                           # Specific release year
+                                             # not set at template-
+                                             # form level. Signatory
+                                             # Caol Ila Cask Strength
+                                             # Collection releases
+                                             # appear regularly across
+                                             # the years; common
+                                             # vintages range from
+                                             # mid-1990s distillations
+                                             # bottled in 2005-2015
+                                             # through more recent
+                                             # 2007-2012 distillations
+                                             # bottled in the late
+                                             # 2010s and 2020s.
+discontinued: true                           # Single-cask releases
+                                             # sell through; the
+                                             # discontinued flag here
+                                             # reflects the series
+                                             # convention rather than
+                                             # a specific release's
+                                             # availability state.
+availability: single_cask                    # Single-cask outturn
+                                             # discriminator.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: null                                    # Cask-strength figure
+                                             # specific to each
+                                             # release. Cask Strength
+                                             # Collection releases
+                                             # typically sit in the
+                                             # 55-65% ABV range
+                                             # depending on age, cask
+                                             # history, and warehouse
+                                             # climate.
+age_statement: null                          # Age varies per release;
+                                             # commonly 9-15 years
+                                             # for Caol Ila CSC
+                                             # releases.
+vintage: null                                # Distillation year per
+                                             # release.
+cask_strength: true                          # By series convention
+                                             # (Cask Strength Collection's
+                                             # presentation_defaults
+                                             # declare this).
+non_chill_filtered: true                     # NCF by series convention.
+natural_colour: true                         # Natural colour by series
+                                             # convention.
+bottle_size_ml: 700                          # Signatory's standard
+                                             # bottle format is 700ml,
+                                             # contrasting with
+                                             # Cadenhead's 500ml house
+                                             # format. The differing
+                                             # bottle-size conventions
+                                             # between two of the
+                                             # major Scotch IBs are
+                                             # documented in the
+                                             # respective bottler
+                                             # entries.
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: single_cask
+  number: null                               # Specific cask number
+                                             # per release. Signatory
+                                             # discloses cask numbers
+                                             # on every CSC label.
+  outturn_bottles: null                      # Single-cask outturn,
+                                             # typically 200-400
+                                             # bottles for a Signatory
+                                             # Caol Ila release
+                                             # depending on cask
+                                             # volume (Caol Ila
+                                             # production often uses
+                                             # hogsheads rather than
+                                             # barrels, increasing the
+                                             # bottle outturn relative
+                                             # to a barrel-bottled
+                                             # release).
+  cask_numbers: []                           # Per-release values.
+
+
+# --- Maturation -------------------------------------------------------------
+# Caol Ila Cask Strength Collection releases use a mix of cask types
+# across releases. The most common are ex-bourbon hogsheads and
+# refill American oak; sherry-cask Caol Ila CSC releases occur but
+# are less frequent. The worked example records the typical
+# ex-bourbon-hogshead case.
+maturation:
+  - cask_type: bourbon-barrel                # The cask schema's
+                                             # bourbon-barrel slug
+                                             # covers both standard
+                                             # 200L barrels and
+                                             # 250L hogsheads; the
+                                             # specific cask volume
+                                             # is recorded per
+                                             # release in trade
+                                             # documentation but
+                                             # template-form here.
+    fill_number: null                        # Signatory typically
+                                             # discloses fill state
+                                             # on label.
+    proportion: 1.0                          # Single cask — 100% of
+                                             # the bottling from the
+                                             # one cask.
+    duration_years: null                     # Per-release.
+    cooperage: null
+    notes: |
+      Ex-bourbon cask (commonly hogshead format for Caol Ila CSC
+      releases). Single-cask presentation per the Cask Strength
+      Collection's series convention. Some Caol Ila CSC releases
+      have used refill sherry hogsheads or wine-cask finishes;
+      the cask_type field should be updated per specific release.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null                               # Per-release pricing
+                                             # varies with age and
+                                             # cask history. Recent
+                                             # Caol Ila CSC releases
+                                             # at 9-12 years have
+                                             # typically been priced
+                                             # in the £75-150 range.
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Worked-example entry for a Signatory Vintage Cask Strength
+  Collection Caol Ila release. Signatory's Cask Strength
+  Collection is an independent-bottler single-cask programme
+  presenting bottlings at cask strength, non-chill-filtered,
+  natural colour, in 700ml bottles with cask number, distillation
+  date, bottling date, and ABV disclosed on the label [1]. For
+  Caol Ila releases specifically, ex-bourbon hogsheads predominate
+  (Signatory's Caol Ila supply has historically drawn on
+  refill American oak hogsheads aged 9-15 years); occasional
+  sherry-cask and refill-bourbon releases also appear. The
+  Cask Strength Collection's presentation conventions are
+  declared at the series level via the bottler v0.2 schema's
+  `presentation_defaults` block (single cask, cask strength,
+  NCF, natural colour); individual bottling entries inherit those
+  defaults — this entry restates them for clarity rather than
+  introducing variation. Specific cask-identifier fields
+  (distillation year, cask number, outturn, exact ABV) are left
+  null at the template-form level; populating them requires
+  selecting a specific Signatory release for cataloguing and
+  verifying the per-release values against the label and
+  trade-press documentation [2].
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null                         # Signatory labels carry
+                                             # brief producer notes;
+                                             # not transcribed at the
+                                             # template-form level.
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://signatory.co.uk
+    accessed: 2026-05-17
+    notes: |
+      Signatory Vintage producer website. Used for Cask Strength
+      Collection presentation conventions (single cask, cask
+      strength, NCF, natural colour, 700ml bottles) and the
+      general series description.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Specific historical Signatory Caol Ila CSC releases are
+      documented in auction archives (Whisky Auctioneer, Scotch
+      Whisky Auctions, Whiskybase) and in secondary-market
+      catalogue literature. For cataloguing a specific release,
+      the auction archive's cask-number / outturn record
+      cross-checked against the original label is the primary
+      reference path.
+    url: null
+    accessed: 2026-05-17
+    notes: |
+      Cited as a source-type rather than a single document
+      because the relevant data is distributed across auction
+      archives. A specific release populated into this entry
+      would cite the specific auction record(s) and label
+      imagery used.
+
+
+# --- Notes about this entry --------------------------------------------------
+# This entry replaced signatory-caol-ila-stub on 2026-05-17 — the
+# second of two IB pressure-test stub replacements, following the
+# cadenheads-bunnahabhain transition. The original stub's
+# SCHEMA-GAPS observations drove the bottler v0.1 → v0.2 promotion
+# (the `presentation_defaults` block on the series shape) and the
+# Signatory bottler entry was the first populated bottler to use
+# the v0.2 schema. With this transition, no IB pressure-test stubs
+# remain in populated data; both IB-release entries are now
+# worked-example real-release representations rather than stubs.
+#
+# The entry remains template-form (cask-identifier fields null)
+# for the same reason as cadenheads-bunnahabhain: populating
+# specific cask-identifier data requires either selecting a
+# verifiable real release with documented per-release values or
+# fabricating cask-identifier data (which would violate the
+# project's sourcing standard).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

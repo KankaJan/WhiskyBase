@@ -1,0 +1,77 @@
+---
+interface OwnershipPeriod {
+  owner: string;
+  from?: number | null;
+  to?: number | null;
+  notes?: string | null;
+}
+
+interface Props {
+  ownership: {
+    current?: string | null;
+    parent?: string | null;
+    history?: OwnershipPeriod[];
+  };
+}
+
+const { ownership } = Astro.props;
+const history = ownership.history ?? [];
+---
+
+<section>
+  <h2>Ownership</h2>
+  <dl>
+    {ownership.current && (
+      <>
+        <dt>Current</dt>
+        <dd>{ownership.current}</dd>
+      </>
+    )}
+    {ownership.parent && (
+      <>
+        <dt>Parent</dt>
+        <dd>{ownership.parent}</dd>
+      </>
+    )}
+  </dl>
+
+  {history.length > 0 && (
+    <>
+      <h3>History</h3>
+      <ul class="history-list">
+        {history.map((p) => (
+          <li>
+            <span class="years">{p.from ?? '?'}{p.to ? `–${p.to}` : '–present'}:</span>
+            <span class="owner">{p.owner}</span>
+            {p.notes && <div class="period-notes">{p.notes}</div>}
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</section>
+
+<style>
+  .history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  .history-list li {
+    margin: 0.4rem 0;
+  }
+  .years {
+    color: var(--muted-color);
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.5rem;
+  }
+  .owner {
+    font-weight: 500;
+  }
+  .period-notes {
+    margin: 0.25rem 0 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    white-space: pre-wrap;
+  }
+</style>

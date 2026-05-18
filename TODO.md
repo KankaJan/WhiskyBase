@@ -580,6 +580,61 @@ fermentation engineering) that should be sourced for the planned
 
 ---
 
+## Frontend follow-ups
+
+Implementation-level follow-ups against the build-pipeline-plan
+(`docs/build-pipeline-plan.md`) now that the first-iteration
+scaffolding has landed in `/site/`. Items here are concrete UI /
+data-rendering issues spotted during iteration, distinct from the
+broader implementation sequencing in the build-pipeline-plan.
+
+### Confidence rubric tooltip on entity pages
+
+The confidence field (high / medium / low / stub) renders on
+distillery pages as inline coloured text in the EntityHeader
+("Confidence: medium"). Currently the only explanation accessible
+to a reader is the native browser `title=""` tooltip, which is
+limited: no styling, slow appearance, mobile-hostile, not
+keyboard-focusable, and screen-reader behaviour varies.
+
+The build-pipeline-plan §Data-display decisions specified that
+hovering / clicking the confidence badge should surface an
+explanation linking to the project's source-conflict-policy. The
+proper accessible implementation is:
+
+- A click-and-focus-triggered popover (not hover-only) with the
+  per-level explanation:
+  - **high** — multi-source, vetted, current; primary sources
+    cited where available
+  - **medium** — well-sourced but with documented hedges (often
+    "page references TBA" against books, or institutional
+    homepages cited where specific-document URLs are unstable)
+  - **low** — single-source or contested
+  - **stub** — placeholder, minimal data
+- Plus a "see source policy" link to the rendered
+  source-conflict-policy reference page.
+- Keyboard-accessible (focus via Tab; Enter/Space to open;
+  Escape to close).
+- ARIA-labelled so screen readers announce both the level and
+  the description.
+
+Implementation notes for the eventual frontend pass:
+
+- Implement once as a shared `<ConfidenceBadge>` component;
+  reuse across all entity types (every entity type carries
+  `confidence:`).
+- Pull the per-level descriptions from a single source of
+  truth (likely a constant in `src/lib/data.ts` or a small
+  data file under `/data/concepts/practice/` if it warrants a
+  concept page).
+- The rendered source-conflict-policy reference page itself
+  needs to be implemented (see build-pipeline-plan
+  §Implementation sequencing item 8 — reference pages).
+
+Status: queued.
+
+---
+
 ## Process
 
 - **Validate every entry against schema before commit.** Once JSON
@@ -604,6 +659,100 @@ fermentation engineering) that should be sourced for the planned
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-17** Frontend scaffolding landed (`/site/`). First
+  iteration of the Astro-based static site per the implementation
+  sequencing in `docs/build-pipeline-plan.md`. Stack: Astro 5 +
+  TypeScript + `yaml` for parsing. Files added (17 total under
+  `/site/`):
+  - `package.json`, `astro.config.mjs`, `tsconfig.json`,
+    `.gitignore`, `README.md`
+  - `src/lib/data.ts` — TypeScript data loaders (Distillery,
+    ProductionLine, Concept interfaces with build-time YAML
+    parsing via `yaml` npm package; reads from `/data/` via
+    Node fs)
+  - `src/layouts/BaseLayout.astro` — HTML shell, header with
+    nav, footer slot, project-wide CSS variables
+  - 7 components: Footer (with dual-licence note),
+    EntityHeader (name + status + confidence badge),
+    LocationBlock (region + coordinates), OwnershipHistory
+    (timeline view), EquipmentSpec (mash tun + washbacks +
+    stills table + warehouses), SourcesBlock (numbered list
+    with source-type colour coding), ProductionLinesList
+    (cross-references to deferred production-line pages)
+  - `src/pages/index.astro` — home / landing page
+  - `src/pages/distilleries/index.astro` — distillery listing
+    sorted by name with region / locality / founded /
+    ownership summary per entry
+  - `src/pages/distilleries/[slug].astro` — dynamic detail
+    page using `getStaticPaths()` over all 9 populated
+    distilleries
+  Build verified at structure-level (file shape, import paths,
+  Astro frontmatter syntax); runtime `npm install && npm run
+  build` to be run from the development host (sandbox network
+  throttling prevented runtime verification in this session;
+  the build is expected to succeed at first run on the
+  development side). Subsequent iterations follow the
+  implementation sequencing: concept pages next (heaviest
+  markdown-link rewriting), then production lines / bottlings /
+  bottlers / casks / suppliers, then index pages + search +
+  map.
+- **2026-05-17** Final IB pressure-test stub superseded. With
+  Caol Ila populated earlier in the session, the second of two
+  IB pressure-test stubs (`signatory-caol-ila-stub`) is now
+  replaced by `signatory-caol-ila` (worked-example real release
+  form, parallel to the cadenheads-bunnahabhain transition).
+  Slug renamed, confidence promoted stub → medium, Signatory
+  Cask Strength Collection house defaults populated (single
+  cask, cask strength, NCF, natural colour, 700ml — contrasting
+  with Cadenhead's 500ml format). Cask-identifier fields
+  template-form pending specific-release verification. Old stub
+  file overwritten with placeholder empty YAML (user can
+  `del data\bottlings\signatory-caol-ila-stub.yml` from
+  Windows shell to fully clean up). **No IB pressure-test stubs
+  remain in populated data**; both IB-release entries are now
+  worked-example representations. Counts: 120 → 121 files,
+  31 → 31 bottlings (stub deactivated, new entry added — net
+  zero), 485 → 485 resolved refs, 22 dangling refs (no change),
+  0 findings.
+- **2026-05-17** Three sequential deliverables: build pipeline
+  plan + direct-fired-still concept page + Caol Ila (ninth
+  distillery). (a) `docs/build-pipeline-plan.md` (446 lines)
+  written as the design document for the eventual static-site
+  build. Page-type taxonomy DECIDED (one URL per entity-type plus
+  cross-cutting query pages under /explore/), routing convention
+  DECIDED, markdown-link rewriting rules DECIDED, search-index
+  scope DECIDED (Pagefind), map data source DECIDED (MapLibre
+  with OSM tiles), tasting-notes display DECIDED (render
+  notes_official with attribution only, skip notes_independent),
+  commercial-info display DECIDED (rrp with launch-price caveat).
+  OPEN items: glossary auto-resolution mechanism (recommend
+  explicit-markup + curated text-mining), coordinate precision
+  policy (recommend coordinates_source schema field). (b)
+  `equipment/direct-fired-still` concept page written, parallels
+  `equipment/worm-tub` and `equipment/shell-and-tube-condenser`.
+  Covers mechanism (Maillard chemistry at hot copper-wash
+  interface), 20th-century industry shift to indirect_steam,
+  current practitioners (Glenfarclas, Springbank wash-only +
+  forward refs to Macallan, Glenlivet, Ben Nevis). Glenfarclas
+  and Springbank distillery entries updated to cross-reference
+  the new concept via `distinctive_features:`. (c) Caol Ila
+  (ninth distillery): Diageo-owned, east Islay, founded 1846,
+  heavily peated, 4-stage ownership history through
+  DCL → United Distillers → Diageo. Production line (`caol-ila-
+  traditional`, ~30-35 ppm spec from Port Ellen Maltings) plus
+  2 bottlings: Caol Ila 12 (43% chill-filtered flagship, launched
+  2002 in Diageo's Hidden Malts series) and Caol Ila Distillers
+  Edition (Moscatel-finished annual recurring, parallel to
+  Lagavulin DE PX-finished — the cross-distillery Distillers
+  Edition programme now exercised across two populated
+  distilleries). **Resolves the 2 remaining IB-stub forward
+  refs** (caol-ila + caol-ila-traditional from
+  signatory-caol-ila-stub). Counts: 115 → 120 files, 8 → 9
+  distilleries, 13 → 14 production lines, 29 → 31 bottlings,
+  45 → 46 concept pages, 457 → 485 resolved refs. Dangling
+  21 → 22 (net: +3 forward refs from direct-fired-still's
+  used_at_distilleries list to Macallan / Glenlivet / Ben Nevis,
+  -2 resolved by Caol Ila landing). 0 validator findings.
 - **2026-05-17** Eighth distillery (Glenfarclas) populated.
   First populated distillery in the formal SWA Speyside region —
   Glenmorangie is geographically northern Highland, not Speyside,

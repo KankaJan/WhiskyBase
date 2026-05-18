@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { loadDistilleries } from '../../lib/data';
+
+const distilleries = loadDistilleries();
+---
+
+<BaseLayout title="Distilleries" description="Scotch whisky distilleries — physical production sites.">
+  <article class="content">
+    <h1>Distilleries</h1>
+    <p class="lede">
+      {distilleries.length} distilleries currently populated.
+      Each entry covers the site, equipment, ownership history,
+      and references to its production lines and bottlings.
+    </p>
+
+    <table class="listing">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Region</th>
+          <th>Founded</th>
+          <th>Owner</th>
+          <th>Confidence</th>
+        </tr>
+      </thead>
+      <tbody>
+        {distilleries.map((d) => (
+          <tr>
+            <td><a href={`/distilleries/${d.id}/`}>{d.name}</a></td>
+            <td>{d.region ?? '—'}</td>
+            <td>{d.founded ?? '—'}</td>
+            <td>{d.ownership?.current ?? '—'}</td>
+            <td><span class={`confidence confidence-${d.confidence}`}>{d.confidence}</span></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </article>
+</BaseLayout>
+
+<style>
+  .content {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem;
+  }
+  .lede {
+    color: var(--muted-color);
+    margin: 0 0 1rem;
+  }
+  .listing {
+    width: 100%;
+  }
+  .confidence {
+    font-size: 0.85rem;
+  }
+  .confidence-high { color: var(--confidence-high); }
+  .confidence-medium { color: var(--confidence-medium); }
+  .confidence-low { color: var(--confidence-low); }
+  .confidence-stub { color: var(--confidence-stub); }
+</style>

@@ -1,0 +1,51 @@
+---
+interface Props {
+  name: string;
+  entityType: string;
+  status?: string;
+  confidence?: string;
+  lastReviewed?: string | null;
+}
+
+const { name, entityType, status, confidence, lastReviewed } = Astro.props;
+---
+
+<header class="entity-header">
+  <p class="entity-type">{entityType}</p>
+  <h1>{name}</h1>
+  <p class="meta">
+    {status && <span>Status: <strong>{status}</strong></span>}
+    {confidence && (
+      <span> · Confidence: <strong class={`confidence-${confidence}`}>{confidence}</strong></span>
+    )}
+    {lastReviewed && <span> · Last reviewed {lastReviewed}</span>}
+  </p>
+</header>
+
+<style>
+  .entity-header {
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule-color);
+  }
+  .entity-type {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  h1 {
+    margin: 0.15rem 0 0.3rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .meta {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 0.875rem;
+  }
+  .confidence-high { color: var(--confidence-high); }
+  .confidence-medium { color: var(--confidence-medium); }
+  .confidence-low { color: var(--confidence-low); }
+  .confidence-stub { color: var(--confidence-stub); }
+</style>

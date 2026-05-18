@@ -1,0 +1,93 @@
+---
+import { rewriteEntityHref, renderInline, collectSourceIds } from '../../lib/markdown';
+
+interface Props {
+  methodology: {
+    measures?: string[];
+    method?: string;
+    compounds?: string;
+    used_by?: string[];
+    adopted?: string | number | null;
+    limitations?: string | null;
+  };
+  sources?: Array<{ id?: number }>;
+}
+
+const { methodology, sources } = Astro.props;
+const sourceIds = collectSourceIds(sources);
+
+// `used_by` references can be either distillery slugs (the common
+// case for methodology pages) or bottler / source slugs. Without a
+// type discriminator we default to distillery linkage — the
+// resolver-side handling allows the link to fall through if a
+// future case needs different routing.
+const usedByLinks = (methodology.used_by ?? []).map((slug) => ({
+  slug,
+  href: rewriteEntityHref(`distillery/${slug}`),
+}));
+
+const limitationsHtml = renderInline(methodology.limitations, sourceIds);
+
+const methodLabels: Record<string, string> = {
+  hplc: 'HPLC (high-performance liquid chromatography)',
+  '4_aminoantipyrine': '4-aminoantipyrine (older spectrophotometric)',
+  gc_ms: 'GC-MS (gas chromatography mass spectrometry)',
+  folin_ciocalteu: 'Folin–Ciocalteu',
+  unspecified: 'Unspecified',
+};
+
+const compoundLabels: Record<string, string> = {
+  standard_7: 'Standard seven phenols',
+  extended: 'Extended sum (lab-defined)',
+  individual: 'Individual compounds (not summed)',
+  unspecified: 'Unspecified',
+};
+---
+
+<section>
+  <h2>Methodology detail</h2>
+  <dl>
+    {methodology.measures && methodology.measures.length > 0 && (
+      <>
+        <dt>Measures</dt>
+        <dd>{methodology.measures.join(', ')}</dd>
+      </>
+    )}
+    {methodology.method && (
+      <>
+        <dt>Method</dt>
+        <dd>{methodLabels[methodology.method] ?? methodology.method}</dd>
+      </>
+    )}
+    {methodology.compounds && (
+      <>
+        <dt>Compounds</dt>
+        <dd>{compoundLabels[methodology.compounds] ?? methodology.compounds}</dd>
+      </>
+    )}
+    {methodology.adopted && (
+      <>
+        <dt>Adopted</dt>
+        <dd>{methodology.adopted}</dd>
+      </>
+    )}
+  </dl>
+
+  {usedByLinks.length > 0 && (
+    <>
+      <h3>Used by</h3>
+      <ul>
+        {usedByLinks.map((u) => (
+          <li><a href={u.href}>{u.slug}</a></li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {limitationsHtml && (
+    <>
+      <h3>Limitations</h3>
+      <p set:html={limitationsHtml} />
+    </>
+  )}
+</section>

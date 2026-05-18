@@ -1,0 +1,258 @@
+# =============================================================================
+# Direct-fired still
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: equipment
+# Companion to equipment/worm-tub and equipment/shell-and-tube-condenser.
+# Documents the direct-fired distillation method — gas (historically
+# coal) heating applied directly under the still copper rather than
+# via internal steam coils. Now uncommon in Scotch malt distilling
+# but practised by a small set of distilleries that include
+# Glenfarclas (all stills) and Springbank (wash still only).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: direct-fired-still
+title: Direct-fired still
+kind: equipment
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A direct-fired still applies the heat source — historically
+  coal, now almost exclusively gas — directly to the outside of
+  the still's copper base. This contrasts with the modern
+  industry standard of indirect-steam heating, in which steam-
+  filled coils inside the still transfer heat to the wash or low
+  wines without direct flame contact. Direct firing produces a
+  hotter, less even heat distribution against the copper, and is
+  generally associated with a heavier-bodied, more sulphury,
+  more congener-rich new make spirit than the equivalent
+  indirect-steam-heated process [1][2]. Direct firing was the
+  industry default until the mid-20th century; the post-war
+  shift to indirect steam was driven by energy-efficiency,
+  process-control, and labour-cost considerations. A small set
+  of Scotch malt distilleries retain direct firing on at least
+  some stills — most prominently Glenfarclas (all six stills)
+  and Springbank (wash still only).
+
+
+body: |
+  The choice of heating method is one of several distillation-
+  stage variables that shape new make spirit character. Direct
+  firing sits at one end of the continuum of options; modern
+  indirect-steam heating sits at the other.
+
+  ## Mechanism
+
+  In a direct-fired still, gas burners (or historically coal
+  furnaces) heat the copper of the still's base externally. The
+  copper conducts heat into the wash above, with the contact
+  temperature at the copper-wash interface materially higher
+  than the bulk-liquid temperature would suggest. This produces
+  several effects:
+
+  - **Localised hot spots** at the heated copper surface, where
+    the wash temperature transiently exceeds the bulk
+    temperature.
+  - **Maillard / pyrolysis reactions** at the hot copper-wash
+    interface, generating heavier roasted / caramelised
+    flavour compounds (in particular furans, pyrazines, and
+    sulphur-bearing aromatics) that do not form to the same
+    extent under uniform indirect-steam heating [1].
+  - **Surface caking** ("burnt-on" residues): solids in the
+    wash precipitate against the heated copper and require
+    mechanical clearing. Distilleries that direct-fire
+    typically use a rummager — a copper-mesh chain stirred
+    continuously across the still base — to prevent solids
+    from baking onto the surface.
+  - **Heavier copper interaction**: the active hot copper
+    surface that drives the Maillard reactions also enhances
+    the spirit-copper interactions discussed in
+    `educational/copper-conversation`, producing different
+    sulphur-removal kinetics from the indirect-steam case.
+
+  In an indirect-steam still, the heat source is a coil of
+  steam-filled pipework inside the still. The steam temperature
+  is regulated and predictable; the still-wall copper does not
+  develop the hot-spot conditions of direct firing. The result
+  is a more uniform heat distribution, less Maillard activity,
+  and a cleaner, lighter new make profile.
+
+  ## Effects on new make character
+
+  The published flavour-chemistry literature establishes:
+
+  - Direct-fired distillation generates more furanic compounds
+    (furfural, 5-methylfurfural, hydroxymethylfurfural) than
+    indirect-steam equivalents — these are products of the
+    Maillard / caramelisation chemistry at the hot copper
+    interface [1].
+  - Sulphury compounds (dimethyl sulphide, dimethyl
+    trisulphide, see `glossary/sulphur-in-new-make`) profile
+    differently between the two methods; the direct-fired
+    spirit retains more sulphury character through the
+    distillation despite the heavier overall copper exposure
+    of rummager-aided direct fire.
+  - The new make from direct-fired stills is typically
+    described as "heavier", "more savoury", "more meaty" than
+    indirect-steam equivalents; the underlying chemistry
+    supports a real compositional difference, but the
+    qualitative descriptors are sensory-attribution rather than
+    chemistry-defined.
+
+  ## Why most distilleries switched away
+
+  The mid-20th-century shift from direct firing to indirect
+  steam reflected several pressures:
+
+  - **Energy efficiency.** Indirect steam at controlled
+    pressure transfers heat with substantially lower energy
+    loss than open-flame direct firing.
+  - **Process control.** Steam temperature is easier to
+    regulate than burner heat, allowing tighter control over
+    the still's temperature profile across the distillation
+    run.
+  - **Labour cost.** Direct firing requires continuous
+    attention (rummager operation, fuel feed in the coal era,
+    flame management). Indirect-steam distillation can be
+    largely automated.
+  - **Safety.** Open-flame distillation in proximity to
+    volatile spirit vapour has higher fire risk than
+    enclosed steam heating.
+
+  The energy-efficiency argument was decisive for most
+  operators; from the 1960s onward, distillery refurbishments
+  routinely converted to indirect steam. The distilleries that
+  retained direct firing did so as a deliberate house-style
+  choice rather than because of operational inertia.
+
+  ## Current practitioners
+
+  Among WhiskyBase populated distilleries:
+
+  - **Glenfarclas** — all six pot stills (3 wash + 3 spirit)
+    direct-fired. The most consistent commitment to direct
+    firing in the Scotch industry; the producer treats this
+    as a defining feature of the distillery's house style.
+  - **Springbank** — wash still direct-fired, spirit stills
+    indirect-steam. The mixed configuration is unusual.
+
+  Beyond the populated set, direct firing is also retained at:
+
+  - **Macallan** — direct-fired stills (with rummagers).
+  - **The Glenlivet** — some direct-fired equipment retained
+    historically; current configuration mixed.
+  - **Ben Nevis** — direct-fired wash stills.
+
+  The set of direct-firing distilleries is small enough that
+  the practice is widely cited in producer marketing as a
+  distinguishing feature; in chemistry terms the practice has
+  real effects on spirit composition but is not by itself
+  determinative of house style (cask programme, fermentation
+  duration, still shape, and other variables interact).
+
+  ## What this page is and is not
+
+  This page documents direct-fired distillation as an
+  equipment-level practice. It does not adjudicate
+  producer-attributed house-style claims; the
+  flavour-chemistry literature supports compositional
+  differences between direct-fired and indirect-steam-heated
+  spirit, but the sensory-quality claims attached to direct
+  firing in producer marketing exceed what the published
+  literature directly establishes. The page exists to give
+  Scotch distillery entries with `heating: direct_fire` (or
+  mixed configurations) a consistent technical-reference
+  point.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/copper-conversation
+  - equipment/worm-tub
+  - equipment/shell-and-tube-condenser
+  - glossary/sulphur-in-new-make
+
+
+# --- Per-kind block ---------------------------------------------------------
+equipment:
+  category: still
+  used_at_distilleries:
+    - glenfarclas                     # All six stills direct-fired.
+    - springbank                      # Wash still only;
+                                      # spirit stills are
+                                      # indirect-steam (see
+                                      # data/distilleries/springbank.yml).
+    - macallan                        # Forward reference;
+                                      # Macallan not yet populated.
+    - glenlivet                       # Forward reference.
+    - ben-nevis                       # Forward reference.
+  distinguishing_features: |
+    Gas (historically coal) heating applied directly under the
+    still copper rather than via internal steam coils.
+    Localised hot copper surface drives Maillard / caramelisation
+    reactions that don't form to the same extent under uniform
+    indirect-steam heating. Requires a rummager (copper-mesh
+    chain stirred across the still base) to prevent solids from
+    baking onto the heated copper. Now uncommon in Scotch malt
+    distilling; most distilleries converted to indirect-steam
+    heating from the mid-20th century for energy efficiency and
+    process control.
+  alternatives:
+    - equipment/shell-and-tube-condenser   # Indirect-steam-heated
+                                           # stills are universally
+                                           # paired with shell-and-tube
+                                           # condensers in modern
+                                           # Scotch malt distilling;
+                                           # the broader
+                                           # equipment-comparison
+                                           # framework places direct
+                                           # firing against the
+                                           # indirect-steam standard
+                                           # the project documents
+                                           # via the shell-and-tube
+                                           # equipment page.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. (ed.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press, 2014. Chapter on
+      distillation covers direct vs indirect heating, the
+      Maillard chemistry of hot copper-wash interfaces, and
+      the historical industry shift from direct firing to
+      indirect steam.
+    accessed: null
+    notes: |
+      Reference cited from the project's literature catalogue
+      (docs/bibliography.md). Specific page references for the
+      Maillard-product claims should be verified against the
+      chapter text when accessed.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Per-distillery entries record heating
+      method (direct-fired vs indirect-steam) for distilleries
+      where the configuration is producer-disclosed.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check for the current
+      direct-firing practitioner list. The list above is the
+      project's known set as of the entry's last review;
+      practitioner status can shift as distilleries
+      refurbish or change ownership.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

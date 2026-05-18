@@ -1,0 +1,98 @@
+---
+interface Source {
+  id: number;
+  type: string;
+  url?: string | null;
+  citation?: string | null;
+  accessed?: string | null;
+  notes?: string | null;
+}
+
+interface Props {
+  sources: Source[];
+}
+
+const { sources } = Astro.props;
+
+const sourceTypeLabels: Record<string, string> = {
+  official_website: 'Official website',
+  trade_publication: 'Trade publication',
+  book: 'Book',
+  wikipedia: 'Wikipedia (volatile)',
+  wikidata: 'Wikidata',
+  company_filing: 'Company filing',
+  independent_review: 'Independent review',
+  interview: 'Interview',
+  chemistry_database: 'Chemistry database',
+  regulatory_text: 'Regulatory text',
+  peer_reviewed_paper: 'Peer-reviewed paper',
+  other: 'Other',
+};
+---
+
+<section>
+  <h2>Sources</h2>
+  <ol class="source-list">
+    {sources.map((s) => (
+      <li id={`source-${s.id}`}>
+        <div class="source-meta">
+          <span class={`source-type type-${s.type}`}>
+            {sourceTypeLabels[s.type] ?? s.type}
+          </span>
+          {s.accessed && <span class="accessed"> · accessed {s.accessed}</span>}
+        </div>
+        {s.url && (
+          <div class="source-url">
+            <a href={s.url} rel="external nofollow">{s.url}</a>
+          </div>
+        )}
+        {s.citation && <div class="source-citation">{s.citation}</div>}
+        {s.notes && <div class="source-notes">{s.notes}</div>}
+      </li>
+    ))}
+  </ol>
+</section>
+
+<style>
+  .source-list {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  .source-list li {
+    margin: 0.6rem 0;
+  }
+  .source-meta {
+    font-size: 0.875rem;
+  }
+  .source-type {
+    font-weight: 600;
+  }
+  .accessed {
+    color: var(--muted-color);
+  }
+  .type-wikipedia {
+    color: var(--confidence-medium);
+  }
+  .type-regulatory_text,
+  .type-peer_reviewed_paper {
+    color: var(--confidence-high);
+  }
+  .source-url {
+    margin: 0.15rem 0;
+    font-size: 0.875rem;
+  }
+  .source-url a {
+    word-break: break-all;
+  }
+  .source-citation {
+    margin: 0.15rem 0;
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+  }
+  .source-notes {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+    color: var(--muted-color);
+    white-space: pre-wrap;
+  }
+</style>

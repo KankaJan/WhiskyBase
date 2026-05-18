@@ -1,0 +1,185 @@
+# =============================================================================
+# Caol Ila Traditional (default heavily-peated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity and broad spec are
+# well-grounded; specific phenol-ppm spec figures, fermentation
+# duration, and yeast strain hedged pending direct disclosure.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: caol-ila-traditional
+name: Caol Ila (traditional, heavily-peated default)
+distillery: caol-ila
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1846                  # Concurrent with distillery
+                                      # founding. Equipment configuration
+                                      # post-1974 reconstruction; the
+                                      # production recipe itself has
+                                      # remained the heavily-peated
+                                      # default throughout.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: Port Ellen Maltings       # Diageo-operated Port Ellen
+                                      # Maltings on Islay supplies the
+                                      # peated malt for Caol Ila as
+                                      # for the other Diageo Islay
+                                      # distilleries (Lagavulin etc.).
+                                      # See lagavulin production_line
+                                      # for the parallel supply chain.
+  variety: null                       # Variety not consistently
+                                      # disclosed at the line level.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value:
+        - 30
+        - 35                          # Range commonly cited in
+                                      # trade press; Caol Ila spec
+                                      # phenol is similar to
+                                      # Lagavulin and at the
+                                      # moderate-to-heavy end of the
+                                      # Islay peating spectrum.
+                                      # Specific producer disclosure
+                                      # for a precise ppm figure not
+                                      # consistently sourced.
+      unit: ppm
+      method: unspecified
+      compounds: unspecified
+      source_id: 1
+      notes: |
+        Spec-stage figure inherited from the Port Ellen Maltings
+        supply specification. As with other Diageo Islay
+        distilleries (Lagavulin), the producer-disclosed ppm
+        figure represents the maltster's spec rather than the
+        in-bottle phenol concentration; see
+        methodology/scotch-whisky-published-ppm for the
+        general methodology-disclosure pattern.
+  peat_origin: local                  # Islay peat supplied via Port
+                                      # Ellen Maltings; the
+                                      # maltings cut peat from
+                                      # Castlehill bog and Glenmachrie
+                                      # bog on Islay.
+  notes: |
+    Caol Ila is moderately-to-heavily peated, sharing the broad
+    spec-ppm range of Lagavulin and other Diageo Islay
+    distilleries. Trade-press characterisation of the resulting
+    spirit usually emphasises a cleaner, less briny profile than
+    the south-coast Islay producers — attributed in producer
+    materials to the tall lantern stills and the east-coast site
+    exposure rather than to a different peating regime.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                      # Conventional double
+                                      # distillation.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Specific cut points not disclosed in current sourcing.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                    # Ex-bourbon barrels predominate
+                                      # in the core Caol Ila programme,
+                                      # consistent with the Diageo
+                                      # cask strategy for heavily-
+                                      # peated Islay spirit.
+  - oloroso-sherry-butt               # Sherry-cask component appears
+                                      # in some limited releases
+                                      # and in the Distillers Edition
+                                      # programme (which uses a
+                                      # secondary finish in fortified
+                                      # Moscatel casks rather than
+                                      # primary sherry-cask
+                                      # maturation).
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - caol-ila-12
+  - caol-ila-distillers-edition
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Caol Ila Traditional production line is the distillery's
+  predominant output: a heavily-peated Islay single malt at
+  spec phenol level in the 30-35 ppm range, supplied with peated
+  malt from Diageo's Port Ellen Maltings on Islay [1][2].
+  Distilled in six large pot stills (three wash + three spirit,
+  lantern-shape, indirect-steam-heated, shell-and-tube
+  condensers) in the post-1974-reconstruction configuration.
+  The maturation programme is ex-bourbon-led for the core
+  releases, with sherry-cask and fortified-wine-cask components
+  appearing in limited and special releases. The bulk of the
+  production line's output historically supplies Diageo blends
+  (notably the Johnnie Walker family); the single-malt release
+  programme expanded materially with the 2002 Hidden Malts
+  launch and now includes the Caol Ila 12 Year Old flagship
+  alongside annual Distillers Edition and Special Releases
+  programmes.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/caol-ila/
+    accessed: 2026-05-17
+    notes: |
+      Diageo's Malts.com page for Caol Ila. Used for the
+      heavily-peated default characterisation, Port Ellen
+      Maltings supply chain, equipment-level details, and
+      the core-range structure.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Caol Ila entry — production-line
+      detail, equipment configuration, and the blend-supply
+      / single-malt-split context.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

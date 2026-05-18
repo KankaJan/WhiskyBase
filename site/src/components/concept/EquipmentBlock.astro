@@ -1,0 +1,103 @@
+---
+import { rewriteEntityHref, renderInline, collectSourceIds } from '../../lib/markdown';
+
+interface Props {
+  equipment: {
+    category?: string;
+    used_at_distilleries?: string[];
+    distinguishing_features?: string | null;
+    alternatives?: string[];
+  };
+  sources?: Array<{ id?: number }>;
+}
+
+const { equipment, sources } = Astro.props;
+const sourceIds = collectSourceIds(sources);
+
+const distilleryLinks = (equipment.used_at_distilleries ?? []).map((slug) => ({
+  slug,
+  href: rewriteEntityHref(`distillery/${slug}`),
+}));
+
+const altLinks = (equipment.alternatives ?? []).map((ref) => ({
+  ref,
+  href: rewriteEntityHref(`concept/${ref}`),
+}));
+
+const distinguishingHtml = renderInline(
+  equipment.distinguishing_features,
+  sourceIds,
+);
+
+const categoryLabels: Record<string, string> = {
+  still: 'Still',
+  mash_tun: 'Mash tun',
+  washback: 'Washback',
+  condenser: 'Condenser',
+  mill: 'Mill',
+  kiln: 'Kiln',
+  other: 'Other',
+};
+---
+
+<section>
+  <h2>Equipment detail</h2>
+
+  {equipment.category && (
+    <dl>
+      <dt>Category</dt>
+      <dd>{categoryLabels[equipment.category] ?? equipment.category}</dd>
+    </dl>
+  )}
+
+  {distinguishingHtml && (
+    <>
+      <h3>Distinguishing features</h3>
+      <p set:html={distinguishingHtml} />
+    </>
+  )}
+
+  {distilleryLinks.length > 0 && (
+    <>
+      <h3>Used at distilleries</h3>
+      <p class="hint">
+        Distilleries known to use this equipment as of the entry's
+        last review. Slugs that have a populated distillery page
+        link through; forward references to unpopulated distilleries
+        render as plain text per the project's handover convention.
+      </p>
+      <ul class="distillery-list">
+        {distilleryLinks.map((d) => (
+          <li><a href={d.href}>{d.slug}</a></li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {altLinks.length > 0 && (
+    <>
+      <h3>Alternatives</h3>
+      <ul>
+        {altLinks.map((a) => (
+          <li><a href={a.href}>{a.ref}</a></li>
+        ))}
+      </ul>
+    </>
+  )}
+</section>
+
+<style>
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+  }
+  .distillery-list {
+    column-count: 2;
+    column-gap: 2rem;
+  }
+  @media (max-width: 30rem) {
+    .distillery-list {
+      column-count: 1;
+    }
+  }
+</style>

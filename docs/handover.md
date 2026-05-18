@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 8 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 9 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -341,7 +341,14 @@ back rather than absorbing it into the data model.
   succession since 1865; **first populated distillery exercising
   `heating: direct_fire` schema enum value** — all six pot stills
   direct-fired, contrasting with the `indirect_steam` default used
-  by the prior seven populated distilleries).
+  by the prior seven populated distilleries),
+  Caol Ila (medium — east-coast Islay, Diageo-owned, founded 1846;
+  one of Islay's largest distilleries by capacity with the
+  majority of output historically going to Diageo blends; **resolved
+  the 2 remaining IB-stub forward refs** from
+  signatory-caol-ila-stub; introduced the Distillers Edition
+  cross-distillery series pattern across a second populated
+  distillery — Lagavulin DE was the first).
 - 12 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
@@ -353,7 +360,9 @@ back rather than absorbing it into the data model.
   at 35-40 ppm spec, exercising multi-line modelling at smaller
   scale than Springbank),
   1 Glenfarclas (medium — single line, unpeated Speyside, sherry-
-  cask-led house style, direct-fired distillation throughout).
+  cask-led house style, direct-fired distillation throughout),
+  1 Caol Ila (medium — heavily-peated Islay default at 30-35 ppm
+  spec; Port Ellen Maltings supply chain shared with Lagavulin).
 - 45 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
   Whisky), 8 educational (peating-measurement-methods,
   aromatic-compounds-in-whisky, copper-conversation,
@@ -389,18 +398,28 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 29 bottlings: 28 working entries (10 Bruichladdich/Harris + 3
+- 31 bottlings: 31 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
-  2 Bunnahabhain + 3 Glenfarclas + 1 worked-example IB release
-  `cadenheads-bunnahabhain`) + 1 remaining IB pressure-test stub
-  (`signatory-caol-ila-stub`).
+  2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 worked-example
+  IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
+  **No IB pressure-test stubs remain.** Both IB-release entries
+  are now worked-example representations rather than placeholders,
+  with Cadenhead's house defaults (500ml, Cask Strength /
+  Authentic Collection programme) and Signatory house defaults
+  (700ml, Cask Strength Collection programme) populated.
   Glenfarclas bottlings: 10 Year Old (40% chill-filtered
   entry-level), 15 Year Old (46% NCF natural-colour — unusual in
   combining a 15-year age statement with the higher-ABV NCF
   natural-colour pattern that other producers adopted only in
   the 2010s), 25 Year Old (43% chill-filtered luxury core
   reaching the slow-exchange maturation phase per
-  educational/cask-maturation-kinetics). The
+  educational/cask-maturation-kinetics).
+  Caol Ila bottlings: 12 Year Old (43% chill-filtered flagship,
+  the 2002 Hidden Malts launch release), Distillers Edition
+  (Moscatel-finished annual recurring — companion to the
+  Lagavulin Distillers Edition's PX finish, exercising the
+  cross-distillery Distillers Edition pattern at the bottling
+  level). The
   `cadenheads-bunnahabhain-stub` was superseded 2026-05-17 by the
   worked-example `cadenheads-bunnahabhain` (slug renamed, confidence
   promoted stub → medium; the old stub file overwritten with empty

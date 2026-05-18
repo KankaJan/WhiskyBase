@@ -1,0 +1,51 @@
+---
+import { rewriteEntityHref } from '../../lib/markdown';
+
+interface Props {
+  glossary: {
+    aliases?: string[];
+    part_of_speech?: string | null;
+    see_also?: string[];
+  };
+}
+
+const { glossary } = Astro.props;
+const aliases = glossary.aliases ?? [];
+const seeAlso = glossary.see_also ?? [];
+const partOfSpeech = glossary.part_of_speech;
+
+const seeAlsoLinks = seeAlso.map((ref) => ({
+  ref,
+  href: rewriteEntityHref(`concept/${ref}`),
+}));
+---
+
+{(aliases.length > 0 || partOfSpeech || seeAlso.length > 0) && (
+  <section>
+    <h2>Glossary detail</h2>
+    <dl>
+      {aliases.length > 0 && (
+        <>
+          <dt>Aliases</dt>
+          <dd>{aliases.join(', ')}</dd>
+        </>
+      )}
+      {partOfSpeech && (
+        <>
+          <dt>Part of speech</dt>
+          <dd>{partOfSpeech}</dd>
+        </>
+      )}
+    </dl>
+    {seeAlsoLinks.length > 0 && (
+      <>
+        <h3>See also</h3>
+        <ul>
+          {seeAlsoLinks.map((s) => (
+            <li><a href={s.href}>{s.ref}</a></li>
+          ))}
+        </ul>
+      </>
+    )}
+  </section>
+)}

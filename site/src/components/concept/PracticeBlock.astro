@@ -1,0 +1,60 @@
+---
+import { rewriteEntityHref, renderInline, collectSourceIds } from '../../lib/markdown';
+
+interface Props {
+  practice: {
+    adopted_by?: string[];
+    consequences?: string | null;
+    contrast_with?: string[];
+  };
+  sources?: Array<{ id?: number }>;
+}
+
+const { practice, sources } = Astro.props;
+const sourceIds = collectSourceIds(sources);
+
+const adoptedByLinks = (practice.adopted_by ?? []).map((slug) => ({
+  slug,
+  href: rewriteEntityHref(`distillery/${slug}`),
+}));
+
+const contrastWithLinks = (practice.contrast_with ?? []).map((ref) => ({
+  ref,
+  href: rewriteEntityHref(`concept/${ref}`),
+}));
+
+const consequencesHtml = renderInline(practice.consequences, sourceIds);
+---
+
+<section>
+  <h2>Practice detail</h2>
+
+  {adoptedByLinks.length > 0 && (
+    <>
+      <h3>Adopted by</h3>
+      <ul>
+        {adoptedByLinks.map((a) => (
+          <li><a href={a.href}>{a.slug}</a></li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  {consequencesHtml && (
+    <>
+      <h3>Consequences</h3>
+      <p set:html={consequencesHtml} />
+    </>
+  )}
+
+  {contrastWithLinks.length > 0 && (
+    <>
+      <h3>Contrast with</h3>
+      <ul>
+        {contrastWithLinks.map((c) => (
+          <li><a href={c.href}>{c.ref}</a></li>
+        ))}
+      </ul>
+    </>
+  )}
+</section>

@@ -1,0 +1,319 @@
+# =============================================================================
+# Caol Ila
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership, and broad
+# production characteristics are well-grounded. Specific current
+# capacity and equipment specs hedged pending direct verification.
+# =============================================================================
+# Resolves the 2 forward refs from signatory-caol-ila-stub
+# (caol-ila distillery + caol-ila-traditional production_line)
+# when both this entry and the production_line entry land.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: caol-ila
+name: Caol Ila
+also_known_as: []                     # Gaelic Caol Ìle ("Sound of
+                                      # Islay"); the distillery name
+                                      # is the Gaelic for the
+                                      # waterway it overlooks.
+wikidata_qid: null
+website: https://www.malts.com/en/our-whisky-collection/caol-ila/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islay
+sub_region: null
+locality: Port Askaig, Islay         # On the east coast of Islay
+                                      # overlooking the Sound of Islay,
+                                      # between Port Askaig and the
+                                      # south-coast distilleries.
+                                      # Geographically close to
+                                      # Bunnahabhain (both on the
+                                      # north-east coast) but
+                                      # stylistically distinct
+                                      # (Caol Ila heavily peated,
+                                      # Bunnahabhain lightly peated
+                                      # by default).
+coordinates:
+  lat: 55.860
+  lon: -6.110                         # Approximate; on Islay's east
+                                      # coast facing the Sound of
+                                      # Islay.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1846                         # Founded by Hector Henderson;
+                                      # the site has been operationally
+                                      # continuous since (with
+                                      # 1972-1974 reconstruction
+                                      # noted below) [1][2].
+first_spirit: null
+mothballed_periods: []                # No major modern mothballing
+                                      # despite ownership transitions.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Diageo plc
+  parent: null                        # Diageo plc is the direct owner;
+                                      # the corporate group is Diageo
+                                      # itself.
+  history:
+    - owner: Hector Henderson
+      from: 1846
+      to: 1854
+      notes: |
+        Founding ownership. The distillery passed through
+        several 19th-century owners before consolidation [1].
+    - owner: Bulloch Lade & Co.
+      from: 1863
+      to: 1920
+      notes: |
+        Bulloch Lade & Co. operated Caol Ila through much of
+        the late 19th century, expanding the site
+        substantially.
+    - owner: Distillers Company Limited (DCL) / Scottish Malt
+        Distillers
+      from: 1927
+      to: 1986
+      notes: |
+        Acquired into the DCL portfolio in 1927. DCL underwent
+        the 1972-1974 Caol Ila reconstruction (the original
+        site demolished and rebuilt with the current
+        equipment-house configuration). DCL itself was
+        consolidated into United Distillers in 1986.
+    - owner: United Distillers / UDV / Diageo
+      from: 1986
+      to: null
+      notes: |
+        The DCL → United Distillers → UDV → Diageo lineage
+        encompassing the 1986 consolidation and the 1997
+        creation of Diageo through the Guinness-GrandMet
+        merger. Caol Ila has been Diageo-owned in continuous
+        succession since.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Loch nam Bàn            # Loch nam Bàn (the "Loch of the
+                                      # Women"), a freshwater loch
+                                      # above the distillery site
+                                      # supplying both process and
+                                      # cooling water [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: full_lauter
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: 10                            # Commonly cited count for the
+                                       # post-1974 reconstruction
+                                       # configuration; specific
+                                       # capacity figures vary across
+                                       # trade-reference sources and
+                                       # are hedged here [2].
+  material: stainless_steel            # Stainless steel post-1974
+                                       # reconstruction; the older
+                                       # Caol Ila used wooden
+                                       # washbacks.
+  capacity_litres: null
+
+stills:
+  wash_still:
+    count: 3
+    capacity_litres: null              # Caol Ila operates large pot
+                                       # stills typical of high-volume
+                                       # Diageo Islay production;
+                                       # specific capacity figures
+                                       # not directly sourced.
+    charge_litres: null
+    shape: lantern                     # Lantern-shape stills cited
+                                       # in trade references; the
+                                       # post-1974 still-house
+                                       # design optimised for
+                                       # production volume [2].
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 3
+    capacity_litres: null
+    charge_litres: null
+    shape: lantern
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+warehouses:
+  - id: caol-ila-coastal
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      Coastal Islay warehousing on the Sound of Islay; the
+      maturation environment is shared with Bunnahabhain
+      (geographically adjacent on the north-east Islay
+      coast). Diageo also operates significant off-site
+      maturation capacity at the mainland Speyside / Central
+      Belt warehouses; the Caol Ila spirit destined for the
+      blend trade is often shipped off-island for maturation,
+      while the spirit destined for single-malt releases is
+      more commonly matured on-site [2].
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: null              # Caol Ila is the largest
+                                       # Islay distillery by capacity
+                                       # (commonly cited at around
+                                       # 6.5-7 million LPA after the
+                                       # post-1974 reconstruction
+                                       # and subsequent expansions);
+                                       # specific current figures
+                                       # vary and should be verified
+                                       # against the most recent
+                                       # Malt Whisky Yearbook [2].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1972
+    change: |
+      Major reconstruction: original site demolished and
+      rebuilt with new still house, washback, and warehouse
+      configuration. The current 6-still (3 wash + 3 spirit)
+      configuration dates from this reconstruction. The
+      project's equipment-level entries for Caol Ila reflect
+      the post-1974 site rather than the pre-1972 incarnation.
+    notes: |
+      The reconstruction substantially increased site
+      capacity; Caol Ila moved from medium-scale operation
+      to one of Islay's largest single-malt operations
+      during this period [2].
+    source_id: 2
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - caol-ila-traditional               # Default heavily-peated
+                                       # production line. Caol Ila
+                                       # also produces unpeated runs
+                                       # in scheduled small windows
+                                       # (the "Caol Ila Unpeated"
+                                       # releases) but the bulk of
+                                       # production is the peated
+                                       # default; the unpeated runs
+                                       # are not yet modelled as a
+                                       # separate production_line
+                                       # entry.
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []              # Caol Ila spirit is the most
+                                       # heavily blend-supplied Islay
+                                       # malt: a substantial share of
+                                       # the distillery's output goes
+                                       # to Diageo blends, notably
+                                       # Johnnie Walker (the peated
+                                       # Islay component of the
+                                       # Johnnie Walker Black Label /
+                                       # Double Black / Green Label
+                                       # vatting). The single-malt
+                                       # release programme expanded
+                                       # substantially with the 2002
+                                       # "Hidden Malts" launch but
+                                       # remains a minority share of
+                                       # the distillery's output.
+                                       # Blends not modelled as
+                                       # project entity type — empty
+                                       # list per convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []               # No equipment-concept page
+                                       # cross-references that fit
+                                       # Caol Ila distinctively
+                                       # (large-capacity Diageo Islay
+                                       # production is structurally
+                                       # similar to many indirect-steam
+                                       # / shell-and-tube modern
+                                       # distilleries).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Caol Ila is a malt whisky distillery on the east coast of Islay
+  at Port Askaig, founded in 1846 by Hector Henderson and owned
+  by Diageo plc since the 1997 Guinness-GrandMet merger that
+  created Diageo (the site's Diageo-lineage ownership trails back
+  to the 1927 DCL acquisition) [1][2]. The site sits within the
+  formal Islay protected locality under the Scotch Whisky
+  Regulations 2009. Caol Ila is the largest Islay distillery by
+  capacity (the post-1974 reconstruction substantially expanded
+  output), with the majority of production historically supplying
+  the blend trade — particularly the peated Islay component of
+  the Johnnie Walker family of blended Scotches. The single-malt
+  release programme expanded materially with Diageo's 2002
+  "Hidden Malts" launch, which introduced Caol Ila alongside
+  Clynelish and Glen Elgin as previously blend-only Diageo
+  malts; the Caol Ila 12 Year Old has been the flagship core
+  release since. The spirit is heavily peated (~30-35 ppm spec)
+  but is generally characterised as cleaner and less briny than
+  the south-coast Islay producers (Lagavulin, Laphroaig, Ardbeg),
+  attributed to the distillery's tall lantern-shape stills and
+  the east-coast site exposure.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/caol-ila/
+    accessed: 2026-05-17
+    notes: |
+      Diageo's Malts.com page for Caol Ila. Used for site
+      identity, Islay east-coast location, founding date
+      (1846), Hector Henderson founder, water-source
+      description (Loch nam Bàn), and the producer's
+      characterisation of the spirit profile.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Caol Ila entry — ownership-history
+      transitions (DCL → United Distillers → Diageo),
+      equipment configuration (3+3 stills post-1974
+      reconstruction), capacity figures, and the
+      blend-supply context.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-17
+    notes: |
+      Trade-reference cross-check. Specific equipment
+      capacities and current annual capacity should be
+      verified against the most recent edition.
+
+  - id: 3
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Caol_Ila_distillery
+    accessed: 2026-05-17
+    notes: |
+      Wikipedia entry; volatile source per project policy
+      (docs/source-conflict-policy.md). Used as a cross-check
+      on ownership-history dates (1846 founding, 1972-1974
+      reconstruction, 2002 Hidden Malts launch). Primary
+      claims rest on sources 1 and 2.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

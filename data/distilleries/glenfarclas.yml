@@ -232,15 +232,12 @@ also_used_by_blenders: []              # Glenfarclas has historically
 
 
 # --- Distinctive Features (concept cross-references) ------------------------
-distinctive_features: []               # No equipment-concept page yet
-                                       # exists for direct-fired
-                                       # distillation; this would be
-                                       # a natural concept page to
-                                       # add (`equipment/direct-fired-
-                                       # still`) given Glenfarclas
-                                       # exercises the practice
-                                       # distinctly. Queued in
-                                       # TODO §Concept pages to queue.
+distinctive_features:
+  - equipment/direct-fired-still       # All six pot stills
+                                       # direct-fired; concept page
+                                       # documents the practice and
+                                       # the broader practitioner set.
+                                       # Page added 2026-05-17.
 
 
 # --- Description ------------------------------------------------------------

@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import EntityHeader from '../../../components/EntityHeader.astro';
+import SourcesBlock from '../../../components/SourcesBlock.astro';
+import GlossaryBlock from '../../../components/concept/GlossaryBlock.astro';
+import MethodologyBlock from '../../../components/concept/MethodologyBlock.astro';
+import EducationalBlock from '../../../components/concept/EducationalBlock.astro';
+import EquipmentBlock from '../../../components/concept/EquipmentBlock.astro';
+import PracticeBlock from '../../../components/concept/PracticeBlock.astro';
+import { loadConcepts, loadConceptFull } from '../../../lib/data';
+import {
+  renderMarkdown,
+  rewriteEntityHref,
+  collectSourceIds,
+} from '../../../lib/markdown';
+
+export async function getStaticPaths() {
+  const concepts = loadConcepts();
+  return concepts.map((c) => ({
+    params: { kind: c.kind, slug: c.id },
+  }));
+}
+
+const { kind, slug } = Astro.params;
+if (!kind || !slug) {
+  throw new Error('Missing kind or slug param');
+}
+
+const concept = loadConceptFull(kind, slug);
+if (!concept) {
+  throw new Error(`Concept not found: ${kind}/${slug}`);
+}
+
+const sourceIds = collectSourceIds(concept.sources);
+const summaryHtml = renderMarkdown(concept.summary, sourceIds);
+const bodyHtml = renderMarkdown(concept.body, sourceIds);
+
+const kindLabel: Record<string, string> = {
+  methodology: 'Methodology',
+  educational: 'Educational',
+  equipment: 'Equipment',
+  practice: 'Practice',
+  glossary: 'Glossary',
+};
+
+const relatedLinks = (concept.related_concepts ?? []).map((ref) => ({
+  ref,
+  href: rewriteEntityHref(`concept/${ref}`),
+}));
+---
+
+<BaseLayout
+  title={concept.title}
+  description={concept.summary?.split('\n')[0]?.slice(0, 150)}
+>
+  <article class="concept-page">
+    <EntityHeader
+      name={concept.title}
+      entityType={`Concept · ${kindLabel[concept.kind] ?? concept.kind}`}
+      confidence={concept.confidence}
+      lastReviewed={concept.last_reviewed}
+    />
+
+    {summaryHtml && (
+      <section class="summary">
+        <div set:html={summaryHtml} />
+      </section>
+    )}
+
+    {bodyHtml && (
+      <section class="body">
+        <div set:html={bodyHtml} />
+      </section>
+    )}
+
+    {concept.kind === 'glossary' && concept.glossary && (
+      <GlossaryBlock glossary={concept.glossary} />
+    )}
+    {concept.kind === 'methodology' && concept.methodology && (
+      <MethodologyBlock methodology={concept.methodology} sources={concept.sources} />
+    )}
+    {concept.kind === 'educational' && concept.educational && (
+      <EducationalBlock educational={concept.educational} />
+    )}
+    {concept.kind === 'equipment' && concept.equipment && (
+      <EquipmentBlock equipment={concept.equipment} sources={concept.sources} />
+    )}
+    {concept.kind === 'practice' && concept.practice && (
+      <PracticeBlock practice={concept.practice} sources={concept.sources} />
+    )}
+
+    {relatedLinks.length > 0 && (
+      <section>
+        <h2>Related concepts</h2>
+        <ul>
+          {relatedLinks.map((r) => (
+            <li><a href={r.href}>{r.ref}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {concept.sources && concept.sources.length > 0 && (
+      <SourcesBlock sources={concept.sources} />
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .concept-page {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  .summary :global(p) {
+    margin: 0.5rem 0;
+    font-size: 1.02rem;
+  }
+  .body :global(p) {
+    margin: 0.6rem 0;
+  }
+  .body :global(ul),
+  .body :global(ol) {
+    padding-left: 1.5rem;
+  }
+  .body :global(code) {
+    background: var(--bg-alt);
+    padding: 0.1rem 0.3rem;
+    border-radius: 2px;
+  }
+  .body :global(pre) {
+    background: var(--bg-alt);
+    padding: 0.5rem 0.75rem;
+    overflow-x: auto;
+    border: 1px solid var(--rule-color);
+  }
+  .body :global(sup.citation a),
+  .summary :global(sup.citation a) {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 0.75rem;
+    vertical-align: super;
+  }
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+  }
+</style>

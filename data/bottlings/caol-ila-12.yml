@@ -1,0 +1,137 @@
+# =============================================================================
+# Caol Ila 12 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship core release
+# with stable presentation specifications since the 2002 Hidden
+# Malts launch.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: caol-ila-12
+name: Caol Ila 12 Year Old
+production_line: caol-ila-traditional
+produced_at_distillery: caol-ila
+bottled_by: caol-ila
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2002                  # Launched as part of Diageo's
+                                    # Hidden Malts series in 2002,
+                                    # introducing the Caol Ila 12
+                                    # Year Old as a permanent core
+                                    # single-malt release. Continuous
+                                    # availability since [1].
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: false           # 43% ABV places the release
+                                    # below the 46% NCF-threshold
+                                    # convention; chill-filtered per
+                                    # industry-typical practice at
+                                    # this presentation tier (see
+                                    # educational/chill-filtering).
+natural_colour: false               # Caramel colouring used per
+                                    # industry-typical practice at
+                                    # this tier (consistent with
+                                    # the Diageo core-release
+                                    # presentation convention also
+                                    # used for Lagavulin 16).
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                # Predominant cask type. Caol Ila
+                                    # 12 is principally ex-bourbon-
+                                    # matured, consistent with the
+                                    # Diageo cask strategy for
+                                    # heavily-peated Islay spirit at
+                                    # the core-release tier.
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Ex-bourbon barrels predominate. The 12-year maturation
+      sits in cask-extraction phase 2 per
+      educational/cask-maturation-kinetics, allowing the peated
+      character to develop bourbon-derived vanilla and oak-
+      lactone notes alongside the underlying Islay smoke
+      profile.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 50.00                     # Approximate UK retail at recent
+                                    # release pricing.
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Caol Ila's flagship core release, 12 years matured
+  predominantly in ex-bourbon barrels and bottled at 43% ABV [1].
+  Launched in 2002 as part of Diageo's Hidden Malts series — the
+  marketing programme that introduced previously-blend-only
+  Diageo malts (Caol Ila, Clynelish, Glen Elgin) to the
+  single-malt category at scale — the Caol Ila 12 Year Old has
+  been continuously available since. Heavily peated at the
+  Port-Ellen-Maltings-supplied 30-35 ppm spec range; the spirit's
+  character is conventionally described as cleaner and less
+  briny than the south-coast Islay producers (Lagavulin,
+  Laphroaig, Ardbeg) at similar peating levels, attributed in
+  producer materials to the tall lantern stills and the
+  east-coast site exposure. Chill-filtered with caramel
+  colouring per industry-typical practice at this ABV tier.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/our-whisky-collection/caol-ila/
+    accessed: 2026-05-17
+    notes: |
+      Diageo's Malts.com page for Caol Ila. Used for ABV
+      (43%), age (12 years), and the 2002 Hidden Malts launch
+      context.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-17
+contributors: []

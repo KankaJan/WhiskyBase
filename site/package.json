@@ -1,0 +1,28 @@
+{
+  "name": "whiskybase-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static-site frontend for the WhiskyBase Scotch whisky reference. MIT-licensed code; consumes the CC-BY-SA-4.0 data layer at /data/.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "marked": "^14.1.0",
+    "yaml": "^2.6.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "typescript": "^5.6.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

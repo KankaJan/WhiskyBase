@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntityCounts } from '../lib/data';
+
+const counts = getEntityCounts();
+---
+
+<BaseLayout
+  title="Home"
+  description="An open-source educational reference for Scotch whisky production, tasting, and analysis."
+>
+  <article class="content">
+    <h1>WhiskyBase</h1>
+
+    <p class="lede">
+      A structured, fact-grounded reference for how Scotch whisky
+      is made and how specific releases compare.
+    </p>
+
+    <section>
+      <h2>Currently populated</h2>
+      <table class="populated">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Description</th>
+            <th class="count-col">Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {counts.map((c) => (
+            <tr>
+              <td><a href={c.href}>{c.topic}</a></td>
+              <td>{c.description}</td>
+              <td class="count-col">{c.count}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="hint">
+        Only the distilleries section is render-complete in this
+        first scaffolding iteration. Other entity-type pages
+        follow in subsequent iterations per the implementation
+        sequencing in <code>docs/build-pipeline-plan.md</code>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .content {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  h1 {
+    font-size: 2rem;
+    margin: 0 0 0.3rem;
+    font-weight: 600;
+  }
+  .lede {
+    font-size: 1.05rem;
+    color: var(--muted-color);
+    margin: 0 0 1.5rem;
+  }
+  .populated {
+    width: 100%;
+  }
+  .count-col {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    width: 4rem;
+  }
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.875rem;
+  }
+</style>

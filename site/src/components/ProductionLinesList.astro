@@ -1,0 +1,54 @@
+---
+import { loadProductionLine } from '../lib/data';
+
+interface Props {
+  lines: string[];
+}
+
+const { lines } = Astro.props;
+
+const linesData = lines.map((slug) => {
+  const line = loadProductionLine(slug);
+  return { slug, line };
+});
+---
+
+<section>
+  <h2>Production lines</h2>
+  <ul class="line-list">
+    {linesData.map(({ slug, line }) => (
+      <li>
+        <a href={`/production-lines/${slug}/`}><strong>{line?.name ?? slug}</strong></a>
+        {line?.description && (
+          <div class="line-description">
+            {line.description.split('\n')[0]?.slice(0, 200)}{line.description.length > 200 ? '…' : ''}
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+  <p class="hint">
+    Production line pages render in a subsequent iteration; the
+    links above currently resolve to placeholders.
+  </p>
+</section>
+
+<style>
+  .line-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+  }
+  .line-list li {
+    margin: 0.5rem 0;
+  }
+  .line-description {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+    margin-top: 0.15rem;
+  }
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.875rem;
+  }
+</style>

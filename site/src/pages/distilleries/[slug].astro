@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntityHeader from '../../components/EntityHeader.astro';
+import LocationBlock from '../../components/LocationBlock.astro';
+import OwnershipHistory from '../../components/OwnershipHistory.astro';
+import EquipmentSpec from '../../components/EquipmentSpec.astro';
+import SourcesBlock from '../../components/SourcesBlock.astro';
+import ProductionLinesList from '../../components/ProductionLinesList.astro';
+import { loadDistilleries, loadDistillery } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const distilleries = loadDistilleries();
+  return distilleries.map((d) => ({
+    params: { slug: d.id },
+  }));
+}
+
+const { slug } = Astro.params;
+if (!slug) {
+  throw new Error('Missing slug param');
+}
+
+const distillery = loadDistillery(slug);
+if (!distillery) {
+  throw new Error(`Distillery not found: ${slug}`);
+}
+---
+
+<BaseLayout
+  title={distillery.name}
+  description={distillery.description?.split('\n')[0]}
+>
+  <article class="distillery-page">
+    <EntityHeader
+      name={distillery.name}
+      entityType="Distillery"
+      status={distillery.status}
+      confidence={distillery.confidence}
+      lastReviewed={distillery.last_reviewed}
+    />
+
+    {distillery.description && (
+      <section class="description">
+        <p>{distillery.description}</p>
+      </section>
+    )}
+
+    <LocationBlock
+      country={distillery.country}
+      region={distillery.region}
+      subRegion={distillery.sub_region}
+      locality={distillery.locality}
+      coordinates={distillery.coordinates}
+    />
+
+    {distillery.founded && (
+      <section>
+        <h2>Timeline</h2>
+        <dl>
+          <dt>Founded</dt>
+          <dd>{distillery.founded}</dd>
+          {distillery.first_spirit && (
+            <>
+              <dt>First spirit</dt>
+              <dd>{distillery.first_spirit}</dd>
+            </>
+          )}
+        </dl>
+        {distillery.mothballed_periods && distillery.mothballed_periods.length > 0 && (
+          <>
+            <h3>Mothballed periods</h3>
+            <ul class="mothballed">
+              {distillery.mothballed_periods.map((p) => (
+                <li>
+                  <span class="years">{p.from ?? '?'}–{p.to ?? 'ongoing'}</span>
+                  {(p.note || p.notes) && (
+                    <span class="note"> — {p.note ?? p.notes}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+    )}
+
+    {distillery.ownership && (
+      <OwnershipHistory ownership={distillery.ownership} />
+    )}
+
+    <EquipmentSpec
+      waterSource={distillery.water_source}
+      mashTun={distillery.mash_tun}
+      washbacks={distillery.washbacks}
+      stills={distillery.stills}
+      warehouses={distillery.warehouses}
+      annualCapacityLpa={distillery.annual_capacity_lpa}
+    />
+
+    {distillery.production_lines && distillery.production_lines.length > 0 && (
+      <ProductionLinesList lines={distillery.production_lines} />
+    )}
+
+    {distillery.distinctive_features && distillery.distinctive_features.length > 0 && (
+      <section>
+        <h2>Distinctive features</h2>
+        <ul>
+          {distillery.distinctive_features.map((ref) => (
+            <li>
+              <a href={`/concept/${ref}/`}>{ref}</a>
+              <span class="hint"> — concept reference (page rendering deferred)</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {distillery.sources && distillery.sources.length > 0 && (
+      <SourcesBlock sources={distillery.sources} />
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .distillery-page {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+  }
+  .description p {
+    margin: 0.5rem 0;
+    white-space: pre-wrap;
+  }
+  .mothballed {
+    list-style: none;
+    padding: 0;
+    margin: 0.4rem 0;
+  }
+  .mothballed li {
+    margin: 0.3rem 0;
+  }
+  .years {
+    color: var(--muted-color);
+    font-variant-numeric: tabular-nums;
+  }
+  .note,
+  .hint {
+    color: var(--muted-color);
+    font-size: 0.9rem;
+  }
+</style>
