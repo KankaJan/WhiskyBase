@@ -1,4 +1,6 @@
 ---
+import ConfidenceBadge from './ConfidenceBadge.astro';
+
 interface Props {
   name: string;
   entityType: string;
@@ -16,7 +18,7 @@ const { name, entityType, status, confidence, lastReviewed } = Astro.props;
   <p class="meta">
     {status && <span>Status: <strong>{status}</strong></span>}
     {confidence && (
-      <span> · Confidence: <strong class={`confidence-${confidence}`}>{confidence}</strong></span>
+      <span> · Confidence: <ConfidenceBadge level={confidence} /></span>
     )}
     {lastReviewed && <span> · Last reviewed {lastReviewed}</span>}
   </p>
@@ -44,8 +46,4 @@ const { name, entityType, status, confidence, lastReviewed } = Astro.props;
     color: var(--muted-color);
     font-size: 0.875rem;
   }
-  .confidence-high { color: var(--confidence-high); }
-  .confidence-medium { color: var(--confidence-medium); }
-  .confidence-low { color: var(--confidence-low); }
-  .confidence-stub { color: var(--confidence-stub); }
 </style>

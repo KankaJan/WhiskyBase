@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 9 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 12 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -348,8 +348,47 @@ back rather than absorbing it into the data model.
   the 2 remaining IB-stub forward refs** from
   signatory-caol-ila-stub; introduced the Distillers Edition
   cross-distillery series pattern across a second populated
-  distillery — Lagavulin DE was the first).
-- 12 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  distillery — Lagavulin DE was the first),
+  Glenkinchie (medium — East Lothian, Diageo-owned, founded 1825 by
+  the Rate brothers as the Milton Distillery and licensed under the
+  Glenkinchie name 1837; **first populated Lowland-region
+  distillery in the data set**, exercising the formal SWA Lowlands
+  designation under the Scotch Whisky Regulations 2009; **first
+  populated distillery with `condenser: worm_tub`** — a single
+  cast-iron worm tub cools both stills, the producer-attributed
+  "largest wash still in the industry" at a published 30,963 L
+  capacity; 1853-1881 sawmill-conversion mothballing exercises an
+  unusually long single mothballed period; resolves the
+  forward ref from `equipment/worm-tub` to Glenkinchie. Diageo's
+  "Lowland Home of Johnnie Walker" since the 2020 £185M
+  brand-home redevelopment),
+  Auchentoshan (medium — Dalmuir / Clydebank, Suntory Global Spirits-
+  owned, founded 1817 by John Bulloch as the Duntocher Distillery and
+  licensed under the Auchentoshan name 1823; **first populated
+  distillery with `distillation.regime: triple` as the default**
+  and the **only Scottish distillery whose entire output is
+  triple-distilled** (the Hazelburn line at Springbank is
+  triple-distilled but coexists with double and 2.5x lines at
+  that site); second populated Lowland-region distillery,
+  pair-comparable with Glenkinchie on regime (triple vs double),
+  cask programme (double-cask sherry vs ex-bourbon-only) and
+  output direction (single-malt-led vs blend-supply-led);
+  1941-1948 wartime mothballing from German bomb damage during
+  the Clyde shipyard raids),
+  Laphroaig (medium — south-coast Islay, Suntory Global Spirits-
+  owned, founded 1815 by the Johnston brothers; third populated
+  south-Islay heavily-peated entry alongside Lagavulin and
+  Caol Ila — completes the "Kildalton" cluster minus Ardbeg;
+  **asymmetric 3-wash + 4-spirit-still configuration** with
+  unusually tall ascending lyne arms; **two-stream malt supply**
+  blending ~20% on-site floor-malted barley (50-60 ppm) with
+  ~80% Simpsons Malt commercial supply (45 ppm) — second
+  populated floor-malting practitioner after Highland Park;
+  internal supply chain disclosed for cask supply: ex-bourbon
+  casks from sister Suntory Global Spirits site Maker's Mark in
+  Kentucky; Royal Warrant from HRH The Prince of Wales / King
+  Charles III since 1994).
+- 17 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -362,7 +401,22 @@ back rather than absorbing it into the data model.
   1 Glenfarclas (medium — single line, unpeated Speyside, sherry-
   cask-led house style, direct-fired distillation throughout),
   1 Caol Ila (medium — heavily-peated Islay default at 30-35 ppm
-  spec; Port Ellen Maltings supply chain shared with Lagavulin).
+  spec; Port Ellen Maltings supply chain shared with Lagavulin),
+  1 Glenkinchie (medium — unpeated Lowland default; the project's
+  first `peat_origin: none` worm-tub production line and the
+  ~90% blend-supply / 10% single-malt split that anchors the
+  Johnnie Walker Lowland component),
+  1 Auchentoshan (medium — unpeated Lowland default with
+  `regime: triple` and producer-disclosed third-pass spirit
+  strength of 81% ABV; the project's first `regime: triple`
+  default line; single-malt-led output direction),
+  1 Laphroaig (medium — heavily-peated south-Islay default
+  with two-stream malt supply: 20% on-site floor-malted at
+  50-60 ppm + 80% Simpsons commercial supply at 45 ppm,
+  blended into the mash; producer-disclosed late spirit cuts
+  at 45 / 60 minutes; 63.5% ABV fill strength; predominantly
+  Maker's Mark ex-bourbon maturation through the
+  Suntory Global Spirits internal supply chain).
 - 45 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
   Whisky), 8 educational (peating-measurement-methods,
   aromatic-compounds-in-whisky, copper-conversation,
@@ -398,10 +452,11 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 31 bottlings: 31 working entries (10 Bruichladdich/Harris + 3
+- 37 bottlings: 37 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
-  2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 worked-example
-  IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
+  2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
+  2 Auchentoshan + 2 Laphroaig + 2 worked-example IB releases:
+  `cadenheads-bunnahabhain` + `signatory-caol-ila`).
   **No IB pressure-test stubs remain.** Both IB-release entries
   are now worked-example representations rather than placeholders,
   with Cadenhead's house defaults (500ml, Cask Strength /
@@ -509,30 +564,28 @@ in the sandbox; both work on the developer host).
 
 **Next priorities, in order of unblock value:**
 
-1. **Confidence-rubric tooltip on entity pages** (TODO.md §Frontend
-   follow-ups). The confidence field renders as inline coloured text
-   in EntityHeader with a native `title=""` tooltip — limited and
-   mobile-hostile. The build-pipeline-plan §Data-display decisions
-   specified an accessible popover with the per-level explanation
-   and a link to the rendered source-conflict-policy reference page
-   (now live at `/reference/source-policy/`). Implement once as a
-   shared `<ConfidenceBadge>` component.
-2. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
-   The 2026-05-17 stub-supersession overwrote the file with empty
-   YAML; the resolver ignores it but the file should be deleted
-   from the Windows shell to fully clean up.
-3. **Cross-cutting research follow-ups**:
-   - Ground the 10 Russell-textbook citations (currently hedged
-     "page refs TBA") against actual page numbers when a copy
-     of Russell ed. 2014 becomes available.
-   - INAO / MIPAAF / Consejo Regulador specific-document URLs
-     (currently citing institutional homepages) — research-time
-     work requiring stable web access.
-4. **Data-layer growth.** With the rendering pipeline complete,
-   the limiting factor on the site's usefulness is now the data
-   density. The 10th distillery is the natural next entry;
-   Glenfiddich and Macallan are the obvious gaps in the
-   Speyside coverage.
+1. **Russell-textbook page-reference grounding** — 14 concept
+   entries currently hedged `confidence: medium` with "page refs
+   TBA" against Russell ed. 2014, clustered across 6 chapters
+   (malting / mashing / fermentation / distillation / maturation /
+   bottling). User has a digital copy to upload; grounding work
+   is in flight pending the PDF drop.
+2. **`concept/practice/triple-distillation`** (or `equipment/`).
+   Both Auchentoshan and the Hazelburn line at Springbank exercise
+   triple distillation as their default regime; a concept page
+   would consolidate the chemistry / spirit-strength / flavour-
+   precursor-stripping framework that the producer materials only
+   touch on loosely. Cross-references already structurally
+   warranted from both production-line entries.
+3. **Data-layer growth — 12th distillery.** With both Lowlands
+   populated, the remaining obvious gaps: a Speyside heavyweight
+   (Glenfiddich, Macallan, or Glenlivet — Glenfiddich the cleanest
+   source case); a heavily-peated southern-Islay site (Laphroaig
+   or Ardbeg) to complement Lagavulin / Caol Ila.
+4. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
+   The 2026-05-17 stub-supersession overwrote the file with
+   empty YAML; the resolver ignores it but the file should be
+   deleted from the Windows shell to fully clean up.
 
 **Full active queue:** see `TODO.md`.
 

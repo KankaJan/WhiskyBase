@@ -1,0 +1,171 @@
+# =============================================================================
+# Auchentoshan Three Wood (premium NAS, three-cask sequence)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing premium NAS release with
+# producer-disclosed three-cask sequence (bourbon → oloroso → PX).
+# =============================================================================
+# **First populated bottling exercising a three-stage primary
+# maturation sequence** (bourbon → oloroso → PX), distinct from the
+# Distillers Edition / finish pattern (primary + short finish) and
+# from the parallel double-cask pattern. The three-cask sequence
+# is a project-data-structural addition to the maturation
+# vocabulary.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: auchentoshan-three-wood
+name: Auchentoshan Three Wood
+production_line: auchentoshan
+produced_at_distillery: auchentoshan
+bottled_by: auchentoshan
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                      # Continuously available core
+                                        # release; introduced in the
+                                        # 1990s per trade-press
+                                        # references but the exact
+                                        # introduction year is not
+                                        # pinned to a primary source.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0
+age_statement: null                     # NAS bottling — the three-
+                                        # cask sequence is the
+                                        # disclosed structural
+                                        # feature rather than an
+                                        # age statement.
+vintage: null
+cask_strength: false
+non_chill_filtered: false               # 43% ABV places the release
+                                        # below the 46% NCF-threshold
+                                        # convention; chill-filtered
+                                        # per industry-typical
+                                        # practice at this
+                                        # presentation tier.
+natural_colour: false
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      First-stage maturation in ex-bourbon American oak.
+      Producer describes the Three Wood as
+      "first matured in ex-bourbon casks, then finished in
+      Spanish Oloroso sherry casks, and finally in Pedro
+      Ximénez sherry casks" — a three-stage sequence rather
+      than a primary-plus-finish pattern [1]. Specific
+      duration in each stage not disclosed.
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      Second-stage maturation in Spanish oloroso sherry oak.
+      Producer's "finished in" terminology is loose; the
+      project records this as a second maturation stage
+      rather than as a `finish:` block because the producer
+      describes three sequential cask exposures rather than
+      a short terminal finish after primary maturation.
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      Third-stage maturation in Pedro Ximénez (PX) sherry
+      oak. The project's cask-type vocabulary does not yet
+      have a separate `px-sherry-butt` entry — PX shares
+      construction with oloroso but is sweeter and darker
+      due to PX's higher residual-sugar content. Recorded
+      here as `oloroso-sherry-butt` with the PX-specific
+      character noted explicitly; see TODO §Schema work
+      §Cask schema for a possible future split. The producer
+      sometimes describes this stage as a finish; the
+      project keeps the three stages on the maturation list
+      for consistency with the producer's "Three Wood"
+      framing.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 60.00                         # Approximate UK retail at
+                                        # recent release pricing
+                                        # (2024).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Auchentoshan Three Wood is a NAS premium core release matured
+  sequentially through three different cask types: ex-bourbon
+  American oak first, then Spanish oloroso sherry oak, then Pedro
+  Ximénez (PX) sherry oak [1]. Bottled at 43 % ABV, chill-filtered
+  with caramel colouring per industry-typical practice at this
+  presentation tier. The three-cask sequence is the structural
+  feature the release is built on; producer materials describe it
+  in those terms. The PX stage is the differentiating element —
+  PX sherry's higher residual-sugar load (PX is bottled
+  approximately 400-500 g/L residual sugar, versus oloroso's
+  near-dry profile) makes the PX-cask contribution distinctly
+  sweeter and darker than the oloroso stage that precedes it.
+  In the project's voice the release is a triple-distilled
+  Lowland NAS in a three-stage maturation sequence; the
+  light-bodied triple-distilled base spirit is the substrate
+  that the heavily-flavoured PX-cask sweetness sits on top of.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.auchentoshan.com/core-range/three-wood
+    accessed: 2026-05-18
+    notes: |
+      Producer page for the Auchentoshan Three Wood. Used
+      for ABV (43%), NAS status, and the three-cask
+      sequence description (bourbon → oloroso → PX).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

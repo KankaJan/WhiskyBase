@@ -1,0 +1,219 @@
+# =============================================================================
+# Glenkinchie Distillers Edition (annual recurring, Amontillado finish)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — annual recurring release with stable
+# presentation conventions across vintages; the project entry
+# records the release pattern rather than a specific vintage's
+# cask numbers.
+# =============================================================================
+# Third populated bottling exercising the Diageo Distillers Edition
+# cross-distillery programme (after Lagavulin Distillers Edition and
+# Caol Ila Distillers Edition). The DE programme applies a
+# distillery-specific secondary fortified-wine finish over the
+# distillery's core spirit; Glenkinchie's secondary cask is
+# Amontillado-sherry-seasoned American oak.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenkinchie-distillers-edition
+name: Glenkinchie Distillers Edition (Amontillado finish)
+production_line: glenkinchie
+produced_at_distillery: glenkinchie
+bottled_by: glenkinchie
+bottler_type: distillery
+bottler_series: null                  # Distillers Edition is a
+                                      # cross-distillery Diageo
+                                      # programme rather than a
+                                      # bottler-series modelling
+                                      # target; the bottler_series
+                                      # field is reserved for IB
+                                      # bottler-series structures.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                    # Annual recurring release; each
+                                      # bottling carries its own
+                                      # distillation / bottling
+                                      # vintages on the label.
+                                      # Programme has run continuously
+                                      # since the late 1990s for the
+                                      # original Classic Malts
+                                      # distilleries [1][2].
+discontinued: false
+availability: core                  # Continuously available as
+                                      # the annual recurring Lowland
+                                      # entry in the Diageo
+                                      # cross-distillery Distillers
+                                      # Edition programme [1][2].
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0
+age_statement: null                   # Distillers Edition releases
+                                      # are typically NAS-equivalent —
+                                      # the label discloses vintages
+                                      # (distillation + bottling
+                                      # year) rather than an age
+                                      # statement. The base spirit is
+                                      # commonly drawn from
+                                      # approximately 12-year-old
+                                      # Glenkinchie before the
+                                      # secondary cask period.
+vintage: null
+cask_strength: false
+non_chill_filtered: false
+natural_colour: false
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                  # Base spirit drawn from the
+                                      # core ex-bourbon Glenkinchie
+                                      # programme before the
+                                      # secondary cask period.
+    duration_years: null              # Typically ~12 years before
+                                      # transfer to the secondary
+                                      # casks per producer description
+                                      # of the Distillers Edition
+                                      # method [1].
+    cooperage: null
+    notes: |
+      Primary maturation in ex-bourbon refill American oak —
+      the same base as the Glenkinchie 12 Year Old core
+      release. Specific bourbon-cask provenance and
+      proportions not disclosed.
+
+finish:
+  cask_type: oloroso-sherry-butt      # Diageo's Distillers Edition
+                                      # casks are recharred American
+                                      # oak hogsheads "seasoned" with
+                                      # Amontillado sherry for the
+                                      # finish-cask period (a
+                                      # programme-specific build
+                                      # rather than authentic
+                                      # ex-bodega Amontillado casks).
+                                      # The project's cask-type
+                                      # vocabulary uses
+                                      # oloroso-sherry-butt as the
+                                      # broader oxidative-style
+                                      # parent; Amontillado is an
+                                      # oxidative oloroso-style after
+                                      # the flor dies. The
+                                      # bespoke-cask construction is
+                                      # noted explicitly in the
+                                      # description.
+  duration_months: null               # Typically a few months in the
+                                      # secondary cask; producer
+                                      # describes the secondary
+                                      # period as a "finish" rather
+                                      # than a full second
+                                      # maturation [2].
+  duration_years: null
+  cooperage: null
+  notes: |
+    The Distillers Edition secondary casks are recharred American
+    oak with new American oak heads, "seasoned" with Amontillado
+    sherry for a finite period before being filled with the base
+    Glenkinchie spirit [2]. The finish is therefore not an
+    authentic ex-bodega Amontillado cask in the way that an
+    ex-bodega oloroso-sherry-butt would be; the wine-cask
+    contribution is producer-controlled bespoke seasoning over a
+    bourbon-cask body. See cask-maturation-kinetics for the
+    extraction-phase framework that applies to this short-finish
+    pattern.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 75.00                       # Approximate UK retail at
+                                      # recent release pricing
+                                      # (2023-2024 vintages).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Glenkinchie Distillers Edition is the Lowland entry in
+  Diageo's cross-distillery Distillers Edition programme — an
+  annual recurring release that finishes the distillery's core
+  spirit in a programme-bespoke secondary cask. For Glenkinchie
+  the secondary cask is American oak recharred and seasoned with
+  Amontillado sherry; the finish period is short (a finite
+  secondary-cask exposure rather than a full second maturation)
+  [1][2]. Bottled at 43% ABV without an age statement; vintages
+  (distillation year + bottling year) are disclosed on the label.
+  The project entry treats the Distillers Edition as a
+  programme-level release pattern: each annual vintage has
+  specific cask details that are not modelled at the entry level
+  here. The same Distillers Edition programme pattern is recorded
+  for Caol Ila (Moscatel finish) and Lagavulin (PX sherry
+  finish) — the three populated Distillers Edition entries
+  exercise three secondary-cask styles against a common
+  programme architecture. Glenkinchie's Amontillado finish is
+  the lightest of the three secondary styles (Amontillado is the
+  driest of the three, having lost its flor and oxidatively
+  aged); the marriage of the light Lowland base spirit with
+  the lightest secondary cask makes the Glenkinchie DE the most
+  restrained of the three in the comparative cross-distillery
+  pattern.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/glenkinchie
+    accessed: 2026-05-18
+    notes: |
+      Diageo's Malts.com page for Glenkinchie. Used for the
+      Distillers Edition Amontillado-finish characterisation
+      and 43% ABV.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whisky Magazine / The Whiskey Wash Distillers Edition
+      programme coverage. The trade press has documented the
+      Distillers Edition bespoke recharred-American-oak +
+      sherry-seasoning construction across multiple Diageo
+      distilleries; the same programme methodology applies
+      to Glenkinchie DE (Amontillado), Caol Ila DE (Moscatel),
+      and Lagavulin DE (PX).
+    url: https://thewhiskeywash.com/scotch-whiskey/whisky-review-glenkinchie-distillers-edition-2023/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference for the programme-level
+      cask construction.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

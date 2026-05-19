@@ -128,16 +128,27 @@ related_concepts:
 
 # --- Per-kind block ---------------------------------------------------------
 practice:
-  adopted_by: []                       # Distillery slugs not yet
-                                       # populated for the listed
-                                       # practitioners; only Springbank
-                                       # currently has a populated
-                                       # distillery entry, with floor
-                                       # malting documented there. Other
-                                       # distilleries (Highland Park,
-                                       # Bowmore, Laphroaig, Balvenie,
-                                       # Kilchoman) will populate this
-                                       # list when their entries land.
+  adopted_by:                          # Populated distillery
+                                       # practitioners. The wider
+                                       # list of named practitioners
+                                       # (Bowmore, Balvenie,
+                                       # Kilchoman) sits in the
+                                       # body text above; only
+                                       # distilleries with their
+                                       # own entries are listed
+                                       # here per the resolver's
+                                       # cross-ref convention.
+    - springbank                       # 100% floor-malted (most
+                                       # extensive among current
+                                       # operators).
+    - highland-park                    # ~20% floor-malted with
+                                       # commercial supplementation.
+    - laphroaig                        # ~20% on-site floor malting
+                                       # with in-house peat kilns
+                                       # at 50-60 ppm, supplemented
+                                       # with ~80% Simpsons Malt
+                                       # commercial supply at
+                                       # ~45 ppm.
   consequences: |
     Producer-attributed character differences in new make spirit
     are claimed by floor-malting practitioners but are not
@@ -163,23 +174,24 @@ sources:
     notes: |
       Reference cited from the project's literature catalogue
       (docs/bibliography.md). Specific page references to be
-      added when consulted.
+      added when consulted against the digital copy.
 
   - id: 2
     type: trade_publication
-    url: https://www.maltwhiskyyearbook.com/
-    accessed: 2026-05-16
+    citation: |
+      Trade-press references for the current-practitioner list
+      (Springbank / Highland Park / Bowmore / Laphroaig / Balvenie /
+      Kilchoman); compiled from scotchwhisky.com Whiskypedia and
+      The Malt Whisky Yearbook entries.
+    accessed: 2026-05-18
     notes: |
-      The Malt Whisky Yearbook (annual). Distillery production
-      summaries in the Yearbook record on-site malting status
-      where disclosed; specific percentages cited above are
-      drawn from generally-circulated trade reporting and
-      should be cross-checked against the most recent Yearbook
-      edition and producer disclosures.
+      The named-practitioner list is widely cited across trade
+      references; specific percentages and operational details
+      fluctuate per distillery economics and ownership policy.
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
 confidence: medium
-last_reviewed: 2026-05-16
+last_reviewed: 2026-05-18
 contributors: []

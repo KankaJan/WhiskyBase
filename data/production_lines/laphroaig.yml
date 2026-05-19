@@ -1,0 +1,265 @@
+# =============================================================================
+# Laphroaig (default heavily-peated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity, heavily-peated
+# default and broad production characteristics are producer-attributed
+# and well-grounded. Specific spirit-cut yeast strain and exact
+# blend proportions between floor-malted and Simpsons-Maltings
+# malt streams hedged pending disclosure.
+# =============================================================================
+# First populated production line exercising the two-stream malt
+# supply pattern (on-site floor-malted + commercial-maltster-
+# delivered) blended into the same mash.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: laphroaig
+name: Laphroaig (default heavily-peated)
+distillery: laphroaig
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1815
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: mixed                       # **Two-stream malt supply**:
+                                        # ~20% from on-site floor
+                                        # malting, ~80% from
+                                        # Simpsons Malt commercial
+                                        # maltster on the Scottish
+                                        # mainland. Blended into the
+                                        # mash rather than processed
+                                        # separately [1][3].
+  maltster: Simpsons Malt (~80%) + Laphroaig floor maltings (~20%)
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: malt_delivered
+      value:
+        - 50
+        - 60                            # Producer-attributed
+                                        # on-site floor-malted
+                                        # spec: 50-60 ppm with the
+                                        # cold-smoking peat-kiln
+                                        # process (10-12 hours peat
+                                        # smoke + 15-18 hours hot
+                                        # air drying) [1][3].
+      unit: ppm
+      method: unspecified
+      compounds: unspecified          # Trade-press references
+                                        # use "ppm" broadly for the
+                                        # total phenolic load; no
+                                        # specific HPLC compound
+                                        # decomposition disclosed.
+                                        # See
+                                        # methodology/scotch-whisky-published-ppm
+                                        # for the general
+                                        # methodology-disclosure
+                                        # pattern.
+      source_id: 3
+      notes: |
+        On-site floor-malted barley, peated to 50-60 ppm using
+        local Islay peat (heather / lichen / moss / old sea
+        vegetation per the producer's description) [1].
+    - stage: malt_delivered
+      value: 45
+      unit: ppm
+      method: unspecified
+      compounds: unspecified
+      source_id: 3
+      notes: |
+        Simpsons Malt commercial supply at ~45 ppm — the
+        industry-standard Islay-peat spec used by several of
+        the south-Islay distilleries [3].
+  peat_origin: local                    # On-site floor-malting peat
+                                        # is cut from Islay
+                                        # (Castlehill / Glenmachrie /
+                                        # similar Islay-bog sources);
+                                        # the Simpsons supply uses
+                                        # mainland-sourced peat at
+                                        # the maltster level. The
+                                        # `local` enum captures the
+                                        # on-site stream as the
+                                        # primary characterising
+                                        # influence.
+  notes: |
+    Laphroaig blends two peated malt streams: on-site floor-malted
+    barley at 50-60 ppm (~20%) and Simpsons Malt commercial supply
+    at ~45 ppm (~80%). The resulting mash bed is at an effective
+    ppm somewhere in between the two figures, weighted by the
+    proportional split, but the project does not compute the
+    blended figure — both source-stream figures are recorded
+    separately per the project's source-disclosure convention.
+    The producer-attributed cold-smoking process (10-12 hours
+    smoke + 15-18 hours drying, with the malt suspended ~16 feet
+    above the peat fire) is the equipment-level basis for
+    Laphroaig's characteristic phenolic profile [1].
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 70
+  hours_max: 75                         # Producer describes "the
+                                        # next two or so days" for
+                                        # fermentation; trade-press
+                                        # sources specify 72 hours
+                                        # consistently. Recording a
+                                        # narrow range to bracket
+                                        # the producer phrasing
+                                        # rather than a single point
+                                        # figure [1][3].
+  hours_typical: 72
+  yeast: null
+  notes: |
+    ~72-hour fermentation per trade-press references; the long
+    fermentation supports development of fruity-ester
+    flavour-precursor compounds that survive the peat-smoke
+    background. See glossary/fermentation for the standing
+    framework on long-fermentation chemistry.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double
+  spirit_cut:
+    start_abv: 35.0                     # Producer-attributed
+                                        # low-wines strength at the
+                                        # end of the first
+                                        # distillation: 35% ABV [1].
+    end_abv: 63.5                       # Producer-attributed fill
+                                        # strength at cask filling
+                                        # — the spirit is diluted
+                                        # to 63.5% ABV before cask
+                                        # entry [1]. Note this is
+                                        # the fill strength, not the
+                                        # new-make spirit strength
+                                        # off the still.
+    notes: |
+      Producer-disclosed first cut at 45 minutes into the
+      second-distillation run (claimed by the producer as the
+      latest first cut in the industry), second cut at 60
+      minutes [1]. The late first cut strips out the sweeter
+      heads while retaining the tarry / herbal / peaty middle
+      cut. New-make spirit-still output strength is not
+      disclosed; the 63.5% figure is the post-dilution fill
+      strength.
+  new_make_abv: null                    # Spirit-still output ABV
+                                        # before cask-fill dilution
+                                        # is not disclosed in
+                                        # producer materials.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: 63.5         # Producer-disclosed cask-
+                                        # fill strength [1].
+typical_cask_program:
+  - bourbon-barrel                      # Producer-disclosed:
+                                        # "Nearly all our whisky is
+                                        # at least partially matured
+                                        # in ex-Bourbon casks sourced
+                                        # from Maker's Mark in
+                                        # Kentucky" [1]. The
+                                        # Maker's-Mark internal-
+                                        # supply-chain relationship
+                                        # within the Suntory Global
+                                        # Spirits portfolio is a
+                                        # distinctive sourcing
+                                        # disclosure.
+  - oloroso-sherry-butt                 # Secondary cask exposure
+                                        # used in the Quarter Cask
+                                        # / Triple Wood / 1815
+                                        # Legacy expressions and
+                                        # the Càirdeas / Cairdeas
+                                        # annual releases.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - laphroaig-10
+  - laphroaig-quarter-cask
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Laphroaig default production line is the distillery's sole
+  modelled production stream: a heavily-peated south-Islay malt
+  produced through a 3-wash + 4-spirit-still arrangement with
+  unusually tall ascending lyne arms [1][3]. Malt is supplied
+  through a two-stream blend: ~20% from the on-site floor
+  malting (peated to 50-60 ppm using local Islay peat) and ~80%
+  from Simpsons Malt commercial supply (peated to ~45 ppm with
+  mainland-sourced peat at the maltster level), blended into the
+  mash. The mash runs at 63.5 °C in a stainless-steel full-lauter
+  tun, yielding ~10,500 L of wort per mash. Fermentation runs
+  ~72 hours in stainless-steel washbacks. Double distillation
+  with a producer-attributed late first cut (45 minutes into the
+  second-distillation run, claimed as the industry's latest cut)
+  and second cut at 60 minutes strips out the sweeter heads
+  while retaining the characteristic tarry / herbal / peaty middle
+  cut. Cask-fill strength is 63.5% ABV. The maturation programme
+  is predominantly ex-bourbon, sourced from the sister Beam
+  Suntory / Suntory Global Spirits bourbon distillery Maker's Mark
+  in Kentucky [1]. The on-site warehouse environment — sea-spray-
+  saturated coastal air — contributes the producer-attributed
+  "maritime" component of the Laphroaig flavour profile.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: https://scotchwhisky.com/whiskypedia/1924/laphroaig/
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.laphroaig.com/how-to-make-whisky
+    accessed: 2026-05-18
+    notes: |
+      Laphroaig's producer-published process page. Used for
+      the production-process description (water source, mashing
+      temperature, ~72-hour fermentation, late spirit cut at
+      45 / 60 minutes, 63.5% ABV fill strength, Maker's Mark
+      cask supply, ascending-lyne-arm description, on-site
+      floor-malting peat-kiln process).
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whiskypedia entry for Laphroaig at scotchwhisky.com.
+    url: https://scotchwhisky.com/whiskypedia/1924/laphroaig/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference for the production-line
+      identity and historical-context details.
+
+  - id: 3
+    type: trade_publication
+    citation: |
+      Laphroaig distillery technical specification entry,
+      whisky.com whisky database.
+    url: https://www.whisky.com/whisky-database/distilleries/details/laphroaig.html
+    accessed: 2026-05-18
+    notes: |
+      Trade-database source for the 20%-on-site /
+      80%-Simpsons malt split, peating spec (50-60 ppm
+      on-site / 45 ppm Simpsons), fermentation duration
+      (72 hours), and washback configuration.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

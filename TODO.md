@@ -631,7 +631,15 @@ Implementation notes for the eventual frontend pass:
   needs to be implemented (see build-pipeline-plan
   §Implementation sequencing item 8 — reference pages).
 
-Status: queued.
+Status: **LANDED 2026-05-18**. `<ConfidenceBadge>` component
+implemented at `site/src/components/ConfidenceBadge.astro` with
+keyboard-accessible popover (Tab to focus, Enter/Space/click to
+open, Escape to close, click-outside to dismiss), ARIA
+`aria-expanded` / `aria-controls` plumbing, and a link to
+`/reference/source-policy/`. Used in `EntityHeader.astro`,
+`pages/distilleries/index.astro`, and
+`pages/production-lines/index.astro`. Per-level rubric is the
+single source of truth inside the component.
 
 ---
 
@@ -659,6 +667,119 @@ Status: queued.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-18** Laphroaig (12th distillery, third south-Islay
+  heavily-peated). 1 distillery + 1 production line + 2
+  bottlings + 1 concept-page cross-ref update. Completes the
+  south-Islay "Kildalton" heavily-peated cluster minus Ardbeg.
+  South-coast Islay, Suntory Global Spirits-owned, founded
+  1815 (Donald & Alexander Johnston). Notable structural
+  features: **asymmetric 3-wash + 4-spirit-still
+  configuration**, unusually tall ascending lyne arms,
+  producer-disclosed late spirit cuts (45 / 60 minutes — the
+  late first cut is producer-claimed as the industry's
+  latest), 63.5% ABV cask-fill strength, predominantly
+  ex-bourbon maturation from Maker's Mark in Kentucky (an
+  internal-supply-chain relationship within the Suntory
+  Global Spirits portfolio). **Two-stream malt supply**:
+  ~20% on-site floor-malted at 50-60 ppm + ~80% Simpsons
+  Malt commercial supply at 45 ppm, blended into the mash —
+  the first populated production line exercising the
+  two-stream malt pattern, requiring two `peating.measurements`
+  entries with different `stage: malt_delivered` values.
+  Royal Warrant from HRH The Prince of Wales (now King
+  Charles III) since 1994. Bottlings: 10 Year Old (40%
+  chill-filtered flagship core) + Quarter Cask (48% NCF
+  natural-colour, **first populated bottling exercising
+  small-cask / firkin maturation** as a structural feature
+  — ~7-month secondary in ~125 L quarter casks accelerates
+  wood-derived extraction kinetics via higher
+  surface-area-to-volume ratio). Concept-page update:
+  `practice/floor-malting` `adopted_by:` list populated with
+  springbank / highland-park / laphroaig (previously empty).
+  Schema findings cleaned: production_line compounds
+  `total_phenols` → `unspecified` (enum). A truncation
+  repair was applied to `floor-malting.yml` — Edit-tool
+  trailing drop hit the file mid-source-notes; restored
+  via bash heredoc per safe-bulk-writes pattern. Counts:
+  129 → 133 files, 11 → 12 distilleries, 16 → 17 production
+  lines, 35 → 37 bottlings, 518 → 537 resolved refs,
+  21 dangling (unchanged), 0 schema findings.
+- **2026-05-18** Auchentoshan (11th distillery, second Lowland,
+  triple-distilled). 1 distillery + 1 production line + 2
+  bottlings. **First populated `distillation.regime: triple`** as
+  a distillery's default — the Hazelburn line at Springbank is
+  triple-distilled but coexists with double / 2.5x lines at that
+  site, so Auchentoshan is the only Scottish distillery where
+  every drop is triple-distilled. Direct pair-test for
+  Glenkinchie under the same Lowlands regional designation
+  (triple vs double, double-cask vs ex-bourbon-only, single-
+  malt-led vs blend-supply-led). Dalmuir / Clydebank,
+  Suntory Global Spirits, founded 1817 (Bulloch as Duntocher),
+  licensed 1823, renamed 1834 (Hart & Filshie). 1941-1948
+  wartime mothballing from German bomb damage during the Clyde
+  shipyard raids. Producer-disclosed equipment: 3 pot stills
+  (wash 17,500 L + intermediate 8,200 L + spirit 11,500 L);
+  spirit cut runs to 81% ABV per producer disclosure. Default
+  unpeated. Bottlings: 12 Year Old (40% double cask bourbon +
+  oloroso) + Three Wood (43% NAS, bourbon → oloroso → PX
+  three-cask sequence, **first populated bottling exercising
+  a three-stage primary maturation sequence**). Sources:
+  auchentoshan.com (history + process), scotchwhisky.com
+  Whiskypedia, whisky.com trade database, SWR2009 reg. 10
+  for the Lowlands grounding. Counts: 125 → 129 files,
+  10 → 11 distilleries, 15 → 16 production lines, 33 → 35
+  bottlings, 501 → 518 resolved refs, 21 dangling (no change),
+  0 schema findings.
+- **2026-05-18** Glenkinchie (10th distillery, first Lowland) +
+  ConfidenceBadge popover + 10 cask sourcing migrations. Three
+  workstreams in one pass. (a) `<ConfidenceBadge>` component
+  added at `site/src/components/ConfidenceBadge.astro` with
+  accessible popover (button + ARIA aria-expanded/aria-controls,
+  Tab-focus / Enter-Space / Escape / click-outside semantics).
+  Per-level rubric (high / medium / low / stub) is the
+  single source of truth in the component; popover links to
+  `/reference/source-policy/`. Wired into EntityHeader,
+  distilleries/index, and production-lines/index. (b) 10 cask
+  entries migrated from institutional homepages to specific
+  document URLs: 7 INAO product pages (Pauillac, Pomerol,
+  Sauternes, Bourgogne regional, Côtes du Rhône node/237,
+  Ventoux, Bandol), 1 MIPAAF catalogo-viti entry (Amarone della
+  Valpolicella DOCG), 2 Consejo Regulador Pliego de Condiciones
+  PDF (oloroso, fino — same consolidated 2024 file). Hedge
+  "specific URL should be verified when accessed" replaced with
+  positive claim where applicable; access dates updated to
+  2026-05-18. (c) **Glenkinchie populated as the 10th
+  distillery** — East Lothian / Pencaitland, Diageo-owned,
+  founded 1825 (Milton) / 1837 (Glenkinchie), 1853-1881 sawmill
+  conversion mothballing as a single 28-year gap, SMD →
+  DCL → United Distillers → Diageo lineage, original 1988
+  Classic Malts member, 2020 "Lowland Home of Johnnie Walker"
+  brand-home redevelopment. **First populated Lowland-region
+  distillery** under SWA Regulations 2009. **First populated
+  distillery with `condenser: worm_tub`** — the
+  `equipment/worm-tub` concept page's used_at_distilleries
+  forward ref to Glenkinchie now resolves. 1 production line
+  (unpeated, double-distilled, `peat_origin: none`) + 2
+  bottlings (12 Year Old flagship + Distillers Edition
+  Amontillado finish — third populated DE after Lagavulin /
+  Caol Ila, exercising the third secondary-cask style in the
+  cross-distillery DE pattern). Critical-eval fixes applied:
+  fabricated "Major-Bell" syndicate name removed (not in
+  sources), DCL Lowland-rationalisation dates corrected
+  (St Magdalene 1983, Inverleven 1991, Rosebank 1993),
+  unsourced editorial about Bladnoch comparison removed,
+  coordinates-source claim honestly hedged, 2007 transition
+  year for 12 Year Old softened (not pinned to a primary
+  source). Schema-validator findings cleaned: region
+  "Lowland" → "Lowlands", washbacks material "wood" →
+  "larch" (dominant of the mixed Oregon-pine + Canadian-larch
+  construction), DE availability "annual_recurring" → "core".
+  Counts: 121 → 125 files, 9 → 10 distilleries, 14 → 15
+  production lines, 31 → 33 bottlings, 485 → 501 resolved refs.
+  Dangling 22 → 21 (the worm-tub forward ref to Glenkinchie
+  resolved, leaving the 21 distillery forward refs the worm-tub
+  page still carries to unpopulated distilleries). 0 schema
+  findings.
 - **2026-05-18** Build-pipeline plan items 5-8 landed:
   Pagefind search, Reference pages, /explore/ cross-cutting query
   pages, MapLibre map. /site/ source additions: `src/lib/references.ts`
@@ -737,64 +858,6 @@ Git history.)
   throttling prevented runtime verification in this session;
   the build is expected to succeed at first run on the
   development side). Subsequent iterations follow the
-  implementation sequencing: concept pages next (heaviest
-  markdown-link rewriting), then production lines / bottlings /
-  bottlers / casks / suppliers, then index pages + search +
-  map.
-- **2026-05-17** Final IB pressure-test stub superseded. With
-  Caol Ila populated earlier in the session, the second of two
-  IB pressure-test stubs (`signatory-caol-ila-stub`) is now
-  replaced by `signatory-caol-ila` (worked-example real release
-  form, parallel to the cadenheads-bunnahabhain transition).
-  Slug renamed, confidence promoted stub → medium, Signatory
-  Cask Strength Collection house defaults populated (single
-  cask, cask strength, NCF, natural colour, 700ml — contrasting
-  with Cadenhead's 500ml format). Cask-identifier fields
-  template-form pending specific-release verification. Old stub
-  file overwritten with placeholder empty YAML (user can
-  `del data\bottlings\signatory-caol-ila-stub.yml` from
-  Windows shell to fully clean up). **No IB pressure-test stubs
-  remain in populated data**; both IB-release entries are now
-  worked-example representations. Counts: 120 → 121 files,
-  31 → 31 bottlings (stub deactivated, new entry added — net
-  zero), 485 → 485 resolved refs, 22 dangling refs (no change),
-  0 findings.
-- **2026-05-17** Three sequential deliverables: build pipeline
-  plan + direct-fired-still concept page + Caol Ila (ninth
-  distillery). (a) `docs/build-pipeline-plan.md` (446 lines)
-  written as the design document for the eventual static-site
-  build. Page-type taxonomy DECIDED (one URL per entity-type plus
-  cross-cutting query pages under /explore/), routing convention
-  DECIDED, markdown-link rewriting rules DECIDED, search-index
-  scope DECIDED (Pagefind), map data source DECIDED (MapLibre
-  with OSM tiles), tasting-notes display DECIDED (render
-  notes_official with attribution only, skip notes_independent),
-  commercial-info display DECIDED (rrp with launch-price caveat).
-  OPEN items: glossary auto-resolution mechanism (recommend
-  explicit-markup + curated text-mining), coordinate precision
-  policy (recommend coordinates_source schema field). (b)
-  `equipment/direct-fired-still` concept page written, parallels
-  `equipment/worm-tub` and `equipment/shell-and-tube-condenser`.
-  Covers mechanism (Maillard chemistry at hot copper-wash
-  interface), 20th-century industry shift to indirect_steam,
-  current practitioners (Glenfarclas, Springbank wash-only +
-  forward refs to Macallan, Glenlivet, Ben Nevis). Glenfarclas
-  and Springbank distillery entries updated to cross-reference
-  the new concept via `distinctive_features:`. (c) Caol Ila
-  (ninth distillery): Diageo-owned, east Islay, founded 1846,
-  heavily peated, 4-stage ownership history through
-  DCL → United Distillers → Diageo. Production line (`caol-ila-
-  traditional`, ~30-35 ppm spec from Port Ellen Maltings) plus
-  2 bottlings: Caol Ila 12 (43% chill-filtered flagship, launched
-  2002 in Diageo's Hidden Malts series) and Caol Ila Distillers
-  Edition (Moscatel-finished annual recurring, parallel to
-  Lagavulin DE PX-finished — the cross-distillery Distillers
-  Edition programme now exercised across two populated
-  distilleries). **Resolves the 2 remaining IB-stub forward
-  refs** (caol-ila + caol-ila-traditional from
-  signatory-caol-ila-stub). Counts: 115 → 120 files, 8 → 9
-  distilleries, 13 → 14 production lines, 29 → 31 bottlings,
-  45 → 46 concept pages, 457 → 485 resolved refs. Dangling
-  21 → 22 (net: +3 forward refs from direct-fired-still's
-  used_at_distilleries list to Macallan / Glenlivet / Ben Nevis,
-  -2 resolved by Caol Ila landing). 0 validator findings.
+  implementation sequencing: concept pages first, then other
+  entity types, then search and map (both landed 2026-05-18 —
+  see top of Recently completed).

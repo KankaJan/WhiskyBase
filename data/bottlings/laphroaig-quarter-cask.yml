@@ -1,0 +1,208 @@
+# =============================================================================
+# Laphroaig Quarter Cask (NAS, small-cask finish)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing core release with the
+# distinctive quarter-cask finish step that names the bottling.
+# =============================================================================
+# **First populated bottling exercising explicit small-cask (quarter
+# cask / firkin) maturation** as a structural feature. The smaller
+# cask volume increases the surface-area-to-volume ratio of the
+# spirit-cask interface, accelerating wood-derived extraction
+# kinetics in the finish-cask stage (see
+# educational/cask-maturation-kinetics for the framework).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: laphroaig-quarter-cask
+name: Laphroaig Quarter Cask
+production_line: laphroaig
+produced_at_distillery: laphroaig
+bottled_by: laphroaig
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2004                      # Quarter Cask was introduced
+                                        # in 2004 as the producer's
+                                        # NAS premium-to-flagship
+                                        # bridge release [2].
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 48.0
+age_statement: null                     # NAS — the producer
+                                        # discloses the
+                                        # quarter-cask finish-step
+                                        # structure rather than an
+                                        # age statement. The base
+                                        # spirit is typically
+                                        # 5-6 years in standard
+                                        # ex-bourbon casks before
+                                        # transfer to the quarter
+                                        # casks for an additional
+                                        # ~7 months (per trade-press
+                                        # references).
+vintage: null
+cask_strength: false
+non_chill_filtered: true                # 48% ABV places the release
+                                        # above the 46% NCF-threshold
+                                        # convention — Quarter Cask
+                                        # is bottled non-chill-
+                                        # filtered per the producer
+                                        # and trade-press cross-
+                                        # references [1][2].
+natural_colour: true                    # Producer-disclosed natural
+                                        # colour status, consistent
+                                        # with the higher-ABV NCF
+                                        # cluster of "craft
+                                        # transparency" presentations
+                                        # (see
+                                        # educational/scotch-presentation-conventions).
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: Maker's Mark (Kentucky)
+    notes: |
+      Primary maturation in standard ex-bourbon American oak
+      from Maker's Mark in Kentucky, typically for ~5-6 years
+      per trade-press references [2]. The bourbon-cask base
+      is the same as the 10 Year Old; the differentiating
+      step is the secondary small-cask finish.
+
+finish:
+  cask_type: bourbon-barrel             # Same wood type (American
+                                        # oak, ex-bourbon) but in a
+                                        # quarter-cask (~125 L
+                                        # capacity, also called a
+                                        # "firkin") rather than the
+                                        # standard 200-L bourbon
+                                        # barrel. The smaller cask
+                                        # volume increases the
+                                        # spirit-cask interfacial
+                                        # surface area relative to
+                                        # the volume of liquid by
+                                        # roughly 30% — accelerating
+                                        # wood-derived extraction
+                                        # kinetics during the finish
+                                        # period.
+  duration_months: 7                    # ~7 months in the quarter
+                                        # cask per trade-press
+                                        # references [2]. Producer
+                                        # materials describe this
+                                        # as the producer-distinctive
+                                        # finishing step.
+  duration_years: null
+  cooperage: null
+  notes: |
+    Quarter cask is the historic Scottish term for casks of
+    ~125 L capacity (roughly one-quarter of the standard
+    American Standard Barrel volume of ~200 L). The
+    producer-cited basis for the bottling is the accelerated
+    wood-derived maturation in the smaller cask, which exposes
+    the same spirit to a higher surface-area-to-volume ratio.
+    See educational/cask-maturation-kinetics for the
+    extraction-rate framework underlying small-cask finish
+    methods. The quarter-cask finish is structurally distinct
+    from the wine-cask finishes used in distillery-edition
+    programmes (Lagavulin / Caol Ila / Glenkinchie DEs) — same
+    wood category in the finish as the primary, but
+    accelerated kinetics rather than wine-cask flavour
+    overlay.
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 55.00                         # Approximate UK retail at
+                                        # recent release pricing
+                                        # (2024).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Laphroaig Quarter Cask is a NAS core release introduced in 2004,
+  bottled at 48% ABV non-chill-filtered and natural-colour
+  [1][2]. The release is built on the standard Laphroaig
+  ex-bourbon-cask programme (Maker's Mark Kentucky ex-bourbon
+  barrels, the same base as the 10 Year Old) with a secondary
+  ~7-month finish in quarter casks — historic Scottish casks of
+  approximately 125 L capacity, roughly one-quarter the volume of
+  a standard American Standard Barrel. The smaller cask volume
+  increases the spirit-cask interfacial surface area relative to
+  the liquid volume by roughly 30%, accelerating wood-derived
+  extraction during the finish period. The 48% ABV NCF natural-
+  colour presentation cluster (see
+  educational/scotch-presentation-conventions) reflects the
+  producer's positioning of Quarter Cask as a "craft transparency"
+  release at a price point above the 40% chill-filtered standard
+  10 Year Old; the cluster is also seen at Bunnahabhain 12,
+  Glenfarclas 15, and Highland Park Cask Strength among the
+  project's populated entries. The finish-cask structure is
+  notable for using the same wood category as the primary
+  maturation (ex-bourbon → ex-bourbon-quarter-cask) rather than
+  changing wood category for the finish — distinguishing
+  Quarter Cask from wine-cask-finish releases like the Diageo
+  Distillers Edition programme.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.laphroaig.com/whiskies
+    accessed: 2026-05-18
+    notes: |
+      Producer page for the Laphroaig core range, including
+      Quarter Cask. Used for ABV (48%), NCF status, natural-
+      colour status, and the quarter-cask-finish description.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whiskypedia entry for Laphroaig at scotchwhisky.com.
+    url: https://scotchwhisky.com/whiskypedia/1924/laphroaig/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference for the 2004 Quarter Cask
+      introduction, the ~5-6 year primary / ~7-month
+      finish-cask durations, and the bourbon-quarter-cask
+      construction.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

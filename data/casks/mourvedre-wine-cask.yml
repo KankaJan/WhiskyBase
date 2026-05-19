@@ -98,8 +98,8 @@ sources:
 
   - id: 3
     type: regulatory_text
-    url: https://www.inao.gouv.fr/
-    accessed: 2026-05-16
+    url: https://www.inao.gouv.fr/produit/16897
+    accessed: 2026-05-18
     citation: |
       Cahier des charges de l'appellation d'origine contrôlée
       "Bandol", Institut national de l'origine et de la qualité

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConfidenceBadge from '../../components/ConfidenceBadge.astro';
 import { loadProductionLines } from '../../lib/data';
 
 const lines = loadProductionLines();
@@ -37,7 +38,7 @@ function formatPeating(line: typeof lines[0]): string {
             <td><a href={`/production-lines/${l.id}/`}>{l.name}</a></td>
             <td><a href={`/distilleries/${l.distillery}/`}>{l.distillery}</a></td>
             <td>{formatPeating(l)}</td>
-            <td><span class={`confidence confidence-${l.confidence}`}>{l.confidence}</span></td>
+            <td><ConfidenceBadge level={l.confidence} /></td>
           </tr>
         ))}
       </tbody>
@@ -60,9 +61,4 @@ function formatPeating(line: typeof lines[0]): string {
     margin: 0 0 1rem;
   }
   table { width: 100%; }
-  .confidence { font-size: 0.85rem; }
-  .confidence-high { color: var(--confidence-high); }
-  .confidence-medium { color: var(--confidence-medium); }
-  .confidence-low { color: var(--confidence-low); }
-  .confidence-stub { color: var(--confidence-stub); }
 </style>

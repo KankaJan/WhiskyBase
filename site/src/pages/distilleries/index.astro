@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ConfidenceBadge from '../../components/ConfidenceBadge.astro';
 import { loadDistilleries } from '../../lib/data';
 
 const distilleries = loadDistilleries();
@@ -35,7 +36,7 @@ const distilleries = loadDistilleries();
             <td>{d.region ?? '—'}</td>
             <td>{d.founded ?? '—'}</td>
             <td>{d.ownership?.current ?? '—'}</td>
-            <td><span class={`confidence confidence-${d.confidence}`}>{d.confidence}</span></td>
+            <td><ConfidenceBadge level={d.confidence} /></td>
           </tr>
         ))}
       </tbody>
@@ -60,11 +61,4 @@ const distilleries = loadDistilleries();
   .listing {
     width: 100%;
   }
-  .confidence {
-    font-size: 0.85rem;
-  }
-  .confidence-high { color: var(--confidence-high); }
-  .confidence-medium { color: var(--confidence-medium); }
-  .confidence-low { color: var(--confidence-low); }
-  .confidence-stub { color: var(--confidence-stub); }
 </style>

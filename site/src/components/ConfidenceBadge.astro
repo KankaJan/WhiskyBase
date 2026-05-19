@@ -1,0 +1,233 @@
+---
+// =============================================================================
+// ConfidenceBadge
+// =============================================================================
+// Accessible popover replacement for the EntityHeader confidence
+// tooltip. The badge itself remains an inline coloured token
+// ("Confidence: medium") matching the surrounding meta line; the
+// popover surfaces a short per-level rubric and links to the
+// source-conflict-policy reference page.
+//
+// Accessibility:
+//   - The badge is a <button>; reachable via Tab, opens on
+//     Enter / Space (button default), and toggles on click.
+//   - The popover is associated via aria-controls and aria-expanded.
+//   - The button's aria-label combines the level name and a short
+//     description so screen readers announce both.
+//   - Escape closes the popover and restores focus to the button.
+//   - The popover is also revealed on :focus-within and hover for
+//     pointer users who don't expect to click.
+//
+// One source of truth for the per-level rubric lives below in
+// LEVELS. Reused across every entity type that surfaces a
+// confidence field.
+// =============================================================================
+
+interface Props {
+  level?: string | null;
+}
+
+const { level } = Astro.props;
+
+interface LevelEntry {
+  short: string;
+  long: string;
+}
+
+const LEVELS: Record<string, LevelEntry> = {
+  high: {
+    short: 'multi-source, vetted',
+    long:
+      'Multiple sources cross-checked; primary sources cited where available. Field-level conflicts have been resolved per the source-conflict policy and the resolution recorded.',
+  },
+  medium: {
+    short: 'well-sourced with documented hedges',
+    long:
+      'Well-sourced overall but with documented hedges — typically "page references TBA" against books that the project has not yet had hands on, or institutional homepages cited where specific-document URLs are unstable.',
+  },
+  low: {
+    short: 'single-source or contested',
+    long:
+      'Single-source or contested. Where the available sources disagree, the disagreement is preserved in the entry; the entry should not be relied on as the project\'s best-supported claim.',
+  },
+  stub: {
+    short: 'placeholder, minimal data',
+    long:
+      'Placeholder entry with minimal data. Exists to exercise the schema, anchor cross-references, or hold a slot for later population. Specific fields will be null with explicit notes.',
+  },
+};
+
+const entry = level && LEVELS[level] ? LEVELS[level] : null;
+
+// Unique-ish id per badge so multiple confidence badges on the
+// same page (entity card lists) keep distinct aria-controls.
+const badgeId = `conf-${level ?? 'unknown'}-${Math.random().toString(36).slice(2, 8)}`;
+const popoverId = `${badgeId}-popover`;
+---
+
+{level && entry ? (
+  <span class="confidence-badge-wrap">
+    <button
+      type="button"
+      id={badgeId}
+      class={`badge confidence-${level}`}
+      aria-expanded="false"
+      aria-controls={popoverId}
+      aria-label={`Confidence: ${level}. ${entry.short}. Activate to read more.`}
+    >
+      <strong>{level}</strong>
+      <span class="hint-glyph" aria-hidden="true">ⓘ</span>
+    </button>
+    <span class="popover" id={popoverId} role="tooltip">
+      <strong class={`level-name confidence-${level}`}>
+        {level.charAt(0).toUpperCase() + level.slice(1)}
+      </strong>
+      <span class="body">{entry.long}</span>
+      <a class="policy-link" href="/reference/source-policy/">
+        See the source-conflict policy ›
+      </a>
+    </span>
+  </span>
+) : level ? (
+  <strong class={`confidence-${level}`}>{level}</strong>
+) : null}
+
+<style>
+  .confidence-badge-wrap {
+    position: relative;
+    display: inline-block;
+  }
+  .badge {
+    /* Strip default button chrome; render inline like surrounding text. */
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    /* Underline the level token so it reads as interactive. */
+    text-decoration: underline dotted;
+    text-underline-offset: 2px;
+  }
+  .badge:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .hint-glyph {
+    font-size: 0.7em;
+    margin-left: 0.15em;
+    color: var(--muted-color);
+    vertical-align: 0.15em;
+  }
+  .confidence-high { color: var(--confidence-high); }
+  .confidence-medium { color: var(--confidence-medium); }
+  .confidence-low { color: var(--confidence-low); }
+  .confidence-stub { color: var(--confidence-stub); }
+
+  .popover {
+    /* Hidden by default; revealed by JS toggle or :focus-within/:hover. */
+    position: absolute;
+    top: 1.6em;
+    left: 0;
+    z-index: 10;
+    display: none;
+    min-width: 18rem;
+    max-width: 24rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--rule-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    text-align: left;
+    /* Reset inherited italic / styled meta wrapping. */
+    font-style: normal;
+  }
+  .confidence-badge-wrap[data-open="true"] .popover,
+  .confidence-badge-wrap:focus-within .popover,
+  .confidence-badge-wrap:hover .popover {
+    display: block;
+  }
+  .popover .level-name {
+    display: block;
+    text-transform: capitalize;
+    margin-bottom: 0.25rem;
+  }
+  .popover .body {
+    display: block;
+    color: var(--text-color);
+  }
+  .popover .policy-link {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-size: 0.85em;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    if (window.__confidenceBadgeInit) return;
+    window.__confidenceBadgeInit = true;
+
+    const init = () => {
+      document.querySelectorAll('.confidence-badge-wrap').forEach((wrap) => {
+        const btn = wrap.querySelector('.badge');
+        if (!btn) return;
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const open = wrap.dataset.open === 'true';
+          // Close any other open popovers first.
+          document
+            .querySelectorAll('.confidence-badge-wrap[data-open="true"]')
+            .forEach((w) => {
+              w.dataset.open = 'false';
+              const b = w.querySelector('.badge');
+              if (b) b.setAttribute('aria-expanded', 'false');
+            });
+          if (!open) {
+            wrap.dataset.open = 'true';
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Escape closes the currently open popover and restores focus.
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        const open = document.querySelector(
+          '.confidence-badge-wrap[data-open="true"]',
+        );
+        if (!open) return;
+        open.dataset.open = 'false';
+        const btn = open.querySelector('.badge');
+        if (btn) {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.focus();
+        }
+      });
+
+      // Click outside closes.
+      document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (!(target instanceof Element)) return;
+        if (target.closest('.confidence-badge-wrap')) return;
+        document
+          .querySelectorAll('.confidence-badge-wrap[data-open="true"]')
+          .forEach((w) => {
+            w.dataset.open = 'false';
+            const b = w.querySelector('.badge');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          });
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

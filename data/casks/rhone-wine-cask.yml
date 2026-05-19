@@ -91,8 +91,8 @@ sources:
 
   - id: 3
     type: regulatory_text
-    url: https://www.inao.gouv.fr/
-    accessed: 2026-05-16
+    url: https://www.inao.gouv.fr/node/237
+    accessed: 2026-05-18
     citation: |
       Cahiers des charges of the Côtes du Rhône AOC and the
       Northern Rhône single-village appellations (Côte-Rôtie,

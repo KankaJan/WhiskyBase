@@ -1,0 +1,160 @@
+# =============================================================================
+# Auchentoshan 12 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship core release;
+# the double-cask programme (bourbon + sherry) is producer-disclosed.
+# =============================================================================
+# Direct pair-test for Glenkinchie 12 Year Old at the same Lowland
+# regional designation, same 12-year age statement, but with the
+# triple-distillation regime and a sherry-cask secondary maturation
+# component absent from the Glenkinchie 12.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: auchentoshan-12
+name: Auchentoshan 12 Year Old
+production_line: auchentoshan
+produced_at_distillery: auchentoshan
+bottled_by: auchentoshan
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                      # Continuously available
+                                        # core release; the 12 Year
+                                        # Old has been the producer's
+                                        # flagship age-statement
+                                        # bottling since the modern
+                                        # core-range was structured,
+                                        # though the specific year of
+                                        # its introduction is not
+                                        # pinned to a primary source.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: false               # 40% ABV places the release
+                                        # at the regulatory minimum
+                                        # — well below the 46%
+                                        # NCF-threshold convention;
+                                        # chill-filtered per
+                                        # industry-typical practice
+                                        # at this presentation tier
+                                        # (see
+                                        # educational/chill-filtering).
+natural_colour: false                   # Caramel colouring used per
+                                        # industry-typical practice
+                                        # at this 40% ABV tier; the
+                                        # producer does not flag
+                                        # natural-colour status on
+                                        # this release.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                    # Both bourbon and oloroso
+                                        # casks are used as primary
+                                        # maturation in a "double
+                                        # cask" programme; specific
+                                        # proportion not disclosed
+                                        # at the bottling level.
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Ex-bourbon American oak component of the double-cask
+      maturation. The 12-year duration sits in cask-extraction
+      phase 2 per educational/cask-maturation-kinetics; the
+      lighter triple-distilled spirit takes up bourbon-derived
+      vanilla and oak-lactone notes alongside the sherry
+      contribution.
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Spanish oloroso sherry oak component. The two cask types
+      are matured in parallel and vatted at bottling per the
+      producer's "double cask" terminology [1].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 45.00                         # Approximate UK retail at
+                                        # recent release pricing
+                                        # (2024).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Auchentoshan's flagship core release: a 12-year-old triple-
+  distilled Lowland single malt double-cask-matured in ex-bourbon
+  American oak and Spanish oloroso sherry oak, bottled at 40% ABV
+  [1]. The "double cask" terminology describes parallel primary
+  maturation in both cask types vatted at bottling, not a primary-
+  plus-finish arrangement. Chill-filtered with caramel colouring
+  per industry-typical practice at this ABV tier. The release sits
+  at the same nominal age and regional designation as Glenkinchie
+  12 Year Old (the project's other populated Lowland flagship), but
+  differs from it on three structural axes: the distillation regime
+  (triple here, double for Glenkinchie); the cask programme
+  (double cask with explicit sherry-oak component here; ex-bourbon-
+  led at Glenkinchie 12); and the bottling ABV (40% here vs 43% at
+  Glenkinchie 12). Auchentoshan's output is primarily directed at
+  single-malt bottling rather than the blend trade — the inverse
+  of Glenkinchie's ~90/10 split toward Johnnie Walker.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.auchentoshan.com/core-range/12-year-old-double-cask
+    accessed: 2026-05-18
+    notes: |
+      Producer page for the Auchentoshan 12 Year Old.
+      Used for ABV (40%), age (12 years), and the
+      double-cask (bourbon + oloroso) maturation
+      programme description.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

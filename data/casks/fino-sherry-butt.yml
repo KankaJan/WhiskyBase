@@ -100,8 +100,8 @@ sources:
 
   - id: 3
     type: regulatory_text
-    url: https://www.sherry.wine/
-    accessed: 2026-05-16
+    url: https://www.sherry.wine/documents/487/PLIEGO_CONDICIONES_JEREZ_ACTUALIZADO_2024.pdf
+    accessed: 2026-05-18
     citation: |
       Reglamento de la Denominación de Origen "Jerez-Xérès-Sherry"
       and "Manzanilla-Sanlúcar de Barrameda", Consejo Regulador

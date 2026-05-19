@@ -95,8 +95,8 @@ sources:
 
   - id: 3
     type: regulatory_text
-    url: https://www.politicheagricole.it/
-    accessed: 2026-05-16
+    url: http://catalogoviti.politicheagricole.it/scheda_denom.php?t=dsc&q=1004
+    accessed: 2026-05-18
     citation: |
       Disciplinare di produzione della Denominazione di Origine
       Controllata e Garantita "Amarone della Valpolicella",
@@ -112,9 +112,9 @@ sources:
       DOCG. MIPAAF is the Italian Ministry of Agriculture, the
       authoritative regulatory body for Italian DO products;
       the Consorzio Tutela Vini Valpolicella publishes
-      operational guidance for member producers. Specific
-      disciplinare URL via the MIPAAF repository should be
-      verified when accessed.
+      operational guidance for member producers. URL points to the Italian Ministry product
+      catalogue (catalogoviti) record for the
+      Amarone della Valpolicella DOCG.
 
 
 # --- Metadata ---------------------------------------------------------------

@@ -1,0 +1,442 @@
+# =============================================================================
+# Laphroaig
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership lineage,
+# floor-malting practice and equipment configuration are well-
+# grounded against the producer source. Specific phenol-ppm
+# figures and washback / still capacities come from the producer
+# combined with trade-database sources.
+# =============================================================================
+# Twelfth populated distillery. Third populated south-Islay
+# heavily-peated entry after Lagavulin and the east-Islay Caol Ila;
+# completes the south-coast peated cluster minus Ardbeg. Notable
+# for an unusual 3-wash + 4-spirit still arrangement, very tall
+# lyne arms with high reflux, and the latest first-cut time in
+# the industry (45 minutes after the second-distillation start).
+# Cross-references `practice/floor-malting` as the second populated
+# floor-malting practitioner after Highland Park.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: laphroaig
+name: Laphroaig
+also_known_as: []                       # Gaelic origin disputed in
+                                        # producer materials —
+                                        # variously parsed as
+                                        # "lag-bhròdhaich" or
+                                        # "the beautiful hollow by
+                                        # the broad bay" depending on
+                                        # the source. The producer
+                                        # has not standardised a
+                                        # canonical Gaelic
+                                        # transliteration on the
+                                        # current website.
+wikidata_qid: null
+website: https://www.laphroaig.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islay                           # Formal SWA region under the
+                                        # Scotch Whisky Regulations
+                                        # 2009 [5]. South-coast Islay
+                                        # — the heavily-peated
+                                        # "Kildalton trio" cluster
+                                        # (Laphroaig, Lagavulin,
+                                        # Ardbeg).
+sub_region: null
+locality: Port Ellen, Isle of Islay     # On the south coast of Islay,
+                                        # roughly one mile east of
+                                        # Port Ellen village, adjacent
+                                        # to Lagavulin (~one mile
+                                        # further east) and Ardbeg
+                                        # (~one mile beyond that).
+                                        # The trio share the same
+                                        # peat-and-sea-spray
+                                        # maturation environment [1].
+coordinates:
+  lat: 55.628
+  lon: -6.151                           # Approximate; the distillery
+                                        # site on the south Islay
+                                        # coast. Not producer-published
+                                        # as specific coordinates;
+                                        # derived from the Port Ellen
+                                        # locality and should be
+                                        # replaced with surveyed
+                                        # coordinates when a primary
+                                        # geographical source is to
+                                        # hand.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1815                           # Founded by brothers Donald
+                                        # and Alexander Johnston,
+                                        # Islay farmers who distilled
+                                        # alongside their farming
+                                        # operation [2].
+first_spirit: 1815
+mothballed_periods: []                  # No major modern mothballing
+                                        # documented across the
+                                        # surveyed sources.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Suntory Global Spirits
+  parent: Suntory Holdings Limited      # Japanese parent; the 2024
+                                        # Beam-Suntory rebrand to
+                                        # Suntory Global Spirits sits
+                                        # within Suntory Holdings.
+  history:
+    - owner: Donald and Alexander Johnston
+      from: 1815
+      to: 1857
+      notes: |
+        Founding ownership. The Johnston brothers established
+        Laphroaig as a sideline to their farming on the
+        Laphroaig estate. Alexander Johnston operated the
+        distillery after Donald's death [2].
+    - owner: Johnston family
+      from: 1857
+      to: 1954
+      notes: |
+        The Johnston family retained ownership through several
+        generations across the late 19th and early 20th
+        centuries [2].
+    - owner: Bessie Williamson (Elizabeth Leitch Williamson)
+      from: 1954
+      to: 1962
+      notes: |
+        Bessie Williamson — the distillery secretary who had
+        joined Laphroaig in 1934 — inherited control after
+        the death of Ian Hunter (the last direct Johnston
+        descendant) in 1954. She was one of the first women
+        to own and run a Scotch whisky distillery in the
+        modern industry era. Williamson is widely cited as
+        the founder of Laphroaig's modern marketing
+        positioning [2].
+    - owner: Long John International / Schenley
+      from: 1962
+      to: 1975
+      notes: |
+        Williamson sold to Long John International (US-owned,
+        Schenley Industries portfolio) in 1962, though she
+        continued in a managing role until her retirement
+        in 1972 [2].
+    - owner: Whitbread / Allied Brewers
+      from: 1975
+      to: 1990
+      notes: |
+        Long John was acquired by Whitbread in 1975, then
+        absorbed into the wider Allied Brewers portfolio.
+    - owner: Allied Distillers / Allied Domecq
+      from: 1990
+      to: 2005
+      notes: |
+        Allied Distillers / Allied Domecq held Laphroaig
+        through the 1990s and early 2000s alongside the
+        wider Ballantine's blend portfolio [2].
+    - owner: Fortune Brands / Beam Global
+      from: 2005
+      to: 2014
+      notes: |
+        Allied Domecq was broken up in 2005; the spirits
+        portfolio including Laphroaig went to Fortune Brands,
+        which became Beam Inc. (later Beam Global) in 2011 [2].
+    - owner: Beam Suntory / Suntory Global Spirits
+      from: 2014
+      to: null
+      notes: |
+        2014 Beam-Suntory merger; 2024 rebrand to Suntory
+        Global Spirits. Laphroaig has been royally warranted
+        as supplier to HRH The Prince of Wales (now HM King
+        Charles III) since 1994 — the only Islay distillery
+        with a Royal Warrant at the time of issue [2].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Kilbride Stream           # Producer-disclosed water
+                                        # source: the Kilbride Stream
+                                        # / Kilbride reservoir, fed
+                                        # by peaty Islay catchment.
+                                        # Used both as process water
+                                        # and as coolant throughout
+                                        # the whisky-making process
+                                        # per the producer [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: full_lauter
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: 8
+  material: stainless_steel
+  capacity_litres: 55000                # Each washback at 55,000 L
+                                        # per trade-reference
+                                        # sources [3].
+  notes: |
+    Eight stainless-steel washbacks, each at approximately
+    55,000 L capacity, supporting a ~72-hour fermentation
+    per the producer's "two or so days" description [1][3].
+
+stills:
+  wash_still:
+    count: 3                            # 3 wash stills — note the
+                                        # asymmetric 3+4 still
+                                        # configuration. Most
+                                        # distilleries pair wash and
+                                        # spirit stills evenly;
+                                        # Laphroaig's 3 wash + 4
+                                        # spirit arrangement means
+                                        # the spirit stills run at
+                                        # lower throughput per
+                                        # still [1][3].
+    capacity_litres: null
+    charge_litres: null
+    shape: onion                        # "Short, bulbous neck"
+                                        # description per trade-
+                                        # press sources; producer
+                                        # describes them as the
+                                        # larger of the two still
+                                        # types.
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: ascending           # **Producer-attributed
+                                        # ceiling-height lyne arm**
+                                        # — "Our lyne arm — which
+                                        # links the still to the
+                                        # condenser unit — reaches
+                                        # right up to the ceiling.
+                                        # This height combined with
+                                        # our slow distillation rate
+                                        # removes heavy oils and
+                                        # overwhelming flavours" [1].
+                                        # Producer claim that "only
+                                        # four or five other
+                                        # distilleries do it this
+                                        # way" is producer-
+                                        # attributed and would
+                                        # benefit from independent
+                                        # verification.
+    condenser: shell_and_tube
+  spirit_still:
+    count: 4                            # 4 spirit stills, smaller
+                                        # than the wash stills.
+    capacity_litres: null
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: ascending
+    condenser: shell_and_tube
+
+warehouses:
+  - id: laphroaig-coastal
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      On-site coastal warehousing on the south Islay shore.
+      The producer attributes the "maritime character" of
+      Laphroaig to the warehouse environment — sea-spray-
+      saturated air in contact with the casks across the
+      maturation period [1]. Shared south-coast climate with
+      neighbouring Lagavulin and Ardbeg warehouses.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 3300000            # 3.3 million LPA per
+                                        # trade-database sources [3].
+                                        # A 2024 producer
+                                        # announcement on plans to
+                                        # expand the stillhouse from
+                                        # 7 to 11 stills suggests
+                                        # capacity is targeted to
+                                        # increase substantially —
+                                        # the project records the
+                                        # currently-operating figure
+                                        # rather than the
+                                        # expansion-plan target [4].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1840
+    change: |
+      Peat kilns constructed at the current site, overlooking
+      the bay. The producer states that "Laphroaig's peat
+      kilns" — the building used for cold-smoking the malted
+      barley with peat reek before drying — date from this
+      construction [1].
+    notes: |
+      Producer-disclosed installation date for the kiln
+      complex. The on-site floor-malting and peat-kilning
+      operation has been continuous since.
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - laphroaig
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []               # Laphroaig spirit historically
+                                        # supplied components for the
+                                        # Long John, Ballantine's and
+                                        # Teacher's blends through
+                                        # the various Allied / Beam
+                                        # ownership periods. Blends
+                                        # are not modelled as a
+                                        # project entity type — empty
+                                        # list per convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features:
+  - practice/floor-malting              # Second populated
+                                        # floor-malting practitioner
+                                        # after Highland Park; the
+                                        # on-site floor-malting
+                                        # operation covers ~20% of
+                                        # Laphroaig's malt demand,
+                                        # with the remainder from
+                                        # Simpsons Malt at the
+                                        # spec-peated malt level [1][3].
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Laphroaig is a heavily-peated malt-whisky distillery on the south
+  coast of Islay, roughly one mile east of Port Ellen village,
+  adjacent to Lagavulin and Ardbeg in the "Kildalton" cluster of
+  south-coast Islay producers [1][2]. Founded in 1815 by brothers
+  Donald and Alexander Johnston, the distillery passed through
+  the Johnston family for nearly 140 years before Bessie
+  Williamson — the distillery's secretary since 1934 — took
+  control on the death of the last direct Johnston descendant
+  in 1954 [2]. Williamson's ownership through 1962 is widely
+  cited as the founding of Laphroaig's modern marketing identity.
+  The site has subsequently passed through Long John /
+  Whitbread / Allied Distillers / Allied Domecq / Fortune Brands /
+  Beam Inc. / Beam Suntory ownership, settling under Suntory
+  Global Spirits since the 2024 rebrand [2].
+  **Floor malting on-site covers approximately 20% of Laphroaig's
+  malt demand**, peated to ~50-60 ppm using local Islay peat;
+  the remaining ~80% is supplied by Simpsons Malt at the
+  industry-standard ~45 ppm Islay-peat spec, and the two streams
+  are blended into the distillery's mash [1][3]. The on-site
+  floor-malting + kilning operation has run continuously since
+  the 1840 kiln-house construction.
+  The distillery runs an **asymmetric 3-wash + 4-spirit-still
+  configuration** (most distilleries pair wash and spirit stills
+  evenly), with **unusually tall ascending lyne arms** that
+  promote heavy reflux and remove heavier flavour compounds —
+  the producer cites this combined with a slow distillation rate
+  as the equipment-level basis for Laphroaig's light-bodied,
+  iodine-and-tar peat profile [1]. The spirit cut is taken
+  unusually late: producer-disclosed first cut at 45 minutes
+  into the second-distillation run (claimed as the latest cut in
+  the industry) and second cut at 60 minutes, stripping out the
+  sweeter heads while retaining the tarry / herbal / peaty middle
+  cut. Distilling fill strength is 63.5% ABV per producer
+  disclosure [1].
+  Maturation is predominantly in ex-bourbon casks sourced from
+  Maker's Mark in Kentucky — an internal-supply-chain relationship
+  within the Suntory Global Spirits portfolio (Maker's Mark is a
+  sister bourbon distillery) [1]. The on-site coastal warehouses
+  contribute the producer-attributed "maritime character" through
+  sea-spray-saturated air contact during maturation.
+  Laphroaig has held a Royal Warrant from HRH The Prince of Wales
+  (subsequently HM King Charles III after the 2022 accession)
+  since 1994 [2].
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.laphroaig.com/how-to-make-whisky
+    accessed: 2026-05-18
+    notes: |
+      Laphroaig's producer-published process page. Used for
+      the production-process description (water source,
+      mashing at 63.5 °C, ~10,500 L wort extract, ~72-hour
+      fermentation, distillation cuts at 45 / 60 minutes,
+      63.5% ABV fill strength, Maker's Mark cask supply,
+      ascending-lyne-arm description). Producer voice is
+      attributed where applied; the project does not adopt
+      producer marketing phrasing as project voice.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whiskypedia entry for Laphroaig at scotchwhisky.com
+      (trade-press whisky reference published by Scotch
+      Whisky magazine).
+    url: https://scotchwhisky.com/whiskypedia/1924/laphroaig/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference for the founding sequence
+      (1815 Johnston brothers), Bessie Williamson era
+      (1954-1962), Long John → Whitbread → Allied → Fortune
+      Brands → Beam Suntory ownership transitions, and the
+      1994 Royal Warrant.
+
+  - id: 3
+    type: trade_publication
+    citation: |
+      Laphroaig distillery technical specification entry,
+      whisky.com whisky database; cross-checked against
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd.
+    url: https://www.whisky.com/whisky-database/distilleries/details/laphroaig.html
+    accessed: 2026-05-18
+    notes: |
+      Trade-database / trade-reference source for equipment
+      configuration (7 stills as 3 wash + 4 spirit), 8
+      stainless-steel washbacks at 55,000 L, ~72-hour
+      fermentation, 20% on-site floor-malting share, peating
+      levels (50-60 ppm on-site, 45 ppm Simpsons supply),
+      and annual capacity (3.3 million LPA).
+
+  - id: 4
+    type: trade_publication
+    citation: |
+      Laphroaig distillery expansion-plan coverage,
+      The Spirits Business and other trade press, 2024.
+    url: https://thespiritsbusiness.com/2024/04/laphroaig-files-for-major-expansion/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press coverage of the 2024 planning submission to
+      expand Laphroaig's stillhouse from 7 to 11 stills.
+      The project records the currently-operating
+      configuration rather than the expansion target; this
+      source is cited for context and as a marker for a
+      future capacity update when the expansion is completed.
+
+  - id: 5
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/10
+    accessed: 2026-05-18
+    citation: |
+      The Scotch Whisky Regulations 2009 (S.I. 2009/2890),
+      regulation 10. Defines the Islay protected locality
+      under which Laphroaig is classified.
+    notes: |
+      Regulatory grounding for the Islay regional
+      designation. Laphroaig sits on the south coast of
+      Islay within the "Kildalton" historic-parish cluster
+      alongside Lagavulin and Ardbeg.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

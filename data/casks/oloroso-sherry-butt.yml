@@ -117,8 +117,8 @@ sources:
 
   - id: 2
     type: regulatory_text
-    url: https://www.sherry.wine/
-    accessed: 2026-05-16
+    url: https://www.sherry.wine/documents/487/PLIEGO_CONDICIONES_JEREZ_ACTUALIZADO_2024.pdf
+    accessed: 2026-05-18
     citation: |
       Reglamento de la Denominación de Origen "Jerez-Xérès-Sherry"
       and "Manzanilla-Sanlúcar de Barrameda", Consejo Regulador
@@ -136,9 +136,7 @@ sources:
       oloroso as one of its styles). Consejo Regulador del Vino de
       Jerez is the authoritative regulatory body; the
       Boletín Oficial del Estado publishes the formal text.
-      The Consejo's English-language site (sherry.wine) is given
-      as the stable institutional URL; specific reglamento PDF
-      URLs should be verified when accessed.
+      URL points to the consolidated Pliego de Condiciones PDF (2024 update) published by the Consejo Regulador on sherry.wine.
 
 
 # --- Metadata ---------------------------------------------------------------

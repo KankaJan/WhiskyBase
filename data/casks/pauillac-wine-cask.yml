@@ -86,8 +86,8 @@ sources:
 
   - id: 3
     type: regulatory_text
-    url: https://www.inao.gouv.fr/
-    accessed: 2026-05-16
+    url: https://www.inao.gouv.fr/produit/pauillac-15174
+    accessed: 2026-05-18
     citation: |
       Cahier des charges de l'appellation d'origine contrôlée
       "Pauillac", Institut national de l'origine et de la qualité
@@ -100,9 +100,8 @@ sources:
       grape varieties (Cabernet Sauvignon-dominant blend, with
       Merlot, Cabernet Franc, Petit Verdot, Malbec, Carménère
       permitted in restricted proportions), maximum yields, and
-      vinification rules. Specific URL via INAO's product
-      repository should be verified when accessed; the INAO
-      homepage is given as the stable institutional source.
+      vinification rules. The INAO product page links the
+      currently homologated cahier PDF.
 
 
 # --- Metadata ---------------------------------------------------------------

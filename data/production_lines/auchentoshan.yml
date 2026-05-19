@@ -1,0 +1,228 @@
+# =============================================================================
+# Auchentoshan (default triple-distilled production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity, peating (unpeated)
+# and the triple-distillation regime are producer-attributed and
+# well-grounded. Specific fermentation duration and yeast strain
+# hedged pending direct disclosure.
+# =============================================================================
+# First populated production line with `regime: triple` as the
+# default at a single-line distillery (Hazelburn at Springbank also
+# triple-distilled but coexists with double and 2.5x lines).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: auchentoshan
+name: Auchentoshan (default)
+distillery: auchentoshan
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1823                    # Producer dates triple
+                                        # distillation to the
+                                        # licensed start of the
+                                        # distillery (1823); the
+                                        # informal 1817 Duntocher
+                                        # period precedes the
+                                        # licensed regime and is
+                                        # not treated as the same
+                                        # production line [1].
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: null                        # Producer materials do not
+                                        # name the maltster; trade
+                                        # references typically place
+                                        # Auchentoshan among the
+                                        # commercial-maltster
+                                        # customers without naming a
+                                        # specific supplier.
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                      # Auchentoshan is unpeated by
+                                        # default; producer materials
+                                        # describe "gently kilned,
+                                        # completely unpeated barley"
+                                        # [2]. No phenol measurement
+                                        # to record.
+  peat_origin: none
+  notes: |
+    Producer-attributed unpeated default — "completely unpeated
+    barley lets the Auchentoshan taste shine through" per the
+    producer's process page [2]. No peated Auchentoshan sub-line
+    exists at the time of writing.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: triple                        # **Producer-attributed
+                                        # triple-distillation
+                                        # regime since the licensed
+                                        # start of the distillery in
+                                        # 1823.** Auchentoshan is the
+                                        # only Scottish distillery
+                                        # whose entire output is
+                                        # triple-distilled — the
+                                        # Hazelburn production line
+                                        # at Springbank is also
+                                        # triple-distilled but
+                                        # coexists with two other
+                                        # production lines at that
+                                        # site [1][4].
+  spirit_cut:
+    start_abv: null
+    end_abv: 81.0                       # Producer-attributed final
+                                        # spirit strength on the
+                                        # third pass: 81% ABV per
+                                        # auchentoshan.com/our-process
+                                        # [2], compared with the
+                                        # ~70% ABV typical for
+                                        # double-distillation
+                                        # regimes. The high
+                                        # finishing strength is a
+                                        # structural consequence of
+                                        # the third distillation
+                                        # pass; the producer makes
+                                        # the lightness / smoothness
+                                        # claim with the higher
+                                        # rectification.
+    notes: |
+      Final spirit-still output ~81% ABV per producer
+      disclosure [2]. Specific heads / hearts / tails cut
+      points and the exact intermediate-still cut not
+      disclosed.
+  new_make_abv: 81.0                    # Synonymous with end_abv at
+                                        # this site (producer
+                                        # specifies the "final
+                                        # spirit" strength rather
+                                        # than a separate new-make
+                                        # cask-fill ABV) [2].
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null         # Cask-fill strength not
+                                        # disclosed in producer
+                                        # materials; the spirit
+                                        # leaves the spirit still
+                                        # at 81% and is reduced
+                                        # before fill per
+                                        # industry-typical practice,
+                                        # but the specific reduction
+                                        # is not stated.
+typical_cask_program:
+  - bourbon-barrel                      # Predominant cask type
+                                        # across the core range;
+                                        # American Oak expression
+                                        # is exclusively
+                                        # ex-bourbon [2].
+  - oloroso-sherry-butt                 # Secondary in the 12 Year
+                                        # Old (double cask) and
+                                        # Three Wood (triple cask)
+                                        # programmes.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - auchentoshan-12
+  - auchentoshan-three-wood
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Auchentoshan default production line is the distillery's sole
+  production stream: an unpeated Lowland single malt produced
+  through three sequential pot stills (wash → intermediate →
+  spirit) [1][2]. Mashing runs in a full-lauter tun at 63.5 °C with
+  a conventional 2-water + 3rd-water-as-1st-water pattern; malt is
+  delivered from commercial maltsters [2]. The triple-distillation
+  regime lifts the third-pass output to approximately 81 % ABV
+  (versus ~70 % typical for double distillation); the structural
+  consequence is a lighter spirit profile with more rectified
+  ester notes and lower retention of higher-boiling-point
+  congeners. Maturation is ex-bourbon-led for the core American
+  Oak expression and combines bourbon with secondary sherry
+  exposure (oloroso for the 12 Year Old double-cask programme;
+  oloroso then Pedro Ximénez for the Three Wood triple-cask
+  programme). Output is primarily directed at the single-malt
+  bottling programme rather than the blend trade — a structural
+  difference from Glenkinchie's ~90 / 10 blend-vs-single-malt
+  split [3].
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: https://scotchwhisky.com/whiskypedia/1812/auchentoshan/
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.auchentoshan.com/our-history
+    accessed: 2026-05-18
+    notes: |
+      Producer history page. Used for the 1823 triple-
+      distillation start and the producer-attributed
+      "only Scottish distillery triple-distilling every
+      drop" claim.
+
+  - id: 2
+    type: official_website
+    url: https://www.auchentoshan.com/our-process
+    accessed: 2026-05-18
+    notes: |
+      Producer process page. Used for the unpeated default,
+      mashing temperature (63.5 °C), three-water mashing
+      pattern, distillation pass-strength claim (8% wash →
+      81% final spirit), and bourbon / sherry / wine cask
+      programme structure.
+
+  - id: 3
+    type: trade_publication
+    citation: |
+      Auchentoshan entry, Whiskypedia at scotchwhisky.com.
+    url: https://scotchwhisky.com/whiskypedia/1812/auchentoshan/
+    accessed: 2026-05-18
+    notes: |
+      Cross-reference on the blend-vs-single-malt output
+      direction and the standing trade-press summary of
+      the production regime.
+
+  - id: 4
+    type: trade_publication
+    citation: |
+      Auchentoshan distillery technical specification entry,
+      whisky.com whisky database.
+    url: https://www.whisky.com/whisky-database/distilleries/details/auchentoshan.html
+    accessed: 2026-05-18
+    notes: |
+      Equipment-level specifications (three pot stills with
+      capacities 17,500 / 8,200 / 11,500 L for wash /
+      intermediate / spirit respectively).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

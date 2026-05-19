@@ -1,0 +1,451 @@
+# =============================================================================
+# Auchentoshan
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership lineage, and
+# triple-distillation regime are well-grounded against the producer
+# source and standard trade references. Specific equipment capacities
+# come from a trade database (whisky.com) and should be verified
+# against The Malt Whisky Yearbook.
+# =============================================================================
+# Eleventh populated distillery. Second populated Lowland-region
+# entry after Glenkinchie. **First populated triple-distilled
+# default production** — direct contrast to Glenkinchie's double
+# distillation under the same Lowlands regional designation. The
+# Springbank-site triple-distilled Hazelburn production line is
+# already in the data set but sits within a distillery whose
+# default Springbank line is 2.5-times distilled; Auchentoshan is
+# the only Scottish distillery where every drop of production is
+# triple-distilled [1].
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: auchentoshan
+name: Auchentoshan
+also_known_as: []                       # Gaelic from "Achadh an
+                                        # Oisein" — "corner of the
+                                        # field". Marketed as "The
+                                        # Glasgow Single Malt" in
+                                        # producer materials; that
+                                        # phrasing is a marketing
+                                        # tagline rather than a
+                                        # standing alias and is
+                                        # omitted here.
+wikidata_qid: null
+website: https://www.auchentoshan.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Lowlands                        # Formal SWA region under the
+                                        # Scotch Whisky Regulations
+                                        # 2009 [5]. Second populated
+                                        # Lowland-region distillery
+                                        # after Glenkinchie.
+sub_region: West Dunbartonshire
+locality: Dalmuir, near Clydebank       # Just north-west of Glasgow,
+                                        # on the north bank of the
+                                        # River Clyde — historically
+                                        # adjacent to the Clyde
+                                        # shipyards (whose Queen Mary
+                                        # / Queen Elizabeth launches
+                                        # the producer materials note
+                                        # alongside the wartime
+                                        # bombing damage) [1][2].
+coordinates:
+  lat: 55.918
+  lon: -4.421                           # Approximate; the distillery
+                                        # site at the Auchentoshan
+                                        # estate near Dalmuir. Not
+                                        # producer-published as
+                                        # specific coordinates;
+                                        # derived from the locality
+                                        # text and should be
+                                        # replaced with surveyed
+                                        # coordinates when a primary
+                                        # geographical source is to
+                                        # hand.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1817                           # Informal founding year per
+                                        # the producer: John Bulloch
+                                        # established the Duntocher
+                                        # distillery on the
+                                        # Auchentoshan estate. The
+                                        # site received its legal
+                                        # licence in 1823 under the
+                                        # post-Excise-Act regime [1].
+first_spirit: 1817
+mothballed_periods:
+  - from: 1941                          # Distillery operations
+    to: 1948                            # halted during World War II
+                                        # following German bomb
+                                        # damage to the warehouse
+                                        # complex (the Clyde
+                                        # shipyards were the primary
+                                        # target; Auchentoshan sat
+                                        # near them). Production
+                                        # resumed in 1948 [1][2].
+    note: |
+      German air raid in 1941 destroyed a warehouse; whisky
+      production stopped for the duration of the war and resumed
+      1948. Wartime grain controls were the operative cause
+      across the wider Scottish industry, but Auchentoshan's
+      specific gap is anchored to the bomb-damage event [1].
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Suntory Global Spirits
+  parent: Suntory Holdings Limited      # Japanese parent. The 2014
+                                        # Beam-Suntory merger and the
+                                        # 2024 rebrand from Beam
+                                        # Suntory to Suntory Global
+                                        # Spirits both happened
+                                        # within the Suntory
+                                        # Holdings ownership.
+  history:
+    - owner: John Bulloch
+      from: 1817
+      to: 1834
+      notes: |
+        Founding ownership as the Duntocher Distillery; site
+        established initially as a tax-avoidance arrangement
+        on the Auchentoshan estate, then licensed in 1823 [1].
+    - owner: John Hart & Alexander Filshie
+      from: 1834
+      to: 1878
+      notes: |
+        Renamed Auchentoshan under the Hart & Filshie
+        ownership after Bulloch's financial trouble [1].
+    - owner: C.H. Curtis and Co Ltd. / John Hardie
+      from: 1878
+      to: 1903
+      notes: |
+        Curtis era; producer's history references an output of
+        around 50,000 gallons a year by the end of the
+        century [1].
+    - owner: Maclachlan Brothers (George and John)
+      from: 1903
+      to: 1960
+      notes: |
+        Maclachlan period spans most of the early-to-mid
+        twentieth century, including the 1941 bombing and
+        the 1948 production restart [1].
+    - owner: J&R Tennent Ltd.
+      from: 1960
+      to: 1969
+      notes: |
+        Tennent — the Glasgow-based brewer — owned the
+        distillery briefly during the 1960s [1].
+    - owner: Eddie Cairns Ltd.
+      from: 1969
+      to: 1984
+      notes: |
+        Brief independent-owner period under John Milne's
+        leadership [1].
+    - owner: Stanley P. Morrison / Morrison Bowmore
+      from: 1984
+      to: 1994
+      notes: |
+        Acquired in 1984 by Stanley P. Morrison; the
+        Morrison family ownership through Morrison Bowmore
+        Distillers Ltd. brought Auchentoshan into the same
+        portfolio as Bowmore and Glen Garioch. Suntory took
+        an initial stake in Morrison Bowmore in 1989 [1][3].
+    - owner: Suntory Ltd.
+      from: 1994
+      to: 2014
+      notes: |
+        Suntory acquired 100% of Morrison Bowmore in 1994,
+        bringing Auchentoshan under direct Japanese
+        ownership [1][3].
+    - owner: Beam Suntory / Suntory Global Spirits
+      from: 2014
+      to: null
+      notes: |
+        2014 Beam Inc. / Suntory Holdings merger formed
+        Beam Suntory; the company rebranded as Suntory
+        Global Spirits in 2024 [1].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Cochno Loch               # Cochno Loch in the
+                                        # Kilpatrick Hills supplies
+                                        # process water; the producer
+                                        # site does not name the
+                                        # source explicitly on the
+                                        # current process page but
+                                        # the Cochno provenance is
+                                        # widely cited in trade
+                                        # reference works [3].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: full_lauter
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: null                           # Specific washback count not
+                                        # consistently disclosed in
+                                        # the sources surveyed; trade
+                                        # references vary across
+                                        # editions. Stainless-steel
+                                        # construction is widely
+                                        # cited.
+  material: stainless_steel
+  capacity_litres: null
+  notes: |
+    Stainless-steel washbacks per the trade-press equipment
+    descriptions [3]. Specific count and capacity hedged
+    pending direct disclosure.
+
+stills:
+  wash_still:
+    count: 1
+    capacity_litres: 17500              # Trade-database figure for
+                                        # the wash-still capacity [3].
+                                        # Triple-distillation site
+                                        # so the still counts (1 wash
+                                        # + 1 intermediate + 1
+                                        # spirit) are the
+                                        # distinguishing feature
+                                        # rather than the absolute
+                                        # capacities.
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  intermediate_still:
+    count: 1
+    capacity_litres: 8200               # Trade-database figure [3].
+                                        # The intermediate still is
+                                        # the diagnostic feature of
+                                        # triple distillation —
+                                        # only present at sites
+                                        # using a three-still
+                                        # regime.
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 1
+    capacity_litres: 11500              # Trade-database figure [3].
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+warehouses:
+  - id: auchentoshan-on-site
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      On-site warehousing at the Auchentoshan complex by the
+      Clyde. The west-coast Lowland inland-coastal climate
+      is comparable to but milder than the Glenkinchie East
+      Lothian environment; Suntory Global Spirits also
+      maintains off-site maturation capacity at central-belt
+      warehouses.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 1500000            # 1.5 million LPA per
+                                        # consolidated trade-press
+                                        # / trade-database sources;
+                                        # the producer does not
+                                        # publish a current capacity
+                                        # figure on auchentoshan.com.
+                                        # Source [3].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1823
+    change: |
+      Distillery licensed under the post-Excise-Act regime;
+      producer states that triple distillation has been
+      practised "from the beginning" of the licensed
+      operation, citing an intermediate still installed by an
+      engineer named Thorne [1]. The "from 1823" claim is
+      producer-attributed; trade references typically
+      paraphrase the producer's history without independent
+      verification of the 1823 commissioning date.
+    notes: |
+      The intermediate still is the diagnostic feature of
+      triple distillation. Auchentoshan's continuous
+      triple-distilled output is the basis of its core
+      positioning [1].
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - auchentoshan
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []               # Trade references note that
+                                        # Auchentoshan's output is
+                                        # primarily directed at
+                                        # single-malt bottling
+                                        # rather than the blend
+                                        # trade — a structural
+                                        # difference from
+                                        # Glenkinchie, where the
+                                        # Diageo / Johnnie Walker
+                                        # blend programme absorbs
+                                        # the majority of
+                                        # production. Specific
+                                        # blend-supply share not
+                                        # disclosed; project records
+                                        # the empty list per
+                                        # convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                # Triple distillation is the
+                                        # distinguishing equipment-
+                                        # level feature; a
+                                        # `concept/equipment/triple-
+                                        # distillation` (or
+                                        # `concept/practice/triple-
+                                        # distillation`) page does
+                                        # not yet exist in the
+                                        # project. The Hazelburn
+                                        # production-line entry at
+                                        # Springbank also models
+                                        # triple distillation;
+                                        # creating a shared concept
+                                        # page is queued in
+                                        # TODO §Concept pages to
+                                        # queue.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Auchentoshan is a Lowland malt-whisky distillery at Dalmuir near
+  Clydebank, on the north bank of the River Clyde just north-west
+  of Glasgow [1][2]. Founded informally in 1817 by John Bulloch as
+  the Duntocher Distillery on the Auchentoshan estate, the site
+  was licensed in 1823 under the post-Excise-Act regime and renamed
+  Auchentoshan in 1834 [1]. **Triple distillation has been the
+  distillery's continuous production regime since the licensed
+  start**: producer materials describe Auchentoshan as the only
+  Scottish distillery where every drop of production is
+  triple-distilled, the regime distinguishing it from the typical
+  Scotch double-distillation pattern that the rest of the
+  project's populated distilleries follow [1][3].
+  Auchentoshan is the second populated Lowland distillery in the
+  project after Glenkinchie; the two sit in the same SWA-Regulations
+  regional designation but exercise opposite distillation regimes —
+  Glenkinchie at the conventional double, Auchentoshan at the
+  three-still triple. The site was bombed during World War II (1941)
+  with operations halted until 1948; ownership has run through
+  Bulloch → Hart & Filshie → Curtis → Maclachlan → Tennent → Cairns →
+  Morrison → Suntory (1994) → Beam Suntory / Suntory Global
+  Spirits (2014-) [1][3]. Triple distillation lifts the
+  spirit-still output to approximately 81% ABV per producer
+  disclosure (compared with the ~70% reached by typical double-
+  distillation regimes), producing a lighter and structurally
+  cleaner new make at the cost of some flavour-precursor retention
+  [4]. The default production is unpeated; the core bottling
+  range is ex-bourbon-led with sherry-cask secondary maturation in
+  the 12 Year Old and Three Wood expressions.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.auchentoshan.com/our-history
+    accessed: 2026-05-18
+    notes: |
+      Auchentoshan's producer-published history page. Used for
+      the founding-year sequence (1817 Bulloch → 1823 licence →
+      1834 Hart & Filshie rename → ownership chronology
+      through 2014 Beam Suntory), the wartime mothballing
+      event, and the producer-attributed triple-distillation
+      claim. Producer voice is attributed where applied; the
+      project does not adopt producer marketing phrasing as
+      project voice.
+
+  - id: 2
+    type: official_website
+    url: https://www.auchentoshan.com/our-process
+    accessed: 2026-05-18
+    notes: |
+      Auchentoshan's producer-published process page. Used
+      for the mashing temperature (63.5 °C), three-water
+      mashing pattern, unpeated default, triple-distillation
+      pass-strength claim (8% wash → 81% final spirit), and
+      the bourbon / sherry / wine cask maturation programme
+      structure.
+
+  - id: 3
+    type: trade_publication
+    citation: |
+      Auchentoshan distillery technical specification entry,
+      whisky.com whisky database; cross-checked against
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd.
+    url: https://www.whisky.com/whisky-database/distilleries/details/auchentoshan.html
+    accessed: 2026-05-18
+    notes: |
+      Trade-database / trade-reference source for the still
+      capacities (wash 17,500 L, intermediate 8,200 L, spirit
+      11,500 L), annual capacity (1.5 million LPA), water
+      source (Cochno Loch / Kilpatrick Hills), and the
+      Morrison Bowmore → Suntory ownership-transition dates.
+      Specific equipment capacities should be verified
+      against the most recent Malt Whisky Yearbook edition.
+
+  - id: 4
+    type: trade_publication
+    citation: |
+      Auchentoshan entry, Whiskypedia at scotchwhisky.com
+      (trade-press whisky reference published by Scotch
+      Whisky magazine).
+    url: https://scotchwhisky.com/whiskypedia/1812/auchentoshan/
+    accessed: 2026-05-18
+    notes: |
+      Cross-reference on the triple-distillation pass-strength
+      figures and the "only Scottish distillery triple-distilling
+      all its production" claim. Note the constraint: the
+      Hazelburn production line at Springbank is also triple-
+      distilled but Springbank's default Springbank line is
+      2.5-times distilled, so Auchentoshan remains the only
+      site whose entire output is triple-distilled.
+
+  - id: 5
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/10
+    accessed: 2026-05-18
+    citation: |
+      The Scotch Whisky Regulations 2009 (S.I. 2009/2890),
+      regulation 10. Defines the Lowland protected locality
+      under which Auchentoshan is classified.
+    notes: |
+      Regulatory grounding for the formal Lowland-region
+      designation. Auchentoshan sits south of the Highland
+      Line in West Dunbartonshire within the Lowland
+      designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

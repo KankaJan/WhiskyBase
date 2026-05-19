@@ -86,8 +86,8 @@ sources:
 
   - id: 3
     type: regulatory_text
-    url: https://www.inao.gouv.fr/
-    accessed: 2026-05-16
+    url: https://www.inao.gouv.fr/produit/10018
+    accessed: 2026-05-18
     citation: |
       Cahier des charges de l'appellation d'origine contrôlée
       "Ventoux" (formerly Côtes du Ventoux until renamed by INAO
@@ -97,8 +97,7 @@ sources:
     notes: |
       Primary regulatory text for the Ventoux AOC. Defines the
       appellation boundary, the Grenache and Syrah-led grape
-      composition rules, and maximum yields. Specific URL via
-      INAO's product repository should be verified when accessed.
+      composition rules, and maximum yields. The INAO product page links the currently homologated cahier PDF.
 
 
 # --- Metadata ---------------------------------------------------------------

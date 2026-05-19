@@ -1,0 +1,175 @@
+# =============================================================================
+# Glenkinchie (default production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity, peating (unpeated)
+# and broad production characteristics well-grounded; specific
+# fermentation duration, yeast strain, and spirit-cut figures
+# hedged pending direct disclosure.
+# =============================================================================
+# Single production line at Glenkinchie. The distillery has not
+# disclosed separate peated or otherwise-distinct sub-lines; the
+# bulk of the spirit goes to the Johnnie Walker blend programme
+# and the ~10% single-malt share is the source of the core range.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenkinchie
+name: Glenkinchie (default)
+distillery: glenkinchie
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1837                    # Glenkinchie's licensed start
+                                        # year. The 1825 informal
+                                        # Milton-period output is not
+                                        # treated as the same
+                                        # production line — the
+                                        # Glenkinchie-as-licensed-
+                                        # distillery start is the
+                                        # project's reference point.
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                     # On-site malting ceased 1969;
+                                        # malt thereafter delivered
+                                        # from commercial maltsters.
+                                        # Specific maltster identity
+                                        # not consistently disclosed
+                                        # at the line level.
+  maltster: null
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                      # Glenkinchie is unpeated by
+                                        # default; no phenol
+                                        # measurement to record.
+  peat_origin: none                     # `none` enum value introduced
+                                        # in production_line schema
+                                        # v0.2.1 specifically for
+                                        # unpeated lines.
+  notes: |
+    Glenkinchie's default production is unpeated; the producer's
+    style positioning emphasises a light Lowland profile rather
+    than smoke character [1]. There is no peated Glenkinchie
+    sub-line at the time of writing.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                        # Conventional double
+                                        # distillation. The common
+                                        # trade-press shorthand
+                                        # "Lowland distilleries are
+                                        # triple-distilled" is wrong
+                                        # for Glenkinchie — the
+                                        # triple-distilled Lowland is
+                                        # Auchentoshan; Glenkinchie
+                                        # has been double-distilled
+                                        # throughout the
+                                        # project-relevant period
+                                        # [2].
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Specific cut points not disclosed in current sourcing.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                      # Ex-bourbon refill predominates
+                                        # in the core 12 Year Old
+                                        # programme; producer
+                                        # describes the maturation
+                                        # as "American oak"-led with
+                                        # secondary sherry influence
+                                        # in some releases [1].
+  - oloroso-sherry-butt                 # Sherry influence appears in
+                                        # the Distillers Edition
+                                        # Amontillado-finish casks (a
+                                        # fortified-style sherry; the
+                                        # project's oloroso-sherry-butt
+                                        # entry covers oxidative-aged
+                                        # styles broadly).
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - glenkinchie-12
+  - glenkinchie-distillers-edition
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenkinchie's default production line is the distillery's sole
+  modelled production stream: an unpeated Lowland single malt
+  produced on two pot stills (one wash, one spirit) with worm-tub
+  condensers [1][2]. Malt is delivered from commercial maltsters
+  (on-site malting ceased 1969). Six wooden washbacks support
+  fermentation; specific fermentation duration is not consistently
+  disclosed. Approximately 90% of the line's output historically
+  supplies the Johnnie Walker blend programme — Glenkinchie was
+  positioned as "The Lowland Home of Johnnie Walker" in Diageo's
+  2020 brand-home redevelopment — and the 10% single-malt share is
+  the source of the core range (12 Year Old core release plus the
+  annual Distillers Edition). The maturation programme is
+  ex-bourbon-led for the core 12 Year Old; the Distillers Edition
+  applies a secondary Amontillado-cask finish over the same
+  core spirit (see bottling entries for the
+  cask-programme details).
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: https://scotchwhisky.com/whiskypedia/1860/glenkinchie/
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/glenkinchie
+    accessed: 2026-05-18
+    notes: |
+      Diageo's Malts.com page for Glenkinchie. Used for the
+      unpeated-default characterisation, equipment-level
+      details (two stills, worm-tub condenser), and the
+      core-range structure (12 Year Old + Distillers Edition).
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whiskypedia entry for Glenkinchie at scotchwhisky.com.
+    url: https://scotchwhisky.com/whiskypedia/1860/glenkinchie/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference for double-distillation,
+      washback count (6 wooden), and the historical-context
+      details on the 1969 maltings closure.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

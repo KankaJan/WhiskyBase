@@ -1,0 +1,497 @@
+# =============================================================================
+# Glenkinchie
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership lineage, and
+# core equipment configuration are well-grounded against the producer
+# source and standard trade references. Annual-capacity figures
+# conflict across sources and are recorded as such rather than
+# smoothed.
+# =============================================================================
+# First populated Lowland-region distillery in the project's data
+# set. Tests the Lowland regional designation under the Scotch
+# Whisky Regulations 2009 and exercises `condenser: worm_tub` for
+# the first time at a populated Diageo site.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenkinchie
+name: Glenkinchie
+also_known_as:                          # Producer-attributed
+  - The Edinburgh Malt                  # marketing positioning per
+                                        # malts.com — included as a
+                                        # known-alias rather than the
+                                        # project's voice [1].
+wikidata_qid: null
+website: https://www.malts.com/en/glenkinchie
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Lowlands                        # Formal SWA region under the
+                                        # Scotch Whisky Regulations
+                                        # 2009 [3]. First populated
+                                        # Lowland distillery in the
+                                        # data set.
+sub_region: East Lothian
+locality: Peaston Bank, near Pencaitland # The distillery sits roughly
+                                        # one mile south of Pencaitland
+                                        # village, in a glen of the
+                                        # Kinchie Burn within East
+                                        # Lothian's farmland; about
+                                        # 15 miles south-east of
+                                        # Edinburgh city centre [1][2].
+coordinates:
+  lat: 55.912
+  lon: -2.838                           # Approximate; the distillery
+                                        # site near Peaston Bank south
+                                        # of Pencaitland village. Not
+                                        # producer-published; approximate
+                                        # location derived from the
+                                        # village reference in producer
+                                        # and trade-press text — should
+                                        # be replaced with surveyed
+                                        # coordinates when a primary
+                                        # geographical source is to
+                                        # hand.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1825                           # Informal founding year per
+                                        # the producer — established
+                                        # by farmers John and George
+                                        # Rate as the Milton Distillery
+                                        # on the current site or
+                                        # nearby [1][2]. Licensed and
+                                        # renamed Glenkinchie 1837 (see
+                                        # equipment_changes / first
+                                        # spirit history below).
+first_spirit: 1825
+mothballed_periods:
+  - from: 1853                          # The Rate brothers were
+    to: 1881                            # bankrupted in 1853; the site
+                                        # was converted to a sawmill
+                                        # and did not produce whisky
+                                        # until an Edinburgh syndicate
+                                        # restarted operations in
+                                        # 1881 [2]. The 28-year gap
+                                        # is unusually long among
+                                        # currently-operating
+                                        # distilleries.
+    note: |
+      Site converted to a sawmill after the Rate brothers'
+      bankruptcy; whisky production resumed when a syndicate
+      of Edinburgh-based drinks-trade investors purchased the
+      site [2].
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Diageo plc
+  parent: null                          # Diageo plc is the direct
+                                        # owner; the corporate group
+                                        # is Diageo itself.
+  history:
+    - owner: John and George Rate
+      from: 1825
+      to: 1853
+      notes: |
+        Founding ownership. Two farmer brothers operating the
+        site initially as the Milton Distillery, licensed and
+        renamed Glenkinchie 1837. Bankrupted 1853 [2].
+    - owner: Edinburgh syndicate
+      from: 1881
+      to: 1890
+      notes: |
+        Re-start ownership after the 1853-1881 sawmill period.
+        A group of Edinburgh-based wine-and-spirit-trade
+        investors purchased the site in 1881; the Glenkinchie
+        Distillery Company was formally founded in 1890 [2].
+    - owner: Scottish Malt Distillers (SMD)
+      from: 1914
+      to: 1925
+      notes: |
+        In 1914 Glenkinchie joined the Lowland-distillery group
+        that formed Scottish Malt Distillers (SMD), alongside
+        Rosebank, St Magdalene, Grange, and Clydesdale [2].
+    - owner: Distillers Company Limited (DCL) / Scottish Malt
+        Distillers
+      from: 1925
+      to: 1986
+      notes: |
+        SMD merged into DCL in 1925; Glenkinchie operated under
+        the DCL portfolio for the next six decades. The DCL
+        rationalisation of Lowland distilleries through the
+        late 20th century closed several Lowland sites
+        (including St Magdalene in 1983, Inverleven in 1991,
+        and Rosebank in 1993); Glenkinchie survived as DCL's
+        retained Lowland malt-distillery operation [2].
+    - owner: United Distillers / UDV / Diageo
+      from: 1986
+      to: null
+      notes: |
+        Guinness acquired DCL in 1986, forming United
+        Distillers. Guinness merged with Grand Metropolitan in
+        1997 to form Diageo; Glenkinchie has been Diageo-owned
+        in continuous succession since [2]. In 1988 Glenkinchie
+        was selected as the Lowland representative in the
+        original Classic Malts of Scotland series alongside
+        Cragganmore, Dalwhinnie, Glenkinchie, Lagavulin, Oban,
+        and Talisker [2][3]. In 2020 Diageo completed a
+        £185 million whisky-tourism investment that included
+        the Glenkinchie brand-home redevelopment, positioning
+        Glenkinchie as "The Lowland Home of Johnnie Walker"
+        (one of the four Diageo brand-home distilleries
+        alongside Caol Ila, Clynelish, and Cardhu) [1][4].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Kinchie Burn              # The Kinchie Burn (which gives
+                                        # the distillery its name; the
+                                        # burn's name derives from
+                                        # "de Quincey", the historical
+                                        # local landowner family).
+                                        # Water originates in the
+                                        # Lammermuir Hills to the south
+                                        # and runs through the glen [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null                            # Mash-tun type not directly
+                                        # disclosed in the producer
+                                        # source; trade references
+                                        # describe a modernised
+                                        # full-lauter installation
+                                        # post the 1969 maltings
+                                        # conversion but the specific
+                                        # current type is hedged.
+  material: null
+  capacity_kg: null
+
+washbacks:
+  count: 6                              # Six wooden washbacks per
+                                        # standard trade references —
+                                        # 2 Oregon pine + 4 Canadian
+                                        # larch (or close variants);
+                                        # the count is widely cited
+                                        # but specific material
+                                        # proportions hedged [3].
+  material: larch
+  capacity_litres: null
+  notes: |
+    Six wooden washbacks of mixed Oregon-pine and
+    Canadian-larch construction per trade-reference sources
+    (commonly cited as 2 Oregon pine + 4 Canadian larch).
+    The schema's `material:` field takes a single value;
+    `larch` is recorded as the dominant material with the
+    mixed construction noted here.
+
+stills:
+  wash_still:
+    count: 1
+    capacity_litres: 30963              # Producer-attributed (Diageo
+                                        # via malts.com) claims the
+                                        # "largest wash still in the
+                                        # industry"; the specific
+                                        # 30,963 L figure is reported
+                                        # by whisky.com against the
+                                        # producer's claim. A separate
+                                        # 21,000 L figure widely cited
+                                        # in the trade press refers to
+                                        # the typical charge rather
+                                        # than the still's full
+                                        # capacity [1][3].
+    charge_litres: 21000                # The standard wash-still
+                                        # charge per trade references;
+                                        # the still operates at
+                                        # roughly two-thirds capacity
+                                        # in normal running.
+    shape: onion                        # Producer description
+                                        # "fat old copper pot stills"
+                                        # in onion / pot shape;
+                                        # specific shape categorisation
+                                        # cross-referenced against
+                                        # trade publications [1][3].
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: worm_tub                 # First populated distillery
+                                        # in the project with
+                                        # `worm_tub` cooling. The
+                                        # producer (Diageo) explicitly
+                                        # contrasts the worm tub with
+                                        # "a more modern condenser",
+                                        # describing the resulting
+                                        # spirit as having "greater
+                                        # character and depth" [1].
+                                        # Trade-press sources also
+                                        # include Glenkinchie on
+                                        # standard lists of remaining
+                                        # worm-tub distilleries [3].
+  spirit_still:
+    count: 1
+    capacity_litres: 20998              # Reported alongside the wash-
+                                        # still figure by whisky.com.
+                                        # Like the wash still, the
+                                        # actual charge in operation
+                                        # is less than the published
+                                        # capacity.
+    charge_litres: null
+    shape: onion
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: null
+    condenser: worm_tub
+
+warehouses:
+  - id: glenkinchie-on-site
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      On-site warehousing at the Glenkinchie complex; the
+      East Lothian inland-coastal climate (the Firth of
+      Forth lies roughly 10 miles north) is cooler and drier
+      than the typical Speyside maturation environment.
+      Diageo also operates substantial off-site maturation
+      capacity at central-belt warehouses; the project
+      treats the on-site warehouse as the canonical
+      Glenkinchie maturation environment without claiming
+      that all Glenkinchie spirit matures there [1].
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: null               # Annual capacity figures
+                                        # conflict across the
+                                        # available trade-reference
+                                        # sources: 2.5 million LPA per
+                                        # whisky.com / Distilando;
+                                        # 1.7 million LPA per the
+                                        # Scotch Whisky / Whiskypedia
+                                        # listing; 1.6 million LPA
+                                        # cited elsewhere. Producer
+                                        # (Diageo) does not publish a
+                                        # current capacity figure on
+                                        # malts.com. Per the project's
+                                        # source-conflict policy, the
+                                        # specific figure is recorded
+                                        # as null rather than smoothed;
+                                        # the range 1.6-2.5 million
+                                        # LPA captures the conflict.
+                                        # See sources [1][3][5].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1837
+    change: |
+      Site rebuilt as the Glenkinchie distillery after the
+      Rate brothers obtained their licence. The earlier
+      Milton Distillery on or adjacent to the site operated
+      under different naming from 1825.
+    notes: |
+      The 1825 founding date refers to the informal start
+      under the Milton name; the 1837 licensing is the formal
+      Glenkinchie distillery's first year [1][2].
+    source_id: 2
+  - year: 1890
+    change: |
+      Rebuilt as the redbrick Victorian distillery complex
+      that survives today, with worker housing and a bowling
+      green on the same site; the Glenkinchie Distillery
+      Company was formally constituted in the same period.
+    notes: |
+      The post-1881 redevelopment under the Edinburgh
+      syndicate established the current site footprint [1][2].
+    source_id: 2
+  - year: 1969
+    change: |
+      On-site malting floor ceased operation; malt
+      thereafter delivered from commercial maltsters. The
+      former malting building was converted to a museum of
+      malt-whisky production.
+    notes: |
+      Glenkinchie is one of many DCL distilleries that
+      consolidated malting to dedicated commercial maltsters
+      in the late 1960s and 1970s rationalisation [2][3].
+    source_id: 2
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - glenkinchie
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []               # Approximately 90% of
+                                        # Glenkinchie's output
+                                        # historically supplies
+                                        # Diageo's Johnnie Walker
+                                        # blend programme — Glenkinchie
+                                        # is positioned as "The Lowland
+                                        # Home of Johnnie Walker"
+                                        # since the 2020 brand-home
+                                        # redevelopment. The 10%
+                                        # single-malt share is the
+                                        # source of the bottled core
+                                        # range [1][4]. Blends are
+                                        # not modelled as a project
+                                        # entity type — empty list per
+                                        # convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                # Worm-tub cooling is a
+                                        # distinctive feature that
+                                        # would benefit from a
+                                        # `concept/equipment/worm-tub`
+                                        # cross-reference; the
+                                        # `equipment/worm-tub` concept
+                                        # page already exists and
+                                        # lists Glenkinchie in its
+                                        # `used_at_distilleries`
+                                        # forward-ref list. The
+                                        # cross-reference is recorded
+                                        # there (concept-side) rather
+                                        # than duplicated here;
+                                        # leaving distinctive_features
+                                        # empty matches the
+                                        # convention used for Mortlach
+                                        # / Oban / Dalwhinnie etc.
+                                        # already listed on
+                                        # worm-tub.yml.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenkinchie is a Lowland malt-whisky distillery at Peaston Bank
+  near Pencaitland in East Lothian, about 15 miles south-east of
+  Edinburgh, founded in 1825 by the farmer brothers John and George
+  Rate as the Milton Distillery and licensed under the Glenkinchie
+  name in 1837 [1][2]. The site has been owned through the SMD →
+  DCL → United Distillers → Diageo corporate lineage in continuous
+  succession since 1925, with one historical gap: the Rate brothers
+  were bankrupted in 1853 and the site operated as a sawmill until
+  an Edinburgh syndicate restarted whisky production in 1881 [2].
+  Glenkinchie was selected for the original Classic Malts of
+  Scotland series in 1988 as the Lowland representative; in 2020
+  Diageo positioned the site as "The Lowland Home of Johnnie
+  Walker" within its four-corner brand-home programme alongside
+  Caol Ila, Clynelish, and Cardhu, following a £185 million whisky-
+  tourism investment [1][4]. Production runs on two pot stills
+  (one wash, one spirit) with worm-tub condensers, an
+  uncommon configuration among large modern distilleries; the
+  producer describes the wash still as "the largest in the
+  industry", with the specific capacity figure (30,963 L per
+  trade-database sources) more than 50% larger than typical Scotch
+  wash-still capacity [1][3]. The default production is unpeated
+  and approximately 90% of the spirit historically supplies the
+  Johnnie Walker blend programme; the 10% single-malt share is the
+  source of the bottled core range, which since 1988 has been
+  anchored by Glenkinchie 12 Year Old. The "Lowland" regional
+  designation under the Scotch Whisky Regulations 2009 covers
+  Glenkinchie geographically; the contested "triple-distilled
+  Lowland" stereotype does not apply — Glenkinchie has been
+  double-distilled throughout the project-relevant period (the
+  triple-distilled Lowland is Auchentoshan).
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/glenkinchie
+    accessed: 2026-05-18
+    notes: |
+      Diageo's Malts.com page for Glenkinchie. Used for the
+      site description, founding details (Rate brothers,
+      1825 Milton / 1837 Glenkinchie), water-source (Kinchie
+      Burn from the Lammermuir Hills), still-house
+      description ("two fat old copper pot stills" + "single
+      cast-iron worm tub"), and the producer-attributed
+      "largest wash still in the industry" claim. Producer
+      voice is attributed where applied; the project does
+      not adopt producer marketing phrasing as project voice.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whiskypedia entry for Glenkinchie at scotchwhisky.com
+      (the consumer-facing whisky reference published by
+      Scotch Whisky magazine), curated trade-press content.
+    url: https://scotchwhisky.com/whiskypedia/1860/glenkinchie/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference. Used for the 1853-1881
+      sawmill-conversion period, the 1881 Edinburgh-syndicate
+      restart, the 1890 Glenkinchie Distillery Company
+      formation, the SMD/DCL ownership-transition dates, and
+      the 1969 maltings closure.
+
+  - id: 3
+    type: trade_publication
+    citation: |
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd. Glenkinchie entry covering equipment
+      configuration (2 stills with worm-tub condensers, 6
+      wooden washbacks), still capacities, and trade-context
+      production figures.
+    url: https://www.maltwhiskyyearbook.com/
+    accessed: 2026-05-18
+    notes: |
+      Trade-reference cross-check; specific equipment
+      capacities and current annual capacity should be
+      verified against the most recent edition. Washback
+      count (6) and wash/spirit-still arrangement match
+      across editions.
+
+  - id: 4
+    type: official_website
+    url: https://www.diageo.com/en/news-and-media/press-releases/2020/glenkinchie-distillery-launch-sows-the-seeds-of-future-tourism-growth
+    accessed: 2026-05-18
+    notes: |
+      Diageo corporate press release on the 2020 brand-home
+      redevelopment as "The Lowland Home of Johnnie Walker"
+      and the £185 million whisky-tourism investment context
+      across Diageo's Four Corners distilleries (Glenkinchie,
+      Caol Ila, Clynelish, Cardhu).
+
+  - id: 5
+    type: trade_publication
+    citation: |
+      Glenkinchie distillery production-capacity reference
+      data, whisky.com whisky database.
+    url: https://www.whisky.com/whisky-database/distilleries/details/glenkinchie.html
+    accessed: 2026-05-18
+    notes: |
+      Specific capacity figures (wash still 30,963 L,
+      spirit still 20,998 L) and the 2.5 million LPA annual-
+      capacity figure. Trade-database site; the 2.5 million
+      LPA figure conflicts with the 1.6-1.7 million LPA
+      figures cited by scotchwhisky.com / Wikipedia, hence
+      annual_capacity_lpa is left null with the conflict
+      recorded rather than smoothed.
+
+  - id: 6
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/10
+    accessed: 2026-05-18
+    citation: |
+      The Scotch Whisky Regulations 2009 (S.I. 2009/2890),
+      regulation 10. Defines the "Lowland" protected
+      locality under which Glenkinchie is classified.
+    notes: |
+      Regulatory grounding for the formal Lowland-region
+      designation. The Scotch Whisky Regulations 2009 lists
+      five protected localities; Glenkinchie sits south of
+      the Highland Line in East Lothian within the Lowland
+      designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

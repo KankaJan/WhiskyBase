@@ -1,0 +1,157 @@
+# =============================================================================
+# Glenkinchie 12 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship core release;
+# presentation specifications stable across releases.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenkinchie-12
+name: Glenkinchie 12 Year Old
+production_line: glenkinchie
+produced_at_distillery: glenkinchie
+bottled_by: glenkinchie
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                    # The 12 Year Old replaced
+                                      # the earlier Glenkinchie 10
+                                      # Year Old as the Lowland
+                                      # representative in the Classic
+                                      # Malts series; the specific
+                                      # year of the 10 → 12
+                                      # transition is not pinned to
+                                      # a primary source in current
+                                      # research and is hedged
+                                      # rather than guessed [1][2].
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: false             # 43% ABV places the release
+                                      # below the 46% NCF-threshold
+                                      # convention; chill-filtered
+                                      # per industry-typical practice
+                                      # at this presentation tier
+                                      # (see
+                                      # educational/chill-filtering).
+natural_colour: false                 # Caramel colouring used per
+                                      # industry-typical practice
+                                      # at this tier and consistent
+                                      # with the Diageo core-release
+                                      # presentation convention also
+                                      # used for Caol Ila 12 and
+                                      # Lagavulin 16.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                  # Predominant cask type. The
+                                      # producer describes the
+                                      # maturation as American-oak-
+                                      # led ex-bourbon; specific
+                                      # bourbon-vs-sherry-cask
+                                      # proportion is not disclosed
+                                      # at this release [1].
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Ex-bourbon refill predominates. The 12-year maturation
+      sits in cask-extraction phase 2 per
+      educational/cask-maturation-kinetics — the unpeated
+      Lowland spirit takes on American-oak vanilla and
+      mild oak-lactone notes while remaining light-bodied,
+      which is the producer's positioning for the release [1].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 50.00                       # Approximate UK retail at
+                                      # recent release pricing
+                                      # (2024).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenkinchie's flagship core release, 12 years matured
+  predominantly in ex-bourbon refill American oak and bottled
+  at 43% ABV [1]. The 12 Year Old replaced the earlier
+  Glenkinchie 10 Year Old as the Lowland representative in
+  Diageo's Classic Malts of Scotland series; the Glenkinchie
+  10 had been the original Classic Malts release for
+  Glenkinchie since the series launched in 1988, and the
+  10 → 12 transition followed the wider Diageo move toward
+  12-year-old core releases in the 2000s [1][2].
+  Chill-filtered with caramel colouring per industry-typical
+  practice at this ABV tier — consistent with the Diageo
+  core-release presentation convention also applied to
+  Caol Ila 12 and Lagavulin 16. The producer's positioning
+  emphasises a light Lowland character; in the project's
+  voice, the release is an unpeated, ex-bourbon-led core
+  bottling at the introductory tier of the Lowland category.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.malts.com/en/glenkinchie
+    accessed: 2026-05-18
+    notes: |
+      Diageo's Malts.com page for Glenkinchie. Used for ABV
+      (43%), age (12 years), and the maturation
+      characterisation (American oak ex-bourbon).
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whiskypedia entry for Glenkinchie at scotchwhisky.com.
+    url: https://scotchwhisky.com/whiskypedia/1860/glenkinchie/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference for the 1988 Classic Malts
+      programme introduction and the historical 10 → 12
+      Year Old transition as the flagship core.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []

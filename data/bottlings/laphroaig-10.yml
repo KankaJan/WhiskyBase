@@ -1,0 +1,170 @@
+# =============================================================================
+# Laphroaig 10 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship core release
+# with stable presentation conventions since the 1960s
+# re-introduction of single-malt bottling.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: laphroaig-10
+name: Laphroaig 10 Year Old
+production_line: laphroaig
+produced_at_distillery: laphroaig
+bottled_by: laphroaig
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                      # The Laphroaig 10 Year Old
+                                        # has been a continuously
+                                        # available core release for
+                                        # decades; the specific
+                                        # introduction year is not
+                                        # pinned to a primary source.
+                                        # The single-malt-bottling
+                                        # programme is associated
+                                        # with Bessie Williamson's
+                                        # 1954-1962 stewardship.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0
+age_statement: 10
+vintage: null
+cask_strength: false
+non_chill_filtered: false               # 40% ABV places the release
+                                        # at the regulatory minimum
+                                        # — below the 46% NCF-
+                                        # threshold convention.
+                                        # Chill-filtered per
+                                        # industry-typical practice
+                                        # at this tier (see
+                                        # educational/chill-filtering).
+                                        # Note: a separate
+                                        # Laphroaig 10 Year Old
+                                        # Cask Strength variant is
+                                        # released annually at
+                                        # ~55-60% ABV NCF natural
+                                        # colour; that variant is
+                                        # not modelled here.
+natural_colour: false                   # Caramel colouring used per
+                                        # industry-typical practice
+                                        # at this 40% ABV tier;
+                                        # the producer does not
+                                        # claim natural-colour
+                                        # status on the standard
+                                        # 10 Year Old release.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                    # Producer-disclosed:
+                                        # "Nearly all our whisky is
+                                        # at least partially matured
+                                        # in ex-Bourbon casks" [1].
+                                        # The 10 Year Old is
+                                        # principally ex-bourbon
+                                        # without secondary
+                                        # cask exposure.
+    duration_years: 10
+    cooperage: Maker's Mark (Kentucky)
+    notes: |
+      Ex-bourbon American oak from Maker's Mark in Kentucky —
+      an internal-supply-chain relationship within the
+      Suntory Global Spirits portfolio (Maker's Mark is a
+      sister bourbon distillery) [1]. The 10-year duration
+      sits in cask-extraction phase 2 per
+      educational/cask-maturation-kinetics: the heavily-peated
+      Islay spirit develops bourbon-derived vanilla and
+      oak-lactone notes alongside the underlying tarry /
+      herbal / phenolic profile.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 50.00                         # Approximate UK retail at
+                                        # recent release pricing
+                                        # (2024).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Laphroaig's flagship core release, 10 years matured
+  predominantly in ex-bourbon American oak from Maker's Mark in
+  Kentucky and bottled at 40% ABV [1]. The 10 Year Old is the
+  long-standing entry-level age-statemented core release in the
+  Laphroaig range, continuously available for decades and the
+  most widely-distributed heavily-peated Islay single malt at
+  the modest-ABV tier. The 40% ABV chill-filtered presentation
+  is consistent with the Beam Suntory / Suntory Global Spirits
+  core-range pattern (parallel to other 40-43% chill-filtered
+  flagships such as Caol Ila 12 and Glenkinchie 12). The Royal
+  Warrant from HRH The Prince of Wales (1994, now HM King
+  Charles III) applies to the Laphroaig brand overall rather
+  than to a specific release. A separate Laphroaig 10 Year Old
+  Cask Strength annual release at ~55-60% ABV NCF natural
+  colour exists alongside the standard 10 Year Old; the cask-
+  strength variant is not modelled in this entry.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.laphroaig.com/whiskies/iconic
+    accessed: 2026-05-18
+    notes: |
+      Producer page for Laphroaig 10 Year Old (the "Iconic"
+      core-range entry on laphroaig.com). Used for ABV (40%),
+      age (10 years), and the maturation characterisation
+      (American oak ex-bourbon from Maker's Mark).
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Whiskypedia entry for Laphroaig at scotchwhisky.com.
+    url: https://scotchwhisky.com/whiskypedia/1924/laphroaig/
+    accessed: 2026-05-18
+    notes: |
+      Trade-press cross-reference for the continuous-release
+      history of the 10 Year Old and the brand context.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-18
+contributors: []
