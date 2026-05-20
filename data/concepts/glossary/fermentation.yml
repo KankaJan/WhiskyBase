@@ -26,7 +26,7 @@ summary: |
   affects the final spirit character: longer fermentations
   (notably 70+ hours) generate more secondary fruit-ester
   congeners through extended bacterial activity after the yeast
-  has completed its primary work [1].
+  has completed its primary work [1][2].
 
 body: null
 
@@ -64,10 +64,32 @@ sources:
       the homolactic / heterolactic fermentation pathway and
       the evolution of the LAB (lactic acid bacteria) population
       across fermentation (pp 149-151).
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Chapter 5 (Fermentation), pp 219 (definition: conversion
+      of sugars to ethanol by Saccharomyces cerevisiae), 220 (CO2
+      release), 239-241 (bacteria). Corroborates the
+      sugars-to-ethanol-and-CO2 conversion by yeast, fermentation in
+      wooden washbacks, and the role of lactic acid bacteria in
+      shaping character - Miller reports lactobacillus-inoculated wash
+      yielding higher fatty acids and esters and quotes a study
+      finding lactobacilli "essential for the development of the
+      perceived quality parameters of Scotch malt spirit" (p 239),
+      and the Wanikawa gamma-lactone fruity-flavour pathway via lactic
+      acid bacteria and distiller's yeast (p 241). Miller takes a
+      representative wash at 8% ABV (p 332), within the entry's
+      7-9% range. The 48-100 h fermentation-duration figure remains
+      Russell-only.
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
-confidence: medium
-last_reviewed: 2026-05-16
+confidence: high
+last_reviewed: 2026-05-20
 contributors: []

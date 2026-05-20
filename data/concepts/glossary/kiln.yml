@@ -19,7 +19,7 @@ summary: |
   germination, drives moisture out of the green malt down to ~4-5%,
   and — when peat smoke is introduced into the air stream — deposits
   phenolic compounds on the husk that survive into the finished
-  spirit as the source of "peated" character [1]. Kilning
+  spirit as the source of "peated" character [1][2]. Kilning
   temperature, duration, and the timing of peat-smoke introduction
   are the principal control variables for the peating level of a
   Scotch malt and for the colour and roast notes that develop in
@@ -71,10 +71,29 @@ sources:
       cold-smoking-versus-drying interaction with kilning and
       the deposition of phenols, cresols, guaiacols, and
       polyphenols on the malt husk during the kilning stage.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Chapter 3 (Malting), section 3.3 Kilning, pp 151-152.
+      Independently corroborates the entry's core claims. States the
+      purpose of kilning as terminating germination and removing
+      moisture, and gives the staged kiln-air-temperature profile:
+      50-60 C while malt moisture exceeds ~12% (the low-temperature,
+      high-moisture regime in which phenol uptake from peat is most
+      efficient), rising to 65-75 C until moisture reaches 5-8%, then
+      85-105 C for final drying (moisture <=~4%) and curing. Miller's
+      final-moisture figure (<=~4%) sits just below the entry's ~4-5%;
+      both are within the disclosed range. Confirms kilning temperature
+      and the timing of peat-smoke introduction as control variables.
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
-confidence: medium
-last_reviewed: 2026-05-16
+confidence: high
+last_reviewed: 2026-05-20
 contributors: []

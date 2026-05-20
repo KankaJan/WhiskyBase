@@ -1,8 +1,0 @@
-# This file was superseded by signatory-caol-ila.yml on 2026-05-17.
-# It cannot be removed from the sandbox due to Windows file-lock
-# semantics; the YAML document below is a placeholder that the
-# resolver ignores. User can delete this file from the Windows shell
-# with:
-#   del data\bottlings\signatory-caol-ila-stub.yml
----
-# (empty)

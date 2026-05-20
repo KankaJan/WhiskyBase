@@ -1,132 +1,100 @@
-data + site: Glenfiddich (13th distillery) + index pages grouped by distillery
+sourcing: Miller grounding pass — 5 glossary entries promoted to high
 
-Adds Glenfiddich as the thirteenth populated distillery and the
-second populated Speyside entry after Glenfarclas, and rewrites
-the /production-lines/ and /bottlings/ index pages to group their
-entries under the parent distillery.
+Resolves the long-standing confidence blocker: the seven
+single-source glossary entries could not reach confidence: high
+because the rubric requires multi-source corroboration and they
+cited only Russell ed. 2014. Three reference works were acquired
+(user-supplied) and a grounding pass run against Miller 2024.
 
 Files
 -----
 
-- data/distilleries/glenfiddich.yml
-- data/production_lines/glenfiddich.yml
-- data/bottlings/glenfiddich-12.yml
-- data/bottlings/glenfiddich-15-solera.yml
-- site/src/pages/production-lines/index.astro (rewritten)
-- site/src/pages/bottlings/index.astro (rewritten)
+- docs/literature-scouting.md (new)
+- docs/bibliography.md
+- docs/handover.md
+- CLAUDE.md
+- TODO.md
+- data/concepts/glossary/kiln.yml
+- data/concepts/glossary/mashing.yml
+- data/concepts/glossary/fermentation.yml
+- data/concepts/glossary/reflux.yml
+- data/concepts/glossary/wash-still.yml
+- data/concepts/glossary/distillers-yeast.yml
 
-Glenfiddich
------------
+Literature scouting
+-------------------
 
-- Location: Dufftown, Banffshire, Speyside.
-- Owner: William Grant & Sons Ltd — unbroken family ownership
-  since the 1886 founding. One of the few sizeable Scotch
-  producers still entirely family-owned; a structural parallel
-  to the unrelated Grant family's Glenfarclas.
-- Founded 1886 (build start); first spirit Christmas Day 1887.
-  The producer's own timeline is internally inconsistent on the
-  1886/1887 build-start year — recorded as founded 1886,
-  first_spirit 1887, with the conflict noted in the entry. The
-  original stills were second-hand equipment bought from the
-  Cardhu distillery.
-- The distillery most associated with the creation of the
-  modern marketed single-malt category — the 1963 decision by
-  Sandy Grant Gordon to actively market single malt outside
-  Scotland.
-- Very large scale: ~21 million LPA; 48 Douglas-fir washbacks
-  (~74-hour average fermentation); 43 copper stills (16 wash,
-  27 spirit), with 15 of the 27 spirit stills direct-fired by
-  gas. On-site coppersmiths (since 1957) and cooperage (since
-  1959). Over one million casks in warehouse.
-- Bottlings: 12 Year Old (40% ABV, bourbon + oloroso flagship)
-  and 15 Year Old Solera (40% ABV) — the latter is the first
-  populated bottling exercising a solera-style continuous-
-  marrying vatting stage (the 1998 Solera Vat, never drained
-  below half-full, inspired by the Spanish sherry solera).
+New doc docs/literature-scouting.md — the scouting / shopping
+list of reference works worth acquiring plus open-access sources
+citable now (the complement to bibliography.md, which catalogues
+works already in use). A web-search pass surfaced the MDPI
+journal Beverages (fully open access) and the Journal of the
+Institute of Brewing (open access from 2023) as usable without
+acquisition, and Miller 2024 as the highest-value acquisition
+for the confidence blocker.
 
-Critical-eval fix: the "world's largest-selling single malt"
-claim was softened to "among the world's best-selling single
-malts", with an explicit note that Glenfiddich and Glenlivet
-trade the top-selling position depending on market and measure.
+Three works registered as held (all user-supplied):
 
-Site — /production-lines/ and /bottlings/ indexes regrouped
-------------------------------------------------------------
+- Miller, Whisky Science: A Condensed Distillation, 2nd ed.
+  (2024, Springer, ISBN 978-3-031-50686-4) — genuinely
+  independent of the Russell lineage; the task-2 unblock.
+- Russell/Stewart/Kellershohn, Whisky and Other Spirits, 3rd ed.
+  (2022) — currency upgrade only; NOT an independent source (its
+  chapters covering the affected entries share authors with the
+  2nd edition — Nicol, Russell & Stewart, Bringhurst, Conner).
+- la Grange-Nel, Characterisation and Improvement of Whiskey
+  Yeast (2003 MSc thesis) — supplementary tier; useful for its
+  Chapter 2 literature review and as a bibliography-mining route.
 
-Both index pages rewritten from a single flat table to a grouped
-list: entries are now listed under their parent distillery as h2
-sub-headings, distilleries in alphabetical order, each heading
-linking to the distillery page.
+Miller grounding pass
+---------------------
 
-- production-lines: grouped on the line's `distillery` field.
-  Multi-line distilleries (Springbank x3, Bunnahabhain x2) carry
-  a "N lines" count on the heading.
-- bottlings: grouped on `produced_at_distillery`. The redundant
-  per-row Distillery column is dropped (it is now the group
-  heading); distilleries with more than one release carry a
-  "N releases" count. The OB/IB type column is retained.
+Miller 2024 grounded against the seven medium-confidence glossary
+entries. Five promoted medium -> high, each now citing Russell +
+Miller with page-level source notes:
 
-Rationale: a flat exhaustive table does not scale as the data
-grows — the bottlings table had already reached 39 rows. A
-dropdown was rejected — JS-dependent, hides content behind a
-control, invisible to Pagefind body-indexing, and cuts against
-the site's Wikipedia content-first design. An alphabet jump-bar
-was rejected as overkill. The grouped-list pattern matches
-casks/index (grouped by category) and the concept sub-indexes —
-plain content, no JS, every line a real link.
+- kiln          — Miller Ch 3 Malting, pp 151-152
+- mashing        — Miller Ch 4 Mashing, pp 187-199
+- fermentation  — Miller Ch 5 Fermentation, pp 219-241
+- reflux        — Miller Ch 6, pp 253-255
+- wash-still    — Miller Ch 6-7, Distillation
 
-Both tables use `table-layout: fixed` with explicit widths on the
-narrow columns (Peating/Confidence; ABV/Age/Type) so column edges
-align across every distillery group rather than each table sizing
-its columns independently. astro check clean (only the
-pre-existing @types/node errors; no new warnings from either
-rewrite).
+Two held at medium:
 
-Sourcing
---------
+- distillers-yeast — Miller corroborates the distilling-strain
+  core (Distillers Company "M" strain; high attenuation;
+  distilling-vs-brewing distinction) but not the entry's named
+  yeast-house list, which still needs a producer / SWRI
+  cross-check. Miller added as a source; confidence unchanged.
+- shell-and-tube — Miller does not treat condenser types
+  anywhere in the book; no second source available, entry
+  untouched.
 
-- glenfiddich.com/our-story — producer history.
-- glenfiddich.com/12-year-old, /15-year-old,
-  /collection/flagship-collection — bottling-level pages.
-- whisky.com/whisky-database/details/glenfiddich — trade-
-  database for equipment, fermentation, capacity, water source.
-- legislation.gov.uk/uksi/2009/2890/regulation/10 — SWR 2009
-  Speyside regional designation grounding.
-
-Verification
-------------
-
-- scripts/check_references.py: 139 files scanned, 563 resolved
-  refs (+16), 21 dangling (unchanged), 0 JSON Schema findings.
-- astro check: only the pre-existing @types/node errors; no new
-  warnings from the production-lines or bottlings rewrites.
-- Voice-register pass clean on all four new YAML files.
-- NUL-byte scan clean. Edit-tool truncation hit glenfiddich.yml,
-  glenfiddich-12.yml, both index pages, the commit message,
-  TODO.md, and handover.md during the wave; all repaired and
-  verified.
-
-Counts
-------
-
-- 135 -> 139 files (+4)
-- 12 -> 13 distilleries (Glenfiddich)
-- 17 -> 18 production lines
-- 37 -> 39 bottlings (+2)
-- 547 -> 563 resolved refs (+16)
-- 21 dangling (unchanged)
-- 0 schema findings
+One source conflict surfaced and preserved per the
+source-conflict policy, not smoothed: Miller gives the first
+mashing water at ca. 70 C; Russell gives a first-water strike of
+63.5-64 C.
 
 Documentation
 -------------
 
-- docs/handover.md section 10 Populated counts updated (13
-  distilleries / 18 production lines / 39 bottlings); the
-  Glenfiddich block added to the distillery list, and a
-  "Site index pages — grouped layout" note added to the
-  build-pipeline section. Next Priorities: 14th distillery
-  now item 1 (Ardbeg for the south-Islay cluster, or
-  Glenlivet / Macallan for Speyside).
-- TODO.md Recently Completed gets two new entries (Glenfiddich;
-  index-page regrouping).
-- No schema or policy changes; no CHANGELOG entry per project
+- docs/bibliography.md — new Miller 2024 catalogue entry; a
+  "Third edition (2022) — held" note added to the Russell entry.
+- CLAUDE.md — docs/literature-scouting.md added to Tooling
+  pointers.
+- docs/handover.md — Next priorities item 2 rewritten (the
+  second-source blocker is resolved); confidence-review section
+  updated with the Miller grounding result.
+- TODO.md — Literature-resource scouting section points to the
+  new doc; task-2 status set to DONE; Recently Completed entry
+  added.
+- No schema or policy change; no CHANGELOG entry per project
   policy.
+
+Verification
+------------
+
+- scripts/check_references.py: 138 files validated, 0 JSON Schema
+  findings; all inline [N] citations resolve.
+- NUL-byte scan clean. Edit-tool truncation hit mashing.yml
+  during the wave; repaired via heredoc and verified.

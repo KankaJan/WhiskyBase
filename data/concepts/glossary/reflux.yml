@@ -23,7 +23,7 @@ summary: |
   generate substantial reflux and produce lighter, more
   ester-driven spirit; short stills with descending lyne arms
   minimise reflux and produce a heavier, more sulphury, more
-  congener-rich spirit [1]. The Glenmorangie wash and spirit
+  congener-rich spirit [1][2]. The Glenmorangie wash and spirit
   stills (16'10" tall, ascending lyne arms) and the Lagavulin
   pear-shaped stills with descending lyne arms exemplify the
   high-reflux and low-reflux ends of the spectrum. Reflux also
@@ -68,10 +68,29 @@ sources:
       of reflux in middle-cut character is discussed under
       wash-still operation (p 165) and spirit-still operation
       (p 166).
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Chapter 6 (Distillation Experiments and Observations),
+      section 6.1 The Shape of Stills, pp 253-255. Corroborates reflux
+      as condensation on ascending vapour paths flowing back to the
+      pot, and the dependence of reflux on still geometry - ascending
+      lyne arms and purifiers provide controlled reflux, and the
+      Hastie and Dick still-head experiments show increasing reflux
+      altering congener recovery (furfural, total acids). Miller adds
+      a caveat preserved here: "There is very little quantitative
+      reasoning in the literature to explain the design of Scottish
+      pot stills ... though there is much expressed belief in the
+      importance of still design" (p 254).
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
-confidence: medium
-last_reviewed: 2026-05-16
+confidence: high
+last_reviewed: 2026-05-20
 contributors: []

@@ -86,6 +86,23 @@ that institutional perspective. This is the volume most
 commonly cited for "the producer-level technical consensus
 view" of any given Scotch production stage.
 
+**Third edition (2022) — held.** A 3rd edition, retitled *Whisky
+and Other Spirits: Technology, Production and Marketing* (eds.
+Inge Russell, Graham G. Stewart, Julie Kellershohn; Academic
+Press / Elsevier; ISBN 978-0-12-822076-4), was acquired on
+2026-05-20 and is held with the project. It is substantially
+restructured, with new chapters on Japanese, Indian, Canadian,
+craft, and Asia-region whiskies. It is the canonical Russell
+edition for new entries. It does NOT, however, serve as an
+independent second source for the 14 entries grounded against the
+2nd edition: the 3rd-edition chapters covering those topics are
+written by the same authors — Ch 10 raw materials (Bringhurst,
+Harrison, Brosnan), Ch 12 distilling yeast and fermentation
+(Russell, Stewart), Ch 14 batch distillation (Nicol), Ch 16
+maturation (Conner). It is a currency upgrade, not multi-source
+corroboration; the confidence blocker still needs a genuinely
+independent source. See `docs/literature-scouting.md`.
+
 **Cited by** (14 entries, all grounded 2026-05-19 against the 2nd
 edition with chapter author + page range + subsection-level
 pages for the specific claims):
@@ -119,6 +136,44 @@ The grounding pass replaced the prior "page references to be
 added when consulted" hedge with specific chapter + page-range
 citations. The chapter authors are now attributed rather than
 the editor.
+
+### Miller, 2024 — Whisky Science: A Condensed Distillation
+
+- **Author:** Gregory H. Miller (Professor Emeritus of Chemical
+  Engineering, University of California, Davis)
+- **Title:** *Whisky Science: A Condensed Distillation*
+- **Edition:** 2nd edition (1st edition 2019)
+- **Publisher:** Springer International Publishing
+- **Year:** 2024
+- **ISBN:** 978-3-031-50686-4 (print); 978-3-031-50687-1 (eBook)
+
+A single-author technical reference covering the whisky
+production chain — malting, mashing, fermentation, distillation,
+maturation — from a physical-chemistry and chemical-engineering
+standpoint. Genuinely independent of the Russell lineage:
+different author, publisher, and institutional base, with no
+shared editors. The 2nd edition adds over 350 citations and is
+itself heavily primary-sourced. User-supplied; held by the
+project from 2026-05-20 (see `docs/literature-scouting.md`).
+
+Its value to the project is precisely as the independent second
+academic source the confidence rubric requires for a `high`
+promotion — a role a newer edition of Russell cannot fill.
+
+**Cited by** (5 entries promoted to `high` on 2026-05-20, each
+also citing Russell ed. 2014):
+
+- `data/concepts/glossary/kiln.yml` (Ch 3 Malting, pp 151-152)
+- `data/concepts/glossary/mashing.yml` (Ch 4 Mashing, pp 187-199)
+- `data/concepts/glossary/fermentation.yml` (Ch 5 Fermentation,
+  pp 219-241)
+- `data/concepts/glossary/reflux.yml` (Ch 6, pp 253-255)
+- `data/concepts/glossary/wash-still.yml` (Ch 6-7, Distillation)
+
+Also cited by `data/concepts/glossary/distillers-yeast.yml`
+(Ch 5, section 5.1), which remains `confidence: medium` — Miller
+corroborates the distilling-strain core but not that entry's
+named yeast-house list.
 
 ### Piggott, Sharp & Duncan (eds.), 1989 — The Science and Technology of Whiskies
 

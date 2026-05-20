@@ -218,6 +218,9 @@ unless asked.
 - `docs/bibliography.md` — curated catalogue of in-depth,
   peer-reviewed, and institutional reference works. The project's
   positive sourcing standard (exclusion criteria included).
+- `docs/literature-scouting.md` — scouting list of reference
+  works worth acquiring (not yet held) plus open-access sources
+  citable now. The shopping-list complement to `bibliography.md`.
 - `docs/build-pipeline-plan.md` — design document for the
   eventual static-site build (Astro + Pagefind + MapLibre).
   Page-type taxonomy, URL routing, markdown-link rewriting rules,

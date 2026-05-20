@@ -24,7 +24,7 @@ summary: |
   fermentation. Mashing also dissolves the soluble phenolic
   compounds deposited on the malt husk during peated kilning,
   partitioning them into the wort and carrying peat-character into
-  the spirit [1]. Mash-tun designs include the traditional rake
+  the spirit [1][2]. Mash-tun designs include the traditional rake
   type (mechanical arms stir the grist), semi-lauter (stationary
   knives lift the mash bed for drainage), and full-lauter (modern
   fully-mechanised). Mash-tun type is a site-level equipment
@@ -70,10 +70,33 @@ sources:
       with a fuller discussion of mash filters on p 95).
       Approximate first/second/third/fourth water ratio for a
       traditional tun is 4:2:2:4 m³ per tonne of malt (p 89).
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Chapter 4 (Mashing), pp 187 (definition), 193 (enzyme
+      activity), 197 (mashing-water schedule), 199 (mash filters).
+      Corroborates grist mixed with hot water in the mash tun,
+      gelatinisation and enzymatic conversion of starch to fermentable
+      sugars, the multi-water schedule at rising temperature, and wort
+      drawn off with the residue sparged. Miller gives the first
+      mashing water at ca. 70 C and the second at ca. 80 C (p 197);
+      Russell's note on this entry records a first-water strike
+      temperature of 63.5-64 C. The two first-water figures genuinely
+      differ and both are preserved per the source-conflict policy,
+      not smoothed; Russell's subsequent-water range (70-90 C) and
+      Miller's second water (ca. 80 C) do agree. The rake /
+      semi-lauter / full-lauter tun taxonomy
+      remains Russell-specific; Miller covers lautering and mash
+      filters without that three-way naming.
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
-confidence: medium
-last_reviewed: 2026-05-16
+confidence: high
+last_reviewed: 2026-05-20
 contributors: []

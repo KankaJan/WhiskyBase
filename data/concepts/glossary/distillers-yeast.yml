@@ -24,7 +24,7 @@ summary: |
   the higher gravity of distilling worts (often higher than ale
   brewing wort), and a tendency to produce ester profiles
   appropriate to spirit (rather than the more emphasised hop-
-  derived aroma profiles selected for in brewing strains) [1].
+  derived aroma profiles selected for in brewing strains) [1][2].
   Two yeast houses dominate Scotch supply: Mauri Yeast (now part
   of AB Mauri) and Kerry Group's distilling yeast division
   (formerly Anchor / Lallemand), with Saf-Instant and other
@@ -74,10 +74,31 @@ sources:
       project specific rather than directly Russell-attributed
       and warrants cross-checking against producer disclosure
       and SWRI literature.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Chapter 5 (Fermentation), section 5.1 Yeast, p 219.
+      Corroborates the distilling-specific commercial yeast and its
+      selection for high attenuation and fast fermentation (high
+      alcohol yield): "The majority of scotch whisky distillers use a
+      commercial yeast derived from the Distillers Company 'M' strain
+      ... high-attenuating fast-fermenting". Corroborates the
+      distilling-versus-brewing distinction - distiller's wort retains
+      residual amylase activity from malting whereas a brewer's boiled
+      wort does not. Miller does NOT corroborate the named yeast-house
+      list (Mauri / Kerry / Lallemand / Saf-Instant); it names the
+      Distillers Company "M" strain instead. That supplier-list claim
+      remains uncorroborated, so the entry is held at
+      confidence: medium pending producer / SWRI cross-check.
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
 confidence: medium
-last_reviewed: 2026-05-16
+last_reviewed: 2026-05-20
 contributors: []

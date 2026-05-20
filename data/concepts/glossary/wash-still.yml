@@ -27,7 +27,7 @@ summary: |
   lyne-arm angle, and condenser type contribute to the spirit's
   character via the "copper conversation" (see
   educational/copper-conversation) before the second distillation
-  refines it further [1].
+  refines it further [1][2].
 
 body: null
 
@@ -70,10 +70,28 @@ sources:
       enumerated on p 156. The 46% ABV cut-point at which the
       spirit transitions from milky/turbid to clear in the
       foreshots dilution is recorded on p 164.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Chapters 6-7 (Distillation). Treats the wash still as the
+      first distillation, charged with wash (taken as 8% ABV, p 332,
+      within the entry's 7-9% range) and producing low wines as a bulk
+      concentration step ahead of the spirit-cut distillation; spent
+      feints are returned to the wash still (p 333). Miller's
+      distillation-theory tables give computed low-wines proofs that
+      vary with the cut scheme rather than a single figure, so the
+      entry's ~20-25% ABV low-wines range and the 1.5:1-2:1
+      wash-still:spirit-still capacity ratio remain Russell-only and
+      are not independently corroborated by Miller.
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
-confidence: medium
-last_reviewed: 2026-05-16
+confidence: high
+last_reviewed: 2026-05-20
 contributors: []

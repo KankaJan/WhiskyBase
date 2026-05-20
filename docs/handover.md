@@ -610,14 +610,14 @@ flat-table index that outgrows readability.
    scale, Macallan for the sherry-led house style — both
    carry heavier brand-positioning prose than Glenfiddich
    did).
-2. **Acquire a second peer-reviewed academic source.** The
-   2026-05-19 confidence-level review (below) found the single
-   blocker to lifting ~7 single-source glossary entries from
-   `confidence: medium` to `high` is the absence of a second
-   corroborating academic source alongside Russell ed. 2014.
-   TODO.md §Research requests §Literature-resource scouting
-   lists the highest-value acquisitions (Piggott et al. 1989
-   first).
+2. **Residual sourcing follow-ups.** The second-academic-source
+   blocker is RESOLVED — Miller, *Whisky Science* 2nd ed. (2024)
+   was acquired 2026-05-20 and used to promote five of the seven
+   medium-confidence glossary entries to `high` (see Completed,
+   below). Two remain `medium`: `distillers-yeast` (its named
+   yeast-house list is uncorroborated — needs a producer / SWRI
+   cross-check) and `shell-and-tube` (Miller does not treat
+   condenser types — needs a condenser-specific source).
 3. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
    The 2026-05-17 stub-supersession overwrote the file with
    empty YAML; the resolver ignores it but the file should be
@@ -643,7 +643,22 @@ flat-table index that outgrows readability.
   rubric. external-malting is the closest `high` candidate but
   is held at `medium` for consistency with its contrast-pair
   sibling floor-malting. Confidence levels should not move on
-  source-formatting improvements alone.
+  source-formatting improvements alone. (Superseded for five of
+  the seven glossary entries by the 2026-05-20 Miller grounding —
+  see next.)
+- **Miller grounding pass — DONE 2026-05-20.** Miller, *Whisky
+  Science: A Condensed Distillation*, 2nd ed. (2024) — an
+  academic reference genuinely independent of the Russell lineage
+  (different author, publisher, institution) — was grounded
+  against the seven medium-confidence glossary entries. Five
+  promoted to `high`: kiln, mashing, fermentation, reflux,
+  wash-still, each now carrying Russell + Miller with page-level
+  corroboration. Two held at `medium`: `distillers-yeast` (Miller
+  corroborates the distilling-strain core but not the named
+  yeast-house list) and `shell-and-tube` (Miller does not treat
+  condenser types at all). One source conflict surfaced and
+  preserved per policy: Miller's first-mashing-water temperature
+  (ca. 70 °C) versus Russell's first-water strike (63.5-64 °C).
 
 **Full active queue:** see `TODO.md`.
 

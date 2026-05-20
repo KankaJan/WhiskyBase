@@ -212,41 +212,56 @@ research pass to locate and cite stronger primary sources.
 
 ### Literature-resource scouting (user can supply digital copies)
 
-The user can provide additional reference literature as digital
-copies (the Russell ed. 2014 grounding on 2026-05-19 is the
-worked precedent — a user-supplied PDF let 14 concept entries
-move from a "page refs TBA" hedge to specific chapter + page
-citations). This item is a standing research request to
-identify which additional works would most improve the
-project's sourcing, so the user can prioritise what to source:
+Catalogue moved to `docs/literature-scouting.md` — the standing
+list of reference works worth acquiring, with ISBNs, access
+status, and what each unblocks. Held as of 2026-05-20: Miller,
+*Whisky Science* 2nd ed. (2024) — the independent academic source
+that resolves the confidence blocker; Russell 3rd ed. (2022) —
+currency upgrade only, same chapter authors as the 2nd edition;
+the la Grange-Nel 2003 yeast thesis — supplementary /
+bibliography-mining source. Still worth acquiring: Piggott, Sharp
+& Duncan (1989), now a third corroborating voice rather than
+load-bearing. Open-access sources usable now: *Beverages* (MDPI)
+and the Journal of the Institute of Brewing.
 
-- **Piggott, Sharp & Duncan (eds.), 1989 — The Science and
-  Technology of Whiskies.** Already in `docs/bibliography.md` as
-  a queued complement to Russell; pre-dates Russell and covers
-  the production chain in greater historical-engineering depth.
-  Highest-value next acquisition — would let the distillation /
-  maturation concept entries carry a second peer-reviewed
-  academic source alongside Russell, which is the single
-  blocker to lifting several single-source glossary entries
-  from `confidence: medium` to `high`.
-- **The Malt Whisky Yearbook (recent edition).** Already cited
-  loosely across distillery entries for equipment specs and
-  capacity figures; a current edition to hand would let those
-  trade-reference citations carry a specific year and page.
-- **Buxton & Hughes, 2014 — The Science and Commerce of
-  Whisky.** In `docs/bibliography.md` as queued; commerce /
-  marketing angle complements Russell's technical focus.
-- **SWRI / Heriot-Watt ICBD published research.** Peer-reviewed
-  papers on maturation chemistry, peating measurement, and
-  fermentation congeners — would directly ground the
-  `educational/cask-maturation-kinetics` and
-  `methodology/*-published-ppm` pages' quantitative claims.
+Task-2 status: DONE (2026-05-20). The Miller grounding pass is
+complete. Five of the seven medium-confidence glossary entries —
+kiln, mashing, fermentation, reflux, wash-still — were promoted
+to `high`, each now citing Russell + Miller with page-level
+corroboration. Two remain `medium`: `distillers-yeast` (Miller
+corroborates the distilling-strain core but not the named
+yeast-house list — a producer / SWRI cross-check is the remaining
+blocker) and `shell-and-tube` (Miller does not treat condenser
+types — needs a condenser-specific source). Update
+`docs/literature-scouting.md` after each future scouting pass.
 
-When the user supplies a copy, the grounding pass follows the
-Russell precedent: extract the table of contents, map chapters
-to the affected entries, then ground each claim against
-specific pages. See the 2026-05-19 Recently-Completed entry for
-the worked method.
+### Russell 2nd -> 3rd edition citation migration
+
+Sixteen concept entries cite Russell ed. 2014 (the 2nd edition):
+the glossary entries kiln, mashing, fermentation,
+distillers-yeast, reflux, shell-and-tube, wash-still, lyne-arm;
+the educational pages cask-fill-states, cask-maturation-kinetics,
+chill-filtering, scotch-presentation-conventions; the practice
+pages floor-malting, external-malting, triple-distillation; and
+equipment/direct-fired-still.
+
+The 3rd edition (Russell, Stewart & Kellershohn, 2022) is now
+held and is the citation of record for new entries (Ardbeg
+onward). That leaves the project split across two editions of the
+same work, which is inconsistent and should eventually be
+reconciled onto the 3rd edition.
+
+DEFERRED WORK: re-ground all sixteen entries against the 3rd
+edition. This is NOT a find-and-replace - the 3rd edition is
+rechaptered and repaginated. Known chapter remapping: 2nd-ed Ch 6
+raw materials -> 3rd-ed Ch 10; Ch 7 yeast/fermentation -> Ch 12;
+Ch 8 contamination -> Ch 13; Ch 9 batch distillation -> Ch 14;
+Ch 11 maturation -> Ch 16 (Aylott's analytical chapters map to
+the 3rd-ed Ch 18-19 region, to be confirmed during the pass).
+Each cited claim must be relocated in the held 3rd-edition PDF
+and its chapter + page reference rewritten. Currency-only: it
+changes no claim and moves no confidence level. Lower priority
+than data-layer growth; run as a single dedicated pass.
 
 ### Compound-chemistry sources (PubChem upgrade)
 
@@ -705,6 +720,27 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-20** Miller grounding pass — task 2 resolved.
+  Miller, *Whisky Science: A Condensed Distillation*, 2nd ed.
+  (2024), an academic reference independent of the Russell
+  lineage, was grounded against the seven medium-confidence
+  glossary entries. Five promoted `medium` -> `high`: kiln
+  (Miller Ch 3 pp 151-152), mashing (Ch 4 pp 187-199),
+  fermentation (Ch 5 pp 219-241), reflux (Ch 6 pp 253-255),
+  wash-still (Ch 6-7). Each now carries Russell + Miller as two
+  independent sources with page-level notes. Two held at
+  `medium`: distillers-yeast (Miller corroborates the
+  distilling-strain core — the Distillers Company "M" strain,
+  high attenuation, distilling-vs-brewing distinction — but not
+  the named yeast-house list, which still needs producer / SWRI
+  cross-check) and shell-and-tube (Miller does not treat
+  condenser types anywhere in the book, so no second source was
+  added). One source conflict surfaced and preserved per policy:
+  Miller's first-mashing-water temperature (ca. 70 C) vs
+  Russell's first-water strike (63.5-64 C). check_references
+  clean (138 files validated, 0 schema findings). Edit-tool
+  truncation hit mashing.yml during the wave; repaired and
+  verified.
 - **2026-05-20** `/production-lines/` and `/bottlings/` index
   pages regrouped. Both rewritten from a single flat table to a
   list grouped under parent-distillery `h2` sub-headings
