@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 12 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 13 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -387,8 +387,19 @@ back rather than absorbing it into the data model.
   internal supply chain disclosed for cask supply: ex-bourbon
   casks from sister Suntory Global Spirits site Maker's Mark in
   Kentucky; Royal Warrant from HRH The Prince of Wales / King
-  Charles III since 1994).
-- 17 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  Charles III since 1994),
+  Glenfiddich (medium — Dufftown, Speyside, William Grant & Sons,
+  founded 1886 / first spirit 1887; second populated Speyside
+  distillery; **the distillery most associated with the creation
+  of the modern marketed single-malt category** — the 1963
+  decision to actively market single malt outside Scotland;
+  unbroken family ownership since founding, a structural parallel
+  to the unrelated-Grant-family Glenfarclas; very large scale
+  (~21M LPA, 43 stills as 16 wash + 27 spirit, 15 spirit stills
+  partly direct-fired; 48 Douglas-fir washbacks); the 1998
+  Solera Vat — a continuous-marrying vatting vessel — underpins
+  the 15 Year Old).
+- 18 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -416,7 +427,12 @@ back rather than absorbing it into the data model.
   blended into the mash; producer-disclosed late spirit cuts
   at 45 / 60 minutes; 63.5% ABV fill strength; predominantly
   Maker's Mark ex-bourbon maturation through the
-  Suntory Global Spirits internal supply chain).
+  Suntory Global Spirits internal supply chain),
+  1 Glenfiddich (medium — unpeated Speyside default at very
+  large scale; ~74-hour fermentation in 48 Douglas-fir
+  washbacks; the core 12 / 14 / 15 / 18 / 21 expressions are
+  one production line routed through different cask and
+  Solera-Vat vatting processes, not separate recipes).
 - 47 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
   Whisky), 8 educational (peating-measurement-methods,
   aromatic-compounds-in-whisky, copper-conversation,
@@ -453,11 +469,11 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 37 bottlings: 37 working entries (10 Bruichladdich/Harris + 3
+- 39 bottlings: 39 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
   2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
-  2 Auchentoshan + 2 Laphroaig + 2 worked-example IB releases:
-  `cadenheads-bunnahabhain` + `signatory-caol-ila`).
+  2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 2 worked-example
+  IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
   **No IB pressure-test stubs remain.** Both IB-release entries
   are now worked-example representations rather than placeholders,
   with Cadenhead's house defaults (500ml, Cask Strength /
@@ -567,15 +583,33 @@ Verification of the full chain is Windows-side (the Linux sandbox
 times out on a full build and Pagefind's bundled binary segfaults
 in the sandbox; both work on the developer host).
 
+**Site index pages — grouped layout (2026-05-20):** the
+`/production-lines/` and `/bottlings/` index pages were rewritten
+from a single flat table to a list grouped under parent-distillery
+`h2` sub-headings (distilleries alphabetical, each heading linking
+to the distillery page; multi-entry distilleries carry a count).
+production-lines groups on the line's `distillery` field; bottlings
+groups on `produced_at_distillery` and drops the now-redundant
+per-row Distillery column. Both tables use `table-layout: fixed`
+with explicit widths on the narrow columns (Peating/Confidence;
+ABV/Age/Type) so column edges align across every group. A dropdown
+and an alphabet jump-bar were both rejected — JS-dependent, hide
+content from Pagefind body-indexing, against the content-first
+design. The grouped-list pattern matches `casks/index` and the
+concept sub-indexes. This is the established pattern for any future
+flat-table index that outgrows readability.
+
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 13th distillery.** Glenkinchie /
-   Auchentoshan / Laphroaig have landed (2026-05-18). The
-   remaining obvious gaps: a Speyside heavyweight (Glenfiddich
-   the cleanest source case among the market leaders; Macallan
-   and Glenlivet have heavier brand-positioning prose);
+1. **Data-layer growth — 14th distillery.** Glenkinchie /
+   Auchentoshan / Laphroaig / Glenfiddich have landed
+   (2026-05-18 / 2026-05-19). The remaining obvious gaps:
    Ardbeg as the fourth south-Islay peated entry alongside
-   Lagavulin / Caol Ila / Laphroaig.
+   Lagavulin / Caol Ila / Laphroaig (cluster completeness);
+   or another Speyside heavyweight (Glenlivet for market
+   scale, Macallan for the sherry-led house style — both
+   carry heavier brand-positioning prose than Glenfiddich
+   did).
 2. **Acquire a second peer-reviewed academic source.** The
    2026-05-19 confidence-level review (below) found the single
    blocker to lifting ~7 single-source glossary entries from

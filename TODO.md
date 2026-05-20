@@ -705,6 +705,56 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-20** `/production-lines/` and `/bottlings/` index
+  pages regrouped. Both rewritten from a single flat table to a
+  list grouped under parent-distillery `h2` sub-headings
+  (distilleries alphabetical, each heading linking to the
+  distillery page). production-lines groups on the line's
+  `distillery` field; multi-line distilleries carry a "N lines"
+  count. bottlings groups on `produced_at_distillery`, drops the
+  now-redundant per-row Distillery column (it is the group
+  heading), carries a "N releases" count on multi-release
+  distilleries, and retains the OB/IB type column. Rationale: a
+  flat table does not scale (bottlings had reached 39 rows); a
+  dropdown was rejected (JS-dependent, hides content, invisible
+  to Pagefind body-indexing) and an alphabet jump-bar as
+  overkill. Matches the casks/index and concept sub-index
+  pattern. Both tables use `table-layout: fixed` with explicit
+  widths on the narrow columns (Peating/Confidence; ABV/Age/Type)
+  so column edges align across every distillery group instead of
+  each table sizing independently. astro check clean (only the
+  pre-existing @types/node errors). Edit-tool truncation hit both
+  index files repeatedly during the wave; both rebuilt via
+  heredoc and verified.
+- **2026-05-19** Glenfiddich (13th distillery, second Speyside).
+  1 distillery + 1 production line + 2 bottlings. Dufftown,
+  Speyside; William Grant & Sons, in unbroken family ownership
+  since the 1886 founding (a structural parallel to the
+  unrelated Grant family's Glenfarclas). Founded 1886 / first
+  spirit Christmas Day 1887; original stills were second-hand
+  equipment from Cardhu. The distillery most associated with
+  the creation of the modern marketed single-malt category —
+  the 1963 decision (Sandy Grant Gordon) to actively market
+  single malt outside Scotland. Very large scale: ~21M LPA,
+  48 Douglas-fir washbacks, 43 stills (16 wash + 27 spirit,
+  15 spirit stills direct-fired by gas), on-site coppersmiths
+  (since 1957) and cooperage (since 1959), 1M+ casks in
+  warehouse. Bottlings: 12 Year Old (40% bourbon+oloroso
+  flagship) + 15 Year Old Solera (**first populated bottling
+  exercising a solera-style continuous-marrying vatting
+  stage** — the 1998 Solera Vat, never drained below
+  half-full, inspired by the Spanish sherry solera).
+  Critical-eval fix: the "world's largest-selling single malt"
+  claim softened to "among the world's best-selling single
+  malts" with an explicit note that Glenfiddich and Glenlivet
+  trade the top-selling position depending on market and
+  measure — the absolute claim is contestable. Edit-tool
+  truncation hit glenfiddich.yml and glenfiddich-12.yml during
+  the critical-eval edits; both metadata footers restored.
+  Counts: 135 -> 139 files, 12 -> 13 distilleries,
+  17 -> 18 production lines, 37 -> 39 bottlings,
+  547 -> 563 resolved refs, 21 dangling unchanged, 0 schema
+  findings.
 - **2026-05-19** Triple-distillation concept page +
   pedro-ximenez-sherry-butt cask + confidence-level review.
   (a) `concept/practice/triple-distillation` written —

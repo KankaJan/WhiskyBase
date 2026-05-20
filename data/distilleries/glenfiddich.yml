@@ -1,0 +1,441 @@
+# =============================================================================
+# Glenfiddich
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership, founding
+# history, and the broad production configuration are well-grounded
+# against the producer source. Specific still-by-still heating
+# splits and exact equipment counts come from trade-database
+# sources and are hedged where the producer does not confirm them.
+# =============================================================================
+# Thirteenth populated distillery. Second populated Speyside entry
+# after Glenfarclas. Among the world's best-selling single malts,
+# and the distillery most closely associated with the creation of
+# the modern single-malt category as a marketed product (the 1963
+# export-marketing decision).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfiddich
+name: Glenfiddich
+also_known_as: []                       # "Glenfiddich" is Gaelic for
+                                        # "Valley of the Deer" — the
+                                        # producer-stated etymology,
+                                        # reflected in the stag
+                                        # iconography. The Gaelic
+                                        # meaning is descriptive, not
+                                        # an alias.
+wikidata_qid: null
+website: https://www.glenfiddich.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Speyside                        # Formal SWA region under the
+                                        # Scotch Whisky Regulations
+                                        # 2009 [4]. Second populated
+                                        # Speyside distillery after
+                                        # Glenfarclas.
+sub_region: Dufftown
+locality: Dufftown, Banffshire          # The Glenfiddich Distillery,
+                                        # Dufftown, Banffshire
+                                        # AB55 4DH (the company's
+                                        # registered office address)
+                                        # [1]. Dufftown is the
+                                        # densest distilling town in
+                                        # Speyside.
+coordinates:
+  lat: 57.457
+  lon: -3.124                           # Approximate; the distillery
+                                        # site on the northern edge
+                                        # of Dufftown. Not
+                                        # producer-published as
+                                        # specific coordinates;
+                                        # derived from the Dufftown
+                                        # locality and should be
+                                        # replaced with surveyed
+                                        # coordinates when a primary
+                                        # geographical source is to
+                                        # hand.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1886                           # Producer states William
+                                        # Grant and his nine children
+                                        # began building the
+                                        # distillery by hand in the
+                                        # summer of 1886; the
+                                        # producer's own timeline
+                                        # block elsewhere dates the
+                                        # build start to 1887. The
+                                        # project records 1886 as the
+                                        # founding (build-start) year
+                                        # and 1887 as first spirit
+                                        # (see first_spirit) [1].
+first_spirit: 1887                       # Producer-disclosed: "the
+                                        # first drop of spirit fell
+                                        # from our copper stills on
+                                        # Christmas Day 1887" [1].
+mothballed_periods: []                   # No major modern mothballing.
+                                        # The producer notes that by
+                                        # the end of the 1920s
+                                        # Glenfiddich was "one of only
+                                        # six distilleries still
+                                        # operating in Scotland" —
+                                        # i.e. it ran through the
+                                        # Prohibition-era and
+                                        # interwar industry
+                                        # contraction without
+                                        # stopping [1].
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: William Grant & Sons Ltd
+  parent: null                          # William Grant & Sons Ltd is
+                                        # the direct owner and the
+                                        # ultimate parent — an
+                                        # independent, family-owned
+                                        # company. Registered in
+                                        # Scotland, company number
+                                        # SC131772 [1].
+  history:
+    - owner: William Grant & Sons
+      from: 1886
+      to: null
+      notes: |
+        Glenfiddich has been owned by William Grant & Sons —
+        the company William Grant founded — in unbroken
+        family ownership since the distillery was built. The
+        firm remains one of the few sizeable Scotch producers
+        still entirely family-owned, run by descendants of
+        the founder across five generations of involvement
+        (Grant Gordon joined in the 1920s; Charles Gordon
+        brought coppersmiths on-site in 1957; Sandy Grant
+        Gordon drove the 1963 single-malt export-marketing
+        decision) [1]. Unbroken single-family ownership at
+        this scale is unusual in the Scotch industry, where
+        most distilleries have passed through corporate-
+        acquisition cycles — a structural parallel to
+        Glenfarclas (J. & G. Grant, family-owned since 1865;
+        no corporate relationship between the two Grant
+        families).
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Robbie Dhu springs        # The Robbie Dhu springs above
+                                        # Dufftown supply Glenfiddich's
+                                        # process and reduction water;
+                                        # the water source is widely
+                                        # cited in trade references
+                                        # and is a long-standing part
+                                        # of the producer's
+                                        # positioning [3].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: full_lauter
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: 48                              # 48 washbacks per trade-
+                                        # reference sources — a very
+                                        # large washback hall
+                                        # consistent with
+                                        # Glenfiddich's ~21 million
+                                        # LPA scale [3].
+  material: douglas_fir
+  capacity_litres: null
+  notes: |
+    48 Douglas-fir washbacks supporting an average ~74-hour
+    fermentation per trade-reference sources [3].
+
+stills:
+  wash_still:
+    count: 16                            # 16 wash + 27 spirit stills
+                                        # (43 total) per trade-
+                                        # reference sources — an
+                                        # asymmetric configuration
+                                        # at large scale. The
+                                        # producer's history notes
+                                        # the on-site coppersmiths
+                                        # maintain "uniquely shaped
+                                        # and sized" stills, i.e.
+                                        # the still hall is not a
+                                        # set of identical vessels
+                                        # [1][3].
+    capacity_litres: null
+    charge_litres: null
+    shape: null                          # Producer describes the
+                                        # stills as deliberately
+                                        # varied in shape and size;
+                                        # no single shape
+                                        # categorisation applies.
+    height_m: null
+    heating: null                        # Wash-still heating method
+                                        # not separately confirmed
+                                        # in the surveyed sources;
+                                        # the direct-fire detail
+                                        # below is documented for
+                                        # the spirit stills.
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 27
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: direct_fire                 # Trade-reference sources
+                                        # report that 15 of the 27
+                                        # spirit stills are
+                                        # direct-fired by gas — a
+                                        # rarity among modern
+                                        # large-scale distilleries
+                                        # (most have moved entirely
+                                        # to indirect steam). The
+                                        # `heating` field records a
+                                        # single value; `direct_fire`
+                                        # is recorded as the
+                                        # distinguishing feature,
+                                        # with the partial split
+                                        # (15 direct-fired, the
+                                        # remaining 12 indirect)
+                                        # noted here. Glenfarclas is
+                                        # the project's other
+                                        # populated direct-fire
+                                        # distillery [3].
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+warehouses:
+  - id: glenfiddich-dunnage
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      Traditional dunnage warehousing on the Dufftown site.
+    notes: |
+      The producer states the distillery holds over one
+      million casks across dunnage and racked warehouses —
+      one of the largest maturing inventories of any single
+      Scotch distillery [1][3].
+  - id: glenfiddich-racked
+    type: racked
+    location: on_site
+    climate_notes: |
+      Modern racked warehousing supplementing the dunnage
+      stock; the combined inventory exceeds one million
+      casks.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 21000000            # ~21 million LPA per
+                                        # trade-reference sources [3]
+                                        # — one of the largest malt
+                                        # distilleries in Scotland.
+                                        # The producer does not
+                                        # publish a precise current
+                                        # capacity figure on
+                                        # glenfiddich.com.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1887
+    change: |
+      First stills commissioned. The producer's history
+      records that Glenfiddich's original copper stills were
+      second-hand equipment purchased from the Cardhu
+      distillery; distillation began on these former Cardhu
+      stills on Christmas Day 1887 [1].
+    notes: |
+      The Cardhu-stills origin is a producer-stated
+      historical detail; the current 43-still configuration
+      is the product of more than a century of subsequent
+      expansion.
+    source_id: 1
+  - year: 1957
+    change: |
+      On-site coppersmiths established. Charles Gordon
+      brought resident coppersmiths to the distillery to
+      build and maintain Glenfiddich's stills; the producer
+      cites this as the basis for the deliberately varied
+      still shapes and sizes [1].
+    source_id: 1
+  - year: 1959
+    change: |
+      On-site cooperage established under Gordon Grant —
+      one of the few distillery-resident cooperages still
+      operating [1].
+    source_id: 1
+  - year: 1998
+    change: |
+      The Solera Vat installed — a large vatting vessel,
+      inspired by the Spanish sherry solera, that is never
+      emptied below the half-full mark and is continually
+      topped up. It is used to marry the spirit for the
+      Glenfiddich 15 Year Old; the partial-draw / partial-
+      refill cycle gives that release its continuity of
+      character [1].
+    notes: |
+      See the glenfiddich-15-solera bottling entry for how
+      the Solera Vat shapes the 15 Year Old.
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - glenfiddich
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []               # Glenfiddich spirit is
+                                        # predominantly directed at
+                                        # the single-malt range;
+                                        # William Grant & Sons'
+                                        # blended Scotch (Grant's)
+                                        # is supplied principally
+                                        # from the company's
+                                        # Girvan grain distillery
+                                        # and other malt sources.
+                                        # Blends are not modelled as
+                                        # a project entity type —
+                                        # empty list per convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                # The Solera Vat is the most
+                                        # distinctive equipment-level
+                                        # feature, but it is a
+                                        # bottling-stage vatting
+                                        # vessel specific to
+                                        # Glenfiddich rather than a
+                                        # cross-distillery practice
+                                        # warranting a concept page.
+                                        # Direct-firing on the spirit
+                                        # stills is shared with
+                                        # Glenfarclas and the
+                                        # equipment/direct-fired-still
+                                        # concept page; a cross-
+                                        # reference is not added here
+                                        # because Glenfiddich's
+                                        # direct-firing is partial
+                                        # (15 of 27 spirit stills)
+                                        # and not the distillery's
+                                        # primary characterising
+                                        # feature.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenfiddich is a Speyside malt-whisky distillery at Dufftown,
+  Banffshire, founded in 1886 by William Grant — who built the
+  distillery by hand with his nine children and a single stone
+  mason — with the first spirit running on Christmas Day 1887
+  [1]. The original stills were second-hand equipment bought
+  from the Cardhu distillery. Glenfiddich has been owned by
+  William Grant & Sons in unbroken family ownership since, one
+  of the few sizeable Scotch producers still entirely
+  family-owned (a structural parallel to the unrelated
+  Grant family's Glenfarclas).
+  The distillery occupies a particular place in the history of
+  the single-malt category: in 1963 Sandy Grant Gordon, the
+  founder's great-grandson, made Glenfiddich the first single
+  malt actively marketed and promoted outside Scotland, at a
+  time when single malt was a category largely unknown to
+  consumers accustomed to blended Scotch [1]. Glenfiddich is
+  consistently cited among the world's best-selling single malts
+  by volume — it and Glenlivet have traded the top-selling
+  position over the years, with the ranking depending on the
+  market and the measure used — and, by the producer's own
+  award-count claim, the most-awarded single malt in the
+  International Wine & Spirit Competition and the International
+  Spirits Challenge since 2000.
+  Production runs at very large scale — approximately 21 million
+  litres of alcohol per year through 48 Douglas-fir washbacks
+  and 43 copper stills (16 wash, 27 spirit) [3]. The still hall
+  is unusual: on-site coppersmiths (resident since 1957)
+  maintain deliberately varied still shapes and sizes, and 15 of
+  the 27 spirit stills are direct-fired by gas — a configuration
+  most large modern distilleries have abandoned in favour of
+  indirect steam. The site also retains a working on-site
+  cooperage (established 1959). Maturation inventory exceeds one
+  million casks across dunnage and racked warehouses. The 1998
+  installation of the Solera Vat — a continually-replenished
+  marrying vessel inspired by the Spanish sherry solera —
+  underpins the Glenfiddich 15 Year Old. The default production
+  is unpeated; the core range is ex-bourbon-led with sherry-cask
+  components in the older and Solera expressions.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfiddich.com/our-story
+    accessed: 2026-05-19
+    notes: |
+      Glenfiddich's producer-published history page. Used for
+      the founding sequence (1886 build start, 1887 first
+      spirit, Cardhu second-hand stills), the family-ownership
+      continuity, the 1957 coppersmiths / 1959 cooperage /
+      1998 Solera-Vat milestones, the 1963 single-malt
+      export-marketing decision, and the registered-office
+      address. Producer voice is attributed where applied;
+      the project does not adopt producer marketing phrasing
+      (e.g. "World's Most Awarded") as project voice — the
+      award claim is recorded as the producer's attributed
+      claim.
+
+  - id: 2
+    type: official_website
+    url: https://www.glenfiddich.com/collection/flagship-collection
+    accessed: 2026-05-19
+    notes: |
+      Glenfiddich's producer flagship-range page. Used for
+      the core-range structure (12 / 14 / 15 / 18 / 21 Year
+      Old expressions).
+
+  - id: 3
+    type: trade_publication
+    citation: |
+      Glenfiddich distillery technical specification entry,
+      whisky.com whisky database; cross-checked against
+      Ronde, I. (ed.), The Malt Whisky Yearbook (annual),
+      MagDig Media Ltd.
+    url: https://www.whisky.com/whisky-database/distilleries/details/glenfiddich.html
+    accessed: 2026-05-19
+    notes: |
+      Trade-database / trade-reference source for the
+      equipment configuration (48 Douglas-fir washbacks,
+      43 stills as 16 wash + 27 spirit, 15 spirit stills
+      direct-fired), ~74-hour average fermentation, annual
+      capacity (~21 million LPA), the Robbie Dhu water
+      source, and the over-one-million-cask warehouse
+      inventory. Specific still capacities and the wash-
+      still heating method should be verified against the
+      most recent Malt Whisky Yearbook edition.
+
+  - id: 4
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/10
+    accessed: 2026-05-19
+    citation: |
+      The Scotch Whisky Regulations 2009 (S.I. 2009/2890),
+      regulation 10. Defines the "Speyside" protected
+      locality under which Glenfiddich is classified.
+    notes: |
+      Regulatory grounding for the Speyside regional
+      designation. Glenfiddich sits in Dufftown, within the
+      Speyside locality defined by the Regulations.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-19
+contributors: []

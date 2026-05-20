@@ -1,0 +1,172 @@
+# =============================================================================
+# Glenfiddich (default production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line-level identity, unpeated default
+# and broad production characteristics are well-grounded. Specific
+# fermentation, spirit-cut, and yeast figures hedged pending direct
+# disclosure.
+# =============================================================================
+# Single production line at Glenfiddich. The distillery's various
+# core expressions (12 / 14 / 15 / 18 / 21) differ in cask
+# programme and the Solera-Vat marrying stage, not in the
+# underlying spirit recipe — they are one production line bottled
+# through different maturation and vatting routes.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfiddich
+name: Glenfiddich (default)
+distillery: glenfiddich
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1887
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                     # Malt delivered from
+                                        # commercial maltsters;
+                                        # Glenfiddich does not
+                                        # operate on-site floor
+                                        # malting. Specific maltster
+                                        # not consistently disclosed.
+  maltster: null
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                      # Glenfiddich is unpeated by
+                                        # default; no phenol
+                                        # measurement to record.
+  peat_origin: none                     # `none` enum value for
+                                        # unpeated lines (introduced
+                                        # in production_line schema
+                                        # v0.2.1).
+  notes: |
+    Glenfiddich's default production is unpeated. The producer's
+    Experimental Series has included a peated release (Fire &
+    Cane), but the core production line and the flagship range
+    are unpeated; the peated experimental work is not modelled
+    as a separate production line at the time of writing.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: 74                     # ~74-hour average
+                                        # fermentation in the 48
+                                        # Douglas-fir washbacks per
+                                        # trade-reference sources
+                                        # [2]. A long fermentation
+                                        # relative to the industry
+                                        # average, supporting
+                                        # fruity-ester development.
+  yeast: null
+  notes: |
+    ~74-hour average fermentation per trade-reference sources;
+    the comparatively long fermentation in wooden washbacks
+    is consistent with the fruity, pear-led house character
+    Glenfiddich is associated with. See glossary/fermentation
+    for the standing framework on long-fermentation chemistry.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                        # Conventional double
+                                        # distillation across the
+                                        # 16 wash + 27 spirit still
+                                        # configuration.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Specific cut points not disclosed in current sourcing.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                      # Ex-bourbon American oak is
+                                        # the predominant cask type
+                                        # across the core range;
+                                        # the 14 Year Old Bourbon
+                                        # Barrel Reserve is
+                                        # exclusively ex-bourbon.
+  - oloroso-sherry-butt                 # Sherry-cask component
+                                        # appears in the 12, 15,
+                                        # 18, and 21 Year Old
+                                        # expressions; the 12 and 15
+                                        # marry ex-bourbon and
+                                        # ex-sherry-matured spirit.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - glenfiddich-12
+  - glenfiddich-15-solera
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Glenfiddich default production line is the distillery's sole
+  modelled production stream: an unpeated Speyside single malt
+  produced at very large scale through 48 Douglas-fir washbacks
+  and a 43-still hall (16 wash, 27 spirit) [1][2]. Malt is
+  delivered from commercial maltsters. Fermentation runs long —
+  around 74 hours on average — supporting the fruity, pear-led
+  ester character the distillery is associated with. Double
+  distillation; 15 of the 27 spirit stills are direct-fired by
+  gas. The core expressions (12 / 14 / 15 / 18 / 21 Year Old)
+  are differentiated by cask programme and, for the 15 Year Old,
+  by the Solera-Vat marrying stage — they are one production
+  line routed through different maturation and vatting
+  processes rather than separate recipes. The maturation
+  programme is ex-bourbon-led, with oloroso-sherry-cask
+  components in the 12, 15, 18, and 21 Year Old releases.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfiddich.com/our-story
+    accessed: 2026-05-19
+    notes: |
+      Glenfiddich's producer history page. Used for the
+      equipment context (washbacks, still hall, on-site
+      coppersmiths and cooperage) and the unpeated-default
+      house character.
+
+  - id: 2
+    type: trade_publication
+    citation: |
+      Glenfiddich distillery technical specification entry,
+      whisky.com whisky database.
+    url: https://www.whisky.com/whisky-database/distilleries/details/glenfiddich.html
+    accessed: 2026-05-19
+    notes: |
+      Trade-database source for the ~74-hour average
+      fermentation, 48 Douglas-fir washbacks, and the
+      16-wash / 27-spirit still configuration.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-19
+contributors: []

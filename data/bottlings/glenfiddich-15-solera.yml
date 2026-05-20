@@ -1,0 +1,173 @@
+# =============================================================================
+# Glenfiddich 15 Year Old (Solera Fifteen)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing core release; the
+# Solera-Vat marrying process is producer-disclosed and is the
+# release's defining structural feature.
+# =============================================================================
+# **First populated bottling exercising a solera-style continuous-
+# marrying vatting stage.** The Solera Vat is a large vessel,
+# installed at Glenfiddich in 1998, that is never drained below
+# roughly half-full and is continually replenished — so each
+# bottling draws partly on spirit that has cycled through the vat
+# across many years, in the manner of a Spanish sherry solera.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfiddich-15-solera
+name: Glenfiddich 15 Year Old (Solera Fifteen)
+production_line: glenfiddich
+produced_at_distillery: glenfiddich
+bottled_by: glenfiddich
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 1998                      # The Solera Vat was
+                                        # installed in 1998 and the
+                                        # 15 Year Old built on it
+                                        # dates from that point;
+                                        # continuously available
+                                        # core release since [1].
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0
+age_statement: 15
+vintage: null
+cask_strength: false
+non_chill_filtered: false               # 40% ABV, below the 46%
+                                        # NCF-threshold convention;
+                                        # chill-filtered per
+                                        # industry-typical practice.
+natural_colour: false                   # Caramel colouring used per
+                                        # industry-typical practice
+                                        # at this tier.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch                           # Each bottling is a draw
+                                        # from the Solera Vat; the
+                                        # vat output is a
+                                        # continuously-marrying
+                                        # batch rather than a
+                                        # discrete numbered batch.
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 15
+    cooperage: null
+    notes: |
+      Ex-bourbon American oak component of the 15-year
+      maturation prior to the Solera-Vat marrying stage.
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 15
+    cooperage: null
+    notes: |
+      Oloroso European-oak sherry component. The producer's
+      build for the 15 Year Old combines spirit matured in
+      ex-bourbon, ex-oloroso, and new American oak before
+      the casks are emptied into the Solera Vat. The project
+      records the two main wood categories; the new-oak
+      component is noted here without a separate cask entry
+      because the project's `virgin-oak` cask covers new
+      American oak and the producer does not break the
+      proportions out.
+
+
+# --- Finish -----------------------------------------------------------------
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 60.00                         # Approximate UK retail at
+                                        # recent release pricing
+                                        # (2024).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenfiddich 15 Year Old — marketed as "Solera Fifteen" — is the
+  release built on the distillery's Solera Vat, a large marrying
+  vessel installed in 1998 and inspired by the Spanish sherry
+  solera [1]. Spirit matured for 15 years in a combination of
+  ex-bourbon American oak, ex-oloroso European oak, and new
+  American oak is emptied into the vat; the vat is never drained
+  below roughly half its volume and is continually replenished,
+  so each draw for bottling carries a fraction of spirit that
+  has cycled through the vat over many years. The producer's
+  stated intent is continuity of character across bottlings —
+  the partial-draw / partial-refill cycle smooths batch-to-batch
+  variation in the same way a sherry solera does. Bottled at 40%
+  ABV, chill-filtered with caramel colouring per industry-typical
+  practice at this tier. This is the project's first populated
+  bottling exercising a solera-style continuous-marrying vatting
+  stage — structurally distinct both from a discrete numbered
+  batch and from the single-cask / small-batch patterns: the
+  Solera Vat is a perpetual marrying vessel rather than a
+  one-time vatting. The producer characterises the resulting
+  profile as richer and more spice-led than the 12 Year Old,
+  attributed to the higher sherry-cask and new-oak contribution
+  and the marrying effect of the vat.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfiddich.com/15-year-old
+    accessed: 2026-05-19
+    notes: |
+      Glenfiddich's producer page for the 15 Year Old. Used
+      for ABV (40%), age (15 years), the Solera-Vat process
+      description (1998 installation, continuous-replenish
+      marrying inspired by the Spanish sherry solera), and
+      the three-wood maturation (ex-bourbon, ex-oloroso,
+      new American oak).
+
+  - id: 2
+    type: official_website
+    url: https://www.glenfiddich.com/our-story
+    accessed: 2026-05-19
+    notes: |
+      Glenfiddich's history page. Used for the 1998 Solera-Vat
+      installation milestone and the producer's account of
+      the fifth Malt Master's creation of the process.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-19
+contributors: []

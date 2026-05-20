@@ -1,0 +1,132 @@
+data + site: Glenfiddich (13th distillery) + index pages grouped by distillery
+
+Adds Glenfiddich as the thirteenth populated distillery and the
+second populated Speyside entry after Glenfarclas, and rewrites
+the /production-lines/ and /bottlings/ index pages to group their
+entries under the parent distillery.
+
+Files
+-----
+
+- data/distilleries/glenfiddich.yml
+- data/production_lines/glenfiddich.yml
+- data/bottlings/glenfiddich-12.yml
+- data/bottlings/glenfiddich-15-solera.yml
+- site/src/pages/production-lines/index.astro (rewritten)
+- site/src/pages/bottlings/index.astro (rewritten)
+
+Glenfiddich
+-----------
+
+- Location: Dufftown, Banffshire, Speyside.
+- Owner: William Grant & Sons Ltd — unbroken family ownership
+  since the 1886 founding. One of the few sizeable Scotch
+  producers still entirely family-owned; a structural parallel
+  to the unrelated Grant family's Glenfarclas.
+- Founded 1886 (build start); first spirit Christmas Day 1887.
+  The producer's own timeline is internally inconsistent on the
+  1886/1887 build-start year — recorded as founded 1886,
+  first_spirit 1887, with the conflict noted in the entry. The
+  original stills were second-hand equipment bought from the
+  Cardhu distillery.
+- The distillery most associated with the creation of the
+  modern marketed single-malt category — the 1963 decision by
+  Sandy Grant Gordon to actively market single malt outside
+  Scotland.
+- Very large scale: ~21 million LPA; 48 Douglas-fir washbacks
+  (~74-hour average fermentation); 43 copper stills (16 wash,
+  27 spirit), with 15 of the 27 spirit stills direct-fired by
+  gas. On-site coppersmiths (since 1957) and cooperage (since
+  1959). Over one million casks in warehouse.
+- Bottlings: 12 Year Old (40% ABV, bourbon + oloroso flagship)
+  and 15 Year Old Solera (40% ABV) — the latter is the first
+  populated bottling exercising a solera-style continuous-
+  marrying vatting stage (the 1998 Solera Vat, never drained
+  below half-full, inspired by the Spanish sherry solera).
+
+Critical-eval fix: the "world's largest-selling single malt"
+claim was softened to "among the world's best-selling single
+malts", with an explicit note that Glenfiddich and Glenlivet
+trade the top-selling position depending on market and measure.
+
+Site — /production-lines/ and /bottlings/ indexes regrouped
+------------------------------------------------------------
+
+Both index pages rewritten from a single flat table to a grouped
+list: entries are now listed under their parent distillery as h2
+sub-headings, distilleries in alphabetical order, each heading
+linking to the distillery page.
+
+- production-lines: grouped on the line's `distillery` field.
+  Multi-line distilleries (Springbank x3, Bunnahabhain x2) carry
+  a "N lines" count on the heading.
+- bottlings: grouped on `produced_at_distillery`. The redundant
+  per-row Distillery column is dropped (it is now the group
+  heading); distilleries with more than one release carry a
+  "N releases" count. The OB/IB type column is retained.
+
+Rationale: a flat exhaustive table does not scale as the data
+grows — the bottlings table had already reached 39 rows. A
+dropdown was rejected — JS-dependent, hides content behind a
+control, invisible to Pagefind body-indexing, and cuts against
+the site's Wikipedia content-first design. An alphabet jump-bar
+was rejected as overkill. The grouped-list pattern matches
+casks/index (grouped by category) and the concept sub-indexes —
+plain content, no JS, every line a real link.
+
+Both tables use `table-layout: fixed` with explicit widths on the
+narrow columns (Peating/Confidence; ABV/Age/Type) so column edges
+align across every distillery group rather than each table sizing
+its columns independently. astro check clean (only the
+pre-existing @types/node errors; no new warnings from either
+rewrite).
+
+Sourcing
+--------
+
+- glenfiddich.com/our-story — producer history.
+- glenfiddich.com/12-year-old, /15-year-old,
+  /collection/flagship-collection — bottling-level pages.
+- whisky.com/whisky-database/details/glenfiddich — trade-
+  database for equipment, fermentation, capacity, water source.
+- legislation.gov.uk/uksi/2009/2890/regulation/10 — SWR 2009
+  Speyside regional designation grounding.
+
+Verification
+------------
+
+- scripts/check_references.py: 139 files scanned, 563 resolved
+  refs (+16), 21 dangling (unchanged), 0 JSON Schema findings.
+- astro check: only the pre-existing @types/node errors; no new
+  warnings from the production-lines or bottlings rewrites.
+- Voice-register pass clean on all four new YAML files.
+- NUL-byte scan clean. Edit-tool truncation hit glenfiddich.yml,
+  glenfiddich-12.yml, both index pages, the commit message,
+  TODO.md, and handover.md during the wave; all repaired and
+  verified.
+
+Counts
+------
+
+- 135 -> 139 files (+4)
+- 12 -> 13 distilleries (Glenfiddich)
+- 17 -> 18 production lines
+- 37 -> 39 bottlings (+2)
+- 547 -> 563 resolved refs (+16)
+- 21 dangling (unchanged)
+- 0 schema findings
+
+Documentation
+-------------
+
+- docs/handover.md section 10 Populated counts updated (13
+  distilleries / 18 production lines / 39 bottlings); the
+  Glenfiddich block added to the distillery list, and a
+  "Site index pages — grouped layout" note added to the
+  build-pipeline section. Next Priorities: 14th distillery
+  now item 1 (Ardbeg for the south-Islay cluster, or
+  Glenlivet / Macallan for Speyside).
+- TODO.md Recently Completed gets two new entries (Glenfiddich;
+  index-page regrouping).
+- No schema or policy changes; no CHANGELOG entry per project
+  policy.

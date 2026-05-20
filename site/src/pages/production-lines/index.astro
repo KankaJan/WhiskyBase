@@ -1,9 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ConfidenceBadge from '../../components/ConfidenceBadge.astro';
-import { loadProductionLines } from '../../lib/data';
+import { loadProductionLines, loadDistilleries } from '../../lib/data';
 
 const lines = loadProductionLines();
+const distilleries = loadDistilleries();
+
+// slug -> display name for the parent-distillery headings.
+const distilleryName = new Map(distilleries.map((d) => [d.id, d.name]));
 
 function formatPeating(line: typeof lines[0]): string {
   const m = line.peating?.measurements?.[0];
@@ -12,6 +16,29 @@ function formatPeating(line: typeof lines[0]): string {
   if (Array.isArray(v)) return `${v[0]}–${v[1]} ppm`;
   return `${v} ppm`;
 }
+
+// Group production lines under their parent distillery.
+const grouped = new Map<string, typeof lines>();
+for (const l of lines) {
+  const arr = grouped.get(l.distillery) ?? [];
+  arr.push(l);
+  grouped.set(l.distillery, arr);
+}
+
+// Distillery slugs in alphabetical order of display name. Falls back
+// to the slug if a distillery entry is not (yet) populated.
+const distillerySlugs = [...grouped.keys()].sort((a, b) =>
+  (distilleryName.get(a) ?? a).localeCompare(distilleryName.get(b) ?? b),
+);
+
+// Lines within a group: sort by name for stable ordering.
+for (const arr of grouped.values()) {
+  arr.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+const multiLineCount = distillerySlugs.filter(
+  (s) => (grouped.get(s) ?? []).length > 1,
+).length;
 ---
 
 <BaseLayout title="Production lines" indexable={false}>
@@ -19,30 +46,44 @@ function formatPeating(line: typeof lines[0]): string {
     <h1>Production lines</h1>
     <p class="lede">
       {lines.length} production lines — distinct recipes / specs run
-      at the populated distilleries. One distillery may run multiple
-      lines (Springbank runs three; Bunnahabhain runs two).
+      at the {distillerySlugs.length} populated distilleries, grouped
+      below by distillery. Most distilleries run a single line;
+      {multiLineCount} run more than one (Springbank runs three —
+      Springbank, Longrow, Hazelburn; Bunnahabhain runs two).
     </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Line</th>
-          <th>Distillery</th>
-          <th>Peating (spec)</th>
-          <th>Confidence</th>
-        </tr>
-      </thead>
-      <tbody>
-        {lines.map((l) => (
-          <tr>
-            <td><a href={`/production-lines/${l.id}/`}>{l.name}</a></td>
-            <td><a href={`/distilleries/${l.distillery}/`}>{l.distillery}</a></td>
-            <td>{formatPeating(l)}</td>
-            <td><ConfidenceBadge level={l.confidence} /></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    {distillerySlugs.map((slug) => {
+      const groupLines = grouped.get(slug) ?? [];
+      const name = distilleryName.get(slug) ?? slug;
+      return (
+        <section>
+          <h2>
+            <a href={`/distilleries/${slug}/`}>{name}</a>
+            {groupLines.length > 1 && (
+              <span class="count"> · {groupLines.length} lines</span>
+            )}
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Production line</th>
+                <th>Peating (spec)</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              {groupLines.map((l) => (
+                <tr>
+                  <td><a href={`/production-lines/${l.id}/`}>{l.name}</a></td>
+                  <td class="peating">{formatPeating(l)}</td>
+                  <td><ConfidenceBadge level={l.confidence} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      );
+    })}
   </article>
 </BaseLayout>
 
@@ -60,5 +101,22 @@ function formatPeating(line: typeof lines[0]): string {
     color: var(--muted-color);
     margin: 0 0 1rem;
   }
-  table { width: 100%; }
+  .count {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  /* Peating and Confidence take only the width they need; the
+     Production line column absorbs the rest. table-layout: fixed
+     keeps column edges aligned across every distillery group. */
+  th:nth-child(2), td:nth-child(2) { width: 9rem; }
+  th:nth-child(3), td:nth-child(3) { width: 7.5rem; }
+  .peating {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
 </style>

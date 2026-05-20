@@ -1,42 +1,79 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { loadBottlings } from '../../lib/data';
+import { loadBottlings, loadDistilleries } from '../../lib/data';
 
 const bottlings = loadBottlings();
+const distilleries = loadDistilleries();
+
+// slug -> display name for the parent-distillery headings.
+const distilleryName = new Map(distilleries.map((d) => [d.id, d.name]));
+
+// Group bottlings under the distillery that produced the spirit.
+const grouped = new Map<string, typeof bottlings>();
+for (const b of bottlings) {
+  const arr = grouped.get(b.produced_at_distillery) ?? [];
+  arr.push(b);
+  grouped.set(b.produced_at_distillery, arr);
+}
+
+// Distillery slugs in alphabetical order of display name. Falls back
+// to the slug if a distillery entry is not (yet) populated.
+const distillerySlugs = [...grouped.keys()].sort((a, b) =>
+  (distilleryName.get(a) ?? a).localeCompare(distilleryName.get(b) ?? b),
+);
+
+// Bottlings within a group: sort by name for stable ordering.
+for (const arr of grouped.values()) {
+  arr.sort((a, b) => a.name.localeCompare(b.name));
+}
 ---
 
 <BaseLayout title="Bottlings" indexable={false}>
   <article class="content">
     <h1>Bottlings</h1>
     <p class="lede">
-      {bottlings.length} bottlings — specific commercial releases.
-      Each entry covers per-release specifications (ABV, age,
-      presentation, maturation), cross-referenced to the distillery,
-      production line, and cask types involved.
+      {bottlings.length} bottlings — specific commercial releases,
+      grouped below by the distillery that produced the spirit. Each
+      entry covers per-release specifications (ABV, age, presentation,
+      maturation), cross-referenced to the distillery, production line,
+      and cask types involved. Type is OB (official, distillery-bottled)
+      or IB (independent bottling).
     </p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Release</th>
-          <th>Distillery</th>
-          <th class="num">ABV</th>
-          <th class="num">Age</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        {bottlings.map((b) => (
-          <tr>
-            <td><a href={`/bottlings/${b.id}/`}>{b.name}</a></td>
-            <td><a href={`/distilleries/${b.produced_at_distillery}/`}>{b.produced_at_distillery}</a></td>
-            <td class="num">{b.abv !== null && b.abv !== undefined ? `${b.abv}%` : '—'}</td>
-            <td class="num">{b.age_statement ?? 'NAS'}</td>
-            <td>{b.bottler_type === 'distillery' ? 'OB' : 'IB'}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    {distillerySlugs.map((slug) => {
+      const groupBottlings = grouped.get(slug) ?? [];
+      const name = distilleryName.get(slug) ?? slug;
+      return (
+        <section>
+          <h2>
+            <a href={`/distilleries/${slug}/`}>{name}</a>
+            {groupBottlings.length > 1 && (
+              <span class="count"> · {groupBottlings.length} releases</span>
+            )}
+          </h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Release</th>
+                <th class="num">ABV</th>
+                <th class="num">Age</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              {groupBottlings.map((b) => (
+                <tr>
+                  <td><a href={`/bottlings/${b.id}/`}>{b.name}</a></td>
+                  <td class="num">{b.abv !== null && b.abv !== undefined ? `${b.abv}%` : '—'}</td>
+                  <td class="num">{b.age_statement ?? 'NAS'}</td>
+                  <td>{b.bottler_type === 'distillery' ? 'OB' : 'IB'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      );
+    })}
   </article>
 </BaseLayout>
 
@@ -44,6 +81,20 @@ const bottlings = loadBottlings();
   .content { max-width: var(--site-max-width); margin: 0 auto; }
   h1 { font-size: 1.8rem; font-weight: 600; margin: 0 0 0.3rem; }
   .lede { color: var(--muted-color); margin: 0 0 1rem; }
-  table { width: 100%; }
+  .count {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  /* ABV / Age / Type take only the width they need; the Release
+     column absorbs the rest. table-layout: fixed keeps column
+     edges aligned across every distillery group. */
+  th:nth-child(2), td:nth-child(2) { width: 5rem; }
+  th:nth-child(3), td:nth-child(3) { width: 5rem; }
+  th:nth-child(4), td:nth-child(4) { width: 4.5rem; }
   .num { text-align: right; font-variant-numeric: tabular-nums; }
 </style>

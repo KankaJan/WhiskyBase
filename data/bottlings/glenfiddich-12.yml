@@ -1,0 +1,161 @@
+# =============================================================================
+# Glenfiddich 12 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — the long-standing flagship core release
+# of one of the world's best-selling single malts; presentation
+# specifications are stable.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenfiddich-12
+name: Glenfiddich 12 Year Old
+production_line: glenfiddich
+produced_at_distillery: glenfiddich
+bottled_by: glenfiddich
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                      # The Glenfiddich 12 Year Old
+                                        # has been the continuously
+                                        # available flagship core
+                                        # release for decades; the
+                                        # producer markets it as
+                                        # "Our Original Twelve". The
+                                        # specific introduction year
+                                        # of the 12-year age
+                                        # statement is not pinned to
+                                        # a primary source.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: false               # 40% ABV places the release
+                                        # at the regulatory minimum,
+                                        # below the 46% NCF-threshold
+                                        # convention; chill-filtered
+                                        # per industry-typical
+                                        # practice at this tier (see
+                                        # educational/chill-filtering).
+natural_colour: false                   # Caramel colouring used per
+                                        # industry-typical practice
+                                        # at this 40% ABV tier.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null                    # The 12 Year Old marries
+                                        # ex-bourbon American oak and
+                                        # ex-oloroso European oak;
+                                        # specific proportion not
+                                        # disclosed at the bottling
+                                        # level.
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Ex-bourbon American oak component. The 12-year maturation
+      sits in cask-extraction phase 2 per
+      educational/cask-maturation-kinetics; the unpeated
+      Speyside spirit develops bourbon-derived vanilla and
+      oak-lactone notes alongside the sherry contribution.
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 12
+    cooperage: null
+    notes: |
+      Oloroso European-oak sherry component, married with the
+      ex-bourbon spirit before bottling. The producer
+      characterises the resulting profile as fruity and
+      pear-led with the sherry adding a fruit-cake note [2].
+
+
+# --- Finish -----------------------------------------------------------------
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: 40.00                         # Approximate UK retail at
+                                        # recent release pricing
+                                        # (2024).
+  as_of: 2024
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Glenfiddich's flagship core release — the producer markets it
+  as "Our Original Twelve" — 12 years matured in a marriage of
+  ex-bourbon American oak and ex-oloroso European oak, bottled at
+  40% ABV [1][2]. As the entry-level expression of one of the
+  world's best-selling single malts, the Glenfiddich 12 Year Old
+  is one of the most widely distributed single malts globally; it
+  is the release most consumers encounter as their introduction
+  to the category. Chill-filtered with caramel colouring per
+  industry-typical practice at this ABV tier. The producer's
+  positioning emphasises a fruity, pear-led house character; in
+  the project's voice, the release is an unpeated, bourbon-and-
+  sherry-cask-married Speyside core bottling at the introductory
+  tier. It sits at the same nominal age and ABV-tier as the
+  project's other 40% chill-filtered Speyside / Lowland flagship
+  cores (Auchentoshan 12, Glenfarclas 10).
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.glenfiddich.com/12-year-old
+    accessed: 2026-05-19
+    notes: |
+      Glenfiddich's producer page for the 12 Year Old. Used
+      for ABV (40%), age (12 years), and the bourbon-and-
+      oloroso maturation marriage.
+
+  - id: 2
+    type: official_website
+    url: https://www.glenfiddich.com/collection/flagship-collection
+    accessed: 2026-05-19
+    notes: |
+      Glenfiddich's flagship-collection page. Used for the
+      core-range positioning of the 12 Year Old and the
+      producer's flavour characterisation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-19
+contributors: []
