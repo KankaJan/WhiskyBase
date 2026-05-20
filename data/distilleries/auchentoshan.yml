@@ -316,22 +316,16 @@ also_used_by_blenders: []               # Trade references note that
 
 
 # --- Distinctive Features (concept cross-references) ------------------------
-distinctive_features: []                # Triple distillation is the
-                                        # distinguishing equipment-
-                                        # level feature; a
-                                        # `concept/equipment/triple-
-                                        # distillation` (or
-                                        # `concept/practice/triple-
-                                        # distillation`) page does
-                                        # not yet exist in the
-                                        # project. The Hazelburn
-                                        # production-line entry at
-                                        # Springbank also models
-                                        # triple distillation;
-                                        # creating a shared concept
-                                        # page is queued in
-                                        # TODO §Concept pages to
-                                        # queue.
+distinctive_features:
+  - practice/triple-distillation        # Every drop of Auchentoshan
+                                        # production is triple-
+                                        # distilled — the
+                                        # distillery's defining
+                                        # production characteristic.
+                                        # See the concept page for
+                                        # the three-still mechanism
+                                        # and the strength /
+                                        # character consequences.
 
 
 # --- Description ------------------------------------------------------------

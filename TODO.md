@@ -210,6 +210,44 @@ Entries that currently cite Wikipedia (a volatile source per
 where they should have authoritative sources. Each needs a
 research pass to locate and cite stronger primary sources.
 
+### Literature-resource scouting (user can supply digital copies)
+
+The user can provide additional reference literature as digital
+copies (the Russell ed. 2014 grounding on 2026-05-19 is the
+worked precedent — a user-supplied PDF let 14 concept entries
+move from a "page refs TBA" hedge to specific chapter + page
+citations). This item is a standing research request to
+identify which additional works would most improve the
+project's sourcing, so the user can prioritise what to source:
+
+- **Piggott, Sharp & Duncan (eds.), 1989 — The Science and
+  Technology of Whiskies.** Already in `docs/bibliography.md` as
+  a queued complement to Russell; pre-dates Russell and covers
+  the production chain in greater historical-engineering depth.
+  Highest-value next acquisition — would let the distillation /
+  maturation concept entries carry a second peer-reviewed
+  academic source alongside Russell, which is the single
+  blocker to lifting several single-source glossary entries
+  from `confidence: medium` to `high`.
+- **The Malt Whisky Yearbook (recent edition).** Already cited
+  loosely across distillery entries for equipment specs and
+  capacity figures; a current edition to hand would let those
+  trade-reference citations carry a specific year and page.
+- **Buxton & Hughes, 2014 — The Science and Commerce of
+  Whisky.** In `docs/bibliography.md` as queued; commerce /
+  marketing angle complements Russell's technical focus.
+- **SWRI / Heriot-Watt ICBD published research.** Peer-reviewed
+  papers on maturation chemistry, peating measurement, and
+  fermentation congeners — would directly ground the
+  `educational/cask-maturation-kinetics` and
+  `methodology/*-published-ppm` pages' quantitative claims.
+
+When the user supplies a copy, the grounding pass follows the
+Russell precedent: extract the table of contents, map chapters
+to the affected entries, then ground each claim against
+specific pages. See the 2026-05-19 Recently-Completed entry for
+the worked method.
+
 ### Compound-chemistry sources (PubChem upgrade)
 
 (All items in this sub-section migrated on 2026-05-15. The
@@ -667,6 +705,42 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-19** Triple-distillation concept page +
+  pedro-ximenez-sherry-butt cask + confidence-level review.
+  (a) `concept/practice/triple-distillation` written —
+  documents the three-still regime (wash -> low-wines ->
+  spirit), the strong/weak fraction splits, the strength
+  consequence (double ~68-72% ABV vs triple approaching
+  90% ABV), the lowland / Irish-practice distribution.
+  Grounded against Nicol Ch 9 p 173 (Russell ed. 2014)
+  plus the Auchentoshan producer page. Cross-referenced
+  from the Auchentoshan and Springbank `distinctive_features`
+  lists (Auchentoshan: full triple; Springbank: the Hazelburn
+  line only). (b) `data/casks/pedro-ximenez-sherry-butt.yml`
+  created — PX is the sweetest Jerez style (raisined grapes,
+  ~400-500 g/L residual sugar); the Auchentoshan Three Wood
+  third maturation stage updated from the prior
+  `oloroso-sherry-butt` hedge to reference the new
+  `pedro-ximenez-sherry-butt` slug; oloroso and fino
+  `related.alternatives` updated to list it. (c) Confidence-
+  level review on the 14 Russell-grounded concept entries:
+  **conclusion — no promotions.** Single-source glossary
+  entries stay `medium` (high requires multi-source); the
+  multi-source educational pages stay `medium` because each
+  carries documented contested-claim sections. The single
+  blocker to several medium -> high promotions is a second
+  peer-reviewed academic source; a literature-resource
+  scouting item was added to §Research requests so the user
+  can prioritise which works to supply (Piggott et al. 1989
+  the highest-value acquisition). Bibliography cross-check:
+  no Russell citations outside the 14 concept entries; no
+  "page refs TBA" hedges remain anywhere in data/. Counts:
+  133 -> 135 files, 16 -> 17 casks, 46 -> 47 concepts,
+  537 -> 547 resolved refs, 21 dangling unchanged, 0 schema
+  findings. Edit-tool NUL corruption / truncation hit
+  auchentoshan.yml, auchentoshan-three-wood.yml,
+  oloroso-sherry-butt.yml, springbank.yml during the wave;
+  all repaired (NUL-strip + git-restore-and-re-apply).
 - **2026-05-19** Russell ed. 2014 grounding pass — 14 concept-entry
   citations migrated from the "page references to be added when
   consulted" hedge to specific chapter-author + page-range

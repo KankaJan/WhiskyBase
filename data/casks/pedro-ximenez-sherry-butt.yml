@@ -1,0 +1,158 @@
+# =============================================================================
+# Pedro Ximénez sherry butt
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium — PX is a well-documented sherry style and
+# a common Scotch finishing cask, but the project has only one
+# populated bottling exercising it so far (Auchentoshan Three Wood),
+# and the seasoning-vs-transport-butt distinction is the same
+# unresolved question flagged for the sherry-cask entries generally.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: pedro-ximenez-sherry-butt
+name: Pedro Ximénez sherry butt
+also_known_as:
+  - PX sherry butt
+  - PX butt
+  - sherry butt (Pedro Ximénez)
+
+
+# --- Classification ---------------------------------------------------------
+category: sherry
+subcategory: Pedro Ximénez (sweet, oxidatively-aged)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: [480, 520]   # Conventionally ~500 L, as with
+                                    # the oloroso and fino sherry
+                                    # butts; PX-seasoned casks for
+                                    # the Scotch industry fall in the
+                                    # same 480-520 L band.
+wood_species: european_oak          # As with other sherry butts,
+                                    # typically European oak
+                                    # (Quercus robur / Q. petraea —
+                                    # the trade refers to "Spanish
+                                    # oak" without consistently
+                                    # specifying species). Some
+                                    # modern PX-seasoned casks are
+                                    # American oak.
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: sherry
+  specifics: |
+    Pedro Ximénez sherry — the sweetest of the Jerez DO styles,
+    made from the Pedro Ximénez grape [1][2]. The grapes are
+    sun-dried (raisined) on esparto-grass mats before pressing,
+    concentrating the sugars; the resulting wine is fortified and
+    aged oxidatively in a solera system. Finished PX is bottled
+    at very high residual sugar — commonly in the region of
+    400-500 g/L — giving a near-black, treacle-and-raisin wine.
+    As with the other Scotch-industry sherry casks, the butt is
+    "seasoned" with PX for a period (typically 18-36 months)
+    specifically to prepare it for whisky-industry sale; modern
+    seasoning practice is distinct from the historical practice
+    of using genuinely spent transport butts.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: Spain
+  region: Andalusia
+  appellation: Jerez-Xérès-Sherry
+  producer: null                    # Multiple cooperages and bodegas
+                                    # supply PX-seasoned casks to the
+                                    # Scotch industry; specific
+                                    # suppliers are not consistently
+                                    # disclosed at the bottling level.
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sherry butt previously used to age or season Pedro Ximénez (PX)
+  sherry, the sweetest style of the Jerez-Xérès-Sherry DO in
+  southern Spain. PX is made from the eponymous grape variety,
+  sun-dried before pressing to concentrate the sugars; the
+  finished wine is fortified, aged oxidatively in a solera, and
+  bottled at very high residual sugar (commonly ~400-500 g/L) —
+  producing a near-black, intensely sweet wine with raisin,
+  date, fig, and molasses character [1][2]. Vessel capacity is
+  conventionally around 500 litres, made from European oak.
+  PX-seasoned casks are used in the Scotch industry predominantly
+  as finishing casks rather than for full primary maturation:
+  the intense residual sweetness of the wood-bound PX sugars
+  delivers a strong, fast flavour overlay, and a short finish
+  period is usually sufficient. The PX contribution is
+  distinctly sweeter and darker than the oloroso contribution
+  that the project's `oloroso-sherry-butt` entry covers — PX and
+  oloroso are both oxidatively-aged sherry styles, but PX's
+  raisined-grape sugar load sets it apart. The project's
+  Auchentoshan Three Wood entry exercises this cask type as the
+  third stage of its bourbon → oloroso → PX maturation sequence.
+  As with the other sherry-cask entries, the seasoning-vs-
+  transport-butt distinction and the first-fill / refill
+  depletion pattern apply (see
+  [cask maturation kinetics](concept/educational/cask-maturation-kinetics)).
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives:
+    - oloroso-sherry-butt           # Drier oxidative sister style.
+    - fino-sherry-butt              # Dry, biologically aged under
+                                    # flor.
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Sherry
+    accessed: 2026-05-19
+    notes: |
+      Used for the Pedro Ximénez style description (raisined
+      grapes, oxidative ageing, very high residual sugar) and
+      Jerez DO geography. Wikipedia is a volatile source per
+      docs/source-conflict-policy.md — the regulatory text
+      (source 2) is the primary grounding.
+
+  - id: 2
+    type: regulatory_text
+    url: https://www.sherry.wine/documents/487/PLIEGO_CONDICIONES_JEREZ_ACTUALIZADO_2024.pdf
+    accessed: 2026-05-19
+    citation: |
+      Reglamento de la Denominación de Origen "Jerez-Xérès-Sherry"
+      and "Manzanilla-Sanlúcar de Barrameda", Consejo Regulador
+      del Vino de Jerez, published in the Boletín Oficial del
+      Estado (BOE) of Spain. The reglamento defines the
+      geographical "Marco de Jerez" production zone, the permitted
+      grape varieties (Palomino Fino predominantly, with Pedro
+      Ximénez and Moscatel for the sweet styles), the solera and
+      criadera ageing system, and the stylistic classification
+      (fino, manzanilla, amontillado, oloroso, palo cortado,
+      Pedro Ximénez, etc.).
+    notes: |
+      Primary regulatory text for the Jerez DO (which encompasses
+      Pedro Ximénez as one of its styles). URL points to the
+      consolidated Pliego de Condiciones PDF (2024 update)
+      published by the Consejo Regulador on sherry.wine.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-19
+contributors: []

@@ -89,24 +89,22 @@ maturation:
       rather than as a `finish:` block because the producer
       describes three sequential cask exposures rather than
       a short terminal finish after primary maturation.
-  - cask_type: oloroso-sherry-butt
+  - cask_type: pedro-ximenez-sherry-butt
     fill_number: null
     proportion: null
     duration_years: null
     cooperage: null
     notes: |
       Third-stage maturation in Pedro Ximénez (PX) sherry
-      oak. The project's cask-type vocabulary does not yet
-      have a separate `px-sherry-butt` entry — PX shares
-      construction with oloroso but is sweeter and darker
-      due to PX's higher residual-sugar content. Recorded
-      here as `oloroso-sherry-butt` with the PX-specific
-      character noted explicitly; see TODO §Schema work
-      §Cask schema for a possible future split. The producer
-      sometimes describes this stage as a finish; the
-      project keeps the three stages on the maturation list
-      for consistency with the producer's "Three Wood"
-      framing.
+      oak. PX shares cask construction with oloroso but
+      delivers a distinctly sweeter, darker contribution
+      because PX is the sweetest Jerez style (raisined-grape
+      sugar load, ~400-500 g/L residual sugar). The project's
+      `pedro-ximenez-sherry-butt` cask entry covers the type.
+      The producer sometimes describes this stage as a
+      finish; the project keeps the three stages on the
+      maturation list for consistency with the producer's
+      "Three Wood" framing.
 
 finish: null
 

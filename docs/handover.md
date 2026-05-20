@@ -417,14 +417,15 @@ back rather than absorbing it into the data model.
   at 45 / 60 minutes; 63.5% ABV fill strength; predominantly
   Maker's Mark ex-bourbon maturation through the
   Suntory Global Spirits internal supply chain).
-- 45 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
+- 47 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
   Whisky), 8 educational (peating-measurement-methods,
   aromatic-compounds-in-whisky, copper-conversation,
   swa-regional-designations, cask-fill-states,
   cask-maturation-kinetics, chill-filtering,
-  scotch-presentation-conventions), 2 equipment (worm-tub,
-  shell-and-tube-condenser), 2 practice (floor-malting,
-  external-malting), 30 glossary.
+  scotch-presentation-conventions), 3 equipment (worm-tub,
+  shell-and-tube-condenser, direct-fired-still), 3 practice
+  (floor-malting, external-malting, triple-distillation),
+  30 glossary.
 - 2 suppliers: Bairds Malt Ltd
   (`data/suppliers/bairds-malt.yml`, populated 2026-05-17 against
   supplier v0.1 as the first pressure-test, type=maltster) and
@@ -494,9 +495,13 @@ back rather than absorbing it into the data model.
   surfacing schema gaps. Specific release details (vintage, age,
   ABV, outturn, cask number) are null pending substitution with
   verifiable real releases.
-- 16 casks: 5 high confidence (bourbon-barrel, oloroso/fino sherry,
-  virgin-oak, undisclosed-cask), 6 medium (wine-cask parent + 5 named
-  appellations), 5 low (lesser-disclosed wine cases)
+- 17 casks: 5 high confidence (bourbon-barrel, oloroso/fino sherry,
+  virgin-oak, undisclosed-cask), 7 medium (wine-cask parent + 5 named
+  appellations + pedro-ximenez-sherry-butt), 5 low (lesser-disclosed
+  wine cases). The `pedro-ximenez-sherry-butt` entry landed
+  2026-05-19 alongside the Auchentoshan Three Wood entry, which
+  exercises it as the third stage of its bourbon -> oloroso -> PX
+  maturation sequence.
 
 **Schema:**
 
@@ -564,37 +569,47 @@ in the sandbox; both work on the developer host).
 
 **Next priorities, in order of unblock value:**
 
-1. **`concept/practice/triple-distillation`** (or `equipment/`).
-   Both Auchentoshan and the Hazelburn line at Springbank
-   exercise triple distillation as their default regime; a
-   concept page would consolidate the chemistry / spirit-
-   strength / flavour-precursor-stripping framework that the
-   producer materials only touch on loosely. Cross-references
-   already structurally warranted from both production-line
-   entries. The Russell ed. 2014 grounding (2026-05-19) leaves
-   Nicol Ch 9 p 173 as the canonical Russell page for the
-   technique, so the concept page can cite Russell directly
-   rather than relying solely on producer/trade-press
-   material.
-2. **Data-layer growth — 13th distillery.** Glenkinchie /
+1. **Data-layer growth — 13th distillery.** Glenkinchie /
    Auchentoshan / Laphroaig have landed (2026-05-18). The
    remaining obvious gaps: a Speyside heavyweight (Glenfiddich
    the cleanest source case among the market leaders; Macallan
    and Glenlivet have heavier brand-positioning prose);
    Ardbeg as the fourth south-Islay peated entry alongside
    Lagavulin / Caol Ila / Laphroaig.
+2. **Acquire a second peer-reviewed academic source.** The
+   2026-05-19 confidence-level review (below) found the single
+   blocker to lifting ~7 single-source glossary entries from
+   `confidence: medium` to `high` is the absence of a second
+   corroborating academic source alongside Russell ed. 2014.
+   TODO.md §Research requests §Literature-resource scouting
+   lists the highest-value acquisitions (Piggott et al. 1989
+   first).
 3. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
    The 2026-05-17 stub-supersession overwrote the file with
    empty YAML; the resolver ignores it but the file should be
    deleted from the Windows shell to fully clean up.
-4. **Confidence-level review on the 14 Russell-grounded
-   concept entries.** Each is now grounded against the 2nd
-   edition with specific chapter + page references; per the
-   project's confidence rubric (multi-source + primary-source
-   citation = `high` eligibility) some are candidates for a
-   medium → high promotion. Hold for a separate pass — the
-   confidence level reflects the entry's overall claim
-   landscape, not just one source.
+
+**Completed since the last handover revision:**
+
+- `concept/practice/triple-distillation` — LANDED 2026-05-19.
+  Cited against Nicol Ch 9 p 173; cross-referenced from the
+  Auchentoshan and Springbank `distinctive_features` lists.
+- `pedro-ximenez-sherry-butt` cask entry — LANDED 2026-05-19.
+- **Confidence-level review on the 14 Russell-grounded concept
+  entries — DONE 2026-05-19. Conclusion: no promotions.** The
+  Russell grounding improved source *quality* and removed the
+  "page refs TBA" hedge, but did not change the confidence
+  landscape. The 7 single-source glossary entries (kiln,
+  mashing, distillers-yeast, fermentation, reflux,
+  shell-and-tube, wash-still) remain `medium` because `high`
+  requires multi-source corroboration. The multi-source
+  educational pages (cask-maturation-kinetics, chill-filtering)
+  remain `medium` because each carries explicit documented
+  hedges / contested-claim sections — textbook `medium` per the
+  rubric. external-malting is the closest `high` candidate but
+  is held at `medium` for consistency with its contrast-pair
+  sibling floor-malting. Confidence levels should not move on
+  source-formatting improvements alone.
 
 **Full active queue:** see `TODO.md`.
 

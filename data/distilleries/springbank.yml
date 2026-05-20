@@ -274,6 +274,12 @@ distinctive_features:
                                   # (also documented in the
                                   # worm-tub equipment page's
                                   # per-distillery notes).
+  - practice/triple-distillation  # The Hazelburn production line
+                                  # is triple-distilled; Springbank
+                                  # is the unusual single-site case
+                                  # running three regimes (2.5x
+                                  # Springbank, double Longrow,
+                                  # triple Hazelburn).
 
 
 # --- Description ------------------------------------------------------------

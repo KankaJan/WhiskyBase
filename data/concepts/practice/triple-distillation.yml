@@ -1,0 +1,190 @@
+# =============================================================================
+# Triple distillation
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: practice
+# =============================================================================
+# Cross-referenced from the Auchentoshan distillery and production
+# line (full triple distillation) and from the Springbank site
+# (the Hazelburn production line is triple-distilled, coexisting
+# with the 2.5x Springbank and double Longrow lines).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: triple-distillation
+title: Triple distillation
+kind: practice
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Triple distillation is the production practice of distilling the
+  wash through three pot stills in sequence rather than the
+  conventional two. A third still — the low wines still (also
+  called the intermediate still) — is added between the wash still
+  and the spirit still. The regime collects the spirit at a higher
+  alcoholic strength than double distillation and is associated
+  with a lighter, more rectified new-make character. It is the
+  default regime in Irish pot-still whiskey production and is used
+  by a small number of Scotch malt distilleries — most completely
+  by Auchentoshan, where every drop of production is triple-
+  distilled [1].
+
+
+body: |
+  In conventional Scotch malt-whisky production the wash is
+  distilled twice: once in the wash still (producing low wines)
+  and once in the spirit still (producing new-make spirit, with
+  the heads and tails recycled). Triple distillation inserts a
+  third pot still into the sequence.
+
+  ## How the three-still regime works
+
+  Per Nicol's account of batch distillation, the triple-
+  distillation sequence runs as follows [1]:
+
+  1. **Wash still.** The wash still produces two separately
+     collected fractions — strong low wines and weak low wines —
+     rather than a single low-wines cut.
+  2. **Low wines still (intermediate still).** This second still
+     is charged with the weak low wines. It in turn yields two
+     fractions: strong feints and weak feints (tails). The weak
+     feints are returned for redistillation in the low wines
+     still.
+  3. **Spirit still.** The strong feints are presented to the
+     third still, the spirit still, which divides its output
+     into the conventional three fractions: foreshots (heads),
+     new spirit, and tails. Heads and tails are collected and
+     returned for redistillation.
+
+  The recycling of fractions between the low wines still and the
+  spirit still is what shapes the final strength and bouquet of
+  the new spirit [1].
+
+  ## What the regime delivers
+
+  The headline consequence is strength. Double-distilled new-make
+  spirit is typically collected in the region of 68-72% ABV; a
+  triple-distilled product can approach 90% ABV [1]. The higher
+  strength reflects more extensive rectification — more passes of
+  the spirit across copper and through condensation, separating
+  the lighter, more volatile congeners from the heavier
+  flavour-precursor compounds.
+
+  The producer-attributed and trade-press characterisation of the
+  resulting spirit is "lighter" and "smoother": fewer of the
+  heavier oily and feinty congeners survive into the new make.
+  Auchentoshan's producer materials make this claim explicitly
+  for its triple-distilled output. The project records the
+  strength figures as the load-bearing fact and treats the
+  lightness / smoothness characterisation as producer-attributed
+  rather than independently verified — the sensory consequence
+  of the higher rectification is real in direction but the
+  magnitude is not something the project can quantify from the
+  available sources.
+
+  ## Where it is practised
+
+  Nicol notes that triple distillation is "primarily carried out
+  in lowland distilleries" and is "similar to the distilling
+  practice in Ireland", where pot-still whiskey is triple-
+  distilled by default [1]. As of the 2nd edition of Russell
+  (2014), Nicol records "at least two distilleries" in the
+  Scotch malt industry practising triple distillation.
+
+  Among the project's populated distilleries:
+
+  - **Auchentoshan** (Lowland) — every drop of production is
+    triple-distilled; this is the distillery's defining
+    production characteristic. Three stills: one wash, one
+    intermediate (low wines), one spirit.
+  - **Springbank** (Campbeltown) — the Hazelburn production
+    line is triple-distilled. Springbank is the unusual case
+    of a single distillery running three different
+    distillation regimes: Springbank (2.5-times distilled),
+    Longrow (double), and Hazelburn (triple).
+
+  Other Scotch distilleries have run triple or partial-triple
+  regimes historically or on specific lines; the practice is
+  uncommon but not unique to the two cases above.
+
+  ## What this entry is and is not
+
+  This page documents triple distillation as a production
+  regime. It records the mechanism and the strength consequence
+  from the technical literature, and attributes the
+  lighter-character claim to producers rather than asserting it
+  in the project's voice. It does not claim triple distillation
+  is "better" or "worse" than double distillation — the regimes
+  produce different spirit, and the choice is a house-style
+  decision.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/wash-still
+  - glossary/reflux
+
+
+# --- Per-kind block ---------------------------------------------------------
+practice:
+  adopted_by:
+    - auchentoshan                     # Full triple distillation —
+                                       # every drop of production.
+    - springbank                       # The Hazelburn production
+                                       # line is triple-distilled;
+                                       # Springbank's other two
+                                       # lines use different
+                                       # regimes (2.5x and double).
+  consequences: |
+    Collects new-make spirit at a higher alcoholic strength than
+    double distillation (a triple-distilled product can approach
+    90% ABV against the ~68-72% typical of double distillation)
+    and is associated with a lighter, more rectified spirit
+    character as heavier congeners are separated out across the
+    additional distillation pass. The lighter-character claim is
+    producer-attributed; the strength difference is the
+    load-bearing, literature-grounded fact.
+  contrast_with: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Nicol, D.A., "Batch distillation", Chapter 9 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 155-177.
+    accessed: 2026-05-19
+    notes: |
+      The triple-distillation section is on p 173. Nicol
+      describes the three-still sequence (wash still → low
+      wines still → spirit still), the strong/weak fraction
+      splits at each stage, the recycling of weak feints and
+      heads/tails, the strength figures (double-distilled
+      ~68-72% ABV; triple-distilled approaching 90% ABV), the
+      "primarily lowland" distribution, the Irish-practice
+      parallel, and the "at least two distilleries" count for
+      the Scotch malt industry as of 2014.
+
+  - id: 2
+    type: official_website
+    url: https://www.auchentoshan.com/our-process
+    accessed: 2026-05-18
+    notes: |
+      Auchentoshan's producer process page. Used for the
+      producer-attributed characterisation of triple
+      distillation as producing a "lighter" and "smoother"
+      spirit and the producer's claim that distillation runs
+      from ~8% wash to 81% final spirit (within the general
+      triple-distillation range Nicol documents).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-19
+contributors: []
