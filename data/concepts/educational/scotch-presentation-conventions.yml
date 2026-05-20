@@ -224,14 +224,25 @@ sources:
   - id: 2
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      bottling covers the four presentation decisions in their
-      commercial context.
-    accessed: null
+      Mitchell, M., "Whisky global packaging developments",
+      Chapter 18 in Russell, I. & Stewart, G. (eds.),
+      Whisky: Technology, Production and Marketing, 2nd
+      edition, Academic Press (Elsevier), 2014, pp 315-326.
+    accessed: 2026-05-19
     notes: |
-      Reference cited from the project's literature catalogue.
-      Specific page references to be added when consulted.
+      Mitchell Ch 18 covers the bottling-preparation steps that
+      underlie the four presentation decisions: chill-filtration
+      and clarification at pp 257-258 (note: this section is
+      labelled as Ch 14 in some versions of the TOC; in the
+      2014 2nd edition the bottling-preparation discussion sits
+      across both Aylott Ch 14 and Mitchell Ch 18). Caramel
+      colouring practice is referenced on p 32 (in the
+      Indian-whisky context of Ch 4) and pp 257-258 (in the
+      Scotch bottling-preparation context). The four-decision
+      presentation matrix (ABV / chill-filtration / colour /
+      cask-strength) is the project's framing; the chemistry
+      and engineering of the individual decisions are grounded
+      in the Mitchell and Aylott chapters.
 
 
 # --- Metadata ---------------------------------------------------------------

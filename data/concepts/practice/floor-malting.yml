@@ -165,16 +165,21 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      malting covers floor and pneumatic systems, their
-      respective process controls, and the historical
-      transition from floor to industrial malting.
-    accessed: null
+      Bringhurst, T.A. & Brosnan, J., "Scotch whisky: raw
+      material selection and processing", Chapter 6 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 49-121.
+    accessed: 2026-05-19
     notes: |
-      Reference cited from the project's literature catalogue
-      (docs/bibliography.md). Specific page references to be
-      added when consulted against the digital copy.
+      Bringhurst & Brosnan cover floor malting at pp 57-58:
+      "only a few floor maltings still survive, and these tend
+      to be small undertakings" (p 57). The peating section on
+      pp 58-59 notes that floor maltings can provide a more
+      specific peaty character because of the local-peat
+      sources, with a contrasting note that commercial maltsters
+      typically supply more generic peated malt — the exception
+      being the Islay commercial maltings.
 
   - id: 2
     type: trade_publication

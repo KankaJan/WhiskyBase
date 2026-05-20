@@ -359,16 +359,22 @@ sources:
   - id: 5
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      maturation.
-    accessed: null
+      Conner, J., "Maturation", Chapter 11 in Russell, I. &
+      Stewart, G. (eds.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press (Elsevier),
+      2014, pp 199-219.
+    accessed: 2026-05-19
     notes: |
-      Standard technical reference. Cited generally for the
-      maturation-stage framework; specific quantitative claims
-      in this entry should be cross-checked against the
-      chapter text when accessed. See docs/bibliography.md for
-      the full bibliographic record.
+      Conner Ch 11 grounds the chapter's structure:
+      cooperage oak wood (p 200), structure of wood (pp 201-203),
+      cask manufacture (pp 203-205), cask regeneration (p 205),
+      chemistry and whisky maturation (p 206), cask type
+      (pp 210-212), other maturation variables (pp 212-213),
+      warehousing (pp 213-215), wood policy (p 216). The
+      additive / subtractive / interactive reaction-class
+      framework, the colour-and-extractive curves with cask
+      reuse, and the lignin / hemicellulose / cellulose
+      breakdown chemistry are all anchored in this chapter.
 
 
 # --- Metadata ---------------------------------------------------------------

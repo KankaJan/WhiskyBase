@@ -564,28 +564,37 @@ in the sandbox; both work on the developer host).
 
 **Next priorities, in order of unblock value:**
 
-1. **Russell-textbook page-reference grounding** — 14 concept
-   entries currently hedged `confidence: medium` with "page refs
-   TBA" against Russell ed. 2014, clustered across 6 chapters
-   (malting / mashing / fermentation / distillation / maturation /
-   bottling). User has a digital copy to upload; grounding work
-   is in flight pending the PDF drop.
-2. **`concept/practice/triple-distillation`** (or `equipment/`).
-   Both Auchentoshan and the Hazelburn line at Springbank exercise
-   triple distillation as their default regime; a concept page
-   would consolidate the chemistry / spirit-strength / flavour-
-   precursor-stripping framework that the producer materials only
-   touch on loosely. Cross-references already structurally
-   warranted from both production-line entries.
-3. **Data-layer growth — 12th distillery.** With both Lowlands
-   populated, the remaining obvious gaps: a Speyside heavyweight
-   (Glenfiddich, Macallan, or Glenlivet — Glenfiddich the cleanest
-   source case); a heavily-peated southern-Islay site (Laphroaig
-   or Ardbeg) to complement Lagavulin / Caol Ila.
-4. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
+1. **`concept/practice/triple-distillation`** (or `equipment/`).
+   Both Auchentoshan and the Hazelburn line at Springbank
+   exercise triple distillation as their default regime; a
+   concept page would consolidate the chemistry / spirit-
+   strength / flavour-precursor-stripping framework that the
+   producer materials only touch on loosely. Cross-references
+   already structurally warranted from both production-line
+   entries. The Russell ed. 2014 grounding (2026-05-19) leaves
+   Nicol Ch 9 p 173 as the canonical Russell page for the
+   technique, so the concept page can cite Russell directly
+   rather than relying solely on producer/trade-press
+   material.
+2. **Data-layer growth — 13th distillery.** Glenkinchie /
+   Auchentoshan / Laphroaig have landed (2026-05-18). The
+   remaining obvious gaps: a Speyside heavyweight (Glenfiddich
+   the cleanest source case among the market leaders; Macallan
+   and Glenlivet have heavier brand-positioning prose);
+   Ardbeg as the fourth south-Islay peated entry alongside
+   Lagavulin / Caol Ila / Laphroaig.
+3. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
    The 2026-05-17 stub-supersession overwrote the file with
    empty YAML; the resolver ignores it but the file should be
    deleted from the Windows shell to fully clean up.
+4. **Confidence-level review on the 14 Russell-grounded
+   concept entries.** Each is now grounded against the 2nd
+   edition with specific chapter + page references; per the
+   project's confidence rubric (multi-source + primary-source
+   citation = `high` eligibility) some are candidates for a
+   medium → high promotion. Hold for a separate pass — the
+   confidence level reflects the entry's overall claim
+   landscape, not just one source.
 
 **Full active queue:** see `TODO.md`.
 

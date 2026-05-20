@@ -54,16 +54,22 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      mashing covers temperature programmes, enzyme activity, wort
-      extract efficiency, and phenol partitioning into wort.
-    accessed: null
+      Bringhurst, T.A. & Brosnan, J., "Scotch whisky: raw
+      material selection and processing", Chapter 6 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 49-121.
+    accessed: 2026-05-19
     notes: |
-      Standard technical reference. The temperature ranges and
-      water-addition pattern are widely consistent across modern
-      Scotch malt distilleries with minor producer-specific
-      variations.
+      Mashing section pp 88-95 of Bringhurst & Brosnan. First-water
+      strike temperature 63.5-64 °C (p 88); subsequent waters at
+      70-90 °C; sparge tank held >70 °C with the final mash
+      reaching ~90 °C (p 91). Three mash tun types are described:
+      traditional, semi-lauter, and full lauter (pp 88-90), with
+      a small number of distilleries using mash filters (p 88,
+      with a fuller discussion of mash filters on p 95).
+      Approximate first/second/third/fourth water ratio for a
+      traditional tun is 4:2:2:4 m³ per tonne of malt (p 89).
 
 
 # --- Metadata ---------------------------------------------------------------

@@ -667,6 +667,37 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-19** Russell ed. 2014 grounding pass — 14 concept-entry
+  citations migrated from the "page references to be added when
+  consulted" hedge to specific chapter-author + page-range
+  citations against the 2nd edition (ISBN 978-0-12-401735-1).
+  User uploaded a digital copy; the project's TOC extraction
+  established the 6 chapter ranges covering the 14 entries.
+  Chapters: Bringhurst & Brosnan Ch 6 (pp 49-121, "Scotch
+  whisky: raw material selection and processing", 4 entries:
+  kiln / mashing / floor-malting / external-malting) — Russell &
+  Stewart Ch 7 (pp 123-145, "Distilling yeast and fermentation",
+  2 entries: distillers-yeast / fermentation) + Wilson Ch 8
+  (pp 147-154, "Contamination", cross-ref from fermentation) —
+  Nicol Ch 9 (pp 155-177, "Batch distillation", 4 entries:
+  direct-fired-still / reflux / shell-and-tube / wash-still) —
+  Conner Ch 11 (pp 199-219, "Maturation", 2 entries:
+  cask-fill-states / cask-maturation-kinetics) — Aylott Ch 14
+  (pp 243-269, "Whisky analysis") + Mitchell Ch 18 (pp 315-326,
+  "Whisky global packaging developments", 2 entries:
+  chill-filtering / scotch-presentation-conventions). Each
+  entry's citation block now names the chapter author rather
+  than just the editor, includes the chapter page range, and
+  carries a subsection-level notes block pointing at the
+  specific pages for the claim (e.g. mashing temperature
+  63.5-64 °C at p 88; kilning temperature 72 °C at p 58; cask
+  rejuvenation at p 224; LAB secondary-fermentation pathway
+  at pp 149-151). docs/bibliography.md updated to (a) include
+  both editions' ISBNs and the correct multi-editor team for
+  each edition and (b) reorganise the Cited-by list by
+  chapter. Pre-existing edition note kept (1st edition 2003;
+  2nd edition 2014). Counts: 133 files unchanged; 537 resolved
+  refs unchanged; 0 schema findings. Verification clean.
 - **2026-05-18** Laphroaig (12th distillery, third south-Islay
   heavily-peated). 1 distillery + 1 production line + 2
   bottlings + 1 concept-page cross-ref update. Completes the

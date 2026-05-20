@@ -66,12 +66,14 @@ standard pattern for non-trivial claims.
 
 ### Russell (ed.), 2014 — Whisky: Technology, Production and Marketing
 
-- **Editor:** Inge Russell
+- **Editors:** Inge Russell, Graham Stewart (2nd edition);
+  Inge Russell, Charles Bamforth, Graham Stewart (1st edition)
 - **Title:** *Whisky: Technology, Production and Marketing*
 - **Edition:** 2nd edition
 - **Publisher:** Academic Press / Elsevier
 - **Year:** 2014 (1st edition 2003)
-- **ISBN:** 978-0-12-401735-1 (2nd edition)
+- **ISBN:** 978-0-12-401735-1 (2nd edition); 978-0-12-374181-3
+  (1st edition; also 9780080474854 for the Amsterdam print)
 - **Series:** Handbook of Alcoholic Beverages
 
 The standard multi-author technical reference for Scotch and
@@ -84,22 +86,39 @@ that institutional perspective. This is the volume most
 commonly cited for "the producer-level technical consensus
 view" of any given Scotch production stage.
 
-**Cited by:**
+**Cited by** (14 entries, all grounded 2026-05-19 against the 2nd
+edition with chapter author + page range + subsection-level
+pages for the specific claims):
 
-- `data/concepts/educational/cask-fill-states.yml`
-- `data/concepts/glossary/distillers-yeast.yml`
-- `data/concepts/glossary/fermentation.yml`
-- `data/concepts/glossary/kiln.yml`
-- `data/concepts/glossary/mashing.yml`
-- `data/concepts/glossary/reflux.yml`
-- `data/concepts/glossary/shell-and-tube.yml`
-- `data/concepts/glossary/wash-still.yml`
-- `data/concepts/practice/external-malting.yml`
-- `data/concepts/practice/floor-malting.yml`
+- Ch 6 (Bringhurst & Brosnan, pp 49-121):
+  - `data/concepts/glossary/kiln.yml` (peating + kilning, pp 58-59)
+  - `data/concepts/glossary/mashing.yml` (pp 88-95)
+  - `data/concepts/practice/floor-malting.yml` (pp 57-58)
+  - `data/concepts/practice/external-malting.yml` (pp 59-61)
+- Ch 7 (Russell & Stewart, pp 123-145):
+  - `data/concepts/glossary/distillers-yeast.yml`
+  - `data/concepts/glossary/fermentation.yml` (+ Ch 8 Wilson,
+    pp 147-154, for LAB / secondary-fermentation chemistry)
+- Ch 9 (Nicol, pp 155-177):
+  - `data/concepts/equipment/direct-fired-still.yml`
+    (pp 156-160 heating source)
+  - `data/concepts/glossary/reflux.yml` (pp 158-161)
+  - `data/concepts/glossary/shell-and-tube.yml` (pp 155, 161-162)
+  - `data/concepts/glossary/wash-still.yml` (pp 165-169)
+- Ch 11 (Conner, pp 199-219):
+  - `data/concepts/educational/cask-fill-states.yml` (pp 206-210)
+  - `data/concepts/educational/cask-maturation-kinetics.yml`
+    (pp 199-219 whole chapter)
+- Ch 14 (Aylott, pp 243-269) + Ch 18 (Mitchell, pp 315-326):
+  - `data/concepts/educational/chill-filtering.yml` (Aylott
+    p 231 chemistry; Mitchell p 257 packaging practice)
+  - `data/concepts/educational/scotch-presentation-conventions.yml`
+    (both chapters)
 
-All ten citations currently carry `confidence: medium` and
-explicit "page references to be added when consulted" notes.
-Grounding these against the actual text is queued research.
+The grounding pass replaced the prior "page references to be
+added when consulted" hedge with specific chapter + page-range
+citations. The chapter authors are now attributed rather than
+the editor.
 
 ### Piggott, Sharp & Duncan (eds.), 1989 — The Science and Technology of Whiskies
 

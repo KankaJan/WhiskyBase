@@ -145,20 +145,22 @@ sources:
   - id: 2
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      maturation covers wood extractives, fill-number depletion
-      curves, and rejuvenation. Reference cited from the project's
-      literature catalogue (TODO §Existing literature catalogue);
-      specific page references to be added when consulted.
-    accessed: null
+      Conner, J., "Maturation", Chapter 11 in Russell, I. &
+      Stewart, G. (eds.), Whisky: Technology, Production and
+      Marketing, 2nd edition, Academic Press (Elsevier),
+      2014, pp 199-219.
+    accessed: 2026-05-19
     notes: |
-      Cited as the standard technical reference for the
-      compositional changes across cask fills (vanillin, oak
-      lactones, tannins, hemicelluloses). Specific quantitative
-      claims should be cross-checked against this and against
-      Mosedale & Puech (1998) when the project's literature
-      catalogue work surfaces concrete chapter and page references.
+      Conner Ch 11 covers first-fill vs refill compositional
+      differences at pp 206-210 (cask type subsection). Vanillin
+      and oak-lactone contribution patterns are documented
+      across pp 207-210 with explicit comparison of first-fill
+      versus refill flavour-extractive depletion. Cask
+      rejuvenation discussed at p 224 (in the wood-policy
+      context) — rejuvenation does not return a cask to virgin
+      state but restores extractive availability. The Booth
+      et al. 1989 and Mosedale 1995 supporting citations are
+      referenced inline by Conner.
 
 
 # --- Metadata ---------------------------------------------------------------

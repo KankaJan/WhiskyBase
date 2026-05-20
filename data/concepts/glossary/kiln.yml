@@ -56,18 +56,21 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      malting covers kilning temperature profiles, peat-smoke
-      introduction, and the chemistry of phenol deposition on the
-      malt husk. Reference cited from the project's literature
-      catalogue.
-    accessed: null
+      Bringhurst, T.A. & Brosnan, J., "Scotch whisky: raw
+      material selection and processing", Chapter 6 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 49-121.
+    accessed: 2026-05-19
     notes: |
-      Standard technical reference for kilning. The named-distillery
-      list of surviving floor-malting operations is widely reported
-      in trade press; the count fluctuates as distilleries restart
-      or retire on-site malting.
+      Kilning temperature for pot still malt grounded at p 58
+      (max ~72 °C per Bringhurst & Brosnan, citing Dolan 2003);
+      compared with brewing malt at 75-80 °C and grain-distilling
+      malt much lower at 50 °C (citing Bathgate & Cook 1989).
+      The peating subsection on pp 58-59 covers the
+      cold-smoking-versus-drying interaction with kilning and
+      the deposition of phenols, cresols, guaiacols, and
+      polyphenols on the malt husk during the kilning stage.
 
 
 # --- Metadata ---------------------------------------------------------------

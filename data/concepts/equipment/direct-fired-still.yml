@@ -221,18 +221,21 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      distillation covers direct vs indirect heating, the
-      Maillard chemistry of hot copper-wash interfaces, and
-      the historical industry shift from direct firing to
-      indirect steam.
-    accessed: null
+      Nicol, D.A., "Batch distillation", Chapter 9 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 155-177.
+    accessed: 2026-05-19
     notes: |
-      Reference cited from the project's literature catalogue
-      (docs/bibliography.md). Specific page references for the
-      Maillard-product claims should be verified against the
-      chapter text when accessed.
+      Nicol Ch 9 covers heating source (pp 156-160) including
+      the direct-fired vs indirect-steam distinction, the
+      historical shift, and the rummager mechanism. The Maillard
+      reactions are also covered separately in Bringhurst &
+      Brosnan Ch 6 at pp 105-109 (cooking caramelisation in
+      grain whisky context); for malt-distillery direct-fired
+      stills the Maillard-chemistry mechanism is producer-
+      attributed and the Russell coverage frames it as one
+      mechanism among several for direct-fire character.
 
   - id: 2
     type: trade_publication

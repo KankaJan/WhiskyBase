@@ -57,17 +57,19 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      distillation covers wash- and spirit-still operation, the
-      typical capacity ratios, and the role of still geometry in
-      shaping new make character.
-    accessed: null
+      Nicol, D.A., "Batch distillation", Chapter 9 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 155-177.
+    accessed: 2026-05-19
     notes: |
-      Standard technical reference. The capacity-ratio range and
-      ABV-progression figures are conventional across the
-      industry; the cited reference is the standard authoritative
-      source for the underlying engineering.
+      Nicol Ch 9 covers wash-still operation at pp 165-166 and
+      spirit-still operation at pp 166-169. Distillery design
+      and the still-component vocabulary (pot, swan neck, head,
+      lyne arm, worm tub or condenser, spirit safe) are
+      enumerated on p 156. The 46% ABV cut-point at which the
+      spirit transitions from milky/turbid to clear in the
+      foreshots dilution is recorded on p 164.
 
 
 # --- Metadata ---------------------------------------------------------------

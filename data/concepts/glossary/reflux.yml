@@ -55,17 +55,19 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      distillation covers reflux mechanism, still geometry
-      effects, and the relationship between reflux ratio and new
-      make character.
-    accessed: null
+      Nicol, D.A., "Batch distillation", Chapter 9 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 155-177.
+    accessed: 2026-05-19
     notes: |
-      Standard technical reference. Specific quantitative
-      treatment of reflux ratios should be cross-checked against
-      this and against Conner papers when the §Existing literature
-      catalogue work surfaces concrete references.
+      Nicol Ch 9 covers reflux through the still-geometry
+      sections: pot (p 160) and lyne arm (p 161), with the
+      observation that "the attitude of the head will dictate
+      the degree of reflux within the still" (p 161). The role
+      of reflux in middle-cut character is discussed under
+      wash-still operation (p 165) and spirit-still operation
+      (p 166).
 
 
 # --- Metadata ---------------------------------------------------------------

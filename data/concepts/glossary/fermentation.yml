@@ -49,21 +49,21 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      fermentation covers yeast strain selection, washback
-      materials, fermentation duration and the role of secondary
-      bacterial activity in long fermentations. Reference cited
-      from the project's literature catalogue (TODO §Existing
-      literature catalogue); specific page references to be added
-      when consulted.
-    accessed: null
+      Russell, I. & Stewart, G., "Distilling yeast and
+      fermentation", Chapter 7 in Russell, I. & Stewart, G.
+      (eds.), Whisky: Technology, Production and Marketing,
+      2nd edition, Academic Press (Elsevier), 2014, pp 123-145.
+    accessed: 2026-05-19
     notes: |
-      Standard technical reference for fermentation duration
-      effects on ester profile. The 70-hour threshold for
-      bacteria-derived secondary fermentation is widely cited in
-      trade press; the underlying chemistry should be
-      cross-checked against this reference.
+      Russell & Stewart Ch 7 covers yeast selection, congener
+      development (p 139) and wort fermentation (p 141). The
+      bacteria-derived secondary-fermentation chemistry is
+      separately covered in Wilson, N., "Contamination:
+      bacteria and wild yeasts in a whisky fermentation",
+      Ch 8 in Russell ed. 2014, pp 147-154, which documents
+      the homolactic / heterolactic fermentation pathway and
+      the evolution of the LAB (lactic acid bacteria) population
+      across fermentation (pp 149-151).
 
 
 # --- Metadata ---------------------------------------------------------------

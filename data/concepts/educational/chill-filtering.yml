@@ -229,15 +229,24 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      bottling covers chill-filtering practice, the 46% ABV
-      industry threshold, and the filter-media technology.
-    accessed: null
+      Mitchell, M., "Whisky global packaging developments",
+      Chapter 18 in Russell, I. & Stewart, G. (eds.),
+      Whisky: Technology, Production and Marketing, 2nd
+      edition, Academic Press (Elsevier), 2014, pp 315-326.
+    accessed: 2026-05-19
     notes: |
-      Reference cited from the project's literature catalogue
-      (docs/bibliography.md). Specific page references to be
-      added when consulted.
+      Mitchell Ch 18 covers chill-filtration in the packaging
+      preparation section, with the practice referenced at
+      p 257 and the cross-reference to Aylott's Ch 14 (whisky
+      analysis) for the fatty-acid-ester chemistry. Aylott
+      Ch 14 (pp 243-269) covers the underlying composition
+      (fatty acid esters as the haze-forming compounds) and
+      the chill-filtration mechanism at p 231 in the
+      whisky-stability subsection. The 46% ABV producer-empirical
+      threshold is project-attributed rather than Russell-
+      attributed; the chemistry the threshold rests on
+      (precipitation of fatty acid esters at cool serving
+      temperatures) is grounded in Aylott Ch 14.
 
   - id: 2
     type: peer_reviewed_paper

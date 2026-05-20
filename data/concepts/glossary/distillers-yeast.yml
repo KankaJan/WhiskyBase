@@ -57,19 +57,23 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      fermentation covers yeast strain selection, the
-      distilling-vs-brewing distinction, and strain-specific
-      ester profiles. Reference cited from the project's
-      literature catalogue (docs/bibliography.md).
-    accessed: null
+      Russell, I. & Stewart, G., "Distilling yeast and
+      fermentation", Chapter 7 in Russell, I. & Stewart, G.
+      (eds.), Whisky: Technology, Production and Marketing,
+      2nd edition, Academic Press (Elsevier), 2014, pp 123-145.
+    accessed: 2026-05-19
     notes: |
-      Standard technical reference. The named-supplier
-      identifications (Mauri, Kerry, Lallemand, Saf-Instant)
-      are widely reported in trade press but supplier-specific
-      claims warrant cross-checking against producer disclosures
-      (often guarded) and SWRI literature.
+      Russell & Stewart Ch 7 covers yeast strain selection and
+      the distilling-yeast cell biology. Yeast sourcing
+      discussed on p 123; nomenclature and structure pp 124-128;
+      yeast-and-nitrogen metabolism p 134; distiller's yeast
+      and oxygen p 136; commercial cultivation of distiller's
+      yeast p 137; pitching rate p 138; fermentation congeners
+      p 139; wort fermentation p 141. The named-supplier list
+      (Mauri / Kerry / Lallemand / Saf-Instant) is project-
+      project specific rather than directly Russell-attributed
+      and warrants cross-checking against producer disclosure
+      and SWRI literature.
 
 
 # --- Metadata ---------------------------------------------------------------

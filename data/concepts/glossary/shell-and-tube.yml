@@ -59,15 +59,21 @@ sources:
   - id: 1
     type: book
     citation: |
-      Russell, I. (ed.), Whisky: Technology, Production and
-      Marketing, 2nd edition, Academic Press, 2014. Chapter on
-      distillation covers condenser types, surface-area effects on
-      sulphur removal, and the historical transition from worm tubs
-      to shell-and-tube.
-    accessed: null
+      Nicol, D.A., "Batch distillation", Chapter 9 in
+      Russell, I. & Stewart, G. (eds.), Whisky: Technology,
+      Production and Marketing, 2nd edition, Academic Press
+      (Elsevier), 2014, pp 155-177.
+    accessed: 2026-05-19
     notes: |
-      Reference cited from the project's literature catalogue;
-      specific page references to be added when consulted.
+      Nicol Ch 9 covers worm-tub vs shell-and-tube condensers
+      at p 162. The historical transition is recorded on p 155:
+      "Worm tubs and eventually the shell-and-tube condenser
+      superseded the original system" of cooling against air.
+      The role of copper in spirit quality (sulphur removal,
+      DMS chemistry) is treated separately on pp 176-177
+      (NB: rummager-induced rejuvenation of copper p 196 in
+      the Murray Ch 10 grain-distillation chapter for the
+      column-still parallel).
 
 
 # --- Metadata ---------------------------------------------------------------
