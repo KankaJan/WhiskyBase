@@ -1,0 +1,119 @@
+# =============================================================================
+# Coffey still
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: equipment
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: coffey-still
+title: Coffey still
+kind: equipment
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The Coffey still — also called the patent still or continuous
+  still — is the column still used to distil Scotch grain whisky.
+  Unlike the batch pot still it runs continuously: a steady feed
+  of wash enters the analyser column and meets rising steam, and
+  the alcohol vapour passes to a second column, the rectifier,
+  where it condenses and is drawn off at high strength. It is
+  named for Aeneas Coffey, who patented his design in 1830,
+  refining Robert Stein's 1827 column still.
+
+body: |
+  The Coffey still is the grain-whisky counterpart to the malt
+  distillery's [pot still](concept/equipment/pot-still): a
+  continuous still rather than a batch one.
+
+  ## How it works
+
+  A traditional Coffey still has two columns [1]:
+
+  - **Analyser (wash) column** — preheated wash is fed in high up
+    the column and flows down across a series of plates; steam
+    introduced at the base boils the liquid and fractionation
+    begins.
+  - **Rectifier column** — vapour from the top of the analyser is
+    led into the base of the rectifier and rises, meeting the
+    cool wash-feed coil and condensing; the spirit condensed on
+    the spirit plate is drawn off as the product, with fusel oil
+    removed lower down.
+
+  Because the feed is constant, the still reaches a steady state
+  and runs without interruption — unlike the fill-distil-empty
+  cycle of a pot still. It also reaches a higher, lighter spirit
+  strength in a single pass.
+
+  ## In whisky production
+
+  Continuous distillation made grain whisky available as a
+  lighter, cheaper component, and its introduction in the
+  mid-1800s is what made commercial
+  [blending](concept/educational/blending) possible. See
+  [distillation](concept/educational/distillation) for the
+  process overview and the pot-still contrast.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/distillation
+  - equipment/pot-still
+  - educational/blending
+
+
+# --- Equipment block --------------------------------------------------------
+equipment:
+  category: still
+  used_at_distilleries: []           # Grain distilleries; the project
+                                     # populates malt distilleries
+                                     # at present.
+  distinguishing_features: |
+    Continuous (rather than batch) operation: a two-column
+    still — analyser and rectifier — fed a constant stream of
+    wash, reaching a higher spirit strength in a single pass.
+    Used for grain whisky, not malt whisky.
+  alternatives:
+    - equipment/pot-still            # The batch still used for
+                                     # malt whisky.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Murray, D., "Grain whisky distillation", Chapter 15 in
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.), Whisky
+      and Other Spirits: Technology, Production and Marketing,
+      3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 15 (Murray, Grain whisky distillation): the history of
+      the column still (Robert Stein 1827; Aeneas Coffey patented
+      his design 1830) and the schematic and operation of the
+      traditional Coffey / patent still — the preheated feed, the
+      analyser and rectifier columns, downcomers, steam at the
+      base, vapour transfer to the rectifier, the spirit plate,
+      and fusel-oil removal.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 7 (Distillation Theory), section 7.8 Continuous
+      Distillation: the steady-state analysis of the continuous
+      column still, contrasted with batch (Rayleigh) pot
+      distillation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

@@ -1,0 +1,90 @@
+# =============================================================================
+# Low wines
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: low-wines
+title: Low wines
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Low wines are the product of the first (wash-still)
+  distillation in Scotch malt whisky production: the wash, at
+  7-9% ABV, distilled to a partial concentration in the
+  low-twenties percent ABV. No cut is made at this stage — the
+  entire wash-still output is collected as low wines, a bulk
+  concentration step. The low wines are then redistilled in the
+  spirit still, where the spirit cut is made. In double
+  distillation the low wines are combined with the foreshots and
+  feints recycled from the previous spirit-still run to form the
+  spirit-still charge [1][2].
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/wash-still
+  - glossary/spirit-still
+  - educational/spirit-cut
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - low wine
+  part_of_speech: noun
+  see_also:
+    - glossary/spirit-still
+    - educational/spirit-cut
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Nicol, D.A., "Batch distillation", Chapter 14 in
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022,
+      pp 247-271.
+    accessed: 2026-05-20
+    notes: |
+      Russell ed. 2022 Ch 14 (Nicol): the wash still produces
+      low wines, whose strength and temperature are recorded by
+      hydrometer in the spirit safe, corrected to 20 degrees C,
+      every 15 minutes through the cycle (p 257); the spirit safe
+      monitors "the strength of low wines from a wash still"
+      distinct from the foreshots, middle cut and feints from the
+      spirit still (p 255). Russell gives the combined
+      spirit-still charge — low wines plus recycled foreshots and
+      feints — as not exceeding 30% ABV (p 261); a
+      low-wines-alone strength is not separately stated, hence the
+      soft "low-twenties percent" figure used here.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Ch 7 models the first pot distillation producing
+      strong then weak low wines as the distillate strength falls
+      (p 332); the combined low-wines strength depends on the cut
+      scheme. Confirms low wines as the intermediate charge for
+      the second distillation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-20
+contributors: []

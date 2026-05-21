@@ -1,0 +1,131 @@
+# =============================================================================
+# Blending
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: blending
+title: Blending
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Blending is the combining of different whiskies to a consistent
+  target flavour profile. A blended Scotch whisky is a blend of
+  one or more single malt whiskies with one or more single grain
+  whiskies; a blended malt combines malts only and a blended grain
+  combines grains only. The Scotch Whisky Regulations 2009 define
+  five categories of Scotch whisky in all. The blender's task is
+  to hold a brand's character steady from batch to batch, despite
+  the variability of the individual casks drawn on.
+
+body: |
+  ## The five categories of Scotch whisky
+
+  The Scotch Whisky Regulations 2009 define five categories [1]:
+
+  - **Single Malt Scotch Whisky** — malt whisky from a single
+    distillery.
+  - **Single Grain Scotch Whisky** — grain whisky from a single
+    distillery.
+  - **Blended Malt Scotch Whisky** — a blend of single malts from
+    more than one distillery.
+  - **Blended Grain Scotch Whisky** — a blend of single grains
+    from more than one distillery.
+  - **Blended Scotch Whisky** — a blend of one or more single
+    malt whiskies with one or more single grain whiskies.
+
+  See [single-malt](concept/glossary/single-malt) for the
+  single-malt category in detail.
+
+  ## Blended Scotch whisky
+
+  Commercial blending began in the mid- to late-1800s, once the
+  continuous distillation of grain whisky made a lighter, cheaper
+  component available; blending the bland Lowland and fierier
+  Highland whiskies of the day produced a more consistent and
+  more palatable product [2]. Blended Scotch remains the largest
+  category by volume. A typical blend draws on many malt and
+  grain whiskies, not just one of each.
+
+  ## The blender's craft
+
+  Each distillery's spirit has its own character; the blender's
+  task is to combine these into a balanced product with a
+  consistent sensory profile that holds steady from batch to
+  batch over long periods [2]. This depends on an understanding
+  of how the flavours of different whiskies interact when mixed,
+  and on careful management of maturing cask stocks. The same
+  blending skills underpin the batch-to-batch consistency of
+  single malts, not only blends.
+
+  ## Vatting and marrying
+
+  Combining whiskies of the same kind — for a single malt bottling
+  or a blended malt — is also referred to as
+  [vatting](concept/glossary/vatting). **Marrying** is a
+  traditional further step in which the combined whisky is left
+  together, often in cask or vat, to integrate before bottling
+  [2].
+
+  ## See also
+
+  - [vatting](concept/glossary/vatting) — combining whiskies of
+    one kind.
+  - [swa-regional-designations](concept/educational/swa-regional-designations)
+    — the protected regions and localities the same regulations
+    define.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/vatting
+  - glossary/single-malt
+  - educational/swa-regional-designations
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/3
+    accessed: 2026-05-21
+    notes: |
+      The Scotch Whisky Regulations 2009, regulation 3, defines
+      the five categories of Scotch whisky: Single Malt, Single
+      Grain, Blended Malt, Blended Grain, and Blended Scotch
+      Whisky.
+  - id: 2
+    type: book
+    citation: |
+      Macleod, S.J., "Blending", Chapter 17 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 17 (Macleod, Blending): a blended Scotch whisky is a
+      blend of one or more malt whiskies with one or more grain
+      whiskies (pp 313-318); commercial blending began in the
+      mid- to late-1800s with the introduction of continuous
+      grain distillation; the blender's task is to meld disparate
+      distillery characters into a balanced, consistent sensory
+      profile held steady over long periods. Marrying is the
+      traditional post-blending integration step.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

@@ -1,0 +1,88 @@
+# =============================================================================
+# Wort
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: wort
+title: Wort
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Wort is the sugary liquid drawn off the mash tun — the
+      feedstock for fermentation. Milled malt (grist) is mixed with hot
+      water in the mash tun, where the malt's enzymes convert starch
+      into fermentable sugars; the resulting sweet liquid is drained
+      off through the bed of spent grain husks, leaving the solids
+      behind. Wort is cooled and run to the washback, where distiller's
+      yeast ferments it into wash. Unlike brewing wort, malt-distilling
+      wort is not boiled, so it carries active enzymes and live
+      micro-organisms forward into fermentation [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/mashing
+  - glossary/wash
+  - glossary/fermentation
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - worts
+  part_of_speech: noun
+  see_also:
+    - glossary/mashing
+    - glossary/wash
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Nicol, D.A., "Batch distillation", Chapter 14 in
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022,
+      pp 247-271.
+    accessed: 2026-05-20
+    notes: |
+      Russell ed. 2022 Ch 14 (Nicol) describes wash, the
+      fermented product of wort, charged to the wash still at an
+      original gravity of 1050-1060 degrees (12.5-15 degrees Plato),
+      p 257 — the gravity figure is the wort's fermentable-sugar
+      content carried into the wash.
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Ch 4 (Mashing) defines wort as the sugar-rich
+      fermentable liquid produced by mashing, the broken malt grist
+      mixed with hot water to gelatinise and enzymatically convert the
+      starch, with the wort then separated from spent grains by
+      filtration through the husk bed (pp 187, 199). Miller Ch 5
+      (Fermentation) notes distiller's wort retains residual amylase
+      activity from malting whereas a brewer's boiled wort does not
+      (p 219).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-20
+contributors: []

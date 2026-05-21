@@ -1,0 +1,69 @@
+# =============================================================================
+# Age statement
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: age-statement
+title: Age statement
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      An age statement is the age declared on a whisky label.
+      Under the Scotch Whisky Regulations 2009, where an age is stated
+      it must be the age of the youngest whisky in the bottle — a blend
+      or vatting labelled, say, "12 years old" contains nothing younger
+      than twelve years, though it may contain older whisky. A whisky
+      sold without an age on the label is termed "no age statement"
+      (NAS). An NAS bottling is not younger or lesser by definition —
+      all Scotch must still meet the three-year legal minimum — but the
+      absence of a statement removes the youngest-component
+      guarantee [1].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/maturation
+  - educational/scotch-presentation-conventions
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - NAS
+    - no age statement
+  part_of_speech: noun
+  see_also:
+    - educational/maturation
+    - educational/scotch-presentation-conventions
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890
+    accessed: 2026-05-21
+    notes: |
+      The Scotch Whisky Regulations 2009: where an age is
+      stated for a Scotch whisky, it must refer to the age of the
+      youngest whisky used to make the product. Single authoritative
+      source for the regulatory rule; the no-age-statement (NAS)
+      practice and its presentation context are treated in
+      educational/scotch-presentation-conventions, so this entry is
+      held at confidence: medium.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

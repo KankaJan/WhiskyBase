@@ -1,0 +1,87 @@
+# =============================================================================
+# Spirit still
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: spirit-still
+title: Spirit still
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      The spirit still is the second pot still in Scotch malt
+      whisky double distillation (in triple distillation it is the
+      third). It is charged with low wines from the wash still together
+      with the foreshots and feints recycled from the previous
+      spirit-still run, and it is here that the spirit cut is made — the
+      distiller diverts the early foreshots and the late feints away
+      from the potable middle cut, which is the new-make spirit. Spirit
+      stills are typically smaller than the wash still at the same site
+      and are often run more gently to promote reflux and refine
+      character [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/wash-still
+  - glossary/low-wines
+  - educational/spirit-cut
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - low wines still
+    - spirits still
+  part_of_speech: noun
+  see_also:
+    - educational/spirit-cut
+    - glossary/new-make
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Nicol, D.A., "Batch distillation", Chapter 14 in
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022,
+      pp 247-271.
+    accessed: 2026-05-20
+    notes: |
+      Russell ed. 2022 Ch 14 (Nicol): the spirit still is
+      charged with low wines plus recycled foreshots and feints; it is
+      controlled by two hydrometers in the spirit safe, the tailpipe
+      outflow directed by a swivelling spout to one of two collecting
+      bowls — one for foreshots and feints, one for the potable spirit
+      (pp 255-256). A low-wines-and-feints still can carry an extra
+      coil to distil the middle cut gently and promote reflux (p 252).
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Ch 7 models the second pot distillation in which
+      the spirit cut is taken from the redistilled low wines; the cut
+      points are operator choices set on the distillate strength.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-20
+contributors: []

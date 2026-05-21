@@ -1,0 +1,147 @@
+# =============================================================================
+# Distillation
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Wrapper / overview page for the distillation cluster. Carries the
+# narrative arc; depth lives in the linked detail pages.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: distillation
+title: Distillation
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Distillation is the separation step that turns fermented wash
+  into spirit. It exploits the difference in volatility between
+  ethanol and water: heating the wash drives off an
+  alcohol-enriched vapour, which is condensed back to liquid at a
+  higher strength. Scotch malt whisky is distilled batch-wise in
+  copper pot stills, conventionally twice; grain whisky is
+  distilled continuously in column stills.
+
+body: |
+  This page is an overview of distillation as it is used in
+  whisky production. Each stage and component links to a detailed
+  page.
+
+  ## What distillation is
+
+  Distillation separates the components of a liquid mixture by
+  their differing volatility — their tendency to enter the vapour
+  phase when heated. Ethanol boils at 78.4 degrees C and water at
+  100 degrees C, so the vapour rising from a heated water-ethanol
+  mixture is richer in ethanol than the liquid it left behind.
+  Condensing that vapour yields a higher-strength liquid. The
+  separation is never complete: ethanol and water form an
+  azeotrope at roughly 95.6% ethanol by weight, the practical
+  ceiling for simple distillation — and whisky spirit is collected
+  far below that ceiling [1][2].
+
+  ## Distillation in Scotch malt whisky
+
+  Scotch malt whisky is distilled batch-wise in
+  [pot stills](concept/equipment/pot-still), conventionally in two
+  stages:
+
+  - The [wash still](concept/glossary/wash-still) is charged with
+    fermented [wash](concept/glossary/wash) at 7-9% ABV and
+    distils it, with no cut taken, into
+    [low wines](concept/glossary/low-wines) — a bulk
+    concentration step.
+  - The [spirit still](concept/glossary/spirit-still) redistils
+    the low wines, and here the distiller makes
+    [the spirit cut](concept/educational/spirit-cut), keeping only
+    the middle fraction. That middle cut is the
+    [new-make spirit](concept/glossary/new-make).
+
+  A minority of distilleries run a third still — see
+  [triple distillation](concept/practice/triple-distillation).
+
+  ## Pot still and continuous still
+
+  The [pot still](concept/equipment/pot-still) works one charge at
+  a time and is universal for Scotch malt whisky. Grain whisky is
+  instead distilled in the continuous column (Coffey) still, which
+  runs without interruption and reaches higher strength in a
+  single pass; it is the subject of a separate page (queued).
+
+  ## Still design and character
+
+  Still size and shape influence new-make character, principally
+  through [reflux](concept/glossary/reflux) — the partial
+  recondensation of vapour back into the pot — and through the
+  [copper conversation](concept/educational/copper-conversation),
+  the reaction of spirit vapour with the still's copper surfaces.
+  The [lyne arm](concept/glossary/lyne-arm) angle and the
+  condenser type ([worm tub](concept/equipment/worm-tub) or
+  [shell-and-tube](concept/equipment/shell-and-tube-condenser))
+  are part of the same set of design variables.
+
+  ## See also
+
+  - [the spirit cut](concept/educational/spirit-cut) — the
+    foreshots / heart / feints division and how it is judged.
+  - [aromatic-compounds-in-whisky](concept/educational/aromatic-compounds-in-whisky)
+    — the congener classes that distillation concentrates and
+    separates.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - equipment/pot-still
+  - educational/spirit-cut
+  - glossary/wash-still
+  - glossary/spirit-still
+  - glossary/low-wines
+  - practice/triple-distillation
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []                  # Reader can come in cold.
+  covers: []                         # Wrapper page; the detailed
+                                     # terms each have their own page.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Nicol, D.A., "Batch distillation", Chapter 14 in
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022,
+      pp 247-271.
+    accessed: 2026-05-20
+    notes: |
+      Ch 14 (Nicol) reviews the history and design of stills, the
+      construction of stills and ancillary equipment, and the
+      operation of wash and spirit stills, including the
+      double / triple distillation of fermented mash.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Ch 6-7 treat distillation as a liquid-vapour phase
+      separation: Ch 7 (Distillation Theory) develops the
+      vapour-liquid equilibrium and batch (Rayleigh) distillation
+      analysis; Ch 6 covers still shape and reflux. The
+      ethanol-water azeotrope and the volatility basis of the
+      separation are standard physical chemistry.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-20
+contributors: []

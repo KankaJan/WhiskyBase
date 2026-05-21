@@ -1,0 +1,80 @@
+# =============================================================================
+# Grain whisky
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: grain-whisky
+title: Grain whisky
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Grain whisky is Scotch whisky distilled chiefly from
+      cereals other than malted barley — principally wheat, or
+      historically maize — together with a small proportion of malted
+      barley that supplies the enzymes for starch conversion. It is
+      distilled continuously in the column (Coffey) still rather than
+      batch-wise in pot stills, yielding a lighter, higher-strength
+      spirit. Most grain whisky is used in blended Scotch; bottled on
+      its own from a single distillery it is "single grain Scotch
+      whisky", one of the five categories defined by the Scotch Whisky
+      Regulations 2009 [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - equipment/coffey-still
+  - educational/blending
+  - glossary/single-malt
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - single grain
+    - grain Scotch whisky
+  part_of_speech: noun
+  see_also:
+    - equipment/coffey-still
+    - educational/blending
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 15 (Murray, "Grain whisky
+      distillation"): grain whisky is produced from cereals (wheat or
+      maize) with malted barley, fermented and distilled continuously
+      in the column / Coffey still; Ch 10 covers the raw materials for
+      grain distilling.
+
+  - id: 2
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/3
+    accessed: 2026-05-21
+    notes: |
+      The Scotch Whisky Regulations 2009, regulation 3, define
+      Single Grain Scotch Whisky — grain whisky from a single
+      distillery — as one of the five categories of Scotch whisky.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

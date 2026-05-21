@@ -1,0 +1,159 @@
+# =============================================================================
+# The spirit cut
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: spirit-cut
+title: The spirit cut
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  The spirit cut is the distiller's division of the spirit-still
+  run into three fractions — foreshots (heads), the middle cut
+  (heart), and feints (tails) — keeping only the middle cut as
+  new-make spirit. The early foreshots and late feints are
+  redistilled with the next batch. Where the cut is made, judged
+  by the strength of the distillate, governs which volatile
+  congeners carry into the spirit and is one of the principal
+  character-shaping decisions in distillation.
+
+body: |
+  During the spirit-still distillation the strength and
+  composition of the distillate change continuously from start to
+  finish. The distiller does not collect the whole run: it is
+  divided into three fractions, and only the middle one is kept.
+
+  ## The three fractions
+
+  - **Foreshots (heads)** — the first spirit off the still. It is
+    high in strength and carries the most volatile, lowest-boiling
+    compounds; it is diverted away from the potable spirit.
+  - **Middle cut (heart, or simply "the spirit")** — the central
+    fraction, collected as [new-make spirit](concept/glossary/new-make).
+  - **Feints (tails)** — the late, weakening fraction, carrying
+    the heavier, less volatile compounds; it too is diverted off.
+
+  The foreshots and feints are not discarded — they are collected
+  together and redistilled with the [low wines](concept/glossary/low-wines)
+  of the next [spirit still](concept/glossary/spirit-still) charge,
+  so their alcohol and congeners are recovered [1].
+
+  ## How the cut is judged
+
+  The cut points are read in the **spirit safe**, a locked,
+  glass-fronted brass instrument (first introduced around 1823 at
+  the Port Ellen distillery) through which the distillate flows so
+  its strength and temperature can be monitored without the
+  spirit being touched [1]. A swivelling spout directs the flow to
+  one of two receivers — one for foreshots and feints, one for the
+  potable spirit — according to the hydrometer reading.
+
+  The transition from foreshots to spirit is traditionally fixed
+  by the **demisting test**: a sample of the running spirit is
+  diluted with water to 46% ABV; while foreshots are still
+  flowing the diluted sample is milky and turbid, and the moment
+  it turns clear marks the primary cut point [1]. The second cut
+  point — spirit to feints — is chosen by the distiller according
+  to the desired strength and bouquet, usually around 68-70% ABV
+  [1]. Some distilleries have abandoned the demisting test and
+  begin collecting spirit as soon as the distillate enters the
+  safe, in order to capture more of the flavour-active congeners
+  [1].
+
+  ## Why the cut works: congener volatility
+
+  The cut is effective because the hundreds of congeners in the
+  wash distil at different points in the run according to their
+  volatility. The most volatile, lowest-boiling compounds emerge
+  early and concentrate in the foreshots; the less volatile,
+  heavier compounds — including higher (fusel) alcohols and fatty
+  acids — emerge late and concentrate in the feints; the
+  mid-volatility esters and alcohols that define potable spirit
+  fall in between, in the heart [2]. Moving a cut point therefore
+  changes which congener classes reach the new make. The adjacent
+  page [aromatic-compounds-in-whisky](concept/educational/aromatic-compounds-in-whisky)
+  surveys those congener classes.
+
+  ## Temperature through the run
+
+  As the distillation proceeds the charge is progressively
+  stripped of alcohol, so the boiling liquid and the vapour rising
+  from it both climb in temperature: an alcohol-rich charge boils
+  well below 100 degrees C, and the temperature rises toward the
+  boiling point of water as the spirit weakens. The distillate
+  strength falls correspondingly through the run, which is what
+  the spirit-safe hydrometers track to fix the cut points [1][2].
+
+  ## See also
+
+  - [distillation](concept/educational/distillation) — the
+    overview of the process this page details.
+  - [spirit-still](concept/glossary/spirit-still) — the still on
+    which the cut is made.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/distillation
+  - glossary/spirit-still
+  - glossary/low-wines
+  - glossary/new-make
+  - educational/aromatic-compounds-in-whisky
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites:
+    - educational/distillation
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Nicol, D.A., "Batch distillation", Chapter 14 in
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022,
+      pp 247-271.
+    accessed: 2026-05-20
+    notes: |
+      Ch 14 (Nicol), pp 255-256: the spirit safe (introduced
+      circa 1823 at Port Ellen, locked, monitors cut point,
+      strength and temperature); the two collecting bowls for
+      foreshots-and-feints and for potable spirit; the demisting
+      test (foreshots diluted to 46% ABV, turbid-to-clear marking
+      the primary cut point); the second cut point chosen by
+      bouquet and strength, usually 68-70% ABV; and the practice
+      at some distilleries of abandoning the demisting test to
+      capture more congeners. Foreshots and feints are recycled
+      into the next spirit-still charge.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller Ch 6-7 (Distillation): the distillate strength and
+      composition change continuously through a batch run, and
+      congeners distribute across the run by volatility — the
+      basis on which heads / heart / tails differ. Ch 7's batch
+      (Rayleigh) distillation analysis models the falling
+      distillate strength that the cut points track.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-20
+contributors: []

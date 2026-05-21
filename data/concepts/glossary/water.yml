@@ -1,0 +1,86 @@
+# =============================================================================
+# Water
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: water
+title: Water
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Water is used at several points in Scotch whisky
+      production: most importantly as the hot mashing liquor that
+      extracts sugars from the grist, and as the reduction water that
+      brings spirit down to cask-fill and bottling strength; it is also
+      the cooling medium in condensers. Distilleries draw water from
+      boreholes, springs and surface sources (streams and lochs) or
+      from the public mains, and many hold their own private supply.
+      Surface water may carry organic character from peat and
+      vegetation, while groundwater reflects the local geology. Summer
+      drought can limit supply — historically one reason for the
+      distilling "silent season" [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/mashing
+  - glossary/abv
+  - glossary/peat
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - process water
+  part_of_speech: noun
+  see_also:
+    - glossary/mashing
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 11 (Bringhurst, Harrison & Brosnan,
+      "Water: an essential raw material"), p 206: distillery water is
+      drawn from boreholes, surface or spring water, and public town
+      water; surface waters may be influenced by peat and vegetation
+      while groundwater reflects the underlying geology; distillers
+      often hold exclusive private supplies; summer drought can limit
+      production, a traditional reason for the silent season.
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 4 (Mashing) treats the mashing liquor — the hot
+      water combined with the grist — and the energy balance of
+      heating it; reduction water for bringing spirit to fill and
+      bottling strength is treated alongside gauging. Corroborates the
+      production roles of water.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

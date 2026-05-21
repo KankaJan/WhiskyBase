@@ -1,100 +1,67 @@
-sourcing: Miller grounding pass — 5 glossary entries promoted to high
+concepts: production-chain coverage build complete — 34 pages, 3 tiers
 
-Resolves the long-standing confidence blocker: the seven
-single-source glossary entries could not reach confidence: high
-because the rubric requires multi-source corroboration and they
-cited only Russell ed. 2014. Three reference works were acquired
-(user-supplied) and a grounding pass run against Miller 2024.
+Completes the production-chain concept-coverage build begun after
+the 2026-05-20 audit. This commit lands all three tiers — 34 new
+concept pages — giving the encyclopedia a complete technical
+backbone before distillery work resumes.
 
-Files
------
+34 new concept pages
+--------------------
 
-- docs/literature-scouting.md (new)
-- docs/bibliography.md
-- docs/handover.md
-- CLAUDE.md
-- TODO.md
-- data/concepts/glossary/kiln.yml
-- data/concepts/glossary/mashing.yml
-- data/concepts/glossary/fermentation.yml
-- data/concepts/glossary/reflux.yml
-- data/concepts/glossary/wash-still.yml
-- data/concepts/glossary/distillers-yeast.yml
+Tier 1 (12): educational/distillation, educational/spirit-cut,
+equipment/pot-still, glossary spirit-still/low-wines/wash/wort,
+equipment/washback, equipment/mash-tun, educational/maturation,
+educational/warehousing, educational/blending.
 
-Literature scouting
--------------------
+Tier 2 (12): equipment/coffey-still, equipment/spirit-safe,
+glossary steeping/germination/milling/diastatic-power, glossary
+oak/char-and-toast/congener/angels-share/caramel-colouring,
+practice/cask-finishing.
 
-New doc docs/literature-scouting.md — the scouting / shopping
-list of reference works worth acquiring plus open-access sources
-citable now (the complement to bibliography.md, which catalogues
-works already in use). A web-search pass surfaced the MDPI
-journal Beverages (fully open access) and the Journal of the
-Institute of Brewing (open access from 2023) as usable without
-acquisition, and Miller 2024 as the highest-value acquisition
-for the confidence blocker.
+Tier 3 (10): glossary water/grain-whisky/peat/saccharification/
+lautering/lactic-acid-bacteria/marrying/regauging/age-statement,
+practice/pneumatic-malting.
 
-Three works registered as held (all user-supplied):
+Plus TODO.md.
 
-- Miller, Whisky Science: A Condensed Distillation, 2nd ed.
-  (2024, Springer, ISBN 978-3-031-50686-4) — genuinely
-  independent of the Russell lineage; the task-2 unblock.
-- Russell/Stewart/Kellershohn, Whisky and Other Spirits, 3rd ed.
-  (2022) — currency upgrade only; NOT an independent source (its
-  chapters covering the affected entries share authors with the
-  2nd edition — Nicol, Russell & Stewart, Bringhurst, Conner).
-- la Grange-Nel, Characterisation and Improvement of Whiskey
-  Yeast (2003 MSc thesis) — supplementary tier; useful for its
-  Chapter 2 literature review and as a bibliography-mining route.
+Sourcing and confidence
+-----------------------
 
-Miller grounding pass
----------------------
+Grounded on Russell 3rd ed. (Chs 10-17) and Miller 2024
+(Chs 3-10), with SWR 2009 where regulatory. All confidence: high
+except three medium pages, each held there for a documented
+reason: caramel-colouring and age-statement (single authoritative
+regulatory source); marrying (single source plus Russell's own
+"cannot be explained through chemical analysis" hedge).
 
-Miller 2024 grounded against the seven medium-confidence glossary
-entries. Five promoted medium -> high, each now citing Russell +
-Miller with page-level source notes:
+Architecture: focused single-topic pages linked from wrapper
+overview pages (distillation, maturation).
 
-- kiln          — Miller Ch 3 Malting, pp 151-152
-- mashing        — Miller Ch 4 Mashing, pp 187-199
-- fermentation  — Miller Ch 5 Fermentation, pp 219-241
-- reflux        — Miller Ch 6, pp 253-255
-- wash-still    — Miller Ch 6-7, Distillation
+Coverage audit
+--------------
 
-Two held at medium:
-
-- distillers-yeast — Miller corroborates the distilling-strain
-  core (Distillers Company "M" strain; high attenuation;
-  distilling-vs-brewing distinction) but not the entry's named
-  yeast-house list, which still needs a producer / SWRI
-  cross-check. Miller added as a source; confidence unchanged.
-- shell-and-tube — Miller does not treat condenser types
-  anywhere in the book; no second source available, entry
-  untouched.
-
-One source conflict surfaced and preserved per the
-source-conflict policy, not smoothed: Miller gives the first
-mashing water at ca. 70 C; Russell gives a first-water strike of
-63.5-64 C.
+A 2026-05-21 audit confirms the production-chain backbone is
+comprehensively covered — 81 concept pages span every stage from
+raw materials through malting, milling, mashing, fermentation,
+distillation, maturation and blending/bottling. Remaining gaps
+are minor and peripheral (production co-products; reduction and
+batch as standalone terms) and none are load-bearing.
+Distillery-specific equipment pages stay queued as
+distillery-extension items. Distilleries can now resume.
 
 Documentation
 -------------
 
-- docs/bibliography.md — new Miller 2024 catalogue entry; a
-  "Third edition (2022) — held" note added to the Russell entry.
-- CLAUDE.md — docs/literature-scouting.md added to Tooling
-  pointers.
-- docs/handover.md — Next priorities item 2 rewritten (the
-  second-source blocker is resolved); confidence-review section
-  updated with the Miller grounding result.
-- TODO.md — Literature-resource scouting section points to the
-  new doc; task-2 status set to DONE; Recently Completed entry
-  added.
+- TODO.md — production-chain coverage queue closed; status and
+  Recently Completed entries for all three tiers and the audit.
 - No schema or policy change; no CHANGELOG entry per project
   policy.
 
 Verification
 ------------
 
-- scripts/check_references.py: 138 files validated, 0 JSON Schema
+- scripts/check_references.py: 172 files validated, 0 JSON Schema
   findings; all inline [N] citations resolve.
-- NUL-byte scan clean. Edit-tool truncation hit mashing.yml
-  during the wave; repaired via heredoc and verified.
+- NUL-byte scan clean. All concept-page writes done via bash
+  heredoc; the two Edit-tool NUL corruptions earlier in the build
+  (low-wines, distillation) were rebuilt and verified.

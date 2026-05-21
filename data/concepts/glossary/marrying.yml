@@ -1,0 +1,73 @@
+# =============================================================================
+# Marrying
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: marrying
+title: Marrying
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Marrying is the resting of a blended or vatted whisky —
+      left together, usually in cask or vat, for a period after
+      blending — to let the component whiskies' flavours integrate
+      before bottling. It is not a legal requirement of Scotch whisky.
+      Producers that practise it hold that marrying yields a more
+      rounded, smoother result, and tasting panels can often
+      distinguish married from unmarried blends; the effect is not,
+      however, currently explained by chemical analysis [1].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/vatting
+  - educational/blending
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    []
+  part_of_speech: noun
+  see_also:
+    - glossary/vatting
+    - educational/blending
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Macleod, S.J., "Blending", Chapter 17 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 17 (Macleod, Blending), "Marrying and finishing":
+      marrying is a traditional industry term for a specified period
+      of maturation or resting carried out immediately after blending,
+      allowing the component whiskies' flavour profiles to interact. It
+      is not a legal requirement; producers that practise it hold it
+      yields a more rounded, smoother blend, and tasting panels can
+      often distinguish married from unmarried blends — but the
+      perception "cannot currently be explained through chemical
+      analysis". Single-source and carrying that documented hedge, so
+      the entry is held at confidence: medium.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

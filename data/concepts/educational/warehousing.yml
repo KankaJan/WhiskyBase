@@ -1,0 +1,119 @@
+# =============================================================================
+# Warehousing
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: warehousing
+title: Warehousing
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Warehousing is the storage of filled casks through maturation.
+  Three warehouse types are in use in Scotland: traditional
+  dunnage warehouses (casks stacked two or three high on wooden
+  runners, on earth or stone floors); racked warehouses (steel
+  racking holding casks on their sides, up to about twelve rows
+  high); and palletised warehouses (casks stood on end on pallets,
+  stacked up to eight high). Warehouse type, temperature and
+  humidity influence the rate of evaporative loss and the balance
+  of compounds the maturing spirit takes up.
+
+body: |
+  Casks spend the years of [maturation](concept/educational/maturation)
+  in a warehouse, and the warehouse is itself a maturation
+  variable.
+
+  ## The three warehouse types
+
+  Russell records three warehouse types in current Scottish use
+  [1]:
+
+  - **Dunnage** — the traditional form: brick or stone walls,
+    earth or stone floors, casks stacked two or three high on
+    their sides with wooden runners between the layers. Humidity
+    depends partly on the surrounding soil and water table.
+  - **Racked** — large multi-storey buildings with steel racking
+    that holds casks on their sides in long parallel rows,
+    extending up to about twelve rows high.
+  - **Palletised** — casks stood on their ends on pallets and
+    stacked up to eight high with forklift trucks. Palletised
+    storage is efficient for cask handling and warehouse
+    capacity, but Russell notes it can give higher evaporative
+    losses and lower levels of extractives.
+
+  ## Climate and the angel's share
+
+  Warehouse temperature and humidity influence evaporative loss —
+  the "angel's share" — and there is an inverse relationship
+  within a warehouse between temperature and humidity [1][2]. The
+  warehouse environment is one of the variables that
+  [cask-maturation-kinetics](concept/educational/cask-maturation-kinetics)
+  treats in detail; Russell is explicit that warehouse operation
+  has largely been shaped by tradition rather than by design and
+  calculation [1].
+
+  ## See also
+
+  - [maturation](concept/educational/maturation) — the stage
+    warehousing serves.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/maturation
+  - educational/cask-maturation-kinetics
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022, pp 305-307.
+    accessed: 2026-05-21
+    notes: |
+      Ch 16 (Conner), "Warehouse types", pp 305-307: dunnage
+      warehouses (stows two or three high on wooden runners,
+      humidity dependent on soil and water table); multi-storey
+      racked warehouses (steel racking up to twelve rows high);
+      palletised storage (casks on end on pallets, up to eight
+      high, efficient but with higher evaporative losses and
+      lower extractives). Warehouse temperature and humidity
+      influence evaporative loss, with an inverse
+      temperature-humidity relationship within a warehouse;
+      warehouse operation is largely the result of tradition
+      rather than design.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 8 (Maturation) treats cask history and seasonal
+      variation in rack houses, corroborating that the warehouse
+      environment is a maturation variable affecting evaporative
+      loss.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

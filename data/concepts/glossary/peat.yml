@@ -1,0 +1,86 @@
+# =============================================================================
+# Peat
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: peat
+title: Peat
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Peat is partially decomposed organic matter — mosses,
+      grasses and other plants accumulated over long periods under
+      waterlogged, oxygen-poor conditions. In Scotch whisky it is
+      burned as a kiln fuel during malting: peat smoke deposits
+      phenolic compounds on the malt that survive into the spirit as
+      "peated" character. Peat for the whisky industry is cut at a
+      small number of sites, notably on Islay, Orkney and at St Fergus
+      on the mainland; the source peat's composition and degree of
+      decomposition affect the phenols produced. Peatlands are a major
+      carbon store, and the industry's extraction is a small fraction
+      of total UK peat use [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/kiln
+  - glossary/peating-block
+  - educational/peating-measurement-methods
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    []
+  part_of_speech: noun
+  see_also:
+    - glossary/kiln
+    - educational/peating-measurement-methods
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 10 (Bringhurst, Harrison & Brosnan),
+      p 146: peat is "organic sediment formed under waterlogged
+      conditions from the partial decomposition of mosses and other
+      bryophytes, grasses, shrubs, or trees"; in Scotland peatlands
+      cover more than 20% of the land surface; extraction for the
+      whisky industry is carried out at a small number of sites
+      (notably Islay, Orkney, St Fergus), at less than 1% of UK peat
+      extraction; peatlands are a significant carbon store.
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 3 (Malting): phenols from peat combustion enter
+      the process during kilning; peatiness correlates with phenol,
+      cresols and guaiacols deposited on the malt (pp 149, 166, 173).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

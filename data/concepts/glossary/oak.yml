@@ -1,0 +1,87 @@
+# =============================================================================
+# Oak
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: oak
+title: Oak
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Oak is the wood from which whisky casks are made; Scotch
+      must by law be matured in oak. Two species groups dominate. American
+      white oak — predominantly Quercus alba — is the wood of the
+      ex-bourbon barrels that supply most Scotch casks. European oak —
+      Quercus robur and Q. petraea — is the wood of sherry-seasoned
+      casks, traditionally grown in northern Spain. The two groups
+      differ in grain, density and extractable-compound profile and so
+      contribute different flavour and colour: American oak is
+      associated with lighter, vanilla-led character, European oak with
+      more tannic, dried-fruit and spice character [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/maturation
+  - educational/cask-maturation-kinetics
+  - glossary/char-and-toast
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - american oak
+    - european oak
+  part_of_speech: noun
+  see_also:
+    - educational/maturation
+    - glossary/char-and-toast
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 16 (Conner, Maturation): American oak
+      for tight cooperage is predominantly Quercus alba (with related
+      species); most former bourbon barrels reach Scotland as American
+      standard barrels (190 L) or are rebuilt as hogsheads (250 L).
+      European oak (Quercus robur and Q. petraea) is used for the
+      casks seasoned with sherry; American-oak casks produce relatively
+      light, floral whiskies.
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 8 (Maturation), "The Structure of Oak and Casks":
+      the species and grain of the oak govern the wood's permeability
+      and its extractable-compound content, and so the character it
+      confers.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

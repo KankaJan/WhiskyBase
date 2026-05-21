@@ -1,0 +1,105 @@
+# =============================================================================
+# Cask finishing
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: practice
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cask-finishing
+title: Cask finishing
+kind: practice
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Cask finishing (also "wood finishing" or double / secondary
+  maturation) is the practice of transferring already-matured
+  whisky into a second, different cask for a further period
+  before bottling. The finishing cask — commonly an ex-sherry,
+  port, wine or rum cask — adds a further layer of extracted
+  character on top of the primary maturation.
+
+body: |
+  ## What finishing is
+
+  A whisky is first matured to maturity in its primary cask
+  (typically an ex-bourbon barrel). In cask finishing, it is then
+  re-racked into a second cask of a different prior content for a
+  shorter further period. The second cask contributes its own
+  extracted compounds and the residue of its previous fill, so
+  the finished whisky carries character from both casks. The
+  general chemistry is that of [maturation](concept/educational/maturation)
+  and [cask-maturation-kinetics](concept/educational/cask-maturation-kinetics);
+  finishing simply applies a second cask exposure.
+
+  ## Finishing versus full secondary maturation
+
+  Finishing shades into full secondary (or "double") maturation;
+  the difference is mainly one of duration and intent. This
+  project records a terminal cask exposure of under about twelve
+  months in the bottling `finish` field, and treats longer
+  substantive secondary maturations as additional `maturation`
+  entries (see the schema convention in `TODO.md`). The boundary
+  is a documentation convention, not a regulatory line.
+
+  ## See also
+
+  - [maturation](concept/educational/maturation) — the primary
+    maturation stage finishing extends.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/maturation
+  - educational/cask-maturation-kinetics
+  - glossary/oak
+
+
+# --- Practice block ---------------------------------------------------------
+practice:
+  adopted_by: []                     # Widespread; not a
+                                     # distinguishing per-distillery
+                                     # practice at the entry level.
+  consequences: |
+    The finished whisky carries extracted character from two
+    casks of different prior contents, layered rather than blended.
+  contrast_with:
+    - educational/maturation         # Single-cask primary maturation.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 16 (Conner, Maturation) establishes that cask type and
+      prior fill are the dominant maturation variables and that
+      maturation is not a homogeneous process — the basis on which
+      a second cask of different prior content confers additional
+      character.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 8 (Maturation), section 8.14 Post-Maturation
+      Processing, treats the processing steps applied to whisky
+      after its primary maturation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

@@ -1,0 +1,117 @@
+# =============================================================================
+# Pneumatic malting
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: practice
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: pneumatic-malting
+title: Pneumatic malting
+kind: practice
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Pneumatic malting is the mechanised alternative to traditional
+  floor malting. After steeping, the germinating grain is held in
+  a closed vessel through which conditioned, humidified air is
+  drawn to supply oxygen, carry off carbon dioxide and heat, and
+  hold moisture and temperature steady. The two common forms are
+  the rotating drum and the Saladin box (a long rectangular bed
+  with mechanical turners). Pneumatic malting handles far larger
+  batches than a malting floor and is the standard method at the
+  commercial maltings that supply most Scotch distilleries.
+
+body: |
+  Pneumatic malting is the mechanised contrast to
+  [floor malting](concept/practice/floor-malting) — the same
+  controlled germination, but in a closed vessel with forced air
+  rather than on an open floor turned by hand.
+
+  ## How it works
+
+  After [steeping](concept/glossary/steeping), the grain is loaded
+  into the malting vessel and germinated under a stream of
+  conditioned air: humidified, temperature-controlled air is drawn
+  through the grain bed to deliver oxygen, expel the carbon
+  dioxide and heat that germination generates, and keep moisture
+  and temperature uniform [1][2].
+
+  ## Drum and Saladin box
+
+  Two forms are common: the rotating **drum**, turned mechanically
+  to keep the bed loose and even, and the **Saladin box**, a long
+  rectangular bed worked by travelling mechanical turners. Both
+  handle much larger batches than a malting floor and need far
+  less manual labour, which is why
+  [external malting](concept/practice/external-malting) at large
+  commercial maltings has displaced most on-site floor malting.
+
+  ## See also
+
+  - [floor-malting](concept/practice/floor-malting) — the
+    traditional manual method this mechanises.
+  - [external-malting](concept/practice/external-malting) — the
+    buy-in practice that pneumatic maltings serve.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - practice/floor-malting
+  - practice/external-malting
+  - glossary/steeping
+  - glossary/germination
+
+
+# --- Practice block ---------------------------------------------------------
+practice:
+  adopted_by: []                     # The norm at commercial
+                                     # maltings; not a distinguishing
+                                     # per-distillery on-site practice.
+  consequences: |
+    Large-batch, low-labour malting with closely controlled
+    germination conditions; the basis of the commercial maltings
+    that supply most Scotch malt.
+  contrast_with:
+    - practice/floor-malting         # The traditional manual method.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Bringhurst, T.A., Harrison, B.M. & Brosnan, J., "Scotch
+      whisky: raw material selection and processing", Chapter 10
+      in Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 10 (Bringhurst, Harrison & Brosnan) covers malt as a
+      raw material and the commercial maltings that supply the
+      Scotch industry, the large-batch mechanised malting that
+      has displaced most on-site floor malting.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 3 (Malting), p 152, describes the pneumatic
+      malting facility: after initial soaking, conditioned and
+      humidified air is continually drawn down through the grain
+      bed to provide oxygen, expel carbon dioxide, and maintain
+      moisture content, with temperature controlled through the
+      cycle.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

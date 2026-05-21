@@ -1,0 +1,93 @@
+# =============================================================================
+# Charring and toasting
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: char-and-toast
+title: Charring and toasting
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Charring and toasting are the heat treatments applied to
+      the inside of a cask during its manufacture — the step that most
+      strongly determines the character the cask will give a maturing
+      spirit. After the staves are bent to shape, the cask interior is
+      heated: toasting is slower, lower-temperature heating that
+      develops flavour compounds in a layer below the wood surface;
+      charring is the brief setting-alight of the interior to produce a
+      carbonised surface layer. The char layer also adsorbs and removes
+      harsher spirit compounds during maturation. Bourbon barrels are
+      charred, and by US law must be new charred oak [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/oak
+  - educational/maturation
+  - educational/cask-maturation-kinetics
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - char
+    - toast
+    - charring
+    - toasting
+  part_of_speech: noun
+  see_also:
+    - glossary/oak
+    - educational/maturation
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 16 (Conner, Maturation), cask-manufacture
+      section: heating the inside of the cask shell is "probably the
+      most important stage of barrel production as it defines the
+      character the cask will confer". The shell is first heated to
+      230-260 degrees C for about 15 minutes to set the staves, then
+      charred by setting the interior alight until the required degree
+      of char is reached; the char and toast layers govern the
+      maturation character. Char-mediated reduction of sulphur
+      compounds (e.g. dimethyl disulphide) occurs largely in the early
+      maturation period.
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 8 (Maturation): cask charring and toasting raise
+      the concentration of wood-derived flavour compounds available for
+      extraction (e.g. vanillin is greatly increased by heat
+      treatment), and the carbonised layer contributes the subtractive,
+      adsorptive side of maturation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

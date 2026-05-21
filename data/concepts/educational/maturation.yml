@@ -1,0 +1,136 @@
+# =============================================================================
+# Maturation
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Wrapper / overview page for the maturation cluster. Depth lives in
+# the linked detail pages (cask-maturation-kinetics, cask-fill-states).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: maturation
+title: Maturation
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Maturation is the years-long stage in which new-make spirit
+  rests in oak casks and becomes whisky. By law Scotch whisky must
+  mature for at least three years, in oak casks of no more than
+  700 litres, in Scotland. During maturation the cask adds
+  compounds extracted from the oak, removes or transforms harsher
+  spirit compounds, and admits slow oxidation; the cask is the
+  single largest influence on the flavour and the colour of the
+  finished whisky.
+
+body: |
+  This page is an overview of maturation. The chemistry and the
+  cask-level detail live in the linked pages.
+
+  ## What the cask does
+
+  Maturation is not simple storage. Three broad processes act on
+  the spirit in the cask [1][3]:
+
+  - **Additive** — colour and flavour compounds are extracted
+    from the oak (vanillin, oak lactones, tannins and others),
+    their concentrations raised by the charring or toasting of
+    the cask.
+  - **Subtractive** — harsher, more volatile spirit compounds are
+    lost or transformed, including some sulphur compounds.
+  - **Oxidative** — slow interaction with air through the cask
+    contributes further change.
+
+  The rate and balance of these processes are the subject of
+  [cask-maturation-kinetics](concept/educational/cask-maturation-kinetics);
+  the effect of how full the cask is filled is covered by
+  [cask-fill-states](concept/educational/cask-fill-states).
+
+  ## Casks and warehouses
+
+  The cask itself — its wood, its previous contents, whether it
+  is a first fill or a refill — is the dominant variable; the
+  project's cask entries document the individual cask types. The
+  building the cask rests in matters too: see
+  [warehousing](concept/educational/warehousing) for the
+  dunnage / racked / palletised warehouse types and their effect
+  on evaporative loss.
+
+  ## The legal minimum
+
+  Under the Scotch Whisky Regulations 2009, spirit may be called
+  Scotch whisky only after maturing for at least three years in
+  oak casks not exceeding 700 litres, stored in Scotland [2].
+  New-make spirit below that age is not whisky.
+
+  ## See also
+
+  - [cask-maturation-kinetics](concept/educational/cask-maturation-kinetics)
+    — the extraction kinetics and the contested-claims section.
+  - [warehousing](concept/educational/warehousing) — where casks
+    are stored to mature.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/cask-maturation-kinetics
+  - educational/cask-fill-states
+  - educational/warehousing
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []
+  covers: []                         # Wrapper page; detail lives in
+                                     # the linked pages.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 16 (Conner, Maturation): casks are filled with spirit
+      and set aside in a warehouse to mature, but a wide range of
+      variables influence the matured whisky; maturation is not a
+      homogeneous process. Covers the additive extraction of wood
+      constituents, the role of cask type and fill, and warehouse
+      conditions.
+  - id: 2
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/3
+    accessed: 2026-05-21
+    notes: |
+      The Scotch Whisky Regulations 2009, regulation 3: Scotch
+      whisky must be matured in Scotland in oak casks of capacity
+      not exceeding 700 litres for a period of at least three
+      years.
+  - id: 3
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 8 (Maturation) treats the chemistry of maturation
+      independently of Russell — the additive extraction of oak
+      compounds (raised by cask charring/toasting), the
+      transformation and loss of spirit compounds, and oxidative
+      change — corroborating the additive / subtractive /
+      oxidative framing of this overview.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

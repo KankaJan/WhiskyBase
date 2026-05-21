@@ -1,0 +1,116 @@
+# =============================================================================
+# Mash tun
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: equipment
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: mash-tun
+title: Mash tun
+kind: equipment
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A mash tun is the vessel in which milled malt (grist) is mixed
+  with hot water to extract fermentable sugars — the mashing
+  stage. The grist is mixed with a first water at about
+  63.5-64 degrees C to gelatinise the starch and let the malt
+  enzymes convert it to sugar; the sweet wort is drained through
+  a slotted false floor that the spent grain husks form into a
+  filter bed, and further, hotter waters recover the remaining
+  extract. Three main types are in use.
+
+body: |
+  The mash tun is where mashing is carried out — see
+  [mashing](concept/glossary/mashing) for the process and
+  [wort](concept/glossary/wort) for the liquid it produces.
+
+  ## The three types
+
+  Mashing is a batch process, carried out in one of three main
+  types of mash tun [1]:
+
+  - **Traditional (rake-and-plough) tun** — mechanical rakes and
+    a plough stir the grist bed and discharge the spent grains.
+  - **Lauter / semi-lauter tun** — rotating knife-fitted arms can
+    be raised and lowered to cut the bed and control the run-off,
+    giving faster, more consistent wort separation.
+  - **Mash filter** — a plate-and-frame filter that presses wort
+    from the mash; it needs a much finer grist. Mash filters are
+    rare in Scotch malt whisky — Russell records at least two
+    distilleries operating one at the time of writing [1].
+
+  ## In the production sequence
+
+  The grist is delivered from the mill, combined with the first
+  mashing water, and held at the saccharification temperature;
+  the wort is drawn off and the bed is sparged with further
+  waters at higher temperatures (typically 70-90 degrees C) to
+  recover the remaining extract [1]. The wort is cooled and run
+  to the [washback](concept/equipment/washback).
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/mashing
+  - glossary/wort
+  - equipment/washback
+
+
+# --- Equipment block --------------------------------------------------------
+equipment:
+  category: mash_tun
+  used_at_distilleries: []           # Universal to malt distilleries;
+                                     # the tun type is recorded per
+                                     # site on the distillery entry.
+  distinguishing_features: |
+    The mashing vessel. Three types: the traditional
+    rake-and-plough tun, the lauter / semi-lauter tun, and the
+    mash filter (rare in Scotch malt whisky). The slotted false
+    floor and the grain-husk bed together form the wort filter.
+  alternatives: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Bringhurst, T.A., Harrison, B.M. & Brosnan, J., "Scotch
+      whisky: raw material selection and processing", Chapter 10
+      in Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 10 (Bringhurst, Harrison & Brosnan), pp 173-181:
+      mashing mixes the grist with liquor at a specific
+      temperature (typically 63.5-64 degrees C) to gelatinise the
+      starch and hydrolyse it to fermentable sugars; the three
+      main mash-tun types (traditional, lauter / semi-lauter,
+      mash filter) are described, with subsequent sparge waters
+      typically at 70-90 degrees C. At least two distilleries
+      operated a mash filter at the time of writing.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 4 (Mashing), p 199: lautering is the draining of
+      wort from the mash through the grain-husk filter bed; mash
+      filters are the modern industrial alternative for a
+      hammer-milled grist and are used by Irish Distillers and
+      Inchdairnie.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

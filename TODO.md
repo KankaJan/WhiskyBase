@@ -164,6 +164,103 @@ references:
 - (Glossary entries previously listed here have all been written
   as of 2026-05-15. See Recently Completed.)
 
+### Production-chain coverage queue (2026-05-20)
+
+A 2026-05-20 audit mapped the 47 existing concept pages against
+the full whisky production chain. Decision: complete the
+technical-backbone concept pages before resuming distilleries
+(14th = Ardbeg, parked) — distillery entries are largely
+cross-references into this backbone plus site-specific detail, so
+finishing the backbone first stops the same gaps being
+rediscovered per distillery. Sourcing is not a constraint:
+Russell 3rd ed. and Miller 2024 both cover every item, so each
+page can land at `high`. New pages cite Russell 3rd ed.
+
+**Status (2026-05-21):** COMPLETE — all three tiers, 34 concept
+pages; the production-chain coverage queue is done. Tier 3 (10):
+water, grain-whisky, peat, pneumatic-malting, saccharification,
+lautering, lactic-acid-bacteria, marrying, regauging,
+age-statement. A coverage audit (2026-05-21) confirms the
+technical backbone is comprehensively covered — every stage from
+raw materials through malting, milling, mashing, fermentation,
+distillation, maturation and blending/bottling now has concept
+pages (81 concept pages total). Remaining gaps are minor and
+peripheral — production co-products (draff, pot ale, spent lees),
+reduction-to-bottling-strength as a standalone term, the "batch"
+term — and none are load-bearing; pick them up opportunistically.
+Distillery-specific equipment pages
+(`equipment/tall-narrow-neck-stills`, `equipment/lomond-still`,
+`equipment/victorian-rake-and-plough-mash-tun`) remain queued
+above as distillery-extension items. Distilleries can now
+resume — Ardbeg (14th distillery) is the next data-layer item.
+
+**Tier 1 — load-bearing spine** (every distillery references
+these):
+
+- `educational/distillation` — CLUSTER WRAPPER. A concise
+  overview of the process — what distillation is and does
+  (volatility, boiling points, vapour-liquid equilibrium,
+  ethanol-water separation, the azeotrope), pot vs continuous,
+  the wash -> low wines -> spirit batch sequence — that links out
+  to the detailed pages rather than absorbing them. Carries the
+  narrative arc; depth lives in the referenced pages.
+- `educational/spirit-cut` — the cut as a process: foreshots/
+  heads, middle cut/heart, feints/tails, defined by collection
+  strength and driven by congener volatility distribution;
+  liquid / vapour temperatures through a run; relation to
+  aromatic-compound character; copper cross-reference. The
+  natural home for a congener-by-cut diagram.
+- `glossary/spirit-still`, `glossary/low-wines`, `glossary/wash`,
+  `glossary/wort` — the missing intermediate stills and liquids
+  (wash-still and new-make already exist).
+- `equipment/pot-still` — the general pot-still concept.
+- `equipment/washback`, `equipment/mash-tun` — the fermentation
+  and mashing vessels.
+- `educational/maturation` — general maturation overview
+  (cask-maturation-kinetics and cask-fill-states already cover
+  the kinetics and fill states).
+- `educational/warehousing` — dunnage / racked / palletised
+  warehouse types and their maturation effect.
+- `educational/blending` — blended Scotch and blended malt as
+  categories, and the blender's craft.
+
+**Tier 2 — completes the technique picture:**
+
+- `equipment/coffey-still` — continuous / column distillation
+  (all of grain-whisky distillation).
+- `glossary/germination` (green malt), `glossary/steeping`,
+  `glossary/milling` (grist), `glossary/diastatic-power` (with
+  the malt amylase enzymes).
+- `glossary/oak` — American vs European oak species.
+- `glossary/char-and-toast` — cask charring and toasting.
+- `practice/cask-finishing` — wood finish / double maturation.
+- `equipment/spirit-safe`.
+- `glossary/congener`, `glossary/angels-share`,
+  `glossary/caramel-colouring` (E150a).
+
+**Tier 3 — supporting detail:**
+
+- `glossary/water` (process water), grain-whisky cereals
+  (wheat / maize), `glossary/saccharification`,
+  `glossary/lautering`, `glossary/marrying`,
+  `glossary/regauging`, `glossary/age-statement` (with NAS),
+  `glossary/single-grain`, `glossary/lactic-acid-bacteria`,
+  drum / Saladin mechanised malting, `glossary/peat` (the
+  material / fuel itself).
+
+Architecture note (2026-05-20, user steer): favour focused
+single-topic pages linked from a wrapping overview page, not long
+composite pages. `educational/distillation` is such a wrapper — a
+short process overview linking to the detailed pages; the depth
+lives in `educational/spirit-cut`, `equipment/pot-still`,
+`glossary/spirit-still`, `glossary/low-wines` and the rest. The
+same model applies to the other stage overviews
+(`educational/maturation` wraps the cask / oak / warehouse pages;
+a malting overview would wrap kiln / steeping / germination).
+Focused pages are individually linkable and confidence-rated,
+give better Pagefind search granularity, and leave room for
+per-topic tables and diagrams; the wrapper carries the narrative.
+
 ---
 
 ## Distillery-level TODOs
@@ -720,6 +817,78 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-21** Tier 3 of the production-chain coverage queue
+  COMPLETED, and the coverage queue closed. Ten pages: glossary
+  water, grain-whisky (cereals + the single-grain category,
+  consolidated), peat, saccharification, lautering,
+  lactic-acid-bacteria, marrying, regauging, age-statement; and
+  practice/pneumatic-malting (drum / Saladin mechanised malting).
+  Grounded on Russell 3rd ed. (Ch 10, 11, 13, 15, 16, 17) +
+  Miller (Ch 3, 4, 5, 10) + SWR 2009. Confidence: all `high`
+  except marrying (`medium` — single-source and carrying Russell's
+  own "cannot be explained through chemical analysis" hedge) and
+  age-statement (`medium` — single regulatory source, cited at
+  instrument level rather than fabricating a regulation number).
+  A production-chain coverage audit followed: 81 concept pages
+  now cover every stage of the chain; remaining gaps are minor
+  and peripheral (co-products, reduction term, batch term) and
+  none load-bearing. The technical backbone is complete;
+  distilleries can resume (Ardbeg next). check_references clean
+  (172 files validated, 0 schema findings).
+- **2026-05-21** Tier 2 of the production-chain coverage queue
+  COMPLETED — 12 pages. equipment/coffey-still (continuous /
+  column distillation for grain whisky) and equipment/spirit-safe;
+  the malting-detail glossary entries steeping, germination,
+  milling and diastatic-power; the maturation-detail entries
+  glossary/oak, glossary/char-and-toast, practice/cask-finishing
+  and glossary/angels-share; and glossary/congener and
+  glossary/caramel-colouring. Grounded on Russell 3rd ed.
+  (Ch 10, 12, 14, 15, 16) + Miller (Ch 3, 4, 5, 7, 8) + SWR 2009
+  reg 3. All `confidence: high` except caramel-colouring
+  (`medium` — the regulatory fact is single-sourced to SWR 2009;
+  the fuller treatment is in scotch-presentation-conventions).
+  Critical eval: a raw concept path was removed from the
+  caramel-colouring tooltip; the congener summary's
+  new-make-vs-matured claim was softened from an absolute to a
+  proportionate statement. check_references clean (162 files
+  validated, 0 schema findings). Tiers 1 and 2 of the queue now
+  complete (24 pages); Tier 3 next.
+- **2026-05-21** Tier 1 of the production-chain coverage queue
+  COMPLETED. Five pages added to close out Tier 1 after the
+  distillation cluster: `equipment/washback` and
+  `equipment/mash-tun` (the fermentation and mashing vessels);
+  `educational/maturation` (a wrapper overview — the cask's
+  additive / subtractive / oxidative action, the SWR 2009
+  three-year legal minimum); `educational/warehousing` (dunnage /
+  racked / palletised warehouse types and the angel's-share
+  effect); and `educational/blending` (the five SWR 2009
+  categories, blended Scotch, the blender's craft). All
+  `confidence: high`, grounded on Russell 3rd ed. (Ch 10, 12, 16,
+  17) + Miller (Ch 4, 5, 8) + SWR 2009 reg 3. Critical eval:
+  Miller Ch 8 added to the maturation wrapper so its cask-action
+  claims carry two independent sources; an inline Miller citation
+  added to warehousing. check_references clean (150 files, 0
+  schema findings). Tier 1 of the queue is now complete
+  (12 pages); Tier 2 next.
+- **2026-05-21** Distillation concept cluster — 7 pages landed.
+  Following the 2026-05-20 production-chain coverage audit, the
+  distillation cluster was written as the first Tier-1 batch:
+  `educational/distillation` (a wrapper / overview page),
+  `educational/spirit-cut` (foreshots/heart/feints, the demisting
+  test, the spirit safe, congener volatility, run temperatures),
+  `equipment/pot-still`, and glossary entries `spirit-still`,
+  `low-wines`, `wash` and `wort`. All seven at `confidence: high`,
+  each citing Russell 3rd ed. Ch 14 (Nicol, pp 247-271) + Miller
+  Ch 6-7 as two independent sources. Architecture: focused pages
+  linked from the wrapper, not one long page (user steer — better
+  linkability, per-page confidence, search granularity). Critical
+  eval: the low-wines strength was softened from a hard
+  "~20-25% ABV" to "low-twenties percent" because Russell Ch 14
+  grounds only the combined spirit-still charge (<30% ABV), not a
+  low-wines-alone figure. check_references clean (145 files
+  validated, 0 schema findings). Edit-tool NUL corruption hit
+  low-wines.yml and distillation.yml during the wave; both
+  rebuilt via heredoc and verified.
 - **2026-05-20** Miller grounding pass — task 2 resolved.
   Miller, *Whisky Science: A Condensed Distillation*, 2nd ed.
   (2024), an academic reference independent of the Russell

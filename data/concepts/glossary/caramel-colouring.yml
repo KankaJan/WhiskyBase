@@ -1,0 +1,70 @@
+# =============================================================================
+# Caramel colouring
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: caramel-colouring
+title: Caramel colouring
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Caramel colouring (E150a, "plain caramel" or "spirit caramel")
+  is the only colouring permitted in Scotch whisky. Under the
+  Scotch Whisky Regulations 2009 nothing may be added to Scotch
+  whisky except water and plain caramel colouring. It is used in
+  small quantities to even out the natural colour variation
+  between casks and batches, so a brand presents a consistent
+  appearance; at the quantities used it is regarded as
+  flavour-neutral. Producers that decline to use it describe a
+  bottling as natural-colour [1]. The fuller presentation
+  context — natural colour, chill-filtering, bottling strength —
+  is covered by the scotch-presentation-conventions page.
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/scotch-presentation-conventions
+  - educational/maturation
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - caramel
+    - E150a
+    - spirit caramel
+  part_of_speech: noun
+  see_also:
+    - educational/scotch-presentation-conventions
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/3
+    accessed: 2026-05-21
+    notes: |
+      The Scotch Whisky Regulations 2009, regulation 3: Scotch
+      whisky is defined such that no substance may be added other
+      than water and plain caramel colouring (E150a). Single
+      authoritative source for the regulatory fact; the
+      presentation rationale (batch-to-batch colour consistency,
+      natural-colour disclosure) is treated more fully in
+      educational/scotch-presentation-conventions, hence this
+      entry is held at confidence: medium.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

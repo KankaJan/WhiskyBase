@@ -1,0 +1,82 @@
+# =============================================================================
+# Congener
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: congener
+title: Congener
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A congener is any of the many compounds, other than ethanol and
+  water, that occur in whisky and give it flavour, aroma and
+  colour. Congeners include the higher (fusel) alcohols, esters,
+  aldehydes, organic acids, phenols and sulphur compounds. They
+  arise mainly from yeast metabolism during fermentation, are
+  concentrated and sorted by volatility in the distillation cut,
+  and are added to and transformed during maturation. It is
+  the congener profile, far more than the ethanol, that gives a
+  whisky its character and that maturation reshapes [1][2].
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/aromatic-compounds-in-whisky
+  - educational/spirit-cut
+  - glossary/fermentation
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - congeners
+  part_of_speech: noun
+  see_also:
+    - educational/aromatic-compounds-in-whisky
+    - educational/spirit-cut
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. & Stewart, G., "Distilling yeast and
+      fermentation", Chapter 12 in Russell, I., Stewart, G. &
+      Kellershohn, J. (eds.), Whisky and Other Spirits:
+      Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 12 (Russell & Stewart) covers the fermentation congeners
+      — higher alcohols, esters, carbonyl compounds and sulphur
+      compounds — formed as by-products of yeast metabolism, and
+      their contribution to spirit aroma.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 5 (Fermentation), p 220: the yeast growth phase
+      is associated with the production of numerous congeners,
+      including the amyl alcohols; Ch 5-7 trace how congeners
+      form in fermentation and are then distributed by volatility
+      across the distillation run.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

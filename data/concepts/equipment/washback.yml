@@ -1,0 +1,112 @@
+# =============================================================================
+# Washback
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: equipment
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: washback
+title: Washback
+kind: equipment
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  A washback is the vessel in which wort is fermented into wash.
+  Cooled wort is run into the washback, pitched with distiller's
+  yeast, and fermented over roughly 48 to 100+ hours into a wash
+  of about 7-9% ABV. Malt-distillery washbacks are comparatively
+  small (up to about 30,000 litres) and are often built of wood —
+  Oregon pine, larch or Douglas fir — although stainless steel is
+  also common; grain distilleries use much larger stainless-steel
+  fermenters.
+
+body: |
+  The washback is the fermentation vessel of a Scotch malt
+  distillery — the stage between mashing and distillation.
+
+  ## Wood and steel
+
+  Malt-distillery washbacks have a much smaller capacity than
+  typical brewery fermenters — up to roughly 30,000 litres — and
+  traditional wooden vessels remain common [1]. Grain distilleries
+  by contrast use far larger fermenters (250,000 litres or more),
+  usually stainless steel, with temperature control, in-place
+  cleaning and stirring [1]. Wood and steel washbacks are both in
+  current use at malt distilleries; the choice is a site-level one
+  recorded on the distillery and production-line entries.
+
+  ## Fermentation in the washback
+
+  Unlike a brewery, a malt distillery does not boil its wort, and
+  wooden washbacks are difficult to sterilise [2]. A resident
+  population of lactic acid bacteria therefore lives in wood
+  washbacks and, particularly in longer fermentations, contributes
+  to the character of the wash. See
+  [fermentation](concept/glossary/fermentation) for the process
+  and [distillers-yeast](concept/glossary/distillers-yeast) for
+  the yeast.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/fermentation
+  - glossary/wort
+  - glossary/wash
+  - glossary/distillers-yeast
+
+
+# --- Equipment block --------------------------------------------------------
+equipment:
+  category: washback
+  used_at_distilleries: []           # Universal to malt distilleries;
+                                     # wood vs steel is recorded per
+                                     # site, not here.
+  distinguishing_features: |
+    The fermentation vessel: comparatively small at malt
+    distilleries (up to ~30,000 L), frequently wooden (Oregon
+    pine, larch, Douglas fir), and not sterilised, so wood
+    washbacks carry a resident lactic-acid-bacteria population.
+  alternatives: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. & Stewart, G., "Distilling yeast and
+      fermentation", Chapter 12 in Russell, I., Stewart, G. &
+      Kellershohn, J. (eds.), Whisky and Other Spirits:
+      Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Ch 12 (Russell & Stewart), pp 231-232: the fermentation
+      vessels (washbacks) vary in size, geometry and
+      construction; malt-distillery fermenters are comparatively
+      small (up to 30,000 L) and traditional wooden vessels are
+      "not uncommon"; grain-distillery fermenters are much larger
+      (250,000 L+) and usually stainless steel with temperature
+      control, CIP and stirring.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 5 (Fermentation), p 239: lactobacilli enter the
+      fermentation through raw materials or through "wooden
+      washbacks which are difficult to sterilize", and help shape
+      the character of the spirit.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

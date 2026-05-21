@@ -1,0 +1,86 @@
+# =============================================================================
+# Wash
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: wash
+title: Wash
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      The wash is the fermented liquid produced in the
+      washback and charged to the wash still for the first
+      distillation. It is cooled wort fermented with distiller's yeast,
+      typically reaching 7-9% ABV from an original gravity of about
+      1050-1060 degrees. The wash is, in effect, an unhopped beer
+      brewed for distillation rather than for drinking; it carries the
+      alcohol, the fermentation congeners, and (after longer
+      fermentations) the products of lactic-acid-bacteria activity that
+      the still will concentrate into low wines [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/fermentation
+  - glossary/wort
+  - glossary/wash-still
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - fermented wash
+  part_of_speech: noun
+  see_also:
+    - glossary/fermentation
+    - glossary/wash-still
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Nicol, D.A., "Batch distillation", Chapter 14 in
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.),
+      Whisky and Other Spirits: Technology, Production and
+      Marketing, 3rd edition, Academic Press (Elsevier), 2022,
+      pp 247-271.
+    accessed: 2026-05-20
+    notes: |
+      Russell ed. 2022 Ch 14 (Nicol), p 257: fermented wash
+      has an original gravity of 1050-1060 degrees (12.5-15 degrees
+      Plato) and is pumped or gravity-fed to the wash charger; the
+      wash-still charge volume is about two-thirds of still capacity.
+      Wash-still distillation is followed by hydrometry until the
+      reading falls to about 1% ABV, at which point the distillation
+      is complete; a cycle lasts 5-8 hours.
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-20
+    notes: |
+      Miller takes a representative wash at 8% ABV for the
+      distillation calculations in Ch 7 (p 332), consistent with the
+      7-9% range. Miller Ch 5 covers the conversion of wort sugars to
+      ethanol by Saccharomyces cerevisiae that produces the wash.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-20
+contributors: []

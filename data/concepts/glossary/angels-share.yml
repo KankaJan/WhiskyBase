@@ -1,0 +1,84 @@
+# =============================================================================
+# Angel's share
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: glossary
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: angels-share
+title: Angel's share
+kind: glossary
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      The angel's share is the portion of maturing spirit lost
+      from the cask to evaporation. A cask is not an airtight container:
+      through the years of maturation both ethanol and water evaporate
+      out through the wood, while air (oxygen) enters. The loss runs at
+      a few percent of the cask volume per year and varies with the
+      warehouse environment — temperature and humidity govern both the
+      rate of loss and whether the spirit weakens or holds its strength.
+      The accumulated loss means an older whisky yields progressively
+      less bottled volume from its original fill [1][2].
+
+
+body: null
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/maturation
+  - educational/warehousing
+  - educational/cask-maturation-kinetics
+
+
+# --- Glossary block ---------------------------------------------------------
+glossary:
+  aliases:
+    - angels share
+    - angel's share
+  part_of_speech: noun
+  see_also:
+    - educational/maturation
+    - educational/warehousing
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 16 (Conner, Maturation), p 305: the
+      cask is not an impermeable container — it allows the evaporation
+      of spirit (both ethanol and water) and the ingress of air; "the
+      loss of a small percentage of spirit has long been an accepted
+      part of maturation (called the 'angels' share')", and these
+      losses vary with warehouse environmental conditions.
+
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 8 (Maturation) treats evaporative loss and
+      seasonal variation in rack houses, corroborating that the
+      warehouse environment governs the rate of evaporative loss.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []
