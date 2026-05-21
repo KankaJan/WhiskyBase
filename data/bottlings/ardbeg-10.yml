@@ -1,0 +1,136 @@
+# =============================================================================
+# Ardbeg 10 Year Old (flagship core)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing flagship core release
+# with stable presentation conventions.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardbeg-10
+name: Ardbeg 10 Year Old
+production_line: ardbeg
+produced_at_distillery: ardbeg
+bottled_by: ardbeg
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                      # The modern Ardbeg 10 Year Old
+                                        # has been the continuously
+                                        # available core release since
+                                        # the post-1997-revival range
+                                        # was established; a precise
+                                        # introduction year is not
+                                        # pinned to a primary source.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0
+age_statement: 10
+vintage: null
+cask_strength: false
+non_chill_filtered: true                # Ardbeg 10 is bottled at 46%
+                                        # ABV, non-chill-filtered and
+                                        # natural colour — a deliberate
+                                        # craft-presentation choice, and
+                                        # a contrast with the
+                                        # 40%-chill-filtered core
+                                        # bottlings of some other Islay
+                                        # distilleries (e.g.
+                                        # Laphroaig 10). See
+                                        # educational/chill-filtering
+                                        # and glossary/abv.
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 10
+    cooperage: null
+    notes: |
+      Matured principally in ex-bourbon American oak. The
+      10-year duration sits in cask-extraction phase 2 per
+      educational/cask-maturation-kinetics: the heavily-peated
+      Islay spirit develops bourbon-derived vanilla and
+      oak-lactone notes alongside the underlying peat-smoke and
+      citrus profile.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Ardbeg's flagship core release: 10 years matured predominantly
+  in ex-bourbon American oak and bottled at 46% ABV,
+  non-chill-filtered and at natural colour [1]. The 10 Year Old
+  is the entry-level age-statemented core release in the Ardbeg
+  range and the most widely-distributed heavily-peated Islay
+  single malt at its tier. Its 46% non-chill-filtered,
+  natural-colour presentation is a deliberate departure from the
+  40%-ABV chill-filtered convention common at the core-range tier
+  of some other Islay distilleries (Laphroaig 10, Caol Ila 12) —
+  see educational/scotch-presentation-conventions.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.ardbeg.com/
+    accessed: 2026-05-21
+    notes: |
+      Ardbeg producer site, Ardbeg Ten product information. Used
+      for ABV (46%), age (10 years), and the non-chill-filtered /
+      natural-colour presentation.
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ardbeg 10 Year Old, whisky.com whisky database.
+    url: https://www.whisky.com/
+    accessed: 2026-05-21
+    notes: |
+      Trade-database cross-reference for the core-release
+      specification.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

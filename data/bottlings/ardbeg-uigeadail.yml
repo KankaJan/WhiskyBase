@@ -1,0 +1,137 @@
+# =============================================================================
+# Ardbeg Uigeadail (NAS oloroso-sherry vatting)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing core release; cask
+# proportions in the vatting are not producer-disclosed.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardbeg-uigeadail
+name: Ardbeg Uigeadail
+production_line: ardbeg
+produced_at_distillery: ardbeg
+bottled_by: ardbeg
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2003                      # Introduced in the early 2000s
+                                        # as a core no-age-statement
+                                        # release; recorded as an
+                                        # approximate introduction year.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 54.2
+age_statement: null                     # No age statement — a vatting
+                                        # of casks of differing ages.
+                                        # See glossary/age-statement.
+vintage: null
+cask_strength: false                    # Bottled at a consistent
+                                        # 54.2% ABV — a fixed
+                                        # higher-strength presentation,
+                                        # not a single-cask cask-strength
+                                        # release.
+non_chill_filtered: true
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      The ex-bourbon American oak component supplies the
+      vanilla / citrus / peat-smoke backbone.
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      The ex-oloroso sherry component supplies dried-fruit and
+      darker, richer notes. Uigeadail is a vatting of the two
+      cask types rather than a single-cask release; the
+      proportions are not producer-disclosed.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  A core no-age-statement release, named after Loch Uigeadail —
+  the hill loch that is the distillery's water source. Uigeadail
+  is a vatting of Ardbeg matured in ex-bourbon American oak with
+  a portion from ex-oloroso sherry casks, bottled at a consistent
+  54.2% ABV, non-chill-filtered and at natural colour [1]. The
+  sherry-cask component sets it apart from the predominantly
+  ex-bourbon 10 Year Old, layering dried-fruit richness over the
+  heavy peat. As a no-age-statement vatting it carries no age
+  on the label (see glossary/age-statement); it is a fixed
+  higher-strength bottling rather than a single-cask
+  cask-strength release.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.ardbeg.com/
+    accessed: 2026-05-21
+    notes: |
+      Ardbeg producer site, Uigeadail product information. Used
+      for ABV (54.2%), the ex-bourbon + ex-oloroso-sherry cask
+      composition, the non-chill-filtered / natural-colour
+      presentation, and the Loch Uigeadail naming.
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ardbeg Uigeadail, whisky.com whisky database.
+    url: https://www.whisky.com/
+    accessed: 2026-05-21
+    notes: |
+      Trade-database cross-reference for the release
+      specification.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

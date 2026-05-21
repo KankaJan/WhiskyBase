@@ -1,0 +1,391 @@
+# =============================================================================
+# Ardbeg
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership lineage, the
+# closure/revival history and the distinctive spirit-still purifier
+# are well grounded against producer and trade sources. Equipment
+# capacities and the peating figure come from trade-database sources;
+# the post-2019-expansion annual capacity is not cleanly pinned and is
+# left null with the conflict disclosed.
+# =============================================================================
+# Fourteenth populated distillery. Fourth populated south-Islay
+# heavily-peated entry, completing the "Kildalton" peated cluster
+# alongside Laphroaig, Lagavulin and (east-Islay) Caol Ila. Notable
+# for a purifier on the spirit-still lyne arm — uncommon on Islay —
+# and for one of the most turbulent closure/revival histories in the
+# modern industry: mothballed 1981, intermittent through the early
+# 1990s, and rescued by Glenmorangie plc in 1997.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardbeg
+name: Ardbeg
+also_known_as: []
+wikidata_qid: null
+website: https://www.ardbeg.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islay                           # Formal SWA region under the
+                                        # Scotch Whisky Regulations
+                                        # 2009 [5]. South-coast Islay —
+                                        # the heavily-peated "Kildalton"
+                                        # cluster (Laphroaig, Lagavulin,
+                                        # Ardbeg).
+sub_region: null
+locality: Port Ellen, Isle of Islay     # South coast of Islay, roughly
+                                        # one mile east of Lagavulin and
+                                        # the easternmost of the
+                                        # Kildalton trio; the three
+                                        # share a peat-and-sea-spray
+                                        # maturation environment [1][2].
+coordinates:
+  lat: 55.641
+  lon: -6.108                           # Approximate; the distillery
+                                        # site on the south Islay coast,
+                                        # east of Lagavulin. Not
+                                        # producer-published as specific
+                                        # coordinates — derived from the
+                                        # locality, to be replaced with
+                                        # surveyed coordinates when a
+                                        # primary geographic source is
+                                        # to hand.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1815                           # Commercial founding under John
+                                        # McDougall. Illicit distilling
+                                        # is reported on the site from
+                                        # roughly 1794; 1815 is the
+                                        # licensed-commercial date [1][2].
+first_spirit: 1815
+mothballed_periods:
+  - from: 1981
+    to: 1997
+    notes: |
+      Production was halted in 1981 under Hiram Walker ownership
+      amid the early-1980s industry contraction. Limited
+      production resumed on a small scale in 1989 and continued
+      intermittently at a low level until late 1996; the
+      distillery was then effectively idle until the June 1997
+      revival under Glenmorangie plc [2]. Recorded as a single
+      mothballed span with the intermittent 1989-1996 runs
+      noted rather than split into micro-periods.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Moet Hennessy
+  parent: LVMH Moet Hennessy Louis Vuitton SE
+  history:
+    - owner: John McDougall / McDougall family
+      from: 1815
+      to: 1838
+      notes: |
+        Commercial founding by John McDougall. The McDougall
+        family continued to run the distillery after the 1838
+        sale of the business [1][2].
+    - owner: Thomas Buchanan
+      from: 1838
+      to: 1853
+      notes: |
+        Glasgow whisky merchant Thomas Buchanan bought the
+        business in 1838; the distillery continued to be run by
+        John McDougall's son Alexander until Alexander's death
+        in 1853, after which his sisters Margaret and Flora were
+        involved in the operation [2].
+    - owner: McDougall family / Ardbeg Distillery Ltd
+      from: 1853
+      to: 1979
+      notes: |
+        The McDougall family and the successor company Ardbeg
+        Distillery Ltd ran the distillery through the later 19th
+        and most of the 20th century. Hiram Walker (Canadian)
+        acquired an interest in the company during the 20th
+        century and took full control in 1979; the surveyed
+        sources do not give a precise date for the earlier
+        Hiram Walker stake [2].
+    - owner: Hiram Walker / Allied
+      from: 1979
+      to: 1997
+      notes: |
+        Hiram Walker took full control in 1979. Production was
+        halted in 1981 (see mothballed_periods); the site passed
+        within the Hiram Walker / Allied Lyons / Allied
+        Distillers ownership chain through the mothballed years [2].
+    - owner: Glenmorangie plc
+      from: 1997
+      to: 2004
+      notes: |
+        Glenmorangie plc bought and reopened Ardbeg in 1997 —
+        limited production resumed 25 June 1997 and full
+        production in 1998. The 1997 rescue is the founding event
+        of the modern Ardbeg [1][2].
+    - owner: Moet Hennessy (LVMH)
+      from: 2004
+      to: null
+      notes: |
+        LVMH (Moet Hennessy) acquired Glenmorangie plc — and with
+        it Ardbeg — on 28 December 2004. Ardbeg is operated within
+        The Glenmorangie Company [1][2].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Loch Uigeadail            # Ardbeg's sole water source: a
+                                        # hill loch about three miles
+                                        # behind the distillery, its
+                                        # water running downhill through
+                                        # peat bogs. The loch lends its
+                                        # name to the Uigeadail
+                                        # bottling [1][2].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null                            # Mash-tun type not cleanly
+                                        # pinned in the surveyed
+                                        # sources.
+  material: stainless_steel
+  capacity_kg: null
+
+washbacks:
+  count: 12
+  material: larch                       # Wooden washbacks of Oregon
+                                        # pine per trade sources; the
+                                        # schema's material enum uses
+                                        # `larch` as the wood value —
+                                        # recorded as wood, with the
+                                        # Oregon-pine specific noted
+                                        # here.
+  capacity_litres: 23000                # ~23,000-23,500 L per washback
+                                        # per trade-database sources [3].
+  notes: |
+    Twelve wooden (Oregon pine) washbacks at roughly
+    23,000-23,500 L. Fermentation runs about 66-71 hours as
+    standard, with longer cycles also used; the long-fermentation
+    regime contributes secondary fruit-ester congeners [3].
+
+stills:
+  wash_still:
+    count: 2                            # Post-2019 configuration: a
+                                        # 2-wash + 2-spirit arrangement.
+                                        # See equipment_changes — the
+                                        # 2019 still house doubled the
+                                        # still count from a single pair
+                                        # to two pairs [3][4].
+    capacity_litres: 18000              # ~18,000 L wash stills [3].
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: ascending           # Ascending lyne arms promoting
+                                        # high reflux [3].
+    condenser: shell_and_tube
+  spirit_still:
+    count: 2
+    capacity_litres: 17000              # ~17,000 L spirit stills [3].
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: indirect_steam
+    lyne_arm_angle: ascending
+    condenser: shell_and_tube
+    notes: |
+      The spirit still carries a **purifier** on the lyne arm —
+      a small condenser that captures heavier vapour components
+      and returns them to the pot for re-distillation, sharply
+      increasing reflux. A purifier is uncommon among Islay
+      distilleries, and is the principal equipment-level
+      contributor to Ardbeg's combination of intense peat with a
+      comparatively clean, citrus-tinged spirit [2][3]. See
+      `glossary/reflux`.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: null               # Left null: a clean
+                                        # post-expansion figure was not
+                                        # found in the surveyed sources.
+                                        # Pre-2019 capacity is given by
+                                        # trade sources at roughly
+                                        # 1.4 million LPA; the 2019 still
+                                        # house was built explicitly to
+                                        # double distilling capacity [4],
+                                        # so the current figure is on the
+                                        # order of ~2.4 million LPA but is
+                                        # not recorded as a hard number
+                                        # absent a producer-published
+                                        # post-expansion value. See
+                                        # ardbeg.NOTES.md.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1981
+    change: |
+      Production halted; the distillery was mothballed amid the
+      early-1980s industry contraction.
+    notes: |
+      See mothballed_periods. Limited intermittent production
+      resumed 1989-1996 before the 1997 revival.
+    source_id: 2
+  - year: 1997
+    change: |
+      Distillery reopened by Glenmorangie plc; limited production
+      from 25 June 1997, full production from 1998.
+    notes: |
+      The founding event of the modern Ardbeg.
+    source_id: 1
+  - year: 2019
+    change: |
+      New still house completed, doubling the still count from a
+      single wash + spirit pair to two pairs (2 wash + 2 spirit).
+      The former still-house space was repurposed for additional
+      washbacks.
+    notes: |
+      The Glenmorangie Company funded the expansion explicitly to
+      double Ardbeg's distilling capacity in response to demand [4].
+    source_id: 4
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - ardbeg
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []               # Blends are not modelled as a
+                                        # project entity type — empty
+                                        # list per convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features:
+  - glossary/reflux                     # The spirit-still purifier is a
+                                        # reflux-increasing device; high
+                                        # reflux is central to Ardbeg's
+                                        # spirit character.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Ardbeg is a heavily-peated malt-whisky distillery on the south
+  coast of Islay, the easternmost of the "Kildalton" trio of
+  south-coast producers alongside Lagavulin and Laphroaig [1][2].
+  It was founded commercially in 1815 by John McDougall, with
+  illicit distilling reported on the site from roughly 1794;
+  ownership passed to the Glasgow whisky merchant Thomas Buchanan
+  in 1838 while the McDougall family continued to run it [2].
+  Ardbeg has one of the most turbulent histories in the modern
+  industry: under Hiram Walker ownership, production was halted
+  in 1981, ran only intermittently from 1989, and had effectively
+  ceased by late 1996. The distillery was bought and reopened by
+  Glenmorangie plc in 1997 — the founding event of the modern
+  Ardbeg — and passed to LVMH (Moet Hennessy) with the rest of
+  Glenmorangie plc in December 2004 [1][2].
+  Ardbeg's malt is heavily peated, specified at about 50 ppm
+  phenols with the malt as delivered reported to average closer
+  to 55 ppm [3]; the peated malt is bought in rather than floor-
+  malted on site. Fermentation is long — about 66-71 hours as
+  standard in twelve wooden washbacks — which builds fruit-ester
+  congeners that survive the heavy peat.
+  The distinctive equipment feature is a **purifier** on the
+  spirit-still lyne arm: a small condenser that intercepts the
+  heavier vapour components and returns them to the pot for
+  re-distillation, sharply raising reflux. A purifier is uncommon
+  among Islay distilleries, and is the principal equipment-level
+  reason Ardbeg pairs intense peat smoke with a comparatively
+  clean, citrus-tinged new make [2][3].
+  A new still house completed in 2019 doubled the still count
+  from a single wash + spirit pair to two pairs, built to double
+  distilling capacity in response to demand [4]; the project
+  records the post-expansion still configuration but leaves the
+  annual-capacity figure null pending a producer-published
+  post-expansion value (see ardbeg.NOTES.md). Water is drawn
+  from Loch Uigeadail, a hill loch about three miles behind the
+  distillery whose peat-filtered water lends its name to the
+  Uigeadail bottling.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.ardbeg.com/aboutardbeg/history.html
+    accessed: 2026-05-21
+    notes: |
+      Ardbeg's producer-published history and process pages.
+      Used for the founding date, the 1997 Glenmorangie revival
+      (limited production from 25 June 1997), the LVMH /
+      Moet Hennessy ownership, the Loch Uigeadail water source,
+      and the production-process description. Producer voice is
+      attributed where applied; the project does not adopt
+      producer marketing phrasing as project voice.
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ardbeg distillery, encyclopaedic trade reference
+      (Wikipedia, "Ardbeg distillery"), cross-checked against
+      scotchwhisky.com trade-press coverage.
+    url: https://en.wikipedia.org/wiki/Ardbeg_distillery
+    accessed: 2026-05-21
+    notes: |
+      Trade / encyclopaedic cross-reference for the ownership
+      sequence (McDougall founding, 1838 Thomas Buchanan, the
+      Hiram Walker era, 1981 mothballing, intermittent 1989-1996
+      production, the 1997 Glenmorangie revival, the 2004 LVMH
+      acquisition) and the purifier on the spirit still.
+      Wikipedia is treated as a volatile starting point per
+      project policy; the load-bearing dates are corroborated
+      against the producer source and trade press.
+  - id: 3
+    type: trade_publication
+    citation: |
+      Ardbeg distillery technical specification, whisky.com
+      whisky database; cross-checked against trade distillery
+      profiles.
+    url: https://www.whisky.com/whisky-database/distilleries/details/ardbeg.html
+    accessed: 2026-05-21
+    notes: |
+      Trade-database source for equipment configuration (4 pot
+      stills as 2 wash + 2 spirit; wash stills ~18,000 L, spirit
+      stills ~17,000 L; the spirit-still purifier; ascending
+      lyne arms), 12 wooden washbacks at ~23,000-23,500 L,
+      ~66-71-hour fermentation, and the ~50 ppm malt peating
+      specification (malt as delivered reported nearer 55 ppm).
+  - id: 4
+    type: trade_publication
+    citation: |
+      "Ardbeg to double distillation capacity", Scotch Whisky
+      magazine (scotchwhisky.com), and parallel 2018 trade-press
+      coverage of the Ardbeg still-house expansion.
+    url: https://scotchwhisky.com/magazine/latest-news/17911/ardbeg-to-double-distillation-capacity/
+    accessed: 2026-05-21
+    notes: |
+      Trade-press coverage of the new still house completed in
+      2019: the still count doubled from a single pair to two
+      pairs (2 wash + 2 spirit), the project funded by The
+      Glenmorangie Company to double distilling capacity. The
+      pre-expansion capacity (~1.4 million LPA per trade sources)
+      and the absence of a clean producer-published
+      post-expansion figure are discussed in ardbeg.NOTES.md.
+  - id: 5
+    type: regulatory_text
+    url: https://www.legislation.gov.uk/uksi/2009/2890/regulation/10
+    accessed: 2026-05-21
+    citation: |
+      The Scotch Whisky Regulations 2009 (S.I. 2009/2890),
+      regulation 10. Defines the Islay protected locality under
+      which Ardbeg is classified.
+    notes: |
+      Regulatory grounding for the Islay regional designation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

@@ -1,0 +1,135 @@
+# =============================================================================
+# Ardbeg Corryvreckan (NAS, French-oak component)
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Entry confidence: medium — long-standing core release; cask
+# proportions are not producer-disclosed.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardbeg-corryvreckan
+name: Ardbeg Corryvreckan
+production_line: ardbeg
+produced_at_distillery: ardbeg
+bottled_by: ardbeg
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2009                      # Introduced as a core release
+                                        # in 2009 (after a 2008
+                                        # committee-release precursor);
+                                        # recorded as an approximate
+                                        # introduction year.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 57.1
+age_statement: null                     # No age statement.
+vintage: null
+cask_strength: false                    # Bottled at a consistent
+                                        # 57.1% ABV — a fixed
+                                        # higher-strength presentation.
+non_chill_filtered: true
+natural_colour: true
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      The ex-bourbon American oak component supplies the
+      backbone.
+  - cask_type: french-oak-cask
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      A French-oak component contributes a deeper, more tannic
+      and spicy character. The project has no populated cask
+      entry for new French oak yet — `french-oak-cask` is a
+      forward reference, tracked in TODO.md until the cask entry
+      is written.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: GBP
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  A core no-age-statement release, named after the Corryvreckan
+  whirlpool off the north of Islay's neighbouring island of
+  Jura. Corryvreckan is a vatting of Ardbeg matured in ex-bourbon
+  American oak with a French-oak component, bottled at a
+  consistent 57.1% ABV, non-chill-filtered and at natural
+  colour [1]. The French-oak component gives it a deeper, more
+  tannic and peppery character than the ex-bourbon 10 Year Old
+  or the sherry-influenced Uigeadail, and it is the
+  highest-strength release of the three core Ardbeg expressions
+  modelled here. As a no-age-statement bottling it carries no
+  age on the label (see glossary/age-statement).
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.ardbeg.com/
+    accessed: 2026-05-21
+    notes: |
+      Ardbeg producer site, Corryvreckan product information.
+      Used for ABV (57.1%), the ex-bourbon + French-oak cask
+      composition, the non-chill-filtered / natural-colour
+      presentation, and the Corryvreckan whirlpool naming.
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ardbeg Corryvreckan, whisky.com whisky database.
+    url: https://www.whisky.com/
+    accessed: 2026-05-21
+    notes: |
+      Trade-database cross-reference for the release
+      specification.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

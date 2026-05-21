@@ -1,67 +1,102 @@
-concepts: production-chain coverage build complete — 34 pages, 3 tiers
+tooling + data: pre-commit corruption gate, and Ardbeg (14th distillery)
 
-Completes the production-chain concept-coverage build begun after
-the 2026-05-20 audit. This commit lands all three tiers — 34 new
-concept pages — giving the encyclopedia a complete technical
-backbone before distillery work resumes.
+Two waves of work, committed together because they are entangled
+in the working tree (TODO.md carries Recently-Completed entries
+for both); a split would need git add -p on TODO.md for no real
+benefit.
 
-34 new concept pages
---------------------
+Files
+-----
 
-Tier 1 (12): educational/distillation, educational/spirit-cut,
-equipment/pot-still, glossary spirit-still/low-wines/wash/wort,
-equipment/washback, equipment/mash-tun, educational/maturation,
-educational/warehousing, educational/blending.
+Tooling:
+- scripts/check_writes.py (new)
+- scripts/hooks/pre-commit (new)
+- CLAUDE.md
+- CHANGELOG.md
+- README.md
 
-Tier 2 (12): equipment/coffey-still, equipment/spirit-safe,
-glossary steeping/germination/milling/diastatic-power, glossary
-oak/char-and-toast/congener/angels-share/caramel-colouring,
-practice/cask-finishing.
+Ardbeg data layer:
+- data/distilleries/ardbeg.yml (new)
+- data/distilleries/ardbeg.NOTES.md (new)
+- data/production_lines/ardbeg.yml (new)
+- data/bottlings/ardbeg-10.yml (new)
+- data/bottlings/ardbeg-uigeadail.yml (new)
+- data/bottlings/ardbeg-corryvreckan.yml (new)
 
-Tier 3 (10): glossary water/grain-whisky/peat/saccharification/
-lautering/lactic-acid-bacteria/marrying/regauging/age-statement,
-practice/pneumatic-malting.
+Shared:
+- docs/handover.md
+- TODO.md
 
-Plus TODO.md.
+Wave 1 - pre-commit hard-corruption gate
+----------------------------------------
 
-Sourcing and confidence
------------------------
+scripts/check_writes.py scans text files for the Windows <-> Linux
+mount-sync damage signatures (embedded NUL bytes, silent
+truncation, YAML parse failure) and exits non-zero on any
+finding. scripts/hooks/pre-commit runs it against the staged
+files and blocks the commit on a finding; activate per clone with
+git config core.hooksPath scripts/hooks. This is the project's
+first commit-blocking check - check_references.py stays warn-only
+for soft findings (dangling references, schema warnings).
 
-Grounded on Russell 3rd ed. (Chs 10-17) and Miller 2024
-(Chs 3-10), with SWR 2009 where regulatory. All confidence: high
-except three medium pages, each held there for a documented
-reason: caramel-colouring and age-statement (single authoritative
-regulatory source); marrying (single source plus Russell's own
-"cannot be explained through chemical analysis" hedge).
+The gate caught a real pre-existing bug on its first run:
+README.md had been committed truncated in commit 7c212f2 (the
+last "Current state" table row and the closing sentence lost).
+README.md is repaired here, and its badly stale counts refreshed
+at the same time. CLAUDE.md's Verification section was rewritten
+to describe the two checks and their different severity;
+CHANGELOG.md gets a [0.8.1] entry (verification policy change, no
+schema change).
 
-Architecture: focused single-topic pages linked from wrapper
-overview pages (distillation, maturation).
+Wave 2 - Ardbeg, the 14th distillery
+------------------------------------
 
-Coverage audit
---------------
+Adds Ardbeg as the fourteenth populated distillery - the fourth
+and final south-Islay heavily-peated distillery, completing the
+"Kildalton" peated cluster with Laphroaig, Lagavulin and Caol Ila.
 
-A 2026-05-21 audit confirms the production-chain backbone is
-comprehensively covered — 81 concept pages span every stage from
-raw materials through malting, milling, mashing, fermentation,
-distillation, maturation and blending/bottling. Remaining gaps
-are minor and peripheral (production co-products; reduction and
-batch as standalone terms) and none are load-bearing.
-Distillery-specific equipment pages stay queued as
-distillery-extension items. Distilleries can now resume.
+- Port Ellen, south-coast Islay; founded commercially 1815
+  (illicit distilling on the site reported from ~1794).
+- One of the most turbulent closure/revival histories in the
+  industry: mothballed 1981 under Hiram Walker, intermittent
+  1989-1996, rescued by Glenmorangie plc in 1997, acquired with
+  Glenmorangie plc by LVMH (Moet Hennessy) in December 2004.
+- Distinctive feature: a purifier on the spirit-still lyne arm,
+  uncommon on Islay; cross-referenced to glossary/reflux. A 2019
+  still house doubled the still count from one pair to two.
+- Bottlings: 10 Year Old (46% ABV, non-chill-filtered, natural
+  colour, ex-bourbon core); Uigeadail (NAS bourbon + oloroso-
+  sherry vatting, 54.2%); Corryvreckan (NAS bourbon + French-oak
+  vatting, 57.1%).
+
+Source conflicts are disclosed in ardbeg.NOTES.md: peating
+recorded at both the ~50 ppm specification and the ~55 ppm
+as-delivered average, not smoothed; annual capacity left null
+because the 2019 expansion doubled capacity and no clean
+producer-published post-expansion figure was found.
+
+Critical eval caught and fixed an unsourced "1959 - Distillers
+Company" ownership entry and a malt.source enum error
+(external -> bought_in) before verify. One tracked forward
+reference is introduced: ardbeg-corryvreckan cites
+french-oak-cask, a cask entry not yet written.
 
 Documentation
 -------------
 
-- TODO.md — production-chain coverage queue closed; status and
-  Recently Completed entries for all three tiers and the audit.
-- No schema or policy change; no CHANGELOG entry per project
-  policy.
+- docs/handover.md section 10: counts updated (14 distilleries,
+  19 production lines, 42 bottlings) with Ardbeg blocks added;
+  the stale concept-page count refreshed 47 -> 81 to catch up the
+  production-chain build; Next priorities item 1 now the 15th
+  distillery (a Speyside heavyweight).
+- TODO.md - Recently Completed entries for both waves.
+- CHANGELOG.md [0.8.1] for the verification policy change.
 
 Verification
 ------------
 
-- scripts/check_references.py: 172 files validated, 0 JSON Schema
-  findings; all inline [N] citations resolve.
-- NUL-byte scan clean. All concept-page writes done via bash
-  heredoc; the two Edit-tool NUL corruptions earlier in the build
-  (low-wines, distillation) were rebuilt and verified.
+- scripts/check_references.py: 177 files scanned, 0 JSON Schema
+  findings; all inline [N] citations resolve. One dangling
+  reference (french-oak-cask) - expected forward reference.
+- scripts/check_writes.py: clean on the full repo (no NUL bytes,
+  no truncation); self-tested against synthetic fixtures.

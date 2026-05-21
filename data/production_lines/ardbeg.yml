@@ -1,0 +1,181 @@
+# =============================================================================
+# Ardbeg (default heavily-peated production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Entry confidence: medium — line identity, the heavily-peated
+# default, the long fermentation and the distinctive spirit-still
+# purifier are well grounded against producer and trade sources.
+# Yeast strain and exact cut points are not disclosed and are left
+# null / hedged.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardbeg
+name: Ardbeg (default heavily-peated)
+distillery: ardbeg
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: 1815
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                     # Ardbeg does not floor-malt on
+                                        # site; peated malt is bought in
+                                        # from the commercial Islay
+                                        # maltings.
+  maltster: Port Ellen Maltings
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: malt_delivered
+      value: 50
+      unit: ppm
+      method: unspecified
+      compounds: unspecified
+      source_id: 2
+      notes: |
+        Ardbeg's malt is specified at about 50 ppm phenols. Trade
+        sources also report the malt as delivered to average
+        nearer 55 ppm; both figures are recorded rather than
+        smoothed (see ardbeg.NOTES.md). Trade-press references use
+        "ppm" broadly for the total phenolic load — no HPLC
+        compound decomposition is disclosed. See
+        `methodology/scotch-whisky-published-ppm`.
+  peat_origin: local                    # Port Ellen Maltings, on
+                                        # Islay, kilns with Islay peat.
+  notes: |
+    Heavily-peated Islay malt at a ~50 ppm specification (malt as
+    delivered reported nearer 55 ppm). Ardbeg is among the most
+    heavily-peated of the regularly-produced Islay malts.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: 66
+  hours_max: 71
+  hours_typical: 68
+  yeast: null
+  notes: |
+    Long fermentation — about 66-71 hours as standard — in twelve
+    wooden (Oregon pine) washbacks; longer cycles are also used.
+    The long fermentation builds fruity-ester congeners that
+    survive the heavy peat background. See `glossary/fermentation`
+    and `glossary/lactic-acid-bacteria`.
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Double distillation through a 2-wash + 2-spirit still set.
+      The spirit still carries a **purifier** on the lyne arm: a
+      small condenser that intercepts the heavier vapour
+      components and returns them to the pot for re-distillation,
+      sharply raising reflux. A purifier is uncommon among Islay
+      distilleries and is the principal equipment-level reason
+      Ardbeg pairs intense peat with a comparatively clean,
+      citrus-tinged new make. See `educational/spirit-cut` and
+      `glossary/reflux`. Specific cut points are not disclosed.
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null         # Cask-fill strength not
+                                        # disclosed in the surveyed
+                                        # sources.
+typical_cask_program:
+  - bourbon-barrel                      # Ex-bourbon American oak is the
+                                        # backbone of the Ardbeg
+                                        # maturation programme (the
+                                        # 10 Year Old is principally
+                                        # ex-bourbon).
+  - oloroso-sherry-butt                 # Ex-oloroso sherry casks are
+                                        # vatted into Uigeadail.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - ardbeg-10
+  - ardbeg-uigeadail
+  - ardbeg-corryvreckan
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Ardbeg default production line is the distillery's sole
+  modelled production stream: a heavily-peated south-Islay malt
+  at a ~50 ppm peating specification (malt as delivered reported
+  nearer 55 ppm) [2]. Peated malt is bought in from Port Ellen
+  Maltings rather than floor-malted on site. Fermentation is long
+  — about 66-71 hours in twelve wooden washbacks — building
+  fruity-ester congeners that carry through the heavy peat.
+  Distillation is double, through a 2-wash + 2-spirit still set;
+  the distinctive feature is a purifier on the spirit-still lyne
+  arm, a small condenser that returns heavier vapour components
+  to the pot and sharply raises reflux — uncommon on Islay and
+  the equipment-level reason Ardbeg combines intense peat smoke
+  with a comparatively clean, citrus-edged spirit [1][2]. The
+  maturation programme is predominantly ex-bourbon American oak,
+  with ex-oloroso sherry casks vatted into the Uigeadail
+  expression and French oak used in Corryvreckan.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: official_website
+    url: https://www.ardbeg.com/en-gb/aboutardbeg/theprocess.html
+    accessed: 2026-05-21
+    notes: |
+      Ardbeg's producer-published process page. Used for the
+      production-process description, the spirit-still purifier,
+      and the long fermentation. Producer voice is attributed
+      where applied.
+  - id: 2
+    type: trade_publication
+    citation: |
+      Ardbeg distillery technical specification, whisky.com
+      whisky database.
+    url: https://www.whisky.com/whisky-database/distilleries/details/ardbeg.html
+    accessed: 2026-05-21
+    notes: |
+      Trade-database source for the ~50 ppm peating specification
+      (malt as delivered nearer 55 ppm), the 12 wooden washbacks,
+      the ~66-71-hour fermentation, and the still configuration
+      with the spirit-still purifier.
+  - id: 3
+    type: trade_publication
+    citation: |
+      Ardbeg distillery, encyclopaedic trade reference
+      (Wikipedia, "Ardbeg distillery").
+    url: https://en.wikipedia.org/wiki/Ardbeg_distillery
+    accessed: 2026-05-21
+    notes: |
+      Cross-reference for the purifier (described as uncommon on
+      Islay) and the production history. Treated as a volatile
+      starting point per project policy.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-05-21
+contributors: []

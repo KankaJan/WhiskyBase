@@ -9,6 +9,34 @@ covers them all.
 
 ---
 
+## [0.8.1] — 2026-05-21
+
+Verification policy change: a pre-commit hard-corruption gate.
+`scripts/check_writes.py` added — it scans text files for the
+Windows <-> Linux mount-sync damage signatures (embedded NUL
+bytes, silent truncation, YAML parse failure). The pre-commit
+hook in `scripts/hooks/` runs it against the staged files and
+**blocks the commit** on a finding; activate it per clone with
+`git config core.hooksPath scripts/hooks`. This is the project's
+first commit-blocking check — `check_references.py` remains
+warn-only for soft findings (dangling references, schema
+warnings). The gate immediately surfaced a pre-existing bug:
+`README.md` had been committed truncated (in commit 7c212f2) and
+is repaired here, with its stale "Current state" counts
+refreshed at the same time. No schema changes.
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.2
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.2
+- `cask.template.yml` v0.1
+- `supplier.template.yml` v0.1
+
+---
+
 ## [0.8.0] — 2026-05-16
 
 New `supplier` entity type schema drafted at v0.1, registered with

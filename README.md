@@ -29,7 +29,7 @@ three goals, in this priority order:
 ## How it is organised
 
 The data lives as YAML and Markdown files in this repository. There
-are five entity types:
+are seven entity types:
 
 | Entity | Lives in | Documents |
 |---|---|---|
@@ -37,11 +37,12 @@ are five entity types:
 | Production line | `/data/production_lines/` | A recipe/spec produced at a distillery (one distillery may run several) |
 | Bottling | `/data/bottlings/` | A specific commercial release |
 | Concept | `/data/concepts/<kind>/` | Reference pages: methodology, educational, equipment, practice, glossary |
-| Bottler | `/data/bottlers/` | Commercial bottling entity, for independent bottlers (schema drafted) |
+| Bottler | `/data/bottlers/` | Commercial bottling entity, for independent bottlers and distillery operations |
 | Cask | `/data/casks/` | Reusable reference for cask types cited from bottlings and production lines |
+| Supplier | `/data/suppliers/` | Upstream commercial parties: maltsters, cooperage sources, yeast houses |
 
-Cross-references between entities use slug strings; the build pipeline
-(not yet implemented) resolves these to links.
+Cross-references between entities use slug strings, resolved at build
+time by the static-site pipeline.
 
 Each entity type has a YAML template in `/schema/` that documents the
 fields with inline comments. Read the templates before writing entries.
@@ -66,7 +67,7 @@ in a sibling `<entity>.NOTES.md` file. See
 
 - **Data and documentation** (everything in `/data/`, `/docs/`,
   `/schema/`): CC-BY-SA 4.0. See `LICENSE-data`.
-- **Code** (scripts, build tooling, future site source): MIT. See
+- **Code** (scripts, build tooling, site source): MIT. See
   `LICENSE-code`.
 
 ## Contributing
@@ -79,11 +80,15 @@ is no separate authentication, no proposal queue, no custom UI — PRs
 
 | Layer | Status |
 |---|---|
-| Entity schemas | Distillery v0.2, production_line v0.2.1, bottling v0.2, concept v0.1, bottler v0.2, cask v0.1 |
-| Distilleries populated | 5 (Harris, Bruichladdich, Springbank, Glenmorangie, Lagavulin) |
-| Production lines | 9 |
-| Bottlings | 21 (19 OB + 2 IB stubs) |
-| Concept pages | 17 (3 methodology, 3 educational, 2 equipment, 9 glossary) |
+| Entity schemas | distillery v0.2, production_line v0.2.1, bottling v0.2, concept v0.1, bottler v0.2, cask v0.1, supplier v0.1 |
+| Distilleries populated | 13 |
+| Production lines | 18 |
+| Bottlings | 39 |
+| Concept pages | 81 (3 methodology, 13 educational, 8 equipment, 5 practice, 52 glossary) |
 | Bottlers populated | 2 (Cadenhead's, Signatory Vintage) |
-| Casks populated | 16 (5 high confidence, 6 medium, 5 low) |
-| Bu
+| Casks populated | 17 |
+| Suppliers populated | 2 (Bairds Malt, Heaven Hill) |
+| Build pipeline | implemented — Astro static site, Pagefind search, MapLibre map (`/site/`) |
+
+See `TODO.md` for the active queue and `docs/handover.md` for the
+project's current design rationale.

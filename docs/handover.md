@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 13 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 14 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -398,8 +398,18 @@ back rather than absorbing it into the data model.
   (~21M LPA, 43 stills as 16 wash + 27 spirit, 15 spirit stills
   partly direct-fired; 48 Douglas-fir washbacks); the 1998
   Solera Vat — a continuous-marrying vatting vessel — underpins
-  the 15 Year Old).
-- 18 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  the 15 Year Old),
+  Ardbeg (medium — Port Ellen, south-coast Islay; the fourth and
+  final south-Islay heavily-peated entry, completing the
+  "Kildalton" cluster with Laphroaig, Lagavulin and Caol Ila;
+  founded 1815, mothballed 1981 and rescued by Glenmorangie plc
+  in 1997, now LVMH / Moet Hennessy; a purifier on the
+  spirit-still lyne arm — uncommon on Islay — is the distinctive
+  equipment feature; ~50 ppm peating; the 2019 still house
+  doubled the still count from one pair to two, with the
+  post-expansion annual capacity left null pending a producer
+  figure, see ardbeg.NOTES.md).
+- 19 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -432,16 +442,16 @@ back rather than absorbing it into the data model.
   large scale; ~74-hour fermentation in 48 Douglas-fir
   washbacks; the core 12 / 14 / 15 / 18 / 21 expressions are
   one production line routed through different cask and
-  Solera-Vat vatting processes, not separate recipes).
-- 47 concept pages: 3 methodology (Bruichladdich, Harris, Scotch
-  Whisky), 8 educational (peating-measurement-methods,
-  aromatic-compounds-in-whisky, copper-conversation,
-  swa-regional-designations, cask-fill-states,
-  cask-maturation-kinetics, chill-filtering,
-  scotch-presentation-conventions), 3 equipment (worm-tub,
-  shell-and-tube-condenser, direct-fired-still), 3 practice
-  (floor-malting, external-malting, triple-distillation),
-  30 glossary.
+  Solera-Vat vatting processes, not separate recipes),
+  1 Ardbeg (medium — heavily-peated Islay default; long
+  fermentation; the spirit-still purifier).
+- 81 concept pages: 3 methodology, 13 educational, 8 equipment,
+  5 practice, 52 glossary. The 2026-05-21 production-chain
+  coverage build added 34 pages across three tiers, completing
+  the technical backbone (distillation, malting, mashing,
+  fermentation, maturation, blending, and the supporting
+  glossary terms). See the TODO "production-chain coverage
+  queue" and the per-kind concept sub-indexes for the full list.
 - 2 suppliers: Bairds Malt Ltd
   (`data/suppliers/bairds-malt.yml`, populated 2026-05-17 against
   supplier v0.1 as the first pressure-test, type=maltster) and
@@ -469,10 +479,11 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 39 bottlings: 39 working entries (10 Bruichladdich/Harris + 3
+- 42 bottlings: 42 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
   2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
-  2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 2 worked-example
+  2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 3 Ardbeg +
+  2 worked-example
   IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
   **No IB pressure-test stubs remain.** Both IB-release entries
   are now worked-example representations rather than placeholders,
@@ -601,15 +612,16 @@ flat-table index that outgrows readability.
 
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 14th distillery.** Glenkinchie /
-   Auchentoshan / Laphroaig / Glenfiddich have landed
-   (2026-05-18 / 2026-05-19). The remaining obvious gaps:
-   Ardbeg as the fourth south-Islay peated entry alongside
-   Lagavulin / Caol Ila / Laphroaig (cluster completeness);
-   or another Speyside heavyweight (Glenlivet for market
-   scale, Macallan for the sherry-led house style — both
-   carry heavier brand-positioning prose than Glenfiddich
-   did).
+1. **Data-layer growth — 15th distillery.** Ardbeg landed
+   2026-05-21 as the 14th, completing the four-distillery
+   south-Islay peated cluster (Ardbeg / Laphroaig / Lagavulin /
+   Caol Ila). The obvious next gap is a Speyside heavyweight —
+   Glenlivet for market scale, or Macallan for the sherry-led
+   house style; both carry heavier brand-positioning prose than
+   Glenfiddich did, so budget for the voice-register pass. The
+   production-chain concept backbone is now complete (81 concept
+   pages), so a new distillery slots into a full cross-reference
+   set.
 2. **Residual sourcing follow-ups.** The second-academic-source
    blocker is RESOLVED — Miller, *Whisky Science* 2nd ed. (2024)
    was acquired 2026-05-20 and used to promote five of the seven

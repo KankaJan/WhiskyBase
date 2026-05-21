@@ -1,0 +1,32 @@
+#!/bin/sh
+# WhiskyBase pre-commit hook -- hard-corruption gate.
+#
+# Blocks a commit when a staged text file shows hard corruption
+# (NUL bytes, truncation, YAML parse failure) -- the Windows <-> Linux
+# mount-sync damage signatures. Soft findings (dangling references,
+# JSON Schema warnings) are NOT checked here: check_references.py
+# covers those and is deliberately warn-only.
+#
+# Activate once, from the repo root:
+#   git config core.hooksPath scripts/hooks
+
+files=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$files" ] && exit 0
+
+if command -v python3 >/dev/null 2>&1; then
+  PY=python3
+elif command -v python >/dev/null 2>&1; then
+  PY=python
+else
+  echo "pre-commit: python not found; skipping corruption check" >&2
+  exit 0
+fi
+
+# shellcheck disable=SC2086
+"$PY" scripts/check_writes.py $files || {
+  echo "" >&2
+  echo "pre-commit: hard corruption in staged files -- commit blocked." >&2
+  echo "Rebuild the affected file(s) and re-stage, then commit again." >&2
+  exit 1
+}
+exit 0

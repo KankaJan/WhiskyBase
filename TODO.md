@@ -817,6 +817,47 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-21** Ardbeg — 14th distillery. 1 distillery +
+  1 production line + 3 bottlings + a NOTES.md. Port Ellen,
+  south-coast Islay; completes the four-distillery south-Islay
+  heavily-peated "Kildalton" cluster (Ardbeg / Laphroaig /
+  Lagavulin / Caol Ila). Founded 1815; one of the most turbulent
+  closure/revival histories in the industry — mothballed 1981,
+  intermittent 1989-1996, rescued by Glenmorangie plc in 1997,
+  to LVMH / Moet Hennessy in 2004. Distinctive feature: a
+  purifier on the spirit-still lyne arm (uncommon on Islay),
+  cross-referenced to glossary/reflux. Bottlings: 10 Year Old
+  (46% NCF natural-colour core), Uigeadail (NAS oloroso-sherry
+  vatting, 54.2%), Corryvreckan (NAS French-oak component,
+  57.1%). Source conflicts disclosed in ardbeg.NOTES.md (peating
+  50 vs 55 ppm; the 2019 still-house doubling from one still pair
+  to two; annual capacity left null absent a clean post-expansion
+  figure). Critical eval caught and fixed an unsourced
+  "1959 Distillers Company" ownership entry and a malt.source
+  enum error before verify. Introduces one forward reference —
+  `french-oak-cask`, a French-oak cask entry not yet written
+  (cited from ardbeg-corryvreckan; populate when convenient).
+  Counts: 13 -> 14 distilleries, 18 -> 19 production lines,
+  39 -> 42 bottlings. check_references clean (177 files, 0 schema
+  findings).
+- **2026-05-21** Pre-commit hard-corruption gate added.
+  `scripts/check_writes.py` (new) scans text files for the
+  Windows <-> Linux mount-sync damage signatures — embedded NUL
+  bytes, silent truncation (no trailing newline), YAML parse
+  failure — and exits non-zero on any finding.
+  `scripts/hooks/pre-commit` (new) runs it against the staged
+  files and blocks the commit; activate per clone with
+  `git config core.hooksPath scripts/hooks`. The project's first
+  commit-blocking check; `check_references.py` stays warn-only
+  for soft findings (dangling refs, schema warnings). The gate
+  immediately caught a real pre-existing bug — README.md had been
+  committed truncated (commit 7c212f2 lost the last table row and
+  the closing sentence); repaired here, and its stale
+  Current-state counts refreshed (13 distilleries, 18 production
+  lines, 39 bottlings, 81 concept pages, 2 bottlers, 17 casks,
+  2 suppliers; build pipeline marked implemented). Docs: CLAUDE.md
+  Verification section + tooling pointers; CHANGELOG.md [0.8.1].
+  Full-repo scan clean (202 text files, 0 findings).
 - **2026-05-21** Tier 3 of the production-chain coverage queue
   COMPLETED, and the coverage queue closed. Ten pages: glossary
   water, grain-whisky (cereals + the single-grain category,

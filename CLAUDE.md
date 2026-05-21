@@ -131,11 +131,11 @@ Full procedure and repair patterns: `/skills/safe-bulk-writes/SKILL.md`.
 
 ## Verification
 
-`scripts/check_references.py` is the load-bearing check for the
-project. Run it from the repo root after every data change.
-Output is warn-only — never blocks commit.
+Two checks guard the data, with deliberately different severity.
 
-It reports:
+`scripts/check_references.py` is the load-bearing **soft** check.
+Run it from the repo root after every data change. Output is
+warn-only — it never blocks a commit. It reports:
 
 - YAML parse failures (catches NUL bytes and silent truncation)
 - Duplicate IDs
@@ -147,6 +147,16 @@ It reports:
 Dangling references to entries not yet populated are *expected*
 per handover §8 (forward references) — they're tracked in
 `TODO.md` rather than fixed.
+
+`scripts/check_writes.py` is the **hard-corruption gate**. It
+scans text files for the mount-sync damage signatures — embedded
+NUL bytes, silent truncation (no trailing newline), YAML parse
+failure — and exits non-zero on any finding. The pre-commit hook
+in `scripts/hooks/` runs it against the staged files and **blocks
+the commit** on a finding. Activate the hook once per clone:
+`git config core.hooksPath scripts/hooks`. This is the only check
+that blocks — hard corruption must never reach a commit; soft
+findings (dangling refs, schema warnings) never block.
 
 ---
 
@@ -204,6 +214,9 @@ unless asked.
 
 - `scripts/check_references.py` — cross-reference resolver and
   JSON Schema validator (warn-only).
+- `scripts/check_writes.py` — hard-corruption scanner (NUL bytes,
+  truncation, YAML parse failure); the pre-commit hook in
+  `scripts/hooks/` runs it and blocks the commit on a finding.
 - `/schema/json/` — draft-07 JSON Schemas, one per entity type,
   plus a shared `_common.schema.json`. The YAML templates remain the
   human-readable source of truth; JSON Schemas are the machine-readable
