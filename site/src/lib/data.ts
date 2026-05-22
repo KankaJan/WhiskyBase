@@ -302,9 +302,20 @@ export interface ConceptGlossaryBlock {
   see_also?: string[];
 }
 
+export interface ConceptDiagram {
+  file: string;
+  alt: string;
+  caption?: string | null;
+  source_id?: number | null;
+  // Populated by the loader: the inlined SVG markup read from
+  // /data/diagrams/<file>. Absent if the file is missing.
+  svg?: string;
+}
+
 export interface ConceptFull extends Concept {
   body?: string | null;
   related_concepts?: string[];
+  diagrams?: ConceptDiagram[] | null;
   methodology?: ConceptMethodologyBlock | null;
   educational?: ConceptEducationalBlock | null;
   equipment?: ConceptEquipmentBlock | null;
@@ -346,8 +357,26 @@ export function loadConceptsByKind(kind: ConceptKind): ConceptFull[] {
   return listYamlFiles(dir)
     .map((f) => loadYamlFile<ConceptFull>(join(dir, f)))
     .filter((c): c is ConceptFull => c !== null)
-    .map((c) => ({ ...c, kind }))
+    .map((c) => ({ ...c, kind, diagrams: attachDiagramSvg(c.diagrams) }))
     .sort((a, b) => a.id.localeCompare(b.id));
+}
+
+/**
+ * Inline the SVG markup for each diagram declared on a concept.
+ * Diagram files live in /data/diagrams/. A missing file is skipped
+ * (the entry is dropped) rather than failing the build.
+ */
+function attachDiagramSvg(
+  diagrams: ConceptDiagram[] | null | undefined,
+): ConceptDiagram[] | null {
+  if (!diagrams || diagrams.length === 0) return null;
+  const out: ConceptDiagram[] = [];
+  for (const dg of diagrams) {
+    const path = join(DATA_DIR, 'diagrams', dg.file);
+    if (!existsSync(path)) continue;
+    out.push({ ...dg, svg: readFileSync(path, 'utf8') });
+  }
+  return out.length > 0 ? out : null;
 }
 
 /**

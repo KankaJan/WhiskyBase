@@ -225,6 +225,17 @@ equipment:
     - equipment/shell-and-tube-condenser         # TBD.
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: worm-tub.svg
+    alt: >-
+      Hand-drawn schematic of a worm tub: a tapered copper worm coiled
+      inside a water-filled tub, with vapour entering at the top and
+      condensed spirit running off at the base.
+    caption: 'A worm tub: the copper worm coiled in its water tub.'
+    source_id: null
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

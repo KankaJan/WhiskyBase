@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 540"
+     role="img" aria-labelledby="ppm-title ppm-desc"
+     class="wb-diagram">
+  <!-- WhiskyBase diagram: peating-measurement methods (2x2 matrix).
+       Style spec: docs/diagram-style.md. A matrix, not a bar chart:
+       the entry's core point is that the methods are NOT comparable,
+       so no shared numeric axis is drawn. Grounded on
+       peating-measurement-methods.yml body. -->
+  <title id="ppm-title">Peating measurement methods</title>
+  <desc id="ppm-desc">A two-by-two matrix of the four phenol
+    measurement methods. The horizontal axis is what is sampled,
+    malt stage versus bottled liquid; the vertical axis is the
+    output, individual compounds resolved versus a single total
+    assay. HPLC, GC-MS, 4-AAP colorimetry and Folin-Ciocalteu each
+    fall in a different quadrant.</desc>
+
+  <defs>
+    <filter id="sketch-ppm" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016"
+                    numOctaves="2" seed="31" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5"/>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke="currentColor" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round"
+     filter="url(#sketch-ppm)">
+    <path d="M180 90 L660 90 L660 470 L180 470 Z"/>
+    <path d="M420 90 L420 470"/>
+    <path d="M180 280 L660 280"/>
+  </g>
+
+  <g stroke="none" text-anchor="middle">
+    <!-- quadrant contents -->
+    <g fill="var(--text-color)" font-size="16" font-weight="600">
+      <text x="300" y="170">HPLC</text>
+      <text x="540" y="170">GC&#8211;MS</text>
+      <text x="300" y="360">4-AAP colorimetry</text>
+      <text x="540" y="360">Folin&#8211;Ciocalteu</text>
+    </g>
+    <g fill="var(--muted-color)" font-size="11.5">
+      <text x="300" y="194">modern industry default</text>
+      <text x="300" y="211">standard 7 phenols, malt</text>
+      <text x="540" y="194">resolves the bottled liquid</text>
+      <text x="540" y="211">mostly academic use</text>
+      <text x="300" y="384">older total-phenols assay</text>
+      <text x="300" y="401">misses p-cresol</text>
+      <text x="540" y="384">total phenolic equivalents</text>
+      <text x="540" y="401">rare in whisky context</text>
+    </g>
+    <!-- axis labels, outside the matrix -->
+    <g fill="var(--text-color)" font-size="13">
+      <text x="300" y="500">Malt-stage sample</text>
+      <text x="540" y="500">Bottled-liquid sample</text>
+    </g>
+    <g fill="var(--text-color)" font-size="13">
+      <text transform="rotate(-90 146 185)" x="146" y="185">Individual compounds</text>
+      <text transform="rotate(-90 146 375)" x="146" y="375">Single total assay</text>
+    </g>
+    <text x="420" y="527" fill="var(--muted-color)" font-size="12">
+      The methods measure different things — figures are not directly comparable.</text>
+  </g>
+</svg>

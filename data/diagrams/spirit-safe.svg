@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 430"
+     role="img" aria-labelledby="safe-title safe-desc"
+     class="wb-diagram">
+  <!-- WhiskyBase diagram: spirit safe (hand-drawn schematic).
+       Style spec: docs/diagram-style.md. Labels outside the figure;
+       leaders never cross a drawn line.
+       Grounded on Russell ed. 2022 Ch 14; see spirit-safe.yml source 1. -->
+  <title id="safe-title">Spirit safe</title>
+  <desc id="safe-desc">Schematic of a spirit safe: a glass-fronted
+    brass case carrying spirit hydrometers, through which the
+    distillate flows. A swivelling spout directs the flow between
+    two receivers, one for foreshots and feints, one for the
+    potable spirit.</desc>
+
+  <defs>
+    <filter id="sketch-spirit-safe" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015"
+                    numOctaves="2" seed="19" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke="currentColor" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round"
+     filter="url(#sketch-spirit-safe)">
+    <!-- brass case -->
+    <path d="M210 120 L490 120 L490 240 L210 240 Z"/>
+    <!-- glass front panel -->
+    <path d="M226 134 L474 134 L474 226 L226 226 Z" stroke-width="1.6"/>
+    <!-- hydrometers: glass jars with floats -->
+    <g stroke-width="1.8">
+      <path d="M262 146 L286 146 L286 216 L262 216 Z"/>
+      <circle cx="274" cy="180" r="6"/>
+      <path d="M274 174 L274 158"/>
+      <path d="M330 146 L354 146 L354 216 L330 216 Z"/>
+      <circle cx="342" cy="180" r="6"/>
+      <path d="M342 174 L342 158"/>
+      <path d="M398 146 L422 146 L422 216 L398 216 Z"/>
+      <circle cx="410" cy="180" r="6"/>
+      <path d="M410 174 L410 158"/>
+    </g>
+    <!-- distillate inlet -->
+    <path d="M120 90 L300 116"/>
+    <path d="M290 108 L302 117 L288 121"/>
+    <!-- swivelling spout -->
+    <path d="M392 240 L392 266 L432 284"/>
+    <path d="M422 278 L434 285 L424 294"/>
+    <!-- receiver bowls -->
+    <path d="M244 300 C244 346 344 346 344 300"/>
+    <path d="M396 300 C396 346 496 346 496 300"/>
+  </g>
+
+  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
+     stroke-linecap="round" filter="url(#sketch-spirit-safe)">
+    <path d="M150 66 C172 78 192 90 212 102"/>
+    <path d="M470 92 C448 110 430 124 414 142"/>
+    <path d="M192 199 L208 197"/>
+    <path d="M520 282 C488 283 458 284 436 284"/>
+    <path d="M294 378 L294 348"/>
+    <path d="M446 378 L446 348"/>
+  </g>
+
+  <g fill="var(--muted-color)" font-size="14" stroke="none">
+    <text x="30" y="58">Distillate from the condenser</text>
+    <text x="474" y="86">Spirit hydrometers</text>
+    <text x="24" y="200">Glass-fronted brass case</text>
+    <text x="526" y="286">Swivelling spout</text>
+    <text x="294" y="394" text-anchor="middle">Foreshots and feints</text>
+    <text x="446" y="394" text-anchor="middle">Potable spirit</text>
+  </g>
+</svg>

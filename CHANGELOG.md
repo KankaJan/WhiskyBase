@@ -9,6 +9,32 @@ covers them all.
 
 ---
 
+## [0.8.2] — 2026-05-22
+
+The `concept` schema gained an optional `diagrams` field — a list
+of `{file, alt, caption?, source_id?}` records attaching
+deterministic SVG diagrams to a concept page. The field is
+additive and optional, so it is a change within `concept.template.yml`
+v0.1 rather than a version promotion; existing entries without
+diagrams remain valid. `concept.template.yml` and
+`schema/json/concept.schema.json` carry the field; the site loader
+(`attachDiagramSvg`) inlines each SVG at build time and the
+concept detail page renders a `<figure>` with caption and source
+citation. Diagram files live in `data/diagrams/`; the authoring
+spec is `docs/diagram-style.md`. No other schema changes.
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.2
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.2
+- `cask.template.yml` v0.1
+- `supplier.template.yml` v0.1
+
+---
+
 ## [0.8.1] — 2026-05-21
 
 Verification policy change: a pre-commit hard-corruption gate.

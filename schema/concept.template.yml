@@ -262,6 +262,22 @@ glossary: null
 #                                  # (methodology page).
 
 
+# --- Diagrams ---------------------------------------------------------------
+# Optional. SVG diagrams that illustrate the page. Files live in
+# /data/diagrams/ and are inlined into the rendered page. A diagram
+# is a claim in visual form, so it is sourced like any other claim
+# (source_id points into the sources list below).
+diagrams: null
+# Shape when populated:
+#
+#   diagrams:
+#     - file: pot-still.svg      # filename in /data/diagrams/
+#       alt: |                   # REQUIRED. Accessibility text.
+#         Plain-language description of the diagram.
+#       caption: ...             # Display caption (may be null).
+#       source_id: 1             # Source the diagram is grounded on.
+
+
 # --- Sources ----------------------------------------------------------------
 # Same numbered-list pattern as elsewhere in the project. Reference
 # in any prose field via [1], [2], etc. The methodology block on

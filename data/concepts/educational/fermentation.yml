@@ -1,0 +1,110 @@
+# =============================================================================
+# Fermentation
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Stage wrapper — overview of the fermentation stage, linking its detail pages.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: fermentation
+title: Fermentation
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Fermentation is the stage that converts the wort's sugars
+      into alcohol. Cooled wort is run into a washback, pitched with
+      distiller's yeast, and fermented over several days into a
+      low-strength wash ready for distillation.
+
+
+body: |
+      Fermentation turns the sugary wort into an alcoholic wash.
+      This page is the overview.
+      
+      ## In the washback
+      
+      Cooled [wort](concept/glossary/wort) is run into a
+      [washback](concept/equipment/washback) and pitched with
+      [distiller's yeast](concept/glossary/distillers-yeast). The
+      general process is defined in
+      [fermentation](concept/glossary/fermentation): the yeast
+      metabolises the sugars into ethanol and carbon dioxide over
+      roughly two to four days, producing a [wash](concept/glossary/wash)
+      of about 7-9% ABV.
+      
+      ## Bacteria and flavour development
+      
+      The wort is not sterile and the wooden washbacks are not
+      sterilised, so [lactic acid bacteria](concept/glossary/lactic-acid-bacteria)
+      are active alongside the yeast — particularly in longer
+      fermentations, after the yeast has done its primary work — and
+      contribute to character. Fermentation is where many of the
+      whisky's [congeners](concept/glossary/congener) first form; the
+      classes of flavour compound are surveyed in
+      [aromatic-compounds-in-whisky](concept/educational/aromatic-compounds-in-whisky).
+      
+      ## See also
+      
+      - [whisky-production](concept/educational/whisky-production) —
+        the master overview.
+      - [distillation](concept/educational/distillation) — the stage
+        the wash feeds into.
+
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/whisky-production
+  - glossary/wort
+  - glossary/fermentation
+  - equipment/washback
+  - glossary/distillers-yeast
+  - glossary/lactic-acid-bacteria
+  - glossary/congener
+  - glossary/wash
+  - educational/distillation
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites:
+    - educational/whisky-production
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.), Whisky
+      and Other Spirits: Technology, Production and Marketing,
+      3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 12 (Russell & Stewart, distilling
+      yeast and fermentation) and Ch 13 (Wilson, contamination) cover
+      wort fermentation, the washbacks, the yeast, and the lactic acid
+      bacteria.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 5 (Fermentation) covers the conversion of sugars
+      to ethanol by Saccharomyces cerevisiae, congener formation, and
+      the role of lactobacilli.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

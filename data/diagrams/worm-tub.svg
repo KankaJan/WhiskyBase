@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 470"
+     role="img" aria-labelledby="worm-tub-title worm-tub-desc"
+     class="wb-diagram">
+  <!-- WhiskyBase diagram: worm tub (hand-drawn schematic).
+       Style spec: docs/diagram-style.md. Labels outside the figure;
+       leaders never cross a drawn line.
+       Grounded on equipment/worm-tub.yml body description. -->
+  <title id="worm-tub-title">Worm tub</title>
+  <desc id="worm-tub-desc">Schematic of a worm tub: a tapered
+    copper coil, the worm, submerged in a tub of water. Spirit
+    vapour enters the worm at the top; cold water enters the tub
+    low and warm water overflows at the top; condensed spirit runs
+    off at the base.</desc>
+
+  <defs>
+    <filter id="sketch-worm-tub" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015"
+                    numOctaves="2" seed="11" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke="currentColor" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round"
+     filter="url(#sketch-worm-tub)">
+    <!-- water tub -->
+    <ellipse cx="360" cy="142" rx="140" ry="28"/>
+    <path d="M220 142 L220 384"/>
+    <path d="M500 142 L500 384"/>
+    <path d="M220 384 C220 408 500 408 500 384"/>
+    <!-- water surface -->
+    <path d="M228 152 C228 164 492 164 492 152"/>
+    <!-- the worm: a tapered copper coil descending in the tub -->
+    <g stroke-width="2.2">
+      <path d="M310 120 C432 124 442 160 330 170
+               C262 178 262 208 388 216
+               C476 222 466 250 342 258
+               C284 264 292 290 380 298
+               C446 304 438 324 372 336
+               C336 342 344 358 372 368"/>
+    </g>
+    <!-- vapour inlet -->
+    <path d="M158 96 L308 120"/>
+    <path d="M298 111 L310 121 L296 124"/>
+    <!-- cold water inlet -->
+    <path d="M150 366 L222 354"/>
+    <path d="M210 348 L224 354 L212 362"/>
+    <!-- warm water overflow -->
+    <path d="M500 150 L572 134"/>
+    <path d="M560 128 L574 133 L562 142"/>
+    <!-- spirit outflow -->
+    <path d="M372 368 C372 388 372 402 384 408 L460 408"/>
+    <path d="M452 400 L462 409 L452 417"/>
+  </g>
+
+  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
+     stroke-linecap="round" filter="url(#sketch-worm-tub)">
+    <path d="M150 72 C168 80 184 88 204 100"/>
+    <path d="M598 252 C540 250 470 244 410 234"/>
+    <path d="M598 96 C580 108 566 116 552 126"/>
+    <path d="M152 412 C168 404 182 396 196 386"/>
+    <path d="M544 430 C520 424 494 418 470 412"/>
+  </g>
+
+  <g fill="var(--muted-color)" font-size="14" stroke="none">
+    <text x="146" y="68" text-anchor="end">Vapour from the lyne arm</text>
+    <text x="604" y="256">Tapered copper worm</text>
+    <text x="604" y="92">Warm water overflow</text>
+    <text x="148" y="428" text-anchor="end">Cold water in</text>
+    <text x="476" y="436">Spirit, to the spirit safe</text>
+  </g>
+</svg>

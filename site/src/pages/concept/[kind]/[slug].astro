@@ -77,6 +77,24 @@ const relatedLinks = (concept.related_concepts ?? []).map((ref) => ({
       </section>
     )}
 
+    {concept.diagrams && concept.diagrams.length > 0 && (
+      <section class="diagrams">
+        {concept.diagrams.map((dg) => (
+          <figure class="diagram-figure">
+            <div class="diagram" set:html={dg.svg} />
+            {dg.caption && (
+              <figcaption>
+                {dg.caption}
+                {dg.source_id != null && (
+                  <sup class="citation"><a href={`#source-${dg.source_id}`}>[{dg.source_id}]</a></sup>
+                )}
+              </figcaption>
+            )}
+          </figure>
+        ))}
+      </section>
+    )}
+
     {concept.kind === 'glossary' && concept.glossary && (
       <GlossaryBlock glossary={concept.glossary} />
     )}
@@ -147,5 +165,34 @@ const relatedLinks = (concept.related_concepts ?? []).map((ref) => ({
   .hint {
     color: var(--muted-color);
     font-size: 0.9rem;
+  }
+  .diagrams {
+    margin: 1.25rem 0;
+  }
+  .diagram-figure {
+    margin: 1rem 0;
+  }
+  .diagram {
+    color: var(--text-color);
+    border: 1px solid var(--rule-color);
+    background: var(--bg-alt);
+    padding: 1rem;
+  }
+  .diagram :global(svg) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  .diagram-figure figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--muted-color);
+  }
+  .diagram-figure figcaption sup.citation a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-size: 0.75rem;
+    vertical-align: super;
   }
 </style>

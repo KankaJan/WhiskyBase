@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 470"
+     role="img" aria-labelledby="washback-title washback-desc"
+     class="wb-diagram">
+  <!-- WhiskyBase diagram: washback (hand-drawn schematic).
+       Style spec: docs/diagram-style.md. Labels outside the figure;
+       leaders never cross a drawn line.
+       Grounded on Russell ed. 2022 Ch 12; see washback.yml source 1. -->
+  <title id="washback-title">Washback</title>
+  <desc id="washback-desc">Schematic of a washback: a tapered
+    wooden fermentation vessel bound with iron hoops, charged with
+    cooled wort and yeast, with a head of fermenting froth above
+    the liquid; the fermented wash runs off to the wash still.</desc>
+
+  <defs>
+    <filter id="sketch-washback" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015"
+                    numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke="currentColor" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round"
+     filter="url(#sketch-washback)">
+    <!-- tapered tub -->
+    <ellipse cx="350" cy="150" rx="130" ry="26"/>
+    <path d="M220 150 L245 380"/>
+    <path d="M480 150 L455 380"/>
+    <path d="M245 380 C245 400 455 400 455 380"/>
+    <!-- staves -->
+    <g stroke-width="1.6">
+      <path d="M283 153 L299 380"/>
+      <path d="M350 153 L350 382"/>
+      <path d="M417 153 L401 380"/>
+    </g>
+    <!-- iron hoops -->
+    <path d="M236 246 C268 262 432 262 464 246"/>
+    <path d="M244 326 C272 340 428 340 456 326"/>
+    <!-- liquid surface -->
+    <path d="M252 206 C252 218 448 218 448 206"/>
+    <!-- fermenting froth -->
+    <g stroke-width="2">
+      <path d="M256 200 Q276 180 296 200 Q316 180 336 200
+               Q356 180 376 200 Q396 180 416 200 Q436 180 446 198"/>
+    </g>
+    <!-- cooled wort and yeast inlet -->
+    <path d="M120 108 L300 142"/>
+    <path d="M290 133 L302 143 L288 146"/>
+    <!-- wash outlet -->
+    <path d="M452 360 L530 360 L530 392"/>
+    <path d="M522 383 L530 394 L538 383"/>
+  </g>
+
+  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
+     stroke-linecap="round" filter="url(#sketch-washback)">
+    <path d="M118 84 C140 96 162 108 186 122"/>
+    <path d="M540 132 C500 148 470 168 426 188"/>
+    <path d="M566 270 C530 264 505 260 470 254"/>
+    <path d="M140 300 C175 306 205 312 238 318"/>
+    <path d="M548 404 C548 392 544 380 536 372"/>
+  </g>
+
+  <g fill="var(--muted-color)" font-size="14" stroke="none">
+    <text x="114" y="80" text-anchor="end">Cooled wort and yeast</text>
+    <text x="572" y="128">Fermenting froth</text>
+    <text x="572" y="274">Iron hoops</text>
+    <text x="134" y="304" text-anchor="end">Wooden staves</text>
+    <text x="470" y="426">Wash, to the wash still</text>
+  </g>
+</svg>

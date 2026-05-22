@@ -228,6 +228,8 @@ unless asked.
 - `docs/source-conflict-policy.md` — full source policy.
 - `docs/voice-register.md` — full voice policy.
 - `docs/schema-design-notes.md` — schema design rationale.
+- `docs/diagram-style.md` — authoring spec for educational-page
+  SVG diagrams. Read before authoring or editing any diagram.
 - `docs/bibliography.md` — curated catalogue of in-depth,
   peer-reviewed, and institutional reference works. The project's
   positive sourcing standard (exclusion criteria included).

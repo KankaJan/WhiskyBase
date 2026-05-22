@@ -1,102 +1,111 @@
-tooling + data: pre-commit corruption gate, and Ardbeg (14th distillery)
+concepts: wrapper pages + the educational-page diagram set
 
-Two waves of work, committed together because they are entangled
-in the working tree (TODO.md carries Recently-Completed entries
-for both); a split would need git add -p on TODO.md for no real
-benefit.
+Two waves of work that had accumulated uncommitted on the working
+tree, committed together.
+
+Wave 1 — concept wrapper layer
+------------------------------
+
+Closes the wrapper-layer gap in the concept pages. The
+production-chain coverage build had completed the detail pages
+and given distillation and maturation cluster wrappers, but there
+was no top-level overview tying the whole chain together, and
+malting / mashing / fermentation had no stage wrapper. This wave
+adds the master overview and the three missing stage wrappers:
+
+- educational/whisky-production — the master "How Scotch whisky
+  is made" overview. Sequences the entire chain (raw materials,
+  malting, milling, mashing, fermentation, distillation,
+  maturation, blending/bottling, classification) and links every
+  stage. The natural encyclopedia entry point.
+- educational/malting, educational/mashing,
+  educational/fermentation — stage wrappers matching the existing
+  distillation and maturation wrappers; each a short overview
+  linking that stage's detail pages.
+
+All four at confidence: high, grounded on Russell 3rd ed. and
+Miller 2024. Densely cross-linked per the brief — every
+referenceable concept linked inline, not just in
+related_concepts. The distillation / maturation / blending
+wrappers were given back-links up to the new master so the
+hierarchy is navigable both ways. A stale "(queued)" reference to
+the Coffey-still page was fixed in educational/distillation — that
+page exists (Tier 2) and is now linked. Concept-page total
+81 -> 85.
+
+Wave 2 — educational-page diagram set
+-------------------------------------
+
+Authors the diagram set for the educational and equipment concept
+pages, against the pipeline proven by the pot-still pilot.
+
+- Schema: the concept schema gains an optional `diagrams:` field
+  (a list of {file, alt, caption?, source_id?}). Additive within
+  concept.template.yml v0.1; existing entries stay valid.
+  CHANGELOG [0.8.2].
+- Rendering: site/src/lib/data.ts inlines each diagram's SVG at
+  build time (attachDiagramSvg); the concept detail page renders
+  a <figure> with caption and source citation.
+- Ten SVGs in data/diagrams/, attached to their concept entries.
+- Authoring spec: docs/diagram-style.md, which codifies two
+  visual registers. Hardware and process schematics use a
+  hand-drawn sketch register — a pure-SVG feTurbulence +
+  feDisplacementMap wobble filter, no JavaScript, fixed seed for
+  determinism. Data graphs use a strict register — no filter,
+  precise axes, full grid, plotted exactly from a sourced figure.
+- The two strict data graphs — spirit-cut (DMTS through the
+  spirit-still run, after Miller Fig. 6.7) and
+  cask-maturation-kinetics (solids extraction vs cask age, after
+  Miller Fig. 8.11) — are emitted by the new committed generator
+  scripts/gen_data_diagrams.py, from data points digitised off
+  the cited figures. cask-maturation-kinetics gains a new
+  source 6 (Miller, Whisky Science 2nd ed., Ch 8, Fig. 8.11).
+
+Settled in this wave: pot-still, the production-chain flowchart,
+the peating-measurement matrix, both strict graphs. The six
+hardware schematics (mash-tun, washback, worm-tub,
+shell-and-tube-condenser, coffey-still, spirit-safe) are committed
+as first-draft checkpoints — a redraw is queued in TODO.md
+Beta-readiness against specific clarity feedback.
 
 Files
 -----
 
-Tooling:
-- scripts/check_writes.py (new)
-- scripts/hooks/pre-commit (new)
-- CLAUDE.md
-- CHANGELOG.md
-- README.md
+Wave 1:
+- data/concepts/educational/whisky-production.yml (new)
+- data/concepts/educational/malting.yml (new)
+- data/concepts/educational/mashing.yml (new)
+- data/concepts/educational/fermentation.yml (new)
+- data/concepts/educational/distillation.yml
+- data/concepts/educational/maturation.yml
+- data/concepts/educational/blending.yml
 
-Ardbeg data layer:
-- data/distilleries/ardbeg.yml (new)
-- data/distilleries/ardbeg.NOTES.md (new)
-- data/production_lines/ardbeg.yml (new)
-- data/bottlings/ardbeg-10.yml (new)
-- data/bottlings/ardbeg-uigeadail.yml (new)
-- data/bottlings/ardbeg-corryvreckan.yml (new)
+Wave 2:
+- data/diagrams/ (new — 10 SVGs)
+- scripts/gen_data_diagrams.py (new)
+- docs/diagram-style.md (new)
+- schema/concept.template.yml, schema/json/concept.schema.json
+  (diagrams field)
+- site/src/lib/data.ts, site/src/pages/concept/[kind]/[slug].astro
+- data/concepts/educational/{spirit-cut,cask-maturation-kinetics,
+  peating-measurement-methods}.yml (diagram blocks)
+- data/concepts/equipment/{pot-still,mash-tun,washback,worm-tub,
+  shell-and-tube-condenser,coffey-still,spirit-safe}.yml
+  (diagram blocks)
 
-Shared:
-- docs/handover.md
-- TODO.md
-
-Wave 1 - pre-commit hard-corruption gate
-----------------------------------------
-
-scripts/check_writes.py scans text files for the Windows <-> Linux
-mount-sync damage signatures (embedded NUL bytes, silent
-truncation, YAML parse failure) and exits non-zero on any
-finding. scripts/hooks/pre-commit runs it against the staged
-files and blocks the commit on a finding; activate per clone with
-git config core.hooksPath scripts/hooks. This is the project's
-first commit-blocking check - check_references.py stays warn-only
-for soft findings (dangling references, schema warnings).
-
-The gate caught a real pre-existing bug on its first run:
-README.md had been committed truncated in commit 7c212f2 (the
-last "Current state" table row and the closing sentence lost).
-README.md is repaired here, and its badly stale counts refreshed
-at the same time. CLAUDE.md's Verification section was rewritten
-to describe the two checks and their different severity;
-CHANGELOG.md gets a [0.8.1] entry (verification policy change, no
-schema change).
-
-Wave 2 - Ardbeg, the 14th distillery
-------------------------------------
-
-Adds Ardbeg as the fourteenth populated distillery - the fourth
-and final south-Islay heavily-peated distillery, completing the
-"Kildalton" peated cluster with Laphroaig, Lagavulin and Caol Ila.
-
-- Port Ellen, south-coast Islay; founded commercially 1815
-  (illicit distilling on the site reported from ~1794).
-- One of the most turbulent closure/revival histories in the
-  industry: mothballed 1981 under Hiram Walker, intermittent
-  1989-1996, rescued by Glenmorangie plc in 1997, acquired with
-  Glenmorangie plc by LVMH (Moet Hennessy) in December 2004.
-- Distinctive feature: a purifier on the spirit-still lyne arm,
-  uncommon on Islay; cross-referenced to glossary/reflux. A 2019
-  still house doubled the still count from one pair to two.
-- Bottlings: 10 Year Old (46% ABV, non-chill-filtered, natural
-  colour, ex-bourbon core); Uigeadail (NAS bourbon + oloroso-
-  sherry vatting, 54.2%); Corryvreckan (NAS bourbon + French-oak
-  vatting, 57.1%).
-
-Source conflicts are disclosed in ardbeg.NOTES.md: peating
-recorded at both the ~50 ppm specification and the ~55 ppm
-as-delivered average, not smoothed; annual capacity left null
-because the 2019 expansion doubled capacity and no clean
-producer-published post-expansion figure was found.
-
-Critical eval caught and fixed an unsourced "1959 - Distillers
-Company" ownership entry and a malt.source enum error
-(external -> bought_in) before verify. One tracked forward
-reference is introduced: ardbeg-corryvreckan cites
-french-oak-cask, a cask entry not yet written.
-
-Documentation
--------------
-
-- docs/handover.md section 10: counts updated (14 distilleries,
-  19 production lines, 42 bottlings) with Ardbeg blocks added;
-  the stale concept-page count refreshed 47 -> 81 to catch up the
-  production-chain build; Next priorities item 1 now the 15th
-  distillery (a Speyside heavyweight).
-- TODO.md - Recently Completed entries for both waves.
-- CHANGELOG.md [0.8.1] for the verification policy change.
+Docs:
+- CLAUDE.md, docs/handover.md, TODO.md, CHANGELOG.md
 
 Verification
 ------------
 
-- scripts/check_references.py: 177 files scanned, 0 JSON Schema
-  findings; all inline [N] citations resolve. One dangling
-  reference (french-oak-cask) - expected forward reference.
-- scripts/check_writes.py: clean on the full repo (no NUL bytes,
-  no truncation); self-tested against synthetic fixtures.
+- scripts/check_references.py: the run reports 12 JSON Schema
+  findings and one diagram source_id finding, all carrying the
+  documented Windows <-> Linux mount-sync staleness signatures
+  (truncated 'trade_' / '2026-0' values, missing schema_version
+  on files confirmed intact Windows-side). The Windows-side files
+  were verified intact. The authoritative gate is the
+  scripts/check_writes.py pre-commit hook, which runs Windows-side
+  against the staged files.
+- Inline [N] citations resolve; no new unexpected dangling
+  references.

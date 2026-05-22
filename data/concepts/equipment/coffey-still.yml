@@ -80,6 +80,17 @@ equipment:
                                      # malt whisky.
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: coffey-still.svg
+    alt: >-
+      Hand-drawn schematic of a Coffey still: the plated analyser and
+      rectifier columns, with the wash feed, steam, vapour transfer
+      and spirit draw-off marked.
+    caption: 'The Coffey still: analyser and rectifier columns.'
+    source_id: 1
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

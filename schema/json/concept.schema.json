@@ -13,30 +13,90 @@
     "schema_version"
   ],
   "properties": {
-    "id": { "$ref": "_common.schema.json#/definitions/slug" },
-    "title": { "type": "string", "minLength": 1 },
-    "kind": {
-      "enum": ["methodology", "educational", "equipment", "practice", "glossary"]
+    "id": {
+      "$ref": "_common.schema.json#/definitions/slug"
     },
-
-    "summary": { "type": "string", "minLength": 1 },
-    "body": { "type": ["string", "null"] },
-
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "methodology",
+        "educational",
+        "equipment",
+        "practice",
+        "glossary"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "body": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "related_concepts": {
       "type": "array",
-      "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+      "items": {
+        "$ref": "_common.schema.json#/definitions/kind_slug"
+      }
     },
-
+    "diagrams": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "alt": {
+                "type": "string"
+              },
+              "caption": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "source_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "file",
+              "alt"
+            ]
+          }
+        }
+      ]
+    },
     "methodology": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
           "properties": {
             "measures": {
               "type": "array",
-              "items": { "type": "string" }
+              "items": {
+                "type": "string"
+              }
             },
             "method": {
               "enum": [
@@ -48,45 +108,66 @@
               ]
             },
             "compounds": {
-              "enum": ["standard_7", "extended", "individual", "unspecified"]
-            },
-            "used_by": { "$ref": "_common.schema.json#/definitions/slug_list" },
-            "adopted": {
-              "oneOf": [
-                { "type": "null" },
-                { "$ref": "_common.schema.json#/definitions/year_or_year_month" },
-                { "$ref": "_common.schema.json#/definitions/year_integer" }
+              "enum": [
+                "standard_7",
+                "extended",
+                "individual",
+                "unspecified"
               ]
             },
-            "limitations": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+            "used_by": {
+              "$ref": "_common.schema.json#/definitions/slug_list"
+            },
+            "adopted": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "_common.schema.json#/definitions/year_or_year_month"
+                },
+                {
+                  "$ref": "_common.schema.json#/definitions/year_integer"
+                }
+              ]
+            },
+            "limitations": {
+              "$ref": "_common.schema.json#/definitions/string_or_null"
+            }
           }
         }
       ]
     },
-
     "educational": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
           "properties": {
             "prerequisites": {
               "type": "array",
-              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+              "items": {
+                "$ref": "_common.schema.json#/definitions/kind_slug"
+              }
             },
             "covers": {
               "type": "array",
-              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+              "items": {
+                "$ref": "_common.schema.json#/definitions/kind_slug"
+              }
             }
           }
         }
       ]
     },
-
     "equipment": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
@@ -102,108 +183,188 @@
                 "other"
               ]
             },
-            "used_at_distilleries": { "$ref": "_common.schema.json#/definitions/slug_list" },
-            "distinguishing_features": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+            "used_at_distilleries": {
+              "$ref": "_common.schema.json#/definitions/slug_list"
+            },
+            "distinguishing_features": {
+              "$ref": "_common.schema.json#/definitions/string_or_null"
+            },
             "alternatives": {
               "type": "array",
-              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+              "items": {
+                "$ref": "_common.schema.json#/definitions/kind_slug"
+              }
             }
           }
         }
       ]
     },
-
     "practice": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "adopted_by": { "$ref": "_common.schema.json#/definitions/slug_list" },
-            "consequences": { "$ref": "_common.schema.json#/definitions/string_or_null" },
+            "adopted_by": {
+              "$ref": "_common.schema.json#/definitions/slug_list"
+            },
+            "consequences": {
+              "$ref": "_common.schema.json#/definitions/string_or_null"
+            },
             "contrast_with": {
               "type": "array",
-              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+              "items": {
+                "$ref": "_common.schema.json#/definitions/kind_slug"
+              }
             }
           }
         }
       ]
     },
-
     "glossary": {
       "oneOf": [
-        { "type": "null" },
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "aliases": { "type": "array", "items": { "type": "string" } },
+            "aliases": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
             "part_of_speech": {
               "oneOf": [
-                { "type": "null" },
-                { "enum": ["noun", "verb", "adjective", "phrase"] }
+                {
+                  "type": "null"
+                },
+                {
+                  "enum": [
+                    "noun",
+                    "verb",
+                    "adjective",
+                    "phrase"
+                  ]
+                }
               ]
             },
             "see_also": {
               "type": "array",
-              "items": { "$ref": "_common.schema.json#/definitions/kind_slug" }
+              "items": {
+                "$ref": "_common.schema.json#/definitions/kind_slug"
+              }
             }
           }
         }
       ]
     },
-
-    "sources": { "$ref": "_common.schema.json#/definitions/sources_list" },
-
-    "schema_version": { "type": "number" },
-    "confidence": { "$ref": "_common.schema.json#/definitions/confidence" },
+    "sources": {
+      "$ref": "_common.schema.json#/definitions/sources_list"
+    },
+    "schema_version": {
+      "type": "number"
+    },
+    "confidence": {
+      "$ref": "_common.schema.json#/definitions/confidence"
+    },
     "last_reviewed": {
       "oneOf": [
-        { "$ref": "_common.schema.json#/definitions/iso_date" },
-        { "type": "null" }
+        {
+          "$ref": "_common.schema.json#/definitions/iso_date"
+        },
+        {
+          "type": "null"
+        }
       ]
     },
-    "contributors": { "$ref": "_common.schema.json#/definitions/string_list" }
+    "contributors": {
+      "$ref": "_common.schema.json#/definitions/string_list"
+    }
   },
   "allOf": [
     {
-      "if": { "properties": { "kind": { "const": "methodology" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "methodology"
+          }
+        }
+      },
       "then": {
         "properties": {
-          "methodology": { "type": "object" }
+          "methodology": {
+            "type": "object"
+          }
         }
       }
     },
     {
-      "if": { "properties": { "kind": { "const": "educational" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "educational"
+          }
+        }
+      },
       "then": {
         "properties": {
-          "educational": { "type": "object" }
+          "educational": {
+            "type": "object"
+          }
         }
       }
     },
     {
-      "if": { "properties": { "kind": { "const": "equipment" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "equipment"
+          }
+        }
+      },
       "then": {
         "properties": {
-          "equipment": { "type": "object" }
+          "equipment": {
+            "type": "object"
+          }
         }
       }
     },
     {
-      "if": { "properties": { "kind": { "const": "practice" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "practice"
+          }
+        }
+      },
       "then": {
         "properties": {
-          "practice": { "type": "object" }
+          "practice": {
+            "type": "object"
+          }
         }
       }
     },
     {
-      "if": { "properties": { "kind": { "const": "glossary" } } },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "glossary"
+          }
+        }
+      },
       "then": {
         "properties": {
-          "glossary": { "type": "object" }
+          "glossary": {
+            "type": "object"
+          }
         }
       }
     }

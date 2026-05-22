@@ -113,6 +113,17 @@ equipment:
     - equipment/worm-tub
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: shell-and-tube-condenser.svg
+    alt: >-
+      Hand-drawn schematic of a shell-and-tube condenser: a cylindrical
+      shell enclosing a bundle of copper tubes, with spirit vapour
+      passing through the tubes and cooling water through the shell.
+    caption: A shell-and-tube condenser and its copper tube bundle.
+    source_id: null
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

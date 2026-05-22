@@ -72,6 +72,17 @@ equipment:
   alternatives: []
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: washback.svg
+    alt: >-
+      Hand-drawn schematic of a wooden washback bound with iron hoops,
+      charged with cooled wort and yeast, with a head of fermenting
+      froth above the liquid.
+    caption: A wooden washback during fermentation.
+    source_id: 1
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

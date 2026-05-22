@@ -1,0 +1,164 @@
+# =============================================================================
+# How Scotch whisky is made
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Master overview / top-level wrapper for the production-chain concept
+# pages. Sequences the whole chain and links to every stage.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: whisky-production
+title: How Scotch whisky is made
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Scotch malt whisky is made in a fixed sequence of stages: malted
+  barley is milled, mashed with hot water to extract sugars,
+  fermented into a low-strength wash, distilled in copper pot
+  stills, and matured for years in oak casks. This page is the
+  master overview of that chain — each stage links to its own
+  detailed page.
+
+body: |
+  This is the top-level map of Scotch whisky production. Read it
+  start to finish for the whole picture, or follow any stage link
+  for the detail.
+
+  ## Raw materials
+
+  Malt whisky has only three permitted raw materials: malted
+  barley, water and yeast. The barley variety is chosen for
+  distilling yield (see [concerto](concept/glossary/concerto),
+  [optic](concept/glossary/optic), [propino](concept/glossary/propino)
+  and the heritage variety [bere](concept/glossary/bere));
+  [water](concept/glossary/water) is used as mashing liquor,
+  reduction water and coolant; and the yeast is the cultivated
+  [distiller's yeast](concept/glossary/distillers-yeast). Where
+  smoky character is wanted, [peat](concept/glossary/peat) is
+  burned during malting. Whisky made from other cereals — wheat
+  or maize with some malted barley — is
+  [grain whisky](concept/glossary/grain-whisky).
+
+  ## Malting
+
+  [Malting](concept/educational/malting) converts raw barley into
+  malt: the grain is steeped, germinated, and kiln-dried,
+  developing the starch-converting enzymes and (for peated malt)
+  taking up phenolic smoke character.
+
+  ## Milling and mashing
+
+  The malt is milled into grist and then
+  [mashed](concept/educational/mashing) — mixed with hot water in
+  a mash tun so the malt enzymes convert its starch into
+  fermentable sugars. The sweet liquid drawn off is
+  [wort](concept/glossary/wort).
+
+  ## Fermentation
+
+  [Fermentation](concept/educational/fermentation) in the
+  washback converts the wort's sugars into alcohol: cooled wort
+  is pitched with distiller's yeast and ferments over several
+  days into a [wash](concept/glossary/wash) of about 7-9% ABV.
+
+  ## Distillation
+
+  [Distillation](concept/educational/distillation) concentrates
+  the wash into spirit. Scotch malt whisky is distilled twice in
+  copper pot stills — the wash still then the spirit still — and
+  the distiller makes [the spirit cut](concept/educational/spirit-cut),
+  keeping only the middle fraction as
+  [new-make spirit](concept/glossary/new-make).
+
+  ## Maturation
+
+  [Maturation](concept/educational/maturation) is the years-long
+  rest in oak casks that turns new-make spirit into whisky — by
+  law at least three years. The cask is the single largest
+  influence on the finished flavour and colour.
+
+  ## Blending, bottling and classification
+
+  Matured whiskies are combined — see [vatting](concept/glossary/vatting)
+  and [blending](concept/educational/blending) — and bottled;
+  the presentation choices (strength, chill-filtering, colouring)
+  are covered by
+  [scotch-presentation-conventions](concept/educational/scotch-presentation-conventions).
+  How the result is labelled — [single malt](concept/glossary/single-malt),
+  blended, and the protected regions — is set by the
+  [Scotch Whisky Regulations](concept/educational/swa-regional-designations).
+
+  ## See also
+
+  - [distillation](concept/educational/distillation),
+    [maturation](concept/educational/maturation) — the two
+    most detailed stage clusters.
+  - [aromatic-compounds-in-whisky](concept/educational/aromatic-compounds-in-whisky)
+    — the flavour chemistry that runs through every stage.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/malting
+  - educational/mashing
+  - educational/fermentation
+  - educational/distillation
+  - educational/maturation
+  - educational/blending
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites: []                  # The entry point — no
+                                     # prerequisites.
+  covers: []                         # Master wrapper; detail lives
+                                     # in the linked stage pages.
+
+
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: whisky-production.svg
+    alt: >-
+      Flowchart of the Scotch malt whisky production chain: raw
+      materials, malting, milling and mashing, fermentation,
+      distillation, maturation, and blending and bottling.
+    caption: The Scotch malt whisky production chain.
+    source_id: 1
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.), Whisky
+      and Other Spirits: Technology, Production and Marketing,
+      3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 covers the whole production chain across
+      its chapters (raw materials and processing, water, distilling
+      yeast and fermentation, batch and grain distillation,
+      maturation, blending) — the structure this overview follows.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 3-8 trace the same chain — malting, mashing,
+      fermentation, distillation, maturation — as a connected
+      physical and chemical process.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

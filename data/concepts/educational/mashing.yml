@@ -1,0 +1,110 @@
+# =============================================================================
+# Mashing
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Stage wrapper — overview of the mashing stage, linking its detail pages.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: mashing
+title: Mashing
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+      Mashing is the stage that extracts fermentable sugars
+      from the malt. The malt is milled to grist, mixed with hot water
+      in a mash tun so its enzymes convert the starch to sugar, and the
+      sweet liquid — wort — is drained off ready for fermentation.
+
+
+body: |
+      Mashing is where the malt's starch becomes the sugar that
+      yeast will later ferment. This page is the overview.
+      
+      ## Milling
+      
+      First the malt is [milled](concept/glossary/milling) into grist —
+      cracked into husk, grits and flour in a controlled ratio, the
+      husk kept intact to form a filter bed later.
+      
+      ## In the mash tun
+      
+      The grist is mixed with hot water in the
+      [mash tun](concept/equipment/mash-tun). At the mashing
+      temperature the starch gelatinises and the malt's enzymes carry
+      out [saccharification](concept/glossary/saccharification) — the
+      conversion of starch into fermentable sugars. The conversion
+      depends on the malt's [diastatic power](concept/glossary/diastatic-power).
+      The general process is defined in [mashing](concept/glossary/mashing).
+      
+      ## Drawing off the wort
+      
+      The sweet liquid is separated from the spent grains by
+      [lautering](concept/glossary/lautering) — drained through the
+      husk filter bed — and further hotter [water](concept/glossary/water)
+      sparges recover the remaining extract. The result is
+      [wort](concept/glossary/wort), which is cooled and run to the
+      washback for [fermentation](concept/educational/fermentation).
+      
+      ## See also
+      
+      - [whisky-production](concept/educational/whisky-production) —
+        the master overview.
+      - [malting](concept/educational/malting) — the stage before.
+
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/whisky-production
+  - glossary/milling
+  - glossary/mashing
+  - equipment/mash-tun
+  - glossary/saccharification
+  - glossary/lautering
+  - glossary/wort
+  - educational/fermentation
+
+
+# --- Educational block ------------------------------------------------------
+educational:
+  prerequisites:
+    - educational/whisky-production
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I., Stewart, G. & Kellershohn, J. (eds.), Whisky
+      and Other Spirits: Technology, Production and Marketing,
+      3rd edition, Academic Press (Elsevier), 2022.
+    accessed: 2026-05-21
+    notes: |
+      Russell ed. 2022 Ch 10 (Bringhurst, Harrison & Brosnan)
+      covers milling, mashing and wort separation as the three malt
+      distillery processing stages.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-21
+    notes: |
+      Miller Ch 4 (Mashing) covers milling, gelatinisation,
+      saccharification by the malt enzymes, the energy balance, and
+      lautering.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: high
+last_reviewed: 2026-05-21
+contributors: []

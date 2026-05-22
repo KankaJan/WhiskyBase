@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 470"
+     role="img" aria-labelledby="mash-tun-title mash-tun-desc"
+     class="wb-diagram">
+  <!-- WhiskyBase diagram: mash tun (hand-drawn schematic).
+       Style spec: docs/diagram-style.md. Labels sit outside the
+       figure; leaders never cross a drawn line.
+       Grounded on Russell ed. 2022 Ch 10; see mash-tun.yml source 1. -->
+  <title id="mash-tun-title">Mash tun</title>
+  <desc id="mash-tun-desc">Schematic of a mash tun: a cylindrical
+    vessel charged with grist and hot water, stirred by rotating
+    rakes, with a slotted false floor under a grain-husk bed
+    through which the sweet wort drains off.</desc>
+
+  <defs>
+    <filter id="sketch-mash-tun" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015"
+                    numOctaves="2" seed="5" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke="currentColor" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round"
+     filter="url(#sketch-mash-tun)">
+    <!-- tun body -->
+    <ellipse cx="360" cy="165" rx="110" ry="24"/>
+    <path d="M250 165 L250 350"/>
+    <path d="M470 165 L470 350"/>
+    <path d="M250 350 C250 372 470 372 470 350"/>
+    <!-- slotted false floor -->
+    <g stroke-width="2">
+      <path d="M256 315 L464 315"/>
+      <path d="M286 315 L286 323"/>
+      <path d="M330 315 L330 323"/>
+      <path d="M374 315 L374 323"/>
+      <path d="M418 315 L418 323"/>
+    </g>
+    <!-- grain-husk bed -->
+    <g stroke-width="2">
+      <path d="M258 286 C312 279 414 293 462 284"/>
+      <path d="M258 301 C320 294 408 308 462 299"/>
+    </g>
+    <!-- rake shaft, arm and teeth -->
+    <path d="M360 125 L360 300"/>
+    <path d="M300 298 L420 298"/>
+    <g stroke-width="2">
+      <path d="M312 298 L310 312"/>
+      <path d="M344 298 L342 312"/>
+      <path d="M376 298 L374 312"/>
+      <path d="M408 298 L406 312"/>
+    </g>
+    <!-- grist and hot water inlet -->
+    <path d="M150 118 L296 150"/>
+    <path d="M286 141 L298 151 L284 154"/>
+    <!-- wort outlet from under the false floor -->
+    <path d="M470 330 L545 330 L545 360"/>
+    <path d="M537 351 L545 362 L553 351"/>
+  </g>
+
+  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
+     stroke-linecap="round" filter="url(#sketch-mash-tun)">
+    <path d="M132 96 C150 104 166 113 182 124"/>
+    <path d="M360 76 L360 118"/>
+    <path d="M566 318 C528 317 496 316 466 316"/>
+    <path d="M146 283 C186 285 224 287 256 289"/>
+    <path d="M540 402 C540 388 542 376 544 368"/>
+  </g>
+
+  <g fill="var(--muted-color)" font-size="14" stroke="none">
+    <text x="128" y="92" text-anchor="end">Grist and hot water</text>
+    <text x="360" y="64" text-anchor="middle">Rotating rakes</text>
+    <text x="572" y="321">Slotted false floor</text>
+    <text x="140" y="280" text-anchor="end">Grain-husk filter bed</text>
+    <text x="476" y="420">Wort, to the washback</text>
+  </g>
+</svg>

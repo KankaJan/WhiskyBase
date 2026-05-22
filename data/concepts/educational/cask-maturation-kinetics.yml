@@ -293,6 +293,22 @@ educational:
     - glossary/cask-strength
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: cask-maturation-kinetics.svg
+    alt: >-
+      Graph reproducing Miller's Fig. 8.11: dissolved solids
+      extracted into the spirit plotted against cask age in months;
+      the curve rises rapidly in the first year and slowly
+      thereafter. Points are means of 469 charred casks with
+      plus-or-minus two standard deviation error bars.
+    caption: >-
+      Dissolved solids extracted over cask maturation — rapid in the
+      first year, slow thereafter (after Miller, Whisky Science 2nd
+      ed., Fig. 8.11; means of 469 charred casks, error bars ±2σ).
+    source_id: 6
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1
@@ -375,6 +391,23 @@ sources:
       framework, the colour-and-extractive curves with cask
       reuse, and the lignin / hemicellulose / cellulose
       breakdown chemistry are all anchored in this chapter.
+
+
+  - id: 6
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-05-22
+    notes: |
+      Miller Ch 8 (Maturation), Fig. 8.11: dissolved solids for
+      469 charred casks plotted against age, means with ±2σ error
+      bars. The figure was digitised for the
+      cask-maturation-kinetics diagram. Miller's accompanying text
+      states that the solids increase rapidly in the first year and
+      more slowly thereafter; Miller in turn reproduces the
+      underlying dataset from his reference [111].
 
 
 # --- Metadata ---------------------------------------------------------------

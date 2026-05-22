@@ -114,6 +114,21 @@ educational:
   covers: []
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: spirit-cut.svg
+    alt: >-
+      Graph reproducing Miller's Fig. 6.7: the concentration of
+      dimethyl trisulphide in the condensate is highest in the
+      foreshots and the start of the run and falls steeply through
+      it; a shaded band marks the usual head-cut range.
+    caption: >-
+      DMTS concentration through the spirit-still run — why the
+      placement of the cut governs the sulphury character of the
+      spirit (after Miller, Whisky Science 2nd ed., Fig. 6.7).
+    source_id: 2
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

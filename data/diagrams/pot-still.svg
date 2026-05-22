@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 480"
+     role="img" aria-labelledby="pot-still-title pot-still-desc"
+     class="wb-diagram">
+  <!-- ===========================================================
+       WhiskyBase diagram: pot still (hand-drawn schematic).
+       Style conventions (the project diagram spec):
+         viewBox only, no fixed width or height, so it scales.
+         Structural line-work: stroke currentColor, fill none,
+         round joins and caps.
+         Hand-drawn sketch register via the turbulence
+         displacement filter; label text stays crisp, outside
+         the filter.
+         Labels sit OUTSIDE the figure bounding box; leader
+         lines travel through clear margin and never cross a
+         drawn line. No baked-in colours, so it inherits the
+         page theme.
+       Sourced from Russell ed. 2022 Ch 14 (Nicol), pot-still
+       component enumeration; see equipment/pot-still.yml source 1.
+       =========================================================== -->
+  <title id="pot-still-title">Pot still</title>
+  <desc id="pot-still-desc">Hand-drawn schematic of a pot still: a
+    pot over a heat source, a head and swan neck rising from it, a
+    lyne arm carrying vapour across to a worm-tub condenser, and
+    the spirit running off to the spirit safe. All labels sit
+    outside the drawing.</desc>
+
+  <defs>
+    <!-- Sketch filter: fractal-noise turbulence drives a
+         displacement map, wobbling strokes like a pen drawing.
+         Fixed seed, so the result is deterministic. Per-file id
+         to avoid collisions when several diagrams share a page. -->
+    <filter id="sketch-pot-still" x="-15%" y="-15%"
+            width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.015"
+                    numOctaves="2" seed="9" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+    </filter>
+  </defs>
+
+  <!-- ---- Figure line-work ---------------------------------- -->
+  <g fill="none" stroke="currentColor" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round"
+     filter="url(#sketch-pot-still)">
+
+    <!-- pot: a loose, slightly lumpy blob -->
+    <path d="M205 300 C190 262 210 222 250 210
+             C292 198 340 214 352 256
+             C360 292 344 332 300 346
+             C256 358 220 338 205 300 Z"/>
+
+    <!-- head and swan neck: tapering tube rising from the pot -->
+    <path d="M250 214 C252 170 262 142 278 122"/>
+    <path d="M308 210 C306 172 298 148 294 124"/>
+
+    <!-- lyne arm: tube from the neck top across to the condenser -->
+    <path d="M280 120 C355 108 442 116 474 150"/>
+    <path d="M296 132 C360 122 440 130 470 166"/>
+
+    <!-- worm-tub condenser: an upright tub -->
+    <ellipse cx="478" cy="158" rx="42" ry="13"/>
+    <path d="M436 158 C434 220 438 290 446 322"/>
+    <path d="M520 158 C522 220 518 290 510 322"/>
+    <path d="M446 322 C460 336 496 336 510 322"/>
+
+    <!-- the worm: a coiled pipe descending inside the tub -->
+    <g stroke-width="2">
+      <path d="M456 182 C518 178 518 206 458 208
+               C516 210 516 238 458 240
+               C516 242 516 270 458 272
+               C512 274 504 296 480 304"/>
+    </g>
+
+    <!-- spirit outflow with a small arrow head -->
+    <path d="M478 328 C478 344 474 358 486 368
+             C494 374 520 372 538 373"/>
+    <path d="M530 366 L540 373 L530 380"/>
+
+    <!-- heat source: simple flame peaks under the pot -->
+    <g stroke-width="2.3">
+      <path d="M240 374 L252 350 L264 374"/>
+      <path d="M268 374 L280 348 L292 374"/>
+      <path d="M296 374 L308 351 L320 374"/>
+    </g>
+  </g>
+
+  <!-- ---- Leader lines (margin to part, never crossing) ----- -->
+  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
+     stroke-linecap="round" filter="url(#sketch-pot-still)">
+    <path d="M156 300 C168 300 180 299 191 298"/>
+    <path d="M170 146 C205 150 232 158 251 168"/>
+    <path d="M384 80 C383 96 385 108 391 120"/>
+    <path d="M592 240 C566 240 544 241 521 243"/>
+    <path d="M540 416 C540 402 540 390 540 379"/>
+    <path d="M278 428 L278 384"/>
+  </g>
+
+  <!-- ---- Labels (crisp, outside the figure) ---------------- -->
+  <g fill="var(--muted-color)" font-size="14" stroke="none">
+    <text x="150" y="304" text-anchor="end">Pot</text>
+    <text x="165" y="134" text-anchor="end">Head and</text>
+    <text x="165" y="152" text-anchor="end">swan neck</text>
+    <text x="384" y="70" text-anchor="middle">Lyne arm</text>
+    <text x="598" y="244">Condenser</text>
+    <text x="278" y="444" text-anchor="middle">Heat source</text>
+    <text x="452" y="434">Spirit, to the spirit safe</text>
+  </g>
+</svg>

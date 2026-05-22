@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400"
+     role="img" aria-labelledby="prod-title prod-desc"
+     class="wb-diagram">
+  <!-- WhiskyBase diagram: the Scotch production chain (flowchart).
+       Style spec: docs/diagram-style.md. Hand-drawn sketch register.
+       Grounded on whisky-production.yml; see source 1. -->
+  <title id="prod-title">How Scotch whisky is made</title>
+  <desc id="prod-desc">Flowchart of the Scotch malt whisky
+    production chain: raw materials, malting, milling and mashing,
+    fermentation, distillation, maturation, and blending and
+    bottling, in sequence.</desc>
+
+  <defs>
+    <filter id="sketch-prod" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016"
+                    numOctaves="2" seed="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5"/>
+    </filter>
+  </defs>
+
+  <g fill="none" stroke="currentColor" stroke-width="2.5"
+     stroke-linejoin="round" stroke-linecap="round"
+     filter="url(#sketch-prod)">
+    <rect x="40" y="66" width="180" height="70" rx="10"/>
+    <rect x="250" y="66" width="180" height="70" rx="10"/>
+    <rect x="460" y="66" width="180" height="70" rx="10"/>
+    <rect x="670" y="66" width="180" height="70" rx="10"/>
+    <rect x="670" y="250" width="180" height="70" rx="10"/>
+    <rect x="460" y="250" width="180" height="70" rx="10"/>
+    <rect x="250" y="250" width="180" height="70" rx="10"/>
+    <!-- row 1 arrows -->
+    <path d="M220 101 L250 101"/>
+    <path d="M242 93 L251 101 L242 109"/>
+    <path d="M430 101 L460 101"/>
+    <path d="M452 93 L461 101 L452 109"/>
+    <path d="M640 101 L670 101"/>
+    <path d="M662 93 L671 101 L662 109"/>
+    <!-- turn down -->
+    <path d="M760 136 L760 250"/>
+    <path d="M752 242 L760 251 L768 242"/>
+    <!-- row 2 arrows (leftward) -->
+    <path d="M670 285 L640 285"/>
+    <path d="M648 277 L639 285 L648 293"/>
+    <path d="M460 285 L430 285"/>
+    <path d="M438 277 L429 285 L438 293"/>
+  </g>
+
+  <g fill="var(--text-color)" stroke="none" text-anchor="middle">
+    <g font-size="15" font-weight="600">
+      <text x="130" y="96">Raw materials</text>
+      <text x="340" y="107">Malting</text>
+      <text x="550" y="107">Milling and mashing</text>
+      <text x="760" y="107">Fermentation</text>
+      <text x="760" y="280">Distillation</text>
+      <text x="550" y="280">Maturation</text>
+      <text x="340" y="291">Blending and bottling</text>
+    </g>
+    <g font-size="11.5" fill="var(--muted-color)">
+      <text x="130" y="115">barley, water, yeast</text>
+      <text x="760" y="299">the spirit cut</text>
+      <text x="550" y="299">at least 3 years in oak</text>
+    </g>
+  </g>
+</svg>

@@ -195,6 +195,17 @@ educational:
                                        # the relevant section here.
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: peating-measurement-methods.svg
+    alt: >-
+      A two-by-two matrix placing the four phenol-measurement methods
+      by what is sampled (malt versus bottled liquid) and output
+      (individual compounds versus a single total assay).
+    caption: The four phenol-measurement methods, by sample stage and output.
+    source_id: null
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

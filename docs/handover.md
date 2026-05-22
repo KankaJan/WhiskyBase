@@ -445,10 +445,13 @@ back rather than absorbing it into the data model.
   Solera-Vat vatting processes, not separate recipes),
   1 Ardbeg (medium — heavily-peated Islay default; long
   fermentation; the spirit-still purifier).
-- 81 concept pages: 3 methodology, 13 educational, 8 equipment,
+- 85 concept pages: 3 methodology, 17 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
-  coverage build added 34 pages across three tiers, completing
-  the technical backbone (distillation, malting, mashing,
+  coverage build added 34 pages across three tiers; a master
+  overview (`whisky-production`) and three stage wrappers
+  (`malting`, `mashing`, `fermentation`) were then added to
+  complete the wrapper layer, so every production stage has one
+  overview page. Together these complete the technical backbone (distillation, malting, mashing,
   fermentation, maturation, blending, and the supporting
   glossary terms). See the TODO "production-chain coverage
   queue" and the per-kind concept sub-indexes for the full list.
@@ -610,6 +613,26 @@ design. The grouped-list pattern matches `casks/index` and the
 concept sub-indexes. This is the established pattern for any future
 flat-table index that outgrows readability.
 
+**Educational-page diagrams (2026-05-22):** the diagram pipeline
+is proven and a full set of 10 deterministic SVGs now lives in
+`data/diagrams/`, attached to their concept pages via the
+optional `diagrams:` schema field. The loader (`attachDiagramSvg`)
+inlines each SVG at build time; the concept detail page renders a
+`<figure>` with caption and source citation. Two visual
+registers, codified in `docs/diagram-style.md`: hardware and
+process schematics use a hand-drawn sketch register (a pure-SVG
+`feTurbulence` + `feDisplacementMap` wobble filter, no
+JavaScript, fixed seed); data graphs use a strict register — no
+filter, precise axes, full grid, plotted exactly from a sourced
+figure. The two strict graphs (`spirit-cut`,
+`cask-maturation-kinetics`) reproduce Miller Figs. 6.7 and 8.11
+and are emitted by `scripts/gen_data_diagrams.py`. Settled:
+pot-still, the production-chain flowchart, the peating-measurement
+matrix, both strict graphs. The six hardware schematics
+(mash-tun, washback, worm-tub, shell-and-tube-condenser,
+coffey-still, spirit-safe) are committed as first-draft
+checkpoints; a redraw is queued in `TODO.md` Beta-readiness.
+
 **Next priorities, in order of unblock value:**
 
 1. **Data-layer growth — 15th distillery.** Ardbeg landed
@@ -619,7 +642,7 @@ flat-table index that outgrows readability.
    Glenlivet for market scale, or Macallan for the sherry-led
    house style; both carry heavier brand-positioning prose than
    Glenfiddich did, so budget for the voice-register pass. The
-   production-chain concept backbone is now complete (81 concept
+   production-chain concept backbone is now complete (85 concept
    pages), so a new distillery slots into a full cross-reference
    set.
 2. **Residual sourcing follow-ups.** The second-academic-source
@@ -742,6 +765,10 @@ Load-bearing docs (in addition to this one):
 - `docs/source-conflict-policy.md` — source reliability hierarchy,
   Wikipedia-volatility policy, source-type vocabulary.
 - `docs/schema-design-notes.md` — schema design rationale.
+- `docs/diagram-style.md` — authoring spec for the deterministic
+  SVG diagrams (theme-driven, sourced, version-controlled as
+  text). The concept schema carries an optional `diagrams:` list;
+  files live in `data/diagrams/`.
 - `TODO.md` — active backlog. The Research Requests section
   catalogues entries currently citing Wikipedia where a primary
   source upgrade is available.

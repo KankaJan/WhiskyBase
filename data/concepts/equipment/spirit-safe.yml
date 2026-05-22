@@ -66,6 +66,17 @@ equipment:
   alternatives: []
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: spirit-safe.svg
+    alt: >-
+      Hand-drawn schematic of a spirit safe: a glass-fronted brass case
+      carrying spirit hydrometers, with a swivelling spout directing the
+      distillate between two receivers.
+    caption: The spirit safe, where the cut is judged.
+    source_id: 1
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

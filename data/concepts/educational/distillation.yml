@@ -66,9 +66,10 @@ body: |
 
   The [pot still](concept/equipment/pot-still) works one charge at
   a time and is universal for Scotch malt whisky. Grain whisky is
-  instead distilled in the continuous column (Coffey) still, which
-  runs without interruption and reaches higher strength in a
-  single pass; it is the subject of a separate page (queued).
+  instead distilled in the continuous-column
+  [Coffey still](concept/equipment/coffey-still), which runs
+  without interruption and reaches higher strength in a single
+  pass.
 
   ## Still design and character
 
@@ -93,12 +94,14 @@ body: |
 
 # --- Related Concepts -------------------------------------------------------
 related_concepts:
+  - educational/whisky-production
   - equipment/pot-still
   - educational/spirit-cut
   - glossary/wash-still
   - glossary/spirit-still
   - glossary/low-wines
   - practice/triple-distillation
+  - equipment/coffey-still
 
 
 # --- Educational block ------------------------------------------------------

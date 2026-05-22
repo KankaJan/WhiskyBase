@@ -75,6 +75,7 @@ body: |
 
 # --- Related Concepts -------------------------------------------------------
 related_concepts:
+  - educational/whisky-production
   - educational/cask-maturation-kinetics
   - educational/cask-fill-states
   - educational/warehousing

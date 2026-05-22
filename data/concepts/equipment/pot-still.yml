@@ -97,6 +97,17 @@ equipment:
                                      # whisky); page queued.
 
 
+# --- Diagrams ---------------------------------------------------------------
+diagrams:
+  - file: pot-still.svg
+    alt: |
+      Schematic of a pot still: a bulbous pot over a heat source, a
+      tapering head and swan neck, a lyne arm carrying vapour to a
+      vertical condenser, and the spirit outflow.
+    caption: The principal components of a pot still.
+    source_id: 1
+
+
 # --- Sources ----------------------------------------------------------------
 sources:
   - id: 1

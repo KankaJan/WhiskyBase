@@ -1,8 +1,109 @@
 # TODO
 
-Active queue for the WhiskyBase project. Items roughly ordered by what
-unblocks the most downstream work. Add new items at the bottom of the
-relevant section.
+Active queue for the WhiskyBase project.
+
+**Structure (revised 2026-05-21).** The first section —
+**Beta-readiness** — is the active priority: it lists everything
+that must land before a public beta. When that section is empty,
+the project is at public beta and the only continuing track is
+data growth: adding distilleries, production lines and bottlings
+(see `docs/handover.md` section 10, Next priorities). Everything
+below Beta-readiness is either that ongoing data-growth work or
+post-beta / deferred quality work (sourcing upgrades, schema
+refinements, distillery-specific concept pages) — none of it
+blocks beta. Add new items to the appropriate section.
+
+---
+
+## Beta-readiness
+
+The must-do set before a public beta. The technical / educational
+concept backbone is already complete — 85 concept pages, the full
+production-chain coverage plus the wrapper layer (see Recently
+Completed). The items here are the public-facing, deployment and
+visual work *around* that content.
+
+### Deployment and CI
+
+- **No deployment exists.** The Astro site builds locally but is
+  not hosted anywhere. A public beta needs a build-and-publish
+  path: a GitHub Actions workflow (or equivalent) that builds
+  `/site/`, runs the Pagefind index step, and deploys (GitHub
+  Pages is the natural fit). BLOCKER.
+- **Re-run and verify the full site build.** It has not been
+  rebuilt since roughly 90 new pages landed (the 34
+  production-chain concept pages, the 4 wrapper pages, the Ardbeg
+  distillery set). Confirm every new page renders and that
+  Pagefind indexes them.
+- Optional: a CI check running `check_references.py` and
+  `check_writes.py` on push — the pre-commit hook covers local
+  commits, CI covers anything that bypasses it.
+
+### Public-facing docs and site hygiene
+
+- **`docs/contributing.md` is a stub.** The contribution model is
+  "PRs are the proposal queue"; for a public project that page
+  must be real — how to propose an entry, the schema templates,
+  the voice register, the sourcing policy, how check_references /
+  check_writes are run. BLOCKER for a PR-based public project.
+- Wire an **About page** into the site — `docs/about.md` exists
+  but there is no `/about` route.
+- **Site hygiene:** 404 page, favicon, meta / OpenGraph tags for
+  link sharing, a privacy note, a mobile-layout check.
+
+### Educational-page diagrams
+
+- **Status (2026-05-22): all planned diagrams drafted.** The
+  pipeline — the optional `diagrams:` schema field, the
+  `attachDiagramSvg` loader inlining each SVG at build time, and
+  the `<figure>` + caption + source-citation rendering on the
+  concept detail page — is proven and now exercised by a full
+  set of 10 SVGs in `data/diagrams/`. Authoring spec:
+  `docs/diagram-style.md`. AI image generation was considered and
+  rejected for technical diagrams: unsourceable,
+  hallucination-prone, cannot plot real data.
+- **Two visual registers** (see the spec). Hardware and process
+  schematics use a hand-drawn sketch register — a pure-SVG
+  `feTurbulence` + `feDisplacementMap` wobble filter, no
+  JavaScript, fixed seed for determinism. Data graphs use a
+  strict register: no filter, precise axes, full grid, plotted
+  exactly from a sourced figure.
+- **Settled.** The pot-still schematic; the production-chain
+  flowchart (`educational/whisky-production`); the
+  peating-measurement matrix
+  (`educational/peating-measurement-methods`); and the two strict
+  data graphs — `spirit-cut` (DMTS through the spirit-still run,
+  after Miller Fig. 6.7) and `cask-maturation-kinetics` (solids
+  extraction vs cask age, after Miller Fig. 8.11), emitted by the
+  committed `scripts/gen_data_diagrams.py` from data points
+  digitised off the cited figures.
+- **Remaining: 6 hardware-schematic redraws.** The first drafts
+  of mash-tun, washback, worm-tub, shell-and-tube-condenser,
+  coffey-still and spirit-safe are committed as a checkpoint but
+  were reviewed as not yet clear enough. Redraw queue:
+  - mash-tun — clearer cross-section: distinct false-bottom
+    plate, visible rake gear, domed top.
+  - washback — taller upright vessel (not a bucket); add the
+    switcher.
+  - worm-tub — the worm as a prominent descending coil, with
+    counter-current cooling-water flow shown.
+  - shell-and-tube-condenser — proper heat-exchanger look: end
+    caps / bonnets, tube bundle, tube sheets, water nozzles.
+  - coffey-still — fix the "Vapour transfer" label / sketch
+    overlap; reduce clutter.
+  - spirit-safe — add detail: brass stand / legs, more glass
+    panels, taps, test cups.
+- **Photographs** (distilleries, stills, casks) are deferred:
+  copyright / CC-licensing complexity. A beta ships text +
+  diagrams; photographs are a post-beta enrichment via
+  CC-licensed sources (Wikimedia Commons, Geograph).
+
+### Data sweep (minor — not blockers)
+
+- Populate the `french-oak-cask` cask entry — the forward
+  reference introduced by `ardbeg-corryvreckan`.
+- Delete the `signatory-caol-ila-stub` empty-YAML tombstone from
+  the Windows shell.
 
 ---
 
@@ -817,6 +918,49 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-05-22** Educational-page diagrams — the diagram set for
+  the educational and equipment concept pages. The pipeline
+  (optional `diagrams:` schema field, `attachDiagramSvg` loader
+  inlining, `<figure>` rendering on the concept detail page) was
+  proven earlier; this wave authored the full set of 10 SVGs in
+  `data/diagrams/` and attached them to their concept entries.
+  Two visual registers, codified in `docs/diagram-style.md`:
+  hardware / process schematics use a hand-drawn sketch register
+  (pure-SVG `feTurbulence` + `feDisplacementMap` wobble filter,
+  no JavaScript, fixed seed for determinism); data graphs use a
+  strict register — no filter, precise axes, full grid, plotted
+  exactly from a sourced figure. The two strict graphs —
+  `spirit-cut` (DMTS through the spirit-still run, after Miller
+  Fig. 6.7) and `cask-maturation-kinetics` (solids extraction vs
+  cask age, after Miller Fig. 8.11) — are emitted by the new
+  committed `scripts/gen_data_diagrams.py` from data points
+  digitised off the cited figures. Settled: pot-still, the
+  production-chain flowchart, the peating-measurement matrix,
+  both strict graphs. The 6 hardware schematics (mash-tun,
+  washback, worm-tub, shell-and-tube-condenser, coffey-still,
+  spirit-safe) are committed as first-draft checkpoints — a
+  redraw is queued under Beta-readiness. The concept schema
+  gained the optional `diagrams` field (additive within v0.1);
+  CHANGELOG [0.8.2].
+- **2026-05-21** Master overview + stage wrappers — 4 educational
+  pages closing the wrapper-layer gap. `educational/whisky-production`
+  is the master "How Scotch whisky is made" overview: it sequences
+  the entire production chain (raw materials -> malting -> milling
+  -> mashing -> fermentation -> distillation -> maturation ->
+  blending/bottling) and links every stage. Plus the three stage
+  wrappers that were missing — `educational/malting`,
+  `educational/mashing`, `educational/fermentation` (distillation
+  and maturation already had wrappers). The wrapper layer is now
+  complete and symmetric: every production stage has one overview
+  page, and the master ties them together. Densely cross-linked
+  per the brief — every referenceable concept linked inline — and
+  the distillation / maturation / blending wrappers were given
+  back-links up to the master so the hierarchy is navigable both
+  ways. Also fixed a stale "(queued)" reference in
+  `educational/distillation`: the Coffey-still page exists (Tier 2)
+  and is now linked. All four new pages `confidence: high`
+  (Russell 3rd ed. + Miller). check_references clean (181 files,
+  0 schema findings). Concept-page total 81 -> 85.
 - **2026-05-21** Ardbeg — 14th distillery. 1 distillery +
   1 production line + 3 bottlings + a NOTES.md. Port Ellen,
   south-coast Islay; completes the four-distillery south-Islay
