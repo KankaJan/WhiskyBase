@@ -78,11 +78,14 @@ equipment:
 diagrams:
   - file: mash-tun.svg
     alt: >-
-      Hand-drawn schematic of a mash tun: a cylindrical vessel charged
-      with grist and hot water, stirred by rotating rakes, over a
-      slotted false floor and grain-husk bed through which the wort
-      drains off.
-    caption: The mash tun and its grain-husk filter bed.
+      Cross-section schematic of a lauter-style mash tun: a domed
+      cylindrical vessel with a drive gearbox on top turning a central
+      shaft that carries a rotating rake; the rake stirs a bed of
+      crushed grain (grist and husks) resting on a perforated false
+      bottom; sweet wort drains through the bed and the plate into the
+      sump below, then off to the washback. Grist and hot water enter
+      near the top.
+    caption: "The mash tun in cross-section: rake, grain-husk bed, false bottom."
     source_id: 1
 
 

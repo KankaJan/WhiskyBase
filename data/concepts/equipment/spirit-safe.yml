@@ -70,10 +70,15 @@ equipment:
 diagrams:
   - file: spirit-safe.svg
     alt: >-
-      Hand-drawn schematic of a spirit safe: a glass-fronted brass case
-      carrying spirit hydrometers, with a swivelling spout directing the
-      distillate between two receivers.
-    caption: The spirit safe, where the cut is judged.
+      Cross-section schematic of a spirit safe: a glass-fronted brass
+      case mounted on a brass stand. Three glass panels divided by
+      brass mullions front the case; two brass taps on top admit test
+      water. Inside, three test cups each carry a spirit hydrometer
+      floating in distillate. Distillate enters from the condenser via
+      a pipe at the top; a swivelling spout below the case directs the
+      run between two floor-level receivers — one for foreshots and
+      feints, one for the potable spirit.
+    caption: "The spirit safe in cross-section: stand, glass panels, taps, test cups, and the swivelling spout."
     source_id: 1
 
 

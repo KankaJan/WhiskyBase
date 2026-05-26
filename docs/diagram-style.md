@@ -9,40 +9,62 @@ plot real data — see `TODO.md` Beta-readiness for the rationale.
 This document is the authoring spec. The reference
 implementation is `data/diagrams/pot-still.svg`.
 
-## Two visual registers
+## Three visual registers
 
-WhiskyBase diagrams use **two** registers, chosen by what the
-diagram is.
+WhiskyBase diagrams use **three** registers, chosen by what the
+diagram is doing.
 
-**Hardware and process schematics** — the pot still, mash tun,
-washback, worm tub, the production-chain flowchart — use a
-deliberate **hand-drawn sketch** register: the look of an expert
-sketching on paper to illustrate "this is the thing we are
-discussing." They are explicitly **not** precision blueprints.
+**External-assembly schematics** — the pot still, the
+production-chain flowchart, the peating-measurement matrix — use
+a deliberate **hand-drawn sketch** register: the look of an
+expert sketching on paper to illustrate "this is the thing we
+are discussing." The wobble breathes against parts that are
+spatially distinct and have margin between them.
+
+**Cross-section schematics** — the mash tun, the washback, the
+worm tub, the shell-and-tube condenser, the Coffey-still
+columns, the spirit safe — use a **technical-schematic**
+register: clean lines, no filter, same theme tokens as the other
+registers. Cross-sections show things-inside-things, and the
+sketch register's displacement filter smears interior strokes
+(tube bundles, perforation marks, internal coils, switcher arms)
+into the walls that contain them. Clean lines keep the interior
+legible.
 
 **Technical data graphs** — the spirit cut, cask-maturation
 kinetics — use a **strict** register: precise axes, real tick
 values, no wobble filter. Where a diagram plots data it must be
 plotted *exactly* from a sourced figure (see "Data graphs"
-below). Rule of thumb: hand-drawn is fine for hardware, but where
-a diagram gets technical, keep it strict.
+below).
 
-The rest of this section concerns the hand-drawn schematics.
+Rule of thumb for picking a register: distinct parts laid out
+spatially → sketch. A slice through equipment with interior
+detail → technical-schematic. Plotted data → strict.
 
-This is not only an aesthetic choice — it is honest about what
-the diagrams are. A concept-page schematic (the pot still, the
-mash tun) is generic and indicative, not to scale. Pot stills
-vary enormously between distilleries, and that variation is
-itself a teaching point; there is no single canonical geometry
-to draw. A crisp dimensioned blueprint would signal a precision
-the drawing does not have, and would require measurements the
-project does not hold: the distillery `stills` data carries
-volumes (`capacity_litres`) sparsely and almost no geometry
-(`height_m` is null for nearly every entry; `lyne_arm_angle` is
-descriptive — "ascending" / "descending" — not a numeric angle).
-A measured blueprint would therefore mean fabricating numbers,
-which the sourcing policy forbids. The wobbly sketch line is the
-register that matches the evidence: indicative, not metrological.
+The choice of register is not only aesthetic — it is honest
+about what the diagrams are. A concept-page schematic (the pot
+still, the mash tun) is generic and indicative, not to scale.
+Pot stills vary enormously between distilleries, and that
+variation is itself a teaching point; there is no single
+canonical geometry to draw. A crisp dimensioned blueprint would
+signal a precision the drawing does not have, and would require
+measurements the project does not hold: the distillery `stills`
+data carries volumes (`capacity_litres`) sparsely and almost no
+geometry (`height_m` is null for nearly every entry;
+`lyne_arm_angle` is descriptive — "ascending" / "descending" —
+not a numeric angle). A measured blueprint would therefore mean
+fabricating numbers, which the sourcing policy forbids.
+
+What signals "indicative, not metrological" is the **absence of
+dimensions** — no millimetre annotations, no scale bar, no
+hatching that implies material specification, no tolerances.
+Both the sketch and the technical-schematic registers honour
+that by carrying none of those. The sketch register adds a
+wobble on top as an aesthetic cue that says "this is
+indicative", which reads well when parts are spatially separate.
+The technical-schematic register relies on the absence alone,
+which is the readable choice when interior detail must stay
+legible.
 
 A true measured blueprint is only defensible for a *specific
 named still* backed by sourced dimensions — not for the generic
@@ -86,8 +108,8 @@ concept-page diagrams. It is not planned for beta.
 
 ## The sketch filter
 
-This applies to hardware and process schematics only; the
-strict data graphs carry no filter.
+This applies to the **sketch register only**. Technical-schematic
+diagrams and strict data graphs carry no filter.
 
 The hand-drawn finish is produced by a pure-SVG filter — no
 library, no JavaScript. A `feTurbulence` node generates a fixed
@@ -120,6 +142,45 @@ stroke sideways by an amount sampled from that noise:
   diagrams may be inlined into one page; a shared `id` would
   collide.
 
+## Technical-schematic conventions
+
+Applies to cross-section diagrams only — the mash tun, the
+washback, the worm tub, the shell-and-tube condenser, the
+Coffey-still columns, the spirit safe.
+
+- **No filter.** The root `<svg>` has no `<defs>` block carrying
+  a turbulence/displacement filter, and no `filter=` attribute on
+  any element. Strokes are clean.
+- **Same theme tokens as the other registers.** Structural
+  line-work: `stroke="currentColor"`, `fill="none"`,
+  `stroke-width="2.5"`, round joins and caps. Labels and leaders
+  in `var(--muted-color)`. The shared markup conventions from
+  the "Markup conventions" section above still apply.
+- **No dimensions, no scale bar, no material hatching.** A
+  cross-section diagram in this register MUST NOT carry
+  millimetre annotations, a north arrow, a scale bar, ANSI/ISO
+  material hatching (diagonal patterns signalling "this is steel"
+  or "this is brick"), or tolerances. The indicative nature of
+  the diagram is signalled by the *absence* of these things.
+- **Generic indicative proportions.** Aspect ratios, plate
+  counts, tube counts, coil turns and similar are illustrative,
+  not numerically faithful to any specific named vessel.
+- **Stroke-weight hierarchy.** Use the main 2.5 weight for the
+  primary structure (vessel walls, principal pipes). 2.0 for
+  secondary interior structure (tube bundles, internal coils,
+  rake arms). 1.7-1.8 for fine internal detail (slot ticks on
+  plates, stippled hatching for grain or liquid surface).
+- **Cross-section cuts.** Vessel walls are treated as cut
+  surfaces. By engineering convention a leader to an interior
+  part may pass through the cut to terminate at the part inside
+  the vessel. Leaders to exterior parts still avoid crossing any
+  drawn line, per "Markup conventions".
+- **If you find yourself wanting wobble**, the diagram is
+  probably in the wrong register — move it to sketch. If you
+  find yourself wanting a scale bar or dimensions, the diagram
+  has crossed into measured-blueprint territory and is out of
+  scope for the project's data coverage.
+
 ## Sourcing
 
 A diagram is a claim like any other. Its schematic content must
@@ -133,15 +194,21 @@ reword to avoid it.
 
 ## Diagram types
 
-- **Schematics** (pot still, mash tun) — hand-authored outline
-  drawings with labelled components.
-- **Data graphs** (the spirit cut, cask-maturation kinetics) —
-  strict register, no sketch filter. Plotted *exactly* from a
-  sourced figure: the data points are digitised from the cited
-  work and held in `scripts/gen_data_diagrams.py`, which emits
-  the SVG. Re-run that script after any data change. The
-  spirit-cut and cask-maturation graphs reproduce Miller, Whisky
-  Science 2nd ed. (2024), Figs. 6.7 and 8.11 respectively.
+- **External-assembly schematics** — sketch register.
+  Examples: the pot still, the production-chain flowchart, the
+  peating-measurement-methods matrix.
+- **Cross-section schematics** — technical-schematic register
+  (clean lines, no filter, generic indicative proportions).
+  Examples: the mash tun, the washback, the worm tub, the
+  shell-and-tube condenser, the Coffey-still columns, the
+  spirit safe.
+- **Data graphs** — strict register, no filter. Plotted
+  *exactly* from a sourced figure: the data points are digitised
+  from the cited work and held in
+  `scripts/gen_data_diagrams.py`, which emits the SVG. Re-run
+  that script after any data change. The spirit-cut and
+  cask-maturation graphs reproduce Miller, Whisky Science 2nd
+  ed. (2024), Figs. 6.7 and 8.11 respectively.
 
   Every data graph must carry, without exception: a described
   label on **every** axis (the quantity *and* its unit, e.g.

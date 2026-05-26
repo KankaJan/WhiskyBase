@@ -84,10 +84,15 @@ equipment:
 diagrams:
   - file: coffey-still.svg
     alt: >-
-      Hand-drawn schematic of a Coffey still: the plated analyser and
-      rectifier columns, with the wash feed, steam, vapour transfer
-      and spirit draw-off marked.
-    caption: 'The Coffey still: analyser and rectifier columns.'
+      Schematic of a Coffey still in cross-section: the
+      plated analyser column on the left and the plated rectifier
+      column on the right, with the pre-heat coil rising through the
+      rectifier, the cold wash feed at the rectifier base, the
+      wash crossover from rectifier top to analyser top, the steam
+      inlet at the analyser base, the vapour-transfer pipe from
+      analyser top to rectifier base, and the spirit draw-off near
+      the rectifier top.
+    caption: "The Coffey still: analyser and rectifier columns, with the wash pre-heat coil and the vapour transfer marked."
     source_id: 1
 
 

@@ -1,76 +1,153 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 470"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 500"
      role="img" aria-labelledby="mash-tun-title mash-tun-desc"
      class="wb-diagram">
-  <!-- WhiskyBase diagram: mash tun (hand-drawn schematic).
-       Style spec: docs/diagram-style.md. Labels sit outside the
-       figure; leaders never cross a drawn line.
-       Grounded on Russell ed. 2022 Ch 10; see mash-tun.yml source 1. -->
+  <!-- WhiskyBase diagram: mash tun (technical schematic, blueprint
+       conventions). Cross-section of a lauter-style mash tun.
+       Solid lines: structural figure parts only (vessel walls,
+       rake, false bottom, internal hardware). Dashed lines: every
+       annotation, including the inlets and outlets (which are
+       drawn as annotation leaders pointing at their entry/exit
+       points). Hidden rake teeth on the far side of the arm also
+       dashed. Stroke color is currentColor throughout. No
+       dimensions, no scale bar.
+       Grounded on Russell ed. 2022 Ch 10 (Bringhurst, Harrison &
+       Brosnan) and Miller 2024 Ch 4; see equipment/mash-tun.yml. -->
   <title id="mash-tun-title">Mash tun</title>
-  <desc id="mash-tun-desc">Schematic of a mash tun: a cylindrical
-    vessel charged with grist and hot water, stirred by rotating
-    rakes, with a slotted false floor under a grain-husk bed
-    through which the sweet wort drains off.</desc>
+  <desc id="mash-tun-desc">Blueprint-style cross-section of a
+    lauter-style mash tun: domed lid, drive gearbox on top turning
+    a central rake shaft, rotating rake sweeping a bed of crushed
+    grain resting on a perforated false bottom, open wort sump
+    below feeding the sweet wort to the washback. All callouts,
+    including the grist + hot water inlet and the wort outlet, are
+    shown as dashed annotation leaders pointing at the relevant
+    entry or exit point on the vessel.</desc>
 
   <defs>
-    <filter id="sketch-mash-tun" x="-15%" y="-15%" width="130%" height="130%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.015"
-                    numOctaves="2" seed="5" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
-    </filter>
+    <pattern id="cut-hatch-mash-tun" patternUnits="userSpaceOnUse"
+             width="5" height="5" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5"
+            stroke="currentColor" stroke-width="0.5"/>
+    </pattern>
   </defs>
 
-  <g fill="none" stroke="currentColor" stroke-width="2.5"
-     stroke-linejoin="round" stroke-linecap="round"
-     filter="url(#sketch-mash-tun)">
-    <!-- tun body -->
-    <ellipse cx="360" cy="165" rx="110" ry="24"/>
-    <path d="M250 165 L250 350"/>
-    <path d="M470 165 L470 350"/>
-    <path d="M250 350 C250 372 470 372 470 350"/>
-    <!-- slotted false floor -->
-    <g stroke-width="2">
-      <path d="M256 315 L464 315"/>
-      <path d="M286 315 L286 323"/>
-      <path d="M330 315 L330 323"/>
-      <path d="M374 315 L374 323"/>
-      <path d="M418 315 L418 323"/>
-    </g>
-    <!-- grain-husk bed -->
-    <g stroke-width="2">
-      <path d="M258 286 C312 279 414 293 462 284"/>
-      <path d="M258 301 C320 294 408 308 462 299"/>
-    </g>
-    <!-- rake shaft, arm and teeth -->
-    <path d="M360 125 L360 300"/>
-    <path d="M300 298 L420 298"/>
-    <g stroke-width="2">
-      <path d="M312 298 L310 312"/>
-      <path d="M344 298 L342 312"/>
-      <path d="M376 298 L374 312"/>
-      <path d="M408 298 L406 312"/>
-    </g>
-    <!-- grist and hot water inlet -->
-    <path d="M150 118 L296 150"/>
-    <path d="M286 141 L298 151 L284 154"/>
-    <!-- wort outlet from under the false floor -->
-    <path d="M470 330 L545 330 L545 360"/>
-    <path d="M537 351 L545 362 L553 351"/>
+  <!-- Wall material (hatched band) -->
+  <path d="M266 150 C266 80, 514 80, 514 150 L514 400
+           C514 428, 266 428, 266 400 Z
+           M270 150 C270 86, 510 86, 510 150 L510 400
+           C510 422, 270 422, 270 400 Z"
+        fill="url(#cut-hatch-mash-tun)" fill-rule="evenodd"
+        stroke="none"/>
+
+  <!-- Wall outlines -->
+  <g fill="none" stroke="currentColor" stroke-width="1.4"
+     stroke-linejoin="round" stroke-linecap="butt">
+    <path d="M266 150 C266 80, 514 80, 514 150 L514 400
+             C514 428, 266 428, 266 400 Z"/>
+    <path d="M270 150 C270 86, 510 86, 510 150 L510 400
+             C510 422, 270 422, 270 400 Z"/>
   </g>
 
-  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
-     stroke-linecap="round" filter="url(#sketch-mash-tun)">
-    <path d="M132 96 C150 104 166 113 182 124"/>
-    <path d="M360 76 L360 118"/>
-    <path d="M566 318 C528 317 496 316 466 316"/>
-    <path d="M146 283 C186 285 224 287 256 289"/>
-    <path d="M540 402 C540 388 542 376 544 368"/>
+  <!-- Internal structural elements (solid lines) -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2"
+     stroke-linejoin="round" stroke-linecap="butt">
+
+    <rect x="372" y="52" width="36" height="46"/>
+    <g stroke-width="0.8">
+      <circle cx="390" cy="74" r="7"/>
+      <path d="M390 64 L390 67"/>
+      <path d="M390 81 L390 84"/>
+      <path d="M380 74 L383 74"/>
+      <path d="M397 74 L400 74"/>
+    </g>
+
+    <path d="M390 98 L390 318"/>
+    <path d="M278 318 L502 318"/>
+
+    <g stroke-width="1.0">
+      <path d="M294 318 L292 332"/>
+      <path d="M322 318 L320 332"/>
+      <path d="M350 318 L348 332"/>
+      <path d="M378 318 L376 332"/>
+      <path d="M406 318 L404 332"/>
+      <path d="M434 318 L432 332"/>
+      <path d="M462 318 L460 332"/>
+      <path d="M490 318 L488 332"/>
+    </g>
+
+    <g stroke-width="1.0" stroke-dasharray="3 2">
+      <path d="M308 318 L306 332"/>
+      <path d="M336 318 L334 332"/>
+      <path d="M364 318 L362 332"/>
+      <path d="M392 318 L390 332"/>
+      <path d="M420 318 L418 332"/>
+      <path d="M448 318 L446 332"/>
+      <path d="M476 318 L474 332"/>
+    </g>
+
+    <path d="M280 340 L500 340"/>
+    <path d="M280 352 L500 352"/>
+    <g stroke-width="0.8">
+      <path d="M300 340 L300 352"/>
+      <path d="M326 340 L326 352"/>
+      <path d="M352 340 L352 352"/>
+      <path d="M378 340 L378 352"/>
+      <path d="M404 340 L404 352"/>
+      <path d="M430 340 L430 352"/>
+      <path d="M456 340 L456 352"/>
+      <path d="M482 340 L482 352"/>
+    </g>
+
+    <g stroke-width="0.7" stroke-linecap="round">
+      <path d="M278 190 C336 187, 446 193, 502 188"/>
+      <path d="M278 218 C342 215, 442 221, 502 216"/>
+      <path d="M278 246 C334 243, 448 249, 502 244"/>
+      <path d="M278 274 C340 271, 444 277, 502 272"/>
+      <path d="M278 302 C336 299, 446 305, 502 300"/>
+      <path d="M278 336 C336 333, 446 339, 502 334"/>
+    </g>
   </g>
 
-  <g fill="var(--muted-color)" font-size="14" stroke="none">
-    <text x="128" y="92" text-anchor="end">Grist and hot water</text>
-    <text x="360" y="64" text-anchor="middle">Rotating rakes</text>
-    <text x="572" y="321">Slotted false floor</text>
-    <text x="140" y="280" text-anchor="end">Grain-husk filter bed</text>
-    <text x="476" y="420">Wort, to the washback</text>
+  <!-- All annotation leaders, including the inlet and outlet
+       (dashed, currentColor, thinner) -->
+  <g fill="none" stroke="currentColor" stroke-width="1.0"
+     stroke-linecap="butt" stroke-dasharray="5 3">
+    <!-- Annotation leaders for labelled parts -->
+    <path d="M460 64 L410 64"/>
+    <path d="M586 134 L482 134"/>
+    <path d="M168 240 L276 240"/>
+    <path d="M168 376 L276 376"/>
+    <path d="M572 268 L572 320 L504 320"/>
+    <path d="M572 346 L516 346"/>
+    <!-- Inlet leader: from below the label down to the entry
+         point on the dome (routed below the text so it does not
+         interfere with the label) -->
+    <path d="M140 100 L322 130"/>
+    <!-- Outlet leader: from above the label up to the exit point
+         on the right wall in the sump zone -->
+    <path d="M484 462 L514 388"/>
+  </g>
+
+  <!-- Dots at every leader endpoint -->
+  <g fill="currentColor" stroke="none">
+    <circle cx="410" cy="64" r="2.4"/>
+    <circle cx="482" cy="134" r="2.4"/>
+    <circle cx="276" cy="240" r="2.4"/>
+    <circle cx="276" cy="376" r="2.4"/>
+    <circle cx="504" cy="320" r="2.4"/>
+    <circle cx="516" cy="346" r="2.4"/>
+    <circle cx="322" cy="130" r="2.6"/>
+    <circle cx="514" cy="388" r="2.6"/>
+  </g>
+
+  <!-- Labels -->
+  <g fill="currentColor" font-size="14" stroke="none">
+    <text x="466" y="68">Drive gearbox</text>
+    <text x="592" y="138">Domed lid</text>
+    <text x="164" y="244" text-anchor="end">Grain-husk filter bed</text>
+    <text x="164" y="380" text-anchor="end">Wort sump</text>
+    <text x="578" y="272">Rotating rake</text>
+    <text x="578" y="350">Perforated false bottom</text>
+    <text x="136" y="84" text-anchor="start">Grist and hot water</text>
+    <text x="478" y="478">Wort, to the washback</text>
   </g>
 </svg>

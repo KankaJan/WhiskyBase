@@ -229,10 +229,15 @@ equipment:
 diagrams:
   - file: worm-tub.svg
     alt: >-
-      Hand-drawn schematic of a worm tub: a tapered copper worm coiled
-      inside a water-filled tub, with vapour entering at the top and
-      condensed spirit running off at the base.
-    caption: 'A worm tub: the copper worm coiled in its water tub.'
+      Cross-section schematic of a worm tub: a tapered copper coil
+      (the worm) descends inside a tub of cooling water. Spirit vapour
+      from the lyne arm enters the top of the worm and condenses as it
+      descends. Cold cooling water enters the tub low and warm water
+      overflows high, so the water flows counter to the vapour
+      direction (an upward arrow inside the water column indicates the
+      flow). The condensed spirit runs off below the tub to the spirit
+      safe.
+    caption: "A worm tub in cross-section: the descending copper worm and the counter-current cooling water."
     source_id: null
 
 

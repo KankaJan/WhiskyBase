@@ -76,10 +76,13 @@ equipment:
 diagrams:
   - file: washback.svg
     alt: >-
-      Hand-drawn schematic of a wooden washback bound with iron hoops,
-      charged with cooled wort and yeast, with a head of fermenting
-      froth above the liquid.
-    caption: A wooden washback during fermentation.
+      Cross-section schematic of a tall upright wooden washback bound
+      with three iron hoops. A small drive motor on the lid turns a
+      vertical shaft carrying a horizontal switcher arm that sweeps
+      across the top of the wash to knock down fermenting froth.
+      Cooled wort and yeast enter through the lid; the fermented wash
+      runs off at the base to the wash still.
+    caption: A wooden washback during fermentation, with the switcher running.
     source_id: 1
 
 

@@ -117,10 +117,15 @@ equipment:
 diagrams:
   - file: shell-and-tube-condenser.svg
     alt: >-
-      Hand-drawn schematic of a shell-and-tube condenser: a cylindrical
-      shell enclosing a bundle of copper tubes, with spirit vapour
-      passing through the tubes and cooling water through the shell.
-    caption: A shell-and-tube condenser and its copper tube bundle.
+      Cross-section schematic of a vertical shell-and-tube condenser:
+      a domed upper bonnet receives spirit vapour from the still and
+      distributes it across a bundle of copper tubes; the tubes pass
+      through tube sheets at each end of the cylindrical shell and
+      run down to a domed lower bonnet that drains condensed spirit
+      to the spirit safe. Cooling water enters cold low on one side
+      through a flanged nozzle and exits warm high on the opposite
+      side, counter to the descending vapour and condensate.
+    caption: "A shell-and-tube condenser in cross-section: bonnets, tube bundle, tube sheets, and counter-current water nozzles."
     source_id: null
 
 
