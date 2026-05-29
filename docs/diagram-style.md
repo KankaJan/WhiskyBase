@@ -146,40 +146,158 @@ stroke sideways by an amount sampled from that noise:
 
 Applies to cross-section diagrams only — the mash tun, the
 washback, the worm tub, the shell-and-tube condenser, the
-Coffey-still columns, the spirit safe.
+Coffey-still columns, the spirit safe. The conventions below were
+settled in the 2026-05-26 blueprint pilot on mash-tun.svg, then
+rolled out to the other five.
 
-- **No filter.** The root `<svg>` has no `<defs>` block carrying
-  a turbulence/displacement filter, and no `filter=` attribute on
-  any element. Strokes are clean.
-- **Same theme tokens as the other registers.** Structural
-  line-work: `stroke="currentColor"`, `fill="none"`,
-  `stroke-width="2.5"`, round joins and caps. Labels and leaders
-  in `var(--muted-color)`. The shared markup conventions from
-  the "Markup conventions" section above still apply.
-- **No dimensions, no scale bar, no material hatching.** A
-  cross-section diagram in this register MUST NOT carry
-  millimetre annotations, a north arrow, a scale bar, ANSI/ISO
-  material hatching (diagonal patterns signalling "this is steel"
-  or "this is brick"), or tolerances. The indicative nature of
-  the diagram is signalled by the *absence* of these things.
-- **Generic indicative proportions.** Aspect ratios, plate
-  counts, tube counts, coil turns and similar are illustrative,
-  not numerically faithful to any specific named vessel.
-- **Stroke-weight hierarchy.** Use the main 2.5 weight for the
-  primary structure (vessel walls, principal pipes). 2.0 for
-  secondary interior structure (tube bundles, internal coils,
-  rake arms). 1.7-1.8 for fine internal detail (slot ticks on
-  plates, stippled hatching for grain or liquid surface).
-- **Cross-section cuts.** Vessel walls are treated as cut
-  surfaces. By engineering convention a leader to an interior
-  part may pass through the cut to terminate at the part inside
-  the vessel. Leaders to exterior parts still avoid crossing any
-  drawn line, per "Markup conventions".
-- **If you find yourself wanting wobble**, the diagram is
-  probably in the wrong register — move it to sketch. If you
-  find yourself wanting a scale bar or dimensions, the diagram
-  has crossed into measured-blueprint territory and is out of
-  scope for the project's data coverage.
+### No filter
+
+The root `<svg>` has no `<defs>` block carrying a
+turbulence/displacement filter, and no `filter=` attribute on
+any element. Strokes are clean.
+
+### Stroke color: currentColor everywhere
+
+Every stroke uses `stroke="currentColor"`. **Do not use
+`stroke="var(--muted-color)"`** — some SVG viewers do not resolve
+CSS variables when applied as `stroke` (only as `fill`), so
+`var()`-stroked leaders render invisibly in those viewers.
+`currentColor` resolves reliably to the inherited text colour.
+
+Fills may still use `fill="var(--muted-color)"` for dots, labels
+or filled shapes — the var() resolution problem is `stroke`-only
+in observed cases. Equivalently, using `fill="currentColor"`
+throughout is the safer default.
+
+### Double-walled vessel outlines with section hatching
+
+The vessel walls are drawn as two parallel outlines (outer + inner)
+about 4 user-units apart. The cut surface between them is filled
+with diagonal section hatching:
+
+```xml
+<defs>
+  <pattern id="cut-hatch-<slug>" patternUnits="userSpaceOnUse"
+           width="5" height="5" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="5"
+          stroke="currentColor" stroke-width="0.5"/>
+  </pattern>
+</defs>
+
+<!-- Wall material: outer and inner closed paths in one path
+     element, even-odd fill gives hatching only in the band. -->
+<path d="M outer-closed-path Z
+         M inner-closed-path Z"
+      fill="url(#cut-hatch-<slug>)" fill-rule="evenodd"
+      stroke="none"/>
+
+<!-- Wall outlines (visible edges) -->
+<g fill="none" stroke="currentColor" stroke-width="1.4"
+   stroke-linejoin="round" stroke-linecap="butt">
+  <path d="M outer-closed-path Z"/>
+  <path d="M inner-closed-path Z"/>
+</g>
+```
+
+The hatch pattern is **generic** — no material specification. It
+signals "this is a cut surface", not "this is steel" or "this is
+wood". That distinction matters: ANSI/ISO material hatching
+implies a material property the project does not source.
+
+### No dimensions, no scale bar
+
+A cross-section in this register MUST NOT carry millimetre
+annotations, a north arrow, a scale bar, dimensional tolerances,
+or "section A-A" plane indicators. Generic section hatching is
+allowed; material-specific hatching is not.
+
+### Generic indicative proportions
+
+Aspect ratios, plate counts, tube counts, coil turns and similar
+are illustrative, not numerically faithful to any specific named
+vessel.
+
+### Stroke-weight hierarchy
+
+- **1.4** — outer + inner wall outlines
+- **1.2** — internal primary structure (rake shaft + arm, gearbox,
+  switcher motor, mullions, stand legs, tube bundle wrapper)
+- **1.0** — internal secondary structure (rake teeth, plate edges,
+  worm-coil ellipses, single tubes, hidden-line dashes); also
+  annotation-leader stroke
+- **0.7 – 0.8** — fine internal detail (slot ticks on perforated
+  plates, gear cross-marks, grain-bed stippled hatching, hydrometer
+  stems)
+- **0.5** — the diagonal lines inside the section-hatch pattern
+- **`stroke-linecap="butt"`** on lines with arrowheads or dashed
+  endings (avoids the round-cap half-circle artifact at line ends)
+
+### Annotation leaders
+
+Every label connects to its part via a **dashed** leader (no flow
+arrows, no triangle arrowheads):
+
+```xml
+<g fill="none" stroke="currentColor" stroke-width="1.0"
+   stroke-linecap="butt" stroke-dasharray="5 3">
+  <path d="..."/>
+</g>
+```
+
+The leader terminates at the part with a **filled circle dot**
+(no arrowhead). Annotation dots are `r="2.4"`; nozzle-endpoint
+dots (where a substance enters or exits the vessel) are slightly
+larger at `r="2.6"`. Dots use `fill="currentColor"`,
+`stroke="none"`.
+
+Leaders should not cross label text. If a leader's natural route
+collides with the label, reposition the label or the leader (an
+L-shape with one bend is acceptable) until there is clear margin
+between them.
+
+### Inlet and outlet pipe nozzles
+
+Wherever a pipe enters or exits the vessel, draw a short solid
+three-sided rectangular **pipe nozzle stub** at the vessel
+surface. The open side faces the vessel interior (for inlets)
+or the vessel wall (for outlets and side fittings). Typical
+dimensions: ~20-40 user units wide, ~20-40 deep. The nozzle is
+drawn in solid currentColor at the same stroke-width as other
+structural detail (1.2).
+
+The annotation leader for the substance terminates at the nozzle
+(dot at one of the nozzle edges), not at a bare point on the
+vessel surface. Without the nozzle the dashed leader points at
+nothing visible.
+
+### Hidden lines for occluded parts
+
+Use dashed lines (`stroke-dasharray="3 2"`, stroke 1.0) for parts
+that would be hidden in cross-section but are visualisable behind
+a foreground feature — for example, the rake teeth on the far
+side of the rotating arm. The 3-2 dash spacing distinguishes
+hidden-lines from the 5-3 annotation-leader dashes.
+
+### Cross-section cuts
+
+Vessel walls are treated as cut surfaces. By engineering
+convention a leader to an interior part may pass through the cut
+to terminate at the part inside the vessel. Leaders to exterior
+parts still avoid crossing any drawn line, per the shared markup
+conventions.
+
+### Disallowed
+
+- **Flow arrows / triangle arrowheads.** Direction-of-flow is
+  carried by the label text ("Cooled wort and yeast", "Wort, to
+  the washback"). Mixing flow arrows on pipes with dot
+  terminations on annotation leaders produced unreadable double-
+  arrow appearances in the pilot iteration — settled on dots
+  everywhere, no arrows.
+- **Wobble filter.** If you find yourself wanting the sketch
+  register's displacement filter, the diagram is in the wrong
+  register — promote it to sketch.
+- **Scale bars or dimensions.** As above.
 
 ## Sourcing
 

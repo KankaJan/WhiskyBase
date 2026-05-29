@@ -1,111 +1,135 @@
-concepts: wrapper pages + the educational-page diagram set
+diagrams: three registers + blueprint cross-sections
 
-Two waves of work that had accumulated uncommitted on the working
-tree, committed together.
+A redraw wave on the six cross-section diagrams, the spec change
+behind it, and the documentation around it.
 
-Wave 1 — concept wrapper layer
-------------------------------
+Why a redraw
+------------
 
-Closes the wrapper-layer gap in the concept pages. The
-production-chain coverage build had completed the detail pages
-and given distillation and maturation cluster wrappers, but there
-was no top-level overview tying the whole chain together, and
-malting / mashing / fermentation had no stage wrapper. This wave
-adds the master overview and the three missing stage wrappers:
+The 2026-05-22 wave landed the diagram pipeline (optional
+`diagrams:` schema field, `attachDiagramSvg` loader, `<figure>`
+rendering on the concept detail page) and a full set of 10
+deterministic SVGs. The six hardware schematics in that set
+(mash-tun, washback, worm-tub, shell-and-tube-condenser,
+coffey-still, spirit-safe) used the project's sketch register —
+the `feTurbulence` + `feDisplacementMap` wobble filter at scale 6.
 
-- educational/whisky-production — the master "How Scotch whisky
-  is made" overview. Sequences the entire chain (raw materials,
-  malting, milling, mashing, fermentation, distillation,
-  maturation, blending/bottling, classification) and links every
-  stage. The natural encyclopedia entry point.
-- educational/malting, educational/mashing,
-  educational/fermentation — stage wrappers matching the existing
-  distillation and maturation wrappers; each a short overview
-  linking that stage's detail pages.
+Reviewed against the user's eye, the sketch register breathes
+fine on the pot-still (parts spatially distinct, margin around
+each element) but actively hurts cross-section views. Interior
+detail — perforated-plate slot ticks, tube bundles, worm coils,
+switcher arms, test cups, mullions — smears into containing walls
+under the displacement filter. The wobble is competing with the
+strokes it's trying to draw.
 
-All four at confidence: high, grounded on Russell 3rd ed. and
-Miller 2024. Densely cross-linked per the brief — every
-referenceable concept linked inline, not just in
-related_concepts. The distillation / maturation / blending
-wrappers were given back-links up to the new master so the
-hierarchy is navigable both ways. A stale "(queued)" reference to
-the Coffey-still page was fixed in educational/distillation — that
-page exists (Tier 2) and is now linked. Concept-page total
-81 -> 85.
+Spec change
+-----------
 
-Wave 2 — educational-page diagram set
--------------------------------------
+`docs/diagram-style.md` extended from two visual registers to
+three:
 
-Authors the diagram set for the educational and equipment concept
-pages, against the pipeline proven by the pot-still pilot.
+- **Sketch** (turbulence + displacement filter) — pot still,
+  production-chain flowchart, peating-measurement matrix. The
+  external-assembly view.
+- **Strict** (no filter, precise axes, full grid, plotted from a
+  sourced figure) — spirit-cut, cask-maturation-kinetics. The
+  data-graph view.
+- **Technical-schematic** (clean lines, no filter) — the six
+  cross-sections. New register.
 
-- Schema: the concept schema gains an optional `diagrams:` field
-  (a list of {file, alt, caption?, source_id?}). Additive within
-  concept.template.yml v0.1; existing entries stay valid.
-  CHANGELOG [0.8.2].
-- Rendering: site/src/lib/data.ts inlines each diagram's SVG at
-  build time (attachDiagramSvg); the concept detail page renders
-  a <figure> with caption and source citation.
-- Ten SVGs in data/diagrams/, attached to their concept entries.
-- Authoring spec: docs/diagram-style.md, which codifies two
-  visual registers. Hardware and process schematics use a
-  hand-drawn sketch register — a pure-SVG feTurbulence +
-  feDisplacementMap wobble filter, no JavaScript, fixed seed for
-  determinism. Data graphs use a strict register — no filter,
-  precise axes, full grid, plotted exactly from a sourced figure.
-- The two strict data graphs — spirit-cut (DMTS through the
-  spirit-still run, after Miller Fig. 6.7) and
-  cask-maturation-kinetics (solids extraction vs cask age, after
-  Miller Fig. 8.11) — are emitted by the new committed generator
-  scripts/gen_data_diagrams.py, from data points digitised off
-  the cited figures. cask-maturation-kinetics gains a new
-  source 6 (Miller, Whisky Science 2nd ed., Ch 8, Fig. 8.11).
+The honest-about-indicativeness argument that grounded the sketch
+register is preserved but reframed: it's the *absence of
+dimensions* that signals "indicative, not metrological", and both
+the sketch register (via wobble) and the technical-schematic
+register (via simple absence) honour that.
 
-Settled in this wave: pot-still, the production-chain flowchart,
-the peating-measurement matrix, both strict graphs. The six
-hardware schematics (mash-tun, washback, worm-tub,
-shell-and-tube-condenser, coffey-still, spirit-safe) are committed
-as first-draft checkpoints — a redraw is queued in TODO.md
-Beta-readiness against specific clarity feedback.
+Blueprint conventions
+---------------------
+
+Within the technical-schematic register, the spec also documents
+the conventions settled in the 2026-05-26 pilot on mash-tun:
+
+- `stroke="currentColor"` throughout. Some SVG viewers do not
+  resolve `var(--muted-color)` when applied as `stroke` (only as
+  `fill`), so var()-stroked leaders render invisibly in those
+  viewers — diagnosed live in pilot. `currentColor` resolves
+  reliably. Fills may still use `var()`.
+- Double-walled vessel outlines (outer + inner, 4 user-units
+  apart) with generic diagonal section hatching between, via SVG
+  `<pattern>` + `fill-rule="evenodd"`. Generic hatching only —
+  ANSI/ISO material-specific hatching remains forbidden.
+- Dashed annotation leaders (`stroke-dasharray="5 3"`,
+  stroke-width 1.0) ending in filled-circle dots
+  (`fill="currentColor"`, r=2.4 for annotation, r=2.6 for nozzle
+  endpoints).
+- Short solid three-sided pipe-nozzle stubs at every inlet and
+  outlet so the dashed annotation leader points at a visible
+  structural part, not at empty interior space.
+- Dashed hidden lines (`stroke-dasharray="3 2"`) for occluded
+  interior parts — e.g., the rake teeth on the far side of the
+  rotating arm.
+- Explicit stroke-weight hierarchy (1.4 outlines, 1.2 internal
+  primary, 1.0 secondary and leaders, 0.7-0.8 fine detail, 0.5
+  hatch pattern).
+- `stroke-linecap="butt"` on lines with arrowheads or dashed
+  endings (avoids the round-cap half-circle artifact).
+- No flow-direction arrowheads. The label text carries direction.
+  Mixing flow arrows on pipes with dot terminations on
+  annotation leaders produced unreadable double-arrow
+  appearances during the pilot.
 
 Files
 -----
 
-Wave 1:
-- data/concepts/educational/whisky-production.yml (new)
-- data/concepts/educational/malting.yml (new)
-- data/concepts/educational/mashing.yml (new)
-- data/concepts/educational/fermentation.yml (new)
-- data/concepts/educational/distillation.yml
-- data/concepts/educational/maturation.yml
-- data/concepts/educational/blending.yml
+Diagrams (re-authored):
 
-Wave 2:
-- data/diagrams/ (new — 10 SVGs)
-- scripts/gen_data_diagrams.py (new)
-- docs/diagram-style.md (new)
-- schema/concept.template.yml, schema/json/concept.schema.json
-  (diagrams field)
-- site/src/lib/data.ts, site/src/pages/concept/[kind]/[slug].astro
-- data/concepts/educational/{spirit-cut,cask-maturation-kinetics,
-  peating-measurement-methods}.yml (diagram blocks)
-- data/concepts/equipment/{pot-still,mash-tun,washback,worm-tub,
-  shell-and-tube-condenser,coffey-still,spirit-safe}.yml
-  (diagram blocks)
+- data/diagrams/mash-tun.svg
+- data/diagrams/washback.svg
+- data/diagrams/worm-tub.svg
+- data/diagrams/shell-and-tube-condenser.svg
+- data/diagrams/coffey-still.svg
+- data/diagrams/spirit-safe.svg
+
+Concept-page alt-texts updated to match (six equipment YAMLs).
 
 Docs:
-- CLAUDE.md, docs/handover.md, TODO.md, CHANGELOG.md
+
+- docs/diagram-style.md — three-register taxonomy +
+  technical-schematic conventions
+- CHANGELOG.md — [0.8.3] entry
+- TODO.md — diagram-redraw queue retired from Beta-readiness,
+  status updated to "all 10 diagrams settled", Recently-completed
+  entry added
+- docs/handover.md — diagram status block rewritten
+
+Skills + behaviour:
+
+- skills/safe-bulk-writes/SKILL.md — Write tool truncation
+  threshold revised down to ~3 KB (was ~10 KB); Edit tool failure
+  on multi-line block replacements over data files escalated from
+  "rare" to "common when growing a block by more than ~5 lines",
+  with a recovery pattern via `git show HEAD:<path>` and Python
+  splice
+- CLAUDE.md — new "Reducing wasted iteration" section adapted
+  from forrestchang/andrej-karpathy-skills/CLAUDE.md (pre-write
+  discipline complementing the existing post-write iterative
+  pattern)
 
 Verification
 ------------
 
-- scripts/check_references.py: the run reports 12 JSON Schema
-  findings and one diagram source_id finding, all carrying the
-  documented Windows <-> Linux mount-sync staleness signatures
-  (truncated 'trade_' / '2026-0' values, missing schema_version
-  on files confirmed intact Windows-side). The Windows-side files
-  were verified intact. The authoritative gate is the
-  scripts/check_writes.py pre-commit hook, which runs Windows-side
-  against the staged files.
-- Inline [N] citations resolve; no new unexpected dangling
-  references.
+`scripts/check_references.py`: 0 YAML parse failures, 0
+structured `source_id:` bad refs, 0 inline `[N]` bad citations, 0
+JSON Schema findings. Existing forward-reference dangling
+distillery refs (worm-tub `used_at_distilleries[]`) are the known
+acknowledged set per handover §8.
+
+All YAML and Markdown files in this commit verified Windows-side
+intact: each ends with a trailing newline, no NUL bytes, all
+equipment YAMLs parse with `schema_version: 0.1` and complete
+sources blocks. Six equipment YAMLs were Edit-tool-corrupted
+mid-session and recovered from `git show HEAD:<path>` per the new
+safe-bulk-writes recovery pattern.
+
+No schema changes. The optional `diagrams:` field on
+`concept.template.yml` v0.1 stays as it was.

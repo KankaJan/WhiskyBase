@@ -70,6 +70,72 @@ file:line citations where possible.
 
 ---
 
+## Reducing wasted iteration
+
+Discipline that reduces wasted rounds. Adapted from a public set
+of behavioural guidelines for LLM coding work
+(forrestchang/andrej-karpathy-skills/CLAUDE.md). Complements
+"Response style" and "Iterative working pattern" above by
+covering the *pre-write* discipline that the iterative pattern
+takes as given. For trivial requests, use judgment.
+
+### Surface assumptions before acting
+
+- State what you're assuming about the user's intent. If you
+  have to guess between two plausible readings, name them — don't
+  choose silently.
+- If the request is ambiguous on a load-bearing dimension
+  (visual style, scope, output format, success criterion), ask
+  BEFORE generating. One clarifying question early beats five
+  revisions later.
+- If a simpler approach exists than what the user asked for,
+  say so.
+
+### Simplicity first
+
+Minimum artefact that satisfies the request. Nothing
+speculative.
+
+- No content beyond what was asked.
+- No schema fields, abstractions, or "flexibility" added in case
+  someone might need them later. The project's data layer is
+  populated as needs surface, not pre-extended.
+- If a draft is overcomplicated for its job, shorten it before
+  declaring done.
+
+### Surgical changes
+
+Touch only what the request specifies.
+
+- Don't "improve" adjacent prose, code, or geometry the user
+  didn't flag.
+- Don't refactor things that aren't broken.
+- If you notice an unrelated issue, mention it — don't silently
+  fix it. Exception: the documented hard-corruption signatures
+  (NUL bytes, silent truncation, YAML parse failure) are always
+  fixed in place, since they propagate.
+
+### Goal-driven execution
+
+Translate vague requests into verifiable goals before
+generating.
+
+- "Make this look better" → "What specifically should change?
+  What does success look like?"
+- "Redraw the diagrams" → "In what register, with what
+  conventions? Pilot one before doing the rest."
+
+Multi-step work gets a brief plan with verification steps:
+
+1. [step] → verify: [check]
+2. [step] → verify: [check]
+
+Strong success criteria let you loop independently. Weak
+criteria ("make it work") force the user to re-evaluate every
+intermediate result.
+
+---
+
 ## Sourcing policy
 
 Foundational principle: "every claim is sourced."

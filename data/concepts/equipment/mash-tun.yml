@@ -78,14 +78,17 @@ equipment:
 diagrams:
   - file: mash-tun.svg
     alt: >-
-      Cross-section schematic of a lauter-style mash tun: a domed
-      cylindrical vessel with a drive gearbox on top turning a central
-      shaft that carries a rotating rake; the rake stirs a bed of
-      crushed grain (grist and husks) resting on a perforated false
-      bottom; sweet wort drains through the bed and the plate into the
-      sump below, then off to the washback. Grist and hot water enter
-      near the top.
-    caption: "The mash tun in cross-section: rake, grain-husk bed, false bottom."
+      Blueprint-style cross-section of a lauter mash tun: a cylindrical
+      vessel with a domed lid drawn in double-walled outline with diagonal
+      section hatching on the cut surface. A drive gearbox on top turns a
+      central shaft carrying a rotating rake; front-side rake teeth are
+      solid lines and far-side teeth are shown as dashed hidden lines. The
+      rake sweeps a stippled grain bed resting on a perforated false
+      bottom. An open wort sump sits below the plate. Grist and hot water
+      enter through a short pipe nozzle on the dome; wort exits through a
+      nozzle on the right wall at sump level. Each part is connected to
+      its label by a dashed annotation leader ending in a filled dot.
+    caption: "The mash tun in blueprint cross-section: rake, grain-husk bed, perforated false bottom, wort sump, inlet and outlet nozzles."
     source_id: 1
 
 

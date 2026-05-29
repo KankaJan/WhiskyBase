@@ -1,104 +1,118 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 590"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 600"
      role="img" aria-labelledby="washback-title washback-desc"
      class="wb-diagram">
-  <!-- WhiskyBase diagram: washback (technical schematic).
-       Tall upright wooden fermentation vessel with iron hoops; a
-       switcher (drive motor on the lid, vertical shaft, horizontal
-       sweeping arm just above the wash) knocks down fermenting
-       froth to prevent overflow. Cooled wort and yeast enter
-       through the lid; the fermented wash runs off to the wash
-       still.
-       Style spec: docs/diagram-style.md. Labels sit outside the
-       figure; leaders for interior parts pass through the cross-
-       section cut in the vessel wall.
-       Grounded on Russell ed. 2022 Ch 12 (Russell & Stewart); see
-       equipment/washback.yml source 1. -->
+  <!-- Blueprint cross-section of a washback. Double-walled outline
+       with diagonal section hatching; solid structural lines for
+       the switcher and hoops; dashed annotation leaders with dots.
+       Stroke color: currentColor throughout. -->
   <title id="washback-title">Washback</title>
-  <desc id="washback-desc">Cross-section of a tall upright wooden
-    washback bound with three iron hoops. A small drive motor on the
-    lid turns a vertical shaft carrying a horizontal switcher arm
-    that sweeps across the top of the wash to knock down fermenting
-    froth. Cooled wort and yeast enter through the lid; the
-    fermented wash runs off at the base to the wash still.</desc>
+  <desc id="washback-desc">Blueprint-style cross-section of a tall
+    upright wooden washback. A drive motor on the lid turns a
+    vertical switcher shaft; a horizontal switcher arm sweeps the
+    top of the wash to knock down fermenting froth. Three iron
+    hoops bind the vessel. Cooled wort and yeast enter through a
+    short pipe nozzle on the dome; the fermented wash runs off
+    through a nozzle on the right wall to the wash still.</desc>
 
-  <!-- Figure line-work -->
-  <g fill="none" stroke="currentColor" stroke-width="2.5"
-     stroke-linejoin="round" stroke-linecap="round">
+  <defs>
+    <pattern id="cut-hatch-washback" patternUnits="userSpaceOnUse"
+             width="5" height="5" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5"
+            stroke="currentColor" stroke-width="0.5"/>
+    </pattern>
+  </defs>
 
-    <!-- Switcher drive motor on the lid -->
+  <!-- Wall material -->
+  <path d="M266 130 C322 106, 418 106, 474 130 L462 480
+           C462 506, 278 506, 278 480 Z
+           M270 130 C322 116, 418 116, 470 130 L458 480
+           C458 502, 282 502, 282 480 Z"
+        fill="url(#cut-hatch-washback)" fill-rule="evenodd"
+        stroke="none"/>
+
+  <!-- Wall outlines -->
+  <g fill="none" stroke="currentColor" stroke-width="1.4"
+     stroke-linejoin="round" stroke-linecap="butt">
+    <path d="M266 130 C322 106, 418 106, 474 130 L462 480
+             C462 506, 278 506, 278 480 Z"/>
+    <path d="M270 130 C322 116, 418 116, 470 130 L458 480
+             C458 502, 282 502, 282 480 Z"/>
+  </g>
+
+  <!-- Internal structural elements -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2"
+     stroke-linejoin="round" stroke-linecap="butt">
+
+    <!-- Switcher drive motor -->
     <rect x="350" y="74" width="40" height="42"/>
-    <g stroke-width="1.6">
-      <circle cx="370" cy="96" r="7"/>
-      <path d="M370 86 L370 89"/>
-      <path d="M370 103 L370 106"/>
-      <path d="M360 96 L363 96"/>
-      <path d="M377 96 L380 96"/>
+    <g stroke-width="0.8">
+      <circle cx="370" cy="96" r="6"/>
+      <path d="M370 87 L370 90"/>
+      <path d="M370 102 L370 105"/>
+      <path d="M361 96 L364 96"/>
+      <path d="M376 96 L379 96"/>
     </g>
 
-    <!-- Lid (slightly crowned) -->
-    <path d="M270 130 C322 116, 418 116, 470 130"/>
-
-    <!-- Vessel walls: tall, slight inward taper to the base -->
-    <path d="M270 130 L282 480"/>
-    <path d="M470 130 L458 480"/>
-
-    <!-- Vessel bottom -->
-    <path d="M282 480 C282 502, 458 502, 458 480"/>
-
-    <!-- Switcher shaft and rotating arm -->
+    <!-- Switcher shaft + arm -->
     <path d="M370 116 L370 230"/>
     <path d="M295 230 L445 230"/>
 
     <!-- Liquid (wash) surface -->
     <path d="M276 248 C336 256, 404 256, 464 248"/>
 
-    <!-- Fermenting froth: peaks above the surface -->
-    <g stroke-width="2">
-      <path d="M278 246 Q294 232 310 246 Q326 232 342 246 Q358 232 374 246 Q390 232 406 246 Q422 232 438 246 Q452 240 460 244"/>
+    <!-- Fermenting froth peaks -->
+    <g stroke-width="1.0">
+      <path d="M278 246 Q294 232 310 246 Q326 232 342 246
+               Q358 232 374 246 Q390 232 406 246 Q422 232 438 246
+               Q452 240 460 244"/>
     </g>
 
-    <!-- Wooden staves: vertical lines (two each side of the shaft) -->
-    <g stroke-width="1.5">
-      <path d="M298 138 L302 472"/>
-      <path d="M334 134 L335 476"/>
-      <path d="M406 134 L405 476"/>
-      <path d="M442 138 L438 472"/>
-    </g>
-
-    <!-- Iron hoops: three bands wrapping the vessel -->
+    <!-- Iron hoops (three bands spanning the front of the vessel) -->
     <path d="M268 192 C322 204, 418 204, 472 192"/>
     <path d="M272 320 C324 332, 416 332, 468 320"/>
     <path d="M278 432 C326 444, 414 444, 462 432"/>
 
-    <!-- Cooled wort + yeast inlet pipe -->
-    <path d="M150 88 L328 128"/>
-    <path d="M318 120 L330 130 L316 133"/>
+    <!-- Cooled wort + yeast inlet nozzle on the dome (off-set
+         to the right of the switcher motor) -->
+    <path d="M410 110 L410 70 L434 70 L434 110"/>
 
-    <!-- Wash outlet pipe -->
-    <path d="M458 462 L590 462 L590 524"/>
-    <path d="M582 516 L590 526 L598 516"/>
+    <!-- Wash outlet nozzle on the right wall, near the base -->
+    <path d="M463 448 L503 448 L503 468 L463 468"/>
   </g>
 
-  <!-- Leader lines -->
-  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
-     stroke-linecap="round">
-    <path d="M174 72 C168 80, 162 86, 158 92"/>
-    <path d="M422 96 L392 96"/>
-    <path d="M610 232 C570 232, 510 231, 448 230"/>
-    <path d="M174 232 C212 230, 248 230, 282 236"/>
-    <path d="M174 340 C212 340, 248 340, 300 340"/>
-    <path d="M608 318 C566 318, 520 320, 476 322"/>
-    <path d="M548 556 C552 546, 558 538, 568 532"/>
+  <!-- Annotation leaders -->
+  <g fill="none" stroke="currentColor" stroke-width="1.0"
+     stroke-linecap="butt" stroke-dasharray="5 3">
+    <path d="M174 232 L284 232"/>
+    <path d="M174 340 L286 340"/>
+    <path d="M426 100 L394 100"/>
+    <path d="M610 234 L450 230"/>
+    <path d="M608 324 L470 324"/>
+    <!-- Inlet leader -->
+    <path d="M178 60 L422 70"/>
+    <!-- Outlet leader -->
+    <path d="M474 568 L503 470"/>
   </g>
 
-  <!-- Labels (crisp, outside the figure) -->
-  <g fill="var(--muted-color)" font-size="14" stroke="none">
-    <text x="170" y="68" text-anchor="end">Cooled wort and yeast</text>
+  <!-- Dots at endpoints -->
+  <g fill="currentColor" stroke="none">
+    <circle cx="284" cy="232" r="2.4"/>
+    <circle cx="286" cy="340" r="2.4"/>
+    <circle cx="394" cy="100" r="2.4"/>
+    <circle cx="450" cy="230" r="2.4"/>
+    <circle cx="470" cy="324" r="2.4"/>
+    <circle cx="422" cy="70" r="2.6"/>
+    <circle cx="503" cy="470" r="2.6"/>
+  </g>
+
+  <!-- Labels -->
+  <g fill="currentColor" font-size="14" stroke="none">
+    <text x="174" y="56" text-anchor="end">Cooled wort and yeast</text>
     <text x="170" y="236" text-anchor="end">Fermenting froth</text>
     <text x="170" y="344" text-anchor="end">Wooden staves</text>
     <text x="430" y="100">Switcher drive motor</text>
     <text x="618" y="236">Switcher arm</text>
     <text x="616" y="322">Iron hoops</text>
-    <text x="478" y="564">Wash, to the wash still</text>
+    <text x="478" y="584">Wash, to the wash still</text>
   </g>
 </svg>

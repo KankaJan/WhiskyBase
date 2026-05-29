@@ -103,6 +103,48 @@ session and in the 2026-05-15 concept-page session:
   may move; treat any file over ~10 KB as a candidate for the
   bash-write workaround below.
 
+- **Threshold revised down to ~3 KB on 2026-05-26.** In a diagram
+  re-write session, four SVG files at ~5-6 KB target size were
+  silently truncated to 3048 / 2886 / 3006 bytes by single Writes.
+  The Write tool reported success in every case; the on-disk files
+  were truncated mid-content. The threshold may be even lower than
+  3 KB for some content shapes.
+
+  Treat any file over ~3 KB as a candidate for the bash-write
+  workaround below. The Read tool's view may show the intended
+  content (an in-memory cache effect), while the on-disk file is
+  truncated — so Read alone does NOT verify a Write succeeded.
+  Use `python3 -c "..."` via bash or `python3 << 'PYEOF'` heredoc
+  to verify file size and content after each Write of a non-trivial
+  file. The reliable indicator that a Write went wrong: the
+  resulting file is exactly the size of the previous version, or
+  ends mid-content with no trailing newline.
+
+- **Edit tool corrupts multi-line block replacements on existing
+  YAML files (2026-05-26).** Six equipment YAML files
+  (mash-tun, washback, worm-tub, shell-and-tube-condenser,
+  coffey-still, spirit-safe) were truncated by Edit operations
+  that replaced a 5-line alt-text block with a 9-10-line block.
+  The truncation point varied — mid-source-notes for four files,
+  mid-final-line for two — and consistently dropped the tail of
+  the file (the `sources:` and metadata blocks).
+
+  The pattern: Edit replacing a block that grows the file by
+  approximately 5-10 lines, on a file whose total size is in the
+  3-5 KB range. The Edit reports success; the on-disk file is
+  truncated.
+
+  Recovery: read the previous version from `git show HEAD:<path>`,
+  splice the intact tail back onto the new head via a Python
+  heredoc that finds a known landmark (`# --- Sources` line or
+  similar). Verify schema_version is present and YAML parses.
+
+  Mitigation: for any block-replacement Edit on a YAML or other
+  data file, audit the resulting file Windows-side via bash
+  (`tail -3`, `wc -l`, `yaml.safe_load`) **before** declaring the
+  task complete. Or — preferred — rewrite the whole file via bash
+  heredoc instead of using Edit.
+
 ## Verification routine
 
 After any Write-heavy turn, run the resolver:
@@ -142,10 +184,14 @@ If any of the above is "no," resolve before moving on.
 
 ## What this rule does not cover
 
-- **Edit tool**. The corruption described above is specific to the
-  Write tool. The Edit tool has produced its own occasional issues
-  (NUL bytes have been observed there too on rare occasions), but
-  the volume is lower and the cleanup is the same.
+- **Edit tool**. The corruption described above was originally
+  observed on the Write tool. The 2026-05-26 incident escalated
+  the Edit tool's failure mode from "rare" to "common on multi-
+  line block replacements that grow the file by more than ~5
+  lines": six equipment YAMLs were truncated in one session by
+  alt-text rewrites. See the threshold-revision note above for
+  the recovery pattern. For block replacements on data files,
+  prefer a bash-heredoc rewrite over Edit.
 - **Single Writes**. A single Write in isolation, or a single Write
   per turn, has not been observed to corrupt.
 - **Non-YAML files**. The verification routine for Python scripts is

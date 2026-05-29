@@ -613,25 +613,30 @@ design. The grouped-list pattern matches `casks/index` and the
 concept sub-indexes. This is the established pattern for any future
 flat-table index that outgrows readability.
 
-**Educational-page diagrams (2026-05-22):** the diagram pipeline
-is proven and a full set of 10 deterministic SVGs now lives in
+**Educational-page diagrams (2026-05-26):** the diagram pipeline
+is proven and a full set of 10 deterministic SVGs lives in
 `data/diagrams/`, attached to their concept pages via the
-optional `diagrams:` schema field. The loader (`attachDiagramSvg`)
-inlines each SVG at build time; the concept detail page renders a
-`<figure>` with caption and source citation. Two visual
-registers, codified in `docs/diagram-style.md`: hardware and
-process schematics use a hand-drawn sketch register (a pure-SVG
-`feTurbulence` + `feDisplacementMap` wobble filter, no
-JavaScript, fixed seed); data graphs use a strict register — no
-filter, precise axes, full grid, plotted exactly from a sourced
-figure. The two strict graphs (`spirit-cut`,
-`cask-maturation-kinetics`) reproduce Miller Figs. 6.7 and 8.11
-and are emitted by `scripts/gen_data_diagrams.py`. Settled:
-pot-still, the production-chain flowchart, the peating-measurement
-matrix, both strict graphs. The six hardware schematics
-(mash-tun, washback, worm-tub, shell-and-tube-condenser,
-coffey-still, spirit-safe) are committed as first-draft
-checkpoints; a redraw is queued in `TODO.md` Beta-readiness.
+optional `diagrams:` schema field. Three visual registers,
+codified in `docs/diagram-style.md`:
+
+- **Sketch** (turbulence + displacement filter): pot-still
+  schematic, production-chain flowchart, peating-measurement
+  matrix.
+- **Strict** (no filter, precise axes, full grid, plotted from a
+  sourced figure): the two data graphs `spirit-cut` (Miller Fig.
+  6.7) and `cask-maturation-kinetics` (Miller Fig. 8.11), emitted
+  by `scripts/gen_data_diagrams.py`.
+- **Technical-schematic** (new in 2026-05-26, blueprint
+  conventions: `stroke="currentColor"` throughout, double-walled
+  vessels with diagonal section hatching, dashed annotation
+  leaders with filled-dot terminations, short solid pipe-nozzle
+  stubs at inlets/outlets, dashed hidden lines for occluded
+  parts): mash-tun, washback, worm-tub, shell-and-tube-condenser,
+  coffey-still, spirit-safe. Conventions settled in the
+  2026-05-26 pilot on mash-tun, then rolled out to the other
+  five.
+
+CHANGELOG [0.8.3].
 
 **Next priorities, in order of unblock value:**
 

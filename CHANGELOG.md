@@ -9,6 +9,69 @@ covers them all.
 
 ---
 
+## [0.8.3] — 2026-05-26
+
+Diagram-style spec extended; cross-section diagrams re-authored in
+a new register.
+
+`docs/diagram-style.md` now defines **three** visual registers
+(was two): the existing **sketch** register for external-assembly
+schematics (pot still, production-chain flowchart, peating-
+measurement matrix), the existing **strict** register for data
+graphs (spirit cut, cask-maturation kinetics), and a new
+**technical-schematic** register for cross-section diagrams (mash
+tun, washback, worm tub, shell-and-tube condenser, Coffey-still
+columns, spirit safe). The sketch register's displacement filter
+smears interior strokes in cross-section views; the technical-
+schematic register uses clean lines instead.
+
+Within the technical-schematic register, the spec also documents
+the **blueprint conventions** settled in the 2026-05-26 pilot:
+`stroke="currentColor"` throughout (CSS variables do not resolve
+reliably for stroke in all viewers); double-walled vessel outlines
+with generic diagonal section hatching via SVG pattern + even-odd
+fill; dashed annotation leaders (5 3 pattern, stroke 1.0) ending
+in filled-circle dots at the part-end; short solid pipe-nozzle
+stubs at every inlet and outlet (so leaders point at a visible
+structural element); dashed hidden lines (3 2 pattern) for
+occluded interior parts; explicit stroke-weight hierarchy; no
+flow-direction arrowheads. Material-specific hatching, dimensions,
+and scale bars remain forbidden.
+
+The six cross-section SVGs in `data/diagrams/` are re-authored to
+the new register and the six corresponding equipment concept-page
+alt-texts updated.
+
+No schema fields were added or changed — this is a docs + asset
+change. The optional `diagrams:` field on `concept.template.yml`
+v0.1 remains unchanged.
+
+The `safe-bulk-writes` skill is updated with two new lessons from
+the same session: the Write tool's single-write truncation
+threshold is revised down to ~3 KB (from the previously documented
+~10 KB); and the Edit tool's failure mode on multi-line block
+replacements over existing data files is escalated from "rare" to
+"common when growing a block by more than ~5 lines", with a
+recovery pattern via `git show HEAD:<path>` and Python splice.
+
+`CLAUDE.md` is extended with a new "Reducing wasted iteration"
+section adapted from the karpathy-skills behavioural guidelines —
+pre-write discipline (state assumptions, simplicity first,
+surgical changes, goal-driven execution) complementing the
+existing post-write iterative pattern.
+
+### Schema versions at this entry
+
+- `distillery.template.yml` v0.2
+- `production_line.template.yml` v0.2.1
+- `bottling.template.yml` v0.2
+- `concept.template.yml` v0.1
+- `bottler.template.yml` v0.2
+- `cask.template.yml` v0.1
+- `supplier.template.yml` v0.1
+
+---
+
 ## [0.8.2] — 2026-05-22
 
 The `concept` schema gained an optional `diagrams` field — a list

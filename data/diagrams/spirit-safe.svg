@@ -1,134 +1,147 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 510"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 530"
      role="img" aria-labelledby="safe-title safe-desc"
      class="wb-diagram">
-  <!-- WhiskyBase diagram: spirit safe (hand-drawn schematic,
-       redraw). The brass-and-glass case sits on a brass stand;
-       three glass panels (divided by brass mullions) front the
-       case; two test cups inside the case each hold a spirit
-       hydrometer floating in distillate; two brass taps on top of
-       the case admit water for testing. Distillate enters from
-       the condenser above; a swivelling spout below diverts the
-       run between two receivers — one for foreshots and feints,
-       one for the potable spirit.
-       Style spec: docs/diagram-style.md. Labels sit outside the
-       figure.
-       Grounded on Russell ed. 2022 Ch 14 (Nicol); see
-       equipment/spirit-safe.yml source 1. -->
+  <!-- Blueprint cross-section of a spirit safe. Double-walled
+       brass case with section hatching; brass mullions divide the
+       front; three test cups visible inside, each with a floating
+       hydrometer; brass stand below the case; dashed annotation
+       leaders. Stroke color: currentColor. -->
   <title id="safe-title">Spirit safe</title>
-  <desc id="safe-desc">Cross-section of a spirit safe: a glass-fronted
-    brass case mounted on a brass stand. Three glass panels divided
-    by brass mullions front the case; two brass taps on top admit
-    test water. Inside, two test cups each carry a spirit
-    hydrometer floating in distillate. Distillate enters from the
-    condenser via a pipe at the top; a swivelling spout below the
-    case directs the run between two floor-level receivers, one
-    for foreshots and feints, one for the potable spirit.</desc>
+  <desc id="safe-desc">Blueprint-style cross-section of a spirit
+    safe: a glass-fronted brass case mounted on a brass stand.
+    Three glass panels divided by brass mullions front the case;
+    two brass taps on top admit test water. Inside, three test cups
+    each carry a spirit hydrometer floating in distillate.
+    Distillate enters from the condenser via a pipe nozzle at the
+    top; a swivelling spout below the case directs the run between
+    two floor-level receivers, one for foreshots and feints, one
+    for the potable spirit.</desc>
 
-  <!-- Figure line-work -->
-  <g fill="none" stroke="currentColor" stroke-width="2.5"
-     stroke-linejoin="round" stroke-linecap="round">
+  <defs>
+    <pattern id="cut-hatch-safe" patternUnits="userSpaceOnUse"
+             width="5" height="5" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5"
+            stroke="currentColor" stroke-width="0.5"/>
+    </pattern>
+  </defs>
 
-    <!-- Brass case (outer frame) -->
+  <!-- Brass case wall material -->
+  <path d="M176 96 L524 96 L524 234 L176 234 Z
+           M180 100 L520 100 L520 230 L180 230 Z"
+        fill="url(#cut-hatch-safe)" fill-rule="evenodd"
+        stroke="none"/>
+
+  <!-- Wall outlines -->
+  <g fill="none" stroke="currentColor" stroke-width="1.4"
+     stroke-linejoin="round" stroke-linecap="butt">
+    <path d="M176 96 L524 96 L524 234 L176 234 Z"/>
     <path d="M180 100 L520 100 L520 230 L180 230 Z"/>
+  </g>
 
-    <!-- Brass taps on top of the case: two upright valves -->
-    <g stroke-width="1.8">
-      <!-- tap 1 -->
-      <path d="M252 100 L252 78"/>
-      <path d="M244 78 L260 78"/>
-      <path d="M252 78 L252 66"/>
-      <!-- tap 2 -->
-      <path d="M380 100 L380 78"/>
-      <path d="M372 78 L388 78"/>
-      <path d="M380 78 L380 66"/>
+  <!-- Internal structural elements -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2"
+     stroke-linejoin="round" stroke-linecap="butt">
+
+    <!-- Brass taps on top of the case -->
+    <g stroke-width="1.0">
+      <path d="M252 96 L252 74"/>
+      <path d="M244 74 L260 74"/>
+      <path d="M252 74 L252 62"/>
+      <path d="M380 96 L380 74"/>
+      <path d="M372 74 L388 74"/>
+      <path d="M380 74 L380 62"/>
     </g>
 
     <!-- Brass mullions dividing the front into three glass panels -->
-    <g stroke-width="1.8">
+    <g stroke-width="1.0">
       <path d="M298 100 L298 230"/>
       <path d="M402 100 L402 230"/>
     </g>
 
-    <!-- Test cups (one per panel), each with a hydrometer floating -->
-    <g stroke-width="1.8">
-      <!-- left cup -->
-      <path d="M222 124 L222 216"/>
-      <path d="M258 124 L258 216"/>
-      <path d="M222 216 C222 224, 258 224, 258 216"/>
-      <path d="M224 174 C234 178, 246 178, 256 174"/>
-      <ellipse cx="240" cy="190" rx="4" ry="6"/>
-      <path d="M240 184 L240 136"/>
-      <!-- middle cup -->
-      <path d="M332 124 L332 216"/>
-      <path d="M368 124 L368 216"/>
-      <path d="M332 216 C332 224, 368 224, 368 216"/>
-      <path d="M334 174 C344 178, 356 178, 366 174"/>
-      <ellipse cx="350" cy="190" rx="4" ry="6"/>
-      <path d="M350 184 L350 136"/>
-      <!-- right cup -->
-      <path d="M442 124 L442 216"/>
-      <path d="M478 124 L478 216"/>
-      <path d="M442 216 C442 224, 478 224, 478 216"/>
-      <path d="M444 174 C454 178, 466 178, 476 174"/>
-      <ellipse cx="460" cy="190" rx="4" ry="6"/>
-      <path d="M460 184 L460 136"/>
+    <!-- Three test cups, each with a hydrometer -->
+    <g stroke-width="1.0">
+      <path d="M222 122 L222 214"/>
+      <path d="M258 122 L258 214"/>
+      <path d="M222 214 C222 222, 258 222, 258 214"/>
+      <path d="M224 172 C234 176, 246 176, 256 172"/>
+      <ellipse cx="240" cy="188" rx="4" ry="6"/>
+      <path d="M240 182 L240 134"/>
+      <path d="M332 122 L332 214"/>
+      <path d="M368 122 L368 214"/>
+      <path d="M332 214 C332 222, 368 222, 368 214"/>
+      <path d="M334 172 C344 176, 356 176, 366 172"/>
+      <ellipse cx="350" cy="188" rx="4" ry="6"/>
+      <path d="M350 182 L350 134"/>
+      <path d="M442 122 L442 214"/>
+      <path d="M478 122 L478 214"/>
+      <path d="M442 214 C442 222, 478 222, 478 214"/>
+      <path d="M444 172 C454 176, 466 176, 476 172"/>
+      <ellipse cx="460" cy="188" rx="4" ry="6"/>
+      <path d="M460 182 L460 134"/>
     </g>
 
-    <!-- Distillate inlet pipe from the condenser -->
-    <path d="M120 72 L340 100"/>
-    <path d="M330 92 L342 102 L328 105"/>
+    <!-- Brass stand: two front legs and a cross-stretcher -->
+    <path d="M192 234 L192 322"/>
+    <path d="M508 234 L508 322"/>
+    <path d="M206 300 L494 300"/>
 
-    <!-- Brass stand: two visible front legs from case bottom to
-         floor level -->
-    <path d="M196 230 L196 320"/>
-    <path d="M504 230 L504 320"/>
-    <!-- cross-stretcher between legs for stability -->
-    <path d="M210 296 L490 296"/>
-
-    <!-- Swivelling spout: exits the safe bottom, hinges, then
-         angles toward the spirit receiver -->
-    <path d="M340 230 L340 268"/>
-    <ellipse cx="340" cy="270" rx="6" ry="4"/>
-    <path d="M340 270 L432 358"/>
-    <path d="M422 354 L436 360 L428 370"/>
+    <!-- Swivelling spout with hinge and angled position -->
+    <path d="M340 234 L340 270"/>
+    <ellipse cx="340" cy="272" rx="6" ry="4"/>
+    <path d="M340 272 L432 360"/>
 
     <!-- Floor line -->
-    <path d="M150 380 L610 380"/>
+    <path d="M148 380 L612 380"/>
 
     <!-- Receivers (two floor-level bowls) -->
     <path d="M210 380 C210 432, 340 432, 340 380"/>
     <path d="M380 380 C380 432, 510 432, 510 380"/>
+
+    <!-- Distillate inlet pipe nozzle at the top of the case -->
+    <path d="M124 96 L124 76 L150 76 L150 96"/>
   </g>
 
-  <!-- Leader lines -->
-  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
-     stroke-linecap="round">
+  <!-- Annotation leaders -->
+  <g fill="none" stroke="currentColor" stroke-width="1.0"
+     stroke-linecap="butt" stroke-dasharray="5 3">
     <!-- distillate from condenser -->
-    <path d="M186 60 C172 64, 160 68, 132 72"/>
+    <path d="M196 56 L137 76"/>
     <!-- brass tap -->
-    <path d="M568 60 C508 64, 446 70, 388 76"/>
+    <path d="M576 56 L388 70"/>
     <!-- glass panel -->
-    <path d="M122 162 C148 164, 170 166, 192 168"/>
+    <path d="M124 166 L190 168"/>
     <!-- cup and hydrometer -->
-    <path d="M584 172 C548 172, 510 172, 482 174"/>
+    <path d="M592 176 L478 188"/>
     <!-- swivelling spout -->
-    <path d="M566 304 C536 308, 510 312, 444 332"/>
+    <path d="M572 308 L432 360"/>
     <!-- brass stand -->
-    <path d="M132 292 C156 292, 178 292, 194 292"/>
+    <path d="M134 296 L206 300"/>
     <!-- foreshots and feints -->
-    <path d="M282 446 L282 414"/>
+    <path d="M282 446 L282 412"/>
     <!-- potable spirit -->
-    <path d="M444 446 L444 414"/>
+    <path d="M444 446 L444 412"/>
   </g>
 
-  <!-- Labels (crisp, outside the figure) -->
-  <g fill="var(--muted-color)" font-size="14" stroke="none">
-    <text x="194" y="56" text-anchor="end">Distillate from condenser</text>
-    <text x="576" y="56">Brass tap</text>
-    <text x="120" y="166" text-anchor="end">Glass panel</text>
-    <text x="592" y="176">Cup and hydrometer</text>
-    <text x="572" y="308">Swivelling spout</text>
-    <text x="130" y="296" text-anchor="end">Brass stand</text>
+  <!-- Dots at endpoints -->
+  <g fill="currentColor" stroke="none">
+    <circle cx="190" cy="168" r="2.4"/>
+    <circle cx="478" cy="188" r="2.4"/>
+    <circle cx="432" cy="360" r="2.4"/>
+    <circle cx="206" cy="300" r="2.4"/>
+    <circle cx="388" cy="70" r="2.4"/>
+    <circle cx="282" cy="412" r="2.4"/>
+    <circle cx="444" cy="412" r="2.4"/>
+    <circle cx="137" cy="76" r="2.6"/>
+  </g>
+
+  <!-- Labels -->
+  <g fill="currentColor" font-size="14" stroke="none">
+    <text x="200" y="52" text-anchor="end">Distillate from condenser</text>
+    <text x="582" y="52">Brass tap</text>
+    <text x="120" y="170" text-anchor="end">Glass panel</text>
+    <text x="598" y="180">Cup and hydrometer</text>
+    <text x="578" y="312">Swivelling spout</text>
+    <text x="130" y="300" text-anchor="end">Brass stand</text>
     <text x="282" y="462" text-anchor="middle">Foreshots and feints</text>
     <text x="444" y="462" text-anchor="middle">Potable spirit</text>
   </g>

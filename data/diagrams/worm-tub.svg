@@ -1,96 +1,110 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 510"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 530"
      role="img" aria-labelledby="worm-tub-title worm-tub-desc"
      class="wb-diagram">
-  <!-- WhiskyBase diagram: worm tub (technical schematic).
-       The worm is a tapered copper coil descending through a tub of
-       water. Cooling water flows counter-current: cold water enters
-       low and warm water overflows high, while vapour enters the
-       worm hot at the top and the condensed spirit runs off at the
-       bottom. A small upward arrow inside the water column makes
-       the counter-current direction explicit.
-       Style spec: docs/diagram-style.md. Labels sit outside the
-       figure.
-       Grounded on equipment/worm-tub.yml body description and
-       Russell ed. 2022 Ch 14 (Nicol). -->
+  <!-- Blueprint cross-section of a worm tub. Double-walled outline
+       with section hatching; the worm shown as a stack of tapered
+       ellipses descending through the tub; dashed annotation leaders.
+       Counter-current cooling: cold water nozzle low on the left,
+       warm water nozzle high on the right. Stroke color: currentColor. -->
   <title id="worm-tub-title">Worm tub</title>
-  <desc id="worm-tub-desc">Cross-section of a worm tub: a tapered
-    copper coil — the worm — descends inside a tub of cooling water.
-    Spirit vapour from the lyne arm enters the top of the worm and
-    condenses as it descends; cold cooling water enters the tub at
-    the bottom and warm water overflows at the top, so the water
-    flows counter to the vapour direction. The condensed spirit runs
-    off below the tub to the spirit safe.</desc>
+  <desc id="worm-tub-desc">Blueprint-style cross-section of a worm
+    tub: a tapered copper coil (the worm) descends inside a tub of
+    cooling water. Spirit vapour enters the top of the worm and
+    condenses as it descends. Cold cooling water enters low on one
+    side and warm water overflows high on the opposite side, so the
+    water flows counter to the vapour direction. Condensed spirit
+    runs off below the tub to the spirit safe.</desc>
 
-  <!-- Figure line-work -->
-  <g fill="none" stroke="currentColor" stroke-width="2.5"
-     stroke-linejoin="round" stroke-linecap="round">
+  <defs>
+    <pattern id="cut-hatch-worm-tub" patternUnits="userSpaceOnUse"
+             width="5" height="5" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5"
+            stroke="currentColor" stroke-width="0.5"/>
+    </pattern>
+  </defs>
 
-    <!-- Water tub -->
-    <ellipse cx="360" cy="140" rx="150" ry="12"/>
-    <path d="M210 140 L210 400"/>
-    <path d="M510 140 L510 400"/>
-    <path d="M210 400 C210 422, 510 422, 510 400"/>
+  <!-- Wall material -->
+  <path d="M206 140 L514 140 L514 400 C514 428, 206 428, 206 400 Z
+           M210 144 L510 144 L510 400 C510 422, 210 422, 210 400 Z"
+        fill="url(#cut-hatch-worm-tub)" fill-rule="evenodd"
+        stroke="none"/>
 
-    <!-- Water surface, just below the tub rim -->
-    <path d="M218 158 C282 166, 438 166, 502 158"/>
-
-    <!-- The worm: stacked tapered ellipses with alternating
-         step-down connectors (a descending coil seen edge-on) -->
-    <g stroke-width="2.2">
-      <ellipse cx="360" cy="178" rx="130" ry="6"/>
-      <ellipse cx="360" cy="210" rx="122" ry="6"/>
-      <ellipse cx="360" cy="242" rx="112" ry="6"/>
-      <ellipse cx="360" cy="274" rx="102" ry="6"/>
-      <ellipse cx="360" cy="306" rx="92" ry="6"/>
-      <ellipse cx="360" cy="338" rx="82" ry="6"/>
-      <path d="M490 178 L482 210"/>
-      <path d="M238 210 L248 242"/>
-      <path d="M472 242 L462 274"/>
-      <path d="M258 274 L268 306"/>
-      <path d="M452 306 L442 338"/>
-    </g>
-
-    <!-- Vapour inlet pipe -->
-    <path d="M150 86 L228 174"/>
-    <path d="M218 170 L230 178 L218 184"/>
-
-    <!-- Spirit outflow -->
-    <path d="M442 338 L442 412 L562 412"/>
-    <path d="M554 404 L564 413 L554 421"/>
-
-    <!-- Cooling-water inlet (low) -->
-    <path d="M148 376 L208 372"/>
-    <path d="M198 366 L210 372 L198 380"/>
-
-    <!-- Warm-water overflow (high) -->
-    <path d="M510 152 L588 138"/>
-    <path d="M576 132 L590 137 L578 145"/>
-
-    <!-- Internal upward arrow: counter-current water flow -->
-    <g stroke-width="1.8">
-      <path d="M222 322 L222 256"/>
-      <path d="M216 264 L222 254 L228 264"/>
-    </g>
+  <!-- Wall outlines (open tub: no top closure) -->
+  <g fill="none" stroke="currentColor" stroke-width="1.4"
+     stroke-linejoin="round" stroke-linecap="butt">
+    <path d="M206 140 L206 400 C206 428, 514 428, 514 400 L514 140"/>
+    <path d="M210 144 L210 400 C210 422, 510 422, 510 400 L510 144"/>
+    <!-- top rim -->
+    <ellipse cx="360" cy="140" rx="154" ry="10"/>
   </g>
 
-  <!-- Leader lines -->
-  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
-     stroke-linecap="round">
-    <path d="M148 64 C150 72, 152 80, 154 88"/>
-    <path d="M602 96 C594 108, 588 122, 584 134"/>
-    <path d="M600 260 C558 252, 510 248, 478 244"/>
-    <path d="M152 290 C168 290, 188 290, 218 290"/>
-    <path d="M148 408 C158 400, 168 390, 178 376"/>
-    <path d="M540 444 C544 432, 548 422, 552 414"/>
+  <!-- Internal structural elements -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2"
+     stroke-linejoin="round" stroke-linecap="butt">
+
+    <!-- Water surface -->
+    <path d="M218 160 C282 168, 438 168, 502 160"/>
+
+    <!-- Worm: stack of tapered ellipses with step-down connectors -->
+    <g stroke-width="1.0">
+      <ellipse cx="360" cy="180" rx="130" ry="6"/>
+      <ellipse cx="360" cy="212" rx="122" ry="6"/>
+      <ellipse cx="360" cy="244" rx="112" ry="6"/>
+      <ellipse cx="360" cy="276" rx="102" ry="6"/>
+      <ellipse cx="360" cy="308" rx="92" ry="6"/>
+      <ellipse cx="360" cy="340" rx="82" ry="6"/>
+      <path d="M490 180 L482 212"/>
+      <path d="M238 212 L248 244"/>
+      <path d="M472 244 L462 276"/>
+      <path d="M258 276 L268 308"/>
+      <path d="M452 308 L442 340"/>
+    </g>
+
+    <!-- Vapour inlet nozzle on the top rim (where the lyne arm
+         couples in) -->
+    <path d="M218 158 L218 110 L242 110 L242 162"/>
+
+    <!-- Cold-water inlet nozzle low on the left wall -->
+    <path d="M206 376 L168 376 L168 396 L206 396"/>
+
+    <!-- Warm-water overflow nozzle high on the right wall -->
+    <path d="M514 152 L552 152 L552 172 L514 172"/>
+
+    <!-- Spirit outflow nozzle below the bottom (where the worm
+         leaves the tub) -->
+    <path d="M442 414 L442 458 L568 458"/>
   </g>
 
-  <!-- Labels (crisp, outside the figure) -->
-  <g fill="var(--muted-color)" font-size="14" stroke="none">
+  <!-- Annotation leaders -->
+  <g fill="none" stroke="currentColor" stroke-width="1.0"
+     stroke-linecap="butt" stroke-dasharray="5 3">
+    <!-- vapour from lyne arm -->
+    <path d="M150 64 L230 110"/>
+    <!-- warm water out -->
+    <path d="M602 96 L552 162"/>
+    <!-- tapered copper worm -->
+    <path d="M598 260 L466 252"/>
+    <!-- cold water in -->
+    <path d="M150 412 L168 386"/>
+    <!-- spirit, to the spirit safe -->
+    <path d="M478 488 L568 458"/>
+  </g>
+
+  <!-- Dots at endpoints -->
+  <g fill="currentColor" stroke="none">
+    <circle cx="466" cy="252" r="2.4"/>
+    <circle cx="230" cy="110" r="2.6"/>
+    <circle cx="552" cy="162" r="2.6"/>
+    <circle cx="168" cy="386" r="2.6"/>
+    <circle cx="568" cy="458" r="2.6"/>
+  </g>
+
+  <!-- Labels -->
+  <g fill="currentColor" font-size="14" stroke="none">
     <text x="144" y="60" text-anchor="end">Vapour from the lyne arm</text>
     <text x="608" y="92">Warm water out</text>
-    <text x="608" y="264">Tapered copper worm</text>
-    <text x="148" y="294" text-anchor="end">Cooling-water flow</text>
-    <text x="144" y="412" text-anchor="end">Cold water in</text>
-    <text x="476" y="450">Spirit, to the spirit safe</text>
+    <text x="606" y="264">Tapered copper worm</text>
+    <text x="144" y="416" text-anchor="end">Cold water in</text>
+    <text x="476" y="500">Spirit, to the spirit safe</text>
   </g>
 </svg>

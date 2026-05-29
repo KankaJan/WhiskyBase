@@ -84,15 +84,18 @@ equipment:
 diagrams:
   - file: coffey-still.svg
     alt: >-
-      Schematic of a Coffey still in cross-section: the
-      plated analyser column on the left and the plated rectifier
-      column on the right, with the pre-heat coil rising through the
-      rectifier, the cold wash feed at the rectifier base, the
-      wash crossover from rectifier top to analyser top, the steam
-      inlet at the analyser base, the vapour-transfer pipe from
-      analyser top to rectifier base, and the spirit draw-off near
-      the rectifier top.
-    caption: "The Coffey still: analyser and rectifier columns, with the wash pre-heat coil and the vapour transfer marked."
+      Blueprint-style cross-section of a two-column Coffey still: the
+      plated analyser column on the left and the plated rectifier column
+      on the right, each drawn in double-walled outline with diagonal
+      section hatching on the cut walls. A pre-heat coil rises through
+      the rectifier; cold wash enters the rectifier base through a
+      nozzle, the heated wash crosses over to the analyser top, steam
+      enters the analyser base through a nozzle, alcohol-rich vapour
+      crosses to the rectifier base via the vapour-transfer pipe, and
+      refined spirit is drawn off near the rectifier top through a
+      nozzle. Each part is connected to its label by a dashed annotation
+      leader ending in a filled dot.
+    caption: "A Coffey still in blueprint cross-section: analyser and rectifier columns with their plates, pre-heat coil, vapour transfer and side nozzles."
     source_id: 1
 
 

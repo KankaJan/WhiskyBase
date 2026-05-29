@@ -4,23 +4,22 @@
   <!-- WhiskyBase diagram: mash tun (technical schematic, blueprint
        conventions). Cross-section of a lauter-style mash tun.
        Solid lines: structural figure parts only (vessel walls,
-       rake, false bottom, internal hardware). Dashed lines: every
-       annotation, including the inlets and outlets (which are
-       drawn as annotation leaders pointing at their entry/exit
-       points). Hidden rake teeth on the far side of the arm also
-       dashed. Stroke color is currentColor throughout. No
-       dimensions, no scale bar.
+       rake, false bottom, internal hardware, pipe nozzles where
+       substances enter/exit the vessel). Dashed lines: annotation
+       leaders from labels to parts. Hidden rake teeth on the far
+       side of the arm also dashed. Stroke color is currentColor
+       throughout. No dimensions, no scale bar.
        Grounded on Russell ed. 2022 Ch 10 (Bringhurst, Harrison &
        Brosnan) and Miller 2024 Ch 4; see equipment/mash-tun.yml. -->
   <title id="mash-tun-title">Mash tun</title>
   <desc id="mash-tun-desc">Blueprint-style cross-section of a
-    lauter-style mash tun: domed lid, drive gearbox on top turning
-    a central rake shaft, rotating rake sweeping a bed of crushed
-    grain resting on a perforated false bottom, open wort sump
-    below feeding the sweet wort to the washback. All callouts,
-    including the grist + hot water inlet and the wort outlet, are
-    shown as dashed annotation leaders pointing at the relevant
-    entry or exit point on the vessel.</desc>
+    lauter-style mash tun: domed lid, drive gearbox on top, central
+    rake shaft and rotating rake sweeping a bed of crushed grain
+    resting on a perforated false bottom, open wort sump below
+    feeding the sweet wort to the washback. Grist + hot water
+    enters through a short pipe nozzle on the dome; wort exits
+    through a short nozzle on the right wall at sump level. Each
+    nozzle is labelled via a dashed annotation leader.</desc>
 
   <defs>
     <pattern id="cut-hatch-mash-tun" patternUnits="userSpaceOnUse"
@@ -51,6 +50,7 @@
   <g fill="none" stroke="currentColor" stroke-width="1.2"
      stroke-linejoin="round" stroke-linecap="butt">
 
+    <!-- Drive gearbox -->
     <rect x="372" y="52" width="36" height="46"/>
     <g stroke-width="0.8">
       <circle cx="390" cy="74" r="7"/>
@@ -60,9 +60,11 @@
       <path d="M397 74 L400 74"/>
     </g>
 
+    <!-- Rake shaft + arm -->
     <path d="M390 98 L390 318"/>
     <path d="M278 318 L502 318"/>
 
+    <!-- Rake teeth (front, solid) -->
     <g stroke-width="1.0">
       <path d="M294 318 L292 332"/>
       <path d="M322 318 L320 332"/>
@@ -74,6 +76,7 @@
       <path d="M490 318 L488 332"/>
     </g>
 
+    <!-- Rake teeth (hidden, dashed) -->
     <g stroke-width="1.0" stroke-dasharray="3 2">
       <path d="M308 318 L306 332"/>
       <path d="M336 318 L334 332"/>
@@ -84,6 +87,7 @@
       <path d="M476 318 L474 332"/>
     </g>
 
+    <!-- False bottom -->
     <path d="M280 340 L500 340"/>
     <path d="M280 352 L500 352"/>
     <g stroke-width="0.8">
@@ -97,6 +101,7 @@
       <path d="M482 340 L482 352"/>
     </g>
 
+    <!-- Grain bed -->
     <g stroke-width="0.7" stroke-linecap="round">
       <path d="M278 190 C336 187, 446 193, 502 188"/>
       <path d="M278 218 C342 215, 442 221, 502 216"/>
@@ -105,26 +110,32 @@
       <path d="M278 302 C336 299, 446 305, 502 300"/>
       <path d="M278 336 C336 333, 446 339, 502 334"/>
     </g>
+
+    <!-- Inlet nozzle: a short pipe stub on the dome (3-sided,
+         open at the bottom into the vessel) -->
+    <path d="M298 110 L298 70 L322 70 L322 110"/>
+
+    <!-- Outlet nozzle: a short pipe stub on the right wall at
+         sump level (3-sided, open on the left where it meets
+         the wall) -->
+    <path d="M510 380 L550 380 L550 400 L510 400"/>
   </g>
 
-  <!-- All annotation leaders, including the inlet and outlet
-       (dashed, currentColor, thinner) -->
+  <!-- Annotation leaders (dashed, currentColor, thinner) -->
   <g fill="none" stroke="currentColor" stroke-width="1.0"
      stroke-linecap="butt" stroke-dasharray="5 3">
-    <!-- Annotation leaders for labelled parts -->
     <path d="M460 64 L410 64"/>
     <path d="M586 134 L482 134"/>
     <path d="M168 240 L276 240"/>
     <path d="M168 376 L276 376"/>
     <path d="M572 268 L572 320 L504 320"/>
     <path d="M572 346 L516 346"/>
-    <!-- Inlet leader: from below the label down to the entry
-         point on the dome (routed below the text so it does not
-         interfere with the label) -->
-    <path d="M140 100 L322 130"/>
-    <!-- Outlet leader: from above the label up to the exit point
-         on the right wall in the sump zone -->
-    <path d="M484 462 L514 388"/>
+    <!-- Inlet leader: from below the label to the top of the
+         inlet nozzle -->
+    <path d="M178 60 L310 70"/>
+    <!-- Outlet leader: from above the label up-right to the
+         right edge of the outlet nozzle -->
+    <path d="M484 462 L548 390"/>
   </g>
 
   <!-- Dots at every leader endpoint -->
@@ -135,8 +146,8 @@
     <circle cx="276" cy="376" r="2.4"/>
     <circle cx="504" cy="320" r="2.4"/>
     <circle cx="516" cy="346" r="2.4"/>
-    <circle cx="322" cy="130" r="2.6"/>
-    <circle cx="514" cy="388" r="2.6"/>
+    <circle cx="310" cy="70" r="2.6"/>
+    <circle cx="548" cy="390" r="2.6"/>
   </g>
 
   <!-- Labels -->
@@ -147,7 +158,7 @@
     <text x="164" y="380" text-anchor="end">Wort sump</text>
     <text x="578" y="272">Rotating rake</text>
     <text x="578" y="350">Perforated false bottom</text>
-    <text x="136" y="84" text-anchor="start">Grist and hot water</text>
+    <text x="174" y="56" text-anchor="end">Grist and hot water</text>
     <text x="478" y="478">Wort, to the washback</text>
   </g>
 </svg>

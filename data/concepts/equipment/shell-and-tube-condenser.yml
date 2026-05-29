@@ -117,15 +117,18 @@ equipment:
 diagrams:
   - file: shell-and-tube-condenser.svg
     alt: >-
-      Cross-section schematic of a vertical shell-and-tube condenser:
+      Blueprint-style cross-section of a vertical shell-and-tube condenser:
       a domed upper bonnet receives spirit vapour from the still and
-      distributes it across a bundle of copper tubes; the tubes pass
-      through tube sheets at each end of the cylindrical shell and
-      run down to a domed lower bonnet that drains condensed spirit
-      to the spirit safe. Cooling water enters cold low on one side
-      through a flanged nozzle and exits warm high on the opposite
-      side, counter to the descending vapour and condensate.
-    caption: "A shell-and-tube condenser in cross-section: bonnets, tube bundle, tube sheets, and counter-current water nozzles."
+      distributes it across a bundle of vertical copper tubes that pass
+      through tube sheets at each end of the cylindrical shell and run
+      down to a domed lower bonnet draining condensed spirit to the
+      spirit safe. The shell and bonnet walls are double-lined with
+      diagonal section hatching on the cut surfaces. Cooling water enters
+      cold low on one side through a pipe nozzle and exits warm high on
+      the opposite side, counter to the descending vapour. Each part is
+      connected to its label by a dashed annotation leader ending in a
+      filled dot.
+    caption: "A shell-and-tube condenser in blueprint cross-section: bonnets, tube bundle, tube sheets, counter-current water nozzles."
     source_id: null
 
 

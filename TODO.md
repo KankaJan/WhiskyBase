@@ -53,50 +53,31 @@ visual work *around* that content.
 
 ### Educational-page diagrams
 
-- **Status (2026-05-22): all planned diagrams drafted.** The
-  pipeline — the optional `diagrams:` schema field, the
-  `attachDiagramSvg` loader inlining each SVG at build time, and
-  the `<figure>` + caption + source-citation rendering on the
-  concept detail page — is proven and now exercised by a full
-  set of 10 SVGs in `data/diagrams/`. Authoring spec:
-  `docs/diagram-style.md`. AI image generation was considered and
-  rejected for technical diagrams: unsourceable,
-  hallucination-prone, cannot plot real data.
-- **Two visual registers** (see the spec). Hardware and process
-  schematics use a hand-drawn sketch register — a pure-SVG
-  `feTurbulence` + `feDisplacementMap` wobble filter, no
-  JavaScript, fixed seed for determinism. Data graphs use a
-  strict register: no filter, precise axes, full grid, plotted
-  exactly from a sourced figure.
-- **Settled.** The pot-still schematic; the production-chain
-  flowchart (`educational/whisky-production`); the
-  peating-measurement matrix
-  (`educational/peating-measurement-methods`); and the two strict
-  data graphs — `spirit-cut` (DMTS through the spirit-still run,
-  after Miller Fig. 6.7) and `cask-maturation-kinetics` (solids
-  extraction vs cask age, after Miller Fig. 8.11), emitted by the
-  committed `scripts/gen_data_diagrams.py` from data points
-  digitised off the cited figures.
-- **Remaining: 6 hardware-schematic redraws.** The first drafts
-  of mash-tun, washback, worm-tub, shell-and-tube-condenser,
-  coffey-still and spirit-safe are committed as a checkpoint but
-  were reviewed as not yet clear enough. Redraw queue:
-  - mash-tun — clearer cross-section: distinct false-bottom
-    plate, visible rake gear, domed top.
-  - washback — taller upright vessel (not a bucket); add the
-    switcher.
-  - worm-tub — the worm as a prominent descending coil, with
-    counter-current cooling-water flow shown.
-  - shell-and-tube-condenser — proper heat-exchanger look: end
-    caps / bonnets, tube bundle, tube sheets, water nozzles.
-  - coffey-still — fix the "Vapour transfer" label / sketch
-    overlap; reduce clutter.
-  - spirit-safe — add detail: brass stand / legs, more glass
-    panels, taps, test cups.
-- **Photographs** (distilleries, stills, casks) are deferred:
+- **Status (2026-05-26): all 10 diagrams settled.** Three visual
+  registers documented in `docs/diagram-style.md`:
+  - **Sketch** (turbulence + displacement filter): pot-still
+    schematic, production-chain flowchart, peating-measurement
+    matrix.
+  - **Strict** (no filter, precise axes, full grid, plotted from
+    a sourced figure): `spirit-cut` (DMTS through the run, after
+    Miller Fig. 6.7) and `cask-maturation-kinetics` (solids
+    extraction vs cask age, after Miller Fig. 8.11), emitted by
+    `scripts/gen_data_diagrams.py` from digitised data points.
+  - **Technical-schematic** (clean blueprint conventions:
+    `stroke="currentColor"` throughout, double-walled vessels
+    with diagonal section hatching, dashed annotation leaders
+    with filled-dot terminations, short solid pipe-nozzle stubs
+    at inlets/outlets, dashed hidden lines for occluded parts):
+    mash-tun, washback, worm-tub, shell-and-tube-condenser,
+    coffey-still, spirit-safe. The blueprint conventions were
+    settled in the 2026-05-26 pilot on mash-tun and rolled out
+    to the other five.
+- **AI image generation rejected** for technical diagrams:
+  unsourceable, hallucination-prone, cannot plot real data.
+- **Photographs** (distilleries, stills, casks) deferred:
   copyright / CC-licensing complexity. A beta ships text +
-  diagrams; photographs are a post-beta enrichment via
-  CC-licensed sources (Wikimedia Commons, Geograph).
+  diagrams; photographs are post-beta enrichment via CC-licensed
+  sources (Wikimedia Commons, Geograph).
 
 ### Data sweep (minor — not blockers)
 
@@ -917,6 +898,29 @@ single source of truth inside the component.
 (Move items here when done, with the date and a one-line note. Trim
 to the most recent five entries; older completions are tracked in
 Git history.)
+
+- **2026-05-26** Diagram register split + blueprint cross-sections.
+  `docs/diagram-style.md` extended from two registers to three:
+  the new **technical-schematic** register (for cross-section
+  diagrams) sits between the existing sketch and strict registers.
+  Within the technical-schematic register, the spec documents the
+  blueprint conventions settled in the 2026-05-26 pilot on
+  mash-tun: `stroke="currentColor"` throughout (CSS variables do
+  not resolve reliably for stroke in all viewers), double-walled
+  vessel outlines with generic diagonal section hatching via SVG
+  pattern + even-odd fill, dashed annotation leaders (5 3) ending
+  in filled-circle dots at the part-end, short solid pipe-nozzle
+  stubs at every inlet and outlet, dashed hidden lines (3 2) for
+  occluded parts, no flow-direction arrowheads. The six
+  cross-section SVGs (mash-tun, washback, worm-tub,
+  shell-and-tube-condenser, coffey-still, spirit-safe) re-authored
+  to the new register; six equipment concept alt-texts updated.
+  No schema changes. CHANGELOG [0.8.3]. The `safe-bulk-writes`
+  skill is updated with two new lessons from the same session:
+  Write tool truncates at ~3 KB (revised down from ~10 KB); Edit
+  tool corrupts multi-line block replacements on existing data
+  files. CLAUDE.md gains a "Reducing wasted iteration" section
+  adapted from karpathy-skills behavioural guidelines.
 
 - **2026-05-22** Educational-page diagrams — the diagram set for
   the educational and equipment concept pages. The pipeline

@@ -1,117 +1,132 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 620"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 640"
      role="img" aria-labelledby="sandt-title sandt-desc"
      class="wb-diagram">
-  <!-- WhiskyBase diagram: shell-and-tube condenser (hand-drawn
-       schematic, redraw). Cross-section showing the heat-exchanger
-       anatomy: vapour bonnet on top, lower tube sheet, tube bundle
-       running through the shell, condensate bonnet at the bottom;
-       cooling water enters cold low on one side and exits warm
-       high on the opposite side, counter-current to the descending
-       vapour and condensate in the tubes. Nozzles have visible
-       flange ticks at the shell wall.
-       Style spec: docs/diagram-style.md. Labels sit outside the
-       figure.
-       Grounded on equipment/shell-and-tube-condenser.yml body. -->
+  <!-- Blueprint cross-section of a vertical shell-and-tube condenser.
+       Double-walled shell with section hatching; bonnets at top and
+       bottom drawn as smaller hatched bands; tube bundle as solid
+       internal lines; dashed annotation leaders. Stroke color:
+       currentColor. -->
   <title id="sandt-title">Shell-and-tube condenser</title>
-  <desc id="sandt-desc">Cross-section of a vertical shell-and-tube
-    condenser. Spirit vapour from the still enters the upper bonnet,
-    distributes across the copper tube bundle, condenses inside the
-    tubes as it descends, and runs out of the lower bonnet as liquid
-    spirit. Cooling water enters the shell cold low on one side
-    through a nozzle, rises through the bundle, and exits warm high
-    on the opposite side, counter to the direction of vapour and
-    condensate.</desc>
+  <desc id="sandt-desc">Blueprint-style cross-section of a vertical
+    shell-and-tube condenser: a domed upper bonnet receives spirit
+    vapour from the still and distributes it across a bundle of
+    copper tubes; the tubes pass through tube sheets at each end of
+    the cylindrical shell and run down to a lower bonnet that drains
+    condensed spirit to the spirit safe. Cooling water enters cold
+    low on one side and exits warm high on the opposite side.</desc>
 
-  <!-- Figure line-work -->
-  <g fill="none" stroke="currentColor" stroke-width="2.5"
-     stroke-linejoin="round" stroke-linecap="round">
+  <defs>
+    <pattern id="cut-hatch-sandt" patternUnits="userSpaceOnUse"
+             width="5" height="5" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5"
+            stroke="currentColor" stroke-width="0.5"/>
+    </pattern>
+  </defs>
 
-    <!-- Upper bonnet (vapour head): domed cap above the shell -->
-    <path d="M240 130 C240 78, 460 78, 460 130"/>
+  <!-- Shell wall material -->
+  <path d="M236 130 L484 130 L484 470 L236 470 Z
+           M240 134 L480 134 L480 466 L240 466 Z"
+        fill="url(#cut-hatch-sandt)" fill-rule="evenodd"
+        stroke="none"/>
 
-    <!-- Upper tube sheet: a band where the bonnet seals to the
-         shell; the tubes pass through it -->
-    <path d="M240 130 L460 130"/>
-    <path d="M244 138 L456 138"/>
+  <!-- Upper bonnet wall material -->
+  <path d="M236 130 C236 78, 484 78, 484 130 Z
+           M240 134 L480 134 L480 130 C480 86, 240 86, 240 130 Z"
+        fill="url(#cut-hatch-sandt)" fill-rule="evenodd"
+        stroke="none"/>
 
-    <!-- Shell walls -->
-    <path d="M240 130 L240 470"/>
-    <path d="M460 130 L460 470"/>
+  <!-- Lower bonnet wall material -->
+  <path d="M236 470 C236 522, 484 522, 484 470 Z
+           M240 466 L480 466 L480 470 C480 514, 240 514, 240 470 Z"
+        fill="url(#cut-hatch-sandt)" fill-rule="evenodd"
+        stroke="none"/>
 
-    <!-- Lower tube sheet -->
-    <path d="M244 462 L456 462"/>
-    <path d="M240 470 L460 470"/>
-
-    <!-- Lower bonnet (condensate head): domed cap below the shell -->
-    <path d="M240 470 C240 522, 460 522, 460 470"/>
-
-    <!-- Tube bundle: 7 vertical copper tubes between the sheets -->
-    <g stroke-width="2">
-      <path d="M270 138 L270 462"/>
-      <path d="M300 138 L300 462"/>
-      <path d="M330 138 L330 462"/>
-      <path d="M360 138 L360 462"/>
-      <path d="M390 138 L390 462"/>
-      <path d="M420 138 L420 462"/>
-      <path d="M450 138 L450 462"/>
-    </g>
-
-    <!-- Vapour inlet pipe: from the still, bends down into the
-         apex of the upper bonnet -->
-    <path d="M130 56 L350 56 L350 92"/>
-    <path d="M342 84 L350 94 L358 84"/>
-
-    <!-- Warm-water outlet nozzle (upper right): flange ticks at
-         the shell, then a horizontal stub with arrowhead out -->
-    <g stroke-width="1.8">
-      <path d="M460 192 L470 192"/>
-      <path d="M460 212 L470 212"/>
-    </g>
-    <path d="M468 202 L572 202"/>
-    <path d="M564 194 L574 202 L564 210"/>
-
-    <!-- Cold-water inlet nozzle (lower left): arrow points into
-         the shell -->
-    <g stroke-width="1.8">
-      <path d="M230 400 L240 400"/>
-      <path d="M230 420 L240 420"/>
-    </g>
-    <path d="M148 410 L232 410"/>
-    <path d="M222 402 L234 410 L222 418"/>
-
-    <!-- Condensate outlet pipe: from the apex of the lower bonnet
-         down and out to the spirit safe -->
-    <path d="M350 510 L350 562 L508 562"/>
-    <path d="M500 554 L510 562 L500 570"/>
+  <!-- Wall outlines -->
+  <g fill="none" stroke="currentColor" stroke-width="1.4"
+     stroke-linejoin="round" stroke-linecap="butt">
+    <!-- Upper bonnet outer + inner -->
+    <path d="M236 130 C236 78, 484 78, 484 130"/>
+    <path d="M240 130 C240 86, 480 86, 480 130"/>
+    <!-- Shell outer walls -->
+    <path d="M236 130 L236 470"/>
+    <path d="M484 130 L484 470"/>
+    <!-- Shell inner walls -->
+    <path d="M240 134 L240 466"/>
+    <path d="M480 134 L480 466"/>
+    <!-- Tube sheets (visible at the shell ends) -->
+    <path d="M240 134 L480 134"/>
+    <path d="M240 466 L480 466"/>
+    <!-- Lower bonnet outer + inner -->
+    <path d="M236 470 C236 522, 484 522, 484 470"/>
+    <path d="M240 470 C240 514, 480 514, 480 470"/>
   </g>
 
-  <!-- Leader lines -->
-  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
-     stroke-linecap="round">
+  <!-- Internal structural elements -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2"
+     stroke-linejoin="round" stroke-linecap="butt">
+
+    <!-- Tube bundle: vertical copper tubes between tube sheets -->
+    <g stroke-width="1.0">
+      <path d="M270 134 L270 466"/>
+      <path d="M300 134 L300 466"/>
+      <path d="M330 134 L330 466"/>
+      <path d="M360 134 L360 466"/>
+      <path d="M390 134 L390 466"/>
+      <path d="M420 134 L420 466"/>
+      <path d="M450 134 L450 466"/>
+    </g>
+
+    <!-- Vapour inlet nozzle at the top of the upper bonnet -->
+    <path d="M348 88 L348 48 L372 48 L372 92"/>
+
+    <!-- Cold-water inlet nozzle on the left shell at lower position -->
+    <path d="M236 416 L196 416 L196 436 L236 436"/>
+
+    <!-- Warm-water outlet nozzle on the right shell at upper position -->
+    <path d="M484 174 L524 174 L524 194 L484 194"/>
+
+    <!-- Condensate outlet pipe nozzle below the lower bonnet -->
+    <path d="M348 514 L348 558 L470 558"/>
+  </g>
+
+  <!-- Annotation leaders -->
+  <g fill="none" stroke="currentColor" stroke-width="1.0"
+     stroke-linecap="butt" stroke-dasharray="5 3">
     <!-- spirit vapour in -->
-    <path d="M124 42 C126 48, 128 52, 132 56"/>
+    <path d="M126 42 L348 48"/>
     <!-- end bonnets -->
-    <path d="M170 96 C194 100, 216 104, 244 110"/>
+    <path d="M178 94 L246 90"/>
     <!-- tube sheet -->
-    <path d="M178 142 C196 142, 218 140, 240 138"/>
+    <path d="M178 148 L246 138"/>
     <!-- cold water in -->
-    <path d="M124 446 C130 436, 140 426, 148 416"/>
+    <path d="M124 452 L196 426"/>
     <!-- warm water out -->
-    <path d="M584 174 C580 184, 576 192, 572 198"/>
+    <path d="M598 170 L524 184"/>
     <!-- copper tube bundle -->
-    <path d="M584 302 C544 302, 506 302, 458 302"/>
-    <!-- spirit outflow -->
-    <path d="M548 596 C552 586, 558 576, 564 570"/>
+    <path d="M596 304 L450 300"/>
+    <!-- spirit out -->
+    <path d="M484 598 L470 562"/>
   </g>
 
-  <!-- Labels (crisp, outside the figure) -->
-  <g fill="var(--muted-color)" font-size="14" stroke="none">
+  <!-- Dots at endpoints -->
+  <g fill="currentColor" stroke="none">
+    <circle cx="246" cy="90" r="2.4"/>
+    <circle cx="246" cy="138" r="2.4"/>
+    <circle cx="450" cy="300" r="2.4"/>
+    <circle cx="348" cy="48" r="2.6"/>
+    <circle cx="196" cy="426" r="2.6"/>
+    <circle cx="524" cy="184" r="2.6"/>
+    <circle cx="470" cy="562" r="2.6"/>
+  </g>
+
+  <!-- Labels -->
+  <g fill="currentColor" font-size="14" stroke="none">
     <text x="122" y="38" text-anchor="end">Spirit vapour in</text>
-    <text x="168" y="92" text-anchor="end">End bonnets</text>
+    <text x="176" y="94" text-anchor="end">End bonnets</text>
     <text x="176" y="146" text-anchor="end">Tube sheet</text>
-    <text x="122" y="450" text-anchor="end">Cold water in</text>
-    <text x="590" y="170">Warm water out</text>
-    <text x="590" y="306">Copper tube bundle</text>
-    <text x="478" y="600">Spirit, to the spirit safe</text>
+    <text x="120" y="456" text-anchor="end">Cold water in</text>
+    <text x="602" y="170">Warm water out</text>
+    <text x="602" y="306">Copper tube bundle</text>
+    <text x="486" y="612">Spirit, to the spirit safe</text>
   </g>
 </svg>

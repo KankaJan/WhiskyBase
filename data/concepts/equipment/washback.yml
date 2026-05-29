@@ -76,13 +76,16 @@ equipment:
 diagrams:
   - file: washback.svg
     alt: >-
-      Cross-section schematic of a tall upright wooden washback bound
-      with three iron hoops. A small drive motor on the lid turns a
-      vertical shaft carrying a horizontal switcher arm that sweeps
-      across the top of the wash to knock down fermenting froth.
-      Cooled wort and yeast enter through the lid; the fermented wash
-      runs off at the base to the wash still.
-    caption: A wooden washback during fermentation, with the switcher running.
+      Blueprint-style cross-section of a tall upright wooden washback: a
+      cylindrical vessel drawn in double-walled outline with diagonal
+      section hatching on the cut staves. A drive motor on the lid turns
+      a vertical switcher shaft; a horizontal switcher arm sweeps the top
+      of the wash to knock down fermenting froth. Three iron hoops bind
+      the vessel. Cooled wort and yeast enter through a short pipe nozzle
+      on the dome; the fermented wash runs off through a nozzle on the
+      right wall to the wash still. Each part is connected to its label
+      by a dashed annotation leader ending in a filled dot.
+    caption: "A wooden washback in blueprint cross-section: switcher, iron hoops, inlet and outlet nozzles."
     source_id: 1
 
 

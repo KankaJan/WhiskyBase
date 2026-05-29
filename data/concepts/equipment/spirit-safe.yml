@@ -70,15 +70,18 @@ equipment:
 diagrams:
   - file: spirit-safe.svg
     alt: >-
-      Cross-section schematic of a spirit safe: a glass-fronted brass
-      case mounted on a brass stand. Three glass panels divided by
-      brass mullions front the case; two brass taps on top admit test
-      water. Inside, three test cups each carry a spirit hydrometer
-      floating in distillate. Distillate enters from the condenser via
-      a pipe at the top; a swivelling spout below the case directs the
-      run between two floor-level receivers — one for foreshots and
-      feints, one for the potable spirit.
-    caption: "The spirit safe in cross-section: stand, glass panels, taps, test cups, and the swivelling spout."
+      Blueprint-style cross-section of a spirit safe: a glass-fronted brass
+      case drawn in double-walled outline with diagonal section hatching
+      on the cut frame, mounted on a brass stand. Three glass panels
+      divided by brass mullions front the case; two brass taps on top
+      admit test water. Inside, three test cups each carry a spirit
+      hydrometer floating in distillate. Distillate enters from the
+      condenser via a pipe nozzle at the top; a swivelling spout below
+      the case directs the run between two floor-level receivers — one
+      for foreshots and feints, one for the potable spirit. Each part is
+      connected to its label by a dashed annotation leader ending in a
+      filled dot.
+    caption: "The spirit safe in blueprint cross-section: stand, glass panels, taps, test cups with hydrometers, and the swivelling spout."
     source_id: 1
 
 

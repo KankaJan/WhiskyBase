@@ -1,41 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 510"
      role="img" aria-labelledby="coffey-title coffey-desc"
      class="wb-diagram">
-  <!-- WhiskyBase diagram: Coffey still (hand-drawn schematic,
-       redraw). Two plated columns, the analyser and the rectifier,
-       side by side. Cold wash enters the rectifier base and is
-       pre-heated up a serpentine coil; hot wash crosses over to
-       the top of the analyser; steam enters the analyser base and
-       strips alcohol vapour from the falling wash; the vapour
-       crosses to the rectifier base via the vapour-transfer pipe;
-       refined spirit is drawn off near the rectifier top.
-       Style spec: docs/diagram-style.md. Labels sit outside the
-       columns; the previous "Vapour transfer" label/sketch overlap
-       is resolved by moving the label to the bottom margin.
-       Grounded on Russell ed. 2022 Ch 15; see coffey-still.yml
-       source 1. -->
+  <!-- Blueprint cross-section of a Coffey still. Two plated columns
+       (analyser and rectifier) with double-walled outlines and
+       section hatching; dashed annotation leaders. Stroke color:
+       currentColor. -->
   <title id="coffey-title">Coffey still</title>
-  <desc id="coffey-desc">Schematic of a Coffey still in cross-section:
-    two plated columns side by side. The analyser column on the left,
-    the rectifier column on the right. Cold wash enters the rectifier
-    base, rises through a pre-heating coil, crosses over to the top
-    of the analyser, and descends through perforated plates while
-    steam stripped from the base raises alcohol-rich vapour. The
+  <desc id="coffey-desc">Blueprint-style schematic of a Coffey still
+    in cross-section: the plated analyser column on the left, the
+    plated rectifier column on the right. Cold wash enters the
+    rectifier base, rises through a pre-heat coil, crosses over to
+    the analyser top; steam enters the analyser base; alcohol-rich
     vapour crosses to the rectifier base via the vapour-transfer
-    pipe and rises through the rectifier plates, with refined spirit
-    drawn off near the top.</desc>
+    pipe; spirit is drawn off near the rectifier top.</desc>
 
-  <!-- Figure line-work -->
-  <g fill="none" stroke="currentColor" stroke-width="2.5"
-     stroke-linejoin="round" stroke-linecap="round">
+  <defs>
+    <pattern id="cut-hatch-coffey" patternUnits="userSpaceOnUse"
+             width="5" height="5" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5"
+            stroke="currentColor" stroke-width="0.5"/>
+    </pattern>
+  </defs>
 
-    <!-- Analyser column -->
+  <!-- Analyser column wall material -->
+  <path d="M156 106 L284 106 L284 414 L156 414 Z
+           M160 110 L280 110 L280 410 L160 410 Z"
+        fill="url(#cut-hatch-coffey)" fill-rule="evenodd"
+        stroke="none"/>
+
+  <!-- Rectifier column wall material -->
+  <path d="M456 106 L584 106 L584 414 L456 414 Z
+           M460 110 L580 110 L580 410 L460 410 Z"
+        fill="url(#cut-hatch-coffey)" fill-rule="evenodd"
+        stroke="none"/>
+
+  <!-- Column wall outlines -->
+  <g fill="none" stroke="currentColor" stroke-width="1.4"
+     stroke-linejoin="round" stroke-linecap="butt">
+    <path d="M156 106 L284 106 L284 414 L156 414 Z"/>
     <path d="M160 110 L280 110 L280 410 L160 410 Z"/>
-    <!-- Rectifier column -->
+    <path d="M456 106 L584 106 L584 414 L456 414 Z"/>
     <path d="M460 110 L580 110 L580 410 L460 410 Z"/>
+  </g>
 
-    <!-- Plates: 4 per column (fewer than before, less visual noise) -->
-    <g stroke-width="1.8">
+  <!-- Internal structural elements -->
+  <g fill="none" stroke="currentColor" stroke-width="1.2"
+     stroke-linejoin="round" stroke-linecap="butt">
+
+    <!-- Plates: 4 per column -->
+    <g stroke-width="1.0">
       <path d="M160 170 L280 170"/>
       <path d="M160 230 L280 230"/>
       <path d="M160 290 L280 290"/>
@@ -46,60 +59,62 @@
       <path d="M460 350 L580 350"/>
     </g>
 
-    <!-- Wash pre-heat coil inside the rectifier: a clean
-         serpentine instead of the busy zig-zag of the first draft -->
-    <g stroke-width="2">
+    <!-- Wash pre-heat coil in the rectifier -->
+    <g stroke-width="1.0">
       <path d="M520 400 L500 360 L540 320 L500 280 L540 240
                L500 200 L540 160 L520 130"/>
     </g>
 
-    <!-- Cold-wash inlet to the rectifier base -->
-    <path d="M664 422 L582 404"/>
-    <path d="M590 396 L580 405 L592 410"/>
+    <!-- Wash crossover from rectifier top to analyser top -->
+    <path d="M520 130 L520 80 L220 80 L220 110"/>
 
-    <!-- Wash crossover: rectifier coil top to analyser top -->
-    <path d="M520 130 L520 84 L220 84 L220 110"/>
-    <path d="M212 96 L220 110 L228 96"/>
+    <!-- Vapour transfer pipe (analyser top to rectifier base) -->
+    <path d="M284 130 L380 130 L380 388 L456 388"/>
 
-    <!-- Steam inlet at the analyser base -->
-    <path d="M84 392 L158 380"/>
-    <path d="M146 374 L160 380 L148 388"/>
+    <!-- Cold-wash inlet nozzle on the rectifier base (right wall) -->
+    <path d="M584 392 L624 392 L624 412 L584 412"/>
 
-    <!-- Vapour transfer pipe: analyser top to rectifier base. The
-         vertical segment is now to the right of the centre line so
-         the "Vapour transfer" label below can sit in clear margin -->
-    <path d="M280 128 L380 128 L380 388 L458 388"/>
-    <path d="M450 380 L460 388 L450 396"/>
+    <!-- Steam inlet nozzle at the analyser base (left wall) -->
+    <path d="M156 380 L116 380 L116 400 L156 400"/>
 
-    <!-- Spirit draw-off near the rectifier top -->
-    <path d="M580 170 L656 170"/>
-    <path d="M648 162 L658 170 L648 178"/>
+    <!-- Spirit draw-off nozzle near the rectifier top (right wall) -->
+    <path d="M584 158 L624 158 L624 178 L584 178"/>
   </g>
 
-  <!-- Leader lines -->
-  <g fill="none" stroke="var(--muted-color)" stroke-width="1.4"
-     stroke-linecap="round">
+  <!-- Annotation leaders -->
+  <g fill="none" stroke="currentColor" stroke-width="1.0"
+     stroke-linecap="butt" stroke-dasharray="5 3">
     <!-- analyser column -->
-    <path d="M122 258 C134 258, 146 258, 158 258"/>
+    <path d="M120 258 L156 258"/>
     <!-- rectifier column -->
-    <path d="M618 258 C606 258, 594 258, 582 258"/>
+    <path d="M620 258 L584 258"/>
     <!-- steam in -->
-    <path d="M118 364 C128 370, 138 374, 146 378"/>
+    <path d="M110 360 L116 380"/>
     <!-- cold wash feed -->
-    <path d="M650 446 C652 438, 656 432, 660 426"/>
+    <path d="M650 446 L624 412"/>
     <!-- spirit out -->
-    <path d="M658 142 C658 150, 658 158, 658 166"/>
+    <path d="M650 138 L624 158"/>
     <!-- vapour transfer -->
-    <path d="M388 458 C394 436, 402 412, 410 396"/>
+    <path d="M388 460 L410 396"/>
   </g>
 
-  <!-- Labels (crisp, outside the figure) -->
-  <g fill="var(--muted-color)" font-size="14" stroke="none">
-    <text x="120" y="262" text-anchor="end">Analyser column</text>
-    <text x="622" y="262">Rectifier column</text>
-    <text x="116" y="360" text-anchor="end">Steam in</text>
+  <!-- Dots at endpoints -->
+  <g fill="currentColor" stroke="none">
+    <circle cx="156" cy="258" r="2.4"/>
+    <circle cx="584" cy="258" r="2.4"/>
+    <circle cx="410" cy="396" r="2.4"/>
+    <circle cx="116" cy="380" r="2.6"/>
+    <circle cx="624" cy="412" r="2.6"/>
+    <circle cx="624" cy="158" r="2.6"/>
+  </g>
+
+  <!-- Labels -->
+  <g fill="currentColor" font-size="14" stroke="none">
+    <text x="118" y="262" text-anchor="end">Analyser column</text>
+    <text x="624" y="262">Rectifier column</text>
+    <text x="108" y="356" text-anchor="end">Steam in</text>
     <text x="558" y="452">Cold wash feed</text>
-    <text x="624" y="140">Spirit out</text>
-    <text x="320" y="464">Vapour transfer</text>
+    <text x="656" y="142">Spirit out</text>
+    <text x="320" y="466">Vapour transfer</text>
   </g>
 </svg>
