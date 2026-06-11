@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested page does not exist."
+  indexable={false}
+>
+  <article class="notfound">
+    <h1>Page not found</h1>
+    <p>
+      There is no page at this address. It may have been moved, or the
+      link that brought you here may be out of date.
+    </p>
+    <p>Try one of these instead:</p>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/distilleries/">Distilleries</a></li>
+      <li><a href="/bottlings/">Bottlings</a></li>
+      <li><a href="/concept/">Concepts</a></li>
+      <li><a href="/search/">Search</a></li>
+    </ul>
+  </article>
+</BaseLayout>
+
+<style>
+  .notfound { max-width: var(--site-max-width); margin: 0 auto; }
+</style>

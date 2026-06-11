@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getReference, loadReferenceBody } from '../lib/references';
+import { renderMarkdown } from '../lib/markdown';
+
+// /about is a top-level alias for the About reference page so the
+// project has a conventional /about/ URL. The content is the single
+// source docs/about.md, rendered through the same pipeline as the
+// /reference/ pages.
+const entry = getReference('about');
+if (!entry) throw new Error('Reference entry not found: about');
+
+const bodyHtml = renderMarkdown(loadReferenceBody(entry));
+---
+
+<BaseLayout
+  title={entry.title}
+  description={entry.description}
+  pagefindMeta={{ entity: 'Reference', category: entry.category }}
+>
+  <article class="about-page">
+    <h1>{entry.title}</h1>
+    <p class="lede">{entry.description}</p>
+    <div class="body" set:html={bodyHtml} />
+    <p class="more">
+      See also the full <a href="/reference/">reference section</a> —
+      policies, design notes, and contributing.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .about-page { max-width: var(--site-max-width); margin: 0 auto; }
+  .lede { color: var(--muted-color); font-style: italic; margin: 0.25rem 0 1.25rem; }
+  .more { margin-top: 1.5rem; color: var(--muted-color); font-size: 0.95rem; }
+  .body :global(hr) { border: 0; border-top: 1px solid var(--rule-light); margin: 1.5rem 0; }
+  .body :global(code) { background: var(--bg-alt); padding: 0.1em 0.3em; border-radius: 2px; }
+  .body :global(pre) { background: var(--bg-alt); padding: 0.6rem 0.8rem; overflow-x: auto; border: 1px solid var(--rule-light); border-radius: 3px; }
+</style>
