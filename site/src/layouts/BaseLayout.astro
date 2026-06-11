@@ -57,17 +57,17 @@ const pageTitle = `${title} | ${siteTitle}`;
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a href="/" class="site-title">{siteTitle}</a>
+        <a href={import.meta.env.BASE_URL} class="site-title">{siteTitle}</a>
         <nav>
-          <a href="/distilleries/">Distilleries</a>
-          <a href="/production-lines/">Production lines</a>
-          <a href="/bottlings/">Bottlings</a>
-          <a href="/casks/">Casks</a>
-          <a href="/concept/">Concepts</a>
-          <a href="/map/">Map</a>
-          <a href="/explore/">Explore</a>
-          <a href="/reference/">Reference</a>
-          <a href="/search/">Search</a>
+          <a href={`${import.meta.env.BASE_URL}distilleries/`}>Distilleries</a>
+          <a href={`${import.meta.env.BASE_URL}production-lines/`}>Production lines</a>
+          <a href={`${import.meta.env.BASE_URL}bottlings/`}>Bottlings</a>
+          <a href={`${import.meta.env.BASE_URL}casks/`}>Casks</a>
+          <a href={`${import.meta.env.BASE_URL}concept/`}>Concepts</a>
+          <a href={`${import.meta.env.BASE_URL}map/`}>Map</a>
+          <a href={`${import.meta.env.BASE_URL}explore/`}>Explore</a>
+          <a href={`${import.meta.env.BASE_URL}reference/`}>Reference</a>
+          <a href={`${import.meta.env.BASE_URL}search/`}>Search</a>
         </nav>
       </div>
     </header>

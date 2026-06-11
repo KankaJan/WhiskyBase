@@ -29,7 +29,7 @@ const categories = Object.keys(grouped).sort((a, b) => {
         <ul>
           {grouped[cat].map((c) => (
             <li>
-              <a href={`/casks/${c.id}/`}>{c.name}</a>
+              <a href={`${import.meta.env.BASE_URL}casks/${c.id}/`}>{c.name}</a>
               {c.subcategory && <span class="meta"> · {c.subcategory}</span>}
             </li>
           ))}

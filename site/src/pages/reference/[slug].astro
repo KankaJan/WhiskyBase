@@ -28,7 +28,7 @@ const bodyHtml = renderMarkdown(body);
 >
   <article class="reference-page">
     <p class="breadcrumb">
-      <a href="/reference/">Reference</a> ›
+      <a href={`${import.meta.env.BASE_URL}reference/`}>Reference</a> ›
     </p>
     <h1>{entry.title}</h1>
     <p class="lede">{entry.description}</p>

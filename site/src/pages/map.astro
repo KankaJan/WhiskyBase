@@ -41,7 +41,7 @@ const pins = distilleries
       <noscript>
         <p class="noscript-msg">
           The map requires JavaScript. Browse distilleries by
-          coordinates via the <a href="/explore/by-region/">by-region</a>
+          coordinates via the <a href={`${import.meta.env.BASE_URL}explore/by-region/`}>by-region</a>
           page instead.
         </p>
       </noscript>
@@ -52,7 +52,7 @@ const pins = distilleries
       (the rest lack published coordinates).
     </p>
 
-    <script is:inline>
+    <script is:inline define:vars={{ base: import.meta.env.BASE_URL }}>
       (() => {
         const init = () => {
           const el = document.getElementById('map');
@@ -71,7 +71,7 @@ const pins = distilleries
           map.on('load', () => {
             for (const p of pins) {
               const popupHtml =
-                '<strong><a href="/distilleries/' + p.id + '/">' +
+                '<strong><a href="' + base + 'distilleries/' + p.id + '/">' +
                 p.name + '</a></strong>' +
                 (p.region ? '<br><span class="region">' + p.region + '</span>' : '') +
                 (p.status ? '<br><span class="status">' + p.status + '</span>' : '');

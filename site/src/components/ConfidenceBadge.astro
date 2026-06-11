@@ -83,7 +83,7 @@ const popoverId = `${badgeId}-popover`;
         {level.charAt(0).toUpperCase() + level.slice(1)}
       </strong>
       <span class="body">{entry.long}</span>
-      <a class="policy-link" href="/reference/source-policy/">
+      <a class="policy-link" href={`${import.meta.env.BASE_URL}reference/source-policy/`}>
         See the source-conflict policy ›
       </a>
     </span>

@@ -18,7 +18,7 @@ const linesData = lines.map((slug) => {
   <ul class="line-list">
     {linesData.map(({ slug, line }) => (
       <li>
-        <a href={`/production-lines/${slug}/`}><strong>{line?.name ?? slug}</strong></a>
+        <a href={`${import.meta.env.BASE_URL}production-lines/${slug}/`}><strong>{line?.name ?? slug}</strong></a>
         {line?.description && (
           <div class="line-description">
             {line.description.split('\n')[0]?.slice(0, 200)}{line.description.length > 200 ? '…' : ''}

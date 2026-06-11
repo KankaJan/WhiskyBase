@@ -19,7 +19,7 @@ const suppliers = loadSuppliers();
       <tbody>
         {suppliers.map((s) => (
           <tr>
-            <td><a href={`/suppliers/${s.id}/`}>{s.name}</a></td>
+            <td><a href={`${import.meta.env.BASE_URL}suppliers/${s.id}/`}>{s.name}</a></td>
             <td>{s.type.replace(/_/g, ' ')}</td>
             <td>{s.country ?? '—'}</td>
             <td>{s.founded ?? '—'}</td>

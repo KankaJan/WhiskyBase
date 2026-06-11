@@ -56,12 +56,12 @@ const bottlerSeriesLabel = seriesParts.length === 2
     />
 
     <p class="parent-link">
-      Produced at <a href={`/distilleries/${bottling.produced_at_distillery}/`}>{bottling.produced_at_distillery}</a>
+      Produced at <a href={`${import.meta.env.BASE_URL}distilleries/${bottling.produced_at_distillery}/`}>{bottling.produced_at_distillery}</a>
       {bottling.production_line && (
-        <span> · line <a href={`/production-lines/${bottling.production_line}/`}>{bottling.production_line}</a></span>
+        <span> · line <a href={`${import.meta.env.BASE_URL}production-lines/${bottling.production_line}/`}>{bottling.production_line}</a></span>
       )}
       {bottling.bottler_type === 'independent_bottler' && (
-        <span> · bottled by <a href={`/bottlers/${bottling.bottled_by}/`}>{bottling.bottled_by}</a></span>
+        <span> · bottled by <a href={`${import.meta.env.BASE_URL}bottlers/${bottling.bottled_by}/`}>{bottling.bottled_by}</a></span>
       )}
       {bottlerSeriesLabel && (
         <span> · series <em>{bottlerSeriesLabel}</em></span>

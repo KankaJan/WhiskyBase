@@ -46,7 +46,7 @@ const entries = loadConceptsByKind(k);
   indexable={false}
 >
   <article class="content">
-    <p class="breadcrumb"><a href="/concept/">Concepts</a> ›</p>
+    <p class="breadcrumb"><a href={`${import.meta.env.BASE_URL}concept/`}>Concepts</a> ›</p>
     <h1>{kindLabels[k]}</h1>
     <p class="lede">{kindDescriptions[k]} — {entries.length} {entries.length === 1 ? 'entry' : 'entries'}.</p>
 
@@ -61,7 +61,7 @@ const entries = loadConceptsByKind(k);
         <tbody>
           {entries.map((e) => (
             <tr>
-              <td><a href={`/concept/glossary/${e.id}/`}>{e.title}</a></td>
+              <td><a href={`${import.meta.env.BASE_URL}concept/glossary/${e.id}/`}>{e.title}</a></td>
               <td>{e.summary?.split('\n')[0]?.slice(0, 180)}{e.summary && e.summary.length > 180 ? '…' : ''}</td>
             </tr>
           ))}
@@ -71,7 +71,7 @@ const entries = loadConceptsByKind(k);
       <ul class="entries-list">
         {entries.map((e) => (
           <li>
-            <a href={`/concept/${k}/${e.id}/`}><strong>{e.title}</strong></a>
+            <a href={`${import.meta.env.BASE_URL}concept/${k}/${e.id}/`}><strong>{e.title}</strong></a>
             {e.summary && (
               <p class="entry-summary">
                 {e.summary.split('\n').slice(0, 3).join(' ').slice(0, 280)}{e.summary.length > 280 ? '…' : ''}

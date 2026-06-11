@@ -61,7 +61,7 @@ function fmtDuration(years: number | null | undefined, months: number | null | u
       <tbody>
         {maturation.map((m) => (
           <tr>
-            <td><a href={`/casks/${m.cask_type}/`}>{m.cask_type}</a></td>
+            <td><a href={`${import.meta.env.BASE_URL}casks/${m.cask_type}/`}>{m.cask_type}</a></td>
             <td>{fmtFill(m.fill_number)}</td>
             <td>{fmtProportion(m.proportion)}</td>
             <td>{fmtDuration(m.duration_years, m.duration_months)}</td>
@@ -91,7 +91,7 @@ function fmtDuration(years: number | null | undefined, months: number | null | u
     <h2>Finish</h2>
     <dl>
       <dt>Cask type</dt>
-      <dd><a href={`/casks/${finish.cask_type}/`}>{finish.cask_type}</a></dd>
+      <dd><a href={`${import.meta.env.BASE_URL}casks/${finish.cask_type}/`}>{finish.cask_type}</a></dd>
       {(finish.duration_years || finish.duration_months) && (
         <>
           <dt>Duration</dt>

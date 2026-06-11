@@ -23,7 +23,7 @@ const bodyHtml = renderMarkdown(loadReferenceBody(entry));
     <p class="lede">{entry.description}</p>
     <div class="body" set:html={bodyHtml} />
     <p class="more">
-      See also the full <a href="/reference/">reference section</a> —
+      See also the full <a href={`${import.meta.env.BASE_URL}reference/`}>reference section</a> —
       policies, design notes, and contributing.
     </p>
   </article>

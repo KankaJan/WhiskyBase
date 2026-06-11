@@ -9,8 +9,9 @@ export default defineConfig({
   // site / base are read from env so the GitHub Pages deploy workflow can
   // supply them (e.g. SITE=https://kankajan.github.io BASE_PATH=/WhiskyBase)
   // without affecting local development, where both stay unset (root '/').
-  // NOTE: internal links in src are currently root-absolute (href="/..."),
-  // so a non-root base requires making those links base-aware first.
+  // Internal links in src are base-aware (prefixed with
+  // import.meta.env.BASE_URL), so the site builds correctly at either the
+  // root or a subpath depending on BASE_PATH.
   site: process.env.SITE || undefined,
   base: process.env.BASE_PATH || undefined,
   output: 'static',

@@ -38,7 +38,7 @@ const referenceCount = REFERENCES.length;
             </tr>
           ))}
           <tr>
-            <td><a href="/reference/">Reference</a></td>
+            <td><a href={`${import.meta.env.BASE_URL}reference/`}>Reference</a></td>
             <td>Project policies, design notes, and about pages.</td>
             <td class="count-col">{referenceCount}</td>
           </tr>
@@ -49,11 +49,11 @@ const referenceCount = REFERENCES.length;
     <section>
       <h2>Map and cross-cutting views</h2>
       <p>
-        <a href="/map/">Map</a> — distilleries plotted by published
+        <a href={`${import.meta.env.BASE_URL}map/`}>Map</a> — distilleries plotted by published
         coordinates, click a pin to open the distillery page.
       </p>
       <p>
-        <a href="/explore/">Explore</a> the same entries through
+        <a href={`${import.meta.env.BASE_URL}explore/`}>Explore</a> the same entries through
         different facets — distilleries by region or ownership,
         production lines by peating level, bottlings by presentation
         (cask strength, NCF, natural colour, single cask), or casks
@@ -64,7 +64,7 @@ const referenceCount = REFERENCES.length;
     <section>
       <h2>Search</h2>
       <p>
-        <a href="/search/">Full-text search</a> covers every detail
+        <a href={`${import.meta.env.BASE_URL}search/`}>Full-text search</a> covers every detail
         page on the site (distilleries, production lines, bottlings,
         bottlers, casks, suppliers, reference concepts, and the
         policy pages). Filter by entity type with the dropdown after

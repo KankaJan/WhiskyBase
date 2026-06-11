@@ -34,7 +34,7 @@ const orderedKeys = Object.keys(grouped).sort((a, b) => {
   indexable={false}
 >
   <article class="content">
-    <p class="breadcrumb"><a href="/explore/">Explore</a> ›</p>
+    <p class="breadcrumb"><a href={`${import.meta.env.BASE_URL}explore/`}>Explore</a> ›</p>
     <h1>Distilleries by ownership</h1>
     <p class="lede">
       Grouped by parent company. Where no parent is recorded, the
@@ -55,7 +55,7 @@ const orderedKeys = Object.keys(grouped).sort((a, b) => {
           <tbody>
             {grouped[owner].map((d) => (
               <tr>
-                <td><a href={`/distilleries/${d.id}/`}>{d.name}</a></td>
+                <td><a href={`${import.meta.env.BASE_URL}distilleries/${d.id}/`}>{d.name}</a></td>
                 <td>{d.region ?? '—'}</td>
                 <td>{d.ownership?.current ?? '—'}</td>
               </tr>

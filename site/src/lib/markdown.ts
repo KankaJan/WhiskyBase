@@ -41,7 +41,12 @@ const ENTITY_PATTERNS: Array<[RegExp, string]> = [
 export function rewriteEntityHref(href: string): string {
   for (const [pattern, replacement] of ENTITY_PATTERNS) {
     if (pattern.test(href)) {
-      return href.replace(pattern, replacement);
+      const abs = href.replace(pattern, replacement);
+      // Prefix the deploy base path. import.meta.env.BASE_URL ends with
+      // '/' (it is '/' locally and '/WhiskyBase/' on the Pages subpath),
+      // and `abs` starts with '/', so strip the leading slash before
+      // concatenating to avoid a doubled '//'.
+      return import.meta.env.BASE_URL + abs.replace(/^\//, '');
     }
   }
   return href;
@@ -55,7 +60,15 @@ marked.use({
   breaks: false,
   renderer: {
     link({ href, title, tokens }: Tokens.Link) {
-      const target = rewriteEntityHref(href);
+      let target = rewriteEntityHref(href);
+      // Base any root-absolute internal link that is not an entity
+      // pattern (e.g. /reference/voice-register/). rewriteEntityHref
+      // leaves these unchanged (target === href), and entity results
+      // are already based, so this only fires for plain absolute links.
+      // Skips protocol-relative ('//…') and external/anchor/mailto hrefs.
+      if (target === href && /^\/(?!\/)/.test(href)) {
+        target = import.meta.env.BASE_URL + href.replace(/^\//, '');
+      }
       const titleAttr = title ? ` title="${escapeAttr(title)}"` : '';
       const text = this.parser.parseInline(tokens);
       return `<a href="${escapeAttr(target)}"${titleAttr}>${text}</a>`;

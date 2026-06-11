@@ -3,16 +3,13 @@
 # =============================================================================
 # Auto-deploys on push to master, and can also be run manually.
 #
-# HOSTING MODEL: ROOT. The site's internal links are root-absolute
-# (href="/distilleries/", etc.), so the deployed site must be served from
-# the domain root. That means one of:
-#   - a custom domain (Settings -> Pages -> Custom domain), or
-#   - a user/org Pages repo named <owner>.github.io.
-# A bare project repo (this one, KankaJan/WhiskyBase) without a custom
-# domain is served from a SUBPATH (https://kankajan.github.io/WhiskyBase/),
-# where root-absolute links and assets would 404. To use the subpath
-# instead, first make internal links base-aware (prefix with
-# import.meta.env.BASE_URL) and run the manual trigger with base_path set.
+# HOSTING MODEL: SUBPATH. This bare project repo is served from
+# https://kankajan.github.io/WhiskyBase/. Internal links are base-aware
+# (prefixed with import.meta.env.BASE_URL), and the build supplies
+# BASE_PATH=/WhiskyBase (see the env block below) so links and assets
+# resolve under the subpath. To host at the domain ROOT instead (a custom
+# domain, or a <owner>.github.io repo), run the manual trigger with
+# base_path set to "/" and point a custom domain at the Pages site.
 #
 # Set the deployed origin (for canonical / OG URLs) in
 # Settings -> Secrets and variables -> Actions -> Variables as `SITE`,
@@ -31,9 +28,9 @@ on:
     inputs:
       base_path:
         description: >-
-          Optional base path for a project-subpath deploy, e.g. /WhiskyBase.
-          Leave blank for root hosting (the default). A non-blank value
-          requires base-aware internal links first — see the header note.
+          Base path for the deploy. Blank defaults to /WhiskyBase (the
+          project-repo subpath). Set to "/" for root hosting (custom domain
+          or <owner>.github.io repo).
         required: false
         default: ""
 
@@ -53,11 +50,16 @@ jobs:
       run:
         working-directory: site
     env:
-      # Deployed origin for absolute URLs (sitemap, canonical, OG). Set the
-      # `SITE` Actions variable to your root domain; empty is fine.
-      SITE: ${{ vars.SITE }}
-      # Empty on push (root). Only set via the manual trigger's input.
-      BASE_PATH: ${{ github.event.inputs.base_path }}
+      # Deployed origin for absolute URLs (sitemap, canonical, OG).
+      # Defaults to the github.io user origin; override by setting the
+      # `SITE` Actions variable (e.g. a custom domain). Combined with
+      # BASE_PATH, Astro builds canonical/OG as <SITE><BASE_PATH>/...
+      SITE: ${{ vars.SITE || 'https://kankajan.github.io' }}
+      # Project-repo subpath hosting: the site is served from
+      # https://kankajan.github.io/WhiskyBase/. Defaults to /WhiskyBase on
+      # both push and a blank manual run; pass a different base_path via the
+      # manual trigger to override (use "/" for root, e.g. a custom domain).
+      BASE_PATH: ${{ github.event.inputs.base_path || '/WhiskyBase' }}
     steps:
       - uses: actions/checkout@v4
 

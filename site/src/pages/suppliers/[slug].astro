@@ -103,7 +103,7 @@ const typeLabels: Record<string, string> = {
         <h2>Supplies to</h2>
         <ul>
           {supplier.supplies_to.map((d) => (
-            <li><a href={`/distilleries/${d}/`}>{d}</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}distilleries/${d}/`}>{d}</a></li>
           ))}
         </ul>
       </section>

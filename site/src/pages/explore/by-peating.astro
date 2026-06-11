@@ -103,7 +103,7 @@ function fmtPpm(v: number): string {
   indexable={false}
 >
   <article class="content">
-    <p class="breadcrumb"><a href="/explore/">Explore</a> ›</p>
+    <p class="breadcrumb"><a href={`${import.meta.env.BASE_URL}explore/`}>Explore</a> ›</p>
     <h1>Production lines by peating</h1>
     <p class="lede">
       Production lines binned by their headline phenol measurement
@@ -111,7 +111,7 @@ function fmtPpm(v: number): string {
       published). Range measurements are summarised by their
       midpoint for bin assignment; the cell shows the range. Bin
       cutoffs follow the convention summarised in
-      <a href="/concept/glossary/peating-block/">peating block</a>.
+      <a href={`${import.meta.env.BASE_URL}concept/glossary/peating-block/`}>peating block</a>.
     </p>
 
     {groups.map((g) => g.members.length > 0 && (
@@ -140,8 +140,8 @@ function fmtPpm(v: number): string {
                 : '—';
               return (
                 <tr>
-                  <td><a href={`/production-lines/${line.id}/`}>{line.name}</a></td>
-                  <td><a href={`/distilleries/${line.distillery}/`}>{line.distillery}</a></td>
+                  <td><a href={`${import.meta.env.BASE_URL}production-lines/${line.id}/`}>{line.name}</a></td>
+                  <td><a href={`${import.meta.env.BASE_URL}distilleries/${line.distillery}/`}>{line.distillery}</a></td>
                   <td class="ppm-col">{display}</td>
                 </tr>
               );
@@ -168,8 +168,8 @@ function fmtPpm(v: number): string {
           <tbody>
             {undisclosed.map((line) => (
               <tr>
-                <td><a href={`/production-lines/${line.id}/`}>{line.name}</a></td>
-                <td><a href={`/distilleries/${line.distillery}/`}>{line.distillery}</a></td>
+                <td><a href={`${import.meta.env.BASE_URL}production-lines/${line.id}/`}>{line.name}</a></td>
+                <td><a href={`${import.meta.env.BASE_URL}distilleries/${line.distillery}/`}>{line.distillery}</a></td>
               </tr>
             ))}
           </tbody>

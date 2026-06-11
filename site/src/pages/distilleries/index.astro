@@ -32,7 +32,7 @@ const distilleries = loadDistilleries();
       <tbody>
         {distilleries.map((d) => (
           <tr>
-            <td><a href={`/distilleries/${d.id}/`}>{d.name}</a></td>
+            <td><a href={`${import.meta.env.BASE_URL}distilleries/${d.id}/`}>{d.name}</a></td>
             <td>{d.region ?? '—'}</td>
             <td>{d.founded ?? '—'}</td>
             <td>{d.ownership?.current ?? '—'}</td>

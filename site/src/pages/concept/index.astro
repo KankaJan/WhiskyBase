@@ -68,7 +68,7 @@ const totalCount = kindData.reduce((sum, k) => sum + k.count, 0);
       <tbody>
         {kindData.map((k) => (
           <tr>
-            <td><a href={`/concept/${k.slug}/`}>{k.label}</a></td>
+            <td><a href={`${import.meta.env.BASE_URL}concept/${k.slug}/`}>{k.label}</a></td>
             <td>{k.description}</td>
             <td class="count-col">{k.count}</td>
           </tr>
