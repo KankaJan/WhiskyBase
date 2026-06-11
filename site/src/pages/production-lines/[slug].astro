@@ -37,7 +37,7 @@ const descHtml = renderMarkdown(line.description, sourceIds);
     />
 
     <p class="parent-link">
-      Produced at <a href={`/distilleries/${line.distillery}/`}>{line.distillery}</a>
+      Produced at <a href={`${import.meta.env.BASE_URL}distilleries/${line.distillery}/`}>{line.distillery}</a>
       {line.first_produced && <span> · first produced {line.first_produced}</span>}
     </p>
 
@@ -62,7 +62,7 @@ const descHtml = renderMarkdown(line.description, sourceIds);
         <h2>Typical cask programme</h2>
         <ul>
           {line.typical_cask_program.map((c) => (
-            <li><a href={`/casks/${c}/`}>{c}</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}casks/${c}/`}>{c}</a></li>
           ))}
         </ul>
       </section>
@@ -73,7 +73,7 @@ const descHtml = renderMarkdown(line.description, sourceIds);
         <h2>Bottlings</h2>
         <ul>
           {line.bottlings.map((b) => (
-            <li><a href={`/bottlings/${b}/`}>{b}</a></li>
+            <li><a href={`${import.meta.env.BASE_URL}bottlings/${b}/`}>{b}</a></li>
           ))}
         </ul>
       </section>

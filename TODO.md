@@ -25,19 +25,21 @@ visual work *around* that content.
 
 ### Deployment and CI
 
-- **No deployment exists.** The Astro site builds locally but is
-  not hosted anywhere. A public beta needs a build-and-publish
-  path: a GitHub Actions workflow (or equivalent) that builds
-  `/site/`, runs the Pagefind index step, and deploys (GitHub
-  Pages is the natural fit). BLOCKER.
-- **Re-run and verify the full site build.** It has not been
-  rebuilt since roughly 90 new pages landed (the 34
-  production-chain concept pages, the 4 wrapper pages, the Ardbeg
-  distillery set). Confirm every new page renders and that
-  Pagefind indexes them.
-- Optional: a CI check running `check_references.py` and
-  `check_writes.py` on push — the pre-commit hook covers local
-  commits, CI covers anything that bypasses it.
+- **Enable GitHub Pages — the last deploy blocker.** The build and
+  deploy workflows exist (`.github/workflows/{validate,deploy}.yml`)
+  and the site is wired for subpath hosting at
+  `https://kankajan.github.io/WhiskyBase/` (links base-aware,
+  `deploy.yml` supplies `BASE_PATH=/WhiskyBase`). The `deploy` job
+  still 404s until GitHub Pages is turned on: Settings → Pages →
+  Build and deployment → Source = "GitHub Actions". One-time manual
+  repo setting (publishes the site publicly). BLOCKER.
+- **Full site build verified (2026-06-11).** 217 pages build clean
+  at both the root and `/WhiskyBase/` subpath bases. Pagefind index
+  step runs in CI (`npm ci` installs the binary); not runnable on
+  the Windows dev box, which lacks the pagefind binary locally.
+- CI checks on push already exist: `validate.yml` runs
+  `check_writes.py`, `check_references.py --strict`, and the gate
+  unit tests, plus a root-base site build.
 
 ### Public-facing docs and site hygiene
 
@@ -926,6 +928,20 @@ single source of truth inside the component.
 (Move items here when done, with the date and a one-line note. Trim
 to the most recent five entries; older completions are tracked in
 Git history.)
+
+- **2026-06-11** GitHub Pages subpath hosting: internal links made
+  base-aware. Nav, page/component markup, dynamic hrefs, the
+  markdown content-link rewriter (`lib/markdown.ts`), nav hrefs
+  (`lib/data.ts`), the map popup, and the Pagefind UI bundle path
+  now prefix `import.meta.env.BASE_URL`, so the site builds correctly
+  under the project-repo subpath `/WhiskyBase/`. `deploy.yml` now
+  supplies `BASE_PATH=/WhiskyBase` and a default `SITE` on push;
+  `astro.config.mjs` reads both from env (unchanged). Verified: 217
+  pages build at both the root base (`/`, local/validate parity
+  preserved) and the subpath base, with zero unbased internal links
+  and no double-prefixes. This fixed the failing `deploy` workflow's
+  root cause on the links side. Remaining manual blocker: enable
+  GitHub Pages (Settings → Pages → Source = "GitHub Actions").
 
 - **2026-06-11** Audit remediation (`docs/audit-2026-06-11.md`).
   Migrated the Macallan production line + 3 bottlings from a

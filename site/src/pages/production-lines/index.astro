@@ -58,7 +58,7 @@ const multiLineCount = distillerySlugs.filter(
       return (
         <section>
           <h2>
-            <a href={`/distilleries/${slug}/`}>{name}</a>
+            <a href={`${import.meta.env.BASE_URL}distilleries/${slug}/`}>{name}</a>
             {groupLines.length > 1 && (
               <span class="count"> · {groupLines.length} lines</span>
             )}
@@ -74,7 +74,7 @@ const multiLineCount = distillerySlugs.filter(
             <tbody>
               {groupLines.map((l) => (
                 <tr>
-                  <td><a href={`/production-lines/${l.id}/`}>{l.name}</a></td>
+                  <td><a href={`${import.meta.env.BASE_URL}production-lines/${l.id}/`}>{l.name}</a></td>
                   <td class="peating">{formatPeating(l)}</td>
                   <td><ConfidenceBadge level={l.confidence} /></td>
                 </tr>

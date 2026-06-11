@@ -15,7 +15,7 @@ const bottlers = loadBottlers();
     <ul class="list">
       {bottlers.map((b) => (
         <li>
-          <a href={`/bottlers/${b.id}/`}><strong>{b.name}</strong></a>
+          <a href={`${import.meta.env.BASE_URL}bottlers/${b.id}/`}><strong>{b.name}</strong></a>
           {b.country && <span class="meta"> · {b.country}</span>}
           {b.founded && <span class="meta"> · founded {b.founded}</span>}
           {b.description && <p class="summary">{b.description.split('\n')[0]?.slice(0, 200)}{b.description.length > 200 ? '…' : ''}</p>}

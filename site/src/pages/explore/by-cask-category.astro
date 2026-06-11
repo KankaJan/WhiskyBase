@@ -54,7 +54,7 @@ function fmtVolume(v: Cask['typical_volume_litres']): string {
   indexable={false}
 >
   <article class="content">
-    <p class="breadcrumb"><a href="/explore/">Explore</a> ›</p>
+    <p class="breadcrumb"><a href={`${import.meta.env.BASE_URL}explore/`}>Explore</a> ›</p>
     <h1>Casks by category</h1>
     <p class="lede">
       {casks.length} cask types across {orderedKeys.length} categories.
@@ -79,7 +79,7 @@ function fmtVolume(v: Cask['typical_volume_litres']): string {
           <tbody>
             {grouped[cat].map((c) => (
               <tr>
-                <td><a href={`/casks/${c.id}/`}>{c.name}</a></td>
+                <td><a href={`${import.meta.env.BASE_URL}casks/${c.id}/`}>{c.name}</a></td>
                 <td>{c.subcategory ?? '—'}</td>
                 <td>{c.wood_species ?? '—'}</td>
                 <td class="vol-col">{fmtVolume(c.typical_volume_litres)}</td>
