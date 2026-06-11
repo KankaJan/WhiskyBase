@@ -1,0 +1,37 @@
+# =============================================================================
+# Dependabot — automated dependency-update PRs
+# =============================================================================
+# Covers the two dependency surfaces in this repo:
+#   - npm packages for the Astro site under /site
+#   - the GitHub Actions used by the workflows in .github/workflows
+# Security *alerts* (vulnerability notifications) are a separate, file-less
+# feature toggled in Settings -> Code security; this file controls the
+# automated version-bump PRs. All updates arrive as PRs, so they route
+# through the same review + CI gate as any other change.
+# =============================================================================
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/site"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "site"
+    groups:
+      # Batch low-risk minor/patch bumps into one PR to cut noise;
+      # majors still come as individual PRs for deliberate review.
+      site-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
