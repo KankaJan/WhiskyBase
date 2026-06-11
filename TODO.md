@@ -929,6 +929,20 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-11** Astro 5 → 6 migration (closes the failing
+  Dependabot astro-6.x PRs). Two real blockers, neither an Astro
+  API break: (1) `lib/data.ts` and `lib/references.ts` resolved the
+  repo root via `import.meta.url + ../../..` from the *compiled
+  chunk's* location — Astro 5 happened to place prerender chunks
+  three levels below the root, Astro 6 places them four
+  (`site/.astro/.prerender/chunks/`), silently breaking the path.
+  Replaced with a marker-directory walk-up from `process.cwd()`
+  (new `lib/repo-root.ts`). (2) Astro 6 requires Node ≥ 22.12.0;
+  workflows bumped from Node 20 to 22, `engines` updated. Verified:
+  full builds (Astro + Pagefind) green at root and subpath bases,
+  217 pages — exact parity with the Astro 5 output, zero unbased
+  links.
+
 - **2026-06-11** GitHub Pages subpath hosting: internal links made
   base-aware. Nav, page/component markup, dynamic hrefs, the
   markdown content-link rewriter (`lib/markdown.ts`), nav hrefs

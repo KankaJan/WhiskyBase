@@ -13,13 +13,11 @@
 // =============================================================================
 
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { parse as parseYaml } from 'yaml';
+import { REPO_ROOT } from './repo-root';
 
-// Resolve /data/ relative to this file at build time.
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = join(__dirname, '..', '..', '..', 'data');
+const DATA_DIR = join(REPO_ROOT, 'data');
 
 // ----- Source citations (shared across all entity types) -----
 
