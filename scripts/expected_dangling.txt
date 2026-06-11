@@ -1,0 +1,33 @@
+# Expected-dangling allowlist for scripts/check_references.py
+#
+# Cross-references to entities that are deliberately not populated yet
+# (forward references, per docs/handover.md section 8). The resolver
+# classifies these as EXPECTED rather than as new danglers, and they do
+# not fail `--strict`. Remove a line once that entity is populated.
+#
+# Format: <target_kind>:<slug>   (blank lines and # comments ignored)
+# target_kind is one of: distillery production_line bottling bottler
+#                        cask concept supplier
+
+# Worm-tub and direct-fired-still equipment pages list practitioner
+# distilleries that are not yet populated as distillery entries:
+distillery:ardnahoe
+distillery:ballindalloch
+distillery:balmenach
+distillery:ben-nevis
+distillery:benrinnes
+distillery:brora
+distillery:cragganmore
+distillery:craigellachie
+distillery:dalwhinnie
+distillery:edradour
+distillery:glen-elgin
+distillery:glenlivet
+distillery:knockdhu
+distillery:mortlach
+distillery:oban
+distillery:old-pulteney
+distillery:rosebank
+distillery:royal-lochnagar
+distillery:speyburn
+distillery:talisker

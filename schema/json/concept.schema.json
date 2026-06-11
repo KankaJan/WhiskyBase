@@ -290,6 +290,9 @@
   "allOf": [
     {
       "if": {
+        "required": [
+          "kind"
+        ],
         "properties": {
           "kind": {
             "const": "methodology"
@@ -297,15 +300,33 @@
         }
       },
       "then": {
+        "required": [
+          "methodology"
+        ],
         "properties": {
           "methodology": {
             "type": "object"
+          },
+          "educational": {
+            "type": "null"
+          },
+          "equipment": {
+            "type": "null"
+          },
+          "practice": {
+            "type": "null"
+          },
+          "glossary": {
+            "type": "null"
           }
         }
       }
     },
     {
       "if": {
+        "required": [
+          "kind"
+        ],
         "properties": {
           "kind": {
             "const": "educational"
@@ -313,15 +334,33 @@
         }
       },
       "then": {
+        "required": [
+          "educational"
+        ],
         "properties": {
           "educational": {
             "type": "object"
+          },
+          "methodology": {
+            "type": "null"
+          },
+          "equipment": {
+            "type": "null"
+          },
+          "practice": {
+            "type": "null"
+          },
+          "glossary": {
+            "type": "null"
           }
         }
       }
     },
     {
       "if": {
+        "required": [
+          "kind"
+        ],
         "properties": {
           "kind": {
             "const": "equipment"
@@ -329,15 +368,33 @@
         }
       },
       "then": {
+        "required": [
+          "equipment"
+        ],
         "properties": {
           "equipment": {
             "type": "object"
+          },
+          "methodology": {
+            "type": "null"
+          },
+          "educational": {
+            "type": "null"
+          },
+          "practice": {
+            "type": "null"
+          },
+          "glossary": {
+            "type": "null"
           }
         }
       }
     },
     {
       "if": {
+        "required": [
+          "kind"
+        ],
         "properties": {
           "kind": {
             "const": "practice"
@@ -345,15 +402,33 @@
         }
       },
       "then": {
+        "required": [
+          "practice"
+        ],
         "properties": {
           "practice": {
             "type": "object"
+          },
+          "methodology": {
+            "type": "null"
+          },
+          "educational": {
+            "type": "null"
+          },
+          "equipment": {
+            "type": "null"
+          },
+          "glossary": {
+            "type": "null"
           }
         }
       }
     },
     {
       "if": {
+        "required": [
+          "kind"
+        ],
         "properties": {
           "kind": {
             "const": "glossary"
@@ -361,9 +436,24 @@
         }
       },
       "then": {
+        "required": [
+          "glossary"
+        ],
         "properties": {
           "glossary": {
             "type": "object"
+          },
+          "methodology": {
+            "type": "null"
+          },
+          "educational": {
+            "type": "null"
+          },
+          "equipment": {
+            "type": "null"
+          },
+          "practice": {
+            "type": "null"
           }
         }
       }

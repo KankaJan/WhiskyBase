@@ -23,7 +23,7 @@ for commercial bottling entities (independent bottlers, distillery
 bottling operations) — schema at v0.2 with 2 entries populated
 (Cadenhead's, Signatory Vintage); and **cask** for reusable cask-
 type references that bottlings and production lines cite from their
-maturation programmes — schema v0.1 with 16 entries populated,
+maturation programmes — schema v0.1 with 18 entries populated,
 including the first-class `undisclosed-cask` for deliberately-
 secret cask provenance. Data lives as YAML in a
 Git repository; cross-references between entities use slugs; the
@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 14 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 15 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -408,8 +408,27 @@ back rather than absorbing it into the data model.
   equipment feature; ~50 ppm peating; the 2019 still house
   doubled the still count from one pair to two, with the
   post-expansion annual capacity left null pending a producer
-  figure, see ardbeg.NOTES.md).
-- 19 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  figure, see ardbeg.NOTES.md),
+  Macallan (medium — Easter Elchies, Craigellachie, Speyside,
+  Edrington-owned via The Robertson Trust charitable structure;
+  founded 1824 by Alexander Reid under the Excise Act 1823;
+  third populated Speyside entry after Glenfarclas and
+  Glenfiddich; **defining sherry-cask-led house style** — the
+  Sherry Oak core range matured exclusively in oloroso-seasoned
+  oak sherry casks from Jerez, the 2004 Fine Oak range (renamed
+  Triple Cask Matured in 2018) added American-oak ex-bourbon
+  casks alongside; Edrington's September 2023 acquisition of
+  the Vasyma cooperage in Jerez vertically integrated the
+  sherry-cask supply chain; new 2018 still house (Rogers Stirk
+  Harbour + Partners, £140m) holds 36 stills as 12 wash + 24
+  spirit, with the spirit stills at 3,900 L charge volume —
+  among the smallest in Scotland and a long-standing piece of
+  the brand's positioning; ~15M LPA; **Wikipedia is the only
+  directly-fetched source** in the entry, the producer's own
+  pages and scotchwhisky.com Whiskypedia did not return content
+  at fetch time and are queued for migration in
+  `TODO.md` Research Requests).
+- 20 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -444,7 +463,13 @@ back rather than absorbing it into the data model.
   one production line routed through different cask and
   Solera-Vat vatting processes, not separate recipes),
   1 Ardbeg (medium — heavily-peated Islay default; long
-  fermentation; the spirit-still purifier).
+  fermentation; the spirit-still purifier),
+  1 Macallan (medium — unpeated Speyside default; sherry-cask-
+  led cask programme as the defining feature, with the 2004
+  Fine Oak / 2018 Triple Cask Matured range as the only
+  ex-bourbon component in the core Macallan range; the
+  producer-stated "curiously small" spirit stills at 3,900 L
+  charge volume).
 - 85 concept pages: 3 methodology, 17 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
@@ -482,12 +507,15 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 42 bottlings: 42 working entries (10 Bruichladdich/Harris + 3
+- 45 bottlings: 45 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
   2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
   2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 3 Ardbeg +
-  2 worked-example
+  3 Macallan + 2 worked-example
   IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
+  Macallan bottlings (Sherry Oak 12, Double Cask 12, Triple Cask
+  Matured 15) were migrated from a pre-v0.2 flat field shape to the
+  v0.2 schema on 2026-06-11; see CHANGELOG [0.8.4].
   **No IB pressure-test stubs remain.** Both IB-release entries
   are now worked-example representations rather than placeholders,
   with Cadenhead's house defaults (500ml, Cask Strength /
@@ -546,7 +574,7 @@ back rather than absorbing it into the data model.
 - `schema/bottler.template.yml` — v0.2 (presentation_defaults
   and parent fields added, data-driven from Signatory pressure-test)
 - `schema/cask.template.yml` — v0.1 (disclosure_status enum,
-  parent/alternatives relations; 16 entries populated)
+  parent/alternatives relations; 18 entries populated)
 - `schema/supplier.template.yml` — v0.1 DRAFT (maltster /
   cooperage_source / yeast_supplier / barley_breeder / other;
   sites list, ownership, products, supplies_to; 0 entries
@@ -640,16 +668,18 @@ CHANGELOG [0.8.3].
 
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 15th distillery.** Ardbeg landed
-   2026-05-21 as the 14th, completing the four-distillery
-   south-Islay peated cluster (Ardbeg / Laphroaig / Lagavulin /
-   Caol Ila). The obvious next gap is a Speyside heavyweight —
-   Glenlivet for market scale, or Macallan for the sherry-led
-   house style; both carry heavier brand-positioning prose than
-   Glenfiddich did, so budget for the voice-register pass. The
-   production-chain concept backbone is now complete (85 concept
-   pages), so a new distillery slots into a full cross-reference
-   set.
+1. **Data-layer growth — 16th distillery.** Macallan landed
+   2026-05-26 as the 15th, exercising the sherry-cask chain at
+   the project's first charity-controlled-spirits-group scale.
+   The obvious next gap is **Glenlivet** for raw market scale —
+   the other half of the Glenfiddich-vs-Glenlivet best-seller
+   pair, and the most-quoted single-malt brand still
+   under-represented in this knowledge base. Alternatives:
+   **Aberlour** for a second sherry-led Speyside; **Cardhu** as a
+   Diageo Speyside (Johnnie Walker component); **Talisker** as a
+   third Diageo Classic Malt and the project's first Skye entry.
+   The Macallan entry leans heavily on Wikipedia — see Research
+   Requests in TODO.md for the producer / Whiskypedia migrations.
 2. **Residual sourcing follow-ups.** The second-academic-source
    blocker is RESOLVED — Miller, *Whisky Science* 2nd ed. (2024)
    was acquired 2026-05-20 and used to promote five of the seven
@@ -658,10 +688,13 @@ CHANGELOG [0.8.3].
    yeast-house list is uncorroborated — needs a producer / SWRI
    cross-check) and `shell-and-tube` (Miller does not treat
    condenser types — needs a condenser-specific source).
-3. **Replace `signatory-caol-ila-stub` empty-YAML tombstone**.
-   The 2026-05-17 stub-supersession overwrote the file with
-   empty YAML; the resolver ignores it but the file should be
-   deleted from the Windows shell to fully clean up.
+3. **Audit follow-ups (2026-06-11) are landed; watch the new gate.**
+   The empty-YAML stub tombstones are gone, the Macallan files are
+   migrated to schema, and `scripts/check_references.py --strict` is
+   now wired into the pre-commit hook (gate 2) alongside the
+   hard-corruption scanner. Genuine forward references must be added
+   to `scripts/expected_dangling.txt` or they will fail the strict
+   gate. See `docs/audit-2026-06-11.md` and CHANGELOG [0.8.4].
 
 **Completed since the last handover revision:**
 
@@ -727,9 +760,17 @@ their structure rather than starting fresh.
 ## 12. When in doubt
 
 The schema templates have the most current rules — read them
-first. This handover is a higher-level orientation. If the templates
-and this document disagree, the templates are correct and this
-document needs updating.
+first. This handover is a higher-level orientation.
+
+**Document precedence (when sources conflict).** Highest authority
+first: (1) the JSON Schemas in `/schema/json/` for anything they
+validate — they are what the resolver actually enforces, so for the
+source-type enum, field shapes, and required fields they win; (2) the
+`schema/*.template.yml` templates for field semantics, conventions,
+and authoring guidance not captured by the JSON Schemas; (3) the
+policy docs (`docs/voice-register.md`, `docs/source-conflict-policy.md`);
+(4) this handover. If a lower tier disagrees with a higher one, the
+higher tier is correct and the lower one needs updating.
 
 The notes files (`<entity>.NOTES.md`) preserve decision rationale
 that matters for specific entries.
@@ -748,10 +789,17 @@ document so the next handover has the latest picture.
 Resources for ongoing authoring:
 
 - **`scripts/check_references.py`** — cross-reference resolver and
-  YAML parse check. Warn-only, never blocks commit. Run from the
-  repo root. Reports dangling references grouped by target type,
-  duplicate IDs, invalid `source_id` refs, and inline `[N]`
-  citations that don't resolve.
+  JSON Schema validator. Run from the repo root. Reports dangling
+  references (split into allowlisted forward references vs unexpected
+  ones, via `scripts/expected_dangling.txt`), duplicate IDs, invalid
+  `source_id` refs, unresolved inline `[N]` citations, stale
+  `schema_version` declarations, and cross-file consistency
+  contradictions. Default output is warn-only; `--strict` exits
+  non-zero on hard problems and is the second pre-commit gate.
+- **`scripts/check_writes.py`** — hard-corruption scanner (NUL
+  bytes, truncation, YAML parse failure); the first pre-commit gate.
+- **`scripts/test_checks.py`** — unit tests for the two gate scripts
+  (`python3 scripts/test_checks.py`).
 - **`/skills/voice-register/SKILL.md`** — voice rules as a
   project-local Claude skill (mirrors `docs/voice-register.md`).
   Triggers when authoring prose for any entry.

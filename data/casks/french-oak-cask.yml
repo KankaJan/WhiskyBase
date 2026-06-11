@@ -1,0 +1,90 @@
+# =============================================================================
+# French oak (virgin)
+# =============================================================================
+# Schema: cask.template.yml v0.1
+# Entry confidence: medium — description is general industry knowledge.
+# Written to resolve the forward reference from ardbeg-corryvreckan, which
+# matures partly in new (virgin) French oak. No single authoritative
+# published reference is cited; candidates for future enrichment include
+# cooperage technical publications and producer technical notes.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: french-oak-cask
+name: French oak (virgin)
+also_known_as:
+  - new French oak
+  - virgin French oak
+
+
+# --- Classification ---------------------------------------------------------
+category: virgin
+subcategory: new French oak (no prior fill)
+
+
+# --- Vessel Characteristics --------------------------------------------------
+typical_volume_litres: null
+wood_species: french_oak
+
+
+# --- Prior Contents ---------------------------------------------------------
+prior_contents:
+  category: none
+  specifics: |
+    The cask has not previously held any spirit, wine, or other liquid.
+    It is coopered from French oak (Quercus robur / Quercus petraea) and
+    charred or toasted specifically for Scotch maturation.
+
+
+# --- Origin -----------------------------------------------------------------
+origin:
+  country: France
+  region: null
+  appellation: null
+  producer: null
+
+
+# --- Disclosure Status ------------------------------------------------------
+disclosure_status: disclosed
+disclosure_notes: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  A virgin (new) cask coopered from French oak rather than American
+  oak. Like all virgin oak it has held no prior fill, so it presents
+  the full extractive reservoir to the spirit (see
+  [cask maturation kinetics](concept/educational/cask-maturation-kinetics)
+  for the kinetic-phase model). The species contrast with virgin
+  American oak is the load-bearing distinction: French oak
+  (Quercus robur and Quercus petraea) is more tannic and carries a
+  different lactone and spice profile than American white oak
+  (Quercus alba), so a new French oak component contributes a deeper,
+  more tannic and spicy character. Used as a component in a multi-cask
+  programme rather than as a sole maturation vessel; Ardbeg Corryvreckan
+  is a populated example, combining an ex-bourbon backbone with a new
+  French oak component.
+
+
+# --- Related Casks ----------------------------------------------------------
+related:
+  parent: null
+  alternatives:
+    - virgin-oak
+    - wine-cask
+
+
+# --- Used by ----------------------------------------------------------------
+used_by: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources: []
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-06-11
+contributors: []

@@ -154,10 +154,14 @@ Foundational principle: "every claim is sourced."
   resolve to one of the disclosed figures, never to an
   interpolated middle.
 
-Full policy: `docs/source-conflict-policy.md`. Source-type
-vocabulary: `official_website`, `trade_publication`, `wikipedia`,
-`chemistry_database`, `regulatory_text`, `independent_review`,
-`peer_reviewed_paper`.
+Full policy: `docs/source-conflict-policy.md`. The canonical
+source-type vocabulary is the `source_type` enum in
+`schema/json/_common.schema.json` — it is the list the validator
+actually enforces, and all other documents derive from it:
+`official_website`, `trade_publication`, `book`, `wikipedia`,
+`wikidata`, `company_filing`, `independent_review`, `interview`,
+`chemistry_database`, `regulatory_text`, `peer_reviewed_paper`,
+`other`.
 
 ---
 
@@ -197,32 +201,47 @@ Full procedure and repair patterns: `/skills/safe-bulk-writes/SKILL.md`.
 
 ## Verification
 
-Two checks guard the data, with deliberately different severity.
+Two scripts guard the data, and the pre-commit hook runs both as
+gates (activate once per clone: `git config core.hooksPath
+scripts/hooks`).
 
-`scripts/check_references.py` is the load-bearing **soft** check.
-Run it from the repo root after every data change. Output is
-warn-only — it never blocks a commit. It reports:
+`scripts/check_references.py` is the cross-reference resolver and
+JSON Schema validator. Run it from the repo root after every data
+change. It reports:
 
 - YAML parse failures (catches NUL bytes and silent truncation)
 - Duplicate IDs
-- Dangling cross-references grouped by target type
+- Dangling cross-references, split into **expected** (listed in
+  `scripts/expected_dangling.txt`) and **unexpected**
 - Invalid `source_id` references inside structured measurement
   and methodology blocks
 - Inline `[N]` citation references that don't resolve
+- Stale `schema_version` declarations (vs the current templates)
+- Cross-file consistency contradictions (e.g. a bottling whose
+  `produced_at_distillery` disagrees with its production line's
+  distillery)
+- JSON Schema violations
 
-Dangling references to entries not yet populated are *expected*
-per handover §8 (forward references) — they're tracked in
-`TODO.md` rather than fixed.
+Default output is warn-only. With `--strict` it exits non-zero on
+*hard* problems — parse failures, duplicate IDs, schema
+violations, bad citations, **unexpected** dangling references, and
+consistency contradictions — and this strict run is the second
+pre-commit gate. Forward references to entries not yet populated
+are *expected* per handover §8; add them to
+`scripts/expected_dangling.txt` so they do not fail the gate
+(legacy: such refs were tracked in `TODO.md`). Stale
+`schema_version` and soft mirroring gaps are warnings, not
+failures.
 
-`scripts/check_writes.py` is the **hard-corruption gate**. It
-scans text files for the mount-sync damage signatures — embedded
-NUL bytes, silent truncation (no trailing newline), YAML parse
-failure — and exits non-zero on any finding. The pre-commit hook
-in `scripts/hooks/` runs it against the staged files and **blocks
-the commit** on a finding. Activate the hook once per clone:
-`git config core.hooksPath scripts/hooks`. This is the only check
-that blocks — hard corruption must never reach a commit; soft
-findings (dangling refs, schema warnings) never block.
+`scripts/check_writes.py` is the **hard-corruption gate** and the
+first pre-commit gate. It scans text files for the mount-sync
+damage signatures — embedded NUL bytes, silent truncation (no
+trailing newline), YAML parse failure — and exits non-zero on any
+finding, blocking the commit. Hard corruption must never reach a
+commit.
+
+`scripts/test_checks.py` unit-tests both gate scripts; run
+`python3 scripts/test_checks.py` after changing either.
 
 ---
 
@@ -279,7 +298,7 @@ unless asked.
 ## Tooling pointers
 
 - `scripts/check_references.py` — cross-reference resolver and
-  JSON Schema validator (warn-only).
+  JSON Schema validator (warn-only by default; `--strict` gates).
 - `scripts/check_writes.py` — hard-corruption scanner (NUL bytes,
   truncation, YAML parse failure); the pre-commit hook in
   `scripts/hooks/` runs it and blocks the commit on a finding.

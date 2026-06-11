@@ -64,10 +64,8 @@ maturation:
     cooperage: null
     notes: |
       A French-oak component contributes a deeper, more tannic
-      and spicy character. The project has no populated cask
-      entry for new French oak yet — `french-oak-cask` is a
-      forward reference, tracked in TODO.md until the cask entry
-      is written.
+      and spicy character. Resolved against the populated
+      `french-oak-cask` (virgin French oak) entry.
 
 finish: null
 

@@ -81,10 +81,9 @@ visual work *around* that content.
 
 ### Data sweep (minor — not blockers)
 
-- Populate the `french-oak-cask` cask entry — the forward
-  reference introduced by `ardbeg-corryvreckan`.
-- Delete the `signatory-caol-ila-stub` empty-YAML tombstone from
-  the Windows shell.
+- (none open — the `french-oak-cask` cask entry and the
+  `signatory-caol-ila-stub` tombstone removal were completed
+  2026-06-11; see Recently completed.)
 
 ---
 
@@ -388,6 +387,35 @@ Entries that currently cite Wikipedia (a volatile source per
 `docs/source-conflict-policy.md`) or that have empty `sources:`
 where they should have authoritative sources. Each needs a
 research pass to locate and cite stronger primary sources.
+
+### Macallan Wikipedia migrations (2026-05-26)
+
+The 15th distillery entry, Macallan, cites only two Wikipedia
+sources (The_Macallan_distillery + Edrington). Migrate the
+load-bearing claims to primaries when the upstream sources
+become accessible:
+
+- Producer pages: `themacallan.com/en/inside-the-macallan/our-estate`
+  and `themacallan.com/en/explore-our-single-malts` (returned
+  empty at fetch time 2026-05-26 — JS-rendered or CSP-blocked).
+- Scotchwhisky.com Whiskypedia page on The Macallan (returned
+  empty at fetch time 2026-05-26).
+- whisky.com database entry (returned empty at fetch time
+  2026-05-26).
+- The book sources Wikipedia indexes for Macallan: Kindersley
+  2008 (Whisky, Dorling Kindersley); MacLean 2008 (Eyewitness
+  Companions: Whiskey, DK); Bowman 2017 (The Pocket Guide to
+  Whisky, Birlinn). All are general-interest references rather
+  than the academic Russell / Miller lineage; useful as a
+  triangulation step before migrating to Master of Malt /
+  trade-press citations.
+- Specific Wikipedia-internal inconsistency to resolve in
+  migration: the article credits the new 2018 still house to
+  "Norman Foster" in one paragraph and to "Rogers Stirk Harbour
+  + Partners" in the infobox + Stirling-Prize-2019 citation; the
+  project recorded RSHP per the better-attributed source, but
+  this should be confirmed against the producer's own page or
+  the RIBA practice portfolio.
 
 ### Literature-resource scouting (user can supply digital copies)
 
@@ -898,6 +926,44 @@ single source of truth inside the component.
 (Move items here when done, with the date and a one-line note. Trim
 to the most recent five entries; older completions are tracked in
 Git history.)
+
+- **2026-06-11** Audit remediation (`docs/audit-2026-06-11.md`).
+  Migrated the Macallan production line + 3 bottlings from a
+  pre-v0.2 flat shape to the v0.2 schema; added the
+  `french-oak-cask` entry (resolving the last genuine dangling
+  ref); renamed `bruichladdich-islay-barley-2023` →
+  `…-2014`; reconciled the source-type vocabulary to the canonical
+  `_common.schema.json` enum across policy doc, CLAUDE.md and
+  templates; strengthened concept per-kind enforcement in
+  `concept.schema.json`. Tooling: `check_references.py` gained
+  `--strict`, an expected-dangling allowlist
+  (`scripts/expected_dangling.txt`), a schema-version currency
+  check, and cross-file consistency checks; the pre-commit hook now
+  runs `--strict` as a second gate; added `scripts/test_checks.py`.
+  Resolver clean: 0 schema findings, 0 unexpected dangling, 0
+  consistency contradictions.
+
+- **2026-05-26** 15th distillery: Macallan. Edrington-owned
+  Speyside via the Robertson Trust charitable structure; founded
+  1824 by Alexander Reid under the Excise Act 1823 at the Easter
+  Elchies estate, Craigellachie, Moray. Defining sherry-cask-led
+  house style — Sherry Oak core exclusively in oloroso-seasoned
+  oak sherry casks from Jerez; the 2004 Fine Oak (renamed Triple
+  Cask Matured 2018) added American-oak ex-bourbon casks
+  alongside European- and American-oak sherry casks; Edrington's
+  Sept 2023 acquisition of the Vasyma cooperage in Jerez
+  vertically integrated the sherry supply chain. The new 2018
+  still house (Rogers Stirk Harbour + Partners, £140m) holds 36
+  stills as 12 wash + 24 spirit, with the spirit stills at
+  3,900 L charge — among the smallest in Scotland and a
+  long-standing piece of the brand's positioning. ~15M LPA.
+  Three bottlings: Sherry Oak 12 (canonical sherry-only),
+  Double Cask 12 (European- and American-oak sherry blend),
+  Triple Cask Matured 15 (sherry + sherry + ex-bourbon — the
+  former Fine Oak 15). Wikipedia is the only directly-fetched
+  source — themacallan.com, scotchwhisky.com Whiskypedia, and
+  whisky.com all returned empty at fetch time; queued for
+  migration in Research Requests below.
 
 - **2026-05-26** Diagram register split + blueprint cross-sections.
   `docs/diagram-style.md` extended from two registers to three:

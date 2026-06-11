@@ -1,11 +1,19 @@
 #!/bin/sh
-# WhiskyBase pre-commit hook -- hard-corruption gate.
+# WhiskyBase pre-commit hook.
 #
-# Blocks a commit when a staged text file shows hard corruption
-# (NUL bytes, truncation, YAML parse failure) -- the Windows <-> Linux
-# mount-sync damage signatures. Soft findings (dangling references,
-# JSON Schema warnings) are NOT checked here: check_references.py
-# covers those and is deliberately warn-only.
+# Two gates, both blocking:
+#
+#   1. Hard-corruption gate (check_writes.py) — NUL bytes, truncation,
+#      YAML parse failure: the Windows <-> Linux mount-sync damage
+#      signatures. Run against the staged files only.
+#   2. Schema-conformance gate (check_references.py --strict) — JSON
+#      Schema violations, duplicate IDs, bad source_id / inline [N]
+#      citations, UNEXPECTED dangling references, and cross-file
+#      contradictions. Forward references listed in
+#      scripts/expected_dangling.txt do NOT block; stale schema_version
+#      and soft mirroring gaps are warnings, not failures. This runs
+#      against the whole data set (the resolver builds a global index),
+#      not just staged files.
 #
 # Activate once, from the repo root:
 #   git config core.hooksPath scripts/hooks
@@ -18,10 +26,11 @@ if command -v python3 >/dev/null 2>&1; then
 elif command -v python >/dev/null 2>&1; then
   PY=python
 else
-  echo "pre-commit: python not found; skipping corruption check" >&2
+  echo "pre-commit: python not found; skipping checks" >&2
   exit 0
 fi
 
+# Gate 1: hard corruption on staged files.
 # shellcheck disable=SC2086
 "$PY" scripts/check_writes.py $files || {
   echo "" >&2
@@ -29,4 +38,14 @@ fi
   echo "Rebuild the affected file(s) and re-stage, then commit again." >&2
   exit 1
 }
+
+# Gate 2: schema conformance across the data set.
+"$PY" scripts/check_references.py --strict >/dev/null 2>&1 || {
+  echo "" >&2
+  echo "pre-commit: schema/reference problems found -- commit blocked." >&2
+  echo "Run 'python3 scripts/check_references.py --strict' to see them." >&2
+  echo "(Genuine forward references go in scripts/expected_dangling.txt.)" >&2
+  exit 1
+}
+
 exit 0

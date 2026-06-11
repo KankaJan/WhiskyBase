@@ -5,13 +5,20 @@ WhiskyBase cross-reference resolver and JSON Schema validator.
 Walks every YAML entry under /data/, builds a slug index across all entity
 types (distilleries, production_lines, bottlings, bottlers, casks, suppliers,
 concepts by kind), then reports references that don't resolve and any JSON
-Schema violations. Output is warn-only.
+Schema violations.
 
-Exit code is always 0.
+By default the output is warn-only and the exit code is 0 (forward
+references are expected, per docs/handover.md section 8). With `--strict`
+the script exits non-zero when it finds a *hard* problem: a YAML parse
+failure, a duplicate ID, a JSON Schema violation, a bad source_id or
+inline [N] citation, an unexpected dangling reference (one not listed in
+scripts/expected_dangling.txt), or a cross-file consistency contradiction.
+Dangling references that ARE in the allowlist never fail `--strict`.
 """
 
 from __future__ import annotations
 
+import argparse
 import datetime as _dt
 import json
 import re
@@ -35,6 +42,23 @@ except ImportError:
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
 SCHEMA_JSON_DIR = REPO_ROOT / "schema" / "json"
+ALLOWLIST_FILE = REPO_ROOT / "scripts" / "expected_dangling.txt"
+
+
+# Current template schema_version per entity type. The resolver warns when a
+# file declares a version that does not match its entity type's current
+# template, which catches "claims a version it does not conform to" drift
+# distinct from the shape checks the JSON Schemas perform. Keep in sync with
+# the schema/*.template.yml headers and docs/handover.md section 10.
+CURRENT_SCHEMA_VERSIONS = {
+    "distillery": "0.2",
+    "production_line": "0.2.1",
+    "bottling": "0.2",
+    "bottler": "0.2",
+    "cask": "0.1",
+    "concept": "0.1",
+    "supplier": "0.1",
+}
 
 
 SCALAR_REFS = {
@@ -78,6 +102,19 @@ ENTITY_SCHEMA_FILE = {
 
 
 _COMMON_REF_PREFIX = "_common.schema.json#/definitions/"
+
+
+def load_allowlist():
+    """Return a set of "<kind>:<slug>" strings expected to dangle."""
+    allow = set()
+    if not ALLOWLIST_FILE.exists():
+        return allow
+    for raw in ALLOWLIST_FILE.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        allow.add(line)
+    return allow
 
 
 def _to_json_compatible(value):
@@ -295,6 +332,79 @@ def resolve(target_kind, slug, index):
     return False
 
 
+def check_schema_versions(docs):
+    """Warn when a file's declared schema_version != its entity's current
+    template version. Returns a list of (path, entity, declared, expected)."""
+    findings = []
+    for path, doc in docs:
+        entity, _sub = classify_path(path)
+        expected = CURRENT_SCHEMA_VERSIONS.get(entity)
+        if expected is None:
+            continue
+        declared = doc.get("schema_version")
+        if declared is None:
+            continue
+        if str(declared) != expected:
+            findings.append((path, entity, str(declared), expected))
+    return findings
+
+
+def check_consistency(docs, index):
+    """Cross-file consistency.
+
+    HARD (a genuine contradiction): a bottling whose `production_line`
+    resolves to a line whose `distillery` differs from the bottling's
+    `produced_at_distillery`.
+
+    SOFT (membership mirroring, may legitimately lag for forward refs):
+      - a distillery lists a production_line whose `distillery` is not
+        that distillery;
+      - a production_line lists a bottling whose `production_line` is not
+        that line.
+    """
+    # Map line slug -> its declared distillery.
+    line_distillery = {}
+    bottling_line = {}
+    for path, doc in docs:
+        entity, _sub = classify_path(path)
+        sid = doc.get("id")
+        if entity == "production_line" and isinstance(sid, str):
+            line_distillery[sid] = doc.get("distillery")
+        if entity == "bottling" and isinstance(sid, str):
+            bottling_line[sid] = doc.get("production_line")
+
+    hard = []
+    soft = []
+    for path, doc in docs:
+        entity, _sub = classify_path(path)
+        sid = doc.get("id")
+
+        if entity == "bottling":
+            line = doc.get("production_line")
+            pad = doc.get("produced_at_distillery")
+            if isinstance(line, str) and line in line_distillery:
+                line_dist = line_distillery[line]
+                if isinstance(line_dist, str) and isinstance(pad, str) and line_dist != pad:
+                    hard.append((path, f"produced_at_distillery '{pad}' != "
+                                       f"distillery '{line_dist}' of production_line '{line}'"))
+
+        if entity == "distillery" and isinstance(sid, str):
+            for ln in (doc.get("production_lines") or []):
+                if isinstance(ln, str) and ln in line_distillery:
+                    if line_distillery[ln] != sid:
+                        soft.append((path, f"lists production_line '{ln}' but that line's "
+                                           f"distillery is '{line_distillery[ln]}', not '{sid}'"))
+
+        if entity == "production_line" and isinstance(sid, str):
+            for bn in (doc.get("bottlings") or []):
+                if isinstance(bn, str) and bn in bottling_line:
+                    if bottling_line[bn] != sid:
+                        soft.append((path, f"lists bottling '{bn}' but that bottling's "
+                                           f"production_line is '{bottling_line[bn]}', not '{sid}'"))
+
+    return hard, soft
+
+
 def rel(p):
     try:
         return str(p.relative_to(REPO_ROOT))
@@ -309,12 +419,23 @@ def print_section(title):
 
 
 def main():
+    ap = argparse.ArgumentParser(description="WhiskyBase reference check.")
+    ap.add_argument("--strict", action="store_true",
+                    help="Exit non-zero on hard problems (parse failures, "
+                         "duplicate IDs, schema violations, bad citations, "
+                         "unexpected dangling refs, consistency contradictions). "
+                         "Allowlisted forward refs never fail.")
+    args = ap.parse_args()
+
+    allowlist = load_allowlist()
     files = list(iter_yaml_files())
     docs, index, parse_errors, duplicates = build_index(files)
 
     print("WhiskyBase reference check")
     print("==========================")
     print(f"Files scanned: {len(files)}")
+    if args.strict:
+        print("Mode: STRICT (hard problems fail the run)")
 
     if parse_errors:
         print_section(f"YAML parse failures ({len(parse_errors)})")
@@ -355,25 +476,45 @@ def main():
         else:
             dangling_by_kind[target_kind][slug].append((source_path, field))
 
+    # Split dangling into expected (allowlisted) and unexpected.
+    unexpected_count = 0
+    expected_count = 0
+    for kind, slugs in dangling_by_kind.items():
+        for slug in slugs:
+            if f"{kind}:{slug}" in allowlist:
+                expected_count += 1
+            else:
+                unexpected_count += 1
+
     total_dangling_slugs = sum(len(slugs) for slugs in dangling_by_kind.values())
     total_dangling_refs = sum(len(refs) for slugs in dangling_by_kind.values() for refs in slugs.values())
 
     print_section("Cross-reference resolution")
     print(f"  Resolved:  {resolved}")
     print(f"  Dangling:  {total_dangling_refs} ({total_dangling_slugs} distinct slugs)")
+    print(f"    expected (allowlisted): {expected_count} slugs")
+    print(f"    unexpected:             {unexpected_count} slugs")
 
     for kind in sorted(dangling_by_kind):
         slugs = dangling_by_kind[kind]
-        print_section(f"Dangling {kind} references ({len(slugs)} slugs)")
-        for slug in sorted(slugs):
-            refs = slugs[slug]
-            print(f"  {slug}   ({len(refs)} ref{'s' if len(refs) != 1 else ''})")
-            seen_paths = set()
-            for path, field in refs:
-                if path in seen_paths:
-                    continue
-                seen_paths.add(path)
-                print(f"    from {rel(path)} :: {field}")
+        expected_here = sorted(s for s in slugs if f"{kind}:{s}" in allowlist)
+        unexpected_here = sorted(s for s in slugs if f"{kind}:{s}" not in allowlist)
+        if unexpected_here:
+            print_section(f"UNEXPECTED dangling {kind} references ({len(unexpected_here)} slugs)")
+            for slug in unexpected_here:
+                refs = slugs[slug]
+                print(f"  {slug}   ({len(refs)} ref{'s' if len(refs) != 1 else ''})")
+                seen_paths = set()
+                for path, field in refs:
+                    if path in seen_paths:
+                        continue
+                    seen_paths.add(path)
+                    print(f"    from {rel(path)} :: {field}")
+        if expected_here:
+            print_section(f"Expected (allowlisted) dangling {kind} references ({len(expected_here)} slugs)")
+            for slug in expected_here:
+                refs = slugs[slug]
+                print(f"  {slug}   ({len(refs)} ref{'s' if len(refs) != 1 else ''}) [forward reference]")
 
     bad_source_ids = []
     bad_inline_citations = []
@@ -405,9 +546,31 @@ def main():
             citation = "[" + str(sid) + "]"
             print(f"  {rel(path)} :: {field} cites {citation} (declared: {declared})")
 
+    # --- schema_version currency ------------------------------------------
+    version_findings = check_schema_versions(docs)
+    print_section(f"Schema-version currency ({len(version_findings)} stale)")
+    if not version_findings:
+        print("  All declared schema_version values match the current templates.")
+    else:
+        for path, entity, declared, expected in version_findings:
+            print(f"  {rel(path)} :: {entity} declares {declared}, current template is {expected}")
+
+    # --- cross-file consistency -------------------------------------------
+    hard_consistency, soft_consistency = check_consistency(docs, index)
+    print_section(f"Cross-file consistency ({len(hard_consistency)} contradiction(s), "
+                  f"{len(soft_consistency)} mirroring gap(s))")
+    if not hard_consistency and not soft_consistency:
+        print("  Distillery/line/bottling back-references are consistent.")
+    else:
+        for path, msg in hard_consistency:
+            print(f"  CONTRADICTION  {rel(path)} :: {msg}")
+        for path, msg in soft_consistency:
+            print(f"  mirroring gap  {rel(path)} :: {msg}")
+
     validators, missing, schema_errors = _load_schemas()
 
     print_section("JSON Schema validation")
+    total_schema_findings = 0
     if not _JSONSCHEMA_AVAILABLE:
         print("  jsonschema library not installed - install with: pip install jsonschema")
     elif schema_errors:
@@ -429,9 +592,9 @@ def main():
                 loc = "/".join(str(x) for x in err.absolute_path) or "<root>"
                 findings_by_entity[entity].append((path, loc, err.message))
 
-        total_findings = sum(len(v) for v in findings_by_entity.values())
+        total_schema_findings = sum(len(v) for v in findings_by_entity.values())
         print(f"  Files validated: {validated_count}")
-        print(f"  Findings: {total_findings}")
+        print(f"  Findings: {total_schema_findings}")
         for entity in sorted(findings_by_entity):
             findings = findings_by_entity[entity]
             label = "finding" if len(findings) == 1 else "findings"
@@ -439,6 +602,26 @@ def main():
             for path, loc, message in findings:
                 short = message if len(message) <= 200 else message[:200] + "..."
                 print(f"    {rel(path)} :: {loc}: {short}")
+
+    # --- exit code --------------------------------------------------------
+    if args.strict:
+        hard_problem = (
+            len(parse_errors) > 0
+            or len(duplicates) > 0
+            or total_schema_findings > 0
+            or len(bad_source_ids) > 0
+            or len(bad_inline_citations) > 0
+            or unexpected_count > 0
+            or len(hard_consistency) > 0
+        )
+        print_section("Strict-mode result")
+        if hard_problem:
+            print("  FAIL — hard problems found (see sections above).")
+            print("  (Stale schema_version and soft mirroring gaps are warnings, "
+                  "not failures.)")
+            return 1
+        print("  PASS — no hard problems.")
+        return 0
 
     return 0
 

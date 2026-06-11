@@ -100,13 +100,28 @@ Wikipedia citations remain acceptable for:
 
 ## Source-type vocabulary
 
-The `type:` field on source entries uses the following vocabulary:
+The `type:` field on source entries uses the vocabulary below.
+**This list is the human-readable mirror of the `source_type` enum
+in `schema/json/_common.schema.json`, which is the canonical,
+validator-enforced definition.** When the two ever drift, the JSON
+enum wins and this section should be regenerated from it. The full
+enum is the twelve values that follow:
 
 - `official_website` — producer's own website or other
   first-party publication
 - `trade_publication` — third-party Scotch industry coverage
   (Scotch Whisky magazine, Diffords, Whisky.com, etc.)
+- `book` — published reference book or monograph (e.g. Russell
+  ed. 2014, Miller 2024). See `docs/bibliography.md`.
 - `wikipedia` — Wikipedia entry. Volatile (see above).
+- `wikidata` — structured Wikidata item (QID-anchored).
+- `company_filing` — corporate filing or regulatory disclosure
+  by the producer or its parent (annual report, Companies House
+  record, etc.).
+- `independent_review` — named-author tasting notes or visit
+  accounts
+- `interview` — published interview with a distiller, blender,
+  or other named figure.
 - `chemistry_database` — primary chemistry database (PubChem,
   NIST WebBook, etc.). Type introduced 2026-05-15.
 - `regulatory_text` — government or appellation-council
@@ -114,10 +129,10 @@ The `type:` field on source entries uses the following vocabulary:
   *cahier des charges*, Consejo Regulador del Vino de Jerez DO
   text, Italian DOC/DOCG ministerial publications). Type
   introduced 2026-05-15.
-- `independent_review` — named-author tasting notes or visit
-  accounts
 - `peer_reviewed_paper` — journal paper. Reserved for future use
   as research-request items are resolved.
+- `other` — anything that does not fit the categories above.
+  Prefer a specific type where one applies.
 
 **Trade press writers can be wrong.** Drinkhacker, Whisky Advocate,
 The Whiskey Wash, Scotch Whisky magazine all employ professional

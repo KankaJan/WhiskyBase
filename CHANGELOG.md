@@ -9,6 +9,70 @@ covers them all.
 
 ---
 
+## [0.8.4] — 2026-06-11
+
+Audit remediation: tooling gate, schema migration, and consistency
+fixes. Driven by `docs/audit-2026-06-11.md`.
+
+**Tooling — `scripts/check_references.py` gains four capabilities
+and a gating mode.** A `--strict` flag exits non-zero on hard
+problems (YAML parse failures, duplicate IDs, JSON Schema
+violations, bad `source_id` / inline `[N]` citations, *unexpected*
+dangling references, and cross-file consistency contradictions);
+default output stays warn-only. New: an expected-dangling allowlist
+(`scripts/expected_dangling.txt`) that splits forward references
+from genuine misses; a schema-version currency check (warns when a
+file's `schema_version` differs from its entity's current
+template); and cross-file consistency checks (hard contradiction
+when a bottling's `produced_at_distillery` disagrees with its
+production line's distillery; soft mirroring gaps for
+distillery↔line and line↔bottling membership). The pre-commit hook
+now runs `check_references.py --strict` as a second gate alongside
+the `check_writes.py` hard-corruption gate, so schema drift can no
+longer reach a commit. Added `scripts/test_checks.py` with unit
+tests for both gate scripts.
+
+**Schema — concept per-kind enforcement strengthened.**
+`schema/json/concept.schema.json` previously required only that the
+block matching `kind` be an object when present. It now enforces
+the documented "exactly one per-kind block" rule fully: the
+matching block is required, and the other four blocks must be null
+if present. No data changed (all 85 concepts already satisfied
+this).
+
+**Data — Macallan migrated to current schema.** The Macallan
+production line and three bottlings (Sherry Oak 12, Double Cask 12,
+Triple Cask Matured 15) were authored against a pre-v0.2 flat field
+shape while declaring v0.2 in metadata. They are migrated to the
+structured v0.2 / v0.2.1 shape (`produced_at_distillery`,
+`bottled_by`, `bottler_type`, `maturation[]`, structured
+`malt`/`peating`/`fermentation`/`distillation` blocks). No facts
+changed; former free-text fields are preserved in `description`.
+
+**Data — `french-oak-cask` cask entry added** (virgin French oak),
+resolving the only genuine dangling cask reference (from
+`ardbeg-corryvreckan`). Cask count 17 → 18.
+
+**Data — bottling slug renamed for consistency.**
+`bruichladdich-islay-barley-2023` → `bruichladdich-islay-barley-2014`
+(id + filename) to use the vintage year, matching its sibling
+`bruichladdich-port-charlotte-islay-barley-2014`; the parent line's
+`bottlings:` list updated.
+
+**Docs — source-type vocabulary reconciled to one canonical list.**
+The `source_type` enum in `schema/json/_common.schema.json` (12
+values) is now declared canonical; `docs/source-conflict-policy.md`,
+`CLAUDE.md`, and the distillery / production_line template comments
+are aligned to it. A document-precedence order (JSON Schemas >
+templates > policy docs > handover) is stated in `docs/handover.md`
+§12. `CLAUDE.md` and `handover.md` verification sections updated to
+describe the two-gate pre-commit model. Stale counts in
+`handover.md` §1/§10 corrected (45 bottlings, 18 casks) and the
+resolved stub-tombstone priority removed. Audit report saved at
+`docs/audit-2026-06-11.md`.
+
+---
+
 ## [0.8.3] — 2026-05-26
 
 Diagram-style spec extended; cross-section diagrams re-authored in

@@ -1,135 +1,130 @@
-diagrams: three registers + blueprint cross-sections
+distilleries: Macallan — 15th distillery, sherry-cask chain
 
-A redraw wave on the six cross-section diagrams, the spec change
-behind it, and the documentation around it.
+The third populated Speyside entry (after Glenfarclas and
+Glenfiddich) and the project's first sherry-cask-led house style
+recorded against a major-scale operation.
 
-Why a redraw
+Why Macallan
 ------------
 
-The 2026-05-22 wave landed the diagram pipeline (optional
-`diagrams:` schema field, `attachDiagramSvg` loader, `<figure>`
-rendering on the concept detail page) and a full set of 10
-deterministic SVGs. The six hardware schematics in that set
-(mash-tun, washback, worm-tub, shell-and-tube-condenser,
-coffey-still, spirit-safe) used the project's sketch register —
-the `feTurbulence` + `feDisplacementMap` wobble filter at scale 6.
+The previous wave (Ardbeg) completed the four-distillery
+south-Islay heavily-peated cluster (Ardbeg / Laphroaig /
+Lagavulin / Caol Ila). The obvious next gap was a Speyside
+heavyweight; between Glenlivet (market scale) and Macallan
+(sherry-led house style), Macallan was the higher-information
+choice because the project's data layer already covers the
+sherry-cask chain at the cask-vocabulary level (oloroso-sherry-
+butt, pedro-ximenez-sherry-butt) but not yet at a distillery
+whose entire operation is built around it. Macallan exercises
+that integration end-to-end, including Edrington's vertical
+move into Jerez cooperage supply.
 
-Reviewed against the user's eye, the sketch register breathes
-fine on the pot-still (parts spatially distinct, margin around
-each element) but actively hurts cross-section views. Interior
-detail — perforated-plate slot ticks, tube bundles, worm coils,
-switcher arms, test cups, mullions — smears into containing walls
-under the displacement filter. The wobble is competing with the
-strokes it's trying to draw.
+Site identity
+-------------
 
-Spec change
+- The Macallan, Easter Elchies estate, Craigellachie, Moray;
+  Speyside under the SWA 2009 regional designation.
+- Founded 1824 by Alexander Reid under the Excise Act 1823.
+- Edrington-owned since 1999 (via Highland Distillers
+  acquisition); Edrington itself voting-controlled by The
+  Robertson Trust, a Scottish charitable trust — an ownership
+  structure unusual at this scale in the industry.
+- New 2018 still house designed by Rogers Stirk Harbour +
+  Partners (£140m capital project, RIBA Stirling Prize 2019
+  shortlist, 2019 RIAS Andrew Doolan Best Building in Scotland).
+- 36 stills (12 wash @ 13,000 L + 24 spirit @ 3,900 L) at
+  ~15M LPA. The spirit stills are among the smallest in
+  Scotland — a long-standing piece of the brand's positioning,
+  branded by the producer as "curiously small stills".
+
+House style
 -----------
 
-`docs/diagram-style.md` extended from two visual registers to
-three:
+Sherry-led. The Sherry Oak core range matured exclusively in
+oloroso-seasoned oak sherry casks from Jerez (historically
+European-oak dominant). The 2004 Fine Oak range — renamed
+Triple Cask Matured in 2018 — added American-oak ex-bourbon
+casks alongside the European- and American-oak sherry
+components, giving a three-cask vatting unique among the core
+Macallan ranges. The Double Cask range sits between these,
+vatting two oloroso-seasoned cask types (European- and American-
+oak) but no ex-bourbon component.
 
-- **Sketch** (turbulence + displacement filter) — pot still,
-  production-chain flowchart, peating-measurement matrix. The
-  external-assembly view.
-- **Strict** (no filter, precise axes, full grid, plotted from a
-  sourced figure) — spirit-cut, cask-maturation-kinetics. The
-  data-graph view.
-- **Technical-schematic** (clean lines, no filter) — the six
-  cross-sections. New register.
+In September 2023, Edrington acquired Vasyma, a Jerez-based
+cooperage — a vertical move into sherry-cask supply directly
+relevant to the Macallan style.
 
-The honest-about-indicativeness argument that grounded the sketch
-register is preserved but reframed: it's the *absence of
-dimensions* that signals "indicative, not metrological", and both
-the sketch register (via wobble) and the technical-schematic
-register (via simple absence) honour that.
+Bottlings
+---------
 
-Blueprint conventions
----------------------
+Three bottlings recorded, picked to stretch the cask chain:
 
-Within the technical-schematic register, the spec also documents
-the conventions settled in the 2026-05-26 pilot on mash-tun:
-
-- `stroke="currentColor"` throughout. Some SVG viewers do not
-  resolve `var(--muted-color)` when applied as `stroke` (only as
-  `fill`), so var()-stroked leaders render invisibly in those
-  viewers — diagnosed live in pilot. `currentColor` resolves
-  reliably. Fills may still use `var()`.
-- Double-walled vessel outlines (outer + inner, 4 user-units
-  apart) with generic diagonal section hatching between, via SVG
-  `<pattern>` + `fill-rule="evenodd"`. Generic hatching only —
-  ANSI/ISO material-specific hatching remains forbidden.
-- Dashed annotation leaders (`stroke-dasharray="5 3"`,
-  stroke-width 1.0) ending in filled-circle dots
-  (`fill="currentColor"`, r=2.4 for annotation, r=2.6 for nozzle
-  endpoints).
-- Short solid three-sided pipe-nozzle stubs at every inlet and
-  outlet so the dashed annotation leader points at a visible
-  structural part, not at empty interior space.
-- Dashed hidden lines (`stroke-dasharray="3 2"`) for occluded
-  interior parts — e.g., the rake teeth on the far side of the
-  rotating arm.
-- Explicit stroke-weight hierarchy (1.4 outlines, 1.2 internal
-  primary, 1.0 secondary and leaders, 0.7-0.8 fine detail, 0.5
-  hatch pattern).
-- `stroke-linecap="butt"` on lines with arrowheads or dashed
-  endings (avoids the round-cap half-circle artifact).
-- No flow-direction arrowheads. The label text carries direction.
-  Mixing flow arrows on pipes with dot terminations on
-  annotation leaders produced unreadable double-arrow
-  appearances during the pilot.
+- **macallan-sherry-oak-12** — the canonical Macallan sherry
+  expression. Oloroso-seasoned oak sherry casks, single style.
+  43% ABV. The comparison point for the other two.
+- **macallan-double-cask-12** — vats European-oak oloroso and
+  American-oak oloroso. Both sherry-seasoned, no ex-bourbon.
+  Sits between Sherry Oak (single-style sherry) and Triple Cask
+  (three-cask vatting). 43% ABV.
+- **macallan-triple-cask-15** — the post-2018 name for the
+  former Fine Oak 15. Three cask types: European-oak oloroso,
+  American-oak oloroso, and American-oak ex-bourbon. The only
+  Macallan bottling here with an ex-bourbon component; the
+  bourbon-cask path on a distillery whose default identity is
+  sherry-led. 43% ABV.
 
 Files
 -----
 
-Diagrams (re-authored):
-
-- data/diagrams/mash-tun.svg
-- data/diagrams/washback.svg
-- data/diagrams/worm-tub.svg
-- data/diagrams/shell-and-tube-condenser.svg
-- data/diagrams/coffey-still.svg
-- data/diagrams/spirit-safe.svg
-
-Concept-page alt-texts updated to match (six equipment YAMLs).
+- data/distilleries/macallan.yml (new, ~20 KB, confidence: medium)
+- data/production_lines/macallan.yml (new)
+- data/bottlings/macallan-sherry-oak-12.yml (new)
+- data/bottlings/macallan-double-cask-12.yml (new)
+- data/bottlings/macallan-triple-cask-15.yml (new)
 
 Docs:
+- docs/handover.md §10 — populated counts bumped (14 → 15
+  distilleries, 19 → 20 production lines), Macallan distillery
+  and line entries added to the lists, Next-priorities entry
+  rewritten to point at the 16th distillery (Glenlivet
+  recommended; alternatives Aberlour / Cardhu / Talisker)
+- TODO.md — Recently-completed Macallan entry; new Research
+  Requests subsection listing the Wikipedia-to-primaries
+  migrations queued for Macallan
 
-- docs/diagram-style.md — three-register taxonomy +
-  technical-schematic conventions
-- CHANGELOG.md — [0.8.3] entry
-- TODO.md — diagram-redraw queue retired from Beta-readiness,
-  status updated to "all 10 diagrams settled", Recently-completed
-  entry added
-- docs/handover.md — diagram status block rewritten
+Sourcing caveats
+----------------
 
-Skills + behaviour:
+This entry is unusual in citing only Wikipedia sources. The
+producer's own themacallan.com pages, scotchwhisky.com
+Whiskypedia, and whisky.com all returned empty content at fetch
+time (JS-rendered or CSP-blocked at the WebFetch level).
+Wikipedia's article on The Macallan distillery is well-cited
+to trade-press and book sources (Master of Malt 2018, MacLean
+2008, Kindersley 2008, Bowman 2017) that can be migrated to
+directly when those upstream sources become accessible. Per the
+project's Wikipedia-volatility policy, this citation is a
+starting point; the migration queue is listed in TODO.md
+Research Requests.
 
-- skills/safe-bulk-writes/SKILL.md — Write tool truncation
-  threshold revised down to ~3 KB (was ~10 KB); Edit tool failure
-  on multi-line block replacements over data files escalated from
-  "rare" to "common when growing a block by more than ~5 lines",
-  with a recovery pattern via `git show HEAD:<path>` and Python
-  splice
-- CLAUDE.md — new "Reducing wasted iteration" section adapted
-  from forrestchang/andrej-karpathy-skills/CLAUDE.md (pre-write
-  discipline complementing the existing post-write iterative
-  pattern)
+One Wikipedia-internal inconsistency was resolved in the entry:
+the article credits the 2018 still house to "Norman Foster" in
+one paragraph and to "Rogers Stirk Harbour + Partners" in the
+infobox and the Stirling-Prize-2019 reference. The project
+records the architect as RSHP per the better-attributed source,
+with the inconsistency noted in the source-1 notes for
+verification.
+
+Confidence: all four new entries at medium.
 
 Verification
 ------------
 
 `scripts/check_references.py`: 0 YAML parse failures, 0
-structured `source_id:` bad refs, 0 inline `[N]` bad citations, 0
-JSON Schema findings. Existing forward-reference dangling
-distillery refs (worm-tub `used_at_distilleries[]`) are the known
-acknowledged set per handover §8.
+structured `source_id:` bad refs, 0 inline `[N]` bad citations,
+0 JSON Schema findings.
 
-All YAML and Markdown files in this commit verified Windows-side
-intact: each ends with a trailing newline, no NUL bytes, all
-equipment YAMLs parse with `schema_version: 0.1` and complete
-sources blocks. Six equipment YAMLs were Edit-tool-corrupted
-mid-session and recovered from `git show HEAD:<path>` per the new
-safe-bulk-writes recovery pattern.
+Distilleries: 14 → 15. Production lines: 19 → 20. Bottlings: 42
+→ 45.
 
-No schema changes. The optional `diagrams:` field on
-`concept.template.yml` v0.1 stays as it was.
+No schema changes.

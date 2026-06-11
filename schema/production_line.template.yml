@@ -193,9 +193,11 @@ external_ids:
 # resolve method/compounds by referencing source_id, rather than
 # repeating the methodology per-measurement.
 #
-# Source types: official_website | trade_publication | book |
+# Source types (canonical enum: schema/json/_common.schema.json
+# source_type): official_website | trade_publication | book |
 #               wikipedia | wikidata | company_filing |
-#               independent_review | interview | other
+#               independent_review | interview | chemistry_database |
+#               regulatory_text | peer_reviewed_paper | other
 #
 # Example shape:
 #   - id: 1

@@ -2,6 +2,9 @@
 # Bruichladdich Islay Barley 2014
 # =============================================================================
 # Schema: bottling.template.yml v0.2
+# Slug uses the vintage year (2014), matching its sibling
+# bruichladdich-port-charlotte-islay-barley-2014; renamed 2026-06-11
+# from bruichladdich-islay-barley-2023 (which used the release year).
 # Entry confidence: high — release was widely covered with full producer
 # disclosure of barley provenance, cask composition, and farm-level
 # detail.
@@ -9,7 +12,7 @@
 
 
 # --- Identity ---------------------------------------------------------------
-id: bruichladdich-islay-barley-2023
+id: bruichladdich-islay-barley-2014
 name: Bruichladdich Islay Barley 2014
 production_line: bruichladdich-bruichladdich
 produced_at_distillery: bruichladdich
