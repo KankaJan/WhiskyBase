@@ -1,0 +1,89 @@
+# =============================================================================
+# WhiskyBase — GitHub Pages deploy
+# =============================================================================
+# MANUAL TRIGGER ONLY (workflow_dispatch) for now. It is intentionally NOT on
+# `push` yet because of one unresolved prerequisite:
+#
+#   The site's internal links are root-absolute (href="/distilleries/", etc.)
+#   with no base-aware helper. On a GitHub Pages *project* page the site is
+#   served from a subpath (https://<owner>.github.io/WhiskyBase/), so those
+#   links and asset paths would 404. Before enabling automatic deploys to a
+#   project subpath, make the internal links base-aware (prefix with
+#   import.meta.env.BASE_URL) and set BASE_PATH below.
+#
+# Three correct ways to ship, depending on hosting choice:
+#   A. User/org page or custom domain (root '/'): leave SITE/BASE_PATH unset
+#      (or set SITE only). Root-absolute links work as-is. Safe today.
+#   B. Project page (/WhiskyBase/): set BASE_PATH '/WhiskyBase' AND first
+#      make internal links base-aware. Not safe until that refactor lands.
+#
+# To enable automatic deploys once the hosting model is settled, add the
+# `push: branches: [master]` trigger back under `on:`.
+#
+# Repo Settings → Pages → Build and deployment → Source must be
+# "GitHub Actions" for this workflow to publish.
+# =============================================================================
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_path:
+        description: >-
+          Base path for a project-page deploy, e.g. /WhiskyBase. Leave blank
+          for a root deploy (user/org page or custom domain). A non-blank
+          value requires base-aware internal links — see the header note.
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    env:
+      # SITE is safe to set for absolute URLs (sitemap, canonical, OG tags).
+      # BASE_PATH comes from the manual-run input and defaults to root.
+      SITE: https://kankajan.github.io
+      BASE_PATH: ${{ github.event.inputs.base_path }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site (Astro + Pagefind)
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

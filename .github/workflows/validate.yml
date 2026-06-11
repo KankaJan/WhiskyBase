@@ -1,0 +1,74 @@
+# =============================================================================
+# WhiskyBase — validation CI
+# =============================================================================
+# Runs on every push and pull request. Two independent jobs:
+#   data-gates  — the same two gates as the local pre-commit hook, plus the
+#                 gate-script unit tests. Catches schema drift, dangling
+#                 references, corruption, and consistency contradictions on
+#                 anything that bypassed the local hook.
+#   site-build  — `npm ci && npm run build` in /site (Astro build + Pagefind
+#                 index). Catches build breakage; addresses the standing
+#                 "rebuild and verify the full site" item in TODO.md.
+# Neither job deploys. Deployment is a separate, manually-triggered workflow
+# (deploy.yml).
+# =============================================================================
+name: validate
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  data-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install pyyaml jsonschema
+
+      - name: Hard-corruption scan (check_writes)
+        run: python3 scripts/check_writes.py
+
+      - name: Gate-script unit tests
+        run: python3 scripts/test_checks.py
+
+      - name: Schema + reference gate (check_references --strict)
+        run: python3 scripts/check_references.py --strict
+
+  site-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site (Astro + Pagefind)
+        run: npm run build
+
+      - name: Upload build output as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: site/dist
+          retention-days: 7

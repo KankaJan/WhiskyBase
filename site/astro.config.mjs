@@ -6,7 +6,13 @@ import { defineConfig } from 'astro/config';
 // from the YAML data layer at /data/.
 
 export default defineConfig({
-  site: undefined,
+  // site / base are read from env so the GitHub Pages deploy workflow can
+  // supply them (e.g. SITE=https://kankajan.github.io BASE_PATH=/WhiskyBase)
+  // without affecting local development, where both stay unset (root '/').
+  // NOTE: internal links in src are currently root-absolute (href="/..."),
+  // so a non-root base requires making those links base-aware first.
+  site: process.env.SITE || undefined,
+  base: process.env.BASE_PATH || undefined,
   output: 'static',
   trailingSlash: 'always',
   build: {
