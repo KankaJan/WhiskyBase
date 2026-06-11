@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "astro": "^5.0.0",
-    "marked": "^14.1.0",
+    "marked": "^18.0.5",
     "pagefind": "^1.1.0",
     "yaml": "^2.6.0"
   },
