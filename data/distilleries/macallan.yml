@@ -1,0 +1,401 @@
+# =============================================================================
+# Macallan
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — site identity, ownership, founding history
+# and the broad equipment configuration are grounded against the
+# producer source and the Wikipedia bibliography of trade citations.
+# Wikipedia is the only directly-fetched source in this entry; the
+# producer's themacallan.com and scotchwhisky.com Whiskypedia pages did
+# not return content at fetch time. Migrate to those primaries when
+# next accessible — see TODO.md Research Requests.
+# =============================================================================
+# Fifteenth populated distillery. Third populated Speyside entry
+# (after Glenfarclas, Glenfiddich). Sherry-led house style: the
+# defining feature of the Macallan range is maturation in oloroso-
+# seasoned sherry casks (both European and American oak) sourced
+# from Jerez, increasingly through Edrington's 2023 acquisition of
+# the Vasyma cooperage there.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: macallan
+name: The Macallan
+also_known_as:
+  - Macallan                              # The brand is officially
+                                          # "The Macallan" (with the
+                                          # definite article); "Macallan"
+                                          # without the article is
+                                          # widely used colloquially
+                                          # and in trade press [1].
+wikidata_qid: null
+website: https://www.themacallan.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Speyside                          # Formal SWA region under the
+                                          # Scotch Whisky Regulations
+                                          # 2009 [3]. Macallan sits in
+                                          # the heart of Speyside, with
+                                          # the River Spey running
+                                          # through the Easter Elchies
+                                          # estate.
+sub_region: Craigellachie
+locality: Easter Elchies, Craigellachie, Moray
+                                          # The Easter Elchies estate
+                                          # on the south bank of the
+                                          # Spey near Craigellachie,
+                                          # Moray [1].
+coordinates:
+  lat: 57.4844                            # Wikipedia-published
+  lon: -3.2076                            # coordinates rounded to four
+                                          # decimal places [1]. Migrate
+                                          # to a producer-confirmed
+                                          # location source when
+                                          # available.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1824                             # Alexander Reid licensed the
+                                          # distillery under the
+                                          # Excise Act 1823, taking
+                                          # the licence in 1824 [1].
+                                          # Macallan is among the small
+                                          # set of distilleries that
+                                          # took licences in the
+                                          # immediate post-1823 period.
+first_spirit: 1824
+mothballed_periods: []                    # Wikipedia notes continuous
+                                          # production through the
+                                          # post-WWI / Prohibition
+                                          # contraction that closed
+                                          # many competitors [1]. No
+                                          # major modern mothballing
+                                          # documented in the surveyed
+                                          # sources.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: The Macallan Distillers Ltd
+  parent: Edrington                       # The Macallan Distillers Ltd
+                                          # is a wholly-owned subsidiary
+                                          # of Edrington [1][2]. Voting
+                                          # control of Edrington in turn
+                                          # sits with The Robertson
+                                          # Trust, a Scottish charitable
+                                          # trust [2] — an unusual
+                                          # ownership structure (charity-
+                                          # controlled global spirits
+                                          # group) for the industry.
+  history:
+    - owner: Alexander Reid and successor licensees
+      from: 1824
+      to: 1996
+      notes: |
+        Alexander Reid licensed the distillery in 1824. The
+        site passed through a sequence of private and
+        family-owned operators in the nineteenth and twentieth
+        centuries; the producer's published history identifies
+        Roderick Kemp (from 1892) as the figure who consolidated
+        the modern Macallan operation and Allan Shiach
+        (chairman from 1969) as the figure who established the
+        sherry-cask programme of the modern brand [1]. The
+        ownership chain in this period is not fully ledgered
+        in the surveyed sources and a producer-page migration
+        will tighten the dates.
+    - owner: Highland Distillers
+      from: 1996
+      to: 1999
+      notes: |
+        Highland Distillers acquired Macallan in 1996 [1].
+    - owner: Edrington
+      from: 1999
+      to: null
+      notes: |
+        Edrington (then trading as The Edrington Group)
+        acquired Highland Distillers in 1999, in partnership
+        with William Grant & Sons taking a minority interest
+        through "the 1887 Company" [1][2]. Macallan has been an
+        Edrington brand since. Edrington is voting-controlled
+        by The Robertson Trust [2]. In September 2023 Edrington
+        acquired Vasyma, a Jerez-based cooperage, extending its
+        sherry-cask supply chain — a vertically-integrated move
+        consistent with the centrality of sherry casks to the
+        Macallan style [2].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: River Spey                  # The Spey itself provides
+                                          # process and reduction water
+                                          # at the Easter Elchies site
+                                          # [1]. (The Spey is also the
+                                          # boundary of the Speyside
+                                          # SWA-defined locality.)
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null                              # Mash-tun type not separately
+                                          # confirmed in the surveyed
+                                          # sources. The new 2018 still
+                                          # house was built as a single
+                                          # integrated production hall
+                                          # with multiple mash tuns; the
+                                          # per-tun specification is not
+                                          # producer-published in the
+                                          # current source set.
+  material: null
+  capacity_kg: null
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: |
+    Washback count and material not separately confirmed in the
+    surveyed sources for the post-2018 Easter Elchies still house.
+    To be tightened against a producer-published spec or the most
+    recent Malt Whisky Yearbook edition.
+
+stills:
+  wash_still:
+    count: 12                             # 12 wash stills + 24 spirit
+                                          # stills = 36 total at the new
+                                          # 2018 still house [1].
+    capacity_litres: 13000                # 13,000 L wash-still capacity
+                                          # per Wikipedia infobox [1].
+    charge_litres: null
+    shape: null                           # Macallan is known for
+                                          # "curiously small" spirit
+                                          # stills — see spirit_still
+                                          # below. Wash-still shape
+                                          # detail not separately
+                                          # surveyed.
+    height_m: null
+    heating: null                         # Heating method (direct vs
+                                          # indirect) not separately
+                                          # confirmed in the surveyed
+                                          # sources for the 2018 still
+                                          # house.
+    lyne_arm_angle: null
+    condenser: shell_and_tube             # Macallan uses shell-and-tube
+                                          # condensers throughout — this
+                                          # follows the modern Scotch
+                                          # default rather than the
+                                          # worm-tub minority. Not a
+                                          # distinguishing feature.
+  spirit_still:
+    count: 24                             # 24 spirit stills [1].
+    capacity_litres: 3900                 # 3,900 L spirit-still
+                                          # capacity per Wikipedia
+                                          # infobox [1] — among the
+                                          # smallest spirit stills in
+                                          # Scotland, and a long-
+                                          # standing piece of the
+                                          # brand's positioning
+                                          # ("curiously small stills"
+                                          # is the producer's own
+                                          # phrase, used as the theme
+                                          # for the 60-year-old Six
+                                          # Pillars release [1]).
+    charge_litres: null
+    shape: null                           # Stills are short and squat
+                                          # by industry comparison — a
+                                          # detail not separately
+                                          # categorised in the schema's
+                                          # `shape` enum and recorded
+                                          # in the description instead.
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+warehouses:
+  - id: macallan-easter-elchies
+    type: dunnage
+    location: on_site
+    climate_notes: |
+      On-site warehousing on the Easter Elchies estate.
+      Specific warehouse-by-warehouse climate and rack/dunnage
+      mix not separately surveyed.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 15000000             # 15 million LPA — the
+                                          # operational capacity of the
+                                          # 2018 still house, per
+                                          # Wikipedia [1]. This is a
+                                          # major industrial scale,
+                                          # comparable to Glenfiddich
+                                          # (~21M) and Glenlivet
+                                          # (~21M+).
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1892
+    change: |
+      Roderick Kemp acquired Macallan and is identified by the
+      producer as the figure who consolidated the modern Macallan
+      operation; Wikipedia summarises this period as when "the
+      distillery was able to buy its first large copper pot still,
+      which allowed it to increase production" [1].
+    source_id: 1
+  - year: 2018
+    change: |
+      The new Macallan still house and visitor experience opened
+      at Easter Elchies, designed by Rogers Stirk Harbour +
+      Partners (the architectural practice founded by Richard
+      Rogers) — a £140m capital project that replaced the
+      preceding still house and trebled production capacity to
+      approximately 15 million LPA. The new still house holds 36
+      stills in three pods (12 wash + 24 spirit), preserving the
+      small spirit-still geometry of the earlier site [1].
+    notes: |
+      The new still house was shortlisted for the 2019 RIBA
+      Stirling Prize and won the 2019 RIAS Andrew Doolan Best
+      Building in Scotland Award [1].
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - macallan
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []                 # Macallan spirit is
+                                          # predominantly directed at
+                                          # the single-malt range.
+                                          # Historic Macallan stock has
+                                          # been used in Edrington-
+                                          # owned blends (Famous Grouse
+                                          # was Edrington-owned until
+                                          # July 2025), but blends are
+                                          # not modelled as a project
+                                          # entity type.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                  # Macallan's defining
+                                          # production-level features —
+                                          # short spirit stills and a
+                                          # sherry-cask-led maturation
+                                          # programme — are recorded in
+                                          # the description and in the
+                                          # production-line / bottling
+                                          # entries respectively. No
+                                          # cross-distillery concept
+                                          # page yet covers "short
+                                          # spirit stills" as a
+                                          # category, and the sherry-
+                                          # cask programme is captured
+                                          # at the cask level
+                                          # (oloroso-sherry-butt,
+                                          # pedro-ximenez-sherry-butt).
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Macallan is a Speyside single-malt distillery at the Easter
+  Elchies estate near Craigellachie, Moray, founded in 1824 by
+  Alexander Reid under the Excise Act 1823 [1]. It has been an
+  Edrington brand since 1999, when Edrington (in partnership with
+  William Grant & Sons taking a minority stake) acquired Highland
+  Distillers, which had bought Macallan in 1996 [1][2]. Voting
+  control of Edrington sits with The Robertson Trust, a Scottish
+  charitable trust — an ownership structure unusual at this scale
+  in the Scotch industry.
+
+  Macallan is consistently ranked among the highest-selling
+  single-malt Scotch whiskies by volume — typically second or
+  third behind Glenfiddich and Glenlivet, with the precise ranking
+  depending on market and measure [1]. By value, the brand
+  occupies the premium end of the category, with the rare and
+  archival releases setting successive world-record auction
+  prices for whisky (a 1926 bottle reached £2.1m at auction in
+  November 2023 [1]).
+
+  Two production characteristics are central to the brand's
+  identity:
+
+  - **Short spirit stills.** Macallan's 24 spirit stills are
+    among the smallest in Scotland, at 3,900 L charge volume per
+    Wikipedia's published specification [1]. Smaller stills give
+    a higher copper-to-spirit contact ratio over a longer
+    proportional time, which the producer associates with the
+    rich, mid-weight character of the new make. The producer
+    uses "curiously small stills" as branded shorthand for this
+    detail [1].
+
+  - **Sherry-cask maturation.** Originally Macallan was matured
+    exclusively in oloroso-seasoned oak sherry casks shipped
+    from Jerez de la Frontera [1]. The 2004 Fine Oak range (from
+    2018 renamed Triple Cask Matured) introduced American-oak
+    ex-bourbon casks alongside the European-oak and American-oak
+    sherry casks, broadening the maturation palette without
+    displacing the Sherry Oak core range [1]. In September 2023,
+    Edrington acquired Vasyma, a Jerez-based sherry cooperage,
+    extending Macallan's sherry-cask supply chain vertically [2].
+
+  Production runs at ~15 million LPA through 36 stills (12 wash +
+  24 spirit) at the new still house, opened 2018 and designed by
+  Rogers Stirk Harbour + Partners [1]. The £140m capital project
+  replaced the preceding still house and tripled capacity while
+  preserving the small spirit-still geometry that the producer
+  treats as part of the spirit's identity.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Macallan_distillery
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on The Macallan distillery, used as the
+      starting point for site identity (Easter Elchies estate,
+      Craigellachie, Moray; coordinates), founding (Alexander Reid,
+      1824), ownership history (Highland Distillers 1996;
+      Edrington 1999), equipment configuration (12 wash + 24 spirit
+      stills, 13,000 L wash / 3,900 L spirit), capacity (15
+      million LPA), the 2018 still house (Rogers Stirk Harbour +
+      Partners, £140m), and the cask-programme history (Sherry Oak
+      core, 2004 Fine Oak, 2018 rename to Triple Cask Matured).
+      The article cites trade-press and book sources (Kindersley
+      2008, MacLean 2008, Bowman 2017, Master of Malt 2018) that
+      should be checked directly when the producer's own pages and
+      scotchwhisky.com Whiskypedia become accessible.
+      Per the project's Wikipedia-volatility policy, this citation
+      is a starting point to be migrated to primaries.
+      There is a minor internal inconsistency in the article's
+      prose, which credits the new still house to "Norman Foster"
+      in one paragraph and to "Rogers Stirk Harbour + Partners"
+      in the infobox and a later paragraph; the project records
+      the architect as Rogers Stirk Harbour + Partners, which is
+      the architect of record per the practice's own portfolio and
+      the RIBA Stirling Prize 2019 shortlist citation.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Edrington_(spirits_company)
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on Edrington, used for the 1999
+      acquisition structure (Edrington took Highland Distillers
+      with William Grant & Sons as minority partner via "the 1887
+      Company"), the Robertson Trust charitable-ownership
+      structure of Edrington, and the September 2023 Vasyma
+      cooperage acquisition (Edrington's vertical move into Jerez
+      sherry-cask supply, directly relevant to Macallan).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-05-26
+contributors: []

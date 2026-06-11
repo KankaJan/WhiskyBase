@@ -1,0 +1,135 @@
+# =============================================================================
+# The Macallan Sherry Oak 12 Year Old
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Canonical Macallan sherry-led expression: 12 years in oloroso-
+# seasoned oak sherry casks (historically primarily European oak).
+# Migrated 2026-06-11 from a pre-v0.2 flat field shape (distillery,
+# bottler, abv_pct, age_years, casks, bottling_type, production_notes,
+# limited_release, release_year, bottle_volume_ml) to the v0.2 schema.
+# No facts changed; former production_notes prose preserved in the
+# description.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: macallan-sherry-oak-12
+name: The Macallan Sherry Oak 12 Year Old
+produced_at_distillery: macallan
+production_line: macallan
+bottled_by: macallan                       # Official Macallan bottling.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0                                   # Wikipedia lists 40-43% ABV for
+                                            # the Sherry Oak 12 [1]; 43% is
+                                            # the long-standing core spec in
+                                            # most export markets. The 40%
+                                            # variant historically supplied
+                                            # specific markets but 43% is the
+                                            # canonical release.
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: null                    # Not stated in the surveyed
+                                            # sources.
+natural_colour: null                        # Not stated in the surveyed
+                                            # sources.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 12
+    cooperage: null
+    notes: |
+      The Sherry Oak 12 is matured exclusively in oloroso-seasoned oak
+      sherry casks, historically with a substantial European-oak share
+      giving the deep colour and dried-fruit / spice palate the bottling
+      is positioned around [1].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Macallan Sherry Oak 12 Year Old is the canonical sherry-cask
+  Macallan: twelve years' maturation in oloroso-seasoned oak sherry
+  casks from Jerez, bottled at 43% ABV. It is the longest-running core
+  Macallan bottling and the expression that established the modern
+  brand's sherry-cask identity in the 1980s and 1990s under chairman
+  Allan Shiach. The label states no specific oak-species split, but the
+  producer identifies oloroso-seasoned casks shipped from Jerez de la
+  Frontera as the maturation vessel, sourced through partnerships with
+  Spanish cooperages and, since September 2023, increasingly through
+  Edrington's own Vasyma cooperage in Jerez [2]. It is the comparison
+  point for the Double Cask (which adds an American-oak sherry
+  component) and the Triple Cask Matured (which adds an American-oak
+  ex-bourbon component) ranges of the same age.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Macallan_distillery
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on The Macallan distillery. Used for the
+      Sherry Oak 12 ABV (40-43%), the historic sherry-cask programme
+      (oloroso-seasoned, Jerez), and the brand's positioning around
+      sherry maturation.
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Edrington_(spirits_company)
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on Edrington. Used for the September 2023
+      Vasyma cooperage acquisition as context for the Macallan
+      sherry-cask supply chain.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-11
+contributors: []

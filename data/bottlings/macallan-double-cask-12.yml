@@ -1,0 +1,118 @@
+# =============================================================================
+# The Macallan Double Cask 12 Year Old
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Contrast to the single-style Sherry Oak: two cask types
+# (European-oak oloroso + American-oak oloroso), both sherry-seasoned,
+# vatted at 12 years.
+# Migrated 2026-06-11 from a pre-v0.2 flat field shape to the v0.2
+# schema. No facts changed; former production_notes prose preserved in
+# the description.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: macallan-double-cask-12
+name: The Macallan Double Cask 12 Year Old
+produced_at_distillery: macallan
+production_line: macallan
+bottled_by: macallan
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: null
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 12
+    cooperage: null
+    notes: |
+      The Double Cask range vats two oloroso-seasoned cask types:
+      European-oak oloroso casks and American-oak oloroso casks. The
+      project cask vocabulary currently captures both at the
+      species-agnostic `oloroso-sherry-butt` slug; an oak-species
+      extension (e.g. `oloroso-sherry-butt-american-oak`) is queued in
+      TODO.md. The American-oak component contributes a paler colour and
+      softer profile than the European-oak component; vatting the two
+      gives the signature Double Cask spec between Sherry Oak and Triple
+      Cask.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Macallan Double Cask 12 Year Old vats two oloroso-seasoned cask
+  types — European-oak sherry casks and American-oak sherry casks, both
+  seasoned with oloroso — at twelve years' age, at 43% ABV. The Double
+  Cask range (Gold, 12, 15, 18, 30) is the middle position in the
+  cask-programme spectrum: between the single-style Sherry Oak
+  (European-oak oloroso dominant) and the tripartite Triple Cask Matured
+  (sherry + sherry + ex-bourbon). Both Double Cask components are
+  oloroso-seasoned; the differentiation is oak species — European
+  (Quercus robur) versus American (Quercus alba).
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Macallan_distillery
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on The Macallan distillery. Used for the
+      Double Cask range structure (Gold, 12, 15, 18, 30 Year Old), the
+      43% ABV core spec, and the cask-programme positioning (Double
+      Cask between Sherry Oak and Triple Cask).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-11
+contributors: []

@@ -1,0 +1,154 @@
+# =============================================================================
+# Macallan (production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Sole production line at the Macallan distillery.
+# Migrated 2026-06-11 from a pre-v0.2 flat field shape (spirit_type,
+# peat_phenol_ppm, malt_supplier, fermentation_hours, spirit_strength_pct,
+# target_cuts, cask_programme, distinguishing_features) to the structured
+# malt / peating / fermentation / distillation blocks. No facts changed;
+# prose from the former cask_programme / distinguishing_features fields is
+# preserved in the description.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: macallan
+name: Macallan
+distillery: macallan
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                        # Macallan does not malt on-site
+                                           # (no maltings on the Easter
+                                           # Elchies estate in the surveyed
+                                           # sources), so malt is bought in.
+                                           # The specific commercial maltster
+                                           # is not confirmed in the current
+                                           # source set.
+  maltster: null
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                         # Unpeated malt; no phenol
+                                           # measurement applies.
+  peat_origin: none                        # Macallan is an unpeated malt.
+                                           # `none` records the absence as a
+                                           # positive design choice rather
+                                           # than a missing value.
+  notes: |
+    Macallan is an unpeated Speyside single malt. The producer's
+    malt-spec details are not surveyed in the current source set.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null                          # Not separately surveyed.
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                           # Inferred from the distillery's
+                                           # wash-still + spirit-still
+                                           # configuration (12 wash + 24
+                                           # spirit) — a conventional
+                                           # two-still double-distillation
+                                           # layout [1]. The producer's
+                                           # exact cut points and new-make
+                                           # strength are not surveyed.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: null
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null            # Not surveyed.
+typical_cask_program:
+  - oloroso-sherry-butt                     # European-oak and American-oak
+                                            # oloroso-seasoned sherry casks,
+                                            # the species-agnostic slug.
+  - bourbon-barrel                          # American-oak ex-bourbon casks,
+                                            # the third cask type in the
+                                            # Triple Cask Matured range.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - macallan-sherry-oak-12
+  - macallan-double-cask-12
+  - macallan-triple-cask-15
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sole production line at the Macallan distillery: an unpeated Speyside
+  single malt distilled on short, squat copper pot stills (3,900 L
+  spirit-still charge volume per Wikipedia [1]), among the smallest in
+  Scotland — a configuration the producer treats as central to the rich,
+  mid-weight spirit character. The defining maturation choice is
+  sherry-cask-led: the Sherry Oak core range (12, 18, 25, 30, 40 Year
+  Old) is matured exclusively in oloroso-seasoned oak sherry casks
+  sourced from Jerez de la Frontera, historically a mix of European oak
+  (Quercus robur) and American oak (Quercus alba) [1]. The 2004 Fine Oak
+  range — renamed Triple Cask Matured in 2018 — added ex-bourbon
+  American-oak casks alongside the European-oak and American-oak sherry
+  casks, giving a three-cask programme [1]. The Double Cask range vats
+  two oloroso-seasoned cask types (European-oak and American-oak) with no
+  ex-bourbon component. In September 2023 Edrington acquired the
+  Vasyma cooperage in Jerez, extending the sherry-cask supply chain
+  vertically [2].
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Macallan_distillery
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on The Macallan distillery. Used for the
+      cask-programme history (Sherry Oak core; 2004 Fine Oak range;
+      2018 rename to Triple Cask Matured; Double Cask range), the
+      small-spirit-still detail, and the wash-still + spirit-still
+      configuration from which the double-distillation regime is
+      inferred. Migrate to producer-published primaries when
+      accessible (see TODO.md Research Requests).
+
+  - id: 2
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Edrington_(spirits_company)
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on Edrington. Used for the September 2023
+      Vasyma cooperage acquisition (Edrington's vertical move into
+      Jerez sherry-cask supply, directly relevant to Macallan's cask
+      programme).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-06-11
+contributors: []

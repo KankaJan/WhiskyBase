@@ -1,0 +1,133 @@
+# =============================================================================
+# The Macallan Triple Cask Matured 15 Year Old
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Post-2018 product. Continues the 2004 Fine Oak range under the new
+# name. Three cask types: European-oak oloroso, American-oak oloroso,
+# and American-oak ex-bourbon — the only Macallan core bottling here to
+# use ex-bourbon casks.
+# Migrated 2026-06-11 from a pre-v0.2 flat field shape to the v0.2
+# schema. No facts changed; former production_notes prose preserved in
+# the description.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: macallan-triple-cask-15
+name: The Macallan Triple Cask Matured 15 Year Old
+produced_at_distillery: macallan
+production_line: macallan
+bottled_by: macallan
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: 2018                          # The Triple Cask Matured range
+                                            # was launched 2018 as the rename
+                                            # of Fine Oak [1]; the 15 Year
+                                            # Old has been continuous since.
+                                            # The Fine Oak 15 itself ran from
+                                            # 2004 to 2018 under the previous
+                                            # name.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0
+age_statement: 15
+vintage: null
+cask_strength: false
+non_chill_filtered: null
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 15
+    cooperage: null
+    notes: |
+      European-oak and American-oak oloroso sherry components. The
+      project cask vocabulary currently captures both oak species at the
+      single species-agnostic `oloroso-sherry-butt` slug.
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 15
+    cooperage: null
+    notes: |
+      American-oak ex-bourbon component — the third cask type that
+      distinguishes the Triple Cask range from the Double Cask. The
+      ex-bourbon casks were introduced to the Macallan programme with the
+      2004 Fine Oak launch [1].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Macallan Triple Cask Matured 15 Year Old — the post-2018 rename of
+  The Macallan Fine Oak 15, continuous in recipe since the 2004 Fine Oak
+  launch [1]. Three cask types in the vatting: European-oak oloroso,
+  American-oak oloroso, and American-oak ex-bourbon. The Fine Oak range
+  was launched in 2004, introducing ex-bourbon American-oak casks
+  alongside the existing European-oak and American-oak sherry casks — a
+  three-cask vatting unique among the core Macallan ranges. The 2018
+  rename to Triple Cask Matured signalled the three-cask construction
+  explicitly while the underlying recipe was retained [1]. Of the three
+  Macallan bottlings in this knowledge base, this is the only one that
+  includes ex-bourbon casks — useful as a contrast point for the
+  bourbon-cask path on a distillery whose default identity is
+  sherry-led.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Macallan_distillery
+    accessed: 2026-05-26
+    notes: |
+      Wikipedia's article on The Macallan distillery. Used for the 2004
+      Fine Oak range launch (introducing ex-bourbon casks to the
+      Macallan programme), the 2018 rename to Triple Cask Matured, and
+      the 43% ABV spec.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-11
+contributors: []
