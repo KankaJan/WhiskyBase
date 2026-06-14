@@ -25,7 +25,8 @@
   },
   "license": "MIT",
   "overrides": {
-    "yaml": "$yaml"
+    "yaml": "$yaml",
+    "esbuild": "^0.28.1"
   },
   "engines": {
     "node": ">=22.12.0"
