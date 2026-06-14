@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 18 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 19 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -462,8 +462,20 @@ back rather than absorbing it into the data model.
   the cereal bill — captured in prose, with SCHEMA-OBSERVATIONS in
   cameronbridge.NOTES.md for structuring at the second grain distillery.
   Schema change: additive `distillation.regime: continuous`, CHANGELOG
-  [0.8.6]).
-- 23 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  [0.8.6]),
+  North British (medium — Gorgie, Edinburgh, Lowlands; the project's
+  **second grain distillery** and the confirming example for the
+  grain-schema structuring. Founded 1885 by the blenders Usher, Sanderson
+  and Crabbie to break the DCL grain monopoly; now owned **50:50 by Diageo
+  and Edrington** (Lothian Distillers JV) — the first co-ownership in the
+  data set. Continuous Coffey-still distillation to ~94.5% ABV from a
+  **maize-led** bill (85% maize / 15% malted barley), the contrast to
+  Cameronbridge's wheat that justified the structured `cereal_bill` field;
+  ~65M LPA. A pure blending-grain supplier — no own single-grain bottling
+  (`bottlings: []`), the first such entry; single grains reach market via
+  IBs. Schema: `stills.column_stills` + `cereal_bill` added and
+  Cameronbridge retrofitted, CHANGELOG [0.8.7]).
+- 24 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -518,7 +530,10 @@ back rather than absorbing it into the data model.
   1 Cameronbridge (medium — the project's first grain line:
   `regime: continuous` column/Coffey distillation from a wheat-led
   cereal bill; unpeated; American-oak maturation; high-strength grain
-  new make).
+  new make),
+  1 North British (medium — second grain line: `regime: continuous`
+  Coffey distillation to ~94.5% ABV from a maize-led `cereal_bill` (85%
+  maize / 15% malted barley); unpeated; no own bottlings).
 - 85 concept pages: 3 methodology, 17 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
@@ -567,6 +582,8 @@ back rather than absorbing it into the data model.
   Oloroso) added 2026-06-12; Talisker bottlings (10 Year Old,
   Distillers Edition, Storm) added 2026-06-14. Cameronbridge single
   grains (Cameron Brig, Haig Club, Haig Club Clubman) added 2026-06-14.
+  North British (19th, grain) carries no own single-grain bottling, so it
+  adds none — its `bottlings` list is empty by design.
   Macallan bottlings (Sherry Oak 12, Double Cask 12, Triple Cask
   Matured 15) were migrated from a pre-v0.2 flat field shape to the
   v0.2 schema on 2026-06-11; see CHANGELOG [0.8.4].
@@ -619,9 +636,11 @@ back rather than absorbing it into the data model.
 
 - `schema/distillery.template.yml` — v0.2 (warehouses as list,
   data-driven from Springbank pressure-test; mothballed_periods
-  canonised on `from`/`to`/`note` per JSON Schema audit)
+  canonised on `from`/`to`/`note` per JSON Schema audit; `washbacks.material`
+  gained `wood` [0.8.5]; `stills.column_stills` added for grain [0.8.7])
 - `schema/production_line.template.yml` — v0.2.1 (peating block,
-  source methodology, `peat_origin: none`)
+  source methodology, `peat_origin: none`; `distillation.regime: continuous`
+  [0.8.6]; `cereal_bill` added for grain [0.8.7])
 - `schema/bottling.template.yml` — v0.2 (IB discrimination)
 - `schema/concept.template.yml` — v0.1 (kind discriminator, per-kind
   blocks)
@@ -722,18 +741,18 @@ CHANGELOG [0.8.3].
 
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 19th distillery.** Cameronbridge landed
-   2026-06-14 as the 18th — the project's **first grain distillery**
-   (continuous column/Coffey distillation; first Lowland grain) — after
-   Talisker (17th) and Glenlivet (16th). The next gaps: **Aberlour** for a
-   second sherry-led Speyside; **Cardhu** as a Diageo Speyside; or a
-   **second grain distillery** (Girvan, North British) — the latter would
-   confirm the deferred grain-schema shapes (structured column stills and
-   a cereal/grain-bill field — see cameronbridge.NOTES.md
-   SCHEMA-OBSERVATIONS). New distillery entries lean on Wikipedia at
-   population; see TODO.md Research Requests for the outstanding
-   producer-primary migrations (Glenlivet, Macallan, Talisker,
-   Cameronbridge).
+1. **Data-layer growth — 20th distillery.** North British landed
+   2026-06-14 as the 19th — the project's **second grain distillery**,
+   which confirmed and locked in the grain-schema structuring (structured
+   `stills.column_stills` + `cereal_bill`, with Cameronbridge retrofitted;
+   CHANGELOG [0.8.7]) — after Cameronbridge (18th), Talisker (17th) and
+   Glenlivet (16th). The next gaps: **Aberlour** for a second sherry-led
+   Speyside; **Cardhu** as a Diageo Speyside; or further regional breadth
+   (a mainland-Highland or Campbeltown malt). New distillery entries lean
+   on Wikipedia at population; see TODO.md Research Requests for the
+   outstanding producer-primary migrations (Glenlivet, Macallan, Talisker,
+   Cameronbridge, North British) and, for North British, an IB single-grain
+   worked example.
 2. **Residual sourcing follow-ups — glossary confidence blockers
    RESOLVED (2026-06-12).** The two remaining medium-confidence
    glossary entries were promoted to `high`: `distillers-yeast`

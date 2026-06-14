@@ -26,16 +26,13 @@ malt:
   source: bought_in                        # The malted-barley component (used
                                            # for its enzymes) is bought in.
   maltster: null
-  variety: null                            # The PRIMARY cereal is wheat, not
-                                           # malted barley. Grain whisky uses
-                                           # a wheat-led bill (historically
-                                           # maize) with ~10-15% malted barley
-                                           # to convert the starch. The schema
-                                           # `malt` block is barley-centric and
-                                           # does not represent the cereal bill;
-                                           # this is a SCHEMA-OBSERVATION (see
-                                           # cameronbridge.NOTES.md). Exact
-                                           # proportions are not sourced.
+  variety: null                            # The malt block covers only the
+                                           # malted-barley component. The full
+                                           # cereal bill (wheat-led, with malted
+                                           # barley for enzymes) is in the
+                                           # structured `cereal_bill` block
+                                           # below. Exact proportions for
+                                           # Cameronbridge are not sourced.
 
 
 # --- Recipe: Peating --------------------------------------------------------
@@ -91,6 +88,20 @@ bottlings:
   - cameron-brig
   - haig-club
   - haig-club-clubman
+
+
+# --- Cereal bill ------------------------------------------------------------
+cereal_bill:
+  - cereal: wheat
+    proportion: null                       # Wheat-led; exact proportion not
+    malted: false                          # sourced for Cameronbridge.
+  - cereal: malted_barley
+    proportion: null
+    malted: true
+    notes: |
+      A smaller malted-barley fraction supplies the enzymes that convert
+      the wheat starch. Proportions not sourced (cf. North British, where
+      the maize / malted-barley split is disclosed as 85/15).
 
 
 # --- Description ------------------------------------------------------------

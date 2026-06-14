@@ -169,6 +169,18 @@ typical_cask_program: []             # Slugs from /data/casks/.
 bottlings: []                        # List of slugs from /data/bottlings/.
 
 
+# --- Cereal bill (grain whisky) ---------------------------------------------
+cereal_bill: null                    # Grain whisky only. List of entries:
+                                     #   - cereal: maize               # maize |
+                                     #                                 # wheat |
+                                     #                                 # malted_barley |
+                                     #                                 # rye | oats | other
+                                     #     proportion: 0.85            # 0-1 or null
+                                     #     malted: false
+                                     # Malt single malts leave this null and
+                                     # use the `malt` block above.
+
+
 # --- Description ------------------------------------------------------------
 # Strict reference register. 2–4 sentences.
 # Should answer: what makes this line distinct from other lines at the same

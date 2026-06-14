@@ -9,6 +9,27 @@ covers them all.
 
 ---
 
+## [0.8.7] — 2026-06-14
+
+**Schema — grain-whisky structuring (the deferred SCHEMA-OBSERVATIONS
+from [0.8.6], now confirmed by a second grain distillery).** With
+Cameronbridge (wheat-led) and North British (maize-led, 85/15 with
+malted barley) as two confirming examples, the prose-only grain fields
+are now structured:
+
+- **`stills.column_stills`** (distillery): an object
+  `{ count, still_type: coffey|patent|other, notes }` for continuous
+  (column / Coffey) stills, parallel to the pot-still slots.
+- **`cereal_bill`** (production line): a list of
+  `{ cereal: malted_barley|wheat|maize|rye|oats|other, proportion,
+  malted, notes }`, capturing the wheat-vs-maize-led grain bill that the
+  barley-centric `malt` block could not.
+
+Both additive and backward-compatible (malt entries leave them null);
+`schema_version` stays distillery 0.2 / production_line 0.2.1, no
+re-stamp. Templates synced. Cameronbridge was retrofitted from prose to
+the structured fields, and North British populated with them.
+
 ## [0.8.6] — 2026-06-14
 
 **Schema — `continuous` added to the production-line

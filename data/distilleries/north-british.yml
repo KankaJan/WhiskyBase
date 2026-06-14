@@ -1,0 +1,215 @@
+# =============================================================================
+# North British
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — founding, the 50:50 Diageo/Edrington joint-
+# venture ownership, location, grain-whisky focus, the maize-led cereal
+# bill and capacity are grounded against the Wikipedia article and trade
+# references. Wikipedia is the only directly-fetched source; producer /
+# scotchwhisky.com pages were not fetched. See north-british.NOTES.md.
+# =============================================================================
+# Nineteenth populated distillery and the project's SECOND grain distillery
+# (after Cameronbridge). It is the confirming example for the grain-schema
+# structuring: with a maize-led bill (85% maize / 15% malted barley) it
+# contrasts with Cameronbridge's wheat, which is exactly why the cereal
+# bill warranted a structured field. Uses the `stills.column_stills` and
+# `cereal_bill` fields added in CHANGELOG [0.8.7]. Notable too for its
+# 50:50 Diageo/Edrington joint-venture ownership and its founding purpose:
+# an independent grain supplier set up to break the DCL grain monopoly.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: north-british
+name: North British
+also_known_as:
+  - NB                                    # Common trade abbreviation.
+wikidata_qid: null
+website: null                             # A production / blending-grain
+                                          # site, not a visitor distillery.
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Lowlands                          # Formal SWA region (SWR 2009);
+                                          # the distillery is in Edinburgh [1].
+sub_region: Edinburgh
+locality: Gorgie, Edinburgh
+coordinates:
+  lat: null                               # Not captured in the surveyed
+  lon: null                               # sources; add from a producer / OS
+                                          # source (see NOTES).
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1885                             # Established 1885; production began
+                                          # 1887 [1].
+first_spirit: 1887
+mothballed_periods: []
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: The North British Distillery Company Ltd
+  parent: Lothian Distillers Ltd          # Lothian Distillers Ltd is the
+                                          # 50:50 Diageo / Edrington joint
+                                          # venture that owns North British
+                                          # [1] — an unusual co-ownership by
+                                          # two competing majors, reflecting
+                                          # the distillery's role as a shared
+                                          # grain supplier.
+  history:
+    - owner: Andrew Usher, William Sanderson and John M. Crabbie
+      from: 1885
+      to: null
+      notes: |
+        Founded in 1885 by the blenders Andrew Usher, William Sanderson
+        and John M. Crabbie as an independent grain distillery, set up to
+        give blenders an alternative to the Distillers Company's grain
+        monopoly [1]. The North British Distillery Company is today owned
+        50:50 by Diageo and Edrington through the Lothian Distillers Ltd
+        joint venture, supplying grain whisky to both groups' blends
+        (Johnnie Walker for Diageo, The Famous Grouse for Edrington) [1].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: null                        # Not captured in the surveyed
+                                          # sources.
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null                              # Grain-whisky processing (continuous
+  material: null                          # cooking of maize, conversion with
+  capacity_kg: null                       # malted barley); no mash-tun spec in
+                                          # the surveyed sources.
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: |
+    Fermentation vessel count and material not separately confirmed in
+    the surveyed sources.
+
+stills:
+  column_stills:
+    count: 4                              # Sources differ: three (some
+                                          # references) vs four Coffey stills;
+                                          # four per Master of Malt. Recorded
+                                          # as four with the conflict noted
+                                          # (see north-british.NOTES.md).
+    still_type: coffey
+    notes: |
+      Continuous Coffey-still grain distillation. The grain spirit is
+      collected at a high strength (~94.5% ABV) [2].
+  notes: |
+    North British distils by continuous (column / Coffey) distillation,
+    not batch pot stills, so the pot-still slots (wash_still /
+    spirit_still / intermediate_still / low_wines_still) are not
+    populated; the column stills are in the structured `column_stills`
+    block above.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 65000000             # ~65 million LPA (2007 figure) [1]
+                                          # — a large grain distillery, though
+                                          # below Cameronbridge (~136M). The
+                                          # source states "litres"; LPA is the
+                                          # conventional capacity measure.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1887
+    change: |
+      Production began in 1887 from a single Coffey still; capacity was
+      expanded rapidly in the following years as the independent grain
+      venture established itself [1].
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - north-british
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []                 # North British exists to supply
+                                          # grain whisky to its co-owners'
+                                          # blends — Johnnie Walker (Diageo)
+                                          # and The Famous Grouse (Edrington)
+                                          # among others [1]; blends are not
+                                          # modelled as a project entity type,
+                                          # so this list is empty by
+                                          # convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features:
+  - equipment/coffey-still                # Continuous Coffey-still grain
+                                          # distillation.
+  - glossary/grain-whisky                 # Second populated grain (vs malt)
+                                          # distillery; maize-led bill.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  North British is a grain-whisky distillery in the Gorgie area of
+  Edinburgh, established in 1885 by the blenders Andrew Usher, William
+  Sanderson and John M. Crabbie [1]. It was founded for a strategic
+  reason: to give blending houses an independent, high-volume source of
+  grain spirit outside the Distillers Company's grain monopoly. That
+  independence persists in an unusual form today — the North British
+  Distillery Company is owned 50:50 by Diageo and Edrington through the
+  Lothian Distillers joint venture, and supplies grain whisky to both
+  groups' blends (Johnnie Walker, The Famous Grouse) [1].
+
+  Like Cameronbridge it distils by continuous Coffey-still distillation
+  to a high strength (~94.5% ABV) [2], but its cereal bill is the
+  contrast that makes the case for recording grain bills structurally:
+  North British is maize-led, at roughly 85% maize to 15% malted barley
+  [2], where Cameronbridge is wheat-led. The maize is imported (reported
+  as ~3,000 tonnes a week from France via the Port of Leith) [1].
+  Capacity is about 65 million LPA [1].
+
+  North British is a pure blending-grain supplier: it carries no standing
+  official single-grain range. Its spirit reaches drinkers as single
+  grain mainly through independent bottlers — see north-british.NOTES.md.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/North_British_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on North British distillery. Starting point for
+      site identity (Gorgie, Edinburgh), founding (Usher / Sanderson /
+      Crabbie, 1885; production 1887) and its anti-monopoly purpose, the
+      50:50 Diageo/Edrington (Lothian Distillers) ownership, the maize
+      supply (~3,000 t/week from France via Leith) with malted barley,
+      the ~65M-litre capacity, and the supply to Johnnie Walker / Famous
+      Grouse blends. Per the project's Wikipedia-volatility policy, to be
+      migrated to producer / scotchwhisky.com primaries when fetchable.
+  - id: 2
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/2006/north-british/
+    accessed: 2026-06-14
+    notes: |
+      scotchwhisky.com Whiskypedia / specialist references for North
+      British, corroborating the Coffey-still configuration (sources
+      differ on three vs four stills), the ~94.5% ABV grain spirit, and
+      the disclosed 85% maize / 15% malted-barley cereal split. Retrieved
+      via web search 2026-06-14; scotchwhisky.com returns HTTP 403 to
+      automated fetch, so flagged for direct confirmation (see TODO.md
+      Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

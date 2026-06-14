@@ -128,6 +128,12 @@ stills:
     heating: null
     lyne_arm_angle: null
     condenser: null
+  column_stills:                     # Grain distilleries only: continuous
+                                     # (column / Coffey) stills. Leave the
+                                     # pot-still slots above null.
+    count: null
+    still_type: null                 # coffey | patent | other
+    notes: null
 
 warehouses: []                       # v0.2: list of warehouse entries.
                                      # Each entry shape:

@@ -1,0 +1,138 @@
+# =============================================================================
+# North British (production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Sole production line at North British: a continuous (Coffey) grain-whisky
+# make from a MAIZE-led cereal bill (85% maize / 15% malted barley) — the
+# maize contrast to Cameronbridge's wheat that confirmed the structured
+# `cereal_bill` field (CHANGELOG [0.8.7]). No own single-grain bottlings;
+# see north-british.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: north-british
+name: North British
+distillery: north-british
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                        # Malted-barley component (for its
+  maltster: null                           # enzymes) is bought in.
+  variety: null                            # The malt block covers only the
+                                           # malted-barley component; the full
+                                           # maize-led bill is in the
+                                           # structured `cereal_bill` below.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                         # Unpeated grain whisky.
+  peat_origin: none
+  notes: |
+    North British grain whisky is unpeated.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: continuous                       # Continuous Coffey-still grain
+                                           # distillation [1][2].
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: |
+      Continuous distillation has no pot-still "cut"; collection strength
+      is set by the column.
+  new_make_abv: 94.5                        # Grain spirit collected at ~94.5%
+                                           # ABV [2] — close to the 94.8%
+                                           # regulatory ceiling for Scotch.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                          # Refill / ex-bourbon American oak.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings: []                              # No standing official single-grain
+                                           # range — North British is a
+                                           # blending-grain supplier. Its
+                                           # single grains reach market via
+                                           # independent bottlers (see
+                                           # north-british.NOTES.md).
+
+
+# --- Cereal bill ------------------------------------------------------------
+cereal_bill:
+  - cereal: maize
+    proportion: 0.85                        # ~85% maize, imported from France
+    malted: false                          # via the Port of Leith [1][2].
+  - cereal: malted_barley
+    proportion: 0.15                        # ~15% malted barley, supplying the
+    malted: true                           # enzymes for starch conversion [2].
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sole production line at North British: a continuous (Coffey) grain-whisky
+  make distilled to ~94.5% ABV [2]. The cereal bill is maize-led — roughly
+  85% maize to 15% malted barley [2], the maize imported from France via
+  the Port of Leith [1] — in contrast to Cameronbridge's wheat-led bill.
+  The spirit is matured in American oak and supplied as grain whisky to the
+  blends of the distillery's joint-venture owners; North British carries no
+  official single-grain bottling of its own.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/North_British_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on North British distillery. Used for the
+      continuous grain distillation, the maize supply (~3,000 t/week from
+      France via Leith) with malted barley, and the blending-supplier
+      role. Migrate to producer / scotchwhisky.com primaries when
+      accessible (see TODO.md Research Requests).
+  - id: 2
+    type: trade_publication
+    url: https://scotchwhisky.com/whiskypedia/2006/north-british/
+    accessed: 2026-06-14
+    notes: |
+      scotchwhisky.com Whiskypedia / specialist references corroborating
+      the Coffey-still grain distillation, the ~94.5% ABV grain spirit,
+      and the disclosed 85% maize / 15% malted-barley cereal split.
+      Retrieved via web search 2026-06-14; scotchwhisky.com returns HTTP
+      403 to automated fetch, flagged for direct confirmation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []
