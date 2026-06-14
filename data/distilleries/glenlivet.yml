@@ -136,9 +136,12 @@ mash_tun:
 
 washbacks:
   count: null
-  material: wood                          # Wooden washbacks per the
-                                          # Diffords Guide distillery
-                                          # profile [3].
+  material: null                          # Diffords notes wooden washbacks
+                                          # [3] but not the species; the
+                                          # schema enum lists only specific
+                                          # species, so the field stays null
+                                          # and the wood-vs-steel fact lives
+                                          # in source [3] / the NOTES.
   capacity_litres: null
   notes: |
     The 2010 Prince of Wales extension added eight washbacks
@@ -331,8 +334,10 @@ sources:
       distillery after the Excise Act; Pernod Ricard ownership; Josie's
       Well as the production-water source ("still used"); unpeated malt;
       tall, slim copper pot stills; wooden washbacks; and the 1884
-      "Glenlivet" trademark / hyphenation outcome. Source of the
-      wooden-washbacks datum. Two conflicts noted in glenlivet.NOTES.md:
+      "Glenlivet" trademark / hyphenation outcome. Diffords notes wooden
+      washbacks but not the species, so `washbacks.material` is left null
+      (the enum lists only specific species). Two conflicts noted in
+      glenlivet.NOTES.md:
       Diffords gives the global sales rank as third (Wikipedia: second),
       and places the distillery in Banffshire (historic county; Moray is
       the modern council area).

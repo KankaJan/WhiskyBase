@@ -124,8 +124,11 @@ scotchwhisky.com primaries. Outcome:
   production-water source, unpeated malt, tall slim stills, and the **1884**
   "Glenlivet" trademark. This reduces the entry's sole-Wikipedia dependence
   on those claims.
-- **New datum:** Diffords states **wooden washbacks** — recorded
-  (`washbacks.material: wood`).
+- **Wooden washbacks (qualitative).** Diffords states wooden washbacks but
+  not the species; the schema's `washbacks.material` enum lists only
+  specific species (oregon_pine, larch, douglas_fir, …), so the field stays
+  `null` and the wood-vs-steel fact lives in the source-3 note. (The strict
+  gate rejected `material: wood` — not an enum value — on the first push.)
 - **Conflict surfaced — global sales rank.** Wikipedia: second-biggest
   single malt globally (after Glenfiddich). Diffords: third. Both agree
   Glenlivet is the biggest single malt in the US. The ranking genuinely
