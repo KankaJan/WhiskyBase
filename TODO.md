@@ -470,6 +470,26 @@ accessible:
 - Coordinates (57.3017, -6.3537) are third-party-published; confirm
   against a producer / OS source.
 
+### Cameronbridge migrations + grain-schema follow-ups (2026-06-14)
+
+The 18th distillery and first grain distillery, Cameronbridge, is grounded
+on Wikipedia (+ trade listings for the single-grain bottlings). Follow-ups:
+
+- Producer / scotchwhisky.com Whiskypedia (Cameronbridge 1997; Cameron Brig
+  1996) and Diageo pages were not fetched (403 / JS). Migrate when fetchable.
+- Confirm: column-still count/type, the wheat/malted-barley grain-bill
+  proportions, the new-make distillation strength, the capacity basis
+  (litres vs LPA), and coordinates (left null).
+- Confirm bottling specs (Cameron Brig colour/filtration; Haig Club /
+  Clubman cask + launch detail) against producer sources.
+- **Grain-schema structuring (deferred).** Cameronbridge is grain distillery
+  #1; per the project's pressure-test-then-structure practice, column stills
+  and the cereal/grain-bill are in prose with SCHEMA-OBSERVATIONS in
+  `cameronbridge.NOTES.md`. When a SECOND grain distillery lands (Girvan,
+  North British, Strathclyde, Invergordon), evaluate structured fields:
+  `stills.column_stills: [{count, still_type, columns}]` and
+  `cereal_bill: [{cereal, proportion, malted}]`.
+
 ### Literature-resource scouting (user can supply digital copies)
 
 Catalogue moved to `docs/literature-scouting.md` — the standing
@@ -982,6 +1002,18 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-14** Cameronbridge — 18th distillery and the project's FIRST
+  grain distillery. 1 distillery + 1 production line + 3 single-grain
+  bottlings + NOTES. Cameron Bridge, Fife (Lowlands); Diageo; founded 1824
+  by John Haig, a founding DCL grain distillery (1877). Continuous
+  (column/Coffey) distillation from a wheat-led cereal bill; ~136M LPA (one
+  of Europe's largest). Bottlings: Cameron Brig (long-standing single
+  grain), Haig Club (2014 premium), Haig Club Clubman. distinctive_features
+  → equipment/coffey-still + glossary/grain-whisky. Schema: added the
+  additive `distillation.regime: continuous` value (CHANGELOG [0.8.6]);
+  column stills + cereal bill captured in prose with SCHEMA-OBSERVATIONS in
+  cameronbridge.NOTES.md (structure deferred to grain distillery #2). Not
+  validated locally (no Python on the dev box); relies on the CI strict gate.
 - **2026-06-14** Talisker — 17th distillery. 1 distillery + 1 production
   line + 3 bottlings + NOTES. Carbost, Isle of Skye; Diageo; the
   project's first Skye entry and third populated Classic Malt (after

@@ -148,7 +148,8 @@ fermentation:
 # --- Recipe: Distillation ---------------------------------------------------
 distillation:
   regime: null                       # double | triple | partial_triple |
-                                     # 2.5x | 2.81x | other
+                                     # 2.5x | 2.81x | continuous | other
+                                     # (`continuous` = column/Coffey, grain)
   spirit_cut:
     start_abv: null                  # ABV at which middle cut begins.
     end_abv: null                    # ABV at which middle cut ends.

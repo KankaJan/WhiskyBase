@@ -95,7 +95,7 @@
         "regime": {
           "oneOf": [
             { "type": "null" },
-            { "enum": ["double", "triple", "partial_triple", "2.5x", "2.81x", "other"] }
+            { "enum": ["double", "triple", "partial_triple", "2.5x", "2.81x", "continuous", "other"] }
           ]
         },
         "spirit_cut": {

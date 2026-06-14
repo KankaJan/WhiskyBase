@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 17 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 18 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -451,8 +451,19 @@ back rather than absorbing it into the data model.
   equipment/worm-tub forward ref; ~3.5M LPA; bottlings 10 Year Old
   (45.8% flagship), Distillers Edition (amoroso finish) and Storm (NAS);
   Wikipedia-primary with bottling specs from specialist-retailer
-  listings, see talisker.NOTES.md).
-- 22 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  listings, see talisker.NOTES.md),
+  Cameronbridge (medium — Cameron Bridge, Fife, Lowlands; Diageo; the
+  project's **first grain distillery** and first Lowland grain. Founded
+  1824 by John Haig; a founding DCL grain distillery (1877). **Continuous
+  (column / Coffey) distillation** from a wheat-led cereal bill, not batch
+  pot stills — the first `regime: continuous` line; ~136M LPA, one of
+  Europe's largest. Single-grain bottlings Cameron Brig and the Haig Club
+  range. The malt-centric schema does not yet structure column stills or
+  the cereal bill — captured in prose, with SCHEMA-OBSERVATIONS in
+  cameronbridge.NOTES.md for structuring at the second grain distillery.
+  Schema change: additive `distillation.regime: continuous`, CHANGELOG
+  [0.8.6]).
+- 23 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -503,7 +514,11 @@ back rather than absorbing it into the data model.
   1 Talisker (medium — medium-peated Skye default ~18-22 ppm; the
   asymmetric five-still set with U-shaped purifiers and worm tubs;
   American-oak-led core with an amoroso-sherry route in the Distillers
-  Edition; malt bought in from a mainland Diageo maltings).
+  Edition; malt bought in from a mainland Diageo maltings),
+  1 Cameronbridge (medium — the project's first grain line:
+  `regime: continuous` column/Coffey distillation from a wheat-led
+  cereal bill; unpeated; American-oak maturation; high-strength grain
+  new make).
 - 85 concept pages: 3 methodology, 17 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
@@ -541,15 +556,17 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 51 bottlings: 51 working entries (10 Bruichladdich/Harris + 3
+- 54 bottlings: 54 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
   2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
   2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 3 Ardbeg +
-  3 Macallan + 3 Glenlivet + 3 Talisker + 2 worked-example
+  3 Macallan + 3 Glenlivet + 3 Talisker + 3 Cameronbridge +
+  2 worked-example
   IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
   Glenlivet bottlings (12 Year Old, 15 French Oak Reserve, Nàdurra
   Oloroso) added 2026-06-12; Talisker bottlings (10 Year Old,
-  Distillers Edition, Storm) added 2026-06-14.
+  Distillers Edition, Storm) added 2026-06-14. Cameronbridge single
+  grains (Cameron Brig, Haig Club, Haig Club Clubman) added 2026-06-14.
   Macallan bottlings (Sherry Oak 12, Double Cask 12, Triple Cask
   Matured 15) were migrated from a pre-v0.2 flat field shape to the
   v0.2 schema on 2026-06-11; see CHANGELOG [0.8.4].
@@ -705,18 +722,18 @@ CHANGELOG [0.8.3].
 
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 18th distillery.** Talisker landed 2026-06-14
-   as the 17th (first Skye entry, third Diageo Classic Malt, worm-tub
-   condensing), after Glenlivet as the 16th. The next gaps: **Aberlour**
-   for a second sherry-led Speyside; **Cardhu** as a Diageo Speyside
-   (Johnnie Walker component); a mainland-Highland or grain distillery to
-   broaden the regional spread. New distillery entries lean on Wikipedia
-   at population; the Glenlivet entry had a partial source-migration
-   2026-06-14 (Diffords Guide added as independent corroboration; the
-   producer and scotchwhisky.com primaries remain unfetchable). See
-   TODO.md Research Requests for the outstanding producer-primary
-   migrations (Glenlivet, Macallan, Talisker) and post-2024 plant-spec
-   confirmations.
+1. **Data-layer growth — 19th distillery.** Cameronbridge landed
+   2026-06-14 as the 18th — the project's **first grain distillery**
+   (continuous column/Coffey distillation; first Lowland grain) — after
+   Talisker (17th) and Glenlivet (16th). The next gaps: **Aberlour** for a
+   second sherry-led Speyside; **Cardhu** as a Diageo Speyside; or a
+   **second grain distillery** (Girvan, North British) — the latter would
+   confirm the deferred grain-schema shapes (structured column stills and
+   a cereal/grain-bill field — see cameronbridge.NOTES.md
+   SCHEMA-OBSERVATIONS). New distillery entries lean on Wikipedia at
+   population; see TODO.md Research Requests for the outstanding
+   producer-primary migrations (Glenlivet, Macallan, Talisker,
+   Cameronbridge).
 2. **Residual sourcing follow-ups — glossary confidence blockers
    RESOLVED (2026-06-12).** The two remaining medium-confidence
    glossary entries were promoted to `high`: `distillers-yeast`

@@ -1,0 +1,134 @@
+# =============================================================================
+# Cameronbridge (production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Sole production line at Cameronbridge: a continuous (column / Coffey)
+# grain-whisky make from a wheat-led cereal bill. First `regime: continuous`
+# line in the project (CHANGELOG [0.8.6]). The cereal bill is captured in
+# prose (the malt block is barley-centric) — see cameronbridge.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cameronbridge
+name: Cameronbridge
+distillery: cameronbridge
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                        # The malted-barley component (used
+                                           # for its enzymes) is bought in.
+  maltster: null
+  variety: null                            # The PRIMARY cereal is wheat, not
+                                           # malted barley. Grain whisky uses
+                                           # a wheat-led bill (historically
+                                           # maize) with ~10-15% malted barley
+                                           # to convert the starch. The schema
+                                           # `malt` block is barley-centric and
+                                           # does not represent the cereal bill;
+                                           # this is a SCHEMA-OBSERVATION (see
+                                           # cameronbridge.NOTES.md). Exact
+                                           # proportions are not sourced.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                         # Unpeated grain whisky.
+  peat_origin: none
+  notes: |
+    Cameronbridge grain whisky is unpeated.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: continuous                       # Continuous column / Coffey
+                                           # distillation, not batch pot
+                                           # stills [1] — the first
+                                           # `continuous` line in the data set.
+  spirit_cut:
+    start_abv: null                        # The pot-still cut concept does not
+    end_abv: null                          # apply to a continuous column.
+    notes: |
+      Continuous column distillation has no batch "cut" in the
+      pot-still sense; collection strength is set by the column rather
+      than by a stillman selecting heads/heart/tails.
+  new_make_abv: null                       # Grain new-make comes off at a high
+                                           # strength (close to the 94.8% ABV
+                                           # regulatory ceiling above which a
+                                           # Scotch spirit is no longer
+                                           # whisky) — far lighter / more
+                                           # neutral than malt new make. A
+                                           # Cameronbridge-specific figure is
+                                           # not in the surveyed sources.
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                          # Grain whisky is matured
+                                            # predominantly in refill /
+                                            # ex-bourbon American oak.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - cameron-brig
+  - haig-club
+  - haig-club-clubman
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sole production line at Cameronbridge: a continuous (column / Coffey)
+  grain-whisky make from a wheat-led cereal bill, with a smaller malted-
+  barley fraction for enzymic conversion [1]. The spirit is distilled to a
+  high strength (close to the 94.8% ABV regulatory ceiling), giving the
+  light, neutral character typical of Scotch grain whisky. Most output goes
+  to Diageo blends; the single-grain bottlings carrying the distillery's own
+  identity are Cameron Brig (the long-standing official bottling) and the
+  Haig Club range (premium, from 2014), both matured in American oak.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Cameronbridge_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Cameronbridge distillery. Used for the
+      continuous column/Coffey distillation, the grain-whisky focus, the
+      wheat-led cereal bill (general grain-whisky practice; exact
+      proportions not sourced), and the single-grain bottlings. Migrate
+      to producer / scotchwhisky.com primaries when accessible (see
+      TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

@@ -1,0 +1,112 @@
+# =============================================================================
+# Haig Club
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Diageo's premium single-grain Scotch from Cameronbridge, launched 2014
+# (a high-profile David Beckham / Diageo collaboration, distinctive blue
+# bottle). See cameronbridge.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: haig-club
+name: Haig Club
+produced_at_distillery: cameronbridge
+production_line: cameronbridge
+bottled_by: cameronbridge                  # Official Diageo bottling of
+bottler_type: distillery                    # Cameronbridge single grain.
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: '2014'                        # Launched early 2014 [2].
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0                                   # 40% ABV [2].
+age_statement: null                         # No age statement.
+vintage: null
+cask_strength: false
+non_chill_filtered: null
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      Matured in ex-bourbon American oak casks [2]. No age statement.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Haig Club is Diageo's premium single-grain Scotch from Cameronbridge,
+  launched in 2014 as a high-profile collaboration with David Beckham and
+  marketed in a distinctive square blue bottle [2]. Bottled at 40% ABV from
+  ex-bourbon American oak, it positions single grain — historically a
+  blending component — as a stand-alone premium category, contrasting with
+  the long-standing, value-oriented Cameron Brig from the same distillery.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Cameronbridge_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Cameronbridge distillery, for Haig Club as a
+      2014 Diageo single grain produced at Cameronbridge.
+  - id: 2
+    type: trade_publication
+    url: https://www.haigwhisky.com/haig-club-scotch-whisky/
+    accessed: 2026-06-14
+    notes: |
+      Producer brand site / specialist listings for Haig Club,
+      corroborating the 40% ABV, ex-bourbon American-oak maturation, no
+      age statement, and 2014 launch. Retrieved via web search
+      2026-06-14 (producer pages are JS-rendered to automated fetch);
+      flagged for direct confirmation (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []
