@@ -49,6 +49,13 @@ if (!distillery) {
       </section>
     )}
 
+    {distillery.website && (
+      <p class="official-site">
+        <strong>Official site:</strong>{' '}
+        <a href={distillery.website} rel="noopener noreferrer">{distillery.website}</a>
+      </p>
+    )}
+
     <LocationBlock
       country={distillery.country}
       region={distillery.region}
@@ -131,6 +138,10 @@ if (!distillery) {
   .description p {
     margin: 0.5rem 0;
     white-space: pre-wrap;
+  }
+  .official-site {
+    margin: 0.5rem 0 1rem;
+    font-size: 0.95rem;
   }
   .mothballed {
     list-style: none;
