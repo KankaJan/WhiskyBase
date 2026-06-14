@@ -109,18 +109,21 @@ washbacks:
     the surveyed sources for the grain plant.
 
 stills:
+  column_stills:
+    count: 3                                # Three large column (Coffey)
+                                            # stills [1].
+    still_type: coffey
+    notes: |
+      A third column still was transferred from the closed Carsebridge
+      distillery in 1983.
   notes: |
-    Cameronbridge distils by CONTINUOUS (column / Coffey) distillation,
-    not batch pot stills, so the pot-still slots in this schema
-    (wash_still / spirit_still / intermediate_still / low_wines_still)
-    are not populated. The plant currently runs three large column
-    (Coffey / patent) stills [1]. Historically the site ran a mix of
-    pot and column stills until it shifted to grain-only production in
-    1929; a third column still was added from the closed Carsebridge
-    distillery in 1983. The schema does not yet structure column stills
-    (count, number of columns, Coffey-vs-modern-multicolumn type) — that
-    is recorded as a SCHEMA-OBSERVATION in cameronbridge.NOTES.md, to be
-    structured when a second grain distillery confirms the shape.
+    Cameronbridge distils by continuous (column / Coffey) distillation,
+    not batch pot stills, so the pot-still slots (wash_still /
+    spirit_still / intermediate_still / low_wines_still) are not
+    populated. Historically the site ran a mix of pot and column stills
+    until it shifted to grain-only production in 1929 [1]. The column
+    stills are recorded in the structured `column_stills` block above
+    (added with the grain-schema structuring, CHANGELOG [0.8.7]).
 
 
 # --- Capacity ---------------------------------------------------------------

@@ -20,32 +20,28 @@ Wikipedia-primary distillery entries.
 The distillery / production_line schemas were designed around batch
 pot-still malt production. Grain whisky differs in three structural ways.
 Per the project's pressure-test-then-structure practice (how the bottler
-and supplier schemas evolved), only the strictly-necessary change was made
-now; the rest is captured in prose and recorded here for structuring when a
-SECOND grain distillery (Girvan, North British, Strathclyde, Invergordon …)
-lands and confirms the shape.
+and supplier schemas evolved), the necessary regime change was made at
+population; the column-still and cereal-bill structures were then added
+2026-06-14 when North British (the second grain distillery) landed and
+confirmed the shapes (CHANGELOG [0.8.7]). This entry has been retrofitted
+to use them.
 
 1. **Distillation regime — DONE (additive).** `distillation.regime` gained
    `continuous` (column / Coffey), CHANGELOG [0.8.6]. This was necessary:
    grain distillation is not any of the batch pot-still regimes, so the
    entry could not validate without it.
 
-2. **Column / Coffey stills — DEFERRED (prose for now).** The distillery
-   `stills` block is pot-still-shaped (`wash_still` / `spirit_still` /
-   `intermediate_still` / `low_wines_still`, each with charge volume, lyne-
-   arm angle, condenser). A column still has none of those. Cameronbridge's
-   three column (Coffey) stills are described in `stills.notes` only. A
-   future structured block might be `stills.column_stills: [{ count,
-   still_type: coffey|patent|modern_multicolumn, columns, notes }]`. Hold
-   until a second grain distillery confirms which attributes matter.
+2. **Column / Coffey stills — DONE (structured 2026-06-14).** Added
+   `stills.column_stills: { count, still_type: coffey|patent|other, notes }`
+   (the pot-still slots remain null for grain). Cameronbridge records
+   `count: 3, still_type: coffey`.
 
-3. **Cereal / grain bill — DEFERRED (prose for now).** The production_line
-   `malt` block is barley-centric (`source` / `maltster` / `variety`).
-   Grain whisky's primary cereal is wheat (historically maize), with only
-   ~10-15% malted barley for enzymes. The wheat-led bill is described in
-   `malt.notes` / the description. A future structured field might be
-   `cereal_bill: [{ cereal: wheat|maize|malted_barley|other, proportion,
-   malted: bool }]`. Hold until a second grain distillery.
+3. **Cereal / grain bill — DONE (structured 2026-06-14).** Added
+   `cereal_bill: [{ cereal, proportion, malted, notes }]` on the production
+   line. Cameronbridge records wheat (malted: false) + malted_barley
+   (malted: true), proportions null (not sourced); North British — the
+   confirming example — records the disclosed maize / malted-barley 85/15
+   split.
 
 ## 3. Other observations
 

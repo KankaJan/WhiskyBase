@@ -145,6 +145,26 @@
         "spirit_still": { "$ref": "#/definitions/still" },
         "intermediate_still": { "$ref": "#/definitions/still" },
         "low_wines_still": { "$ref": "#/definitions/still" },
+        "column_stills": {
+          "description": "Continuous (column / Coffey) stills, for grain distilleries. The pot-still slots above do not apply.",
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "count": { "$ref": "_common.schema.json#/definitions/integer_or_null" },
+                "still_type": {
+                  "oneOf": [
+                    { "type": "null" },
+                    { "enum": ["coffey", "patent", "other"] }
+                  ]
+                },
+                "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+              }
+            }
+          ]
+        },
         "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
       }
     },

@@ -113,6 +113,30 @@
     "default_fill_strength_abv": { "$ref": "_common.schema.json#/definitions/abv" },
     "typical_cask_program": { "$ref": "_common.schema.json#/definitions/slug_list" },
     "bottlings": { "$ref": "_common.schema.json#/definitions/slug_list" },
+    "cereal_bill": {
+      "description": "Cereal composition, primarily for grain whisky (wheat/maize-led with malted barley). Malt single malts leave this null and use the `malt` block.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "cereal": { "enum": ["malted_barley", "wheat", "maize", "rye", "oats", "other"] },
+              "proportion": {
+                "oneOf": [
+                  { "type": "null" },
+                  { "type": "number", "minimum": 0, "maximum": 1 }
+                ]
+              },
+              "malted": { "type": ["boolean", "null"] },
+              "notes": { "$ref": "_common.schema.json#/definitions/string_or_null" }
+            }
+          }
+        }
+      ]
+    },
     "description": { "type": ["string", "null"] },
     "external_ids": {
       "type": "object",

@@ -482,13 +482,30 @@ on Wikipedia (+ trade listings for the single-grain bottlings). Follow-ups:
   (litres vs LPA), and coordinates (left null).
 - Confirm bottling specs (Cameron Brig colour/filtration; Haig Club /
   Clubman cask + launch detail) against producer sources.
-- **Grain-schema structuring (deferred).** Cameronbridge is grain distillery
-  #1; per the project's pressure-test-then-structure practice, column stills
-  and the cereal/grain-bill are in prose with SCHEMA-OBSERVATIONS in
-  `cameronbridge.NOTES.md`. When a SECOND grain distillery lands (Girvan,
-  North British, Strathclyde, Invergordon), evaluate structured fields:
-  `stills.column_stills: [{count, still_type, columns}]` and
-  `cereal_bill: [{cereal, proportion, malted}]`.
+- **Grain-schema structuring — DONE (2026-06-14).** Resolved when North
+  British (grain distillery #2) landed and confirmed the shapes. Added
+  `stills.column_stills: {count, still_type, notes}` and
+  `cereal_bill: [{cereal, proportion, malted, notes}]` (CHANGELOG [0.8.7]);
+  Cameronbridge was retrofitted from prose to both fields.
+
+### North British migrations + IB worked example (2026-06-14)
+
+The 19th distillery and second grain distillery, North British, is grounded
+on Wikipedia + trade references. Follow-ups:
+
+- Migrate to scotchwhisky.com Whiskypedia (2006/north-british) and producer
+  primaries when fetchable (403 / JS at population time).
+- Confirm the Coffey-still count (three vs four — recorded four), the cereal
+  proportions (85/15 maize / malted barley), the ~94.5% ABV new-make
+  strength, the capacity currency (~65M LPA, 2007), coordinates and water
+  source.
+- **Add an IB single-grain worked example.** North British has no own OB
+  single grain (`bottlings: []`); its single grains are independent
+  bottlings (Signatory, Hunter Laing, Lady of the Glen, That Boutique-y B10
+  25yo) plus a 2018 Douglas Laing OB collaboration. Add a worked example
+  (e.g. a Signatory North British) when a verifiable release — vintage,
+  cask, ABV — is identified; it would be the project's first IB grain
+  release.
 
 ### Literature-resource scouting (user can supply digital copies)
 
@@ -1002,6 +1019,19 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-14** North British — 19th distillery, the project's SECOND
+  grain distillery, and the confirming example that turned the deferred
+  grain-schema observations into structure. 1 distillery + 1 production
+  line + NOTES (no bottlings — a pure blending-grain supplier; first
+  populated distillery with `bottlings: []`). Gorgie, Edinburgh (Lowlands);
+  founded 1885 by Usher/Sanderson/Crabbie to break the DCL grain monopoly;
+  owned 50:50 by Diageo and Edrington (Lothian Distillers JV — first
+  co-ownership in the data). Continuous Coffey distillation to ~94.5% ABV
+  from a MAIZE-led bill (85% maize / 15% malted barley) — the contrast to
+  Cameronbridge's wheat. Schema [0.8.7]: added `stills.column_stills` and
+  `cereal_bill`, used here and retrofitted onto Cameronbridge. Counts:
+  18→19 distilleries, 23→24 production lines (54 bottlings unchanged). Not
+  validated locally (no Python on the dev box); relies on the CI strict gate.
 - **2026-06-14** Cameronbridge — 18th distillery and the project's FIRST
   grain distillery. 1 distillery + 1 production line + 3 single-grain
   bottlings + NOTES. Cameron Bridge, Fife (Lowlands); Diageo; founded 1824
