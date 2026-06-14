@@ -1,0 +1,160 @@
+# =============================================================================
+# Ardnamurchan
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — Wikipedia + producer/trade references. Second
+# of the 2026-06-14 new-wave batch. See ardnamurchan.NOTES.md.
+# =============================================================================
+# 22nd distillery. A modern (2014) west-Highland distillery built and owned
+# by Adelphi, an independent bottler — and notable for two things new to
+# the data set: it runs BOTH peated and unpeated production, and it
+# publishes the full cask composition of every release (the "AD" codes), an
+# unusually radical transparency. Renewable-powered (hydro + biomass).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardnamurchan
+name: Ardnamurchan
+also_known_as: []
+wikidata_qid: null
+website: https://www.ardnamurchandistillery.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Highlands                         # Remote west-Highland mainland, on
+                                          # the Ardnamurchan peninsula,
+                                          # Lochaber [1].
+sub_region: Ardnamurchan
+locality: Glenbeg, Ardnamurchan
+coordinates:
+  lat: null
+  lon: null
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 2014                             # Production commenced 2014 [1];
+                                          # first statutory 3-year-old whisky
+                                          # 2017, flagship "AD" release 2020.
+first_spirit: 2014
+mothballed_periods: []
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Adelphi Distillery Ltd
+  parent: null
+  history:
+    - owner: Adelphi Distillery Ltd
+      from: 2014
+      to: null
+      notes: |
+        Built and owned by Adelphi, an independent bottling company —
+        an independent bottler establishing its own distillery [1].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Springs above the distillery
+                                          # Production water from springs
+                                          # above the site; the Glenmore
+                                          # River provides cooling water [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null
+  material: null
+  capacity_kg: null
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: null
+
+stills:
+  wash_still:
+    count: 1
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 1
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 500000               # ~500,000 LPA [1].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - ardnamurchan
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                  # The distinctive features — radical
+                                          # cask-composition transparency (the
+                                          # "AD" release codes) and dual
+                                          # peated/unpeated production — have
+                                          # no existing concept page; recorded
+                                          # in the description.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Ardnamurchan is a modern single-malt distillery at Glenbeg on the remote
+  Ardnamurchan peninsula in the west Highlands, with production from 2014
+  [1]. It was built and is owned by Adelphi, a long-established independent
+  bottling company — an independent bottler creating its own distillery.
+
+  Two features set it apart in this data set. First, it runs both peated
+  and unpeated production, and its core single malt is bottled from a
+  roughly 50:50 vatting of the two styles. Second, it publishes the full
+  cask composition of every release through its "AD" batch codes — an
+  unusually radical transparency about exactly what is in the bottle. The
+  distillery is powered by renewable energy (hydroelectricity and a biomass
+  boiler fed with local timber) [1]. Production is on a single wash and
+  single spirit still at ~500,000 LPA [1].
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Ardnamurchan_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Ardnamurchan distillery. Used for identity
+      (Glenbeg, Ardnamurchan peninsula), production from 2014, Adelphi
+      ownership, the peated + unpeated dual production, the renewable
+      energy (hydro + biomass), the single-still configuration, ~500,000
+      LPA capacity, and the water sources. Migrate to producer primaries
+      when fetchable.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

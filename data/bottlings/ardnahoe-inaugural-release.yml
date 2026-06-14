@@ -1,0 +1,119 @@
+# =============================================================================
+# Ardnahoe Inaugural Release
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Ardnahoe's first whisky (2024): a 5-year-old peated Islay single malt,
+# ex-bourbon + oloroso, NCF / natural colour at 50% ABV. See
+# ardnahoe.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardnahoe-inaugural-release
+name: Ardnahoe Inaugural Release
+produced_at_distillery: ardnahoe
+production_line: ardnahoe
+bottled_by: ardnahoe
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: '2024'                        # Inaugural Release, summer 2024 [2].
+discontinued: false
+availability: limited                       # A limited inaugural edition.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 50.0                                   # 50% ABV [2].
+age_statement: 5                            # 5 years old [2].
+vintage: null
+cask_strength: false
+non_chill_filtered: true                    # Non-chill-filtered [2].
+natural_colour: true                        # Natural colour [2].
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 5
+    cooperage: null
+    notes: |
+      Ex-bourbon American oak, part of the ex-bourbon + oloroso
+      combination for this release [2].
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 5
+    cooperage: null
+    notes: |
+      Ex-oloroso sherry casks [2].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Ardnahoe Inaugural Release (2024) is the distillery's first whisky: a
+  five-year-old peated Islay single malt (~40 ppm) matured in a combination
+  of ex-bourbon and ex-oloroso sherry casks, bottled non-chill-filtered and
+  naturally coloured at 50% ABV [2]. As a young, limited first release it
+  marks the arrival of Islay's newest distillery rather than a standing
+  core expression.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Ardnahoe_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Ardnahoe, for the 2024 Inaugural Release as a
+      5-year-old matured in ex-bourbon and oloroso sherry.
+  - id: 2
+    type: trade_publication
+    url: https://www.royalmilewhiskies.com/ardnahoe-5-year-old-inaugural-release-50-70cl/
+    accessed: 2026-06-14
+    notes: |
+      Specialist-retailer listing corroborating the Inaugural Release: 5
+      years old, ~40 ppm, ex-bourbon + oloroso casks, 50% ABV,
+      non-chill-filtered, natural colour. Retrieved via web search
+      2026-06-14; flagged for producer confirmation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

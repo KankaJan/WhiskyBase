@@ -1,0 +1,162 @@
+# =============================================================================
+# Nc'nean
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — Wikipedia + producer/trade references. First
+# of three new-wave (2014-2018) distilleries added 2026-06-14. See
+# nc-nean.NOTES.md.
+# =============================================================================
+# 21st distillery. A small, modern, sustainability-led west-Highland
+# distillery: the first UK whisky producer to reach net-zero carbon
+# emissions in production, certified B Corp, distilling 100% ORGANIC
+# barley. New dimensions for the data set: organic production and an
+# explicit sustainability identity.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: nc-nean
+name: Nc'nean
+also_known_as: []
+wikidata_qid: null
+website: https://ncnean.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Highlands                         # West Highland mainland, on the
+                                          # Morvern peninsula by the Sound of
+                                          # Mull [1].
+sub_region: Morvern
+locality: Drimnin, Morvern
+coordinates:
+  lat: null
+  lon: null
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 2017                             # Production began 2017; the first
+                                          # bottle was sold at auction in
+                                          # August 2020 [1].
+first_spirit: 2017
+mothballed_periods: []
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Nc'nean Distillery Ltd
+  parent: null
+  history:
+    - owner: Annabel Thomas / Drimnin Distillery Co
+      from: 2017
+      to: null
+      notes: |
+        Founded by Annabel Thomas on the Drimnin estate. Independent and
+        owner-led [1].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Local springs               # Two nearby springs supply the
+                                          # site [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null
+  material: null
+  capacity_kg: null
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: null
+
+stills:
+  wash_still:
+    count: 1
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  spirit_still:
+    count: 1
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 100000               # ~100,000 LPA [1] — very small,
+                                          # an order of magnitude below the
+                                          # mid-sized malt distilleries here.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - nc-nean
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                  # The distinctive features —
+                                          # organic barley, net-zero
+                                          # production, B Corp status — are
+                                          # sustainability/business
+                                          # characteristics with no existing
+                                          # concept page; recorded in the
+                                          # description.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Nc'nean is a small, modern single-malt distillery on the Drimnin estate
+  in Morvern, on Scotland's west-Highland coast by the Sound of Mull,
+  founded by Annabel Thomas with production from 2017 [1]. It is defined as
+  much by its sustainability model as its whisky: it states it was the
+  first UK whisky producer to reach net-zero carbon emissions in
+  production, is a certified B Corporation (2022), uses 100% organic
+  barley, renewable electricity and recycled-glass bottles [1].
+
+  The spirit is unpeated, distilled on a single wash and single spirit
+  still at a very small ~100,000 LPA [1]. The flagship Organic Single Malt
+  is matured largely in STR (shaved, toasted, re-charred) red-wine casks
+  alongside ex-bourbon and a little oloroso, and bottled non-chill-filtered
+  at 46% ABV.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Nc%27nean_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Nc'nean distillery. Used for identity
+      (Drimnin, Morvern), founder (Annabel Thomas), production from 2017,
+      the sustainability credentials (first UK net-zero whisky production;
+      B Corp; organic; renewable), the single-still configuration,
+      ~100,000 LPA capacity, and the spring water source. Migrate to
+      producer primaries when fetchable.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []
