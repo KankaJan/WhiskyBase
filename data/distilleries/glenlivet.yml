@@ -1,0 +1,323 @@
+# =============================================================================
+# The Glenlivet
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — founding, ownership lineage, the "Glenlivet"
+# name legal case, location, water and house style are grounded against
+# the Wikipedia article and its trade bibliography; the current still
+# count and capacity (28 stills, ~21M LPA after the 2024 stillhouse) are
+# grounded against a 2024 regional-press source. Wikipedia and one trade
+# news source are the only directly-fetched sources; the producer's
+# theglenlivet.com and scotchwhisky.com Whiskypedia pages returned no
+# content at fetch time. Migrate to those primaries when next accessible —
+# see TODO.md Research Requests and glenlivet.NOTES.md.
+# =============================================================================
+# Sixteenth populated distillery. Fourth populated Speyside entry (after
+# Glenfarclas, Glenfiddich, Macallan). The other half of the Glenfiddich-
+# vs-Glenlivet best-seller pair: the biggest-selling single malt in the
+# United States and second-biggest globally (after Glenfiddich). House
+# style is the light, floral, fruity Speyside register produced on tall
+# lantern-shaped stills — the deliberate contrast to Macallan's short-
+# still, sherry-led weight. See glenlivet.NOTES.md for the capacity
+# source-conflict resolution.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenlivet
+name: The Glenlivet
+also_known_as:
+  - Glenlivet                              # "The Glenlivet" (with article)
+                                           # is the legally distinct name
+                                           # secured by the 1884 compromise
+                                           # [1]; "Glenlivet" without it is
+                                           # colloquial / trade usage.
+wikidata_qid: null
+website: https://www.theglenlivet.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Speyside                          # Formal SWA region (SWR 2009).
+                                          # The distillery is in the parish
+                                          # of Glenlivet, above the Spey [1].
+sub_region: Ballindalloch
+locality: Minmore, Ballindalloch, Moray
+                                          # George Smith moved production to
+                                          # the purpose-built Minmore site
+                                          # in 1858-59, from the original
+                                          # Upper Drumin farm [1].
+coordinates:
+  lat: 57.3431                            # Wikipedia coordinates (57d 20'
+  lon: -3.3387                            # 35" N, 3d 20' 19.3" W) to four
+                                          # decimals [1]; migrate to a
+                                          # producer-confirmed source.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1824                             # George Smith took the first
+                                          # licence in the parish under the
+                                          # Excise Act 1823 [1] — the basis
+                                          # of the brand's "started it all"
+                                          # positioning.
+first_spirit: 1824
+mothballed_periods: []                    # No major modern mothballing in
+                                          # the surveyed sources; the modern
+                                          # history is expansion [1][2].
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Chivas Brothers Ltd
+  parent: Pernod Ricard                   # The Glenlivet is operated by
+                                          # Chivas Brothers, the Scotch arm
+                                          # of Pernod Ricard, which took the
+                                          # Seagram spirits portfolio in
+                                          # 2001 [1].
+  history:
+    - owner: George Smith
+      from: 1824
+      to: 1871
+      notes: |
+        Founded and licensed the distillery in 1824; moved production
+        from the Upper Drumin farm to the purpose-built Minmore
+        distillery in 1858-59 [1].
+    - owner: John Gordon Smith
+      from: 1871
+      to: 1953
+      notes: |
+        George Smith's son inherited in 1871. Under the Smith family
+        the "Glenlivet" name was defended in law: after many
+        distilleries had appended "Glenlivet" to their own names, the
+        family (George Smith Grant, the founder's grandson) sued in
+        1881, and an 1884 compromise let the Smith distillery use
+        "The Glenlivet" alone while others could only hyphenate as
+        "-Glenlivet". Some 26 distilleries did so; the practice has
+        since died out [1].
+    - owner: The Glenlivet Distillers Ltd
+      from: 1953
+      to: 1977
+      notes: |
+        Merged with J&J Grant of Glen Grant in 1953 to form The
+        Glenlivet and Glen Grant Distillers Ltd; further mergers
+        (Longmorn, Hill Thomson) formed The Glenlivet Distillers Ltd
+        in 1970 [1].
+    - owner: The Seagram Company
+      from: 1977
+      to: 2001
+      notes: |
+        Seagram acquired The Glenlivet Distillers Ltd in 1977,
+        placing it in the Chivas Brothers stable [1]. (Some trade
+        histories date this to 1978 — see glenlivet.NOTES.md.)
+    - owner: Pernod Ricard (Chivas Brothers)
+      from: 2001
+      to: null
+      notes: |
+        On Seagram's 2000-2001 break-up, Pernod Ricard acquired the
+        drinks business and The Glenlivet passed to its Chivas
+        Brothers subsidiary [1]. Wikipedia dates the change to 2000
+        (deal announcement); the acquisition completed in December
+        2001 — see glenlivet.NOTES.md.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Josie's Well                # Josie's Well is the named
+                                          # process-water source [1];
+                                          # Wikipedia also lists Blairfindy
+                                          # Well.
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null                              # A mash tun was added in the 2010
+  material: null                          # extension [1]; type not confirmed
+  capacity_kg: null                       # in the surveyed sources.
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: |
+    The 2010 Prince of Wales extension added eight washbacks
+    alongside a mash tun and new stills [1]. The current total
+    washback count and material are not separately confirmed in the
+    surveyed sources, particularly after the 2024 stillhouse. To be
+    tightened against a producer spec or the latest Malt Whisky
+    Yearbook.
+
+stills:
+  wash_still:
+    count: 14                             # 14 wash + 14 spirit = 28 stills
+                                          # after the 2024 stillhouse (seven
+                                          # new pairs) [2]. Wikipedia records
+                                          # the pre-2024 7+7 (14 total) [1] —
+                                          # see glenlivet.NOTES.md.
+    capacity_litres: 15000                # 15,000 L wash stills per
+                                          # Wikipedia's pre-2024 spec [1];
+                                          # the 2024 pairs replicate the
+                                          # lantern geometry, so the figure
+                                          # is assumed continued (not
+                                          # separately re-confirmed).
+    charge_litres: null
+    shape: null                           # Tall, lantern-shaped, long narrow
+                                          # necks [1] — recorded in prose;
+                                          # the schema `shape` enum is unused.
+    height_m: null
+    heating: null                         # Not confirmed in the sources.
+    lyne_arm_angle: null
+    condenser: shell_and_tube             # Shell-and-tube, consistent with
+                                          # the light, sulphur-stripped style
+                                          # (see glossary/shell-and-tube).
+  spirit_still:
+    count: 14                             # Half of the 28-still total [2].
+    capacity_litres: 10000                # 10,000 L per Wikipedia pre-2024
+                                          # spec [1]; see wash-still note.
+    charge_litres: null
+    shape: null                           # Tall, lantern-shaped — see prose.
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 21000000             # ~21 million litres per year after
+                                          # the 2024 stillhouse, which doubled
+                                          # capacity from the post-2010 ~10.5M
+                                          # LPA [2]. Among Scotland's largest
+                                          # malt distilleries, level with
+                                          # Glenfiddich. The 2024 source says
+                                          # "21 million litres per year"; LPA
+                                          # is the conventional capacity
+                                          # measure — see glenlivet.NOTES.md.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 2010
+    change: |
+      A major extension (opened by the Prince of Wales) added a mash
+      tun, eight washbacks and new stills, taking the still count to
+      14 and increasing capacity by roughly 75% to approximately 10.5
+      million LPA [1].
+    source_id: 1
+  - year: 2024
+    change: |
+      A new stillhouse, opened in the distillery's bicentenary year,
+      added seven new pairs of lantern-shaped stills, taking the
+      total to 28 and doubling annual capacity to roughly 21 million
+      litres [2]. Wikipedia records ground broken on a further
+      expansion in 2015 [1].
+    source_id: 2
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - glenlivet
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []                 # The Glenlivet is a component of
+                                          # Pernod Ricard's blends (Chivas
+                                          # Regal, Royal Salute), but blends
+                                          # are not modelled as an entity
+                                          # type, so this list is empty by
+                                          # convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                  # The defining feature — tall,
+                                          # lantern-shaped stills with long
+                                          # necks giving high-reflux, light
+                                          # spirit — is in the description.
+                                          # No concept page yet covers tall-
+                                          # narrow-neck stills as a category
+                                          # (`equipment/tall-narrow-neck-
+                                          # stills` is queued in TODO.md);
+                                          # cross-ref to be added then.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Glenlivet is a Speyside single-malt distillery at Minmore in the
+  parish of Glenlivet, Moray, founded in 1824 by George Smith, the first
+  distiller in the glen to take a licence under the Excise Act 1823 [1].
+  That primacy is the basis of the brand's "the single malt that started
+  it all" positioning. Smith moved production from the original Upper
+  Drumin farm to the purpose-built Minmore distillery in 1858-59 [1].
+
+  The "Glenlivet" name itself was contested in law. As the glen's whisky
+  gained value, numerous distilleries appended "Glenlivet" to their own
+  names; the Smith family sued in 1881, and an 1884 compromise let the
+  Smith distillery use "The Glenlivet" alone while others could only
+  hyphenate as "-Glenlivet" [1]. The definite article became a mark of
+  legal distinction rather than grammar.
+
+  Ownership passed from George Smith (1824) to his son John Gordon Smith
+  (1871), through twentieth-century mergers — with Glen Grant (1953),
+  then Longmorn and Hill Thomson to form The Glenlivet Distillers Ltd
+  (1970) — to Seagram (1977) and, on Seagram's break-up, to Pernod
+  Ricard's Chivas Brothers (2001) [1].
+
+  The house style is the light, floral, fruity Speyside register: the
+  spirit is unpeated and distilled on tall, lantern-shaped copper pot
+  stills with long, narrow necks, a geometry that promotes high reflux
+  and a clean, light new make [1]. Maturation is led by American oak
+  (ex-bourbon), with European-oak sherry and, in selected expressions,
+  new French-oak components.
+
+  The Glenlivet is the biggest-selling single malt in the United States
+  and the second-biggest single malt globally, after Glenfiddich — the
+  two Speyside brands form the long-standing best-seller pair of the
+  category [1]. Production scale matches that standing: a 2010 extension
+  took capacity to about 10.5 million LPA, and a new stillhouse opened in
+  the 2024 bicentenary doubled it again to roughly 21 million litres a
+  year across 28 stills [1][2].
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Glenlivet_distillery
+    accessed: 2026-06-12
+    notes: |
+      Wikipedia's article on The Glenlivet distillery. Starting point
+      for site identity (Minmore, Ballindalloch, Moray; coordinates),
+      founding (George Smith, 1824, first licence under the Excise Act
+      1823), the name legal case (1881 suit, 1884 compromise, the
+      "-Glenlivet" hyphenation outcome), ownership lineage (J.G. Smith
+      1871; Glen Grant merger 1953; The Glenlivet Distillers Ltd 1970;
+      Seagram 1977; Pernod Ricard 2000-2001), water (Josie's Well,
+      Blairfindy Well), the 2010 Prince of Wales extension (mash tun,
+      eight washbacks, stills to 14, ~75% increase to ~10.5M LPA), the
+      pre-2024 still configuration (7 wash @ 15,000 L + 7 spirit @
+      10,000 L), the lantern still shape and light house style,
+      unpeated malt from Crisp Maltings (Portgordon), the core range,
+      and the sales ranking (biggest US single malt, second globally
+      after Glenfiddich). The article's still count and capacity
+      reflect the pre-2024 state; current figures are in source 2.
+      Per the Wikipedia-volatility policy, a starting point to be
+      migrated to producer and scotchwhisky.com primaries, which
+      returned no content at fetch time.
+
+  - id: 2
+    type: trade_publication
+    url: https://www.northern-scot.co.uk/news/a-sneak-peek-into-glenlivet-s-brand-new-stillhouse-346537/
+    accessed: 2026-06-12
+    notes: |
+      The Northern Scot (regional newspaper), April 2024, on The
+      Glenlivet's new stillhouse opened in the bicentenary year. Used
+      for the current plant: seven new pairs of stills added, total to
+      28, and capacity doubled to 21 million litres per year. Confirms
+      Chivas Brothers as operator. The current-state source against
+      which the pre-2024 Wikipedia figures (source 1) are reconciled —
+      see glenlivet.NOTES.md.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-12
+contributors: []

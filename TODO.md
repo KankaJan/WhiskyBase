@@ -419,6 +419,33 @@ become accessible:
   this should be confirmed against the producer's own page or
   the RIBA practice portfolio.
 
+### Glenlivet Wikipedia migrations (2026-06-12)
+
+The 16th distillery entry, Glenlivet, is grounded on Wikipedia plus
+one 2024 trade-press source (The Northern Scot, for the current
+28-still / ~21M-LPA plant). Migrate the load-bearing claims to
+primaries when accessible:
+
+- Producer pages: theglenlivet.com (JS-rendered / not directly
+  fetchable at population time 2026-06-12) and scotchwhisky.com
+  Whiskypedia on The Glenlivet (returned HTTP 403 at fetch time).
+- Confirm the post-2024 plant spec — per-still capacities for the
+  new pairs, current washback count, mash-tun type — against a
+  producer spec or the latest Malt Whisky Yearbook (the 15,000 L
+  wash / 10,000 L spirit figures are Wikipedia's pre-2024 spec,
+  assumed continued for the 2024 pairs).
+- Confirm ownership-date nuances: Seagram 1977 vs 1978; Pernod
+  Ricard 2000 (announcement) vs December 2001 (completion). See
+  `glenlivet.NOTES.md`.
+- Confirm the Nàdurra Oloroso and 15 French Oak Reserve
+  specifications (cask strength / NCF / natural colour / first-fill
+  oloroso; new Limousin oak) against producer-published sources —
+  the specialist-retailer listings used return 403 to automated
+  fetch.
+- The "Glenlivet" name legal case (1881 suit / 1884 compromise):
+  corroborate against a primary historical / legal source beyond
+  Wikipedia and trade histories.
+
 ### Literature-resource scouting (user can supply digital copies)
 
 Catalogue moved to `docs/literature-scouting.md` — the standing
@@ -437,12 +464,14 @@ Task-2 status: DONE (2026-05-20). The Miller grounding pass is
 complete. Five of the seven medium-confidence glossary entries —
 kiln, mashing, fermentation, reflux, wash-still — were promoted
 to `high`, each now citing Russell + Miller with page-level
-corroboration. Two remain `medium`: `distillers-yeast` (Miller
-corroborates the distilling-strain core but not the named
-yeast-house list — a producer / SWRI cross-check is the remaining
-blocker) and `shell-and-tube` (Miller does not treat condenser
-types — needs a condenser-specific source). Update
-`docs/literature-scouting.md` after each future scouting pass.
+corroboration. Both remaining entries were resolved 2026-06-12: `distillers-yeast`
+promoted to `high` (named yeast-house list corroborated by Daute,
+Jack & Walker 2024, *FEMS Yeast Research* foae017 — an open-access,
+SWRI-coauthored paper) and `shell-and-tube` promoted to `high`
+(copper/DMTS condenser mechanism corroborated by Harrison, Fagnen,
+Jack & Brosnan 2011, *J. Inst. Brew.* 117(1) — SWRI). All seven of
+the original production-chain glossary entries are now `high`.
+Update `docs/literature-scouting.md` after each future scouting pass.
 
 ### Russell 2nd -> 3rd edition citation migration
 
@@ -929,6 +958,40 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-12** Glenlivet — 16th distillery. 1 distillery +
+  1 production line + 3 bottlings + a NOTES.md. Minmore,
+  Ballindalloch, Speyside (Moray); Chivas Brothers / Pernod Ricard.
+  Founded 1824 by George Smith, the first licensed distiller in the
+  glen under the Excise Act 1823 — the other half of the
+  Glenfiddich-vs-Glenlivet best-seller pair and the light,
+  lantern-still Speyside contrast to Macallan's short-still sherry
+  weight. Records the 1881/1884 "Glenlivet" name legal case.
+  Bottlings: 12 Year Old (40%, American + European oak), 15 French
+  Oak Reserve (new French/Limousin oak), Nàdurra Oloroso
+  (cask-strength, NCF, natural-colour, first-fill oloroso). The
+  capacity / still-count source conflict is resolved in
+  `glenlivet.NOTES.md`: Wikipedia's 14-still / 10.5M-LPA figure is
+  the pre-2024 state; the 2024 bicentenary stillhouse doubled it to
+  28 stills / ~21M LPA (The Northern Scot, April 2024).
+  `distillery:glenlivet` removed from `scripts/expected_dangling.txt`
+  (now populated; the `direct-fired-still` forward ref resolves).
+  Counts: 15 → 16 distilleries, 20 → 21 production lines,
+  45 → 48 bottlings. NOT validated locally — no Python on the dev
+  box; relies on the CI strict gate (`validate.yml`).
+- **2026-06-12** Sourcing — last two production-chain glossary
+  entries promoted to `high`. `glossary/distillers-yeast`: the
+  named yeast-house list (MX/Kerry, Pinnacle/Mauri-AB Biotek,
+  DistilaMax/Lallemand) and the DCL "M"-strain origin (1952) are
+  corroborated by Daute, Jack & Walker 2024 (*FEMS Yeast Research*,
+  foae017) — an open-access, SWRI-coauthored paper, the
+  producer/SWRI cross-check the entry had lacked; the muddled
+  supplier prose was corrected to match the source. `glossary/
+  shell-and-tube`: the copper/DMTS condenser mechanism is
+  corroborated by Harrison, Fagnen, Jack & Brosnan 2011
+  (*J. Inst. Brew.* 117(1), 106-112) — an SWRI peer-reviewed paper.
+  All seven original medium-confidence production-chain glossary
+  entries are now `high`. Data-only change; no CHANGELOG entry per
+  the file's policy.
 - **2026-06-11** Astro 5 → 6 migration (closes the failing
   Dependabot astro-6.x PRs). Two real blockers, neither an Astro
   API break: (1) `lib/data.ts` and `lib/references.ts` resolved the

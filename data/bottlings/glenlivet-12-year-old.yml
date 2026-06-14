@@ -1,0 +1,134 @@
+# =============================================================================
+# The Glenlivet 12 Year Old
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The canonical core Glenlivet: the flagship light Speyside expression,
+# matured in American (ex-bourbon) and European (sherry) oak. The
+# comparison point for the 15 French Oak Reserve and the cask-strength
+# Nadurra. See glenlivet.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenlivet-12-year-old
+name: The Glenlivet 12 Year Old
+produced_at_distillery: glenlivet
+production_line: glenlivet
+bottled_by: glenlivet                      # Official distillery bottling.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false                        # The 12 Year Old was de-emphasised
+                                           # in some markets in favour of the
+                                           # NAS Founder's Reserve from 2015,
+                                           # then reinstated as a core listing
+                                           # from 2018 [1]. Recorded as a
+                                           # current core bottling.
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0                                  # 40% ABV, the standard core spec
+                                           # across most markets [1].
+age_statement: 12
+vintage: null
+cask_strength: false
+non_chill_filtered: null                    # Not stated in the surveyed
+                                            # sources; the 40% core bottling
+                                            # is conventionally chill-filtered,
+                                            # but this is not recorded as a
+                                            # positive claim.
+natural_colour: null                        # Not stated in the surveyed
+                                            # sources.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 12
+    cooperage: null
+    notes: |
+      American-oak ex-bourbon casks give the citrus, vanilla and
+      light-fruit backbone the bottling is positioned around [1].
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 12
+    cooperage: null
+    notes: |
+      A European-oak (traditional / ex-sherry) component is married
+      with the American-oak spirit, the producer describing the 12 as
+      a combination of American and European oak [1]. The European-oak
+      casks are modelled here as oloroso-seasoned sherry butts, the
+      project's species-agnostic European-oak sherry slug; the label
+      does not specify the seasoning.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Glenlivet 12 Year Old is the distillery's flagship core
+  expression and the archetype of the light, floral, fruity Speyside
+  style: twelve years' maturation in a combination of American-oak
+  ex-bourbon and European-oak (sherry) casks, bottled at 40% ABV [1].
+  It is the longest-running core Glenlivet and the reference point for
+  the rest of the range — the 15 Year Old French Oak Reserve adds a new
+  French-oak component, and the cask-strength Nadurra Oloroso shifts to
+  first-fill oloroso sherry. In several markets the 12 was de-emphasised
+  between 2015 and 2018 in favour of the no-age-statement Founder's
+  Reserve, then reinstated as a core listing [1].
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Glenlivet_distillery
+    accessed: 2026-06-12
+    notes: |
+      Wikipedia's article on The Glenlivet distillery. Used for the
+      12 Year Old's place in the core range, the American + European
+      oak maturation, the 40% ABV core spec, and the 2015-2018
+      Founder's Reserve repositioning. Migrate to producer-published
+      primaries when accessible (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-12
+contributors: []

@@ -1,0 +1,135 @@
+# =============================================================================
+# The Glenlivet (production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Sole production line at The Glenlivet distillery: one unpeated, light
+# Speyside make. The bottlings are maturation variants of the same spirit
+# rather than separate production regimes, so a single line covers them
+# (cf. Macallan). See glenlivet.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenlivet
+name: The Glenlivet
+distillery: glenlivet
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                        # The Glenlivet does not floor-malt
+                                           # on site; malt is bought in.
+  maltster: Crisp Malt (Portgordon)        # Wikipedia names Crisp Maltings,
+                                           # Portgordon as the malt source [1].
+                                           # Free text pending a supplier-entity
+                                           # link (cf. the bairds-malt pattern).
+  variety: null                            # Barley variety not specified in
+                                           # the surveyed sources.
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                         # Unpeated; no phenol measurement.
+  peat_origin: none                        # Unpeated malt, recorded as a
+                                           # positive design choice.
+  notes: |
+    The Glenlivet is an unpeated, light Speyside single malt. The
+    producer's detailed malt spec is not surveyed in the current
+    source set.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null                          # Not surveyed.
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                           # Conventional two-still double
+                                           # distillation on wash + spirit
+                                           # stills [1]. The tall, lantern-
+                                           # shaped stills with long necks
+                                           # give high reflux and a light,
+                                           # clean new make; exact cut points
+                                           # and new-make strength are not
+                                           # surveyed.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: null
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null            # Not surveyed.
+typical_cask_program:
+  - bourbon-barrel                          # American-oak ex-bourbon — the
+                                            # backbone of the core range
+                                            # (12 Year Old).
+  - oloroso-sherry-butt                     # European-oak sherry component
+                                            # (12 Year Old's European oak;
+                                            # Nadurra Oloroso).
+  - french-oak-cask                         # New French (Limousin) oak,
+                                            # selective — the 15 Year Old
+                                            # French Oak Reserve.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - glenlivet-12-year-old
+  - glenlivet-15-french-oak-reserve
+  - glenlivet-nadurra-oloroso
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sole production line at The Glenlivet distillery: one unpeated, light
+  Speyside single malt distilled on tall, lantern-shaped copper pot
+  stills with long necks, a geometry that promotes high reflux and a
+  clean, floral, fruity spirit [1]. The bottlings are maturation variants
+  of this single make rather than distinct production regimes. The core
+  range is American-oak (ex-bourbon) led, with a European-oak sherry
+  component in the 12 Year Old; the 15 Year Old French Oak Reserve adds
+  selective maturation in new French (Limousin) oak, and the cask-strength
+  Nadurra Oloroso is matured in first-fill oloroso sherry casks. Malt is
+  bought in from Crisp Maltings at Portgordon [1].
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Glenlivet_distillery
+    accessed: 2026-06-12
+    notes: |
+      Wikipedia's article on The Glenlivet distillery. Used for the
+      unpeated light house style, the lantern still shape and the
+      double-distillation regime, the bought-in malt source (Crisp
+      Maltings, Portgordon), and the core-range cask programme
+      (American oak; European oak; French oak in the 15 French Oak
+      Reserve). Migrate to producer-published primaries when
+      accessible (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-06-12
+contributors: []
