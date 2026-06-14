@@ -1,0 +1,120 @@
+# =============================================================================
+# Ardnamurchan (production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Sole production line at Ardnamurchan, which alternates peated and unpeated
+# campaigns; the core single malt is a ~50:50 vatting of the two. See
+# ardnamurchan.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardnamurchan
+name: Ardnamurchan
+distillery: ardnamurchan
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: null
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []                         # No single phenol spec applies:
+                                           # the distillery runs both peated
+                                           # and unpeated campaigns; the
+                                           # peated-campaign ppm is not firmly
+                                           # sourced.
+  peat_origin: null                        # Mixed peated/unpeated production
+                                           # (not an unpeated `none`, and no
+                                           # single peat origin is recorded).
+  notes: |
+    Ardnamurchan alternates peated and unpeated production campaigns on
+    the same stills. Its core single malt is bottled from a roughly
+    50:50 vatting of peated and unpeated spirit [2].
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: null
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                          # ~65% ex-bourbon in the core
+                                            # single malt [2].
+  - oloroso-sherry-butt                     # ~35% sherry [2].
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - ardnamurchan-single-malt
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sole production line at Ardnamurchan: a west-Highland make distilled on
+  one wash and one spirit still, run as alternating peated and unpeated
+  campaigns. The core single malt vats the two styles roughly 50:50 and is
+  matured in ~65% ex-bourbon and ~35% sherry casks, bottled non-chill-
+  filtered and naturally coloured at 46.8% ABV [2]. The distillery
+  publishes the full cask composition of each release.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Ardnamurchan_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Ardnamurchan, for the peated + unpeated dual
+      production and the double-distillation regime.
+  - id: 2
+    type: trade_publication
+    url: https://www.royalmilewhiskies.com/ardnamurchan-ad-single-malt-46-8-70cl/
+    accessed: 2026-06-14
+    notes: |
+      Specialist-retailer listing corroborating the core single malt's
+      composition: ~50:50 peated/unpeated spirit, ~65% ex-bourbon / ~35%
+      sherry casks, 46.8% ABV, non-chill-filtered, natural colour.
+      Retrieved via web search 2026-06-14; flagged for producer
+      confirmation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

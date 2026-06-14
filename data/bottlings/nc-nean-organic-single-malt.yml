@@ -1,0 +1,127 @@
+# =============================================================================
+# Nc'nean Organic Single Malt
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# Nc'nean's flagship: an organic, unpeated single malt led by STR red-wine
+# casks, NCF / natural colour at 46% ABV. The project's first organic
+# whisky and first wine-cask-led core malt. See nc-nean.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: nc-nean-organic-single-malt
+name: Nc'nean Organic Single Malt
+produced_at_distillery: nc-nean
+production_line: nc-nean
+bottled_by: nc-nean
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 46.0                                   # 46% ABV [2].
+age_statement: null                         # No age statement.
+vintage: null
+cask_strength: false
+non_chill_filtered: true                    # Non-chill-filtered [2].
+natural_colour: true                        # Natural colour [2].
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: wine-cask
+    fill_number: null
+    proportion: 0.55                        # ~55% STR (shaved, toasted,
+                                            # re-charred) red-wine casks [2].
+    duration_years: null
+    cooperage: null
+    notes: |
+      STR red-wine casks — the largest component. Modelled with the
+      generic wine-cask slug; the project has no STR-specific cask type
+      (see nc-nean.NOTES.md).
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: 0.43                        # ~43% ex-bourbon [2].
+    duration_years: null
+    cooperage: null
+    notes: null
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: 0.02                        # ~2% oloroso [2].
+    duration_years: null
+    cooperage: null
+    notes: null
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Nc'nean Organic Single Malt is the distillery's flagship: an unpeated,
+  certified-organic single malt matured in an unusually wine-cask-led
+  programme — roughly 55% STR (shaved, toasted, re-charred) red-wine casks,
+  43% ex-bourbon and 2% oloroso sherry — bottled non-chill-filtered at 46%
+  ABV [2]. It is the project's first organic whisky and its first
+  wine-cask-led core single malt.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Nc%27nean_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Nc'nean, for the Organic Single Malt as the
+      flagship.
+  - id: 2
+    type: trade_publication
+    url: https://ncnean.com/products/organic-single-malt
+    accessed: 2026-06-14
+    notes: |
+      Producer page / specialist listings corroborating the Organic
+      Single Malt: 46% ABV, non-chill-filtered, natural colour, organic,
+      and the disclosed cask split (~55% STR red wine / 43% bourbon /
+      2% oloroso). Retrieved via web search 2026-06-14 (producer pages
+      JS-rendered to automated fetch); flagged for confirmation.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

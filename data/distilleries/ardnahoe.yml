@@ -1,0 +1,168 @@
+# =============================================================================
+# Ardnahoe
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — Wikipedia + producer/trade references. Third
+# of the 2026-06-14 new-wave batch. Resolves the forward reference from
+# equipment/worm-tub. See ardnahoe.NOTES.md.
+# =============================================================================
+# 23rd distillery. The newest Islay entry: built by Hunter Laing (an
+# independent bottler) and opened in 2018 as the first new Islay distillery
+# in 15 years. Distinctive equipment: worm-tub condensers and unusually
+# long lye pipes. Peated (~40 ppm). Its first whisky, the 5-year-old
+# Inaugural Release, appeared in 2024.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: ardnahoe
+name: Ardnahoe
+also_known_as: []
+wikidata_qid: null
+website: https://ardnahoedistillery.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islay                             # North-east Islay, near Port
+sub_region: null                          # Askaig (close to Caol Ila and
+locality: Ardnahoe, near Port Askaig, Islay
+                                          # Bunnahabhain) [1].
+coordinates:
+  lat: null
+  lon: null
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 2018                             # Opened 2018 as the first new Islay
+                                          # distillery in 15 years (after
+                                          # Kilchoman, 2005) [1]; Wikipedia's
+                                          # infobox gives 2019. See
+                                          # ardnahoe.NOTES.md.
+first_spirit: 2019                        # The 2024 Inaugural Release was 5
+                                          # years old, implying a ~2019 first
+                                          # fill [1].
+mothballed_periods: []
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Hunter Laing & Co Ltd
+  parent: null
+  history:
+    - owner: Hunter Laing & Co Ltd
+      from: 2018
+      to: null
+      notes: |
+        Built and owned by Hunter Laing, an independent bottling company,
+        on a reported £12M investment — an independent bottler creating
+        its own Islay distillery [1].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Ardnahoe Loch               # Process water from Ardnahoe Loch
+                                          # [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null
+  material: null
+  capacity_kg: null
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: null
+
+stills:
+  wash_still:
+    count: 1
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: worm_tub                   # Worm-tub condensers, with unusually
+                                          # long lye pipes [1] — Ardnahoe is a
+                                          # populated practitioner, resolving
+                                          # the forward ref from
+                                          # equipment/worm-tub.
+  spirit_still:
+    count: 1
+    capacity_litres: null
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: worm_tub
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 900000               # ~900,000 LPA [1].
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - ardnahoe
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features:
+  - equipment/worm-tub                    # Worm-tub condensers — unusual for
+                                          # a brand-new distillery, chosen for
+                                          # a heavier, more sulphury spirit.
+  - glossary/reflux                       # The unusually long lye pipes raise
+                                          # copper contact and reflux.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Ardnahoe is the newest distillery on Islay, on the island's north-east
+  coast near Port Askaig, opened in 2018 by the independent bottler Hunter
+  Laing as the first new Islay distillery in fifteen years [1]. It produces
+  a peated Islay spirit (~40 ppm) on one wash and one spirit still, at
+  ~900,000 LPA, drawing process water from Ardnahoe Loch [1].
+
+  Its distinctive equipment choice is a deliberately traditional one: worm-
+  tub condensers paired with unusually long lye pipes [1]. Worm tubs give
+  less copper contact (a heavier, more sulphury spirit) while the long lye
+  pipes pull the other way through increased reflux — an unusual
+  combination for a brand-new distillery. Ardnahoe's first whisky, the
+  five-year-old Inaugural Release, was bottled in 2024.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Ardnahoe_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Ardnahoe distillery. Used for identity (near
+      Port Askaig, Islay), Hunter Laing ownership (£12M), opening as the
+      first new Islay distillery in 15 years, the worm-tub condensers and
+      long lye pipes, the single-still configuration, ~900,000 LPA
+      capacity, Ardnahoe Loch water, and the 2024 five-year-old Inaugural
+      Release. Founding date recorded as 2018 (opening); the infobox's
+      2019 and the ~2019 first-fill are noted in ardnahoe.NOTES.md.
+      Migrate to producer primaries when fetchable.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

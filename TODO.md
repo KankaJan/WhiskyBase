@@ -519,6 +519,26 @@ Follow-ups:
 - Confirm bottling specs (A'bunadh first-fill-oloroso / cask strength; 12 &
   16 Double Cask ABV and cask mix) against producer sources.
 
+### New-wave distilleries migrations (2026-06-14)
+
+Nc'nean (21st), Ardnamurchan (22nd) and Ardnahoe (23rd) are grounded on
+Wikipedia + specialist-retailer references (producer pages JS-rendered to
+automated fetch). Follow-ups:
+
+- Migrate each to producer primaries when fetchable; add coordinates (all
+  left null).
+- **Nc'nean:** confirm cask proportions and barley variety. If STR
+  red-wine maturation recurs across distilleries, consider an STR cask
+  slug / flag (currently modelled as generic `wine-cask`). Nc'nean is also
+  the driving example if a `certifications` / sustainability field is ever
+  wanted (organic, B Corp, net-zero are in prose only).
+- **Ardnamurchan:** confirm the peated-campaign ppm and cask proportions.
+  Candidate concept page `practice/cask-composition-transparency` (the "AD"
+  codes), alongside Bruichladdich's bottle-code transparency already queued.
+- **Ardnahoe:** confirm founding/first-spirit dates (2018 opening vs
+  Wikipedia 2019 vs ~2019 first fill) and the peat origin (Islay vs
+  mainland; `peat_origin: unknown`).
+
 ### Literature-resource scouting (user can supply digital copies)
 
 Catalogue moved to `docs/literature-scouting.md` — the standing
@@ -1031,6 +1051,20 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-14** New-wave batch — Nc'nean (21st), Ardnamurchan (22nd),
+  Ardnahoe (23rd). 3 distilleries + 3 production lines + 3 flagship
+  bottlings + 3 NOTES. New dimensions for the data set: **Nc'nean**
+  (Drimnin, Morvern, Highlands; 2017; organic / net-zero / B Corp; first
+  organic whisky and first wine-cask-led core malt — STR red wine modelled
+  as `wine-cask`); **Ardnamurchan** (Glenbeg, Highlands; 2014;
+  Adelphi-owned independent-bottler distillery; peated + unpeated on one
+  line, core ~50:50; "AD" cask-transparency); **Ardnahoe** (Islay, near
+  Port Askaig; 2018; Hunter Laing; worm-tub condensers + long lye pipes,
+  ~40 ppm — resolved the equipment/worm-tub forward ref and was removed
+  from expected_dangling.txt). All three are independent/owner-led or
+  IB-owned, contrasting the established majors. Counts: 20→23 distilleries,
+  25→28 production lines, 57→60 bottlings. Not validated locally (no
+  Python); relies on the CI strict gate.
 - **2026-06-14** Aberlour — 20th distillery. 1 distillery + 1 production
   line + 3 bottlings + NOTES. Charlestown of Aberlour, Speyside (Moray);
   Pernod Ricard / Chivas; founded 1879 by James Fleming. Fifth Speyside,
