@@ -136,7 +136,9 @@ mash_tun:
 
 washbacks:
   count: null
-  material: null
+  material: wood                          # Wooden washbacks per the
+                                          # Diffords Guide distillery
+                                          # profile [3].
   capacity_litres: null
   notes: |
     The 2010 Prince of Wales extension added eight washbacks
@@ -268,9 +270,10 @@ description: |
   new French-oak components.
 
   The Glenlivet is the biggest-selling single malt in the United States
-  and the second-biggest single malt globally, after Glenfiddich — the
-  two Speyside brands form the long-standing best-seller pair of the
-  category [1]. Production scale matches that standing: a 2010 extension
+  and among the top few best-selling single malts globally; sources
+  differ on the exact rank (second after Glenfiddich [1], or third [3]).
+  With Glenfiddich it forms the long-standing Speyside best-seller pair.
+  Production scale matches that standing: a 2010 extension
   took capacity to about 10.5 million LPA, and a new stillhouse opened in
   the 2024 bicentenary doubled it again to roughly 21 million litres a
   year across 28 stills [1][2].
@@ -315,9 +318,28 @@ sources:
       which the pre-2024 Wikipedia figures (source 1) are reconciled —
       see glenlivet.NOTES.md.
 
+  - id: 3
+    type: trade_publication
+    url: https://www.diffordsguide.com/producers/259/the-glenlivet-distillery
+    accessed: 2026-06-14
+    notes: |
+      Diffords Guide producer profile for The Glenlivet, added in the
+      2026-06-14 source-migration pass as an independent corroboration
+      of the Wikipedia-sourced identity/history claims (the producer and
+      scotchwhisky.com primaries remained unfetchable — 403 / JS-only).
+      Corroborates: founding 1824 by George Smith as the first licensed
+      distillery after the Excise Act; Pernod Ricard ownership; Josie's
+      Well as the production-water source ("still used"); unpeated malt;
+      tall, slim copper pot stills; wooden washbacks; and the 1884
+      "Glenlivet" trademark / hyphenation outcome. Source of the
+      wooden-washbacks datum. Two conflicts noted in glenlivet.NOTES.md:
+      Diffords gives the global sales rank as third (Wikipedia: second),
+      and places the distillery in Banffshire (historic county; Moray is
+      the modern council area).
+
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.2
 confidence: medium
-last_reviewed: 2026-06-12
+last_reviewed: 2026-06-14
 contributors: []

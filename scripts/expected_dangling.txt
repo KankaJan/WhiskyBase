@@ -29,4 +29,3 @@ distillery:old-pulteney
 distillery:rosebank
 distillery:royal-lochnagar
 distillery:speyburn
-distillery:talisker

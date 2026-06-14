@@ -1,0 +1,123 @@
+# =============================================================================
+# Talisker 10 Year Old
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The flagship Talisker and one of Diageo's Classic Malts: medium-peated
+# Skye single malt at the signature 45.8% ABV. The reference point for the
+# Distillers Edition and Storm. See talisker.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: talisker-10-year-old
+name: Talisker 10 Year Old
+produced_at_distillery: talisker
+production_line: talisker
+bottled_by: talisker                       # Official distillery bottling.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 45.8                                   # 45.8% ABV — Talisker 10's
+                                           # long-standing signature
+                                           # strength (shared by the
+                                           # Distillers Edition) [2].
+age_statement: 10
+vintage: null
+cask_strength: false
+non_chill_filtered: null                    # Not stated in the surveyed
+                                           # sources.
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 10
+    cooperage: null
+    notes: |
+      American-oak (refill / ex-bourbon) maturation is the backbone of
+      the core Talisker style [1][2]. The label states no oak-species
+      split; the project models the core maturation with the
+      ex-bourbon American-oak slug.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Talisker 10 Year Old is the distillery's flagship and one of Diageo's
+  six Classic Malts: a medium-peated (~18-22 ppm) Isle of Skye single malt
+  bottled at the signature 45.8% ABV [1][2]. It is the reference Talisker —
+  the expression that defines the peppery, smoky, maritime house style
+  produced on the worm-tub-condensed, purifier-equipped five-still set.
+  It is the comparison point for the Distillers Edition (an amoroso-sherry
+  finish) and Storm (a no-age-statement, more intense expression).
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Talisker_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Talisker distillery, for the 10 Year Old's
+      status as flagship and Classic Malt, the medium-peated house
+      style, and the American-oak core maturation.
+  - id: 2
+    type: trade_publication
+    url: https://www.thewhiskyexchange.com/b/40/talisker-single-malt-scotch-whisky
+    accessed: 2026-06-14
+    notes: |
+      Specialist-retailer listing (The Whisky Exchange) corroborating
+      Talisker 10's 45.8% ABV and ex-bourbon American-oak maturation.
+      The 45.8% strength is universally listed across specialist
+      retailers; this and the producer pages return HTTP 403 / are
+      JS-rendered to automated fetch (retrieved via web search
+      2026-06-14), so the spec is flagged for producer confirmation
+      (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

@@ -1,0 +1,144 @@
+# =============================================================================
+# Talisker (production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Sole production line at Talisker: one medium-peated, maritime Skye make.
+# The bottlings are maturation/strength variants of the same spirit, so a
+# single line covers them (cf. Macallan, Glenlivet). See talisker.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: talisker
+name: Talisker
+distillery: talisker
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in                        # No on-island floor malting;
+                                           # malt is bought in from a Diageo
+                                           # mainland maltings.
+  maltster: null                           # Commonly cited as Diageo's Glen
+                                           # Ord maltings, but not confirmed
+                                           # in the surveyed sources.
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements:
+    - stage: spec
+      value: [18, 22]
+      unit: ppm
+      method: unspecified
+      compounds: unspecified
+      source_id: 1
+      notes: |
+        Talisker's malt phenol specification is roughly 18-22 ppm [1] —
+        medium peating, between the lightly-peated and the heavily-
+        peated south-Islay range. The surveyed source gives the range
+        without stating an analytical method, so method and compounds
+        are recorded as unspecified.
+  peat_origin: mainland_scotland           # Talisker's malt is produced at a
+                                           # Diageo mainland maltings (Glen
+                                           # Ord is the commonly-cited site),
+                                           # so the peat is mainland Scottish
+                                           # rather than Skye/island peat.
+  notes: |
+    Medium-peated Skye single malt. The malt is bought in and kilned
+    on the mainland; Talisker does not malt on site.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                           # Two wash + three spirit stills
+                                           # (an asymmetric 2:3 set) [1].
+                                           # The wash-still lye pipes run in
+                                           # U-shaped purifier loops that
+                                           # raise reflux, and all five
+                                           # stills condense through worm
+                                           # tubs; exact cut points and
+                                           # new-make strength are not
+                                           # surveyed.
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: null
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                          # American-oak (refill and
+                                            # ex-bourbon) is the backbone of
+                                            # the core range.
+  - oloroso-sherry-butt                     # Sherry-seasoned European oak
+                                            # for sherried expressions; the
+                                            # Distillers Edition's amoroso
+                                            # (sweetened oloroso) finish is
+                                            # modelled with this slug.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - talisker-10-year-old
+  - talisker-distillers-edition
+  - talisker-storm
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sole production line at Talisker: one medium-peated (~18-22 ppm),
+  maritime Skye single malt distilled on an asymmetric five-still set
+  (two wash, three spirit) with U-shaped lye-pipe purifier loops and
+  worm-tub condensers [1]. The bottlings are maturation and strength
+  variants of this single make. The core range is American-oak
+  (ex-bourbon / refill) led — the 10 Year Old is the flagship — with a
+  sherry route in the Distillers Edition (an amoroso-sherry finish) and a
+  no-age-statement, more intense expression in Storm.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Talisker_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Talisker distillery. Used for the
+      medium-peated house style and ~18-22 ppm spec, the five-still
+      double-distillation configuration with U-shaped purifiers and
+      worm tubs, the bought-in malt, and the core-range cask programme.
+      Migrate to producer-published primaries when accessible (see
+      TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

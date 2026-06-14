@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 16 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 17 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -440,8 +440,19 @@ back rather than absorbing it into the data model.
   unhyphenated user; a 2024 bicentenary stillhouse doubled capacity
   to ~21M LPA across 28 stills; **two directly-fetched sources**
   (Wikipedia + a 2024 trade-press report) with the capacity / still-
-  count conflict resolved in `glenlivet.NOTES.md`).
-- 21 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  count conflict resolved in `glenlivet.NOTES.md`),
+  Talisker (medium — Carbost, Isle of Skye; Diageo, one of the six
+  Classic Malts; the project's first Skye entry and third populated
+  Classic Malt after Lagavulin and Glenkinchie; founded 1830 by the
+  MacAskill brothers; **medium-peated (~18-22 ppm) peppery maritime
+  house style**; distinctive equipment — an asymmetric five-still set
+  (2 wash + 3 spirit) with U-shaped lye-pipe purifier loops and
+  **worm-tub condensers on all five stills**, resolving the
+  equipment/worm-tub forward ref; ~3.5M LPA; bottlings 10 Year Old
+  (45.8% flagship), Distillers Edition (amoroso finish) and Storm (NAS);
+  Wikipedia-primary with bottling specs from specialist-retailer
+  listings, see talisker.NOTES.md).
+- 22 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -488,7 +499,11 @@ back rather than absorbing it into the data model.
   ex-bourbon-led core, with a European-oak sherry component in the
   12 Year Old, selective new French/Limousin oak in the 15 French
   Oak Reserve, and first-fill oloroso at cask strength in the
-  Nàdurra Oloroso; malt bought in from Crisp at Portgordon).
+  Nàdurra Oloroso; malt bought in from Crisp at Portgordon),
+  1 Talisker (medium — medium-peated Skye default ~18-22 ppm; the
+  asymmetric five-still set with U-shaped purifiers and worm tubs;
+  American-oak-led core with an amoroso-sherry route in the Distillers
+  Edition; malt bought in from a mainland Diageo maltings).
 - 85 concept pages: 3 methodology, 17 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
@@ -526,14 +541,15 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 48 bottlings: 48 working entries (10 Bruichladdich/Harris + 3
+- 51 bottlings: 51 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
   2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
   2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 3 Ardbeg +
-  3 Macallan + 3 Glenlivet + 2 worked-example
+  3 Macallan + 3 Glenlivet + 3 Talisker + 2 worked-example
   IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
   Glenlivet bottlings (12 Year Old, 15 French Oak Reserve, Nàdurra
-  Oloroso) added 2026-06-12.
+  Oloroso) added 2026-06-12; Talisker bottlings (10 Year Old,
+  Distillers Edition, Storm) added 2026-06-14.
   Macallan bottlings (Sherry Oak 12, Double Cask 12, Triple Cask
   Matured 15) were migrated from a pre-v0.2 flat field shape to the
   v0.2 schema on 2026-06-11; see CHANGELOG [0.8.4].
@@ -689,17 +705,18 @@ CHANGELOG [0.8.3].
 
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 17th distillery.** Glenlivet landed
-   2026-06-12 as the 16th — the other half of the Glenfiddich-vs-
-   Glenlivet best-seller pair, and the light, lantern-still Speyside
-   contrast to Macallan's short-still sherry weight. The next gaps:
-   **Aberlour** for a second sherry-led Speyside; **Cardhu** as a
-   Diageo Speyside (Johnnie Walker component); **Talisker** as a
-   third Diageo Classic Malt and the project's first Skye entry.
-   Like Macallan, the Glenlivet entry leans on Wikipedia (plus a
-   2024 trade-press source for the current 28-still / ~21M-LPA
-   figure) — see Research Requests in TODO.md for the producer /
-   Whiskypedia migrations and the post-2024 plant-spec confirmation.
+1. **Data-layer growth — 18th distillery.** Talisker landed 2026-06-14
+   as the 17th (first Skye entry, third Diageo Classic Malt, worm-tub
+   condensing), after Glenlivet as the 16th. The next gaps: **Aberlour**
+   for a second sherry-led Speyside; **Cardhu** as a Diageo Speyside
+   (Johnnie Walker component); a mainland-Highland or grain distillery to
+   broaden the regional spread. New distillery entries lean on Wikipedia
+   at population; the Glenlivet entry had a partial source-migration
+   2026-06-14 (Diffords Guide added as independent corroboration; the
+   producer and scotchwhisky.com primaries remain unfetchable). See
+   TODO.md Research Requests for the outstanding producer-primary
+   migrations (Glenlivet, Macallan, Talisker) and post-2024 plant-spec
+   confirmations.
 2. **Residual sourcing follow-ups — glossary confidence blockers
    RESOLVED (2026-06-12).** The two remaining medium-confidence
    glossary entries were promoted to `high`: `distillers-yeast`

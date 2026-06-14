@@ -1,0 +1,147 @@
+# =============================================================================
+# Talisker Distillers Edition
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The amoroso-sherry-finished Talisker — the distillery's entry in Diageo's
+# cross-distillery Distillers Edition series (cf. Lagavulin, Caol Ila,
+# Glenkinchie). Double-matured: the Classic Malt finished in ex-amoroso
+# casks. See talisker.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: talisker-distillers-edition
+name: Talisker Distillers Edition
+produced_at_distillery: talisker
+production_line: talisker
+bottled_by: talisker                       # Official distillery bottling.
+bottler_type: distillery
+bottler_series: null                       # Diageo's cross-distillery
+                                           # Distillers Edition series is not
+                                           # modelled as a bottler_series in
+                                           # the project (same treatment as
+                                           # the Lagavulin / Caol Ila DEs).
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                         # Released annually as vintage-
+                                           # dated batches (distillation year
+                                           # / bottling year on the label).
+discontinued: false
+availability: core                         # Continuously available as an
+                                           # annual series release.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 45.8                                   # 45.8% ABV, matching the 10 Year
+                                           # Old's signature strength [2].
+age_statement: null                         # No age statement; the series
+                                           # double-matures the ~10-year-old
+                                           # Classic Malt without carrying an
+                                           # age on the label.
+vintage: null
+cask_strength: false
+non_chill_filtered: null
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null                              # Vintage-dated per release rather
+                                            # than a single batch number.
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null                    # Primary maturation (~10 years)
+    cooperage: null                         # in American oak per the core
+    notes: |                                # Talisker programme, before the
+      Primary maturation in ex-bourbon American oak, as for the
+      Talisker 10 Year Old, before the amoroso-cask finish [2].
+
+
+# --- Finish -----------------------------------------------------------------
+finish:
+  cask_type: oloroso-sherry-butt            # Finished in ex-amoroso sherry
+                                            # casks. Amoroso is a sweetened
+                                            # oloroso style; the project
+                                            # models it with the
+                                            # oloroso-sherry-butt slug (no
+                                            # separate amoroso slug).
+  duration_months: 6                        # "Double matured" for up to ~6
+                                            # months in ex-amoroso casks [2].
+  duration_years: null
+  cooperage: null
+  notes: |
+    The Distillers Edition finishes the Classic Malt in casks that
+    previously held amoroso (sweetened oloroso) sherry, adding a
+    sweeter, dried-fruit layer over the maritime smoke [2].
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Talisker Distillers Edition is the distillery's entry in Diageo's
+  cross-distillery Distillers Edition series — the same annual,
+  vintage-dated, double-matured format used for Lagavulin, Caol Ila and
+  Glenkinchie. The Talisker Classic Malt (ex-bourbon American oak, ~10
+  years) is given a finishing period of around six months in ex-amoroso
+  sherry casks, which adds a sweeter, dried-fruit layer over the peppery
+  maritime smoke [2]. Bottled at 45.8% ABV with no age statement.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Talisker_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Talisker distillery, which lists the
+      Distillers Edition in the core range.
+  - id: 2
+    type: trade_publication
+    url: https://www.masterofmalt.com/whiskies/talisker/talisker-2007-bottled-2017-amoroso-cask-finish-distillers-edition-whisky/
+    accessed: 2026-06-14
+    notes: |
+      Specialist-retailer listing (Master of Malt) corroborating the
+      Distillers Edition specifications: 45.8% ABV, ~6-month finish in
+      ex-amoroso (sweetened oloroso) sherry casks, double-matured from
+      the ~10-year-old Classic Malt, no age statement. Consistent
+      across Master of Malt, Comptoir Irlandais and other listings
+      found by web search 2026-06-14; the pages return HTTP 403 to
+      automated fetch and the producer page is JS-rendered, so the
+      specs are flagged for producer confirmation (see TODO.md
+      Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

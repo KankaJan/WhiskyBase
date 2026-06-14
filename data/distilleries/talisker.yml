@@ -1,0 +1,259 @@
+# =============================================================================
+# Talisker
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — founding, ownership lineage, location, the
+# five-still configuration, worm-tub condensing, peating spec and house
+# style are grounded against the Wikipedia article and its trade
+# bibliography. Wikipedia is the only directly-fetched source; the
+# producer's malts.com / talisker.com pages are JS-rendered and did not
+# return content at fetch time. Migrate to producer primaries when
+# accessible — see TODO.md Research Requests and talisker.NOTES.md.
+# =============================================================================
+# Seventeenth populated distillery. The project's first Isle of Skye
+# entry, and the third populated Diageo Classic Malt (after Lagavulin and
+# Glenkinchie). Distinctive equipment: five stills (two wash, three
+# spirit) with U-shaped lye-pipe purifier loops and worm-tub condensers —
+# a combination that, with the medium peating, gives the peppery, smoky,
+# maritime house style. Resolves the forward reference from
+# equipment/worm-tub.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: talisker
+name: Talisker
+also_known_as: []
+wikidata_qid: null
+website: https://www.talisker.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Islands                            # Informal trade designation.
+                                          # Under the Scotch Whisky
+                                          # Regulations 2009 Skye falls in
+                                          # the Highland region; "Islands"
+                                          # is the customary trade grouping
+                                          # (cf. Highland Park, Harris).
+sub_region: Isle of Skye
+locality: Carbost, Isle of Skye
+                                          # On the shore of Loch Harport,
+                                          # Minginish peninsula [1].
+coordinates:
+  lat: 57.3017                            # Published coordinates (Carbost)
+  lon: -6.3537                            # rounded to four places;
+                                          # approximate — migrate to a
+                                          # producer / OS source.
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1830                             # Founded by the brothers Hugh and
+                                          # Kenneth MacAskill [1]. The
+                                          # oldest distillery on Skye and,
+                                          # for most of its history, the
+                                          # only one (Torabhaig opened on
+                                          # Skye in 2017).
+first_spirit: 1830
+mothballed_periods: []                    # No major modern mothballing in
+                                          # the surveyed sources. A 1960
+                                          # stillhouse fire destroyed the
+                                          # stills, which were rebuilt to
+                                          # the original design (see
+                                          # equipment_changes).
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Diageo plc
+  parent: Diageo plc                      # Talisker is wholly owned by
+                                          # Diageo via its Scotch malts
+                                          # portfolio, and is one of the
+                                          # original six Classic Malts [1].
+  history:
+    - owner: Hugh and Kenneth MacAskill
+      from: 1830
+      to: 1879
+      notes: |
+        The MacAskill brothers founded and ran the distillery from
+        1830 [1].
+    - owner: R. Kemp & Co. and successors
+      from: 1879
+      to: 1925
+      notes: |
+        Purchased by R. Kemp & Co. in 1879 [1]. (Roderick Kemp later
+        left to buy Macallan in 1892.) The distillery passed through
+        several owners in this period before the Distillers Company
+        acquired it in 1925.
+    - owner: Distillers Company Ltd (later United Distillers, then Diageo)
+      from: 1925
+      to: null
+      notes: |
+        Acquired by the Distillers Company Ltd (DCL) in 1925 [1]; DCL
+        was restructured into United Distillers in 1987 and merged
+        into Diageo plc in 1998 [1]. Talisker has remained in that
+        corporate lineage since 1925.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: Cnoc nan Speireag           # The springs of Cnoc nan
+                                          # Speireag (Hawk Hill) supply the
+                                          # distillery's process water [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null                              # Not separately confirmed in the
+  material: null                          # surveyed sources.
+  capacity_kg: null
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: |
+    Washback count, material and capacity not separately confirmed in
+    the surveyed sources. To be tightened against a producer spec or
+    the latest Malt Whisky Yearbook.
+
+stills:
+  wash_still:
+    count: 2                              # An unusual five-still set: two
+                                          # wash + three spirit [1]. The
+                                          # asymmetric 2:3 ratio (more
+                                          # spirit than wash stills) is a
+                                          # Talisker characteristic.
+    capacity_litres: 10000                # 10,000 L wash stills [1].
+    charge_litres: null
+    shape: null                           # The wash-still lye pipes run in
+                                          # a distinctive U-shape (a
+                                          # purifier loop) that returns
+                                          # heavier vapour for extra reflux
+                                          # — recorded in the description;
+                                          # the schema `shape` enum is not
+                                          # used.
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: worm_tub                   # All five stills condense through
+                                          # worm tubs rather than modern
+                                          # shell-and-tube condensers [1]
+                                          # (see equipment/worm-tub) — the
+                                          # heavier, more sulphury route,
+                                          # here combined with the purifier
+                                          # loops.
+  spirit_still:
+    count: 3                              # Three spirit stills [1].
+    capacity_litres: 7479                 # 7,479 L spirit stills [1].
+    charge_litres: null
+    shape: null                           # U-shaped lye-pipe purifier loops
+                                          # — see description.
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: worm_tub
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 3500000              # ~3.5 million LPA [1]. Mid-sized
+                                          # by Diageo malt-distillery
+                                          # standards; far smaller than the
+                                          # Speyside giants (Glenfiddich,
+                                          # Glenlivet ~21M).
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1960
+    change: |
+      A stillhouse fire destroyed the stills; they were rebuilt to
+      the original design, preserving the U-shaped lye-pipe purifier
+      geometry and worm-tub condensing that define the spirit
+      character [1].
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - talisker
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []                 # Talisker malt is a component of
+                                          # Diageo blends (notably Johnnie
+                                          # Walker), but blends are not
+                                          # modelled as a project entity
+                                          # type, so this list is empty by
+                                          # convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features:
+  - equipment/worm-tub                    # All five stills condense through
+                                          # worm tubs — Talisker is a
+                                          # populated practitioner, resolving
+                                          # the forward ref from that page.
+  - glossary/reflux                       # The U-shaped lye-pipe purifier
+                                          # loops increase reflux, the same
+                                          # device-class as Ardbeg's
+                                          # spirit-still purifier.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Talisker is a single-malt distillery at Carbost on the Isle of Skye,
+  founded in 1830 by the brothers Hugh and Kenneth MacAskill [1]. It is
+  the oldest distillery on Skye and, for most of its history, the only one
+  (Torabhaig opened on the island in 2017). Talisker is one of Diageo's
+  six Classic Malts and has been in the Distillers Company / United
+  Distillers / Diageo corporate lineage since 1925 [1].
+
+  The spirit is medium-peated — a malt phenol specification of roughly
+  18-22 ppm [1] — giving a smoky character without the heavy phenolic
+  weight of the south-Islay distilleries. The house style is usually
+  described as peppery, smoky and maritime.
+
+  Two pieces of equipment shape that character. First, the still set is
+  asymmetric: two wash stills and three spirit stills, an unusual 2:3
+  ratio. The wash-still lye pipes run in a pronounced U-shape — a purifier
+  loop that condenses heavier vapour and returns it to the still for
+  re-distillation, raising reflux. Second, all five stills condense
+  through worm tubs rather than modern shell-and-tube condensers [1] (see
+  equipment/worm-tub). Worm tubs give less copper contact and a heavier,
+  more sulphury spirit; the purifier loops pull in the opposite direction.
+  The combination is the distillery's signature.
+
+  Production runs at about 3.5 million LPA [1]. The current stills are
+  rebuilds: a 1960 stillhouse fire destroyed the originals, which were
+  reconstructed to the same design to preserve the spirit character [1].
+  Talisker malt also goes into Diageo blends, Johnnie Walker among them.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Talisker_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Talisker distillery. Starting point for
+      site identity (Carbost, Isle of Skye), founding (Hugh and
+      Kenneth MacAskill, 1830), ownership lineage (R. Kemp & Co. 1879;
+      Distillers Company 1925; United Distillers 1987; Diageo 1998),
+      water source (Cnoc nan Speireag), the five-still configuration
+      (2 wash @ 10,000 L + 3 spirit @ 7,479 L) with U-shaped lye-pipe
+      purifiers and worm-tub condensers, the ~18-22 ppm peating spec,
+      ~3.5M LPA capacity, Classic Malts membership, the 1960
+      stillhouse fire and rebuild, the peppery/smoky/maritime house
+      style, and the core bottling range. Per the project's
+      Wikipedia-volatility policy this is a starting point to be
+      migrated to producer primaries (malts.com / talisker.com), which
+      did not return content at fetch time (JS-rendered).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

@@ -107,3 +107,35 @@ confirmation. This is the weakest-sourced of the three bottlings.
   against a producer spec or the latest Malt Whisky Yearbook.
 - Confirm the Nàdurra Oloroso and 15 French Oak Reserve specifications
   against producer-published sources.
+
+## 8. Source-migration pass (2026-06-14)
+
+Re-attempted the migration of the Wikipedia-sourced claims to producer /
+scotchwhisky.com primaries. Outcome:
+
+- **Still blocked:** theglenlivet.com (JS-rendered, no content to automated
+  fetch), scotchwhisky.com Whiskypedia (HTTP 403), and the Wayback Machine
+  (web.archive.org is not fetchable from this environment). The producer-
+  primary migration remains pending.
+- **Partial migration achieved:** added **Diffords Guide** (source 3,
+  `trade_publication`) as an independent corroboration of the core
+  identity/history claims — founding (1824, George Smith, first licence
+  after the Excise Act), Pernod Ricard ownership, **Josie's Well** as the
+  production-water source, unpeated malt, tall slim stills, and the **1884**
+  "Glenlivet" trademark. This reduces the entry's sole-Wikipedia dependence
+  on those claims.
+- **New datum:** Diffords states **wooden washbacks** — recorded
+  (`washbacks.material: wood`).
+- **Conflict surfaced — global sales rank.** Wikipedia: second-biggest
+  single malt globally (after Glenfiddich). Diffords: third. Both agree
+  Glenlivet is the biggest single malt in the US. The ranking genuinely
+  varies by year and measure (Glenfiddich, Glenlivet, Macallan, Singleton
+  trade places); the description was softened to "second or third" with
+  both sources cited rather than asserting one rank.
+- **Conflict surfaced — county.** Diffords places the distillery in
+  **Banffshire** (the historic county); the entry records **Moray** (the
+  modern council area). Both are correct at different administrative layers;
+  no change to the entry.
+- **Confidence held at `medium`.** Diffords is a mid-tier trade guide, and
+  the still count / capacity still rest on one trade source (Northern Scot)
+  plus Wikipedia. The sourcing is stronger but not yet primary-grounded.
