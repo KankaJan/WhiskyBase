@@ -22,7 +22,6 @@ distillery:craigellachie
 distillery:dalwhinnie
 distillery:edradour
 distillery:glen-elgin
-distillery:glenlivet
 distillery:knockdhu
 distillery:mortlach
 distillery:oban

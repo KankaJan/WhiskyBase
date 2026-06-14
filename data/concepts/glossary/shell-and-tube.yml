@@ -24,7 +24,7 @@ summary: |
   arrangement (see equipment/worm-tub), shell-and-tube condensers
   typically produce a lighter, more sulphur-stripped new make
   because vapour-copper contact during condensation is more
-  extensive [1]. Most Scotch distilleries built or refurbished
+  extensive [1][2]. Most Scotch distilleries built or refurbished
   after the 1960s use shell-and-tube; worm tubs survive at a small
   number of distilleries where the heavier character they produce
   is part of the house style. For mechanism detail see
@@ -74,10 +74,35 @@ sources:
       (NB: rummager-induced rejuvenation of copper p 196 in
       the Murray Ch 10 grain-distillation chapter for the
       column-still parallel).
+  - id: 2
+    type: peer_reviewed_paper
+    citation: |
+      Harrison, B., Fagnen, O., Jack, F. & Brosnan, J., "The Impact
+      of Copper in Different Parts of Malt Whisky Pot Stills on New
+      Make Spirit Composition and Aroma", Journal of the Institute
+      of Brewing, vol. 117, no. 1, 2011, pp 106-112.
+      DOI: 10.1002/j.2050-0416.2011.tb00450.x.
+    accessed: 2026-06-12
+    notes: |
+      Peer-reviewed study from the Scotch Whisky Research Institute
+      (Jack and Brosnan are SWRI). Corroborates the load-bearing
+      mechanism behind the worm-tub / shell-and-tube character
+      difference: in copper pot stills "the copper acts to reduce
+      sulphury aromas in the resultant spirit by reducing the levels
+      of sulphur compounds such as dimethyl trisulphide (DMTS)", and
+      this effect is "more effective in this role in some parts of the
+      pot stills than others". The condenser is a principal site of
+      vapour-copper contact, so the high-surface-area shell-and-tube
+      condenser strips more sulphur than a worm tub. Scope note: the
+      paper studies copper placement within pot-still systems, not a
+      direct worm-tub-versus-shell-and-tube head-to-head; the
+      condenser-type contrast itself rests on source 1 (Nicol).
+      Together the two are the basis for promoting the entry from
+      medium to high (2026-06-12).
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
-confidence: medium
-last_reviewed: 2026-05-16
+confidence: high
+last_reviewed: 2026-06-12
 contributors: []

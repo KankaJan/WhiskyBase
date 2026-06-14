@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 15 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 16 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -427,8 +427,21 @@ back rather than absorbing it into the data model.
   directly-fetched source** in the entry, the producer's own
   pages and scotchwhisky.com Whiskypedia did not return content
   at fetch time and are queued for migration in
-  `TODO.md` Research Requests).
-- 20 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  `TODO.md` Research Requests),
+  Glenlivet (medium — Minmore, Ballindalloch, Speyside (Moray),
+  Chivas Brothers / Pernod Ricard; founded 1824 by George Smith,
+  the first licensed distiller in the glen under the Excise Act
+  1823; fourth populated Speyside entry and the other half of the
+  Glenfiddich-vs-Glenlivet best-seller pair (biggest single malt in
+  the US, second globally after Glenfiddich); **light, floral,
+  fruity house style on tall lantern-shaped stills**, the deliberate
+  contrast to Macallan's short-still sherry weight; the 1881/1884
+  "Glenlivet" name legal case secured "The Glenlivet" as the sole
+  unhyphenated user; a 2024 bicentenary stillhouse doubled capacity
+  to ~21M LPA across 28 stills; **two directly-fetched sources**
+  (Wikipedia + a 2024 trade-press report) with the capacity / still-
+  count conflict resolved in `glenlivet.NOTES.md`).
+- 21 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -469,7 +482,13 @@ back rather than absorbing it into the data model.
   Fine Oak / 2018 Triple Cask Matured range as the only
   ex-bourbon component in the core Macallan range; the
   producer-stated "curiously small" spirit stills at 3,900 L
-  charge volume).
+  charge volume),
+  1 Glenlivet (medium — unpeated, light Speyside default on tall
+  lantern-shaped stills with long necks (high reflux); American-oak
+  ex-bourbon-led core, with a European-oak sherry component in the
+  12 Year Old, selective new French/Limousin oak in the 15 French
+  Oak Reserve, and first-fill oloroso at cask strength in the
+  Nàdurra Oloroso; malt bought in from Crisp at Portgordon).
 - 85 concept pages: 3 methodology, 17 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
@@ -507,12 +526,14 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 45 bottlings: 45 working entries (10 Bruichladdich/Harris + 3
+- 48 bottlings: 48 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
   2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
   2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 3 Ardbeg +
-  3 Macallan + 2 worked-example
+  3 Macallan + 3 Glenlivet + 2 worked-example
   IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
+  Glenlivet bottlings (12 Year Old, 15 French Oak Reserve, Nàdurra
+  Oloroso) added 2026-06-12.
   Macallan bottlings (Sherry Oak 12, Double Cask 12, Triple Cask
   Matured 15) were migrated from a pre-v0.2 flat field shape to the
   v0.2 schema on 2026-06-11; see CHANGELOG [0.8.4].
@@ -668,33 +689,41 @@ CHANGELOG [0.8.3].
 
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 16th distillery.** Macallan landed
-   2026-05-26 as the 15th, exercising the sherry-cask chain at
-   the project's first charity-controlled-spirits-group scale.
-   The obvious next gap is **Glenlivet** for raw market scale —
-   the other half of the Glenfiddich-vs-Glenlivet best-seller
-   pair, and the most-quoted single-malt brand still
-   under-represented in this knowledge base. Alternatives:
+1. **Data-layer growth — 17th distillery.** Glenlivet landed
+   2026-06-12 as the 16th — the other half of the Glenfiddich-vs-
+   Glenlivet best-seller pair, and the light, lantern-still Speyside
+   contrast to Macallan's short-still sherry weight. The next gaps:
    **Aberlour** for a second sherry-led Speyside; **Cardhu** as a
    Diageo Speyside (Johnnie Walker component); **Talisker** as a
    third Diageo Classic Malt and the project's first Skye entry.
-   The Macallan entry leans heavily on Wikipedia — see Research
-   Requests in TODO.md for the producer / Whiskypedia migrations.
-2. **Residual sourcing follow-ups.** The second-academic-source
-   blocker is RESOLVED — Miller, *Whisky Science* 2nd ed. (2024)
-   was acquired 2026-05-20 and used to promote five of the seven
-   medium-confidence glossary entries to `high` (see Completed,
-   below). Two remain `medium`: `distillers-yeast` (its named
-   yeast-house list is uncorroborated — needs a producer / SWRI
-   cross-check) and `shell-and-tube` (Miller does not treat
-   condenser types — needs a condenser-specific source).
+   Like Macallan, the Glenlivet entry leans on Wikipedia (plus a
+   2024 trade-press source for the current 28-still / ~21M-LPA
+   figure) — see Research Requests in TODO.md for the producer /
+   Whiskypedia migrations and the post-2024 plant-spec confirmation.
+2. **Residual sourcing follow-ups — glossary confidence blockers
+   RESOLVED (2026-06-12).** The two remaining medium-confidence
+   glossary entries were promoted to `high`: `distillers-yeast`
+   (the named yeast-house list — MX/Kerry, Pinnacle/Mauri-AB Biotek,
+   DistilaMax/Lallemand, and the DCL "M"-strain origin — is now
+   corroborated by Daute, Jack & Walker 2024, *FEMS Yeast Research*,
+   an SWRI-coauthored open-access paper) and `shell-and-tube` (the
+   copper/DMTS condenser mechanism is now corroborated by Harrison
+   et al. 2011, *J. Inst. Brew.*, an SWRI peer-reviewed paper). All
+   seven of the original medium-confidence production-chain glossary
+   entries are now `high`. Remaining sourcing work is currency-level:
+   the Russell 2nd→3rd edition citation migration (16 entries) and
+   the per-entry Wikipedia→primary migrations in TODO.md Research
+   Requests.
 3. **Audit follow-ups (2026-06-11) are landed; watch the new gate.**
    The empty-YAML stub tombstones are gone, the Macallan files are
    migrated to schema, and `scripts/check_references.py --strict` is
    now wired into the pre-commit hook (gate 2) alongside the
    hard-corruption scanner. Genuine forward references must be added
    to `scripts/expected_dangling.txt` or they will fail the strict
-   gate. See `docs/audit-2026-06-11.md` and CHANGELOG [0.8.4].
+   gate; conversely, when a forward-referenced entity is populated its
+   allowlist line must be removed (done 2026-06-12: `distillery:glenlivet`
+   removed when Glenlivet landed). See `docs/audit-2026-06-11.md` and
+   CHANGELOG [0.8.4].
 
 **Completed since the last handover revision:**
 

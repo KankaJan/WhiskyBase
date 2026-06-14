@@ -25,13 +25,16 @@ summary: |
   brewing wort), and a tendency to produce ester profiles
   appropriate to spirit (rather than the more emphasised hop-
   derived aroma profiles selected for in brewing strains) [1][2].
-  Two yeast houses dominate Scotch supply: Mauri Yeast (now part
-  of AB Mauri) and Kerry Group's distilling yeast division
-  (formerly Anchor / Lallemand), with Saf-Instant and other
-  smaller suppliers serving niche segments. Distillery disclosure
-  of specific yeast strains is uneven; most production_line
-  entries currently record yeast: distillers (generic claim) or
-  yeast: null (undisclosed).
+  The principal commercial distilling strains declared as Scotch-
+  industry standards are the M-type and MX (Kerry Bio-Science),
+  Pinnacle (Mauri / AB Biotek) and DistilaMax (Lallemand) [3].
+  The M-type (an interspecies hybrid of Saccharomyces cerevisiae
+  and S. cerevisiae var. diastaticus) was introduced by DCL Yeast
+  Ltd in 1952 and remains an industry standard; DCL Yeast is now
+  part of Kerry Bio-Science [3]. Distillery disclosure of specific
+  yeast strains is uneven; most production_line entries currently
+  record yeast: distillers (generic claim) or yeast: null
+  (undisclosed).
 
 
 body: null
@@ -69,11 +72,9 @@ sources:
       yeast-and-nitrogen metabolism p 134; distiller's yeast
       and oxygen p 136; commercial cultivation of distiller's
       yeast p 137; pitching rate p 138; fermentation congeners
-      p 139; wort fermentation p 141. The named-supplier list
-      (Mauri / Kerry / Lallemand / Saf-Instant) is project-
-      project specific rather than directly Russell-attributed
-      and warrants cross-checking against producer disclosure
-      and SWRI literature.
+      p 139; wort fermentation p 141. The named-supplier list is
+      not directly Russell-attributed; it is corroborated by
+      Daute, Jack & Walker 2024 (source 3).
   - id: 2
     type: book
     citation: |
@@ -90,15 +91,38 @@ sources:
       ... high-attenuating fast-fermenting". Corroborates the
       distilling-versus-brewing distinction - distiller's wort retains
       residual amylase activity from malting whereas a brewer's boiled
-      wort does not. Miller does NOT corroborate the named yeast-house
-      list (Mauri / Kerry / Lallemand / Saf-Instant); it names the
-      Distillers Company "M" strain instead. That supplier-list claim
-      remains uncorroborated, so the entry is held at
-      confidence: medium pending producer / SWRI cross-check.
+      wort does not. Miller does NOT name the supplier list; it names
+      the Distillers Company "M" strain instead. The supplier list is
+      corroborated by source 3 (Daute, Jack & Walker 2024), which also
+      identifies the DCL "M" strain origin; the producer / SWRI cross-
+      check the entry previously lacked is satisfied by that paper
+      (co-authored by F. Jack, SWRI).
+  - id: 3
+    type: peer_reviewed_paper
+    citation: |
+      Daute, M., Jack, F. & Walker, G.M., "The potential for Scotch
+      Malt Whisky flavour diversification by yeast", FEMS Yeast
+      Research, vol. 24, 2024, article foae017.
+      DOI: 10.1093/femsyr/foae017.
+    accessed: 2026-06-12
+    notes: |
+      Open-access (CC-BY) review co-authored by Frances Jack of the
+      Scotch Whisky Research Institute - the producer / SWRI cross-
+      check the named-supplier list previously lacked. Corroborates
+      the supplier list directly: the M-type "is still declared as one
+      of the standards in the Scotch Whisky industry together with MX
+      (Kerry Bio-Science), Pinnacle (Mauri/AB Biotek), and DistillaMax
+      (Lallemand Inc.)." Also gives the M-strain origin: the M-type
+      (an interspecies S. cerevisiae x S. cerevisiae var. diastaticus
+      hybrid) was "introduced ... by DCL Yeast Ltd (now Kerry
+      Biosciences) in 1952". This corroboration is the basis for
+      promoting the entry from medium to high (2026-06-12). (The paper
+      spells the Lallemand product "DistillaMax"; the producer's own
+      brand spelling is "DistilaMax".)
 
 
 # --- Metadata ---------------------------------------------------------------
 schema_version: 0.1
-confidence: medium
-last_reviewed: 2026-05-20
+confidence: high
+last_reviewed: 2026-06-12
 contributors: []

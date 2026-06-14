@@ -1,0 +1,142 @@
+# =============================================================================
+# The Glenlivet Nàdurra Oloroso
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The cask-strength, non-chill-filtered, natural-colour tier of the range
+# ("Nàdurra" is Gaelic for "natural"): first-fill oloroso sherry
+# maturation at cask strength. The transparency / minimal-intervention
+# counterpart to the 40% chill-filtered core. See glenlivet.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenlivet-nadurra-oloroso
+name: The Glenlivet Nàdurra Oloroso
+produced_at_distillery: glenlivet
+production_line: glenlivet
+bottled_by: glenlivet                      # Official distillery bottling.
+bottler_type: distillery
+bottler_series: null                       # The Nàdurra "Oloroso Matured"
+                                           # line is batch-released (batch
+                                           # codes prefixed OL); the project
+                                           # does not yet model it as a
+                                           # bottler_series.
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: '2014-09'                     # Nàdurra Oloroso Matured launched
+                                           # September 2014 [2].
+discontinued: false
+availability: core                         # An ongoing, repeatedly-batched
+                                           # range tier rather than a one-off
+                                           # limited release; recorded as core
+                                           # with batch variation noted below.
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 60.3                                   # Cask strength, so ABV varies by
+                                           # batch (e.g. batch OL1015 60.3%,
+                                           # OL0816 61.3%) [2]. 60.3% recorded
+                                           # as a representative documented
+                                           # batch; see batch note below.
+age_statement: null                         # No age statement (NAS) [2].
+vintage: null
+cask_strength: true
+non_chill_filtered: true                    # Non-chill-filtered — a defining
+                                           # claim of the Nàdurra line [2].
+natural_colour: true                        # No added colouring [2].
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: batch
+  number: null                              # Varies by release (OL-prefixed
+                                            # batch codes); no single number.
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: oloroso-sherry-butt
+    fill_number: 1
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      Matured entirely in first-fill oloroso sherry casks from Jerez,
+      bottled at cask strength without chill-filtration or added
+      colour [2]. No age statement, so no maturation duration is
+      recorded.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Glenlivet Nàdurra Oloroso is the cask-strength, non-chill-filtered,
+  natural-colour tier of the range — "Nàdurra" is Gaelic for "natural",
+  and the line is positioned on minimal intervention. The Oloroso Matured
+  expression, launched September 2014, is matured entirely in first-fill
+  oloroso sherry casks from Jerez and bottled at cask strength, so its ABV
+  varies by batch (around 60-61%) [2]. It carries no age statement. Within
+  The Glenlivet range it is the sharpest contrast to the 40% chill-filtered
+  core: the same light distillery spirit taken into heavy first-fill
+  sherry wood and bottled without dilution, chill-filtration or colouring.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Glenlivet_distillery
+    accessed: 2026-06-12
+    notes: |
+      Wikipedia's article on The Glenlivet distillery, which lists the
+      Nàdurra in the core range (as the Nàdurra 16 Year Old) and
+      establishes the Nàdurra as the distillery's cask-strength line.
+      It does not detail the Oloroso Matured variant specifically — see
+      source 2.
+  - id: 2
+    type: trade_publication
+    url: https://www.masterofmalt.com/whiskies/the-glenlivet/-the-glenlivet-nadurra-oloroso-batch-ol1015-whisky/
+    accessed: 2026-06-12
+    notes: |
+      Specialist-retailer / review listings corroborating the Nàdurra
+      Oloroso specifications (cask strength with batch-varying ABV,
+      non-chill-filtered, natural colour, first-fill oloroso sherry
+      maturation, no age statement, September 2014 launch). These
+      facts are consistent across Master of Malt (batch OL1015,
+      60.3%), The Whisky Exchange (batch OLO614) and Distiller, found
+      by web search on 2026-06-12. The pages return HTTP 403 to
+      automated fetch and the producer's theglenlivet.com page is
+      JS-rendered / not directly fetchable, so these specifications
+      are flagged for direct producer confirmation (see TODO.md
+      Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-12
+contributors: []

@@ -1,0 +1,127 @@
+# =============================================================================
+# The Glenlivet 15 Year Old French Oak Reserve
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The core-range expression that distinguishes The Glenlivet by oak:
+# selective maturation in new French (Limousin) oak alongside the
+# American-oak base. The oak-experiment counterpart to the bourbon-led
+# 12 Year Old. See glenlivet.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: glenlivet-15-french-oak-reserve
+name: The Glenlivet 15 Year Old French Oak Reserve
+produced_at_distillery: glenlivet
+production_line: glenlivet
+bottled_by: glenlivet                      # Official distillery bottling.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0                                  # 40% ABV core spec [1].
+age_statement: 15
+vintage: null
+cask_strength: false
+non_chill_filtered: null                    # Not stated in the surveyed
+                                            # sources.
+natural_colour: null                        # Not stated in the surveyed
+                                            # sources.
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 15
+    cooperage: null
+    notes: |
+      American-oak ex-bourbon casks form the maturation base, as for
+      the rest of the core range [1].
+  - cask_type: french-oak-cask
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      The defining feature of the bottling: a selective portion of new
+      French oak casks, widely described as Limousin oak, contributing
+      added spice and structure [1]. The Limousin specificity is the
+      commonly-cited producer description and should be confirmed
+      against a producer-published source (see TODO.md Research
+      Requests). Modelled with the project's virgin French-oak cask
+      slug (new, no prior fill).
+
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  The Glenlivet 15 Year Old French Oak Reserve is the core-range
+  expression built around oak selection: the American-oak-matured
+  Glenlivet spirit is selectively finished or part-matured in new
+  French oak casks (commonly cited as Limousin oak), which add spice
+  and tannic structure to the distillery's characteristically light,
+  fruity make [1]. It sits between the bourbon-led 12 Year Old and the
+  older sherry- and oak-led expressions, and is the clearest expression
+  of The Glenlivet using cask type rather than age or strength as the
+  point of difference. Bottled at 40% ABV.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/The_Glenlivet_distillery
+    accessed: 2026-06-12
+    notes: |
+      Wikipedia's article on The Glenlivet distillery, which lists the
+      15 Year Old French Oak Reserve in the core range. Used for the
+      bottling's place in the range and the French-oak maturation
+      characteristic. The Limousin-oak specificity and the 40% ABV are
+      widely-cited producer descriptions to be confirmed against a
+      producer-published source (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-12
+contributors: []
