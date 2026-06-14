@@ -1,0 +1,116 @@
+# =============================================================================
+# Aberlour 16 Year Old Double Cask Matured
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The older core double-cask Aberlour: 16 years across ex-bourbon American
+# oak and oloroso-seasoned sherry casks, at 43% ABV. See aberlour.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: aberlour-16-double-cask
+name: Aberlour 16 Year Old Double Cask Matured
+produced_at_distillery: aberlour
+production_line: aberlour
+bottled_by: aberlour                        # Official distillery bottling.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 43.0                                   # 43% ABV [2].
+age_statement: 16
+vintage: null
+cask_strength: false
+non_chill_filtered: null
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: 16
+    cooperage: null
+    notes: |
+      American-oak ex-bourbon component of the double-cask marriage [2].
+  - cask_type: oloroso-sherry-butt
+    fill_number: null
+    proportion: null
+    duration_years: 16
+    cooperage: null
+    notes: |
+      Oloroso-seasoned sherry-cask component [2].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Aberlour 16 Year Old Double Cask Matured is the older core expression of
+  the double-cask style: sixteen years across ex-bourbon American oak and
+  oloroso-seasoned sherry casks, married and bottled at 43% ABV [2]. It
+  extends the 12 Year Old's bourbon-plus-sherry approach with longer
+  maturation.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Aberlour_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Aberlour distillery, which lists the 16 Year
+      Old in the core range.
+  - id: 2
+    type: trade_publication
+    url: https://www.masterofmalt.com/whiskies/aberlour/
+    accessed: 2026-06-14
+    notes: |
+      Specialist-retailer listings corroborating the 16 Year Old Double
+      Cask Matured: 43% ABV, ex-bourbon American oak married with
+      oloroso-seasoned sherry casks. Retrieved via web search 2026-06-14;
+      flagged for producer confirmation (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

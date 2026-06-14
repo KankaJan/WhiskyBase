@@ -1,0 +1,111 @@
+# =============================================================================
+# Aberlour (production line)
+# =============================================================================
+# Schema: production_line.template.yml v0.2.1
+# Sole production line at Aberlour: one unpeated Speyside make, presented
+# through a double-cask (ex-bourbon + oloroso-sherry) programme and the
+# first-fill-oloroso A'bunadh. See aberlour.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: aberlour
+name: Aberlour
+distillery: aberlour
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: active
+first_produced: null
+discontinued: null
+
+
+# --- Recipe: Malt -----------------------------------------------------------
+malt:
+  source: bought_in
+  maltster: null
+  variety: null
+
+
+# --- Recipe: Peating --------------------------------------------------------
+peating:
+  measurements: []
+  peat_origin: none
+  notes: |
+    Aberlour is an unpeated Speyside single malt.
+
+
+# --- Recipe: Fermentation ---------------------------------------------------
+fermentation:
+  hours_min: null
+  hours_max: null
+  hours_typical: null
+  yeast: null
+  notes: null
+
+
+# --- Recipe: Distillation ---------------------------------------------------
+distillation:
+  regime: double                           # Conventional two-still double
+                                           # distillation (2 wash + 2 spirit
+                                           # stills) [1].
+  spirit_cut:
+    start_abv: null
+    end_abv: null
+    notes: null
+  new_make_abv: null
+
+
+# --- Recipe: Maturation -----------------------------------------------------
+default_fill_strength_abv: null
+typical_cask_program:
+  - bourbon-barrel                          # American-oak ex-bourbon — half of
+                                            # the double-cask programme.
+  - oloroso-sherry-butt                     # Oloroso-seasoned sherry casks —
+                                            # the other half, and the sole
+                                            # wood (first-fill) for A'bunadh.
+
+
+# --- Bottlings --------------------------------------------------------------
+bottlings:
+  - aberlour-a-bunadh
+  - aberlour-12-double-cask
+  - aberlour-16-double-cask
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Sole production line at Aberlour: one unpeated Speyside single malt
+  distilled on two wash and two spirit stills [1]. The bottlings are
+  maturation variants of this single make. The core range is built on
+  "double cask" maturation — ex-bourbon American oak married with
+  oloroso-seasoned sherry casks (the 12 and 16 Double Cask Matured) —
+  while A'bunadh is matured exclusively in first-fill oloroso sherry butts
+  at cask strength.
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  scotchwhisky_url: null
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Aberlour_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Aberlour distillery. Used for the unpeated
+      Speyside style, the double-distillation regime, and the double-cask
+      (ex-bourbon + oloroso) maturation programme. Migrate to producer
+      primaries when accessible (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2.1
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []
