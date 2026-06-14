@@ -1,0 +1,114 @@
+# =============================================================================
+# Haig Club Clubman
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The accessible, bourbon-cask tier of the Haig Club single-grain range,
+# introduced after the 2014 Haig Club launch. See cameronbridge.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: haig-club-clubman
+name: Haig Club Clubman
+produced_at_distillery: cameronbridge
+production_line: cameronbridge
+bottled_by: cameronbridge                  # Official Diageo bottling.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: null                          # Introduced after the 2014 Haig
+                                           # Club launch; exact year not in
+                                           # the surveyed sources.
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 40.0                                   # 40% ABV [2].
+age_statement: null
+vintage: null
+cask_strength: false
+non_chill_filtered: null
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      Matured in ex-bourbon American oak; positioned as the
+      bourbon-cask, more accessible member of the Haig Club range [2].
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Haig Club Clubman is the accessible, bourbon-cask tier of Diageo's Haig
+  Club single-grain range, introduced after the 2014 Haig Club launch and
+  bottled at 40% ABV [2]. It widened the Haig Club range below the original
+  premium expression, presenting the same Cameronbridge single grain at a
+  lower price point.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Cameronbridge_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Cameronbridge distillery, for the Haig Club
+      single-grain range produced at Cameronbridge.
+  - id: 2
+    type: trade_publication
+    url: https://www.haigwhisky.com/haig-club-scotch-whisky/
+    accessed: 2026-06-14
+    notes: |
+      Producer brand site / specialist listings for Haig Club Clubman,
+      corroborating the 40% ABV, ex-bourbon American-oak maturation, no
+      age statement, and its position as the accessible tier introduced
+      after the 2014 Haig Club launch. Retrieved via web search
+      2026-06-14 (producer pages JS-rendered to automated fetch); flagged
+      for direct confirmation (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

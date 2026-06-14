@@ -1,0 +1,240 @@
+# =============================================================================
+# Cameronbridge
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — founding, ownership lineage, location, the
+# column-still configuration, grain-whisky focus and capacity are grounded
+# against the Wikipedia article and trade references. Wikipedia is the only
+# directly-fetched source; scotchwhisky.com Whiskypedia and producer pages
+# were not fetched. Migrate when accessible — see TODO.md Research Requests
+# and cameronbridge.NOTES.md.
+# =============================================================================
+# Eighteenth populated distillery and the project's FIRST GRAIN distillery.
+# This is a deliberate model-expansion: grain whisky is made by continuous
+# (column / Coffey) distillation from a wheat-led cereal bill, not by batch
+# pot-still distillation of malted barley. The malt-centric schema does not
+# yet structure column stills or the cereal bill; those are captured in
+# prose here and recorded as SCHEMA-OBSERVATIONS in cameronbridge.NOTES.md
+# for structuring when a second grain distillery lands. The one schema
+# change made now is the additive `distillation.regime: continuous` enum
+# value (CHANGELOG [0.8.6]).
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cameronbridge
+name: Cameronbridge
+also_known_as:
+  - Cameron Bridge                        # The locality is "Cameron Bridge"
+                                          # (two words); the distillery name
+                                          # is written "Cameronbridge" [1].
+wikidata_qid: null
+website: null                             # A production site, not a visitor
+                                          # distillery; no dedicated producer
+                                          # distillery page. The single-grain
+                                          # brands have their own sites
+                                          # (e.g. haigclub.com).
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Lowlands                          # Formal SWA region under the
+                                          # Scotch Whisky Regulations 2009;
+                                          # Cameron Bridge is in Fife [1].
+sub_region: Fife
+locality: Cameron Bridge, Windygates, Fife
+coordinates:
+  lat: null                               # Not captured in the surveyed
+  lon: null                               # sources; add from a producer / OS
+                                          # source (see NOTES).
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1824                             # Founded by John Haig [1].
+first_spirit: 1824
+mothballed_periods: []                    # No major modern mothballing in
+                                          # the surveyed sources; Cameronbridge
+                                          # is now Diageo's principal grain
+                                          # distillery.
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Diageo plc
+  parent: Diageo plc                      # Wholly owned by Diageo. Since the
+                                          # closure of Port Dundas in 2010,
+                                          # Cameronbridge is Diageo's last
+                                          # wholly-owned operational grain
+                                          # distillery [1].
+  history:
+    - owner: John Haig & Co
+      from: 1824
+      to: 1877
+      notes: |
+        Founded by John Haig in 1824. John Haig & Co was one of the six
+        grain-whisky firms that amalgamated to form the Distillers
+        Company Ltd (DCL) in 1877, so Cameronbridge was a founding DCL
+        grain distillery [1].
+    - owner: Distillers Company Ltd (later United Distillers, then Diageo)
+      from: 1877
+      to: null
+      notes: |
+        Held within the DCL grain-distilling group from 1877; DCL was
+        restructured into United Distillers in 1987 and merged into
+        Diageo plc in 1998 [1]. Cameronbridge has remained in that
+        corporate lineage.
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: River Leven                 # Process water from the River
+                                          # Leven [1].
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null                              # Grain-whisky mashing differs from
+  material: null                          # malt practice (continuous cooking
+  capacity_kg: null                       # of wheat under pressure, then
+                                          # conversion with malted barley);
+                                          # the surveyed sources do not give a
+                                          # mash-tun spec. See NOTES.
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: |
+    Fermentation vessel count and material not separately confirmed in
+    the surveyed sources for the grain plant.
+
+stills:
+  notes: |
+    Cameronbridge distils by CONTINUOUS (column / Coffey) distillation,
+    not batch pot stills, so the pot-still slots in this schema
+    (wash_still / spirit_still / intermediate_still / low_wines_still)
+    are not populated. The plant currently runs three large column
+    (Coffey / patent) stills [1]. Historically the site ran a mix of
+    pot and column stills until it shifted to grain-only production in
+    1929; a third column still was added from the closed Carsebridge
+    distillery in 1983. The schema does not yet structure column stills
+    (count, number of columns, Coffey-vs-modern-multicolumn type) — that
+    is recorded as a SCHEMA-OBSERVATION in cameronbridge.NOTES.md, to be
+    structured when a second grain distillery confirms the shape.
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 136000000            # ~136 million litres per year [1]
+                                          # — one of the largest distilleries
+                                          # in Europe and an order of
+                                          # magnitude above the malt sites in
+                                          # this data set (cf. Glenfiddich /
+                                          # Glenlivet ~21M). The source states
+                                          # "litres"; LPA is the conventional
+                                          # capacity measure and is recorded
+                                          # here — see cameronbridge.NOTES.md.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes:
+  - year: 1830
+    change: |
+      An early adopter of continuous distillation: Cameronbridge ran
+      Robert Stein's patent (column) still from around 1830, and later
+      Aeneas Coffey's improved still — the technology that made
+      industrial grain-whisky production possible [1].
+    source_id: 1
+  - year: 1929
+    change: |
+      Shifted to exclusively grain-whisky production, ending the earlier
+      mixed pot-and-column operation [1].
+    source_id: 1
+  - year: 1983
+    change: |
+      A third column still was transferred to Cameronbridge from the
+      Carsebridge grain distillery when the latter closed [1].
+    source_id: 1
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - cameronbridge
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []                 # Cameronbridge grain whisky is a
+                                          # backbone of many Diageo blends
+                                          # (Johnnie Walker, Bell's, J&B,
+                                          # White Horse and others), and the
+                                          # site also makes neutral spirit for
+                                          # Gordon's, Tanqueray and Smirnoff
+                                          # [1]; blends and white spirits are
+                                          # not modelled as project entity
+                                          # types, so this list is empty by
+                                          # convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features:
+  - equipment/coffey-still                # Continuous column / Coffey
+                                          # distillation is the defining
+                                          # feature of the site.
+  - glossary/grain-whisky                 # Cameronbridge is the project's
+                                          # first populated maker of grain
+                                          # (vs malt) whisky.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Cameronbridge is a grain-whisky distillery at Cameron Bridge in Fife,
+  founded in 1824 by John Haig [1]. It is the project's first grain
+  distillery: rather than batch pot-still distillation of malted barley,
+  it makes whisky by continuous (column / Coffey) distillation from a
+  wheat-led cereal bill, with a smaller proportion of malted barley
+  providing the enzymes for starch conversion. The spirit comes off the
+  stills at a high strength, close to the 94.8% ABV ceiling above which a
+  Scotch spirit may no longer be called whisky — far lighter and more
+  neutral than malt new make.
+
+  Cameronbridge was an early adopter of the technology that made grain
+  whisky possible, running Robert Stein's patent still from around 1830
+  and later Aeneas Coffey's improved column still [1]. It moved to
+  grain-only production in 1929 and, since the closure of Port Dundas in
+  2010, is Diageo's last wholly-owned operational grain distillery [1].
+  At roughly 136 million litres a year it is one of the largest
+  distilleries in Europe [1].
+
+  Most of the output is grain whisky for blends — Johnnie Walker, Bell's,
+  J&B and others — and the site also produces neutral spirit for Diageo's
+  white-spirit brands (Gordon's, Tanqueray, Smirnoff) [1]. Two single-grain
+  bottlings carry the distillery's own name to market: the long-standing
+  Cameron Brig and, since 2014, the premium Haig Club range.
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Cameronbridge_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Cameronbridge distillery. Starting point for
+      site identity (Cameron Bridge, Fife), founding (John Haig, 1824),
+      ownership lineage (founding DCL grain distillery 1877; United
+      Distillers 1987; Diageo 1998), water (River Leven), the three
+      column (Coffey) stills and grain-only-since-1929 history, the Stein
+      / Coffey continuous-distillation adoption, the 1983 Carsebridge
+      still transfer, the ~136 million litre capacity, Diageo's
+      last-wholly-owned-grain-distillery status (post Port Dundas 2010),
+      and the products (grain whisky for blends; neutral spirit for
+      Gordon's / Tanqueray / Smirnoff; single grains Cameron Brig and
+      Haig Club). Per the project's Wikipedia-volatility policy this is a
+      starting point to migrate to scotchwhisky.com Whiskypedia and
+      producer/Diageo primaries when fetchable.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

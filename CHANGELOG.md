@@ -9,6 +9,26 @@ covers them all.
 
 ---
 
+## [0.8.6] — 2026-06-14
+
+**Schema — `continuous` added to the production-line
+`distillation.regime` enum.** The enum previously covered only batch
+pot-still regimes (`double`, `triple`, `partial_triple`, `2.5x`,
+`2.81x`, `other`). `continuous` is added for column / Coffey (patent)
+still distillation, driven by the first grain-whisky distillery
+(Cameronbridge). Additive and backward-compatible; production-line
+`schema_version` stays 0.2.1 (no re-stamp). Template comment synced.
+
+Grain distilleries also surfaced two structuring needs that are
+deliberately deferred (recorded as SCHEMA-OBSERVATIONS in
+`cameronbridge.NOTES.md`, per the project's pressure-test-then-structure
+practice): a structured representation of column / Coffey stills (the
+`stills` block is pot-still-shaped, so column stills are captured in
+`stills.notes` prose for now), and a cereal / grain-bill field (the
+`malt` block is barley-centric, so the wheat/maize majority is in
+prose). Both will be structured when a second grain distillery confirms
+the shape.
+
 ## [0.8.5] — 2026-06-14
 
 **Schema — `wood` added to the distillery `washbacks.material` enum.**
