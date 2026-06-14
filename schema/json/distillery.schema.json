@@ -130,7 +130,7 @@
         "material": {
           "oneOf": [
             { "type": "null" },
-            { "enum": ["oregon_pine", "larch", "stainless_steel", "douglas_fir", "corten_steel", "scottish_larch", "other"] }
+            { "enum": ["oregon_pine", "larch", "stainless_steel", "douglas_fir", "corten_steel", "scottish_larch", "wood", "other"] }
           ]
         },
         "capacity_litres": { "$ref": "_common.schema.json#/definitions/number_or_null" },
