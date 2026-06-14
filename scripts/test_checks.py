@@ -149,9 +149,22 @@ class TestConsistency(unittest.TestCase):
 class TestAllowlist(unittest.TestCase):
     def test_allowlist_loads_real_file(self):
         allow = cr.load_allowlist()
-        # The seeded worm-tub forward refs should be present.
-        self.assertIn("distillery:talisker", allow)
-        self.assertIn("distillery:mortlach", allow)
+        # Assert the loader's structure, not specific members: allowlist
+        # entries are removed as the entities they reference get populated
+        # (e.g. distillery:glenlivet and distillery:talisker were removed
+        # when those distilleries landed), so coupling the test to a
+        # particular slug makes it break on every new entry.
+        self.assertGreater(len(allow), 0)
+        known_kinds = {
+            "distillery", "production_line", "bottling", "bottler",
+            "cask", "concept", "supplier",
+        }
+        for entry in allow:
+            self.assertIn(":", entry, f"malformed allowlist entry: {entry!r}")
+            self.assertIn(entry.split(":", 1)[0], known_kinds)
+        # Comments and blank lines must not be loaded as entries.
+        self.assertNotIn("", allow)
+        self.assertFalse(any(e.lstrip().startswith("#") for e in allow))
 
 
 class TestClassifyPath(unittest.TestCase):
