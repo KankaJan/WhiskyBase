@@ -567,7 +567,7 @@ back rather than absorbing it into the data model.
   1 Ardnamurchan (medium — peated + unpeated campaigns on one line, core
   malt ~50:50; ex-bourbon + sherry),
   1 Ardnahoe (medium — peated Islay ~40 ppm, worm-tub condensed).
-- 85 concept pages: 3 methodology, 17 educational, 8 equipment,
+- 87 concept pages: 3 methodology, 19 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
   overview (`whisky-production`) and three stage wrappers

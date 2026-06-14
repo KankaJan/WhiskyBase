@@ -1051,6 +1051,19 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-14** Cask wood concept pages — two educational pages on the
+  cooperage/maturation backbone: `educational/cooperage` (making and
+  refurbishing casks: oak selection, stave seasoning, raising and firing,
+  rebuilding ex-bourbon barrels into hogsheads, sherry seasoning, and the
+  de-char/re-char rejuvenation cycle) and `educational/cask-charring-and-
+  toasting` (why the interior is fired, toasting vs charring, char levels
+  #1-4 / alligator, the lignin/hemicellulose chemistry, and the dual
+  additive/subtractive effect incl. activated-carbon sulphur removal).
+  Both sourced to Russell ed. 2022 Ch 16 (Conner) + Miller 2024 Ch 8 +
+  Mosedale & Puech 1998, with a Czech trade reference for the char-level
+  specifics; confidence medium. The existing glossary stubs (`glossary/
+  char-and-toast`, `glossary/oak`) now cross-link to these as their deep
+  companions. Concept pages 85 → 87 (educational 17 → 19).
 - **2026-06-14** New-wave batch — Nc'nean (21st), Ardnamurchan (22nd),
   Ardnahoe (23rd). 3 distilleries + 3 production lines + 3 flagship
   bottlings + 3 NOTES. New dimensions for the data set: **Nc'nean**
