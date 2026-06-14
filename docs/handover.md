@@ -318,7 +318,7 @@ back rather than absorbing it into the data model.
 
 **Populated:**
 
-- 19 distilleries: Harris (confidence: medium), Bruichladdich (high),
+- 20 distilleries: Harris (confidence: medium), Bruichladdich (high),
   Springbank (medium — drove the distillery v0.1 → v0.2 promotion
   for multi-warehouse support), Glenmorangie (medium — Highland-
   region single-line, LVMH ownership, first use of `still.height_m`
@@ -474,8 +474,17 @@ back rather than absorbing it into the data model.
   ~65M LPA. A pure blending-grain supplier — no own single-grain bottling
   (`bottlings: []`), the first such entry; single grains reach market via
   IBs. Schema: `stills.column_stills` + `cereal_bill` added and
-  Cameronbridge retrofitted, CHANGELOG [0.8.7]).
-- 24 production lines: 3 Bruichladdich (high), 1 Harris (medium),
+  Cameronbridge retrofitted, CHANGELOG [0.8.7]),
+  Aberlour (medium — Charlestown of Aberlour, Speyside (Moray); Pernod
+  Ricard / Chivas; founded 1879 by James Fleming. Fifth populated Speyside
+  and the second sherry-led Chivas malt (with Glenlivet). Sherry-influenced
+  **double-cask house style** (ex-bourbon + oloroso); ~3.9M LPA on 2 wash +
+  2 spirit stills (the spirit pair differing in size, 20,000 / 15,456 L).
+  Bottlings: A'bunadh (cask-strength first-fill oloroso, NCF, natural
+  colour, NAS — `abv` null as it is batch-variable), 12 and 16 Double Cask
+  Matured. Water-source conflict (St Drostan's Well vs Wikipedia's
+  Birkenbush / Target spring) noted in aberlour.NOTES.md).
+- 25 production lines: 3 Bruichladdich (high), 1 Harris (medium),
   3 Springbank (medium — Springbank 2.5×, Longrow double, Hazelburn
   triple), 1 Glenmorangie (medium — main line; Signet/Allta
   deferred), 1 Lagavulin (medium — heavily-peated Islay single
@@ -533,7 +542,9 @@ back rather than absorbing it into the data model.
   new make),
   1 North British (medium — second grain line: `regime: continuous`
   Coffey distillation to ~94.5% ABV from a maize-led `cereal_bill` (85%
-  maize / 15% malted barley); unpeated; no own bottlings).
+  maize / 15% malted barley); unpeated; no own bottlings),
+  1 Aberlour (medium — unpeated Speyside default; double-cask programme
+  ex-bourbon + oloroso, plus first-fill oloroso for A'bunadh).
 - 85 concept pages: 3 methodology, 17 educational, 8 equipment,
   5 practice, 52 glossary. The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
@@ -571,19 +582,20 @@ back rather than absorbing it into the data model.
   entry was bumped to schema v0.2 but does not use the new
   features (its series have less formal presentation
   enforcement).
-- 54 bottlings: 54 working entries (10 Bruichladdich/Harris + 3
+- 57 bottlings: 57 working entries (10 Bruichladdich/Harris + 3
   Springbank + 3 Glenmorangie + 3 Lagavulin + 3 Highland Park +
   2 Bunnahabhain + 3 Glenfarclas + 2 Caol Ila + 2 Glenkinchie +
   2 Auchentoshan + 2 Laphroaig + 2 Glenfiddich + 3 Ardbeg +
   3 Macallan + 3 Glenlivet + 3 Talisker + 3 Cameronbridge +
-  2 worked-example
+  3 Aberlour + 2 worked-example
   IB releases: `cadenheads-bunnahabhain` + `signatory-caol-ila`).
   Glenlivet bottlings (12 Year Old, 15 French Oak Reserve, Nàdurra
   Oloroso) added 2026-06-12; Talisker bottlings (10 Year Old,
   Distillers Edition, Storm) added 2026-06-14. Cameronbridge single
   grains (Cameron Brig, Haig Club, Haig Club Clubman) added 2026-06-14.
   North British (19th, grain) carries no own single-grain bottling, so it
-  adds none — its `bottlings` list is empty by design.
+  adds none — its `bottlings` list is empty by design. Aberlour bottlings
+  (A'bunadh, 12 & 16 Double Cask Matured) added 2026-06-14.
   Macallan bottlings (Sherry Oak 12, Double Cask 12, Triple Cask
   Matured 15) were migrated from a pre-v0.2 flat field shape to the
   v0.2 schema on 2026-06-11; see CHANGELOG [0.8.4].
@@ -741,18 +753,18 @@ CHANGELOG [0.8.3].
 
 **Next priorities, in order of unblock value:**
 
-1. **Data-layer growth — 20th distillery.** North British landed
-   2026-06-14 as the 19th — the project's **second grain distillery**,
-   which confirmed and locked in the grain-schema structuring (structured
-   `stills.column_stills` + `cereal_bill`, with Cameronbridge retrofitted;
-   CHANGELOG [0.8.7]) — after Cameronbridge (18th), Talisker (17th) and
-   Glenlivet (16th). The next gaps: **Aberlour** for a second sherry-led
-   Speyside; **Cardhu** as a Diageo Speyside; or further regional breadth
-   (a mainland-Highland or Campbeltown malt). New distillery entries lean
-   on Wikipedia at population; see TODO.md Research Requests for the
-   outstanding producer-primary migrations (Glenlivet, Macallan, Talisker,
-   Cameronbridge, North British) and, for North British, an IB single-grain
-   worked example.
+1. **Data-layer growth — 21st distillery.** Aberlour landed 2026-06-14 as
+   the 20th — a second sherry-led Chivas Speyside (double-cask house style;
+   the cask-strength A'bunadh) — after the two grain distilleries (North
+   British 19th, Cameronbridge 18th). The queued next move is a set of
+   **small new-wave distilleries**: **Nc'nean** (organic / net-zero, west
+   Highland), **Ardnamurchan** (Adelphi-owned, radical cask transparency,
+   peated + unpeated) and **Ardnahoe** (Hunter Laing, Islay, worm tubs — in
+   the expected-dangling allowlist, so populating it clears that forward
+   ref). These add new dimensions (sustainability, cask transparency,
+   independent-bottler-owned distilleries) beyond the established-major
+   pattern. New entries lean on Wikipedia at population; see TODO.md
+   Research Requests for the outstanding producer-primary migrations.
 2. **Residual sourcing follow-ups — glossary confidence blockers
    RESOLVED (2026-06-12).** The two remaining medium-confidence
    glossary entries were promoted to `high`: `distillers-yeast`

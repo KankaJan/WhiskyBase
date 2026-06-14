@@ -507,6 +507,18 @@ on Wikipedia + trade references. Follow-ups:
   cask, ABV — is identified; it would be the project's first IB grain
   release.
 
+### Aberlour migrations (2026-06-14)
+
+The 20th distillery, Aberlour, is grounded on Wikipedia + trade listings.
+Follow-ups:
+
+- Migrate to producer primaries when fetchable; **resolve the water-source
+  conflict** — St Drostan's Well (producer-associated, recorded) vs
+  Wikipedia's infobox Birkenbush / Target spring.
+- Add coordinates (left null).
+- Confirm bottling specs (A'bunadh first-fill-oloroso / cask strength; 12 &
+  16 Double Cask ABV and cask mix) against producer sources.
+
 ### Literature-resource scouting (user can supply digital copies)
 
 Catalogue moved to `docs/literature-scouting.md` — the standing
@@ -1019,6 +1031,17 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-14** Aberlour — 20th distillery. 1 distillery + 1 production
+  line + 3 bottlings + NOTES. Charlestown of Aberlour, Speyside (Moray);
+  Pernod Ricard / Chivas; founded 1879 by James Fleming. Fifth Speyside,
+  second sherry-led Chivas malt (with Glenlivet). Sherry-influenced
+  double-cask house style; ~3.9M LPA on 2 wash + 2 spirit stills (spirit
+  pair differing in size, 20,000 / 15,456 L). Bottlings: A'bunadh
+  (cask-strength first-fill oloroso, NCF, natural colour, NAS; `abv` null
+  as batch-variable ~59-61%), 12 and 16 Double Cask Matured. Water-source
+  conflict (St Drostan's Well vs Wikipedia Birkenbush/Target spring)
+  documented. Counts: 19→20 distilleries, 24→25 production lines, 54→57
+  bottlings. Not validated locally (no Python); relies on the CI strict gate.
 - **2026-06-14** North British — 19th distillery, the project's SECOND
   grain distillery, and the confirming example that turned the deferred
   grain-schema observations into structure. 1 distillery + 1 production

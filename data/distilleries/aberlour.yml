@@ -1,0 +1,225 @@
+# =============================================================================
+# Aberlour
+# =============================================================================
+# Schema: distillery.template.yml v0.2
+# Entry confidence: medium — founding, ownership lineage, location, the
+# four-still configuration, capacity and house style are grounded against
+# the Wikipedia article and trade references. Wikipedia is the only
+# directly-fetched source; producer pages were not fetched. See
+# aberlour.NOTES.md.
+# =============================================================================
+# Twentieth populated distillery. Fifth populated Speyside entry (after
+# Glenfarclas, Glenfiddich, Macallan, Glenlivet) and the second sherry-led
+# one in the Pernod Ricard / Chivas stable (with Glenlivet). Best known for
+# the double-cask (ex-bourbon + oloroso-sherry) house style and the
+# cask-strength, first-fill-oloroso A'bunadh.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: aberlour
+name: Aberlour
+also_known_as: []
+wikidata_qid: null
+website: https://www.aberlour.com/
+
+
+# --- Location ---------------------------------------------------------------
+country: Scotland
+region: Speyside                          # Formal SWA region (SWR 2009);
+                                          # at the confluence of the Lour Burn
+                                          # and the River Spey [1].
+sub_region: Aberlour
+locality: Charlestown of Aberlour, Moray
+                                          # Banffshire is the historic county;
+                                          # Moray the modern council area.
+coordinates:
+  lat: null                               # Not captured in the surveyed
+  lon: null                               # sources; add from a producer / OS
+                                          # source (see NOTES).
+
+
+# --- Status & Timeline ------------------------------------------------------
+status: operating
+founded: 1879                             # The modern distillery was built in
+                                          # 1879 by James Fleming [1]; an
+                                          # earlier Aberlour distillery on the
+                                          # site dated to 1826. 1879 is the
+                                          # founding date of record.
+first_spirit: 1879
+mothballed_periods: []
+
+
+# --- Ownership --------------------------------------------------------------
+ownership:
+  current: Chivas Brothers Ltd
+  parent: Pernod Ricard                   # Aberlour is operated by Chivas
+                                          # Brothers, Pernod Ricard's Scotch
+                                          # arm [1].
+  history:
+    - owner: James Fleming
+      from: 1879
+      to: 1892
+      notes: |
+        Built the modern distillery in 1879 [1].
+    - owner: Robert Thorne & Sons Ltd
+      from: 1892
+      to: 1920
+    - owner: W. H. Holt & Sons
+      from: 1920
+      to: 1945
+    - owner: S. Campbell & Sons Ltd
+      from: 1945
+      to: 1975
+      notes: |
+        Campbell Distilleries developed the modern Aberlour brand [1].
+    - owner: Pernod Ricard (Chivas Brothers)
+      from: 1975
+      to: null
+      notes: |
+        Acquired via Campbell Distilleries; brought under Pernod Ricard's
+        Chivas Brothers subsidiary on the 2001 Seagram break-up [1].
+
+
+# --- Production: Inputs (site-level) ----------------------------------------
+water_source: St Drostan's Well           # The producer-associated source on
+                                          # the Lour; Wikipedia's infobox
+                                          # instead lists Birkenbush / Target
+                                          # spring — a conflict flagged for
+                                          # confirmation (see aberlour.NOTES.md).
+
+
+# --- Production: Equipment (site-level) -------------------------------------
+mash_tun:
+  type: null
+  material: null
+  capacity_kg: null
+
+washbacks:
+  count: null
+  material: null
+  capacity_litres: null
+  notes: |
+    Washback count and material not separately confirmed in the surveyed
+    sources.
+
+stills:
+  wash_still:
+    count: 2                              # Two wash + two spirit stills [1].
+    capacity_litres: 21310                # 21,310 L wash stills [1].
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube             # Modern shell-and-tube condensers,
+                                          # consistent with the unpeated
+                                          # Speyside style.
+  spirit_still:
+    count: 2
+    capacity_litres: null                 # The two spirit stills differ in
+                                          # size — 20,000 L and 15,456 L [1] —
+                                          # so no single capacity is recorded;
+                                          # see notes.
+    charge_litres: null
+    shape: null
+    height_m: null
+    heating: null
+    lyne_arm_angle: null
+    condenser: shell_and_tube
+  notes: |
+    Two wash stills (21,310 L each) and two spirit stills of differing
+    size (20,000 L and 15,456 L) [1].
+
+
+# --- Capacity ---------------------------------------------------------------
+annual_capacity_lpa: 3900000              # ~3.9 million LPA [1] — a
+                                          # mid-sized Speyside distillery.
+
+
+# --- Equipment & Configuration Changes Over Time ----------------------------
+equipment_changes: []                     # No major reconfiguration recorded
+                                          # in the surveyed sources.
+
+
+# --- Production Lines Produced at This Site ---------------------------------
+production_lines:
+  - aberlour
+
+
+# --- Used by Blenders -------------------------------------------------------
+also_used_by_blenders: []                 # Aberlour malt has historically
+                                          # gone into Pernod Ricard blends
+                                          # (e.g. Clan Campbell, House of
+                                          # Lords), but blends are not modelled
+                                          # as a project entity type, so this
+                                          # list is empty by convention.
+
+
+# --- Distinctive Features (concept cross-references) ------------------------
+distinctive_features: []                  # Aberlour's defining features — the
+                                          # double-cask (ex-bourbon + oloroso)
+                                          # house style and the first-fill
+                                          # oloroso A'bunadh — are recorded in
+                                          # the description and the bottlings;
+                                          # no cross-distillery concept page
+                                          # yet captures "double-cask
+                                          # maturation" as a category.
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Aberlour is a Speyside single-malt distillery at Charlestown of Aberlour,
+  Moray, where the Lour Burn meets the River Spey. The modern distillery
+  was built in 1879 by the local banker and entrepreneur James Fleming, on
+  a site that had carried an earlier distillery from 1826 [1]. It has been
+  a Pernod Ricard brand since 1975 (acquired via Campbell Distilleries) and
+  sits in the Chivas Brothers stable alongside Glenlivet [1].
+
+  The house style is sherry-influenced. The core range is built on "double
+  cask" maturation — marrying ex-bourbon American oak with oloroso-seasoned
+  sherry casks — and the distillery is best known for A'bunadh ("the
+  original" in Gaelic), a no-age-statement single malt matured exclusively
+  in first-fill Spanish oloroso sherry butts and bottled at cask strength
+  without chill-filtration or added colour, in individually numbered
+  batches [1][2].
+
+  Production runs at about 3.9 million LPA on two wash stills (21,310 L)
+  and two spirit stills of differing size (20,000 L and 15,456 L) with
+  shell-and-tube condensers [1].
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Aberlour_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Aberlour distillery. Starting point for site
+      identity (Charlestown of Aberlour; Lour Burn / Spey), founding
+      (James Fleming, 1879; earlier 1826 site), ownership lineage
+      (Fleming; Robert Thorne & Sons 1892; W. H. Holt 1920; S. Campbell &
+      Sons 1945; Pernod Ricard 1975; Chivas Brothers 2001), the still
+      configuration (2 wash @ 21,310 L + 2 spirit @ 20,000 / 15,456 L),
+      ~3.9M LPA capacity, the water source (infobox: Birkenbush / Target
+      spring), and the core range. Per the project's Wikipedia-volatility
+      policy, to be migrated to producer primaries when fetchable.
+  - id: 2
+    type: trade_publication
+    url: https://www.masterofmalt.com/whiskies/aberlour/aberlour-abunadh-whisky/
+    accessed: 2026-06-14
+    notes: |
+      Specialist-retailer listing (Master of Malt) corroborating A'bunadh's
+      specification: matured exclusively in first-fill Spanish oloroso
+      sherry butts, cask strength (batch-variable, ~59-61% ABV),
+      non-chill-filtered, natural colour, no age statement, batch-numbered.
+      Retrieved via web search 2026-06-14; flagged for producer
+      confirmation (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []
