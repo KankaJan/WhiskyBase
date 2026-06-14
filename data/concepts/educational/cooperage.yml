@@ -1,0 +1,186 @@
+# =============================================================================
+# Cooperage
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# Covers the craft of making and refurbishing casks: oak selection and
+# stave seasoning, raising and firing the cask, the rebuilding of ex-bourbon
+# barrels into hogsheads, sherry seasoning, and the de-char/re-char
+# rejuvenation that extends a cask's working life. Sourced against Russell
+# ed. 2022 Ch 16 (Conner) / Russell ed. 2014 Ch 11, Miller 2024 Ch 8, and a
+# trade reference for the rejuvenation specifics. The charring step itself
+# is treated in depth in educational/cask-charring-and-toasting.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cooperage
+title: Cooperage
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Cooperage is the craft of making and repairing casks, and the trade of
+  the cooper who practises it. A whisky cask is a watertight oak vessel
+  assembled from shaped staves held by hoops, with no glue or nails — its
+  integrity comes from the precision of the joinery and the swelling of the
+  wet wood. For Scotch the relevant cooperage work is less the building of
+  new casks than the handling of used ones: most Scotch matures in
+  ex-bourbon American-oak barrels and sherry-seasoned European-oak casks,
+  which are dismantled, rebuilt to different sizes, seasoned, and — when
+  their flavour-giving capacity tires — refurbished by scraping out and
+  re-charring the spent inner layer. The cooper's choices of oak, seasoning
+  and firing set the character a cask will later give the spirit [1][2].
+
+
+body: |
+  A cask is not a neutral container. Almost everything a maturing spirit
+  gains in colour and much of what it gains in flavour comes from the oak
+  and from how the cooper prepared it (see
+  `educational/cask-maturation-kinetics`). This page describes how casks
+  are made and kept in service; the heat treatment that most strongly sets
+  their character has its own page,
+  `educational/cask-charring-and-toasting`.
+
+  ## Oak and staves
+
+  Casks are made from oak because oak is both strong and, when quarter-sawn
+  along the grain, watertight — its cells are blocked by tyloses that stop
+  liquid passing through the wood. Two species groups dominate (see
+  `glossary/oak`): American white oak (Quercus alba), the wood of the
+  ex-bourbon barrel, and European oak (Quercus robur and Q. petraea), the
+  wood of the sherry-seasoned cask [1].
+
+  Felled oak is sawn into staves and then **seasoned** — air-dried in the
+  open for a period (commonly one to three years) so that moisture falls to
+  a workable level and the harshest, most bitter tannins in the green wood
+  are weathered out. Seasoning is slow and ties up capital in drying yards,
+  but kiln-drying alone does not reproduce the mellowing effect of open-air
+  weathering, so traditional cooperage still air-seasons stave wood [1].
+
+  ## Raising and firing the cask
+
+  The cooper assembles the seasoned staves upright inside a temporary
+  "raising" hoop to form the rough shell. The shell is then warmed and
+  wetted so the staves become pliable, drawn in at the open end with a
+  cable or winch, and bent to the cask's belly. The interior is then
+  heated — **toasted** and, for many casks, **charred** — which both sets
+  the staves permanently in shape and develops the wood's flavour-giving
+  layer; this firing step is "probably the most important stage of barrel
+  production as it defines the character the cask will confer" [1]. The
+  ends ("heads") are cut, fitted into a groove (the croze) near each end,
+  the permanent hoops are driven on, and the cask is filled with water
+  under pressure to test that the joinery is watertight. No glue or
+  fasteners hold the staves — only the hoops and the swelling of the wetted
+  oak. The toasting and charring step is covered in
+  `educational/cask-charring-and-toasting`.
+
+  ## Scotch runs on used casks — so cooperage means rebuilding
+
+  Bourbon must by law be matured in new charred oak, so the American
+  distilling industry produces a steady supply of once-used charred barrels.
+  These are the backbone of Scotch maturation. Most reach Scotland either
+  as intact **American Standard Barrels** (about 190 L) or are dismantled
+  and **rebuilt as hogsheads** (about 250 L) by adding extra staves and new
+  heads — a routine cooperage operation [1]. Casks are often shipped
+  "knocked down" as bundles of staves and heads (shooks) and re-raised on
+  arrival. Much of a Scottish cooperage's daily work is therefore
+  inspection, repair (replacing a failed stave or head), and rebuilding
+  rather than building from raw oak.
+
+  ## Refurbishing a tired cask
+
+  A cask's flavour-giving capacity is finite: the extractable compounds and
+  the active char layer deplete with each fill, so character impact falls
+  sharply from first to second to third fill (see
+  `educational/cask-fill-states`). After roughly three or four Scotch fills
+  a cask is largely "exhausted" [3]. Rather than scrap it, a cooperage can
+  **rejuvenate** it: the spent inner surface is scraped or shaved away to
+  expose fresh wood, and the cask is re-toasted and/or re-charred to raise a
+  new active layer [1][3]. A related treatment, **STR** (shave, toast,
+  re-char), is applied to wine casks to tame and reshape their character.
+  Rejuvenation extends a cask's working life but does not restore it
+  indefinitely; each cycle removes wood, and the regenerated layer is
+  thinner than the original.
+
+  ## Sherry seasoning
+
+  Unlike ex-bourbon casks, which arrive already used for their first
+  purpose, the European-oak "sherry casks" used by Scotch are now mostly
+  **purpose-seasoned**: casks are coopered in Spain and filled with sherry
+  for a defined period specifically to season the wood for whisky, rather
+  than being retired transport butts from the sherry trade. The seasoning
+  regime (sherry style, duration) is part of the cask's specification. The
+  cask-level entries record the seasoning where a producer discloses it
+  (e.g. `oloroso-sherry-butt`, `pedro-ximenez-sherry-butt`).
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/maturation
+  - educational/cask-charring-and-toasting
+  - educational/cask-maturation-kinetics
+  - glossary/oak
+  - glossary/char-and-toast
+  - practice/cask-finishing
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites:
+    - glossary/oak
+  covers: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-06-14
+    notes: |
+      Russell ed. 2022 Ch 16 (Conner, Maturation), cooperage and
+      cask-manufacture sections. Grounds: American oak (Quercus alba)
+      and European oak (Q. robur / Q. petraea); most ex-bourbon barrels
+      reaching Scotland as American Standard Barrels (~190 L) or rebuilt
+      as hogsheads (~250 L); the shell being heated to set the staves and
+      then charred, this firing being "probably the most important stage
+      of barrel production as it defines the character the cask will
+      confer"; and cask regeneration (scraping and re-charring). The same
+      chapter is cited in glossary/oak and glossary/char-and-toast.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-06-14
+    notes: |
+      Miller Ch 8 (Maturation), "The Structure of Oak and Casks":
+      quarter-sawing and the role of tyloses in making oak watertight;
+      stave seasoning; and heat treatment of the cask interior raising
+      the wood-derived flavour compounds available for later extraction.
+  - id: 3
+    type: trade_publication
+    url: https://www.bestdrink.cz/news/proc-se-sudy-vypaluji/
+    accessed: 2026-06-14
+    notes: |
+      Trade reference (in Czech) corroborating the practical
+      refurbishment detail: a cask's charring/flavour capacity tires
+      after about three to four refills for Scotch / Irish whiskey, after
+      which "rejuvenation" — sanding/scraping the interior and
+      re-charring — restores an active layer. Used for the
+      refurbishment-cycle specifics rather than the cooperage chemistry,
+      which rests on sources 1-2.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []

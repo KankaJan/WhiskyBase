@@ -1,0 +1,222 @@
+# =============================================================================
+# Cask charring and toasting
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# The deep companion to glossary/char-and-toast: why the cask interior is
+# fired, the difference between toasting and charring, the char levels, the
+# chemistry of what heat does to the wood, and the dual additive/subtractive
+# effect on the spirit. Sourced against Russell ed. 2022 Ch 16 (Conner),
+# Miller 2024 Ch 8, Mosedale & Puech 1998, and a trade reference for the
+# char-level specifics.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: cask-charring-and-toasting
+title: Cask charring and toasting
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Toasting and charring are the heat treatments applied to the inside of a
+  cask during cooperage, and the single step that most strongly determines
+  the character the cask will give a maturing spirit. Toasting is slower,
+  flameless heating that develops flavour compounds in a layer below the
+  wood surface; charring is the brief setting-alight of the interior to
+  leave a carbonised black layer over that toasted wood. The treatment works
+  in two opposite directions at once: it is **additive**, creating and
+  exposing extractable flavour and colour compounds (vanillin and other
+  lignin products, caramelised wood sugars), and **subtractive**, leaving a
+  layer of activated carbon that adsorbs harsher compounds — sulphur notes
+  among them — out of the spirit during maturation [1][2].
+
+
+body: |
+  The cooper's firing of the cask is where much of whisky's flavour is
+  literally made. This page covers why it is done, the levels of it, the
+  chemistry behind it, and its effect on the liquid. How casks are built and
+  refurbished is covered in `educational/cooperage`; what the spirit then
+  extracts over years is covered in `educational/cask-maturation-kinetics`.
+
+  ## Why fire the cask
+
+  Raw, seasoned oak gives a maturing spirit relatively little: its most
+  valuable flavour compounds are locked up in the wood's polymers (lignin
+  and hemicellulose) and are not freely extractable. Heating the wood breaks
+  those polymers down into smaller, ethanol-soluble molecules and
+  concentrates them in a thin layer at the cask's inner surface, ready to be
+  leached into the spirit. Firing also sterilises the surface, and — when
+  taken to a char — lays down the carbon layer that does the spirit's
+  "cleaning up". In Russell's cooperage chapter the firing is described as
+  "probably the most important stage of barrel production as it defines the
+  character the cask will confer" [1].
+
+  ## Toasting versus charring
+
+  - **Toasting** is slower, lower-temperature heating without open flame.
+    It develops flavour compounds (vanilla, caramel, spice, nutty notes) in
+    a band of cooked wood below the surface — the so-called "red layer" —
+    without carbonising it [4].
+  - **Charring** is the brief ignition of the cask interior so the surface
+    burns to a layer of char. It is the bourbon industry's standard
+    treatment (US law requires bourbon to use new charred oak), and it
+    leaves both a toasted "red layer" beneath and a black carbonised layer
+    on top [1][4].
+
+  A charred cask therefore carries both effects: the toasted wood under the
+  char supplies flavour, and the char itself supplies the adsorptive carbon.
+
+  ## What the heat does to the wood
+
+  The three structural polymers of oak respond differently to heat, and the
+  products are the source of cask-derived flavour (see also
+  `educational/cask-maturation-kinetics`) [2][3]:
+
+  - **Lignin** breaks down into aromatic aldehydes — vanillin (vanilla),
+    guaiacol and syringaldehyde (smoke, spice) and related compounds.
+    Vanillin in particular is greatly increased by heat treatment [2].
+  - **Hemicellulose** caramelises into furanic compounds and caramelised
+    sugars, giving caramel, toffee and "burnt sugar" notes and contributing
+    colour.
+  - **Tannins and oak lactones** in the wood add structure and the
+    coconut / sweet-oak character associated with American oak.
+
+  The hotter and longer the firing, the further these reactions run — which
+  is why deeper chars push the spirit toward darker colour and heavier
+  caramel character.
+
+  ## Char levels
+
+  Charring is graded by degree. The American cooperage industry uses four
+  standard char levels, set by how long the barrel interior is held alight:
+  roughly 15, 30, 35 and 55 seconds for char numbers 1 to 4. The heaviest,
+  char #4, leaves a deeply fissured surface known as **"alligator char"**
+  for its crocodile-skin appearance; the char layer is on the order of a few
+  millimetres thick (commonly cited at about 2-4 mm) [4]. Higher char levels
+  deepen the caramel and colour contribution and present more active carbon
+  to the spirit. Russell's chapter records the same two-step in cooperage
+  practice: the shell is first heated (around 230-260 degrees C for about
+  fifteen minutes) to set the staves, then charred by setting the interior
+  alight until the required degree of char is reached [1].
+
+  ## The dual effect on the spirit: additive and subtractive
+
+  The fired cask acts on the maturing spirit in two opposite ways at once —
+  the framework Conner uses for maturation generally [1]:
+
+  - **Additive.** The toasted "red layer" and the heat-degraded wood
+    polymers supply the vanillin, caramelised sugars, lactones and tannins
+    that the spirit extracts over years, building colour and flavour.
+  - **Subtractive.** The carbonised char layer behaves as **activated
+    carbon**: it adsorbs harsher and more volatile compounds out of the
+    spirit, notably sulphur compounds (such as dimethyl disulphide) carried
+    over from new make. This char-mediated reduction of sulphur happens
+    largely in the early part of maturation [1][4] (see also
+    `glossary/sulphur-in-new-make`).
+
+  It is this combination — adding wood character while subtracting harsher
+  new-make character — that makes charring the defining cooperage choice.
+
+  ## Effect on the liquid, in short
+
+  Relative to spirit matured in raw or lightly-toasted oak, a charred cask
+  gives: more colour; more vanilla, caramel and spice; and a "cleaner",
+  less sulphury, smoother spirit through the carbon layer's adsorption. The
+  capacity for all of this depletes with use (see
+  `educational/cask-fill-states`), which is why exhausted casks are
+  re-charred — see `educational/cooperage`.
+
+  ## Char colour is not added colour
+
+  The colour a charred cask contributes is extracted from the wood and is
+  part of maturation. It is distinct from **caramel colouring (E150a)**,
+  which is a permitted additive used to standardise the appearance of some
+  bottlings after maturation (see `glossary/caramel-colouring`). The two are
+  often conflated; this project keeps them separate.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - educational/cooperage
+  - educational/cask-maturation-kinetics
+  - educational/cask-fill-states
+  - glossary/char-and-toast
+  - glossary/oak
+  - glossary/caramel-colouring
+  - glossary/sulphur-in-new-make
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites:
+    - glossary/oak
+  covers:
+    - glossary/char-and-toast
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-06-14
+    notes: |
+      Russell ed. 2022 Ch 16 (Conner, Maturation). Grounds: the firing of
+      the cask interior as "probably the most important stage of barrel
+      production as it defines the character the cask will confer"; the
+      shell heated to ~230-260 degrees C for ~15 minutes to set the staves,
+      then charred until the required degree of char is reached; the
+      additive/subtractive framework; and char-mediated reduction of
+      sulphur compounds (e.g. dimethyl disulphide) occurring largely in
+      early maturation. Same chapter cited in glossary/char-and-toast.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-06-14
+    notes: |
+      Miller Ch 8 (Maturation): heat treatment of the cask interior
+      greatly increases wood-derived flavour compounds available for
+      extraction (vanillin in particular), and the carbonised layer
+      contributes the subtractive, adsorptive side of maturation.
+  - id: 3
+    type: peer_reviewed_paper
+    citation: |
+      Mosedale, J. R. & Puech, J.-L. (1998), "Wood maturation of
+      distilled beverages", Trends in Food Science & Technology,
+      9(3), 95-101.
+    url: https://doi.org/10.1016/S0924-2244(98)00024-7
+    accessed: null
+    notes: |
+      Canonical review of oak-derived compounds in spirit maturation:
+      the lignin breakdown products (vanillin and related aldehydes),
+      caramelised hemicellulosic sugars and furanic compounds, and oak
+      lactones referenced here as the products of heat treatment.
+      Quantitative claims should be verified against the paper text.
+  - id: 4
+    type: trade_publication
+    url: https://www.bestdrink.cz/news/proc-se-sudy-vypaluji/
+    accessed: 2026-06-14
+    notes: |
+      Trade reference (in Czech) used for the char-level specifics not
+      detailed in the book sources: the four American char levels with
+      approximate burn times (~15 / 30 / 35 / 55 seconds for #1-4), the
+      heaviest as "alligator" char, the char layer at roughly 2-4 mm, the
+      toasting-versus-charring distinction, and the carbon layer acting as
+      a filter that removes sulphur. The supporting chemistry rests on
+      sources 1-3.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []
