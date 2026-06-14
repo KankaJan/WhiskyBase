@@ -9,6 +9,21 @@ covers them all.
 
 ---
 
+## [0.8.5] — 2026-06-14
+
+**Schema — `wood` added to the distillery `washbacks.material` enum.**
+`schema/json/distillery.schema.json` `washbacks.material` previously
+listed only specific species (`oregon_pine`, `larch`, `douglas_fir`,
+`scottish_larch`), `stainless_steel`, `corten_steel` and `other`. The
+generic value `wood` — already valid for `mash_tun.material` — is now
+also accepted for washbacks, so a source that states "wooden washbacks"
+without naming the species can be recorded at genus level (Glenlivet is
+the first such case, from the Diffords Guide source-migration). Additive
+and backward-compatible: all existing entries still validate and the
+distillery `schema_version` stays 0.2 (no re-stamp). The template comment
+(`schema/distillery.template.yml`) is synced, also restoring the omitted
+`scottish_larch` value.
+
 ## [0.8.4] — 2026-06-11
 
 Audit remediation: tooling gate, schema migration, and consistency

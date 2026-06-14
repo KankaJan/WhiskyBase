@@ -419,16 +419,21 @@ become accessible:
   this should be confirmed against the producer's own page or
   the RIBA practice portfolio.
 
-### Glenlivet Wikipedia migrations (2026-06-12)
+### Glenlivet Wikipedia migrations
 
-The 16th distillery entry, Glenlivet, is grounded on Wikipedia plus
-one 2024 trade-press source (The Northern Scot, for the current
-28-still / ~21M-LPA plant). Migrate the load-bearing claims to
-primaries when accessible:
+**Status (2026-06-14): partial migration done.** Diffords Guide was
+added as source 3 on the distillery entry, independently corroborating
+founding, owner, Josie's Well water, unpeated malt, tall stills and the
+1884 name trademark, and supplying the wooden-washbacks datum. Two
+conflicts surfaced (global sales rank: Wikipedia 2nd vs Diffords 3rd;
+county: Banffshire historic vs Moray modern) — recorded in
+`glenlivet.NOTES.md` §8. The producer-primary migration is still
+outstanding. Remaining targets:
 
-- Producer pages: theglenlivet.com (JS-rendered / not directly
-  fetchable at population time 2026-06-12) and scotchwhisky.com
-  Whiskypedia on The Glenlivet (returned HTTP 403 at fetch time).
+- Producer pages: theglenlivet.com (JS-rendered) and scotchwhisky.com
+  Whiskypedia on The Glenlivet (HTTP 403) — both re-attempted and still
+  blocked 2026-06-14; web.archive.org is not fetchable from the dev
+  environment either.
 - Confirm the post-2024 plant spec — per-still capacities for the
   new pairs, current washback count, mash-tun type — against a
   producer spec or the latest Malt Whisky Yearbook (the 15,000 L
@@ -445,6 +450,25 @@ primaries when accessible:
 - The "Glenlivet" name legal case (1881 suit / 1884 compromise):
   corroborate against a primary historical / legal source beyond
   Wikipedia and trade histories.
+
+### Talisker Wikipedia migrations (2026-06-14)
+
+The 17th distillery entry, Talisker, is grounded on Wikipedia plus
+specialist-retailer listings for the bottling specs. Migrate when
+accessible:
+
+- Producer pages: malts.com / talisker.com (JS-rendered, no content to
+  automated fetch); scotchwhisky.com Whiskypedia (403).
+- Confirm the maltster (Glen Ord is commonly cited but unconfirmed),
+  washback count/material, and mash-tun type against a producer spec or
+  the latest Malt Whisky Yearbook.
+- Confirm the bottling specs against producer sources: the 45.8% ABV
+  across the range; the Distillers Edition's ex-amoroso (~6-month)
+  finish; Storm's 2013 launch and cask mix. Specialist-retailer listings
+  (The Whisky Exchange, Master of Malt) corroborate these but return 403
+  to automated fetch.
+- Coordinates (57.3017, -6.3537) are third-party-published; confirm
+  against a producer / OS source.
 
 ### Literature-resource scouting (user can supply digital copies)
 
@@ -958,6 +982,31 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-14** Talisker — 17th distillery. 1 distillery + 1 production
+  line + 3 bottlings + NOTES. Carbost, Isle of Skye; Diageo; the
+  project's first Skye entry and third populated Classic Malt (after
+  Lagavulin, Glenkinchie). Founded 1830 by the MacAskill brothers.
+  Distinctive: asymmetric five-still set (2 wash + 3 spirit), U-shaped
+  lye-pipe purifier loops, and worm-tub condensers on all five stills —
+  resolving the equipment/worm-tub forward ref and removing
+  `distillery:talisker` from expected_dangling.txt. Medium-peated
+  (~18-22 ppm), peppery/maritime; ~3.5M LPA. Bottlings: 10 Year Old
+  (45.8% flagship), Distillers Edition (amoroso finish, continuing the
+  cross-distillery DE series after Lagavulin/Caol Ila/Glenkinchie), and
+  Storm (NAS). Wikipedia-primary; bottling specs (45.8% etc.) from
+  specialist-retailer listings, flagged for producer confirmation.
+  Counts: 16 → 17 distilleries, 21 → 22 production lines, 48 → 51
+  bottlings. Not validated locally (no Python on the dev box); relies on
+  the CI strict gate.
+- **2026-06-14** Glenlivet source-migration (partial). Added Diffords
+  Guide as source 3 on the distillery entry — independent corroboration
+  of founding / owner / Josie's Well / unpeated / tall-stills /
+  1884-name-case, plus the wooden-washbacks datum
+  (`washbacks.material: wood`). Surfaced and documented two conflicts
+  (sales rank 2nd vs 3rd; Banffshire vs Moray) and softened the ranking
+  claim. Producer + scotchwhisky.com + web.archive.org all unfetchable,
+  so the producer-primary migration stays open. See glenlivet.NOTES.md
+  §8.
 - **2026-06-12** Glenlivet — 16th distillery. 1 distillery +
   1 production line + 3 bottlings + a NOTES.md. Minmore,
   Ballindalloch, Speyside (Moray); Chivas Brothers / Pernod Ricard.

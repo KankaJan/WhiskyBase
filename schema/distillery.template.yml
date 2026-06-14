@@ -101,7 +101,9 @@ mash_tun:
 washbacks:
   count: null
   material: null                     # oregon_pine | larch | stainless_steel |
-                                     # douglas_fir | corten_steel | other
+                                     # douglas_fir | corten_steel |
+                                     # scottish_larch | wood | other
+                                     # (`wood` = generic, species unstated)
   capacity_litres: null              # Per washback.
 
 stills:

@@ -1,0 +1,120 @@
+# =============================================================================
+# Talisker Storm
+# =============================================================================
+# Schema: bottling.template.yml v0.2
+# The no-age-statement core Talisker, launched 2013: a more intense,
+# smoke-forward expression built from a wider cask mix than the 10 Year
+# Old. The NAS counterpart in the core range. See talisker.NOTES.md.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: talisker-storm
+name: Talisker Storm
+produced_at_distillery: talisker
+production_line: talisker
+bottled_by: talisker                       # Official distillery bottling.
+bottler_type: distillery
+bottler_series: null
+
+
+# --- Release & Availability -------------------------------------------------
+release_date: '2013'                        # Launched 2013 [2].
+discontinued: false
+availability: core
+
+
+# --- Liquid Specifications --------------------------------------------------
+abv: 45.8                                   # 45.8% ABV, the Talisker
+                                           # signature strength [2].
+age_statement: null                         # No age statement [2].
+vintage: null
+cask_strength: false
+non_chill_filtered: null
+natural_colour: null
+bottle_size_ml: 700
+
+
+# --- Batch / Cask Identity --------------------------------------------------
+batch_or_cask:
+  type: vatting
+  number: null
+  outturn_bottles: null
+  cask_numbers: []
+
+
+# --- Maturation -------------------------------------------------------------
+maturation:
+  - cask_type: bourbon-barrel
+    fill_number: null
+    proportion: null
+    duration_years: null
+    cooperage: null
+    notes: |
+      American-oak maturation using a wider mix of cask types than the
+      10 Year Old (including a higher proportion of younger and
+      rejuvenated casks), which the producer positions as giving a more
+      intense, smoke-forward profile [2]. No age statement, so no
+      maturation duration is recorded.
+
+finish: null
+
+
+# --- Commercial -------------------------------------------------------------
+rrp:
+  currency: null
+  amount: null
+  as_of: null
+
+
+# --- External Identifiers ---------------------------------------------------
+external_ids:
+  whiskybase_id: null
+  whiskyhunter_id: null
+  ean: null
+
+
+# --- Description ------------------------------------------------------------
+description: |
+  Talisker Storm is the no-age-statement member of the core range,
+  launched in 2013. It is built from a wider mix of American-oak casks
+  than the 10 Year Old — including a higher proportion of younger and
+  rejuvenated casks — to give a more intense, smoke-forward take on the
+  peppery maritime house style [2]. Bottled at 45.8% ABV. Within the
+  range it sits alongside the age-statement 10 Year Old and the
+  sherry-finished Distillers Edition as the NAS, intensity-led option.
+
+
+# --- Tasting Notes ----------------------------------------------------------
+notes_official: null
+notes_independent: []
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: wikipedia
+    url: https://en.wikipedia.org/wiki/Talisker_distillery
+    accessed: 2026-06-14
+    notes: |
+      Wikipedia's article on Talisker distillery, which lists Storm in
+      the core range.
+  - id: 2
+    type: trade_publication
+    url: https://www.thewhiskyexchange.com/b/40/talisker-single-malt-scotch-whisky
+    accessed: 2026-06-14
+    notes: |
+      Specialist-retailer listing (The Whisky Exchange) corroborating
+      Talisker Storm's specifications: 45.8% ABV, no age statement,
+      2013 launch, American-oak maturation with a wider/younger cask
+      mix for a more intense profile. Retrieved via web search
+      2026-06-14; the page returns HTTP 403 to automated fetch and the
+      producer page is JS-rendered, so the specs are flagged for
+      producer confirmation (see TODO.md Research Requests).
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.2
+confidence: medium
+last_reviewed: 2026-06-14
+contributors: []
