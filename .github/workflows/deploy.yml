@@ -41,7 +41,12 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  # Latest push wins: cancel superseded in-progress/queued deploys so a
+  # slower deploy of an older commit cannot finish last and overwrite a
+  # newer one. (Fixes the multi-PR-merge deploy race seen 2026-06-15, where
+  # an earlier commit's deploy completed after the tip's and reverted the
+  # live site.)
+  cancel-in-progress: true
 
 jobs:
   build:
