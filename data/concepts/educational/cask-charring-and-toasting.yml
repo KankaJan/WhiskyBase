@@ -151,7 +151,7 @@ related_concepts:
 # --- Per-kind block ---------------------------------------------------------
 educational:
   prerequisites:
-    - glossary/oak
+    - educational/oak-species
   covers:
     - glossary/char-and-toast
 

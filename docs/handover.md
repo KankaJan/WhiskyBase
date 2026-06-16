@@ -567,11 +567,14 @@ back rather than absorbing it into the data model.
   1 Ardnamurchan (medium — peated + unpeated campaigns on one line, core
   malt ~50:50; ex-bourbon + sherry),
   1 Ardnahoe (medium — peated Islay ~40 ppm, worm-tub condensed).
-- 87 concept pages: 3 methodology, 19 educational, 8 equipment,
-  5 practice, 52 glossary. The 2026-05-21 production-chain
+- 89 concept pages: 3 methodology, 21 educational, 8 equipment,
+  5 practice, 52 glossary. (Educational 19 -> 21 on 2026-06-15: the
+  `yeast-strains` and `oak-species` pages were promoted
+  from the `distillers-yeast` and `oak` glossary stubs in the glossary
+  audit; both stubs were kept and tightened.) The 2026-05-21 production-chain
   coverage build added 34 pages across three tiers; a master
   overview (`whisky-production`) and three stage wrappers
-  (`malting`, `mashing`, `fermentation`) were then added to
+  (`malting`, `mashing`, `fermentation-overview`) were then added to
   complete the wrapper layer, so every production stage has one
   overview page. Together these complete the technical backbone (distillation, malting, mashing,
   fermentation, maturation, blending, and the supporting
@@ -776,7 +779,21 @@ codified in `docs/diagram-style.md`:
 
 CHANGELOG [0.8.3].
 
-**Next priorities, in order of unblock value:**
+**Public beta — LIVE (2026-06-15).** GitHub Pages is enabled
+(Source = "GitHub Actions") and the site is public at
+`https://kankajan.github.io/WhiskyBase/`, deployed on every push to
+master (subpath hosting, `BASE_PATH=/WhiskyBase`; the 2026-06-15
+`concurrency: cancel-in-progress` fix prevents a stale deploy of an
+older commit reverting the live site). This cleared the last beta
+blocker — the `docs/contributing.md` contribution guide, the
+`/about` route, the 404 page, favicon, and OpenGraph/canonical tags
+are all in place. Residual non-blocking polish (privacy note,
+`robots.txt`, a sitemap, a mobile-layout pass) is tracked under
+TODO.md Frontend follow-ups.
+
+**Next priorities, in order of unblock value.** With public beta
+shipped (above), the Beta-readiness gate in `TODO.md` is cleared and
+data growth is the active track:
 
 1. **Data-layer growth — 24th distillery.** A new-wave batch landed
    2026-06-14 — Nc'nean (21st, organic / net-zero), Ardnamurchan (22nd,
