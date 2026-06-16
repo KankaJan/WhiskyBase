@@ -1,0 +1,176 @@
+# =============================================================================
+# Yeast strains in Scotch whisky
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# The deep companion to glossary/distillers-yeast: how distilling yeast
+# differs from brewing yeast, what distilling strains are selected for, the
+# named commercial strains and the M-type's history, and the role of yeast in
+# spirit character. Sourced against Russell & Stewart 2014 Ch 7, Miller 2024
+# Ch 5, and Daute, Jack & Walker 2024 (FEMS Yeast Research). Promoted from
+# glossary/distillers-yeast 2026-06-15 (glossary audit); the glossary entry is
+# kept as a tight stub.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: yeast-strains
+title: Yeast strains in Scotch whisky
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Yeast, almost always Saccharomyces cerevisiae propagated as "distiller's
+  yeast", converts the sugars in wort to ethanol and carbon dioxide and in
+  doing so generates much of the congener profile the still later
+  concentrates. The strains Scotch uses are selected for distilling, not
+  brewing: the priorities are high alcohol yield, fast and complete
+  fermentation, and tolerance of high-gravity wort, rather than the aroma
+  and handling priorities of brewing strains [1][2].
+
+
+body: |
+  Fermentation as a production stage is covered in
+  `educational/fermentation-overview`; this page is about the organism that drives
+  it, which yeast Scotch uses, what it is selected for, and what it
+  contributes to spirit character.
+
+  ## Distilling yeast versus brewing yeast
+
+  Brewing and distilling pull yeast selection in different directions. A
+  brewer keeps the beer as the finished product, so brewing strains are
+  chosen partly for flavour and for handling behaviour (flocculation, head
+  formation) that suit packaged beer. A distiller keeps almost nothing but
+  the alcohol and the volatile congeners the still will carry over, so
+  distilling strains are chosen for fermentation performance first [1][2].
+  A practical difference sits in the wort: a brewer boils the wort, which
+  denatures the malt enzymes, whereas malt-distilling wort is not boiled
+  and carries residual amylase activity forward into the washback, so
+  starch conversion continues during fermentation rather than stopping
+  before it [2].
+
+  ## What distilling strains are selected for
+
+  The selection criteria are high alcohol yield (efficient conversion of
+  sugar to ethanol, i.e. high attenuation); fast and complete
+  fermentation; tolerance of the comparatively high gravity of distilling
+  wort; and even performance across the temperature span a washback passes
+  through as fermentation self-heats (roughly 18 to 32 degrees C across the
+  fermentation) [1][2]. Miller characterises the dominant commercial yeast
+  as "high-attenuating, fast-fermenting" [2]. Ester production matters as
+  well, but as a by-product profile suited to spirit rather than the
+  hop-and-malt aroma balance for which a brewing strain is tuned [1].
+
+  ## The named commercial strains
+
+  Scotch distillers overwhelmingly buy a small number of commercial strains
+  rather than maintaining proprietary house yeasts. Daute, Jack and Walker
+  (2024) record the industry standards as the M-type and MX (Kerry
+  Bio-Science), Pinnacle (Mauri / AB Biotek) and DistilaMax (Lallemand)
+  [3]. The M-type is the historical anchor: an interspecies hybrid of
+  Saccharomyces cerevisiae and S. cerevisiae var. diastaticus, it was
+  introduced by DCL Yeast Ltd in 1952 and remains an industry standard,
+  and DCL Yeast is now part of Kerry [3].
+
+  ## Yeast and spirit character
+
+  Yeast shapes character in two ways. Directly, its metabolism produces the
+  esters, higher alcohols and other congeners (see `glossary/congener`)
+  that fermentation contributes [1]. Indirectly, the long fermentations
+  common in malt distilling leave time, after the yeast has finished its
+  primary work, for lactic acid bacteria (see `glossary/lactic-acid-bacteria`)
+  to raise fatty-acid and ester levels further; Miller links this to fruity
+  lactone development through both the bacteria and the distiller's yeast
+  [2]. The still then sorts and concentrates the resulting congener profile.
+
+  ## Flavour diversification: a current research direction
+
+  Strain choice is an active lever for flavour. Daute, Jack and Walker
+  (2024), reviewing the potential for flavour diversification by yeast,
+  set out how alternative and non-conventional strains can widen the range
+  of spirit character obtainable from the same wort, a direction of
+  interest as producers look beyond the established distilling strains [3].
+
+  ## Disclosure in the data
+
+  Distillery disclosure of specific yeast strains is uneven. Most
+  production-line entries in this project record `yeast: distillers` (the
+  generic claim) or `yeast: null` (undisclosed); a named strain is the
+  exception rather than the rule. Where a distillery does disclose one, the
+  value is recorded on its production_line entry.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/distillers-yeast
+  - educational/fermentation-overview
+  - glossary/fermentation
+  - glossary/lactic-acid-bacteria
+  - glossary/congener
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites:
+    - glossary/fermentation
+  covers:
+    - glossary/distillers-yeast
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: book
+    citation: |
+      Russell, I. & Stewart, G., "Distilling yeast and
+      fermentation", Chapter 7 in Russell, I. & Stewart, G.
+      (eds.), Whisky: Technology, Production and Marketing,
+      2nd edition, Academic Press (Elsevier), 2014, pp 123-145.
+    accessed: 2026-06-15
+    notes: |
+      Russell & Stewart Ch 7: yeast strain selection, the
+      distilling-versus-brewing distinction, congener development
+      (p 139) and wort fermentation (p 141). Carried over from
+      glossary/distillers-yeast, where this page's content
+      previously lived.
+  - id: 2
+    type: book
+    citation: |
+      Miller, G.H., Whisky Science: A Condensed Distillation,
+      2nd edition, Springer International Publishing, 2024.
+      ISBN 978-3-031-50686-4.
+    accessed: 2026-06-15
+    notes: |
+      Miller Ch 5 (Fermentation), section 5.1 Yeast, p 219:
+      "The majority of scotch whisky distillers use a commercial
+      yeast derived from the Distillers Company 'M' strain ...
+      high-attenuating fast-fermenting." Distiller's wort retains
+      residual amylase activity from malting whereas a brewer's
+      boiled wort does not. LAB role in fruity-ester development
+      pp 239-241.
+  - id: 3
+    type: peer_reviewed_paper
+    citation: |
+      Daute, M., Jack, F. & Walker, G.M., "The potential for Scotch
+      Malt Whisky flavour diversification by yeast", FEMS Yeast
+      Research, vol. 24, 2024, article foae017.
+      DOI: 10.1093/femsyr/foae017.
+    accessed: 2026-06-15
+    notes: |
+      Open-access (CC-BY) review co-authored by Frances Jack (Scotch
+      Whisky Research Institute). Names the industry-standard strains:
+      the M-type with MX (Kerry Bio-Science), Pinnacle (Mauri/AB
+      Biotek), and DistillaMax (Lallemand); gives the M-type origin
+      (an interspecies S. cerevisiae x S. cerevisiae var. diastaticus
+      hybrid introduced by DCL Yeast Ltd in 1952, now Kerry); and
+      reviews flavour diversification through strain choice. (The paper
+      spells the Lallemand product "DistillaMax"; the producer brand
+      spelling is "DistilaMax".)
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-06-15
+contributors: []

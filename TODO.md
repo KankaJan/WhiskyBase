@@ -2,37 +2,43 @@
 
 Active queue for the WhiskyBase project.
 
-**Structure (revised 2026-05-21).** The first section —
-**Beta-readiness** — is the active priority: it lists everything
-that must land before a public beta. When that section is empty,
-the project is at public beta and the only continuing track is
-data growth: adding distilleries, production lines and bottlings
-(see `docs/handover.md` section 10, Next priorities). Everything
-below Beta-readiness is either that ongoing data-growth work or
-post-beta / deferred quality work (sourcing upgrades, schema
-refinements, distillery-specific concept pages) — none of it
-blocks beta. Add new items to the appropriate section.
+**Structure (revised 2026-06-15).** Public beta **shipped
+2026-06-15**: the site is live at
+`https://kankajan.github.io/WhiskyBase/` and the **Beta-readiness**
+must-do set is cleared (that section is kept as a shipped record;
+the former BLOCKERs are marked resolved inline). With beta shipped,
+the active track is data growth: adding distilleries, production
+lines and bottlings (see `docs/handover.md` section 10, Next
+priorities). Everything below Beta-readiness is that ongoing
+data-growth work or post-beta / deferred quality work (sourcing
+upgrades, schema refinements, distillery-specific concept pages,
+residual site polish) — none of it blocked beta. Add new items to
+the appropriate section.
 
 ---
 
-## Beta-readiness
+## Beta-readiness — SHIPPED 2026-06-15
 
-The must-do set before a public beta. The technical / educational
-concept backbone is already complete — 85 concept pages, the full
-production-chain coverage plus the wrapper layer (see Recently
-Completed). The items here are the public-facing, deployment and
-visual work *around* that content.
+**Public beta is live** at `https://kankajan.github.io/WhiskyBase/`
+(GitHub Pages via the GitHub Actions deploy on push to master). The
+must-do set that gated beta is cleared: the technical / educational
+concept backbone (89 concept pages), the deploy pipeline, the
+public-facing docs, and the core site hygiene all landed. The
+subsections below are kept as a record of what was required, with
+the two former BLOCKERs marked resolved inline. Residual,
+**non-blocking** site polish moved to Frontend follow-ups.
 
 ### Deployment and CI
 
-- **Enable GitHub Pages — the last deploy blocker.** The build and
-  deploy workflows exist (`.github/workflows/{validate,deploy}.yml`)
-  and the site is wired for subpath hosting at
-  `https://kankajan.github.io/WhiskyBase/` (links base-aware,
-  `deploy.yml` supplies `BASE_PATH=/WhiskyBase`). The `deploy` job
-  still 404s until GitHub Pages is turned on: Settings → Pages →
-  Build and deployment → Source = "GitHub Actions". One-time manual
-  repo setting (publishes the site publicly). BLOCKER.
+- **Enable GitHub Pages — RESOLVED 2026-06-15.** GitHub Pages is on
+  (Settings → Pages → Build and deployment → Source = "GitHub
+  Actions") and the site is public at
+  `https://kankajan.github.io/WhiskyBase/`. Subpath hosting works as
+  designed (links base-aware, `deploy.yml` supplies
+  `BASE_PATH=/WhiskyBase`); the 2026-06-15 `concurrency:
+  cancel-in-progress` fix stops an older commit's deploy finishing
+  last and reverting the live site. This was the last deploy
+  blocker.
 - **Full site build verified (2026-06-11).** 217 pages build clean
   at both the root and `/WhiskyBase/` subpath bases. Pagefind index
   step runs in CI (`npm ci` installs the binary); not runnable on
@@ -43,15 +49,19 @@ visual work *around* that content.
 
 ### Public-facing docs and site hygiene
 
-- **`docs/contributing.md` is a stub.** The contribution model is
-  "PRs are the proposal queue"; for a public project that page
-  must be real — how to propose an entry, the schema templates,
-  the voice register, the sourcing policy, how check_references /
-  check_writes are run. BLOCKER for a PR-based public project.
-- Wire an **About page** into the site — `docs/about.md` exists
-  but there is no `/about` route.
-- **Site hygiene:** 404 page, favicon, meta / OpenGraph tags for
-  link sharing, a privacy note, a mobile-layout check.
+- **`docs/contributing.md` — DONE.** No longer a stub: a full
+  contribution guide (what to read, entity types and file
+  locations, setup, adding/changing an entry, forward-reference
+  registration, running the gates, what gets a PR rejected).
+- **About page — DONE.** `site/src/pages/about.astro` renders the
+  `/about` route.
+- **Site hygiene — partly done.** Landed: 404 page (`404.astro`),
+  favicon (`public/favicon.svg`), meta / OpenGraph + canonical tags
+  (`BaseLayout.astro`), and the footer adult-audience /
+  trademark-independence notices. **Still open (non-blocking, moved
+  to Frontend follow-ups):** a privacy note, `robots.txt`, a sitemap
+  (no `@astrojs/sitemap` integration installed), and a
+  mobile-layout pass.
 
 ### Educational-page diagrams
 
@@ -972,6 +982,23 @@ scaffolding has landed in `/site/`. Items here are concrete UI /
 data-rendering issues spotted during iteration, distinct from the
 broader implementation sequencing in the build-pipeline-plan.
 
+### Residual site hygiene (post-beta, non-blocking)
+
+Carried over from Beta-readiness when public beta shipped
+2026-06-15. None of these gate anything — the site is already
+live — but they are the natural next polish:
+
+- **Privacy note.** No `privacy` content exists anywhere in
+  `site/src`. Add a short static page (data sources; tracking /
+  analytics statement as applicable) and wire it into the footer.
+- **`robots.txt` + sitemap.** Neither is emitted today
+  (`postbuild.mjs` runs only Pagefind; no `@astrojs/sitemap`
+  integration). The deploy already sets the `SITE` var for absolute
+  URLs, so adding the sitemap integration plus a `robots.txt`
+  pointing at it is small.
+- **Mobile-layout pass.** Verify the grouped index tables and the
+  entity pages on a narrow viewport.
+
 ### Confidence rubric tooltip on entity pages
 
 The confidence field (high / medium / low / stub) renders on
@@ -1051,6 +1078,42 @@ single source of truth inside the component.
 to the most recent five entries; older completions are tracked in
 Git history.)
 
+- **2026-06-15** Yeast educational page renamed for findability, and the
+  fermentation page deepened. The distillers-yeast promotion was renamed
+  `educational/yeast-strains` (it could not be `educational/distillers-yeast`
+  without duplicating the glossary id). `educational/fermentation-overview`
+  was expanded from a short stage-wrapper into a substantive stage page
+  (washback; pitching and the fermentation curve; the two-phase yeast +
+  lactic-acid-bacteria fermentation; fermentation time as a flavour lever),
+  sourced to Russell 2022 + Miller 2024, confidence medium. Slug kept as
+  `fermentation-overview`.
+- **2026-06-15** Fixed the `*/fermentation` duplicate `id`: the
+  educational stage-wrapper was renamed `educational/fermentation` ->
+  `educational/fermentation-overview` (the glossary term keeps the bare
+  `fermentation` slug), its 7 inbound references were updated, and the
+  handover wrapper mention corrected. Note `educational/mashing` still
+  shares its `id` with `glossary/mashing` — the same fix is available
+  on request.
+- **2026-06-15** Glossary audit implemented (plan:
+  `docs/glossary-audit-2026-06-15.md`). Two entries promoted to
+  educational pages, glossary stubs kept and tightened:
+  `distillers-yeast` -> `educational/yeast-strains`
+  and `oak` -> `educational/oak-species` (concept pages 87 -> 89,
+  educational 19 -> 21). `marrying` extended in place (vatting-vs-
+  marrying distinction + the Glenfiddich Solera example). Fixed the
+  `bere` six-row / `var. distichum` contradiction. Added see_also
+  depth-gradient links (`char-and-toast`, `fermentation`, `mashing`
+  to their educational pages; charring prerequisite retargeted to
+  `oak-species`). The other ~47 glossary entries were assessed and
+  left as adequate.
+- **2026-06-15** Public beta SHIPPED. GitHub Pages enabled (Source =
+  "GitHub Actions"); the site is live at
+  `https://kankajan.github.io/WhiskyBase/` — the last Beta-readiness
+  blocker cleared. Confirmed already-done (the docs were stale):
+  `docs/contributing.md`, the `/about` route, the 404 page, favicon,
+  and OpenGraph/canonical tags. Residual non-blocking polish moved
+  to Frontend follow-ups. No schema or policy change, so no CHANGELOG
+  entry.
 - **2026-06-14** Cask wood concept pages — two educational pages on the
   cooperage/maturation backbone: `educational/cooperage` (making and
   refurbishing casks: oak selection, stave seasoning, raising and firing,

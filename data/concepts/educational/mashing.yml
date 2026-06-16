@@ -48,7 +48,7 @@ body: |
       husk filter bed — and further hotter [water](concept/glossary/water)
       sparges recover the remaining extract. The result is
       [wort](concept/glossary/wort), which is cooled and run to the
-      washback for [fermentation](concept/educational/fermentation).
+      washback for [fermentation](concept/educational/fermentation-overview).
       
       ## See also
       
@@ -67,7 +67,7 @@ related_concepts:
   - glossary/saccharification
   - glossary/lautering
   - glossary/wort
-  - educational/fermentation
+  - educational/fermentation-overview
 
 
 # --- Educational block ------------------------------------------------------

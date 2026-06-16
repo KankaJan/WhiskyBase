@@ -60,7 +60,7 @@ body: |
 
   ## Fermentation
 
-  [Fermentation](concept/educational/fermentation) in the
+  [Fermentation](concept/educational/fermentation-overview) in the
   washback converts the wort's sugars into alcohol: cooled wort
   is pitched with distiller's yeast and ferments over several
   days into a [wash](concept/glossary/wash) of about 7-9% ABV.
@@ -105,7 +105,7 @@ body: |
 related_concepts:
   - educational/malting
   - educational/mashing
-  - educational/fermentation
+  - educational/fermentation-overview
   - educational/distillation
   - educational/maturation
   - educational/blending

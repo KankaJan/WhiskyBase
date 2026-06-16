@@ -41,7 +41,8 @@ glossary:
     - washback fermentation
     - whisky fermentation
   part_of_speech: noun
-  see_also: []
+  see_also:
+    - educational/fermentation-overview
 
 
 # --- Sources ----------------------------------------------------------------

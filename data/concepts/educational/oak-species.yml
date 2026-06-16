@@ -1,0 +1,192 @@
+# =============================================================================
+# Oak species for whisky casks
+# =============================================================================
+# Schema: concept.template.yml v0.1
+# Kind: educational
+# The deep companion to glossary/oak: the species of oak used for Scotch
+# casks, how their chemistry and wood structure differ, and where each
+# appears in the data. Promoted from glossary/oak 2026-06-15 (glossary
+# audit); the glossary entry is kept as a short definition. Sourced against
+# Mosedale & Puech 1998, Russell ed. 2022 Ch 16 (Conner), Kim et al. 2024
+# (tyloses), and cooperage / whisky-education references.
+# =============================================================================
+
+
+# --- Identity ---------------------------------------------------------------
+id: oak-species
+title: Oak species for whisky casks
+kind: educational
+
+
+# --- Summary & Body ---------------------------------------------------------
+summary: |
+  Scotch must by law be matured in oak, and two species groups supply
+  almost all of it: American white oak (Quercus alba), the wood of the
+  ex-bourbon barrels that dominate Scotch maturation, and European oak
+  (Quercus robur and Q. petraea), the wood of sherry-seasoned casks. They
+  differ in both their extractable chemistry and their physical structure,
+  which is why they give different flavour and are even built into casks by
+  different methods [1][2][3].
+
+
+body: |
+  The term itself is defined in `glossary/oak`; this page compares the oak
+  species used for whisky casks: how their chemistry differs, why their wood
+  structure forces different cooperage, and where each appears in Scotch.
+  How casks are built and fired is covered in `educational/cooperage` and
+  `educational/cask-charring-and-toasting`; what the spirit extracts over
+  the years is in `educational/cask-maturation-kinetics`.
+
+  ## The two dominant species
+
+  American white oak (Quercus alba) is the wood of the ex-bourbon barrel.
+  Because US law requires straight bourbon to be matured in new charred
+  oak, each bourbon barrel is filled once and then sold on, and the
+  resulting flow of single-use Q. alba barrels supplies the majority of
+  Scotch casks [2]. European oak, chiefly Quercus robur (pedunculate) and
+  Q. petraea (sessile), is the wood of the sherry-seasoned cask,
+  traditionally grown in continental Europe and seasoned in the sherry
+  trade of southern Spain before it reaches Scotch maturation [2].
+
+  ## Chemistry: what differs by species
+
+  The two groups carry different extractable compounds, and that is the
+  root of their different character [1][2]:
+
+  - **American oak** is comparatively rich in oak lactone (the cis and
+    trans methyl-octalactones, the so-called "whisky lactone") and in
+    vanillin, giving the coconut, sweet-oak and vanilla notes associated
+    with ex-bourbon maturation.
+  - **European oak** is lower in oak lactone but higher in ellagitannins,
+    the hydrolysable tannins that contribute astringency, structure and
+    colour, and is associated with the more tannic, dried-fruit and spice
+    character of sherry-cask whisky.
+
+  Cooperage heat treatment then modifies all of this (see
+  `educational/cask-charring-and-toasting`), but the starting composition
+  is set by species.
+
+  ## Wood structure: tyloses, and why staves are cut differently
+
+  The species also differ physically, in a way that decides how a cask can
+  be built. Oak heartwood vessels can be blocked by tyloses, balloon-like
+  ingrowths that occlude the wood's pores. Q. alba is abundant in tyloses
+  (the highest tylose volume of the cooperage oaks in computed-tomography
+  measurement [3]), so its heartwood is watertight even when the staves are
+  sawn across the grain. European oak has fewer tyloses and is more porous,
+  so its staves cannot reliably be sawn: they must be split along the grain,
+  following the wood's natural seams, to avoid leakage [3][4]. The
+  consequence is economic as well as technical: American oak can be
+  quarter-sawn at the mill, yielding more staves per log, while European
+  oak must be cleft and wastes more of the tree [4].
+
+  ## Mizunara: a rare third wood
+
+  Japanese oak, Mizunara (Quercus crispula, closely related to Mongolian
+  oak, Q. mongolica), is used for a small number of casks and finishes. Its
+  name translates roughly as "water oak": it is highly porous, low in
+  tyloses and high in moisture, which makes it leak-prone and difficult to
+  cooper, and it tends to grow crooked and knotty so that staves must be cut
+  with much waste [5]. It is used despite this for the distinctive
+  sandalwood- and incense-like character it can give a spirit [5].
+
+  ## Where the species appear in this project's data
+
+  The cask types Scotch draws on are modelled under `/data/casks/`: the
+  ex-bourbon `bourbon-barrel` entry is Q. alba; the `oloroso-sherry-butt`,
+  `fino-sherry-butt` and `pedro-ximenez-sherry-butt` entries are European
+  oak; `virgin-oak` covers new, previously unused oak of either group. The
+  contrasting chemistry above is the reason a bottling's cask mix is
+  recorded in detail rather than treated as interchangeable.
+
+
+# --- Related Concepts -------------------------------------------------------
+related_concepts:
+  - glossary/oak
+  - educational/maturation
+  - educational/cooperage
+  - educational/cask-charring-and-toasting
+  - educational/cask-maturation-kinetics
+
+
+# --- Per-kind block ---------------------------------------------------------
+educational:
+  prerequisites: []
+  covers:
+    - glossary/oak
+
+
+# --- Sources ----------------------------------------------------------------
+sources:
+  - id: 1
+    type: peer_reviewed_paper
+    citation: |
+      Mosedale, J. R. & Puech, J.-L. (1998), "Wood maturation of
+      distilled beverages", Trends in Food Science & Technology,
+      9(3), 95-101.
+    url: https://doi.org/10.1016/S0924-2244(98)00024-7
+    accessed: 2026-06-15
+    notes: |
+      Canonical review of oak-derived compounds in spirit maturation;
+      grounds the species-differentiated extractable chemistry (oak
+      lactones and vanillin from lignin, hydrolysable ellagitannins).
+      The directional species claims (American oak higher in oak
+      lactone and vanillin, European oak higher in ellagitannins) are
+      corroborated by cooperage and enology literature; quantitative
+      specifics should be verified against the paper text. Also cited
+      in educational/cask-charring-and-toasting and
+      educational/cask-maturation-kinetics.
+  - id: 2
+    type: book
+    citation: |
+      Conner, J., "Maturation", Chapter 16 in Russell, I.,
+      Stewart, G. & Kellershohn, J. (eds.), Whisky and Other
+      Spirits: Technology, Production and Marketing, 3rd edition,
+      Academic Press (Elsevier), 2022.
+    accessed: 2026-06-15
+    notes: |
+      Russell ed. 2022 Ch 16 (Conner, Maturation): American (ex-bourbon,
+      Q. alba) and European (sherry, Q. robur / Q. petraea) oak as the
+      two cask woods of Scotch and their contrasting flavour
+      contributions; the bourbon new-charred-oak requirement as the
+      source of single-use American barrels.
+  - id: 3
+    type: peer_reviewed_paper
+    citation: |
+      Kim, D. et al. (2024), "Detailed three-dimensional analyses of
+      tyloses in oak used for bourbon and wine barrels through X-ray
+      computed tomography", Scientific Reports, 14, 17044.
+    url: https://doi.org/10.1038/s41598-024-67298-x
+    accessed: 2026-06-15
+    notes: |
+      X-ray computed-tomography quantification of tyloses in cooperage
+      oak; Quercus alba shows the highest tylose volume, the structural
+      basis for its watertightness when sawn. PMID 39048642.
+  - id: 4
+    type: trade_publication
+    url: https://www.worldcooperage.com/oak-species-for-cooperage/
+    accessed: 2026-06-15
+    notes: |
+      Cooperage-industry reference on oak species. Used for the practical
+      consequence of tyloses: American oak can be quarter-sawn and stay
+      watertight (more staves per log), whereas European oak must be
+      split along the grain to avoid leakage. The underlying tyloses
+      mechanism rests on source 3.
+  - id: 5
+    type: trade_publication
+    url: https://www.edinburghwhiskyacademy.com/blogs/shortcut/shortcut-mizunara-oak
+    accessed: 2026-06-15
+    notes: |
+      Whisky-education reference used for the Mizunara specifics:
+      Japanese oak (Quercus crispula, related to Q. mongolica), highly
+      porous and low in tyloses ("water oak"), leak-prone and difficult
+      to cooper, and its sandalwood / incense character. A trade source;
+      botanical naming (Q. crispula vs Q. mongolica) varies across
+      references and should be treated as approximate.
+
+
+# --- Metadata ---------------------------------------------------------------
+schema_version: 0.1
+confidence: medium
+last_reviewed: 2026-06-15
+contributors: []

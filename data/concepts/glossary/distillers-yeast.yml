@@ -15,26 +15,15 @@ kind: glossary
 # --- Summary & Body ---------------------------------------------------------
 summary: |
   "Distiller's yeast" is the colloquial industry term for the
-  Saccharomyces cerevisiae strains selected and propagated for
-  Scotch malt whisky fermentation. Distinct strains have been
-  developed for distilling versus brewing applications: distilling
-  strains are selected for high alcohol yield (high sugar-to-
-  ethanol conversion efficiency at temperatures typical of
-  Scotch washbacks, 18-32 °C across fermentation), tolerance to
-  the higher gravity of distilling worts (often higher than ale
-  brewing wort), and a tendency to produce ester profiles
-  appropriate to spirit (rather than the more emphasised hop-
-  derived aroma profiles selected for in brewing strains) [1][2].
-  The principal commercial distilling strains declared as Scotch-
-  industry standards are the M-type and MX (Kerry Bio-Science),
-  Pinnacle (Mauri / AB Biotek) and DistilaMax (Lallemand) [3].
-  The M-type (an interspecies hybrid of Saccharomyces cerevisiae
-  and S. cerevisiae var. diastaticus) was introduced by DCL Yeast
-  Ltd in 1952 and remains an industry standard; DCL Yeast is now
-  part of Kerry Bio-Science [3]. Distillery disclosure of specific
-  yeast strains is uneven; most production_line entries currently
-  record yeast: distillers (generic claim) or yeast: null
-  (undisclosed).
+  Saccharomyces cerevisiae strains selected and propagated for Scotch
+  malt whisky fermentation. Distilling strains are bred distinct from
+  brewing strains, selected for high alcohol yield, fast and complete
+  fermentation, and tolerance of high-gravity wort rather than for
+  brewing's aroma priorities [1][2]. The named industry-standard
+  strains (the M-type and MX, Pinnacle, DistilaMax), the M-type's
+  1952 origin, and the role of yeast in spirit character are covered
+  in the educational page on yeast in Scotch fermentation
+  (educational/yeast-strains) [3].
 
 
 body: null
@@ -42,6 +31,7 @@ body: null
 
 # --- Related Concepts -------------------------------------------------------
 related_concepts:
+  - educational/yeast-strains
   - glossary/fermentation
 
 
@@ -52,6 +42,7 @@ glossary:
     - distillers yeast
   part_of_speech: noun
   see_also:
+    - educational/yeast-strains
     - glossary/fermentation
 
 
